@@ -1,4 +1,4 @@
-# New-Modpack  
+# EMCWorld
 ## 前言  
 这是大轩的新一个整合包，将以冒险为主题，魔法科技为辅助。  
   
@@ -42,3 +42,5 @@
 * 与 Biggest_Xuan 现实认识且具有相应能力；  
 * 与 Biggest_Xuan 网络超过 6 个月认识且具有相应能力；
 * Biggest_Xuan 认为你很有能力。
+
+ 
