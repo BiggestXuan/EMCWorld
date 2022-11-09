@@ -102,6 +102,48 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_nature_sword>.withTag({level: 20 as int})|
         <item:emcworld:god_null_sword>.withTag({level: 20 as int})
     ;
+    var con as IItemStack[][] = [
+        [
+            <item:emcworld:update_base_purple>,
+            <item:emcworld:update_base_bx_purple>,
+            <item:emcworld:update_base_blue>,
+            <item:emcworld:update_base_cyan>,
+            <item:emcworld:update_base_green>,
+            <item:emcworld:update_base_yellow>,
+            <item:emcworld:update_base_orange>,
+            <item:emcworld:update_base_red>
+        ],
+        [
+            <item:emcworld:update_cost_purple>,
+            <item:emcworld:update_cost_bx_purple>,
+            <item:emcworld:update_cost_blue>,
+            <item:emcworld:update_cost_cyan>,
+            <item:emcworld:update_cost_green>,
+            <item:emcworld:update_cost_yellow>,
+            <item:emcworld:update_cost_orange>,
+            <item:emcworld:update_cost_red>
+        ],
+        [
+            <item:emcworld:update_addon_purple>,
+            <item:emcworld:update_addon_bx_purple>,
+            <item:emcworld:update_addon_blue>,
+            <item:emcworld:update_addon_cyan>,
+            <item:emcworld:update_addon_green>,
+            <item:emcworld:update_addon_yellow>,
+            <item:emcworld:update_addon_orange>,
+            <item:emcworld:update_addon_red>
+        ],
+        [
+            <item:emcworld:update_time_purple>,
+            <item:emcworld:update_time_bx_purple>,
+            <item:emcworld:update_time_blue>,
+            <item:emcworld:update_time_cyan>,
+            <item:emcworld:update_time_green>,
+            <item:emcworld:update_time_yellow>,
+            <item:emcworld:update_time_orange>,
+            <item:emcworld:update_time_red>
+        ]
+    ];
     var epss as IIngredient = 
         <item:emcworld:god_ice_sword>.withTag({level: 24 as int})|
         <item:emcworld:god_fire_sword>.withTag({level: 24 as int})|
@@ -109,7 +151,7 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_null_sword>.withTag({level: 24 as int})
     ;
     var amo as int[]=[
-        1500,1000,10000,15000,5000,100,10000,5000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500
+        1500,1000,10000,15000,5000,100,10000,5000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400
     ];
     var red_armor as ItemStack[]=[
         <item:emcworld:guardian_helmet>,
@@ -295,7 +337,10 @@ public function emcworldRecipe() as void{
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:tin" as string}),
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:nickel" as string}),
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:lapis_lazuli" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:bronze" as string})
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:bronze" as string}),
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:clock" as string}),
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:dark_matter" as string}),
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:red_matter" as string})
         ],
         [
             <item:allthemodium:allthemodium_ingot>,
@@ -317,7 +362,10 @@ public function emcworldRecipe() as void{
             <item:mekanism:ingot_tin>,
             <item:emcworld:nickel_ingot>,
             <item:minecraft:lapis_lazuli>,
-            <item:mekanism:ingot_bronze>
+            <item:mekanism:ingot_bronze>,
+            <item:minecraft:clock>,
+            <item:projecte:dark_matter>,
+            <item:projecte:red_matter>
         ]
     ];
     removeRecipe([mt]);
@@ -544,6 +592,40 @@ public function emcworldRecipe() as void{
         [a,a,ai,a,a],
         [a,a,ai,a,a]
     ],<item:emcworld:base_key>,2);
+    metallurgicInfusingRecipe(con[0][1],<infuse_type:emcworld:gobber>*20,con[0][2]);
+    runeAltarRecipe([
+        con[0][2],<item:bloodmagic:defaultcrystal>
+    ],con[0][3],10000);
+    var ip = <item:astralsorcery:illumination_powder>;
+    var sar = <item:bloodmagic:sacrificerune>;
+    var sel = <item:bloodmagic:selfsacrificerune>;
+    alchemalArrayRecipe(con[0][3],<item:rats:ghost_pirat_ectoplasm>,con[0][4]);
+    astralAltarRecipe([
+        [a,a,a,a,a],
+        [a,a,ip,a,a],
+        [a,ip,con[0][4],ip,a],
+        [a,a,ip,a,a],
+        [a,a,a,a,a]
+    ],con[0][5],1);
+    natureAltarRecipe(con[0][5],con[0][6],2,100000);
+    nucleosyRecipe(con[0][6],<gas:mekanism:antimatter>*100,con[0][7],100);
+    addCraftShapedRecipeNoName([
+        [a,con[0][0],a],
+        [con[0][0],<item:botania:conjuration_catalyst>,con[0][0]],
+        [a,con[0][0],a]
+    ],con[2][0]*4);
+    addCraftShapedRecipeNoName([
+        [con[0][1],sar,con[0][1]],
+        [sel,<item:bloodmagic:apprenticebloodorb>.reuse(),sel],
+        [con[0][1],sar,con[0][1]]
+    ],con[2][1]*4);
+    infuserRecipe([
+        sing[0][20],sing[0][22],<item:botania:brew_flask>.withTag({brewKey: "botania:overload" as string}),con[0][7],con[0][7]
+    ],con[3][7]*2,4000,1500000,3);
+    infuserRecipe([
+        sing[0][21],baseqd,<item:projecte:catalytic_lens>,<item:projecte:gem_of_eternal_density>,con[0][7]
+    ],con[1][7],4000,1500000,3);
+    reactionChamberRecipe(con[0][2],con[2][2],<fluid:emcworld:sodium_cyanide>*5000,<fluid:minecraft:empty>,<item:mythicbotany:nidavellir_rune>,[]);
     alchemalArrayRecipe(<item:emcworld:base_key>,<item:mythicbotany:kvasir_blood>,<item:emcworld:twilight_key>);
     addNuggetAndIngotRecipe(<item:emcworld:niobium_nugget>,<item:emcworld:niobium_ingot>);
     addCraftShapedRecipeNoName([
@@ -551,6 +633,88 @@ public function emcworldRecipe() as void{
         [sc,dm,sc],
         [dm,sc,dm]
     ],<item:emcworld:update_base_purple>*getModifyRecipeAmount());
+    infuserRecipe([
+        <item:hem:copparite>,<item:mythicbotany:asgard_rune>,<item:minecraft:nether_star>,con[0][4],con[0][4]
+    ],con[2][4]*2,300,100000,1);
+    treeRitualRecipe([
+        con[0][5],con[0][5],
+        <item:mekanism:pellet_antimatter>,
+        <item:cataclysm:ignitium_ingot>,
+        <item:naturesaura:token_euphoria>,
+        <item:naturesaura:token_rage>,
+        <item:naturesaura:token_terror>,
+        <item:naturesaura:token_grief>
+    ],<item:aether:golden_oak_sapling>,con[2][5]*2);
+    infuserRecipe([
+        con[0][6],<item:the_afterlight:livingessenceingot>,
+        <item:undergarden:regalium_ingot>,
+        <item:the_afterlight:glyph_of_power>,
+        <item:astralsorcery:ritual_link>
+    ],con[2][6],3000,1000000,3);
+    infuserRecipe([
+        baseqd,baseqd,baseqd,baseqd,con[0][7]
+    ],con[2][7],5000,10000000,4);
+    addCraftShapedRecipeNoName([
+        [a,con[0][0],a],
+        [con[0][0],<item:botania:hourglass>,con[0][0]],
+        [a,con[0][0],a]
+    ],con[3][0]*4);
+    var pon = <item:minecraft:potion>.withTag({Potion: "minecraft:swiftness" as string});
+    addCraftShapedRecipeNoName([
+        [pon,con[0][1],pon],
+        [con[0][1],<tag:items:atum:godshards>,con[0][1]],
+        [pon,con[0][1],pon]
+    ],con[3][1]*4);
+    alchemalTableRecipe([
+        <item:bloodmagic:etherealslate>,<item:bloodmagic:fortune_anointment_2>,<item:bloodmagic:quick_draw_anointment_l>,con[0][2]
+    ],con[3][2],3000,2);
+    infuserRecipe([
+        <item:naturesaura:time_changer>,
+        <item:stalwart_dungeons:awful_crystal>,
+        <item:minecraft:netherite_ingot>,con[0][4],con[0][4]
+    ],con[3][4]*2,500,300000,2);
+    treeRitualRecipe([
+        con[0][5],con[0][5],<item:mekanism:pellet_antimatter>,
+        <item:twilightforest:time_sapling>,
+        <item:cataclysm:ignitium_ingot>,
+        <item:mythicbotany:vanaheim_rune>
+    ],<item:byg:nightshade_sapling>,con[3][5]*2);
+    infuserRecipe([
+        <item:undergarden:forgotten_ingot>,
+        <item:the_afterlight:spectral_glyph>,
+        <item:astralsorcery:ritual_link>,
+        <item:the_afterlight:lunariteingot>,con[0][6]
+    ],con[3][6],4000,300000,3);
+    var alt = <item:bloodmagic:altarcapacityrune>;
+    addCraftShapedRecipeNoName([
+        [a,con[0][0],a],
+        [con[0][0],<item:thermal:machine_output_augment>,con[0][0]],
+        [a,con[0][0],a]
+    ],con[1][0]*4);
+    addCraftShapedRecipeNoName([
+        [alt,con[0][1],alt],
+        [con[0][1],<item:aether:golden_amber>,con[0][1]],
+        [<tag:items:atum:godshards>,con[0][1],<tag:items:atum:godshards>]
+    ],con[1][1]*4);
+    mythicInfuserRecipe([
+        con[0][2],<item:bloodmagic:reagentbinding>,<item:mythicbotany:alfsteel_nugget>
+    ],con[1][2],100000,0xffffff,0xffffff);
+    infuserRecipe([
+        con[0][4],con[0][4],<item:naturesaura:infused_iron>,
+        <item:naturesaura:token_euphoria>,
+        <item:stalwart_dungeons:tungsten_ingot>
+    ],con[1][4]*2,800,200000,2);
+    treeRitualRecipe([
+        con[0][5],con[0][5],<item:stalwart_dungeons:ancient_fire>,
+        <item:cataclysm:ignitium_ingot>,
+        <item:thermal:upgrade_augment_3>,
+        <item:mekanism:pellet_polonium>
+    ],<item:twilightforest:transformation_sapling>,con[1][5]*2);
+    infuserRecipe([
+        con[0][6],con[0][6],<item:undergarden:cloggrum_block>,
+        <item:undergarden:virulent_mix_bucket>,
+        <item:stalwart_dungeons:chorundum>
+    ],con[1][6]*2,1800,1000000,3);
     addCraftShapedRecipeNoName([
         [oib,oi,oib],
         [oi,ucc,oi],
@@ -619,6 +783,7 @@ public function emcworldRecipe() as void{
     infuserRecipe([pa,pa,pa,pa,pa],sw,300,5000,1);
     removeCraftRecipe(ngb);
     removeCraftRecipe(ngb1);
+    rotaryRecipe(<fluid:emcworld:sodium_cyanide>,<gas:emcworld:sodium_cyanide>);
     smithingRecipe(<item:gobber2:gobber2_bow>,gin*6,ngb1[0].asIItemStack());
     smithingRecipe(ngb[5].asIItemStack(),gin*12,ngb1[1].asIItemStack());
     smithingRecipe(ngb[7].asIItemStack(),gin*9,ngb1[2].asIItemStack());

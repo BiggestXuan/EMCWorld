@@ -30,12 +30,11 @@ public function modifyAstralRecipe() as void{
     removeCraftRecipe([well,wand,bmr]);
     //astralTransmutationRecipe(<blockstate:minecraft:diamond_block>,<block:astralsorcery:well>);
     removeAstralAltarRecipe([well,wand,lt,bmr,<item:astralsorcery:infuser>,aa,ts,rp]);
-    /*enderCraftingRecipe([
+    enderCraftingRecipe([
         [a,<item:twilightforest:steeleaf_ingot>,],
         [aq,<item:botania:livingwood_twig>,rc],
         [<item:rats:gem_of_ratlantis>,aq,a]
     ],lt);
-    */
     extendedCraftingShapedRecipe([
 	    [a, a, a, a, a, a, a], 
 	    [a, <item:the_afterlight:glyph_of_power>, <item:astralsorcery:marble_runed>, <item:mekanismgenerators:laser_focus_matrix>, <item:astralsorcery:marble_runed>, <item:the_afterlight:glyph_of_power>, a], 
