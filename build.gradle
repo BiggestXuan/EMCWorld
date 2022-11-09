@@ -1,0 +1,181 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven {
+            name "Sponge"
+            url "https://repo.spongepowered.org/repository/maven-public/"
+            content { includeGroup "org.spongepowered" }
+        }
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+
+    }
+}
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+version = '0.1.0'
+group = 'biggestxuan.emcworld'
+archivesBaseName = 'EMCWorld'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+minecraft {
+    mappings channel: 'official', version: '1.16.5'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info'
+            mods {
+                emcworld {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info'
+            mods {
+                emcworld {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'emcworld', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            mods {
+                emcworld {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven {
+        url  'https://maven.blamejared.com'
+    }
+    maven {
+        name = 'MelanX Maven'
+        url = 'https://maven.melanx.de/'
+    }
+    maven {
+        url = "https://www.cursemaven.com"
+    }
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        url = "https://modmaven.dev/"
+    }
+    maven {
+        url "https://girafi.dk/maven/"
+    }
+    maven {
+        url = "https://maven.theillusivec4.top/"
+    }
+    maven {
+        url = "https://maven.ellpeck.de"
+    }
+    maven {
+        url 'https://maven.blakesmods.com'
+    }
+}
+
+dependencies {
+
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.30'
+
+    implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.511")
+    implementation fg.deobf("vazkii.botania:Botania:1.16.5-420.2")
+    implementation fg.deobf("curse.maven:blood-magic-224791:3870899")
+    implementation fg.deobf("curse.maven:rats-323596:3319810")
+    implementation fg.deobf("curse.maven:atlantis-355418:3247019")
+    implementation fg.deobf("curse.maven:astral-241721:3813365")
+    implementation fg.deobf("curse.maven:mythicbotany-400058:3565162")
+    implementation fg.deobf("curse.maven:ftbq-289412:3672855")
+    implementation fg.deobf("curse.maven:byg-247560:3485079")
+    implementation fg.deobf("curse.maven:slientlib-242998:3385768")
+    implementation fg.deobf("curse.maven:Undergarden-379849:3477594")
+    implementation fg.deobf("curse.maven:item_filters-309674:3376819")
+    implementation fg.deobf("curse.maven:Architectury-419699:3857643")
+    implementation fg.deobf("curse.maven:Citadel-331936:3441028")
+    implementation fg.deobf("curse.maven:Library-404465:3553840")
+    implementation fg.deobf("curse.maven:Teams-404468:3535953")
+    implementation fg.deobf("curse.maven:crock_pot-404523:3568413")
+    implementation fg.deobf("mezz.jei:jei-1.16.5:7.7.1.152")
+    implementation fg.deobf("curse.maven:hywla-253449:3033593")
+    implementation fg.deobf("teamtwilight:twilightforest:4.0.870:universal")
+    implementation fg.deobf("mekanism:Mekanism:1.16.5-10.1.0.455")
+    implementation fg.deobf("mekanism:Mekanism:1.16.5-10.1.0.455:additions")
+    implementation fg.deobf("mekanism:Mekanism:1.16.5-10.1.0.455:generators")
+    implementation fg.deobf("mekanism:Mekanism:1.16.5-10.1.0.455:tools")
+    implementation fg.deobf("com.teammetallurgy.atum:atum2_1.16.5:1.16.5-2.2.11")
+    implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:10.3.29")
+    implementation fg.deobf("curse.maven:curios-309927:3725386")
+    implementation fg.deobf("curse.maven:gamestage-268655:3732279")
+    implementation fg.deobf("curse.maven:nature-306626:3472977")
+    implementation fg.deobf("curse.maven:abyss-440647:3776944")
+    implementation fg.deobf("curse.maven:ftbq-316833:3333962")
+    implementation fg.deobf("curse.maven:gobber-301700:4005586")
+    implementation fg.deobf("curse.maven:atm-364466:3529763")
+    implementation fg.deobf("curse.maven:projecte-226410:3736621")
+    implementation fg.deobf("curse.maven:projectex-311378:3478250")
+    implementation fg.deobf("curse.maven:quark-243121:3642325")
+    implementation fg.deobf("curse.maven:sh-248027:3240365")
+    implementation fg.deobf("curse.maven:shutup_experimental_settings-407174:3188120")
+    implementation fg.deobf("curse.maven:cataclysm-551586:3875120")
+    implementation fg.deobf("vazkii.patchouli:Patchouli:1.16.4-53.3")
+    implementation fg.deobf("vazkii.autoreglib:AutoRegLib:1.6-49.90")
+    implementation fg.deobf("io.github.noeppi_noeppi.mods:LibX:1.16.3-1.0.80")
+    implementation fg.deobf("curse.maven:farmersdelight-398521:3503844")
+    implementation fg.deobf("curse.maven:block_swap-468893:3296675")
+    implementation fg.deobf("com.blakebr0.cucumber:Cucumber:1.16.5-4.1.12")
+    implementation fg.deobf("com.blakebr0.extendedcrafting:ExtendedCrafting:1.16.5-3.1.12")
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "EMCWorld",
+            "Specification-Vendor": "",
+            "Specification-Version": "1",
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"emcworldsareus",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
