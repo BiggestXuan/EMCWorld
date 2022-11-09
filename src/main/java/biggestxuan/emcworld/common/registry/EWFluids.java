@@ -21,6 +21,17 @@ public class EWFluids {
     public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(EMCWorld.MODID);
 
     public static final FluidRegistryObject<ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, FlowingFluidBlock, BucketItem> AIR =
-            FLUIDS.register("air", FluidAttributes.builder(Mekanism.rl("liquid/liquid"),
-                    Mekanism.rl("liquid/liquid_flow")).temperature(100).color(0xFFD0E3F6));
+            r("air",0xFFD0E3F6);
+
+    public static final FluidRegistryObject<ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, FlowingFluidBlock, BucketItem> SODIUM_CYANIDE =
+            r("sodium_cyanide",0xFFFFFAFA);
+
+
+    private static FluidRegistryObject<ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, FlowingFluidBlock, BucketItem> r(String name,int color,int temp){
+        return FLUIDS.register(name,FluidAttributes.builder(Mekanism.rl("liquid/liquid"),Mekanism.rl("liquid/liquid_flow")).temperature(temp).color(color));
+    }
+
+    private static FluidRegistryObject<ForgeFlowingFluid.Source, ForgeFlowingFluid.Flowing, FlowingFluidBlock, BucketItem> r(String name,int color){
+        return r(name,color,100);
+    }
 }
