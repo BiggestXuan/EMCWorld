@@ -1,0 +1,36 @@
+#priority 27
+public function addGobberOresProceRecipe() as void{
+    addNormalOreProceRecipe(
+        <item:gobber2:gobber2_ore>,
+        <slurry:emcworld:dirty_gobber>,
+        <slurry:emcworld:clean_gobber>,
+        <item:emcworld:crystal_gobber>,
+        <item:emcworld:shard_gobber>,
+        <item:emcworld:clump_gobber>,
+        <item:emcworld:dirty_dust_gobber>,
+        <item:emcworld:dust_gobber>,
+        <item:gobber2:gobber2_globette>
+    );
+    addNormalOreProceRecipe(
+        <item:gobber2:gobber2_ore_nether>,
+        <slurry:emcworld:dirty_nether_gobber>,
+        <slurry:emcworld:clean_nether_gobber>,
+        <item:emcworld:crystal_nether_gobber>,
+        <item:emcworld:shard_nether_gobber>,
+        <item:emcworld:clump_nether_gobber>,
+        <item:emcworld:dirty_dust_nether_gobber>,
+        <item:emcworld:dust_nether_gobber>,
+        <item:gobber2:gobber2_globette_nether>
+    );
+    addNormalOreProceRecipe(
+        <item:gobber2:gobber2_ore_end>,
+        <slurry:emcworld:dirty_end_gobber>,
+        <slurry:emcworld:clean_end_gobber>,
+        <item:emcworld:crystal_end_gobber>,
+        <item:emcworld:shard_end_gobber>,
+        <item:emcworld:clump_end_gobber>,
+        <item:emcworld:dirty_dust_end_gobber>,
+        <item:emcworld:dust_end_gobber>,
+        <item:gobber2:gobber2_globette_end>
+    );
+}

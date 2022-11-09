@@ -1,0 +1,279 @@
+To refresh this file, delete it and run /reload command again! Last updated: Sep 17, 2022, 3:04:17 PM
+
+#botania:cocoon/common_aquatic
+- minecraft:cod
+- minecraft:salmon
+- minecraft:tropical_fish
+- minecraft:pufferfish
+- minecraft:squid
+- quark:crab?
+
+#per-viam-invenire:replace_vanilla_navigator
+- mekanism:robit
+
+#minecraft:impact_projectiles
+- #minecraft:arrows
+- minecraft:snowball
+- minecraft:fireball
+- minecraft:small_fireball
+- minecraft:egg
+- minecraft:trident
+- minecraft:dragon_fireball
+- minecraft:wither_skull
+- aether:golden_dart
+- aether:poison_dart
+- aether:enchanted_dart
+- aether:lightning_knife
+- aether:hammer_projectile
+- projecte:fire_projectile
+- projecte:lava_projectile
+- projecte:lens_projectile
+- projecte:swrg_projectile
+- projecte:water_projectile
+- mekanism:flame
+- savageandravage:spore_cloud
+- savageandravage:confusion_bolt
+- undergarden:blisterbomb
+- undergarden:rotten_blisterberry
+- undergarden:goo_ball
+- undergarden:slingshot_ammo
+- undergarden:minion_projectile
+
+#botania:cocoon/common
+- minecraft:pig
+- minecraft:cow
+- minecraft:chicken
+- minecraft:rabbit
+- minecraft:sheep
+
+#minecraft:beehive_inhabitors
+- minecraft:bee
+
+#savageandravage:creeper_proof_types
+- minecraft:painting
+- minecraft:item_frame
+- minecraft:armor_stand
+- minecraft:falling_block
+- minecraft:leash_knot
+
+#minecraft:skeletons
+- minecraft:skeleton
+- minecraft:stray
+- minecraft:wither_skeleton
+- savageandravage:skeleton_villager
+
+#undergarden:rotspawn
+- undergarden:rotling
+- undergarden:rotwalker
+- undergarden:rotbeast
+
+#abyss:entity
+- theabyss:ice_knight
+- theabyss:player_body
+- theabyss:guard
+- theabyss:crystal_golem
+- theabyss:raptor
+- theabyss:the_roka
+- theabyss:infected_zombie
+- theabyss:laro_fish
+- theabyss:soul_guard
+- theabyss:scorpion
+- theabyss:end_spider
+- theabyss:elder
+- theabyss:luro_fish
+- theabyss:jungle_lurker
+- theabyss:ice_skeleton
+- theabyss:night_blade_boss_clone
+- theabyss:night_hunter
+- theabyss:laro_fish_fly
+- theabyss:cyanide_boss
+- theabyss:ralu_fish
+- theabyss:lizard
+- theabyss:deer
+- theabyss:magician
+- theabyss:seeker
+- theabyss:infected_spider
+- theabyss:nightblade_boss
+- theabyss:infected_creeper
+- theabyss:spectral_entity
+- theabyss:fire_fly
+- theabyss:abyssaur
+- theabyss:slime_spider
+- theabyss:hylia_fox
+- theabyss:mud_zombie
+
+#extraboats:sitting_mobs
+- savageandravage:griefer
+- savageandravage:executioner
+- savageandravage:iceologer
+- savageandravage:skeleton_villager
+
+#botania:cocoon/rare_aquatic
+- minecraft:dolphin
+
+#minecraft:arrows
+- minecraft:arrow
+- minecraft:spectral_arrow
+- projecte:homing_arrow
+- savageandravage:mischief_arrow
+
+#projecte:blacklist/swrg
+
+#projecte:randomizer/peaceful
+- minecraft:sheep
+- minecraft:pig
+- minecraft:cow
+- minecraft:mooshroom
+- minecraft:chicken
+- minecraft:bat
+- minecraft:villager
+- minecraft:squid
+- minecraft:ocelot
+- minecraft:wolf
+- minecraft:horse
+- minecraft:rabbit
+- minecraft:donkey
+- minecraft:mule
+- minecraft:polar_bear
+- minecraft:llama
+- minecraft:parrot
+- minecraft:dolphin
+- minecraft:cod
+- minecraft:salmon
+- minecraft:pufferfish
+- minecraft:tropical_fish
+- minecraft:turtle
+- minecraft:cat
+- minecraft:fox
+- minecraft:panda
+- minecraft:trader_llama
+- minecraft:wandering_trader
+- minecraft:strider
+
+#botania:cocoon/rare
+- minecraft:horse
+- minecraft:donkey
+- minecraft:wolf
+- minecraft:ocelot
+- minecraft:cat
+- minecraft:parrot
+- minecraft:llama
+- minecraft:fox
+- minecraft:panda
+- minecraft:turtle
+- quark:frog?
+
+#projecte:randomizer/hostile
+- minecraft:zombie
+- minecraft:skeleton
+- minecraft:creeper
+- minecraft:spider
+- minecraft:enderman
+- minecraft:silverfish
+- minecraft:zombified_piglin
+- minecraft:piglin
+- minecraft:piglin_brute
+- minecraft:hoglin
+- minecraft:zoglin
+- minecraft:ghast
+- minecraft:blaze
+- minecraft:slime
+- minecraft:witch
+- minecraft:rabbit
+- minecraft:endermite
+- minecraft:stray
+- minecraft:wither_skeleton
+- minecraft:skeleton_horse
+- minecraft:zombie_horse
+- minecraft:zombie_villager
+- minecraft:husk
+- minecraft:guardian
+- minecraft:evoker
+- minecraft:vex
+- minecraft:vindicator
+- minecraft:shulker
+- minecraft:drowned
+- minecraft:phantom
+- minecraft:pillager
+
+#cataclysm:trap_block_not_detected
+- cataclysm:ender_golem
+- cataclysm:ender_guardian
+- minecraft:ender_dragon
+- minecraft:enderman
+- minecraft:endermite
+- cataclysm:endermaptera
+
+#aether:deflectable_projectiles
+- #minecraft:arrows
+- minecraft:egg
+- minecraft:small_fireball
+- minecraft:fireball
+- minecraft:snowball
+- minecraft:llama_spit
+- minecraft:trident
+- minecraft:shulker_bullet
+- aether:golden_dart
+- aether:poison_dart
+- aether:enchanted_dart
+- aether:poison_needle
+- aether:zephyr_snowball
+- aether:lightning_knife
+- aether:hammer_projectile
+
+#botania:shaded_mesa_blacklist
+- minecraft:ender_dragon
+- minecraft:wither
+- minecraft:item_frame
+- minecraft:end_crystal
+- minecraft:painting
+- botania:corporea_spark
+- botania:doppleganger
+- botania:flame_ring
+- botania:magic_landmine
+- botania:magic_missile
+- botania:mana_burst
+- botania:pink_wither
+- botania:spark
+- botania:player_mover
+
+#minecraft:raiders
+- minecraft:evoker
+- minecraft:pillager
+- minecraft:ravager
+- minecraft:vindicator
+- minecraft:illusioner
+- minecraft:witch
+- cataclysm:nameless_sorcerer
+- savageandravage:griefer
+- savageandravage:executioner
+- savageandravage:iceologer
+- savageandravage:trickster
+
+#undergarden:cavern_creature
+- undergarden:nargoyle
+- undergarden:scintling
+- undergarden:muncher
+- undergarden:sploogie
+
+#aether:pigs
+- minecraft:pig
+- aether:phyg
+- minecraft:piglin
+- minecraft:piglin_brute
+- minecraft:zombified_piglin
+- minecraft:hoglin
+- minecraft:zoglin
+
+#cataclysm:ignis_cant_poke
+- minecraft:slime
+- minecraft:magma_cube
+- minecraft:ender_dragon
+- minecraft:wither
+
+#projecte:blacklist/interdiction
+
+#aether:no_skyroot_double_drops
+- minecraft:player
+- minecraft:wither
+- minecraft:ender_dragon
