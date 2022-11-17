@@ -1,5 +1,5 @@
 ---
-name: [EN]BUG Report
+name: '[EN]BUG Report'
 about: Create a report to make EMC World better!
 title: '[BUG Report][Level][Issue]'
 labels: bug
