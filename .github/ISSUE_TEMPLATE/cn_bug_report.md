@@ -1,5 +1,5 @@
 ---
-name: [CN]BUG反馈
+name: '[CN]BUG反馈'
 about: 创建一个反馈来帮助EMC World更好!
 title: '[BUG反馈][危害等级][问题]'
 labels: bug
