@@ -70,7 +70,7 @@ public class PlayerTickEvent {
         };
         PlayerEntity player = event.player;
         MinecraftServer server = player.getCommandSenderWorld().getServer();
-        if(!GameStageManager.hasStage(player,"fly") && !player.isCreative()){
+        if(!GameStageManager.hasStage(player,"fly") && !player.isCreative() && !player.isSpectator()){
             player.abilities.flying=false;
             player.abilities.mayfly=false;
         }
