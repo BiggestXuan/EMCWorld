@@ -1,8 +1,8 @@
 ---
 name: BUG反馈
 about: 创建一个反馈来帮助EMC World更好!
-title: [BUG反馈][危害等级][问题]
-labels: 'bug'
+title: '[BUG反馈][危害等级][问题]'
+labels: bug
 assignees: ''
 
 ---
@@ -30,7 +30,6 @@ assignees: ''
 -->
 
 ### BUG的表现:
-
 
 
 ### 期望表现:
