@@ -1,3 +1,13 @@
+---
+name: '[EN]BUG Report'
+about: Create a report to make EMC World better!
+title: '[BUG Report][Level][Issue]'
+labels: bug
+assignees: ''
+
+
+---
+
 <!--
 Note: Please search for duplicate issues in the issue before submitting the issue. Please change the other two items in your title except [BUG] feedback
 -->
