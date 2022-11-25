@@ -20,7 +20,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.1.0'
+version = '0.2.0'
 group = 'biggestxuan.emcworld'
 archivesBaseName = 'EMCWorld'
 
@@ -130,7 +130,6 @@ dependencies {
     implementation fg.deobf("com.teammetallurgy.atum:atum2_1.16.5:1.16.5-2.2.11")
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:10.3.29")
     implementation fg.deobf("curse.maven:curios-309927:3725386")
-    implementation fg.deobf("curse.maven:gamestage-268655:3732279")
     implementation fg.deobf("curse.maven:nature-306626:3472977")
     implementation fg.deobf("curse.maven:abyss-440647:3776944")
     implementation fg.deobf("curse.maven:ftbq-316833:3333962")
@@ -149,6 +148,8 @@ dependencies {
     implementation fg.deobf("curse.maven:block_swap-468893:3296675")
     implementation fg.deobf("com.blakebr0.cucumber:Cucumber:1.16.5-4.1.12")
     implementation fg.deobf("com.blakebr0.extendedcrafting:ExtendedCrafting:1.16.5-3.1.12")
+    implementation fg.deobf("net.darkhax.gamestages:GameStages-Forge-1.16.5:7.3.14")
+    implementation fg.deobf("net.darkhax.itemstages:ItemStages-Forge-1.16.5:3.0.9")
 }
 
 jar {
