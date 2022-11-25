@@ -12,6 +12,7 @@ import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.skill.PlayerSkillModify;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
@@ -47,7 +48,7 @@ public class AdminPacket {
             ServerPlayerEntity player = context.get().getSender();
             if (context.get().getDirection().getReceptionSide().isServer() && player != null) {
                 String name = player.getScoreboardName();
-                if (player.hasPermissions(4) && player.isCreative()) {
+                if (player.hasPermissions(4) && player.isCreative() && ConfigManager.ADMIN_MENU.get()) {
                     int x = player.blockPosition().getX();
                     int y = player.blockPosition().getY();
                     int z = player.blockPosition().getZ();

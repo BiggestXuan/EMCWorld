@@ -15,7 +15,7 @@ public class FireSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
+    public float getBaseDamage(ItemStack stack) {
         int level = this.getLevel(stack);
         return (float) ((Math.pow(1.18f,level)*baseDamage)-baseDamage);
     }
@@ -26,20 +26,30 @@ public class FireSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public double costEMCWhenAttack(ItemStack stack) {
+    public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = this.getLevel(stack);
         return Math.pow(1.05f,level);
     }
 
     @Override
-    public long EMCModifySecond(ItemStack stack) {
+    public long getBaseModifySecond(ItemStack stack) {
         int level = this.getLevel(stack);
         if(level <= 5) return 0;
         return Math.round(Math.pow(1.75,level-5)*8);
     }
 
     @Override
-    public double getAttackRange(ItemStack stack){
+    public double getBaseCriticalChance(ItemStack stack) {
+        return Math.pow(1.022,getLevel(stack)) - 1;
+    }
+
+    @Override
+    public double getBaseCriticalRate(ItemStack stack) {
+        return Math.pow(1.027,getLevel(stack));
+    }
+
+    @Override
+    public double getBaseRange(ItemStack stack){
         int level = getLevel(stack);
         if(level <= 10) return 0d;
         if(level <= 15) return (level-10) * 0.3d;

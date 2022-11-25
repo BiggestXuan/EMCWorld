@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "gobber2:gobber2_ingot_nether"
+  },
+  "addition": {
+    "item": "gobber2:gobber2_glob_end"
+  },
+  "result": {
+    "item": "gobber2:gobber2_ingot_end"
+  }
+}

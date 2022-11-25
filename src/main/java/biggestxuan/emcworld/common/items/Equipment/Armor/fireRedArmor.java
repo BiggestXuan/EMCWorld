@@ -46,4 +46,9 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
     public double hurtRate(ItemStack stack) {
         return Math.pow(0.993,getLevel(stack));
     }
+
+    @Override
+    public double getReachDistance(ItemStack stack) {
+        return 0.1 * getLevel(stack);
+    }
 }

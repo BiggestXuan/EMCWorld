@@ -11,13 +11,21 @@ import net.minecraft.item.ItemStack;
 public interface IUpgradeableItem extends ICostEMCItem, ISecondEMCItem, IEMCRepairableItem {
     int getMaxLevel();
 
-    int getLevel(ItemStack stack);
+    default int getLevel(ItemStack stack){
+        return stack.getOrCreateTag().getInt("level");
+    };
 
-    void setLevel(ItemStack stack, int level);
+    default void setLevel(ItemStack stack, int level){
+        stack.getOrCreateTag().putInt("level",level);
+    };
 
-    void addLevel(ItemStack stack, int level);
+    default void addLevel(ItemStack stack, int level){
+        setLevel(stack,Math.min(getMaxLevel(),getLevel(stack)+level));
+    };
 
-    void lossLevel(ItemStack stack, int level);
+    default void lossLevel(ItemStack stack, int level){
+        setLevel(stack,Math.max(0,getLevel(stack)-level));
+    }
 
     default int getWeightRequired(ItemStack stack){
         int l = getLevel(stack);

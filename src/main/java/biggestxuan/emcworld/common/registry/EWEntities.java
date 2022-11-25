@@ -17,11 +17,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EWEntities {
@@ -44,6 +41,7 @@ public class EWEntities {
     public static final EntityType<Xiangshushumiao> xiangshushumiao = register("xiangshushumiao",Xiangshushumiao::new);
     public static final EntityType<Btmy> btmy = register("btmy",Btmy::new);
     public static final EntityType<Cxk> cxk = register("cxk",Cxk::new);
+    public static final EntityType<dytlj7788> dytlj7788 = register("dytlj7788",dytlj7788::new);
 
     @SubscribeEvent
     public static void bind(EntityAttributeCreationEvent event){
@@ -64,6 +62,7 @@ public class EWEntities {
         event.put(alfie_zh, Alfie_zh.create().build());
         event.put(btmy, Btmy.create().build());
         event.put(cxk,Cxk.create().build());
+        event.put(dytlj7788,biggestxuan.emcworld.common.entity.Player.dytlj7788.create().build());
     }
 
     public static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {

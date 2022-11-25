@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class ConfigManager {
     public static ForgeConfigSpec COMMON_CONFIG ;
     public static ForgeConfigSpec.DoubleValue DIFFICULTY;
+    public static ForgeConfigSpec.BooleanValue FORMAT;
+    public static ForgeConfigSpec.BooleanValue SPONSOR_INFO;
     public static ForgeConfigSpec.BooleanValue ADMIN_MENU;
     public static ForgeConfigSpec.BooleanValue FREE_MODE;
     public static ForgeConfigSpec.BooleanValue SpringFestival;
@@ -33,6 +35,8 @@ public class ConfigManager {
         DIFFICULTY = BUILDER.comment("Difficulty Setting").defineInRange("World Difficulty",3.0,0.5,3.0);
         ADMIN_MENU = BUILDER.comment("Whether unable EMCWorld Admin Menu").define("Able Admin Menu",false);
         FREE_MODE = BUILDER.comment("Enable free mode to delete all items stage").define("Able Free Mode",false);
+        FORMAT = BUILDER.comment("Let the values of the modpack be displayed in K, M, G instead of the full value").define("Format",false);
+        SPONSOR_INFO = BUILDER.comment("Enable sponsorship messages that players send every 100 times they enter the game.").define("Enable Info",true);
         BUILDER.pop();
         BUILDER.push("Festival");
         SpringFestival = BUILDER.comment("Get gifts on certain festivals,only configurable festivals that give gifts").define("SpringFestival",true);

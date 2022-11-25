@@ -1,0 +1,60 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "_____",
+    "_ACB_",
+    "__D__",
+    "_BEA_",
+    "_____"
+  ],
+  "key": {
+    "A": {
+      "item": "botania:rune_earth"
+    },
+    "B": {
+      "item": "rats:oratchalcum_ingot"
+    },
+    "C": {
+      "item": "rats:rat_upgrade_combined"
+    },
+    "D": {
+      "item": "twilightforest:fiery_block"
+    },
+    "E": {
+      "item": "astralsorcery:rock_crystal"
+    }
+  },
+  "relay_inputs": [
+    {
+      "item": "emcworld:update_base_cyan"
+    },
+    {
+      "item": "emcworld:update_base_cyan"
+    },
+    {
+      "item": "emcworld:update_base_cyan"
+    },
+    {
+      "item": "emcworld:update_base_cyan"
+    }
+  ],
+  "output": [
+    {
+      "item": "emcworld:update_cost_cyan",
+      "count": 4
+    }
+  ],
+  "focus_constellation": "emcworld:emc",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

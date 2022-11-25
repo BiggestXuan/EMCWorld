@@ -1,0 +1,49 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "_____",
+    "ABCBA",
+    "ADEDA",
+    "AFFFA",
+    "_____"
+  ],
+  "key": {
+    "A": {
+      "item": "projecte:dark_matter_block"
+    },
+    "B": {
+      "item": "the_afterlight:moon_crystal_block"
+    },
+    "C": {
+      "item": "extendedcrafting:elite_catalyst"
+    },
+    "D": {
+      "item": "astralsorcery:ritual_link"
+    },
+    "E": {
+      "item": "botania:runic_altar"
+    },
+    "F": {
+      "item": "extendedcrafting:black_iron_block"
+    }
+  },
+  "output": [
+    {
+      "item": "the_afterlight:ritual_altar",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "astralsorcery:octans",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

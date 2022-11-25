@@ -1,0 +1,34 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3800,
+  "pattern": [
+    "_____",
+    "_____",
+    "__A__",
+    "_____",
+    "_____"
+  ],
+  "key": {
+    "A": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "output": [
+    {
+      "item": "naturesaura:ancient_sapling",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "astralsorcery:horologium",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

@@ -49,7 +49,7 @@ public class Message {
             if(String.valueOf(emc).equals(String.valueOf(0))){
                 return;
             }
-            String output = MathUtils.thousandSign(String.valueOf(emc));
+            String output = MathUtils.format(String.valueOf(emc));
             player.displayClientMessage(EMCWorld.tc("message.evt.addemc",output),true);
         }
     }
@@ -58,7 +58,7 @@ public class Message {
             if(String.valueOf(emc).equals(String.valueOf(0))){
                 return;
             }
-            String output = MathUtils.thousandSign(String.valueOf(emc));
+            String output = MathUtils.format(String.valueOf(emc));
             player.displayClientMessage(EMCWorld.tc("message.evt.lossemc",output),true);
         }
     }

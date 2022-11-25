@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/rich_emc_ore_model" }
+  }
+}

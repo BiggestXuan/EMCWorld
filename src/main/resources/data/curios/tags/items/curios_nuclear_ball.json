@@ -1,0 +1,17 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id":"emcworld:nuclear_ball",
+      "required":false
+    },
+    {
+      "id":"emcworld:nuclear_advanced_ball",
+      "required":false
+    },
+    {
+      "id":"emcworld:nuclear_epic_ball",
+      "required":false
+    }
+  ]
+}

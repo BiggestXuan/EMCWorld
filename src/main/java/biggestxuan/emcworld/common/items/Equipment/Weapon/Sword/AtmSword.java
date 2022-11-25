@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
-import biggestxuan.emcworld.api.item.equipment.tier.EWAtmTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWAtmTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import net.minecraft.item.ItemStack;
 

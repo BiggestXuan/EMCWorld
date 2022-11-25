@@ -11,18 +11,25 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.client.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
+import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.CalendarUtils;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.ModPackHelper;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
+import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Difficulty;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.yezon.theabyss.TheabyssModVariables;
+import vazkii.patchouli.common.item.PatchouliItems;
 
 import java.util.UUID;
 
@@ -30,7 +37,7 @@ import static biggestxuan.emcworld.EMCWorld.tc;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerLoggedEvent {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
         String name = player.getName().getString();
@@ -38,14 +45,16 @@ public class PlayerLoggedEvent {
         LazyOptional<IUtilCapability> sponsorCap = player.getCapability(EMCWorldCapability.UTIL);
         if(!GameStageManager.hasStage(player,"Start")){
             GameStageManager.addStage(player,"Start");
-            GameStageManager.syncStage(player);
         }
+        TheabyssModVariables.PlayerVariables v = player.getCapability(TheabyssModVariables.PLAYER_VARIABLES_CAPABILITY).orElseThrow(NullPointerException::new);
+        v.FirstJoin = true;
+        v.BookSpawn = true;
+        v.EA_Intro = true;
+        ResearchManager.setTomeReceived(player);
         ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
         for(Sponsors sp:info.getSponsors()){
             if(name.equals(sp.getPlayerName()) && uuid.equals(sp.getPlayerUUID())){
-                sponsorCap.ifPresent((cap) -> {
-                    cap.setLevel(sp.getSponsorLevel());
-                });
+                sponsorCap.ifPresent((cap) -> cap.setLevel(sp.getSponsorLevel()));
                 break;
             }
             sponsorCap.ifPresent((cap)-> {
@@ -55,6 +64,14 @@ public class PlayerLoggedEvent {
         IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
+        if(log + 1 == 1){
+            player.inventory.clearContent();
+            ItemStack book = new ItemStack(PatchouliItems.book);
+            book.getOrCreateTag().putString("patchouli:book","emcworld:guide");
+            player.addItem(book);
+            int emc = 150000;
+            EMCHelper.modifyPlayerEMC(player,(int) (emc / MathUtils.difficultyLoss()),false);
+        }
         CalendarUtils instance = CalendarUtils.INSTANCE;
         int year = instance.getYear();
         if(instance.isNewYear()){
@@ -131,5 +148,8 @@ public class PlayerLoggedEvent {
         if(server == null) return;
         server.setDifficulty(Difficulty.HARD,true);
         server.setDifficultyLocked(true);
+        if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel() == 0){
+            Message.sendMessage(player,EMCWorld.tc("message.log.sponsor",log+1));
+        }
     }
 }

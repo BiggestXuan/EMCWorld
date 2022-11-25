@@ -1,0 +1,15 @@
+{
+  "type": "emcworld:steel_furnace",
+  "ingredients": [
+    {
+      "item": "mekanism:enriched_iron"
+    },
+    {
+      "item": "gobber2:gobber2_globette"
+    }
+  ],
+  "output": {
+    "item": "mekanism:dust_steel"
+  },
+  "time": 200
+}

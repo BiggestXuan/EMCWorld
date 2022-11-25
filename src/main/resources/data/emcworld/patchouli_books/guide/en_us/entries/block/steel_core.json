@@ -1,0 +1,28 @@
+{
+  "name": "钢炉",
+  "icon": "emcworld:steel_furnace_core",
+  "category": "block",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "该架构单个方块无法使用，必须搭建多方块结构。$(br2)这是一个使用方块内能（不需要燃料）的炼钢的结构。$(br2)搭建好多方块结构后，你只需要将材料丢在核心上方周围即可开始制作。$(br2)制作好后，会将成品生成在核心上方。值得注意的是，由于原版的机制，掉落物5分钟会自动清除。"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["AAAAA","A   A","A   A","A   A","AAAAA"],
+          ["A   A","     ","     ","     ","A   A"],
+          ["A   A","     ","  0  ","     ","A   A"],
+          ["A   A","     ","     ","     ","A   A"],
+          ["AAAAA","AAAAA","AABAA","AAAAA","AAAAA"]
+        ],
+        "mapping": {
+          "A": "emcworld:steel_furnace_brick",
+          "B": "emcworld:steel_furnace_core"
+        }
+      }
+    }
+  ]
+}

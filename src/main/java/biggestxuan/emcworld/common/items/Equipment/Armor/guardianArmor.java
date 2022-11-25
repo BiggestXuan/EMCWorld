@@ -19,7 +19,7 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     @Override
     public long EMCModifySecond(ItemStack stack) {
         int level = getLevel(stack);
-        return (long) (13000 + Math.pow(2.3,level+10));
+        return (long) (13000 + Math.pow(2.3,level));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
 
     @Override
     public float getSpeed(ItemStack stack) {
-        return 0.14f + getLevel(stack);
+        return 0.14f + getLevel(stack) * 0.07f;
     }
 
     @Override
@@ -55,5 +55,10 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     @Override
     public boolean isHardcore() {
         return false;
+    }
+
+    @Override
+    public double getReachDistance(ItemStack stack) {
+        return 1.2 + 0.2 * getLevel(stack);
     }
 }

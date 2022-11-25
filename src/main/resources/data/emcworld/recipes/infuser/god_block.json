@@ -1,0 +1,26 @@
+{
+  "type": "emcworld:infuser",
+  "ingredients": [
+    {
+      "item": "atum:nebu_ingot"
+    },
+    {
+      "item": "atum:nebu_ingot"
+    },
+    {
+      "item": "atum:nebu_ingot"
+    },
+    {
+      "item": "atum:nebu_ingot"
+    },
+    {
+      "item": "atum:nebu_ingot"
+    }
+  ],
+  "output": {
+    "item": "atum:godforged_block"
+  },
+  "craftLevel": 1,
+  "costEMC": 100000,
+  "costTime": 10000
+}

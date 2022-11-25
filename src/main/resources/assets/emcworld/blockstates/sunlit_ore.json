@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/sunlit_ore_model" }
+  }
+}

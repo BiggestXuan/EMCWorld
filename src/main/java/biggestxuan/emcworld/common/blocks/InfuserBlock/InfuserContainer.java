@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.blocks.InfuserBlock;
  *  2022/09/14
  */
 
+import biggestxuan.emcworld.api.block.BaseContainer;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.Slot.GemSlot;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.Slot.ResultSlot;
 import biggestxuan.emcworld.common.registry.EWContainerTypes;
@@ -29,7 +30,7 @@ import javax.annotation.Nonnull;
  * LICENCE: CC 4.0 BY-SA
  */
 
-public class InfuserContainer extends Container {
+public class InfuserContainer extends BaseContainer {
     private final BlockPos pos;
     private final World world;
     private final IIntArray data;
@@ -51,8 +52,7 @@ public class InfuserContainer extends Container {
         this.addSlot(new Slot(tileEntity.getInventory(),4,26,52));
         this.addSlot(new Slot(tileEntity.getInventory(),5,62,52));
         this.addSlot(new ResultSlot(tileEntity.getInventory(),6,133,29));
-        addPlayerHotbar(inv);
-        addPlayerInventory(inv);
+        addBar(inv);
         this.pos = tileEntity.getBlockPos();
         this.world = tileEntity.getLevel();
     }
@@ -74,29 +74,6 @@ public class InfuserContainer extends Container {
 
     public int getEMC(){
         return (int) (70 - (70 * (1.0d * this.data.get(2) / this.data.get(5))));
-    }
-
-    @Override
-    public boolean stillValid(@Nonnull PlayerEntity p_75145_1_) {
-        return true;
-    }
-    private void addPlayerInventory(PlayerInventory playerInventory) {
-        for (int i = 0; i < 3; ++i) {
-            for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
-            }
-        }
-    }
-    private void addPlayerHotbar(PlayerInventory playerInventory) {
-        for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
-        }
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack quickMoveStack(@Nonnull PlayerEntity playerIn, int index) {
-        return ItemStack.EMPTY;
     }
 
     public BlockPos getPos(){

@@ -1,0 +1,26 @@
+{
+  "type": "emcworld:infuser",
+  "ingredients": [
+    {
+      "item": "mekanism:elite_tier_installer"
+    },
+    {
+      "item": "mekanism:elite_tier_installer"
+    },
+    {
+      "item": "mekanism:elite_tier_installer"
+    },
+    {
+      "item": "mekanism:elite_tier_installer"
+    },
+    {
+      "item": "mekanism:elite_tier_installer"
+    }
+  ],
+  "output": {
+    "item": "mekanism:ultimate_tier_installer"
+  },
+  "craftLevel": 2,
+  "costEMC": 1000000,
+  "costTime": 7500
+}

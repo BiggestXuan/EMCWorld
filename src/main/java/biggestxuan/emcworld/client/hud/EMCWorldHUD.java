@@ -31,7 +31,7 @@ public class EMCWorldHUD extends AbstractGui {
 
     public void render(PlayerEntity player){
         long costEMC = MathUtils.getPlayerDeathBaseCost(player);
-        String emc = "EMC: "+ MathUtils.thousandSign(String.valueOf(EMCHelper.getPlayerEMC(player))) +" ("+MathUtils.thousandSign(String.valueOf(costEMC))+")";
+        String emc = "EMC: "+ MathUtils.format(String.valueOf(EMCHelper.getPlayerEMC(player))) +" ("+MathUtils.format(String.valueOf(costEMC))+")";
         RenderSystem.color4f(1.0f,1.0f,1.0f,1.0f);
         int y = 1;
         int color = 0xFFFFFF;
@@ -57,7 +57,7 @@ public class EMCWorldHUD extends AbstractGui {
             drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_amount",util.getPillager()),1,y,color);
             y += line;
             int amount = util.getVillager();
-            drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_damage",String.format("%.0f",util.getRaidRate()*100)+"%"),1,y,color);
+            drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_damage",String.format("%.0f",(util.getRaidRate()-1)*100)+"%"),1,y,color);
             y += line;
             if(amount <= 5) color = 0xFF0000;
             drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_villager",amount),1,y,color);

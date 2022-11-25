@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/nether_emc_ore_model" }
+  }
+}

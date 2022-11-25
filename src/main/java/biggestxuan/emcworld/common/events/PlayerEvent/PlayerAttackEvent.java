@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.client.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -18,6 +19,9 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -49,6 +53,12 @@ public class PlayerAttackEvent {
             ServerWorld world = player.getServer().overworld();
             if(stack.getItem() instanceof IAdditionsDamageWeapon){
                 damage += ((IAdditionsDamageWeapon) stack.getItem()).getAdditionsDamage(stack);
+            }
+            if(stack.getItem() instanceof ICriticalWeapon){
+                ICriticalWeapon weapon = (ICriticalWeapon) stack.getItem();
+                if(MathUtils.isRandom(weapon.getActCriticalChance(stack))){
+                    damage *= weapon.getActCriticalRate(stack);
+                }
             }
             int level = cap.getLevel();
             int[] skills = cap.getSkills();
@@ -111,11 +121,11 @@ public class PlayerAttackEvent {
             if(stack.getItem() instanceof IRangeAttackWeapon){
                 IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
                 if(weapon.getAttackRange(stack) > 0d){
-                    List<? extends LivingEntity> canRangeAttack = getNearEntity(event.getEntityLiving(),weapon.getAttackRange(stack));
+                    List<? extends LivingEntity> canRangeAttack = getNearEntity(player,event.getEntityLiving(),weapon.getAttackRange(stack));
                     if(canRangeAttack.size() != 0){
                         for(LivingEntity entity:canRangeAttack){
                             if(costEMC > EMCHelper.getPlayerEMC(player)) break;
-                            entity.hurt(EWDamageSource.REALLY,damage);
+                            entity.hurt(new EWDamageSource.ReallyDamage(player),damage);
                             costEMC += damageCost;
                         }
                     }
@@ -128,15 +138,16 @@ public class PlayerAttackEvent {
                 }
                 else{
                     event.setCanceled(true);
-                    Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.thousandSign(costEMC)));
+                    Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(costEMC)));
                 }
             }
             event.setAmount(damage);
         }
     }
 
-    private static List<? extends LivingEntity> getNearEntity(LivingEntity entity,double distance){
+    public static List<? extends LivingEntity> getNearEntity(PlayerEntity attacker,LivingEntity entity,double distance){
         List<LivingEntity> list = new ArrayList<>();
+        ItemStack stack = attacker.getMainHandItem();
         World world = entity.level;
         int x = entity.blockPosition().getX();
         int y = entity.blockPosition().getY();
@@ -144,7 +155,39 @@ public class PlayerAttackEvent {
         AxisAlignedBB aabb = new AxisAlignedBB(new BlockPos(x+64,y+64,z+64),new BlockPos(x-64,y-64,z-64));
         List<LivingEntity> cache = world.getLoadedEntitiesOfClass(LivingEntity.class,aabb);
         for(LivingEntity entity1:cache){
+            if(stack.getItem() instanceof IRangeAttackWeapon){
+                IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
+                if(weapon.getAttackMode(stack) == IRangeAttackWeapon.AttackMode.ONLY_MOB){
+                    if(!(entity1 instanceof MonsterEntity)){
+                        continue;
+                    }
+                }
+                if(weapon.getAttackMode(stack) == IRangeAttackWeapon.AttackMode.ONLY_ANIMAL){
+                    if(!(entity1 instanceof AnimalEntity)){
+                        continue;
+                    }
+                }
+                if(weapon.getAttackMode(stack) == IRangeAttackWeapon.AttackMode.EXCEPT_PLAYER){
+                    if(entity1 instanceof PlayerEntity){
+                        continue;
+                    }
+                }
+                if(weapon.getAttackMode(stack) == IRangeAttackWeapon.AttackMode.ONLY_PLAYER){
+                    if(!(entity1 instanceof PlayerEntity)){
+                        continue;
+                    }
+                }
+                if(weapon.getAttackMode(stack) == IRangeAttackWeapon.AttackMode.DUMMY){
+                    continue;
+                }
+            }
             if(MathUtils.isTwoLivingDistance(entity,entity1,distance) && !(entity1 instanceof PlayerEntity) && !(entity1.equals(entity))){
+                if(entity1 instanceof TameableEntity){
+                    TameableEntity entity2 = (TameableEntity) entity1;
+                    if(entity2.getOwnerUUID() != null){
+                        continue;
+                    }
+                }
                 list.add(entity1);
             }
         }

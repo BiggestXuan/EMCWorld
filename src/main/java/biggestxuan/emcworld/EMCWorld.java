@@ -10,6 +10,7 @@ import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.Admin;
 import biggestxuan.emcworld.client.key.SpeedControl;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
+import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -19,7 +20,7 @@ import biggestxuan.emcworld.common.network.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
 import biggestxuan.emcworld.common.utils.RaidMembers;
-import net.minecraft.client.Minecraft;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -42,33 +43,35 @@ public class EMCWorld
 {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 1;
-    public static final String PackVersion = "0.1.0";
+    public static final int ModPackVersion = 2;
+    public static final String PackVersion = "0.2.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
-    public static final String PREFIX = "[EMCWorld]";
+    public static final String PREFIX = "[EMCWorld] ";
 
-    public static final long MAX_EMC = 100_000_000_000_000L;
+    public static final long MAX_EMC = 1_000_000_000_000_000L;
 
     public EMCWorld(){
-        IEventBus event = FMLJavaModLoadingContext.get().getModEventBus();
-        event.addListener(this::enqueueIMC);
-        event.addListener(this::processIMC);
-        event.addListener(this::doClientStuff);
-        event.addListener(this::doStuff);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        bus.addListener(this::enqueueIMC);
+        bus.addListener(this::processIMC);
+        bus.addListener(this::doClientStuff);
+        bus.addListener(this::doStuff);
 
-        EWItems.ITEMS.register(event);
-        EWBlocks.BLOCKS.register(event);
-        EWBlocks.B.register(event);
-        EWSlurries.SLURRY.register(event);
-        EWGases.GASES.register(event);
-        EWFluids.FLUIDS.register(event);
-        EWInfuseTypes.INFUSE_TYPES.register(event);
-        EWPigments.PIGMENTS.register(event);
-        EWTileEntityTypes.TILE_ENTITIES.register(event);
-        EWContainerTypes.CONTAINERS.register(event);
-        EWEffects.EFFECTS.register(event);
-        EWRecipeTypes.RECIPES.register(event);
-        EWSounds.SOUND.register(event);
+        EWItems.ITEMS.register(bus);
+        EWEffects.EFFECTS.register(bus);
+        EWTileEntityTypes.TILE_ENTITIES.register(bus);
+        EWBlocks.BLOCKS.register(bus);
+        EWBlocks.B.register(bus);
+        EWSlurries.SLURRY.register(bus);
+        EWGases.GASES.register(bus);
+        EWFluids.FLUIDS.register(bus);
+        EWInfuseTypes.INFUSE_TYPES.register(bus);
+        EWPigments.PIGMENTS.register(bus);
+        EWContainerTypes.CONTAINERS.register(bus);
+        EWRecipeTypes.RECIPES.register(bus);
+        EWSounds.SOUND.register(bus);
+
+        bus.addGenericListener(Block.class,EWBlocks::botaniaInit);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -88,6 +91,7 @@ public class EMCWorld
             ScreenManager.register(EWContainerTypes.advancedUpdateContainer.get(), AdvancedUpdateGUI::new);
             ScreenManager.register(EWContainerTypes.infuserContainer.get(), InfuserGUI::new);
             ScreenManager.register(EWContainerTypes.weaponUpgradeContainer.get(), WeaponUpgradeGUI::new);
+            ScreenManager.register(EWContainerTypes.gemstoneContainer.get(), GemstoneGUI::new);
             ClientRegistry.registerKeyBinding(Admin.ADMIN_KEY);
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG

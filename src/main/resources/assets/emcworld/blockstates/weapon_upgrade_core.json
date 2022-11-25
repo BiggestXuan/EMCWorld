@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/weapon_upgrade_core_model" }
+  }
+}

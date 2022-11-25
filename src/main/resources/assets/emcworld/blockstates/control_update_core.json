@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/control_update_core_model" }
+  }
+}

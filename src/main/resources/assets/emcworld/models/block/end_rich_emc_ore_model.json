@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "emcworld:block/end_rich_emc_ore"
+  }
+}

@@ -51,9 +51,9 @@ public class NuclearBall extends BaseCuriosItem {
             tooltip.add(EMCWorld.tc("tooltip.emcworld.nuclear_ball_all"));
         }
         else{
-            tooltip.add(EMCWorld.tc("tooltip.emcworld.nuclear_ball", MathUtils.thousandSign(this.max_radiation)));
+            tooltip.add(EMCWorld.tc("tooltip.emcworld.nuclear_ball", MathUtils.format(this.max_radiation)));
         }
-        tooltip.add(EMCWorld.tc("tooltip.emcworld.nuclear_ball_time",MathUtils.thousandSign((stack.getMaxDamage()-stack.getDamageValue())/20)));
+        tooltip.add(EMCWorld.tc("tooltip.emcworld.nuclear_ball_time",MathUtils.format((stack.getMaxDamage()-stack.getDamageValue())/20)));
     }
 
     @Override

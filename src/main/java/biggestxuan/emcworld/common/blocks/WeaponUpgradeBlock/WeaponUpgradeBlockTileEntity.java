@@ -220,19 +220,18 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
     private float getDifficultyChance(){
         double diff = CrTConfig.getWorldDifficulty();
         float chance = 1f;
-        if(diff > 1){
-            chance *= 1.02f;
+        if(diff < 1){
+            chance *= 0.92f;
         }
-        if(diff >= 1.75){
-            chance *= 1.04f;
+        if(diff <= 1.75){
+            chance *= 0.94f;
         }
-        if(diff >= 2.25){
-            chance *= 1.06f;
+        if(diff <= 2.25){
+            chance *= 0.96f;
         }
-        if(diff >= 2.75){
-            chance *= 1.08f;
+        if(diff <= 2.75){
+            chance *= 0.98f;
         }
-        if(MathUtils.isMaxDifficulty()) chance *= 1.11f;
         return chance;
     }
 

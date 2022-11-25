@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "emcworld:block/emc_flower_model"
+    }
+  }
+}

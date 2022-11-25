@@ -1,0 +1,54 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "A___A",
+    "_BBB_",
+    "_BCB_",
+    "_BBB_",
+    "A___A"
+  ],
+  "key": {
+    "A": {
+      "item": "allthemodium:vibranium_allthemodium_alloy_ingot"
+    },
+    "B": {
+      "item": "emcworld:chlorophyte_ingot"
+    },
+    "C": {
+      "item": "gobber2:gobber2_sword_nether"
+    }
+  },
+  "relay_inputs": [
+    {
+      "item": "emcworld:advanced_emc_gem"
+    },
+    {
+      "item": "emcworld:advanced_emc_gem"
+    },
+    {
+      "item": "emcworld:advanced_emc_gem"
+    },
+    {
+      "item": "emcworld:advanced_emc_gem"
+    }
+  ],
+  "output": [
+    {
+      "item": "emcworld:god_nature_sword",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "emcworld:emc",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

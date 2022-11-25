@@ -7,14 +7,17 @@ package biggestxuan.emcworld.common.registry;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.*;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateBlock;
+import biggestxuan.emcworld.common.blocks.*;
+import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneBlock;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlock;
 import biggestxuan.emcworld.common.blocks.Ores.EWDirtOre;
 import biggestxuan.emcworld.common.blocks.Ores.EWStoneOre;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceCore;
 import biggestxuan.emcworld.common.blocks.VisConversionBlock.VisConversionBlock;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlock;
+import biggestxuan.emcworld.common.compact.Botania.BotaniaFlowers.TileEMCFlower;
+import biggestxuan.emcworld.common.compact.Botania.FlowerBlock;
 import mekanism.api.tier.ITier;
 import mekanism.common.block.attribute.AttributeTier;
 import mekanism.common.block.prefab.BlockTile;
@@ -24,14 +27,20 @@ import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.registries.MekanismBlockTypes;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import static vazkii.botania.common.block.ModBlocks.register;
 
 public class EWBlocks {
         public static final BlockDeferredRegister B = new BlockDeferredRegister(EMCWorld.MODID);
@@ -44,6 +53,7 @@ public class EWBlocks {
         public static final RegistryObject<Block> WEAPON_UPGRADE_CORE = BLOCKS.register("weapon_upgrade_core", WeaponUpgradeBlock::new);
         public static final RegistryObject<Block> ADVANCED_UPDATE_CORE = BLOCKS.register("advanced_update_core", AdvancedUpdateBlock::new);
         public static final RegistryObject<Block> PROFESSION_CORE = BLOCKS.register("profession_core", ProfessionalBlock::new);
+        public static final RegistryObject<Block> GEMSTONE_CORE = BLOCKS.register("gemstone_core", GemstoneBlock::new);
         public static final RegistryObject<Block> EMC_ORE = BLOCKS.register("emc_ore",() -> new EWStoneOre(2,5.5F));
         public static final RegistryObject<Block> RICH_EMC_ORE = BLOCKS.register("rich_emc_ore",() -> new EWStoneOre(3,10.0F));
         public static final RegistryObject<Block> NETHER_EMC_ORE = BLOCKS.register("nether_emc_ore", () -> new EWStoneOre(2,6.5F));
@@ -99,15 +109,20 @@ public class EWBlocks {
         public static final RegistryObject<Block> UPDATE_COST_ORANGE = BLOCKS.register("update_cost_orange",() -> new EWUpdateBlock(7,1,1.03,0.971));
         public static final RegistryObject<Block> UPDATE_COST_RED = BLOCKS.register("update_cost_red",() -> new EWUpdateBlock(8,1,1.04,0.962));
 
+        public static final Block EMC_FLOWER = new FlowerBlock(4.5f, TileEMCFlower::new);
+
         public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block", TestBlock::new);
         public static final BlockRegistryObject<BlockTile<TileEntityInductionCell, BlockTypeTile<TileEntityInductionCell>>, ItemBlockInductionCell> EMC_CELL = registerInductionCell(MekanismBlockTypes.ULTIMATE_INDUCTION_CELL);;
 
         private static BlockRegistryObject<BlockTile<TileEntityInductionCell, BlockTypeTile<TileEntityInductionCell>>, ItemBlockInductionCell> registerInductionCell(BlockTypeTile<TileEntityInductionCell> type) {
-                return registerTieredBlock(((AttributeTier)type.get(AttributeTier.class)).getTier(), "_induction_cell", () -> {
-                        return new BlockTile(type);
-                }, ItemBlockInductionCell::new);
+                return registerTieredBlock(((AttributeTier)type.get(AttributeTier.class)).getTier(), "_induction_cell", () -> new BlockTile(type), ItemBlockInductionCell::new);
         }
         private static <BLOCK extends Block, ITEM extends BlockItem> BlockRegistryObject<BLOCK, ITEM> registerTieredBlock(ITier tier, String suffix, Supplier<? extends BLOCK> blockSupplier, Function<BLOCK, ITEM> itemCreator) {
                 return B.register(tier.getBaseTier().getLowerName() + suffix, blockSupplier, itemCreator);
+        }
+
+        public static void botaniaInit(RegistryEvent.Register<Block> event){
+                IForgeRegistry<Block> e = event.getRegistry();
+                register(e,EMCWorld.rl("emc_flower"),EMC_FLOWER);
         }
 }

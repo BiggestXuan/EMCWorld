@@ -7,9 +7,11 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.CharaSword;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import mekanism.api.MekanismAPI;
 import net.minecraft.entity.LivingEntity;
@@ -35,24 +37,36 @@ public class LivingDamageEvent {
             event.setAmount(damage);
         }
         DamageSource source = event.getSource();
+        if(source instanceof EWDamageSource.ReallyDamage){
+            EWDamageSource.ReallyDamage really = (EWDamageSource.ReallyDamage) source;
+            PlayerEntity player = really.getPlayer();
+            if(player != null){
+                addPlayerRaidDamage(player,damage,entity);
+            }
+        }
         if(source.getDirectEntity() instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) source.getDirectEntity();
             ItemStack stack = player.getMainHandItem();
-            if(entity instanceof AbstractRaiderEntity){
-                IUtilCapability cap = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
-                MinecraftServer server = entity.getServer();
-                assert server != null;
-                ServerWorld world = server.overworld();
-                if(world.isRaided(new BlockPos(player.position()))){
-                    cap.addRaidDamage(Math.min(damage, entity.getHealth()));
-                }
-            }
+            addPlayerRaidDamage(player,damage,entity);
             if(!(entity instanceof PlayerEntity)){
                 if(stack.getItem() instanceof CharaSword){
                     CharaSword sword = (CharaSword) stack.getItem();
                     double r = sword.getLevel(stack) * 11.4514 ;
                     MekanismAPI.getRadiationManager().radiate(entity,r);
                 }
+            }
+        }
+    }
+
+    private static void addPlayerRaidDamage(PlayerEntity player,float value,LivingEntity target){
+        if(player == null) return;
+        if(target instanceof AbstractRaiderEntity){
+            IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
+            MinecraftServer server = player.getServer();
+            assert server != null;
+            ServerWorld world = server.overworld();
+            if(world.isRaided(new BlockPos(player.position()))){
+                cap.addRaidDamage(Math.min(value, target.getHealth()));
             }
         }
     }

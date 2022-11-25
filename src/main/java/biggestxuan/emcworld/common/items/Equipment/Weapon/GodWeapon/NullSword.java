@@ -15,7 +15,7 @@ public class NullSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public long EMCModifySecond(ItemStack stack) {
+    public long getBaseModifySecond(ItemStack stack) {
         int level = getLevel(stack);
         if(level <5){
             return (int) Math.pow(1.125,level);
@@ -24,14 +24,24 @@ public class NullSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
+    public double getBaseCriticalChance(ItemStack stack) {
+        return Math.pow(1.013,getLevel(stack)) - 1;
+    }
+
+    @Override
+    public double getBaseCriticalRate(ItemStack stack) {
+        return Math.pow(1.013,getLevel(stack));
+    }
+
+    @Override
+    public float getBaseDamage(ItemStack stack) {
         int level = getLevel(stack);
         double d = (level*Math.PI/180);
         return (float) ((Math.pow(1.2,level)-Math.tan(d))*baseDamage);
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
+    public double getBaseRange(ItemStack stack) {
         return 1.5D;
     }
 
@@ -41,7 +51,7 @@ public class NullSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public double costEMCWhenAttack(ItemStack stack) {
+    public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = getLevel(stack);
         if(level >5){
             return Math.pow(1.03,level);

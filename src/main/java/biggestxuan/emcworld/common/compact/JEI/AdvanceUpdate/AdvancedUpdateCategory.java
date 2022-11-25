@@ -89,7 +89,7 @@ public class AdvancedUpdateCategory implements IRecipeCategory<JEIAdvancedUpdate
     @Override
     public void draw(JEIAdvancedUpdateRecipe recipe, @Nonnull MatrixStack matrix, double mouseX, double mouseY){
         FontRenderer fontRenderer = Minecraft.getInstance().font;
-        String costEMC = MathUtils.thousandSign((long)(recipe.getCostEMC() * MathUtils.difficultyLoss()))+" EMC";
+        String costEMC = MathUtils.format((long)(recipe.getCostEMC() * MathUtils.difficultyLoss()))+" EMC";
         String level = I18n.get("jei.emcworld.recipe.level")+recipe.getLevel();
         fontRenderer.draw(matrix,costEMC, (background.getWidth() - fontRenderer.width(costEMC))/2F, 1,0x808080);
         fontRenderer.draw(matrix,level,98, 32,0x808080);

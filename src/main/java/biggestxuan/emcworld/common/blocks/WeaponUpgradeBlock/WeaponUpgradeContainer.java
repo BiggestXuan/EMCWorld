@@ -6,15 +6,12 @@ package biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock;
  *  2022/09/27
  */
 
+import biggestxuan.emcworld.api.block.BaseContainer;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.Slot.LuckySlot;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.Slot.MaterialSlot;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.Slot.WeaponSlot;
 import biggestxuan.emcworld.common.registry.EWContainerTypes;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
@@ -22,10 +19,8 @@ import net.minecraft.util.IntArray;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import javax.annotation.Nonnull;
 
-
-public class WeaponUpgradeContainer extends Container {
+public class WeaponUpgradeContainer extends BaseContainer {
     private final BlockPos pos;
     private final World world;
     private final IIntArray data;
@@ -45,34 +40,9 @@ public class WeaponUpgradeContainer extends Container {
         this.addSlot(new MaterialSlot(entity.getInventory(),3,26,53));
         this.addSlot(new MaterialSlot(entity.getInventory(),4,80,53));
         this.addSlot(new LuckySlot(entity.getInventory(),5,116,53));
-        addPlayerHotbar(inv);
-        addPlayerInventory(inv);
+        addBar(inv);
         this.pos = entity.getBlockPos();
         this.world = entity.getLevel();
-    }
-
-    private void addPlayerInventory(PlayerInventory playerInventory) {
-        for (int i = 0; i < 3; ++i) {
-            for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
-            }
-        }
-    }
-    private void addPlayerHotbar(PlayerInventory playerInventory) {
-        for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
-        }
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack quickMoveStack(@Nonnull PlayerEntity playerIn, int index) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public boolean stillValid(PlayerEntity p_75145_1_) {
-        return true;
     }
 
     public BlockPos getPos(){

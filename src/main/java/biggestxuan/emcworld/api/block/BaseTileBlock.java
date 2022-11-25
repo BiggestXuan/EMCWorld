@@ -43,6 +43,7 @@ public abstract class BaseTileBlock extends EWBlock {
                 drop(tile);
             }
         }
+        super.onRemove(pState,pLevel,pPos,pNewState,pIsMoving);
     }
 
     private static <T extends BaseContainerTileEntity> void drop(T tile){

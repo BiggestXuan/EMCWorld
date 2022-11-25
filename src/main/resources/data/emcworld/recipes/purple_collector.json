@@ -1,0 +1,96 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "C_B_C",
+    "D_E_D",
+    "F_I_F",
+    "GHAHG",
+    "JKLKJ"
+  ],
+  "key": {
+    "A": {
+      "item": "projectex:pink_collector"
+    },
+    "B": {
+      "item": "astralsorcery:rock_collector_crystal"
+    },
+    "C": {
+      "item": "naturesaura:infused_iron_block"
+    },
+    "D": {
+      "item": "naturesaura:tainted_gold_block"
+    },
+    "E": {
+      "item": "emcworld:purple_matter"
+    },
+    "F": {
+      "item": "naturesaura:ancient_log"
+    },
+    "G": {
+      "item": "hem:copparite"
+    },
+    "H": {
+      "item": "stalwart_dungeons:tungsten_ingot"
+    },
+    "I": {
+      "item": "emcworld:advanced_emc_gem"
+    },
+    "J": {
+      "item": "naturesaura:sky_ingot"
+    },
+    "K": {
+      "item": "gobber2:gobber2_ingot_nether"
+    },
+    "L": {
+      "item": "minecraft:netherite_block"
+    }
+  },
+  "relay_inputs": [
+    {
+      "item": "mythicbotany:asgard_rune"
+    },
+    {
+      "item": "mythicbotany:vanaheim_rune"
+    },
+    {
+      "item": "mythicbotany:alfheim_rune"
+    },
+    {
+      "item": "mythicbotany:midgard_rune"
+    },
+    {
+      "item": "mythicbotany:joetunheim_rune"
+    },
+    {
+      "item": "mythicbotany:muspelheim_rune"
+    },
+    {
+      "item": "mythicbotany:niflheim_rune"
+    },
+    {
+      "item": "mythicbotany:nidavellir_rune"
+    },
+    {
+      "item": "mythicbotany:helheim_rune"
+    }
+  ],
+  "output": [
+    {
+      "item": "projectex:purple_collector",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "emcworld:emc",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

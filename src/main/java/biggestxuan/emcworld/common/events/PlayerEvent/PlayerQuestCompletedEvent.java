@@ -69,7 +69,7 @@ public class PlayerQuestCompletedEvent {
         for(QuestReward obj : QuestReward.values()){
             CustomReward reward = event.getReward();
             if(reward.hasTag(obj.getTag())){
-                Message.sendMessage(player, EMCWorld.tc("message.evt.questcompleted",obj.getTag(),MathUtils.thousandSign(baseGet)));
+                Message.sendMessage(player, EMCWorld.tc("message.evt.questcompleted",obj.getTag(),MathUtils.format(baseGet)));
                 break;
             }
         }

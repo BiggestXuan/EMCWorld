@@ -87,7 +87,7 @@ public class UpdateCategory implements IRecipeCategory<JEIUpdateRecipe> {
     @Override
     public void draw(JEIUpdateRecipe recipe, @Nonnull MatrixStack matrix, double mouseX, double mouseY){
         FontRenderer fontRenderer = Minecraft.getInstance().font;
-        String costEMC = MathUtils.thousandSign((long)(recipe.getCostEMC() * MathUtils.difficultyLoss()))+" EMC";
+        String costEMC = MathUtils.format((long)(recipe.getCostEMC() * MathUtils.difficultyLoss()))+" EMC";
         fontRenderer.draw(matrix,costEMC, (background.getWidth() - fontRenderer.width(costEMC))/2F, 1,0x808080);
     }
 }

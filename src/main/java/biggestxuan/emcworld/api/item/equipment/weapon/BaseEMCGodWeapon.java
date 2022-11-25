@@ -8,9 +8,10 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
-import biggestxuan.emcworld.api.item.equipment.tier.EWGodWeaponTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -43,7 +44,7 @@ import java.util.List;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.GodWeapon")
-public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect {
+public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon {
 
     protected final float baseDamage;
     private final String name;
@@ -94,34 +95,108 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         return Math.round(80 * MathUtils.difficultyLoss());
     }
 
-    @Override
-    public abstract long EMCModifySecond(ItemStack stack);
+    public int getGemIndex(ItemStack stack){
+        return stack.getOrCreateTag().getInt("weapon_gem");
+    }
+
+    public void setGemIndex(ItemStack stack,int index){
+        stack.getOrCreateTag().putInt("weapon_gem",index);
+    }
+
+    public int getGemType(ItemStack stack){
+        return (getGemIndex(stack) / 10);
+    }
+
+    public long getKillCount(ItemStack stack){
+        return stack.getOrCreateTag().getLong("kill_count");
+    }
+
+    public void addKillCount(ItemStack stack){
+        stack.getOrCreateTag().putLong("kill_count",getKillCount(stack)+1);
+    }
+
+    public int getColor(ItemStack stack){
+        int t = getGemType(stack);
+        int c;
+        if(t >= 40){
+            c = BaseWeaponGemItem.gem.ABYSS.getColor();
+        }else if(t >= 30){
+            c = BaseWeaponGemItem.gem.LAKE.getColor();
+        }else if(t >= 20){
+            c = BaseWeaponGemItem.gem.NATURE.getColor();
+        }else c = BaseWeaponGemItem.gem.BLOOD.getColor();
+        return c;
+    }
+
+    public abstract float getBaseDamage(ItemStack stack);
+
+    public abstract double getBaseRange(ItemStack stack);
+
+    public abstract double getBaseEMCWhenAttack(ItemStack stack);
+
+    public abstract long getBaseModifySecond(ItemStack stack);
+
+    public abstract double getBaseCriticalChance(ItemStack stack);
+
+    public abstract double getBaseCriticalRate(ItemStack stack);
 
     @Override
-    public int getLevel(ItemStack stack){
-        return stack.getOrCreateTag().getInt("level");
+    public double getCriticalChance(ItemStack stack){
+        return getBaseCriticalChance(stack);
     }
 
     @Override
-    public void setLevel(ItemStack stack, int level) {
-        stack.getOrCreateTag().putInt("level",level);
+    public double getCriticalRate(ItemStack stack){
+        return getBaseCriticalRate(stack);
     }
 
     @Override
-    public void addLevel(ItemStack stack, int level) {
-        setLevel(stack,Math.min(getMaxLevel(),getLevel(stack)+level));
+    public double costEMCWhenAttack(ItemStack stack){
+        double b = getBaseEMCWhenAttack(stack);
+        if(getGemType(stack) == 1){
+            b *= 1.2;
+        }
+        if(getGemType(stack) == 2){
+            b *= 0.9;
+        }
+        if(getGemType(stack) == 3){
+            b *= 1.1;
+        }
+        return b;
     }
 
     @Override
-    public void lossLevel(ItemStack stack, int level) {
-        setLevel(stack,Math.max(0,getLevel(stack)-level));
+    public long EMCModifySecond(ItemStack stack){
+        long b = getBaseModifySecond(stack);
+        if(getGemType(stack) == 4){
+            b *= 1.15f;
+        }
+        return b;
     }
 
     @Override
-    public abstract float getAdditionsDamage(ItemStack stack);
+    public float getAdditionsDamage(ItemStack stack){
+        float b = getBaseDamage(stack) * 0.75f;
+        if(getGemType(stack) == 1){
+            b *= 1.15f;
+        }
+        if(getGemType(stack) == 2){
+            b *= 0.9f;
+        }
+        if(getGemType(stack) == 4){
+            b *= 0.95f;
+        }
+        return b;
+    }
 
     @Override
-    public abstract double getAttackRange(ItemStack stack);
+    public double getAttackRange(ItemStack stack){
+        double b = getBaseRange(stack);
+        if(getGemType(stack) == 3){
+            b += 0.5;
+        }
+        return b;
+    }
 
     @Override
     @OnlyIn(Dist.CLIENT)
@@ -194,12 +269,13 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
     }
 
     private float getManaBurstDamage(ItemStack stack){
-        int level = getLevel(stack);
-        return 8f + level-11f ;
+        float damage = 4f + getLevel(stack) -11f;
+        damage += getAdditionsDamage(stack);
+        if(MathUtils.isRandom(getActCriticalChance(stack))){
+            damage *= getActCriticalRate(stack);
+        }
+        return damage ;
     }
-
-    @Override
-    public abstract double costEMCWhenAttack(ItemStack stack);
 
     @Override
     public void inventoryTick(@Nonnull ItemStack p_77663_1_, @Nonnull World p_77663_2_, @Nonnull Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
@@ -232,7 +308,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
                 int mana = burst.getMana();
                 if (mana >= cost) {
                     burst.setMana(mana - cost);
-                    float damage = getManaBurstDamage(stack);
+                    float damage = (float) (getManaBurstDamage(stack) * (mana - cost) / (mana * ConfigManager.DIFFICULTY.get() * 5));
                     if (!burst.isFake() && !entity.level.isClientSide) {
                         DamageSource source = EWDamageSource.REALLY;
                         living.hurt(source, damage);

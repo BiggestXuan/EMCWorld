@@ -121,7 +121,7 @@ public class PlayerHurtEvent {
                     }
                     else{
                         event.setAmount(player.getMaxHealth()*1000.0f);
-                        Message.sendMessage(player, EMCWorld.tc("message.evt.hurtcancel",MathUtils.thousandSign(String.valueOf(costEMC))));
+                        //Message.sendMessage(player, EMCWorld.tc("message.evt.hurtcancel",MathUtils.format(String.valueOf(costEMC))));
                         return;
                     }
                     break;

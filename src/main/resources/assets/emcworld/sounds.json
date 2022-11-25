@@ -1,0 +1,9 @@
+{
+  "cxk_death": {
+    "subtitle": "sound.emcworld.cxk_death",
+    "sounds": [{
+      "name": "emcworld:cxk_death"
+    }
+    ]
+  }
+}

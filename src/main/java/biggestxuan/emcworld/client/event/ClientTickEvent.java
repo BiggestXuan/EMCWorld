@@ -47,11 +47,11 @@ public class ClientTickEvent {
         if(player == null || player.level == null){
             return;
         }
-        if(player.level.isClientSide && !player.isDeadOrDying() && player.level.dimension().getRegistryName().equals(new ResourceLocation("overworld"))){
+        if(player.level.isClientSide && !player.isDeadOrDying() && !player.level.dimension().getRegistryName().equals(new ResourceLocation("nether"))){
             IUtilCapability c = EMCWorldAPI.getInstance().getUtilCapability(player);
             if(c.getLevel() <2){
-                CrashReport crashReport = new CrashReport("EMCWorld is not completed!", new EMCWorldNotFinalException());
-                Minecraft.crash(crashReport);
+                //CrashReport crashReport = new CrashReport("EMCWorld is not completed!", new EMCWorldNotFinalException());
+                //Minecraft.crash(crashReport);
             }
         }
     }

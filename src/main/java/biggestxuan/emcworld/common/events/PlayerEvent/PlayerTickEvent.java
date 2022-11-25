@@ -14,6 +14,7 @@ import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.IPlayerDifficultyItem;
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
+import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
 import biggestxuan.emcworld.client.Message;
@@ -45,6 +46,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -60,8 +62,10 @@ import java.util.*;
 public class PlayerTickEvent {
     private static final UUID EMCWORLD_MODIFY_HEALTH_ID = UUID.fromString("a80fcb74-82f3-4e06-8df7-7d8031e8976e");
     private static final UUID EMCWORLD_MODIFY_SPEED_ID = UUID.fromString("ec77a354-5dab-4ec4-8bde-496ba2b72860");
+    private static final UUID EMCWORLD_REACH_DISTANCE_ID = UUID.fromString("4f6e18a2-d5ed-41bb-9e8e-ee816bd4d059");
     private static final String EMCWORLD_MODIFY_HEALTH_NAME = "EMCWorld.HealthModifier";
     private static final String EMCWORLD_MODIFY_SPEED_NAME = "EMCWorld.SpeedModifier";
+    private static final String EMCWORLD_REACH_DISTANCE_NAME = "EMCWorld.ReachDistanceModifier";
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerTickEvent(TickEvent.PlayerTickEvent event) {
@@ -108,6 +112,21 @@ public class PlayerTickEvent {
                 speed_instance.removeModifier(EMCWORLD_MODIFY_SPEED_ID);
             }
             speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_MODIFY_SPEED_ID, EMCWORLD_MODIFY_SPEED_NAME,extraSpeed,AttributeModifier.Operation.ADDITION));
+        }
+        double extraReachDistance = 0;
+        for(ItemStack stack:player.inventory.armor){
+            if(stack.getItem() instanceof IReachArmor){
+                IReachArmor armor = (IReachArmor) stack.getItem();
+                extraReachDistance += armor.getReachDistance(stack);
+            }
+        }
+        ModifiableAttributeInstance reach_instance = player.getAttribute(ForgeMod.REACH_DISTANCE.get());
+        if(reach_instance != null){
+            AttributeModifier modifier = reach_instance.getModifier(EMCWORLD_REACH_DISTANCE_ID);
+            if(modifier != null){
+                reach_instance.removeModifier(EMCWORLD_REACH_DISTANCE_ID);
+            }
+            reach_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_REACH_DISTANCE_ID,EMCWORLD_REACH_DISTANCE_NAME,extraReachDistance, AttributeModifier.Operation.ADDITION));
         }
         ItemStack[] handItem = new ItemStack[]{
                 player.getMainHandItem(),player.getOffhandItem()
@@ -253,6 +272,9 @@ public class PlayerTickEvent {
                 if(util.getDifficulty() < item1.requireDifficulty()){
                     stack.setCount(0);
                 }
+            }
+            if(stack.getOrCreateTag().getString("guide_book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
+                stack.shrink(1);
             }
         };
         for(ItemStack stack:player.inventory.items){

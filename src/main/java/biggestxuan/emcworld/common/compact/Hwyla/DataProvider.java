@@ -35,13 +35,13 @@ public class DataProvider implements IComponentProvider {
         ClientPlayerEntity player = Minecraft.getInstance().player;
         if(block instanceof AdvancedUpdateBlock || accessor.getBlockState().equals(EWBlocks.CONTROL_UPDATE_CORE.get().defaultBlockState()) ){
             IUtilCapability cap = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
-            tooltip.add(EMCWorld.tc("hwyla.tip.cd", MathUtils.thousandSign(cap.getCoolDown()/20)));
+            tooltip.add(EMCWorld.tc("hwyla.tip.cd", MathUtils.format(cap.getCoolDown()/20)));
         }
         if(accessor.getBlockState().equals(EWBlocks.PROFESSION_CORE.get().defaultBlockState())){
             int[] skills = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new).getSkills();
-            tooltip.add(EMCWorld.tc("hwyla.tip.skill_cd1",MathUtils.thousandSign(skills[7]/20)));
-            tooltip.add(EMCWorld.tc("hwyla.tip.skill_cd2",MathUtils.thousandSign(skills[19]/20)));
-            tooltip.add(EMCWorld.tc("hwyla.tip.skill_cd3",MathUtils.thousandSign(skills[43]/20)));
+            tooltip.add(EMCWorld.tc("hwyla.tip.skill_cd1",MathUtils.format(skills[7]/20)));
+            tooltip.add(EMCWorld.tc("hwyla.tip.skill_cd2",MathUtils.format(skills[19]/20)));
+            tooltip.add(EMCWorld.tc("hwyla.tip.skill_cd3",MathUtils.format(skills[43]/20)));
         }
     }
 }

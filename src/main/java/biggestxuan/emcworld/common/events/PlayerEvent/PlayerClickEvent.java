@@ -11,6 +11,8 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.event.PlayerAddMaxLevelEvent;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.api.recipe.IUpdateRecipe;
 import biggestxuan.emcworld.client.Message;
@@ -20,9 +22,11 @@ import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
 import biggestxuan.emcworld.common.network.LeftClickPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
+import biggestxuan.emcworld.common.network.StaffAttackPacket;
 import biggestxuan.emcworld.common.recipes.AdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.recipes.UpdateRecipe;
 import biggestxuan.emcworld.common.registry.EWBlocks;
@@ -56,7 +60,6 @@ import java.util.Objects;
 public class PlayerClickEvent {
     @SubscribeEvent
     public static void LeftClickItemEvent(PlayerInteractEvent.LeftClickEmpty event){
-        PlayerEntity player = event.getPlayer();
         ItemStack stack = event.getItemStack();
         if(stack.getItem() instanceof BaseEMCGodWeapon){
             BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) stack.getItem();
@@ -64,7 +67,14 @@ public class PlayerClickEvent {
                 PacketHandler.sendToServer(new LeftClickPacket());
             }
         }
+        if(stack.getItem() instanceof InfinitySword){
+            PacketHandler.sendToServer(new LeftClickPacket());
+        }
+        if(stack.getItem() instanceof StaffItem){
+            PacketHandler.sendToServer(new StaffAttackPacket());
+        }
     }
+
     @SubscribeEvent
     public static void RightClickItemEvent(PlayerInteractEvent.RightClickItem evt){
         World world = evt.getWorld();
@@ -98,15 +108,15 @@ public class PlayerClickEvent {
             for(DifficultySetting obj:DifficultySetting.values()){
                 if(GameStageManager.hasStage(player, obj.getGameStage())){
                     Message.sendMessage(player, EMCWorld.tc("message.check.stage",obj.getGameStage()));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.attack",MathUtils.thousandSign((obj.getAttackBase() * dl))));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.death",MathUtils.thousandSign((obj.getDeathBase() * dl))));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.hurt",MathUtils.thousandSign(obj.getHurtBase() * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.pickupitem",MathUtils.thousandSign(MathUtils.getPickUpItemBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.wakeup",MathUtils.thousandSign(MathUtils.getWakeUpBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.container",MathUtils.thousandSign(obj.getChestBase() * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.hoe",MathUtils.thousandSign(MathUtils.getUseHoeBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.fill",MathUtils.thousandSign(MathUtils.getFillBucketBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.craft",MathUtils.thousandSign(MathUtils.getCraftBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.attack",MathUtils.format((obj.getAttackBase() * dl))));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.death",MathUtils.format((obj.getDeathBase() * dl))));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.hurt",MathUtils.format(obj.getHurtBase() * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.pickupitem",MathUtils.format(MathUtils.getPickUpItemBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.wakeup",MathUtils.format(MathUtils.getWakeUpBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.container",MathUtils.format(obj.getChestBase() * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.hoe",MathUtils.format(MathUtils.getUseHoeBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.fill",MathUtils.format(MathUtils.getFillBucketBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.craft",MathUtils.format(MathUtils.getCraftBaseCost(player) * dl)));
                     Message.sendMessage(player, EMCWorld.tc("message.check.tip"));
                     Message.sendMessage(player, EMCWorld.tc("message.check.line"));
                     break;
@@ -115,6 +125,11 @@ public class PlayerClickEvent {
         }
         BlockPos blockPos = evt.getPlayer().blockPosition();
         BlockPos act = new BlockPos(blockPos.getX(),blockPos.getY()-1,blockPos.getZ());
+        if(itemStack.getItem() instanceof IRangeAttackWeapon){
+            IRangeAttackWeapon weapon = (IRangeAttackWeapon) itemStack.getItem();
+            weapon.switchAttackMode(itemStack);
+            Message.sendMessage(player,EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(weapon.getAttackMode(itemStack).getName())));
+        }
         if(world.getBlockState(act).equals(EWBlocks.CONTROL_UPDATE_CORE.get().defaultBlockState())){
             MultiBlock.UpdateMath info = MultiBlock.getUpdateInfo(world,act);
             for(UpdateRecipe obj:UpdateRecipe.values()){

@@ -37,7 +37,7 @@ public class StoredTotem extends BaseCuriosItem {
     public void appendHoverText(@Nonnull ItemStack stack, World worldIn, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flagIn){
         super.appendHoverText(stack,worldIn,tooltip,flagIn);
         tooltip.add(EMCWorld.tc("tooltip.curios.emcstored.desc"));
-        TranslationTextComponent t = EMCWorld.tc("tooltip.curios.emcstored", MathUtils.thousandSign(String.valueOf(getMaxDamage(stack)-getDamage(stack))));
+        TranslationTextComponent t = EMCWorld.tc("tooltip.curios.emcstored", MathUtils.format(String.valueOf(getMaxDamage(stack)-getDamage(stack))));
         tooltip.add(EMCWorld.tc("tooltip.curios.all"));
         tooltip.add(t);
     }

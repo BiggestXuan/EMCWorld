@@ -55,7 +55,7 @@ public class PlayerDeathEvent {
             long costEMC = MathUtils.getPlayerDeathBaseCost(player);
             if(costEMC == 0) return;
             if(EMCHelper.getPlayerEMC(player) >= costEMC){
-                Message.sendMessage(player, EMCWorld.tc("message.evt.playerdeath",MathUtils.thousandSign(String.valueOf(Math.min(EMCHelper.getPlayerEMC(player),costEMC)))));
+                Message.sendMessage(player, EMCWorld.tc("message.evt.playerdeath",MathUtils.format(String.valueOf(Math.min(EMCHelper.getPlayerEMC(player),costEMC)))));
                 EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
             }
             else{

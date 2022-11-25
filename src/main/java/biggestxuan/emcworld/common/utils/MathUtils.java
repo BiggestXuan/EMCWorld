@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.utils;
  *  2022/07/26
  */
 
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
@@ -13,6 +14,7 @@ import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import net.minecraft.entity.LivingEntity;
@@ -20,6 +22,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -61,9 +64,12 @@ public class MathUtils {
     }
 
     @ZenCodeType.Method
-    public static String thousandSign(String text){
+    public static String format(String text){
+        if(ConfigManager.FORMAT.get()){
+            return KMT(text);
+        }
         int len = text.length();
-        ArrayList<String> stringContainer = new ArrayList<String>();
+        ArrayList<String> stringContainer = new ArrayList<>();
         while(len>3){
             stringContainer.add(text.substring(len-3,len));
             len-=3;
@@ -77,12 +83,17 @@ public class MathUtils {
         return buffer.toString();
     }
 
-    public static String thousandSign(double value){
-        return thousandSign(String.valueOf((long) value));
+    public static String KMT(String text){
+        String flag = getFlag(text);
+        return formatAfter(text)+flag;
     }
 
-    public static <T> String thousandSign(T value){
-        return thousandSign(String.valueOf(value));
+    public static String format(double value){
+        return format(String.valueOf((long) value));
+    }
+
+    public static <T> String format(T value){
+        return format(String.valueOf(value));
     }
 
     public static long doubleToLong(double value){
@@ -226,7 +237,7 @@ public class MathUtils {
     }
 
     public static IPlayerSkillCapability getPlayerLevelCapability(PlayerEntity player){
-        return player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
+        return EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
     }
 
     public static boolean isTwoLivingDistance(World world1,World world2,Vector3d pos1,Vector3d pos2, double distance){
@@ -245,6 +256,48 @@ public class MathUtils {
 
     public static boolean isTwoLivingDistance(LivingEntity player1, LivingEntity player2, double distance){
         return isTwoLivingDistance(player1.getCommandSenderWorld(),player2.getCommandSenderWorld(),player1.position(),player2.position(),distance);
+    }
+
+    public static int range(int num,int min,int max){
+        if(num < min){
+            return min;
+        }
+        return Math.min(num, max);
+    }
+
+    public static AxisAlignedBB expandAABB(BlockPos pos,int range){
+        return new AxisAlignedBB(new BlockPos(pos.getX()-range,pos.getY()-range,pos.getZ()-range),new BlockPos(pos.getX()+range,pos.getY()+range,pos.getZ()+range));
+    }
+
+    public static AxisAlignedBB expandAABB(Vector3d v ,int range){
+        return expandAABB(new BlockPos(v),range);
+    }
+
+    private static String getFlag(String value){
+        int c = value.length();
+        String o = "";
+        if(c <= 6 && c >= 4){
+            o = "K";
+        }else if(c <= 9 && c >= 7){
+            o = "M";
+        }else if(c <= 12 && c >= 10){
+            o = "G";
+        }else if(c <= 15 && c >= 13){
+            o = "T";
+        }else if(c <= 18 && c >= 16)o = "P";
+        return o;
+    }
+
+    private static String formatAfter(String value){
+        int c = value.length() - 1;
+        if(c < 3) return value;
+        if(c % 3 == 0){
+            return value.charAt(0)+"."+value.substring(1,3);
+        }
+        if(c % 3 == 1){
+            return value.substring(0,2)+"."+value.substring(2,4);
+        }
+        return value.substring(0,3)+"."+value.substring(3,5);
     }
 
     @Deprecated

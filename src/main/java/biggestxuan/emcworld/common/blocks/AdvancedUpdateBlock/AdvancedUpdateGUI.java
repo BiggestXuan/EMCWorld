@@ -58,13 +58,13 @@ public class AdvancedUpdateGUI extends ContainerScreen<AdvancedUpdateContainer> 
         drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.update_core_level",info.getLevel()),5,20,0xffffff);
         drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.update_core_cost",String.format("%.2f",info.getCost()*100)+"%"),5,35,0xffffff);
         drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.update_core_addon",String.format("%.2f",info.getAddon()*100)+"%"),5,50,0xffffff);
-        drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.update_core_time",MathUtils.thousandSign(info.getTime()/20)),5,65,0xffffff);
+        drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.update_core_time",MathUtils.format(info.getTime()/20)),5,65,0xffffff);
         long reallyCost;
         ItemStack itemStack = this.getMenu().getItems().get(0);
         for(AdvancedUpdateRecipe recipes:AdvancedUpdateRecipe.values()){
             if(itemStack.getItem().equals(recipes.getInput().getItem())){
                 reallyCost = (Math.round(recipes.costEMC() * MathUtils.difficultyLoss() * itemStack.getCount() * info.getCost()));
-                String delay = MathUtils.thousandSign(reallyCost)+" EMC";
+                String delay = MathUtils.format(reallyCost)+" EMC";
                 if(EMCHelper.getPlayerEMC(Minecraft.getInstance().player) >= reallyCost && recipes.recipeLevel() <= info.getLevel()){
                     drawCenteredString(matrixStack, this.font, delay, 138, 20, 0xffffff);
                 }

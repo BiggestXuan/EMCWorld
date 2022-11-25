@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/drystone_ore_model" }
+  }
+}

@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="CC BY-NC-ND 4.0"
+issueTrackerURL="https://github.com/BiggestXuan/EMCworld/issues"
+[[mods]]
+modId="emcworld"
+version="0.2.0"
+displayName="EMC World"
+logoFile=""
+credits=""
+authors="Biggest_Xuan"
+description='''
+'''
+[[dependencies.emcworld]]
+modId="forge"
+mandatory=true
+versionRange="[36,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.emcworld]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.16.5,1.17)"
+ordering="NONE"
+side="BOTH"

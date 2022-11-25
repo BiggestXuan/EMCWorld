@@ -15,9 +15,19 @@ public class NatureSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
+    public float getBaseDamage(ItemStack stack) {
         int level = this.getLevel(stack);
         return (float) ((Math.pow(1.12f,level)*baseDamage)-baseDamage);
+    }
+
+    @Override
+    public double getBaseCriticalChance(ItemStack stack) {
+        return Math.pow(1.01,getLevel(stack)) - 1;
+    }
+
+    @Override
+    public double getBaseCriticalRate(ItemStack stack) {
+        return Math.pow(1.014,getLevel(stack));
     }
 
     @Override
@@ -26,20 +36,20 @@ public class NatureSword extends BaseEMCGodWeapon {
     }
 
     @Override
-    public double costEMCWhenAttack(ItemStack stack) {
+    public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = this.getLevel(stack);
         return Math.pow(0.9f,level);
     }
 
     @Override
-    public long EMCModifySecond(ItemStack stack) {
+    public long getBaseModifySecond(ItemStack stack) {
         int level = this.getLevel(stack);
         if(level <= 5) return 0;
         return Math.round(Math.pow(1.65,level-5)*8);
     }
 
     @Override
-    public double getAttackRange(ItemStack stack){
+    public double getBaseRange(ItemStack stack){
         int level = getLevel(stack);
         if(level <= 12) return 0d;
         if(level <= 15) return (level-10) * 0.2d;

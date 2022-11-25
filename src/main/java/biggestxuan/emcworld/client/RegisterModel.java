@@ -36,5 +36,6 @@ public class RegisterModel {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.alfie_zh, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.btmy, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.cxk, AtumBipedRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EWEntities.dytlj7788,AtumBipedRender::new);
     }
 }

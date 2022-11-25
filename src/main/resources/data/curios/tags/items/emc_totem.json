@@ -1,0 +1,21 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id":"emcworld:base_emc_stored_totem",
+      "required":false
+    },
+    {
+      "id":"emcworld:advanced_emc_stored_totem",
+      "required":false
+    },
+    {
+      "id":"emcworld:elite_emc_stored_totem",
+      "required":false
+    },
+    {
+      "id":"emcworld:ultimate_emc_stored_totem",
+      "required":false
+    }
+  ]
+}

@@ -7,17 +7,20 @@ package biggestxuan.emcworld.common.registry;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.common.items.*;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.items.Curios.StoredTotem;
 import biggestxuan.emcworld.common.items.Equipment.Armor.fireRedArmor;
 import biggestxuan.emcworld.common.items.Equipment.Armor.guardianArmor;
+import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.*;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.LuckyItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Other.HamBat;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.ScrollItem;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.TulyeScroll;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.*;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.FestivalItem.MoonCake;
 import biggestxuan.emcworld.common.items.FestivalItem.TangYuan;
 import biggestxuan.emcworld.common.items.FestivalItem.YearCake;
@@ -37,6 +40,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class EWItems {
+    private static final EMCWorldAPI api = EMCWorldAPI.getInstance();
+    
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EMCWorld.MODID);
 
     public static final RegistryObject<Item> SMALL_EMC_GEM = ITEMS.register("small_emc_gem", EMCGemItem::new);
@@ -56,7 +61,6 @@ public class EWItems {
     public static final RegistryObject<Item> LUCKY_GEM_RED = ITEMS.register("lucky_gem_red",() -> new LuckyItem(1.5f,1.5f));
     public static final RegistryObject<Item> LUCKY_GEM_PURPLE = ITEMS.register("lucky_gem_purple",() -> new LuckyItem(1.75f,2.0f));
     public static final RegistryObject<Item> LUCKY_GEM_GOLD = ITEMS.register("lucky_gem_gold",() -> new LuckyItem(2.1f,2.75f));
-
     public static final RegistryObject<Item> MOONCAKE = ITEMS.register("mooncake", MoonCake::new);
     public static final RegistryObject<Item> TANGYUAN = ITEMS.register("tangyuan", TangYuan::new);
     public static final RegistryObject<Item> YEARCAKE = ITEMS.register("year_cake", YearCake::new);
@@ -139,6 +143,10 @@ public class EWItems {
     public static final RegistryObject<Item> CRYSTAL_MATRIX_INGOT = ITEMS.register("crystal_matrix_ingot",() -> new FinalItem(3));
     public static final RegistryObject<Item> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", VibraniumSword::new);
     public static final RegistryObject<Item> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword", UnobtainiumSword::new);
+    public static final RegistryObject<Item> BLOOD_GEMSTONE = ITEMS.register("blood_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.BLOOD));
+    public static final RegistryObject<Item> NATURE_GEMSTONE = ITEMS.register("nature_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.NATURE));
+    public static final RegistryObject<Item> LAKE_GEMSTONE = ITEMS.register("lake_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.LAKE));
+    public static final RegistryObject<Item> ABYSS_GEMSTONE = ITEMS.register("abyss_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.ABYSS));
 
     public static final RegistryObject<Item> FIRE_RED_HELMET = ITEMS.register("fire_red_helmet",()->new fireRedArmor(1));
     public static final RegistryObject<Item> FIRE_RED_CHESTPLATE = ITEMS.register("fire_red_chestplate",()->new fireRedArmor(2));
@@ -148,6 +156,15 @@ public class EWItems {
     public static final RegistryObject<Item> GUARDIAN_CHESTPLATE = ITEMS.register("guardian_chestplate",()->new guardianArmor(2));
     public static final RegistryObject<Item> GUARDIAN_LEGGINGS = ITEMS.register("guardian_leggings",()->new guardianArmor(3));
     public static final RegistryObject<Item> GUARDIAN_BOOTS = ITEMS.register("guardian_boots",()->new guardianArmor(4));
+
+    public static final RegistryObject<Item> EMC_FLOWER = registryBlock("emc_flower",EWBlocks.EMC_FLOWER);
+
+    public static final RegistryObject<Item> WOODEN_STAFF = ITEMS.register("wooden_staff",() -> new StaffItem(api.getStaffTier("wooden")));
+    public static final RegistryObject<Item> STONE_STAFF = ITEMS.register("stone_staff",() -> new StaffItem(api.getStaffTier("stone")));
+    public static final RegistryObject<Item> IRON_STAFF = ITEMS.register("iron_staff",() -> new StaffItem(api.getStaffTier("iron")));
+    public static final RegistryObject<Item> GOLDEN_STAFF = ITEMS.register("golden_staff",() -> new StaffItem(api.getStaffTier("golden")));
+    public static final RegistryObject<Item> DIAMOND_STAFF = ITEMS.register("diamond_staff",() -> new StaffItem(api.getStaffTier("diamond")));
+    public static final RegistryObject<Item> NETHERITE_STAFF = ITEMS.register("netherite_staff",() -> new StaffItem(api.getStaffTier("netherite")));
 
     public static final RegistryObject<Item> CRYSTAL_EMC_GEM = ITEMS.register("crystal_emc_gem", EWOresItem::new);
     public static final RegistryObject<Item> SHARD_EMC_GEM = ITEMS.register("shard_emc_gem", EWOresItem::new);
@@ -358,6 +375,7 @@ public class EWItems {
     public static final RegistryObject<Item> STEEL_FURNACE_CORE = registryBlock("steel_furnace_core",EWBlocks.STEEL_FURNACE_CORE);
 
     public static final RegistryObject<Item> WEAPON_UPGRADE_CORE = registryBlock("weapon_upgrade_core",EWBlocks.WEAPON_UPGRADE_CORE);
+    public static final RegistryObject<Item> GEMSTONE_CORE = registryBlock("gemstone_core",EWBlocks.GEMSTONE_CORE);
     public static final RegistryObject<Item> RICH_EMC_ORE = registryBlock("rich_emc_ore",EWBlocks.RICH_EMC_ORE);
     public static final RegistryObject<Item> NETHER_EMC_ORE = registryBlock("nether_emc_ore",EWBlocks.NETHER_EMC_ORE);
     public static final RegistryObject<Item> END_EMC_ORE = registryBlock("end_emc_ore",EWBlocks.END_EMC_ORE);
@@ -420,6 +438,10 @@ public class EWItems {
 
     private static RegistryObject<Item> registryBlock(String name, RegistryObject<Block> block){
         return ITEMS.register(name,() -> new BlockItem(block.get(),new Item.Properties().tab(EWCreativeTabs.EW_ORES_TAB)));
+    }
+
+    private static RegistryObject<Item> registryBlock(String name, Block block){
+        return ITEMS.register(name,() -> new BlockItem(block,new Item.Properties().tab(EWCreativeTabs.EW_ORES_TAB)));
     }
 
     private static RegistryObject<Item> registryUpdateBlock(String name,RegistryObject<Block> block){

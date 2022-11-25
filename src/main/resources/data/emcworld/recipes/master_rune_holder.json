@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mythicbotany:rune_holder"
+  },
+  "addition": {
+    "item": "mythicbotany:alfsteel_ingot"
+  },
+  "result": {
+    "item": "mythicbotany:master_rune_holder"
+  }
+}

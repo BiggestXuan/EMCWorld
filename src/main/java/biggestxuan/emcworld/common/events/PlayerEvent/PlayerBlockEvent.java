@@ -39,7 +39,7 @@ public class PlayerBlockEvent {
         else{
             event.setCanceled(true);
             if(!player.getCommandSenderWorld().isClientSide) return;
-            Message.sendMessage(player, EMCWorld.tc("message.evt.usecancel",MathUtils.thousandSign(costEMC)));
+            Message.sendMessage(player, EMCWorld.tc("message.evt.usecancel",MathUtils.format(costEMC)));
         }
     }
     @SubscribeEvent
@@ -61,7 +61,7 @@ public class PlayerBlockEvent {
         else{
             event.setCanceled(true);
             if(!player.getCommandSenderWorld().isClientSide) return;
-            Message.sendMessage(player, EMCWorld.tc("message.evt.fillcancel",MathUtils.thousandSign(costEMC)));
+            Message.sendMessage(player, EMCWorld.tc("message.evt.fillcancel",MathUtils.format(costEMC)));
         }
     }
     @SubscribeEvent

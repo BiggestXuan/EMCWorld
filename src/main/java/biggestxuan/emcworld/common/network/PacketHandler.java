@@ -50,6 +50,13 @@ public class PacketHandler {
                 SpeedControlPacket::decode,
                 SpeedControlPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                StaffAttackPacket.class,
+                StaffAttackPacket::encode,
+                StaffAttackPacket::decode,
+                StaffAttackPacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

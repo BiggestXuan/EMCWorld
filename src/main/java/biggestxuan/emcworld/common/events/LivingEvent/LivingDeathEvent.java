@@ -7,8 +7,10 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.client.Message;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
@@ -27,6 +29,20 @@ public class LivingDeathEvent {
                 player.removeAllEffects();
                 Message.sendMessage(player,EMCWorld.tc("message.hurt.tulye1"));
             }
+            addPlayerCount(player);
+        }
+        if(source instanceof EWDamageSource.ReallyDamage){
+            EWDamageSource.ReallyDamage d = (EWDamageSource.ReallyDamage) source;
+            if(d.getPlayer() != null){
+                addPlayerCount(d.getPlayer());
+            }
+        }
+    }
+
+    private static void addPlayerCount(PlayerEntity player){
+        if(player.getMainHandItem().getItem() instanceof BaseEMCGodWeapon){
+            BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) player.getMainHandItem().getItem();
+            weapon.addKillCount(player.getMainHandItem());
         }
     }
 }

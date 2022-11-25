@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/infuser_core_model" }
+  }
+}

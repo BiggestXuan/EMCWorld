@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "emcworld:block/weapon_upgrade_core"
+  }
+}

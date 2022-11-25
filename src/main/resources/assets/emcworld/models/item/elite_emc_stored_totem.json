@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "emcworld:item/elite_emc_stored_totem"
+  }
+}

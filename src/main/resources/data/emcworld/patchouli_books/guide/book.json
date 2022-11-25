@@ -1,0 +1,6 @@
+{
+  "name": "item.emcworld.guide_book",
+  "landing_text": "guide.emcworld.info",
+  "model": "emcworld:guide_book",
+  "version": 1
+}

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/test_block_model" }
+  }
+}

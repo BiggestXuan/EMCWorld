@@ -1,0 +1,52 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "A___A",
+    "_BCB_",
+    "_DFE_",
+    "_DGE_",
+    "A___A"
+  ],
+  "key": {
+    "A": {
+      "item": "emcworld:update_base_cyan"
+    },
+    "B": {
+      "item": "rats:rat_upgrade_ore_doubling"
+    },
+    "C": {
+      "item": "twilightforest:fiery_ingot"
+    },
+    "D": {
+      "item": "good_nights_sleep:negatite_gem"
+    },
+    "E": {
+      "item": "good_nights_sleep:positite_gem"
+    },
+    "F": {
+      "item": "twilightforest:ironwood_ingot"
+    },
+    "G": {
+      "item": "emcworld:unreal_metal"
+    }
+  },
+  "output": [
+    {
+      "item": "emcworld:update_addon_cyan",
+      "count": 4
+    }
+  ],
+  "focus_constellation": "astralsorcery:mineralis",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

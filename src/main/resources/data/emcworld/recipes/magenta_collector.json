@@ -1,0 +1,67 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "ABCDE",
+    "EGHIJ",
+    "KLMLK",
+    "JIHGE",
+    "EDCBA"
+  ],
+  "key": {
+    "A": {
+      "item": "twilightforest:fiery_ingot"
+    },
+    "B": {
+      "item": "astralsorcery:rock_crystal"
+    },
+    "C": {
+      "item": "rats:gem_of_ratlantis"
+    },
+    "D": {
+      "item": "projectex:magenta_matter"
+    },
+    "E": {
+      "item": "astralsorcery:resonating_gem"
+    },
+    "G": {
+      "item": "emcworld:unreal_metal"
+    },
+    "H": {
+      "item": "emcworld:biggest_emc_gem"
+    },
+    "I": {
+      "item": "emcworld:god_steel_ingot"
+    },
+    "J": {
+      "item": "astralsorcery:starmetal_ingot"
+    },
+    "K": {
+      "item": "twilightforest:knightmetal_ingot"
+    },
+    "L": {
+      "item": "twilightforest:carminite"
+    },
+    "M": {
+      "item": "projectex:red_collector"
+    }
+  },
+  "output": [
+    {
+      "item": "projectex:magenta_collector",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "emcworld:emc",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

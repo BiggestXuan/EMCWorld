@@ -1,0 +1,43 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "_____",
+    "_ACB_",
+    "_CDC_",
+    "_BCA_",
+    "_____"
+  ],
+  "key": {
+    "A": {
+      "item": "twilightforest:naga_scale"
+    },
+    "B": {
+      "item": "twilightforest:alpha_fur"
+    },
+    "C": {
+      "item": "emcworld:update_base_cyan"
+    },
+    "D": {
+      "item": "rats:rat_upgrade_tick_accelerator"
+    }
+  },
+  "output": [
+    {
+      "item": "emcworld:update_time_cyan",
+      "count": 4
+    }
+  ],
+  "focus_constellation": "astralsorcery:horologium",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

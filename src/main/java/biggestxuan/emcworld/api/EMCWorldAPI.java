@@ -9,6 +9,7 @@ package biggestxuan.emcworld.api;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
@@ -16,7 +17,7 @@ import net.minecraft.util.LazyValue;
 
 public interface EMCWorldAPI{
     String MODID = EMCWorld.MODID;
-    int version = 1;
+    int version = 2;
 
     LazyValue<EMCWorldAPI> INSTANCE = new LazyValue<>(()->{
         try{
@@ -27,7 +28,59 @@ public interface EMCWorldAPI{
         }
     });
 
-    IItemTier DUMMY_TIER = new IItemTier() {
+    static EMCWorldAPI getInstance(){
+        return INSTANCE.get();
+    }
+
+    default IUtilCapability getUtilCapability(PlayerEntity player){
+        return null;
+    }
+
+    default IPlayerSkillCapability getPlayerSkillCapability(PlayerEntity player){
+        return null;
+    }
+
+    default IItemTier getGodWeaponTier(){
+        return DUMMY_TIER;
+    }
+
+    default IItemTier getATMTier(){
+        return DUMMY_TIER;
+    }
+
+    default IItemTier getVibraniumTier(){
+        return DUMMY_TIER;
+    }
+
+    default IItemTier getUnobtainiumTier(){
+        return DUMMY_TIER;
+    }
+
+    default IStaffTier getStaffTier(String name){
+        return DUMMY_TIER;
+    }
+
+    IStaffTier DUMMY_TIER = new IStaffTier() {
+        @Override
+        public double getCriticalRate() {
+            return 0;
+        }
+
+        @Override
+        public double getCriticalChance() {
+            return 0;
+        }
+
+        @Override
+        public int getColor() {
+            return 0;
+        }
+
+        @Override
+        public double getBurstSpeed() {
+            return 0;
+        }
+
         @Override
         public int getUses() {
             return 0;
@@ -58,32 +111,4 @@ public interface EMCWorldAPI{
             return null;
         }
     };
-
-    static EMCWorldAPI getInstance(){
-        return INSTANCE.get();
-    }
-
-    default IUtilCapability getUtilCapability(PlayerEntity player){
-        return null;
-    }
-
-    default IPlayerSkillCapability getPlayerSkillCapability(PlayerEntity player){
-        return null;
-    }
-
-    default IItemTier getGodWeaponTier(){
-        return DUMMY_TIER;
-    }
-
-    default IItemTier getATMTier(){
-        return DUMMY_TIER;
-    }
-
-    default IItemTier getVibraniumTier(){
-        return DUMMY_TIER;
-    }
-
-    default IItemTier getUnobtainiumTier(){
-        return DUMMY_TIER;
-    }
 }

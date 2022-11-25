@@ -17,17 +17,27 @@ public class CharaSword extends BaseEMCGodWeapon implements ISponsorItem {
     }
 
     @Override
-    public long EMCModifySecond(ItemStack stack) {
+    public long getBaseModifySecond(ItemStack stack) {
         return (long) (555.5 * Math.pow(1.14514 * getLevel(stack), Math.pow(1.14514, 1.14514)));
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
+    public double getBaseCriticalChance(ItemStack stack) {
+        return 0.03 * getLevel(stack);
+    }
+
+    @Override
+    public double getBaseCriticalRate(ItemStack stack) {
+        return 0.07 * getLevel(stack) + 1;
+    }
+
+    @Override
+    public float getBaseDamage(ItemStack stack) {
         return (float) (Math.sqrt(getLevel(stack))*11.4514);
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
+    public double getBaseRange(ItemStack stack) {
         return 0.06*getLevel(stack);
     }
 
@@ -37,7 +47,7 @@ public class CharaSword extends BaseEMCGodWeapon implements ISponsorItem {
     }
 
     @Override
-    public double costEMCWhenAttack(ItemStack stack) {
+    public double getBaseEMCWhenAttack(ItemStack stack) {
         return Math.sqrt(getLevel(stack));
     }
 

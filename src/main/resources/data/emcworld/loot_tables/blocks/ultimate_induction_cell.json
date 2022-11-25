@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"name":"main","rolls":1,"entries":[{"type":"minecraft:item","functions":[{"function":"minecraft:copy_nbt","source":"block_entity","ops":[{"source":"EnergyContainers","target":"mekData.EnergyContainers","op":"replace"}]}],"name":"mekanism:ultimate_induction_cell"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

@@ -8,9 +8,11 @@ package biggestxuan.emcworld.common.impl;
 
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.api.item.equipment.tier.EWAtmTier;
-import biggestxuan.emcworld.api.item.equipment.tier.EWGodWeaponTier;
+import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWAtmTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffTier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 
@@ -43,5 +45,10 @@ public class EMCWorldAPI implements biggestxuan.emcworld.api.EMCWorldAPI {
     @Override
     public IItemTier getUnobtainiumTier(){
         return EWAtmTier.UNOBTAINIUM;
+    }
+
+    @Override
+    public IStaffTier getStaffTier(String name){
+        return StaffTier.valueOf(name.toUpperCase());
     }
 }

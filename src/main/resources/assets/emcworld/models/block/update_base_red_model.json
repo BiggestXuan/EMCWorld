@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "emcworld:block/update_base_red",
+    "bottom": "emcworld:block/update_base"
+  }
+}

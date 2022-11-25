@@ -8,18 +8,16 @@ package biggestxuan.emcworld.common.registry;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateTileEntity;
+import biggestxuan.emcworld.common.compact.Botania.BotaniaFlowers.TileEMCFlower;
+import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneTileEntity;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceTileEntity;
 import biggestxuan.emcworld.common.blocks.VisConversionBlock.VisConversionTileEntity;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlockTileEntity;
-import net.minecraft.block.Block;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.function.Supplier;
 
 
 public class EWTileEntityTypes {
@@ -40,4 +38,12 @@ public class EWTileEntityTypes {
     public static RegistryObject<TileEntityType<SteelFurnaceTileEntity>> SteelFurnaceTileEntity = TILE_ENTITIES.register
             ("steel_furnace_tileentity", () -> TileEntityType.Builder.of(SteelFurnaceTileEntity::new,
                     EWBlocks.STEEL_FURNACE_CORE.get()).build(null));
+    public static RegistryObject<TileEntityType<GemstoneTileEntity>> GemstoneTileEntity = TILE_ENTITIES.register
+            ("gemstone_tileentity", () -> TileEntityType.Builder.of(GemstoneTileEntity::new,
+                    EWBlocks.GEMSTONE_CORE.get()).build(null));
+
+    // Botania
+    public static RegistryObject<TileEntityType<TileEMCFlower>> EMC_FLOWER = TILE_ENTITIES.register
+            ("emc_flower",() -> TileEntityType.Builder.of(TileEMCFlower::new,
+                    EWBlocks.EMC_FLOWER).build(null));
 }

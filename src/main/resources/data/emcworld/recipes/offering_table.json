@@ -1,0 +1,49 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 3200,
+  "pattern": [
+    "_____",
+    "_ABA_",
+    "_CDE_",
+    "_FFF_",
+    "_____"
+  ],
+  "key": {
+    "A": {
+      "item": "mythicbotany:alfsteel_ingot"
+    },
+    "B": {
+      "item": "naturesaura:infused_iron"
+    },
+    "C": {
+      "item": "naturesaura:token_fear"
+    },
+    "D": {
+      "item": "astralsorcery:spectral_relay"
+    },
+    "E": {
+      "item": "naturesaura:token_sorrow"
+    },
+    "F": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "output": [
+    {
+      "item": "naturesaura:offering_table",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "astralsorcery:aevitas",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

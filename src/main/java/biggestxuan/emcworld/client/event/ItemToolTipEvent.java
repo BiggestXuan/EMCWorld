@@ -9,14 +9,14 @@ package biggestxuan.emcworld.client.event;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
-import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
-import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
-import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import mekanism.common.item.gear.ItemHazmatSuitArmor;
@@ -26,6 +26,7 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.Color;
+import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -74,6 +75,18 @@ public class ItemToolTipEvent {
                 return;
             }
         }
+        if(stack.getItem() instanceof StaffItem){
+            StaffItem i_s = (StaffItem) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",i_s.getBaseDamage(stack)));
+        }
+        if(stack.getItem() instanceof BaseEMCGodWeapon){
+            BaseEMCGodWeapon i_q = (BaseEMCGodWeapon) stack.getItem();
+            if(i_q.getGemType(stack) == 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gem_null"));
+            }else{
+                event.getToolTip().add(getGemName(i_q.getGemType(stack)));
+            }
+        }
         if(stack.getItem() instanceof IAdditionsDamageWeapon){
             IAdditionsDamageWeapon item = (IAdditionsDamageWeapon) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",item.getAdditionsDamage(stack))));
@@ -84,20 +97,41 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IUpgradeableArmor){
             IUpgradeableArmor item_1_1 = (IUpgradeableArmor) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",item_1_1.hurtRate(stack)*100)).append("%"));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
         }
         if(stack.getItem() instanceof ICostEMCItem && stack.getItem() instanceof BaseWeaponItem){
             ICostEMCItem item2 = (ICostEMCItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",String.format("%.2f",item2.costEMCWhenAttack(stack)*100)+"%"));
+            double cost = item2.costEMCWhenAttack(stack);
+            if(cost >= 1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost_addon",String.format("%.2f",(cost-1)*100)+"%"));
+            }
+            else event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",String.format("%.2f",(1-cost)*100)+"%"));
         }
         if(stack.getItem() instanceof ISpeedArmor){
             ISpeedArmor item_2_5 = (ISpeedArmor) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed",String.format("%.2f",item_2_5.getSpeed(stack))));
         }
+        if(stack.getItem() instanceof IReachArmor){
+            IReachArmor item_2_6 = (IReachArmor) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_reach_distance",String.format("%.2f",item_2_6.getReachDistance(stack))));
+        }
+        if(stack.getItem() instanceof ICriticalWeapon){
+            ICriticalWeapon ww = (ICriticalWeapon) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",String.format("%.2f",ww.getActCriticalChance(stack)*100)).append("%"));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_rate",String.format("%.2f",ww.getActCriticalRate(stack)*100)).append("%"));
+        }
         if(stack.getItem() instanceof ISecondEMCItem){
             ISecondEMCItem item3 = (ISecondEMCItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_second", MathUtils.thousandSign(item3.EMCModifySecond(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_second", MathUtils.format(item3.EMCModifySecond(stack))));
+        }
+        if(stack.getItem() instanceof BaseEMCGodWeapon){
+            BaseEMCGodWeapon w = (BaseEMCGodWeapon) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.killCount",MathUtils.format(w.getKillCount(stack))));
+        }
+        if(stack.getItem() instanceof IRangeAttackWeapon){
+            IRangeAttackWeapon a_w = (IRangeAttackWeapon) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(a_w.getAttackMode(stack).getName())));
         }
         for(Item item: radiationItem){
             if(stack.getItem().getItem().equals(item)){
@@ -136,5 +170,25 @@ public class ItemToolTipEvent {
             default:
                 return Color.fromRgb(0x00aa00);
         }
+    }
+
+    private static IFormattableTextComponent getGemName(int type){
+        String pre = "item."+EMCWorld.MODID+".";
+        String n = "";
+        String a = "_gemstone";
+        switch (type){
+            case 1:
+                n = "blood";
+                break;
+            case 2:
+                n = "nature";
+                break;
+            case 3:
+                n = "lake";
+                break;
+            case 4:
+                n = "abyss";
+        }
+        return EMCWorld.tc(pre+n+a).setStyle(Style.EMPTY.withColor(Color.fromRgb(BaseWeaponGemItem.gem.valueOf(n.toUpperCase()).getColor())));
     }
 }
