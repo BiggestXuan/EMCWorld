@@ -1,0 +1,63 @@
+{
+	id: "21710B2CE493275C"
+	group: "7E8ECD616F8A4334"
+	order_index: 2
+	filename: "chapteremcworldsixth_magic"
+	title: "{chapter.emcworld.sixth_magic}"
+	icon: "astralsorcery:ritual_pedestal"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.sixth_magic_ritualpedestal}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: ["6EDFE6A69EAE4C48"]
+			id: "6DA2508949F15518"
+			tasks: [{
+				id: "685BFC44766228C4"
+				type: "item"
+				item: "astralsorcery:ritual_pedestal"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_magic_rituallink}"
+			x: 0.0d
+			y: -3.0d
+			dependencies: ["131D06E6858EA93F"]
+			hide: true
+			id: "6EDFE6A69EAE4C48"
+			tasks: [{
+				id: "5365B467D59C738E"
+				type: "item"
+				item: "astralsorcery:ritual_link"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_magic_bluecollector}"
+			x: -1.5d
+			y: -1.5d
+			dependencies: ["131D06E6858EA93F"]
+			hide: true
+			id: "19FEE6859A400A57"
+			tasks: [{
+				id: "2C55F82A2730634E"
+				type: "item"
+				item: "projectex:blue_collector"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_magic_bluerelay}"
+			x: 1.5d
+			y: -1.5d
+			dependencies: ["131D06E6858EA93F"]
+			hide: true
+			id: "726366671060FC66"
+			tasks: [{
+				id: "5FF7A1AAFCD53C17"
+				type: "item"
+				item: "projectex:blue_relay"
+			}]
+		}
+	]
+}

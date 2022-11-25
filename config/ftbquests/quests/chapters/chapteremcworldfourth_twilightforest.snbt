@@ -1,0 +1,335 @@
+{
+	id: "2ECDC52E47B95C17"
+	group: "16A68A44AFA4135F"
+	order_index: 0
+	filename: "chapteremcworldfourth_twilightforest"
+	title: "{chapter.emcworld.fourth_twilightforest}"
+	icon: "twilightforest:twilight_portal_miniature_structure"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fourth_twilightforest_key1}"
+			x: -6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_key1_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "20FB37482FDAD0F3"
+			tasks: [{
+				id: "1013261B9B9C5CD1"
+				type: "item"
+				item: "emcworld:base_key"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_key2}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_key2_desc}"]
+			dependencies: ["20FB37482FDAD0F3"]
+			id: "25A84D7F7D91A76B"
+			tasks: [{
+				id: "2A9317B701EF1E56"
+				type: "item"
+				item: "emcworld:twilight_key"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_naga}"
+			x: 12.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_naga_desc}"]
+			dependencies: ["6784D851DBAA1595"]
+			id: "6D87685571DEED3B"
+			tasks: [{
+				id: "06F80ED2DAA36834"
+				type: "item"
+				item: "twilightforest:naga_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_lich}"
+			x: 18.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_lich_desc}"]
+			dependencies: [
+				"6D87685571DEED3B"
+				"2EB32A3ABD2D9DCC"
+			]
+			dependency_requirement: "one_completed"
+			size: 1.5d
+			id: "7B82543C3818F5FF"
+			tasks: [{
+				id: "3124F354A67C3C7A"
+				type: "item"
+				item: "twilightforest:lich_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_magicmapempty}"
+			x: 15.0d
+			y: -3.0d
+			description: ["{quest.emcworld.fourth_twilightforest_magicmapempty_desc}"]
+			dependencies: ["495523D76EA320A6"]
+			id: "2EB32A3ABD2D9DCC"
+			tasks: [{
+				id: "147191A4BC336360"
+				type: "item"
+				item: "twilightforest:magic_map_empty"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_magicmapfocus}"
+			x: 9.0d
+			y: -3.0d
+			description: ["{quest.emcworld.fourth_twilightforest_magicmapfocus_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "495523D76EA320A6"
+			tasks: [{
+				id: "10C6E245233C8F81"
+				type: "item"
+				item: "twilightforest:magic_map_focus"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_minoshroom}"
+			x: 24.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_twilightforest_minoshroom_desc}"]
+			dependencies: ["7B82543C3818F5FF"]
+			id: "53D1EFD6638DFA1F"
+			tasks: [{
+				id: "0D21068A57B539EE"
+				type: "item"
+				item: "twilightforest:minoshroom_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_phantom}"
+			x: 24.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_phantom_desc}"]
+			dependencies: ["7B82543C3818F5FF"]
+			id: "2157A5B3FD95F8F1"
+			tasks: [{
+				id: "3EABDB97801ED9BD"
+				type: "item"
+				item: "twilightforest:knight_phantom_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_yeti}"
+			x: 24.0d
+			y: 6.0d
+			description: ["{quest.emcworld.fourth_twilightforest_yeti_desc}"]
+			dependencies: ["7B82543C3818F5FF"]
+			id: "37C6F0D50EF78E83"
+			tasks: [{
+				id: "1C911B965DE89F31"
+				type: "item"
+				item: "twilightforest:yeti_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_hydra}"
+			x: 30.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_twilightforest_hydra_desc}"]
+			dependencies: ["53D1EFD6638DFA1F"]
+			id: "0FC9D8E26DD49A0B"
+			tasks: [{
+				id: "59AE7FD8F3D85507"
+				type: "item"
+				item: "twilightforest:hydra_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_ghast}"
+			x: 30.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_ghast_desc}"]
+			dependencies: ["2157A5B3FD95F8F1"]
+			id: "7D5E40563C7F5B43"
+			tasks: [{
+				id: "55769EBEBAF07CF1"
+				type: "item"
+				item: "twilightforest:ur_ghast_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_snowqueen}"
+			x: 30.0d
+			y: 6.0d
+			description: ["{quest.emcworld.fourth_twilightforest_snowqueen_desc}"]
+			dependencies: ["37C6F0D50EF78E83"]
+			id: "7E097CD29CED9AC7"
+			tasks: [{
+				id: "60317AE2A9A7A5FD"
+				type: "item"
+				item: "twilightforest:snow_queen_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_lampofcinders}"
+			x: 42.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_lampofcinders_desc}"]
+			dependencies: ["537AC76A5A458F59"]
+			id: "35DD5E0CA8A4FE86"
+			tasks: [{
+				id: "78454D1875C66F80"
+				type: "item"
+				item: {
+					id: "twilightforest:lamp_of_cinders"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_mazemapempty}"
+			x: 24.0d
+			y: -18.0d
+			description: ["{quest.emcworld.fourth_twilightforest_mazemapempty_desc}"]
+			dependencies: ["1B429E85A2469FF5"]
+			id: "1249ED71ACE78628"
+			tasks: [{
+				id: "49EFF24BF3AEB66C"
+				type: "item"
+				item: "twilightforest:maze_map"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_mazemapfocus}"
+			x: 18.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_twilightforest_mazemapfocus_desc}"]
+			dependencies: ["53D1EFD6638DFA1F"]
+			id: "1B429E85A2469FF5"
+			tasks: [{
+				id: "5F602F49C810FC14"
+				type: "item"
+				item: "twilightforest:maze_map_focus"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_mazebreakerpickaxe}"
+			x: 30.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_twilightforest_mazebreakerpickaxe_desc}"]
+			dependencies: ["1249ED71ACE78628"]
+			optional: true
+			id: "2A0968F6DE6DC191"
+			tasks: [{
+				id: "5D79F111B7A5346E"
+				type: "item"
+				item: {
+					id: "twilightforest:mazebreaker_pickaxe"
+					Count: 1b
+					tag: {
+						Damage: 0
+						Enchantments: [
+							{
+								lvl: 4s
+								id: "minecraft:efficiency"
+							}
+							{
+								lvl: 3s
+								id: "minecraft:unbreaking"
+							}
+							{
+								lvl: 2s
+								id: "minecraft:fortune"
+							}
+						]
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_gointotheforest}"
+			icon: "twilightforest:twilight_portal_miniature_structure"
+			x: 6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_gointotheforest_desc}"]
+			dependencies: ["25A84D7F7D91A76B"]
+			id: "6784D851DBAA1595"
+			tasks: [{
+				id: "3E293EF4CBFD5D96"
+				type: "dimension"
+				dimension: "twilightforest:twilightforest"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_questramtrophy}"
+			x: 9.0d
+			y: 6.0d
+			description: ["{quest.emcworld.fourth_twilightforest_questramtrophy_desc}"]
+			dependencies: ["3F59DBBA19DFB418"]
+			hide: true
+			hide_text_until_complete: true
+			size: 2.0d
+			id: "04622028864E9225"
+			tasks: [{
+				id: "35E77B573D064D14"
+				type: "item"
+				item: "twilightforest:quest_ram_trophy"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_questram}"
+			icon: "twilightforest:quest_ram_spawn_egg"
+			x: 3.0d
+			y: 6.0d
+			description: ["{quest.emcworld.fourth_twilightforest_questram_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			optional: true
+			id: "3F59DBBA19DFB418"
+			tasks: [{
+				id: "22474353BFEDCE8D"
+				type: "observation"
+				timer: 0L
+				observe_type: 5
+				to_observe: "twilightforest:quest_ram"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_magicbeans}"
+			x: 36.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_magicbeans_desc}"]
+			dependencies: [
+				"0FC9D8E26DD49A0B"
+				"7D5E40563C7F5B43"
+				"7E097CD29CED9AC7"
+			]
+			id: "537AC76A5A458F59"
+			tasks: [{
+				id: "7B83B891C19AFF3B"
+				type: "item"
+				item: "twilightforest:magic_beans"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_twilightforest_castle}"
+			x: 48.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_twilightforest_castle_desc}"]
+			dependencies: ["35DD5E0CA8A4FE86"]
+			id: "5BFAEC876399BBCA"
+			tasks: [{
+				id: "6588A7BB542ADD0C"
+				type: "observation"
+				icon: "twilightforest:castle_brick"
+				timer: 0L
+				observe_type: 0
+				to_observe: "twilightforest:castle_brick"
+			}]
+		}
+	]
+}

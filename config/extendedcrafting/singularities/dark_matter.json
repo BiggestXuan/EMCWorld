@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.dark_matter",
+  "colors": [
+    "432e49",
+    "432e49"
+  ],
+  "ingredient": {
+    "item": "projecte:dark_matter"
+  }
+}

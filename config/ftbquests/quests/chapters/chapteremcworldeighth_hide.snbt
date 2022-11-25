@@ -1,0 +1,42 @@
+{
+	id: "231A922B54851945"
+	group: "45BD8B4A7A7B384D"
+	order_index: 4
+	filename: "chapteremcworldeighth_hide"
+	title: "{chapter.emcworld.eighth_hide}"
+	always_invisible: true
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			x: -2.0d
+			y: 0.0d
+			id: "5D6EF909C6AFE54E"
+			tasks: [{
+				id: "2C679BF6B20B1D94"
+				type: "item"
+				item: "emcworld:universal_ball"
+			}]
+		}
+		{
+			x: 0.5d
+			y: 0.0d
+			id: "2B417C069BE03D30"
+			tasks: [{
+				id: "7C0491FF30A81744"
+				type: "item"
+				item: "emcworld:emc_core"
+			}]
+		}
+		{
+			x: 3.0d
+			y: 0.0d
+			id: "3A9A7586DDD12C77"
+			tasks: [{
+				id: "42E1AAA3CE586A81"
+				type: "item"
+				item: "emcworld:infinity_catalyst"
+			}]
+		}
+	]
+}

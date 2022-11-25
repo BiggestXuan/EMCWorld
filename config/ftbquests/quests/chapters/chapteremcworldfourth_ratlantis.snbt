@@ -1,0 +1,281 @@
+{
+	id: "3C7DEFF55EE6615B"
+	group: "16A68A44AFA4135F"
+	order_index: 2
+	filename: "chapteremcworldfourth_ratlantis"
+	title: "{chapter.emcworld.fourth_ratlantis}"
+	icon: "rats:chunky_cheese_token"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fourth_ratlantis_filth}"
+			x: 0.0d
+			y: -9.0d
+			description: ["{quest.emcworld.fourth_ratlantis_filth_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "4B4EF0A7DA2F82DC"
+			tasks: [{
+				id: "65F305FAD0765DCF"
+				type: "item"
+				item: "rats:filth"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_filthcorruption}"
+			x: 0.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_ratlantis_filthcorruption_desc}"]
+			dependencies: ["4B4EF0A7DA2F82DC"]
+			id: "4C0A4C8B7462046F"
+			tasks: [{
+				id: "0CFA2ECA091AAAC3"
+				type: "item"
+				item: "rats:filth_corruption"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_tangledrattails}"
+			x: 3.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_ratlantis_tangledrattails_desc}"]
+			dependencies: ["5A5BFB274C8A2061"]
+			id: "538E2968ECD3114C"
+			tasks: [{
+				id: "5710D0C86775051A"
+				type: "item"
+				item: "rats:tangled_rat_tails"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_ratking}"
+			x: 0.0d
+			y: -3.0d
+			description: ["{quest.emcworld.fourth_ratlantis_ratking_desc}"]
+			dependencies: ["4C0A4C8B7462046F"]
+			id: "5A5BFB274C8A2061"
+			tasks: [{
+				id: "127B01CCC934E9E1"
+				type: "kill"
+				entity: "rats:rat_king"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_chunkycheesetoken}"
+			x: 6.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fourth_ratlantis_chunkycheesetoken_desc}"]
+			dependencies: [
+				"538E2968ECD3114C"
+				"7F09D9B9DB472BCC"
+			]
+			id: "6F57983C37483993"
+			tasks: [{
+				id: "08E11D13AD0AFC15"
+				type: "item"
+				item: "rats:chunky_cheese_token"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_gointoratlantis_desc}"
+			icon: "rats:marbled_cheese_raw"
+			x: 12.0d
+			y: 3.0d
+			shape: "hexagon"
+			description: ["{quest.emcworld.fourth_ratlantis_gointoratlantis_desc}"]
+			dependencies: ["6F57983C37483993"]
+			size: 1.5d
+			id: "04EF976625980809"
+			tasks: [{
+				id: "7ACCD8892EEABDAC"
+				type: "dimension"
+				dimension: "rats:ratlantis"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_plaguetome}"
+			x: 0.0d
+			y: 9.0d
+			description: ["{quest.emcworld.fourth_ratlantis_plaguetome_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "7D685BFE1182D3A8"
+			tasks: [{
+				id: "6781B8B7C0DBB393"
+				type: "item"
+				item: "rats:plague_tome"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_plaguescythe}"
+			icon: {
+				id: "rats:plague_scythe"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: 3.0d
+			y: 6.0d
+			description: ["{quest.emcworld.fourth_ratlantis_plaguescythe_desc}"]
+			dependencies: ["7D685BFE1182D3A8"]
+			id: "7F09D9B9DB472BCC"
+			tasks: [{
+				id: "3F812BA93748B1EB"
+				type: "kill"
+				entity: "rats:black_death"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_neoratlantean}"
+			icon: "rats:psionic_rat_brain"
+			x: 21.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fourth_ratlantis_neoratlantean_desc}"]
+			dependencies: ["01D6E4E4C3F3DA5F"]
+			id: "3CE790495BF8162B"
+			tasks: [{
+				id: "2F099D0F267A3CCA"
+				type: "kill"
+				entity: "rats:neo_ratlantean"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_dutchrat}"
+			icon: "rats:arcane_technology"
+			x: 18.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_ratlantis_dutchrat_desc}"]
+			dependencies: ["540FAFCAB0ABD28B"]
+			id: "00FB2BDACE8DBAB3"
+			tasks: [{
+				id: "55C8D375A2ACBA10"
+				type: "kill"
+				entity: "rats:ratlantean_automaton"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_ratlanteanautomaton}"
+			icon: "rats:dutchrat_wheel"
+			x: 18.0d
+			y: 6.0d
+			description: ["{quest.emcworld.fourth_ratlantis_ratlanteanautomaton_desc}"]
+			dependencies: ["12B95F9789315A24"]
+			id: "3C945FA7C482E255"
+			tasks: [{
+				id: "59F54DFE188E38C2"
+				type: "kill"
+				entity: "rats:dutchrat"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_vialofsentience}"
+			x: 15.0d
+			y: 3.0d
+			shape: "hexagon"
+			description: ["{quest.emcworld.fourth_ratlantis_vialofsentience_desc}"]
+			dependencies: ["04EF976625980809"]
+			id: "01D6E4E4C3F3DA5F"
+			tasks: [{
+				id: "57EF1C049EF61D15"
+				type: "item"
+				item: "rats:vial_of_sentience"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_dutchratbell}"
+			x: 15.0d
+			y: 6.0d
+			shape: "hexagon"
+			description: ["{quest.emcworld.fourth_ratlantis_dutchratbell_desc}"]
+			dependencies: ["04EF976625980809"]
+			id: "12B95F9789315A24"
+			tasks: [{
+				id: "1ED300F17D345781"
+				type: "item"
+				item: "rats:dutchrat_bell"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_marbledcheeseratheadandcore}"
+			icon: "rats:marbled_cheese_rat_head"
+			x: 15.0d
+			y: 0.0d
+			shape: "hexagon"
+			description: ["{quest.emcworld.fourth_ratlantis_marbledcheeseratheadandcore_desc}"]
+			dependencies: ["04EF976625980809"]
+			id: "540FAFCAB0ABD28B"
+			tasks: [
+				{
+					id: "5202D78E9146FA7A"
+					type: "item"
+					item: "rats:marbled_cheese_rat_head"
+				}
+				{
+					id: "3A82FEC7BF461B01"
+					type: "item"
+					item: "rats:marbled_cheese_golem_core"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_idolofratlantis}"
+			x: 27.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fourth_ratlantis_idolofratlantis_desc}"]
+			hide_dependency_lines: true
+			dependencies: [
+				"00FB2BDACE8DBAB3"
+				"3CE790495BF8162B"
+				"3C945FA7C482E255"
+			]
+			hide: true
+			size: 2.5d
+			id: "6B1003E28A5B869E"
+			tasks: [{
+				id: "7953995C74E15269"
+				type: "item"
+				item: "rats:idol_of_ratlantis"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_ratupgradearcheologist}"
+			x: 21.0d
+			y: 9.0d
+			description: ["{quest.emcworld.fourth_ratlantis_ratupgradearcheologist_desc}"]
+			dependencies: ["70B7429EE6073C82"]
+			id: "546FDA386D37EB0C"
+			tasks: [{
+				id: "35CC4E9D1A0DCEB1"
+				type: "item"
+				item: "rats:rat_upgrade_archeologist"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_ratlantis_archeologisthat}"
+			x: 15.0d
+			y: 9.0d
+			description: ["{quest.emcworld.fourth_ratlantis_archeologisthat_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "70B7429EE6073C82"
+			tasks: [{
+				id: "3715F98F4891C096"
+				type: "item"
+				item: {
+					id: "rats:archeologist_hat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+	]
+}

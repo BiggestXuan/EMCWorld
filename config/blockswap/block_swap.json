@@ -1,0 +1,22 @@
+{
+  "retroGen":true,
+  "swapper": {
+    "thermal:lead_ore": "mekanism:lead_ore",
+    "thermal:copper_ore": "mekanism:copper_ore",
+    "thermal:nickel_ore": "emcworld:nickel_ore",
+    "thermal:silver_ore": "emcworld:silver_ore",
+    "thermal:tin_ore": "mekanism:tin_ore",
+    "the_afterlight:slate_crystillium":"the_afterlight:crystillium_ore",
+    "astralsorcery:aquamarine_sand_ore":"minecraft:sand",
+    "astralsorcery:glow_flower":"botania:white_mystical_flower",
+    "alltheores:ore_aluminum":"emcworld:aluminum_ore",
+    "quark:biotite_ore": "minecraft:end_stone",
+    "alltheores:ore_copper":"mekanism:copper_ore",
+    "alltheores:ore_lead":"mekanism:lead_ore",
+    "alltheores:ore_nickel":"emcworld:nickel_ore",
+    "alltheores:ore_osmium":"mekanism:osmium_ore",
+    "alltheores:ore_silver":"emcworld:silver_ore",
+    "alltheores:ore_tin":"mekanism:tin_ore",
+    "alltheores:ore_uranium":"mekanism:uranium_ore"
+  }
+}

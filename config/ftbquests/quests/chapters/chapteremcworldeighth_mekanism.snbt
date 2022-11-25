@@ -1,0 +1,423 @@
+{
+	id: "4DDCAD40A1042879"
+	group: "45BD8B4A7A7B384D"
+	order_index: 1
+	filename: "chapteremcworldeighth_mekanism"
+	title: "{chapter.emcworld.eighth_mekanism}"
+	icon: {
+		id: "mekanism:meka_tool"
+		Count: 1b
+		tag: {
+			HideFlags: 2
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.eighth_second_universal_ball}"
+			x: 0.0d
+			y: -2.5d
+			dependencies: ["5D6EF909C6AFE54E"]
+			hide: true
+			id: "6D9272A5E61D451F"
+			tasks: [{
+				id: "6B8557A8F832266A"
+				type: "item"
+				item: "emcworld:universal_ball"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_second_ob_vi_alloy}"
+			x: -2.0d
+			y: -0.5d
+			dependencies: ["6D9272A5E61D451F"]
+			id: "4FD7E2217250CFCE"
+			tasks: [{
+				id: "218B674E4D6A5648"
+				type: "item"
+				item: "allthemodium:unobtainium_vibranium_alloy_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_second_ob_atm_alloy}"
+			x: 2.0d
+			y: -0.5d
+			dependencies: ["6D9272A5E61D451F"]
+			id: "73F55F509EB74E18"
+			tasks: [{
+				id: "13C89BF64BA267B5"
+				type: "item"
+				item: "allthemodium:unobtainium_allthemodium_alloy_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_second_ob_sing}"
+			x: 0.0d
+			y: 1.5d
+			dependencies: [
+				"4FD7E2217250CFCE"
+				"73F55F509EB74E18"
+			]
+			id: "1A55B612F8AA8869"
+			tasks: [{
+				id: "7DDD2F8544B59C2D"
+				type: "item"
+				item: {
+					id: "extendedcrafting:singularity"
+					Count: 1b
+					tag: {
+						Id: "extendedcrafting:unobtainium"
+					}
+				}
+			}]
+		}
+		{
+			x: 2.0d
+			y: 1.5d
+			hide_dependency_lines: true
+			dependencies: ["1A55B612F8AA8869"]
+			id: "364E0DD409F028B8"
+			tasks: [{
+				id: "54EE1B9AE9E7A048"
+				type: "item"
+				item: {
+					id: "allthemodium:unobtainium_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 4.0d
+			y: 1.5d
+			hide_dependency_lines: true
+			dependencies: ["1A55B612F8AA8869"]
+			id: "16E26941DDB296C8"
+			tasks: [{
+				id: "77C6BE24140A7F00"
+				type: "item"
+				item: {
+					id: "allthemodium:unobtainium_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 8.0d
+			y: 1.5d
+			hide_dependency_lines: true
+			dependencies: ["1A55B612F8AA8869"]
+			id: "25C6BF06A849E42B"
+			tasks: [{
+				id: "7CC3D16FD80E9C91"
+				type: "item"
+				item: {
+					id: "allthemodium:unobtainium_leggings"
+					Count: 1b
+					tag: {
+						Damage: 0
+						AS_Amulet_Holder: [I;
+							691178348
+							1862487994
+							-1808373877
+							1768852203
+						]
+					}
+				}
+			}]
+		}
+		{
+			x: 10.0d
+			y: 1.5d
+			hide_dependency_lines: true
+			dependencies: ["1A55B612F8AA8869"]
+			id: "6C98AA5644C40E0E"
+			tasks: [{
+				id: "2B1C7F763C798D5A"
+				type: "item"
+				item: {
+					id: "allthemodium:unobtainium_boots"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_second_ob_sword}"
+			x: 6.0d
+			y: 1.5d
+			hide_dependency_lines: true
+			dependencies: ["1A55B612F8AA8869"]
+			id: "7594BD23AB4C597B"
+			tasks: [{
+				id: "169EA69E2D373019"
+				type: "item"
+				item: {
+					id: "emcworld:unobtainium_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 2.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"364E0DD409F028B8"
+				"0EAE2ED948788A6B"
+			]
+			id: "753A3FD1447533F8"
+			tasks: [{
+				id: "01F1C7D981733D2A"
+				type: "item"
+				item: {
+					id: "gobber2:gobber2_helmet_dragon"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 4.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"16E26941DDB296C8"
+				"0EAE2ED948788A6B"
+			]
+			id: "75B6C01AC87AE1B5"
+			tasks: [{
+				id: "2D5B8C7AF11B4E83"
+				type: "item"
+				item: {
+					id: "gobber2:gobber2_chestplate_dragon"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 8.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"25C6BF06A849E42B"
+				"0EAE2ED948788A6B"
+			]
+			id: "02C9340A88C0E491"
+			tasks: [{
+				id: "7D862B250456F605"
+				type: "item"
+				item: {
+					id: "gobber2:gobber2_leggings_dragon"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 10.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"6C98AA5644C40E0E"
+				"0EAE2ED948788A6B"
+			]
+			id: "097E1532D4195C16"
+			tasks: [{
+				id: "63EEE68608DE7CA2"
+				type: "item"
+				item: {
+					id: "gobber2:gobber2_boots_dragon"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_second_meka_sword}"
+			x: 6.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: ["7594BD23AB4C597B"]
+			id: "73A96ACE6007AECA"
+			tasks: [{
+				id: "7B46E1DC3C2F3D13"
+				type: "item"
+				item: {
+					id: "mekanism:meka_tool"
+					Count: 1b
+					tag: {
+						HideFlags: 2
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "0BCF6B11AEAA9B94"
+					type: "custom"
+					title: "{quest.emcworld.eighth_second_final}"
+					icon: "mekanism:pellet_antimatter"
+					tags: ["second_final"]
+					team_reward: true
+				}
+				{
+					id: "7DBFF7FD704F535F"
+					type: "choice"
+					title: "{reward.emcworld.sword_normal}"
+					icon: {
+						id: "emcworld:god_fire_sword"
+						Count: 1b
+						tag: {
+							Damage: 0
+							level: 20
+						}
+					}
+					team_reward: true
+					table_id: 924045785135739496L
+				}
+				{
+					id: "1F884C91D8274E3D"
+					type: "item"
+					item: {
+						id: "emcworld:unobtainium_sword"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			x: 2.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: ["753A3FD1447533F8"]
+			id: "3EF4D2252973F4C4"
+			tasks: [{
+				id: "07F5E5DAAC90FDD9"
+				type: "item"
+				item: {
+					id: "mekanism:mekasuit_helmet"
+					Count: 1b
+					tag: {
+						HideFlags: 2
+					}
+				}
+			}]
+		}
+		{
+			x: 4.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: ["75B6C01AC87AE1B5"]
+			id: "271B29331291F781"
+			tasks: [{
+				id: "0FFD91E4B907BA7A"
+				type: "item"
+				item: {
+					id: "mekanism:mekasuit_bodyarmor"
+					Count: 1b
+					tag: {
+						HideFlags: 2
+					}
+				}
+			}]
+		}
+		{
+			x: 8.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: ["02C9340A88C0E491"]
+			id: "579E407563682509"
+			tasks: [{
+				id: "0530EFC4BD6069C0"
+				type: "item"
+				item: {
+					id: "mekanism:mekasuit_pants"
+					Count: 1b
+					tag: {
+						HideFlags: 2
+					}
+				}
+			}]
+		}
+		{
+			x: 10.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: ["097E1532D4195C16"]
+			id: "7A06CE869EF23C15"
+			tasks: [{
+				id: "2D81CC3B5EC25BC4"
+				type: "item"
+				item: {
+					id: "mekanism:mekasuit_boots"
+					Count: 1b
+					tag: {
+						HideFlags: 2
+					}
+				}
+			}]
+		}
+		{
+			x: 0.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: ["6D9272A5E61D451F"]
+			id: "0EAE2ED948788A6B"
+			tasks: [{
+				id: "3A3F7796707EA504"
+				type: "item"
+				item: "emcworld:dragon_steel"
+			}]
+		}
+		{
+			x: 0.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: [
+				"0EAE2ED948788A6B"
+				"1825866580F61539"
+			]
+			id: "4FA17032FC60A6FE"
+			tasks: [{
+				id: "5D74F13015DA0AEC"
+				type: "item"
+				item: "projectex:orange_collector"
+			}]
+		}
+		{
+			x: -2.0d
+			y: 6.5d
+			hide_dependency_lines: true
+			dependencies: ["6D9272A5E61D451F"]
+			id: "1825866580F61539"
+			tasks: [{
+				id: "7E4AA59DF9F67ADF"
+				type: "item"
+				item: "emcworld:orange_matter"
+			}]
+		}
+	]
+}

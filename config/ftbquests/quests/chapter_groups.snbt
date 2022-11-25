@@ -1,0 +1,12 @@
+{
+	chapter_groups: [
+		{ id: "35CE8D0AFC937D5D", title: "{chapter.emcworld.first}" }
+		{ id: "253AC67EEE892A90", title: "{chapter.emcworld.adventure}" }
+		{ id: "1BED04361D91412D", title: "{chapter.emcworld.third}" }
+		{ id: "16A68A44AFA4135F", title: "{chapter.emcworld.fourth}" }
+		{ id: "19E8D4A8DD89F202", title: "{chapter.emcworld.fifth}" }
+		{ id: "7E8ECD616F8A4334", title: "{chapter.emcworld.sixth}" }
+		{ id: "45BD8B4A7A7B384D", title: "{chapter.emcworld.eighth}" }
+		{ id: "082C00FA3A553D98", title: "{chapter.emcworld.off_quest}" }
+	]
+}

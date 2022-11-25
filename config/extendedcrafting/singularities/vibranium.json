@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.vibranium",
+  "colors": [
+    "1bb188",
+    "1bb188"
+  ],
+  "ingredient": {
+    "item": "allthemodium:vibranium_ingot"
+  }
+}

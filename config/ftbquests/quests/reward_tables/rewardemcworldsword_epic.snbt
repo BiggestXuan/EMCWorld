@@ -1,0 +1,48 @@
+{
+	id: "328228A4A6AE334F"
+	order_index: 2
+	title: "{reward.emcworld.sword_epic}"
+	loot_size: 1
+	rewards: [
+		{
+			item: {
+				id: "emcworld:god_ice_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:god_fire_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:god_nature_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:god_null_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
+	]
+}

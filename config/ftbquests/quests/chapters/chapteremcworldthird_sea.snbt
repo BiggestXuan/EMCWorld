@@ -1,0 +1,199 @@
+{
+	id: "50EB3FA2E5CB418A"
+	group: "1BED04361D91412D"
+	order_index: 1
+	filename: "chapteremcworldthird_sea"
+	title: "{chapter.emcworld.third_sea}"
+	icon: "atlantis:atlantis_portal"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.third_sea_gointoatlantis}"
+			icon: "atlantis:aquamarine_ore"
+			x: 6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_sea_gointoatlantis_desc}"]
+			dependencies: ["38C977391C9E78C0"]
+			id: "205DDCEF033E892C"
+			tasks: [{
+				id: "38FC8A68FF7F8148"
+				type: "dimension"
+				dimension: "atlantis:atlantis"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_killelderguardian}"
+			icon: {
+				id: "atlantis:sword_aquamarine"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_sea_killelderguardian_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "38C977391C9E78C0"
+			tasks: [{
+				id: "7AF0823E6BD9E685"
+				type: "kill"
+				icon: "minecraft:elder_guardian_spawn_egg"
+				entity: "minecraft:elder_guardian"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_aquamarinegem}"
+			x: 12.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_sea_aquamarinegem_desc}"]
+			dependencies: ["205DDCEF033E892C"]
+			id: "767E18633CE0A377"
+			tasks: [{
+				id: "6A174212CC62335D"
+				type: "item"
+				item: "atlantis:aquamarine_gem"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_dropofatlantis}"
+			x: 15.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_sea_dropofatlantis_desc}"]
+			dependencies: [
+				"767E18633CE0A377"
+				"3CE978AB8E60E3F4"
+				"37D88D1A25709223"
+			]
+			id: "71B5A4DF8F09FD8B"
+			tasks: [{
+				id: "60B19A32F0285309"
+				type: "item"
+				item: "atlantis:drop_of_atlantis"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_oceanlantern}"
+			icon: "atlantis:ocean_lantern"
+			x: 6.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_sea_oceanlantern_desc}"]
+			dependencies: ["6D2DAAEA72AF0A33"]
+			id: "6722CB9795761861"
+			tasks: [
+				{
+					id: "2398902746691232"
+					type: "item"
+					item: "atlantis:ocean_lantern"
+				}
+				{
+					id: "789762624041E6E5"
+					type: "item"
+					item: "minecraft:sea_lantern"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_sea_oceanstone}"
+			x: 6.0d
+			y: -3.0d
+			description: ["{quest.emcworld.third_sea_oceanstone_desc}"]
+			dependencies: ["12067D6C368347DD"]
+			id: "3A5CFB6778979CD1"
+			tasks: [{
+				id: "4A40BA038199EAB5"
+				type: "item"
+				item: "atlantis:ocean_stone"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_atlanteancrystal}"
+			x: 15.0d
+			y: -3.0d
+			description: ["{quest.emcworld.third_sea_atlanteancrystal_desc}"]
+			dependencies: ["3A5CFB6778979CD1"]
+			id: "3CE978AB8E60E3F4"
+			tasks: [{
+				id: "424A4721F57CD2F5"
+				type: "item"
+				item: "atlantis:atlantean_crystal"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_pcrystals}"
+			x: 0.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_sea_pcrystals_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "6D2DAAEA72AF0A33"
+			tasks: [{
+				id: "7F6FAD8D2DAF7D0C"
+				type: "item"
+				item: "minecraft:prismarine_crystals"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_atlanteancore}"
+			x: 12.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_sea_atlanteancore_desc}"]
+			dependencies: ["6722CB9795761861"]
+			id: "37D88D1A25709223"
+			tasks: [{
+				id: "031B7CBEB16EDB83"
+				type: "item"
+				item: "atlantis:atlantean_core"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_pshard}"
+			x: 0.0d
+			y: -3.0d
+			description: ["{quest.emcworld.third_sea_pshard_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "12067D6C368347DD"
+			tasks: [{
+				id: "3791FF3DCF58F5EC"
+				type: "item"
+				item: "minecraft:prismarine_shard"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_orbofatlantis}"
+			x: 18.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_sea_orbofatlantis_desc}"]
+			dependencies: [
+				"3CE978AB8E60E3F4"
+				"137F3233E682ED44"
+				"71B5A4DF8F09FD8B"
+			]
+			size: 1.5d
+			id: "0D798CA0677DB2ED"
+			tasks: [{
+				id: "6A10C6BB4B9A4536"
+				type: "item"
+				item: "atlantis:orb_of_atlantis"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_sea_coldingot}"
+			x: 21.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_sea_coldingot_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "137F3233E682ED44"
+			tasks: [{
+				id: "6A2FA0836E24AD55"
+				type: "item"
+				item: "emcworld:cold_ingot"
+			}]
+		}
+	]
+}

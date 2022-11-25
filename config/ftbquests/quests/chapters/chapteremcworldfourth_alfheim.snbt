@@ -1,0 +1,89 @@
+{
+	id: "0E9E34437F4C9DA4"
+	group: "16A68A44AFA4135F"
+	order_index: 1
+	filename: "chapteremcworldfourth_alfheim"
+	title: "{chapter.emcworld.fourth_alfheim}"
+	icon: "botania:natura_pylon"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fourth_alfheim_kvasirmead}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_alfheim_kvasirmead_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "64351B2DFAC1463D"
+			tasks: [{
+				id: "2592C8CC6C248946"
+				type: "item"
+				item: "mythicbotany:kvasir_mead"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_alfheim_gointoalfheim}"
+			x: 6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_alfheim_gointoalfheim_desc}"]
+			dependencies: ["64351B2DFAC1463D"]
+			id: "317E3B9819B7A577"
+			tasks: [{
+				id: "4B899658B5C85B0A"
+				type: "dimension"
+				dimension: "mythicbotany:alfheim"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_alfheim_killer}"
+			x: 12.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_alfheim_killer_desc}"]
+			dependencies: ["317E3B9819B7A577"]
+			id: "78D207C037A69E07"
+			tasks: [{
+				id: "28EEEDB12735414C"
+				type: "kill"
+				entity: "mythicbotany:alf_pixie"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_alfheim_curesdandwariring}"
+			x: 18.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_alfheim_curesdandwariring_desc}"]
+			dependencies: ["78D207C037A69E07"]
+			id: "0F6170DE39819E0F"
+			tasks: [{
+				id: "3980657E7CCDEB4A"
+				type: "item"
+				item: {
+					id: "mythicbotany:cursed_andwari_ring"
+					Count: 1b
+					tag: { }
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_alfheim_andwariring}"
+			x: 24.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_alfheim_andwariring_desc}"]
+			dependencies: ["0F6170DE39819E0F"]
+			id: "62B58110A85F9738"
+			tasks: [{
+				id: "65AB05D2514CADFF"
+				type: "item"
+				item: {
+					id: "mythicbotany:andwari_ring"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+	]
+}

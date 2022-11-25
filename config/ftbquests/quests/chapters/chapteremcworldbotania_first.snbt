@@ -1,0 +1,402 @@
+{
+	id: "38BB127C751619DF"
+	group: "35CE8D0AFC937D5D"
+	order_index: 2
+	filename: "chapteremcworldbotania_first"
+	title: "{chapter.emcworld.botania_first}"
+	icon: "botania:livingrock"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.marble}"
+			icon: "astralsorcery:marble_raw"
+			x: 0.0d
+			y: 1.5d
+			id: "68E2A629105C64AB"
+			tasks: [{
+				id: "27522D1C8D9ACE2F"
+				type: "item"
+				title: "{tag.emcworld.marble}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "forge:marble"
+					}
+				}
+				count: 16L
+			}]
+			rewards: [
+				{
+					id: "1E736D5FB78B35F8"
+					type: "item"
+					item: "astralsorcery:marble_raw"
+					count: 64
+				}
+				{
+					id: "23C45A9A14F0297A"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.apothecary}"
+			icon: "botania:pure_daisy"
+			x: 0.0d
+			y: 4.5d
+			id: "1D72B69ED1D699FC"
+			tasks: [
+				{
+					id: "3F3A012200E88BBE"
+					type: "item"
+					item: "botania:apothecary_default"
+				}
+				{
+					id: "469DA8CBEC6EB5A5"
+					type: "item"
+					item: "botania:pure_daisy"
+				}
+			]
+			rewards: [
+				{
+					id: "155D7CA27B8F4C58"
+					type: "item"
+					item: "minecraft:iron_ingot"
+					count: 32
+				}
+				{
+					id: "42810960A503BACB"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.living_rock}"
+			x: 3.0d
+			y: 3.0d
+			dependencies: [
+				"68E2A629105C64AB"
+				"1D72B69ED1D699FC"
+			]
+			id: "00CDB0F91998DB06"
+			tasks: [{
+				id: "24A333899EA76FD4"
+				type: "item"
+				title: "{tag.emcworld.living_rock}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "botania:livingrock"
+					}
+				}
+				count: 16L
+			}]
+			rewards: [
+				{
+					id: "1F39E982BC12AE9B"
+					type: "item"
+					item: "botania:livingrock"
+					count: 24
+				}
+				{
+					id: "7DD62CA23AEA8691"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.rune_altar}"
+			x: 9.0d
+			y: 3.0d
+			dependencies: [
+				"21A1AAFF859F6E8B"
+				"4A4B2528D086B685"
+			]
+			id: "1CF6F53A046A2FF9"
+			tasks: [{
+				id: "13E8CAB27ECFC868"
+				type: "item"
+				item: "botania:runic_altar"
+			}]
+			rewards: [
+				{
+					id: "7262A71ED18D9E3F"
+					type: "item"
+					item: "botania:mana_pearl"
+					count: 4
+				}
+				{
+					id: "6DF0B45905638634"
+					type: "item"
+					item: "botania:mana_diamond"
+					count: 4
+				}
+				{
+					id: "746134A610D9B2F5"
+					type: "item"
+					item: "botania:manasteel_ingot"
+					count: 8
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.mana_steel}"
+			x: 6.0d
+			y: 3.0d
+			dependencies: [
+				"5FB9B9EB82C25DDF"
+				"00CDB0F91998DB06"
+				"4C7001754FEFF24C"
+			]
+			id: "28EB515D75946D57"
+			tasks: [{
+				id: "4850DD99412AD6E1"
+				type: "item"
+				item: "botania:manasteel_ingot"
+				count: 8L
+			}]
+			rewards: [
+				{
+					id: "21B6DE9FAEC3B547"
+					type: "item"
+					item: "botania:manasteel_ingot"
+					count: 8
+				}
+				{
+					id: "3BE04AB28865FB21"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.mana_pearl}"
+			x: 6.0d
+			y: 1.5d
+			dependencies: ["00CDB0F91998DB06"]
+			id: "21A1AAFF859F6E8B"
+			tasks: [{
+				id: "00439D7D3E59E618"
+				type: "item"
+				item: "botania:mana_pearl"
+				count: 4L
+			}]
+			rewards: [
+				{
+					id: "5FD41BDBCC9979A4"
+					type: "item"
+					item: "botania:mana_pearl"
+					count: 4
+				}
+				{
+					id: "00509E05260BC6E1"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.mana_diamond}"
+			x: 6.0d
+			y: 4.5d
+			dependencies: ["00CDB0F91998DB06"]
+			id: "4A4B2528D086B685"
+			tasks: [{
+				id: "27A7741EFD316F90"
+				type: "item"
+				item: "botania:mana_diamond"
+				count: 4L
+			}]
+			rewards: [
+				{
+					id: "7EF5E98F6E68BCB5"
+					type: "item"
+					item: "botania:mana_diamond"
+					count: 4
+				}
+				{
+					id: "1A59C1B650587220"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.terra_steel}"
+			x: 15.0d
+			y: 3.0d
+			dependencies: ["46AFD5E8DD96DB45"]
+			id: "1F441D7C1DA23A83"
+			tasks: [{
+				id: "6F8B4C5F0E3FF148"
+				type: "item"
+				item: "botania:terrasteel_ingot"
+			}]
+			rewards: [
+				{
+					id: "0F84AAE3B79FD7B5"
+					type: "item"
+					item: "botania:mana_diamond"
+					count: 8
+				}
+				{
+					id: "58737673F5CFEEAB"
+					type: "item"
+					item: "botania:mana_pearl"
+					count: 8
+				}
+				{
+					id: "14E3A125089801C2"
+					type: "item"
+					item: "botania:manasteel_ingot"
+					count: 16
+				}
+				{
+					id: "26CE1DE6DE718489"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.season_runes}"
+			x: 12.0d
+			y: 3.0d
+			dependencies: ["1CF6F53A046A2FF9"]
+			dependency_requirement: "one_completed"
+			id: "46AFD5E8DD96DB45"
+			tasks: [
+				{
+					id: "035F1D6E11C92AF9"
+					type: "item"
+					item: "botania:rune_spring"
+				}
+				{
+					id: "3B1A81BBAE3F8199"
+					type: "item"
+					item: "botania:rune_summer"
+				}
+				{
+					id: "3AC915FB58826E19"
+					type: "item"
+					item: "botania:rune_autumn"
+				}
+				{
+					id: "4B190B7E13DE7A45"
+					type: "item"
+					item: "botania:rune_winter"
+				}
+			]
+			rewards: [
+				{
+					id: "299549954D8278D1"
+					type: "item"
+					item: "botania:mana_diamond"
+					count: 8
+				}
+				{
+					id: "6BFB38C729168460"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.alfheim_portal}"
+			x: 18.0d
+			y: 3.0d
+			dependencies: ["1F441D7C1DA23A83"]
+			id: "2E9E7BB2F3437A33"
+			tasks: [{
+				id: "563DA26724EFCFFA"
+				type: "item"
+				item: "botania:alfheim_portal"
+			}]
+			rewards: [
+				{
+					id: "2F83CA4AAF7F2838"
+					type: "item"
+					item: "botania:natura_pylon"
+					count: 2
+				}
+				{
+					id: "4B5CCAFCBADF1120"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.elementium_items}"
+			x: 21.0d
+			y: 3.0d
+			dependencies: ["2E9E7BB2F3437A33"]
+			id: "34F74EF8EEC62123"
+			tasks: [
+				{
+					id: "49B1788436B50B46"
+					type: "item"
+					item: "botania:elementium_ingot"
+				}
+				{
+					id: "4F80C39B26D47905"
+					type: "item"
+					item: "botania:pixie_dust"
+				}
+				{
+					id: "3C3D6CB1E903BF8D"
+					type: "item"
+					item: "botania:dragonstone"
+				}
+			]
+			rewards: [
+				{
+					id: "41B426940F2EB82F"
+					type: "item"
+					item: "botania:elementium_ingot"
+					count: 8
+				}
+				{
+					id: "433D7F7B2FA20EEE"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+	]
+}

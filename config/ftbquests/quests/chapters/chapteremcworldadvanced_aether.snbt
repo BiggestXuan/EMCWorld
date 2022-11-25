@@ -1,0 +1,317 @@
+{
+	id: "23692E740BBCE4C6"
+	group: "253AC67EEE892A90"
+	order_index: 1
+	filename: "chapteremcworldadvanced_aether"
+	title: "{chapter.emcworld.aether}"
+	icon: "minecraft:glowstone"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.aether_medal}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: [
+				"62266230108AFC60"
+				"00A849977A334ACC"
+				"2A71355FAB6BF383"
+				"7B61E9B1BCA2C55B"
+				"6C836DCACC0A62E1"
+				"31BA7ED58C4D0D05"
+				"40FB93DCCB8000EF"
+				"4573CAF3CFE818D7"
+				"4E631F2DDBA59536"
+			]
+			size: 2.5d
+			id: "5EC939AD3698F249"
+			tasks: [{
+				id: "77B9CC353EDC6959"
+				type: "item"
+				item: "aether:victory_medal"
+			}]
+			rewards: [
+				{
+					id: "70DB905EF41E2D59"
+					type: "item"
+					item: "aether:victory_medal"
+				}
+				{
+					id: "3E60A3BB4B604D70"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.stone_shard}"
+			x: 0.0d
+			y: -4.5d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "62266230108AFC60"
+			tasks: [{
+				id: "2CCDDAF6D30B7C34"
+				type: "item"
+				item: "emcworld:stone_shard"
+			}]
+			rewards: [
+				{
+					id: "1E34E94027915BFF"
+					type: "item"
+					item: "emcworld:stone_shard"
+					count: 2
+				}
+				{
+					id: "4F5D353CE52DF4C0"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.hellfire_stone}"
+			x: 3.5d
+			y: -4.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "00A849977A334ACC"
+			tasks: [{
+				id: "054E18C01ADFE162"
+				type: "item"
+				item: "aether:hellfire_stone"
+			}]
+			rewards: [
+				{
+					id: "1B2A8BEB116EB82F"
+					type: "item"
+					item: "minecraft:blaze_rod"
+					count: 8
+				}
+				{
+					id: "50855C96100870F8"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.sun_ingot}"
+			x: 5.0d
+			y: -1.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "2A71355FAB6BF383"
+			tasks: [{
+				id: "142F9B6E36F0BDA7"
+				type: "item"
+				item: "emcworld:sunlit_ingot"
+			}]
+			rewards: [
+				{
+					id: "22403B012405F953"
+					type: "item"
+					item: "emcworld:sunlit_ingot"
+					count: 4
+				}
+				{
+					id: "16E5F8E0CDFAFE9D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.golden_amber}"
+			x: 5.0d
+			y: 2.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "7B61E9B1BCA2C55B"
+			tasks: [{
+				id: "3BCAE4895DBB4119"
+				type: "item"
+				item: "aether:golden_amber"
+			}]
+			rewards: [
+				{
+					id: "11FE37A9197D9E16"
+					type: "item"
+					item: "minecraft:gold_block"
+					count: 4
+				}
+				{
+					id: "1E67D504D595E5F7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.aether_shard}"
+			x: 3.5d
+			y: 4.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "6C836DCACC0A62E1"
+			tasks: [{
+				id: "6DFF25143A538200"
+				type: "item"
+				item: "aether:ambrosium_shard"
+			}]
+			rewards: [
+				{
+					id: "09F3A966EE1CFC95"
+					type: "item"
+					item: "aether:ambrosium_shard"
+					count: 16
+				}
+				{
+					id: "5866443A261C7D47"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.purple_stone}"
+			x: 0.0d
+			y: 4.5d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "31BA7ED58C4D0D05"
+			tasks: [{
+				id: "70BEDE76512008DD"
+				type: "item"
+				item: "aether:zanite_gemstone"
+			}]
+			rewards: [
+				{
+					id: "32BDEBB24EA94E47"
+					type: "item"
+					item: "aether:zanite_gemstone"
+					count: 8
+				}
+				{
+					id: "670B8A34E631BDB5"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.glowstone}"
+			x: -5.0d
+			y: 0.0d
+			dependencies: ["0EBD670985A527E1"]
+			hide: true
+			size: 2.5d
+			id: "40FB93DCCB8000EF"
+			tasks: [{
+				id: "6482D998EA3ECACF"
+				type: "item"
+				item: "minecraft:glowstone"
+			}]
+			rewards: [
+				{
+					id: "3A35034D16095F5A"
+					type: "item"
+					item: "minecraft:glowstone"
+					count: 4
+				}
+				{
+					id: "707296229177DCDE"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.gravitite}"
+			x: -3.0d
+			y: 3.5d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "4573CAF3CFE818D7"
+			tasks: [{
+				id: "30674EF902C8BCAE"
+				type: "item"
+				item: "aether:enchanted_gravitite"
+			}]
+			rewards: [
+				{
+					id: "2171CECF134ADB68"
+					type: "item"
+					item: "aether:enchanted_gravitite"
+				}
+				{
+					id: "59A029122B571588"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.cold_parachute}"
+			x: -3.0d
+			y: -3.5d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "4E631F2DDBA59536"
+			tasks: [{
+				id: "1C773F38EEA551C8"
+				type: "item"
+				item: {
+					id: "aether:cold_parachute"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "32BD751AEB590809"
+					type: "item"
+					item: "aether:cold_aercloud"
+					count: 16
+				}
+				{
+					id: "5CBFE660F27514F9"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+	]
+}

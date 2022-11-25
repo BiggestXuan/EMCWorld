@@ -1,0 +1,680 @@
+{
+	id: "593A7B1C1B396D27"
+	group: "253AC67EEE892A90"
+	order_index: 0
+	filename: "chapteremcworldadvanced_magic"
+	title: "{chapter.emcworld.advanced_magic}"
+	icon: "bloodmagic:bloodstonebrick"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.blood_altar}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "22478874179B11A4"
+			tasks: [{
+				id: "71273526DFFBB5EC"
+				type: "item"
+				item: "bloodmagic:altar"
+			}]
+			rewards: [
+				{
+					id: "2C7CDBC4D6353F8B"
+					type: "item"
+					item: "bloodmagic:slate_ampoule"
+					count: 20
+				}
+				{
+					id: "36606222FCDD7EED"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.soul_snare}"
+			x: 3.0d
+			y: 3.0d
+			dependencies: ["22BFEF0B87F267F9"]
+			id: "5DC643DFE2FCA073"
+			tasks: [{
+				id: "1DC1370FB8B2E8A9"
+				type: "item"
+				item: "bloodmagic:soulsnare"
+				count: 8L
+			}]
+			rewards: [
+				{
+					id: "711CE88CA0E15723"
+					type: "item"
+					item: "bloodmagic:soulsnare"
+					count: 8
+				}
+				{
+					id: "4F2BD1471F4C3D38"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.dagger}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["22478874179B11A4"]
+			id: "22BFEF0B87F267F9"
+			tasks: [{
+				id: "538681D7C4361D56"
+				type: "item"
+				item: {
+					id: "bloodmagic:sacrificialdagger"
+					Count: 1b
+					tag: {
+						sacrifice: 0b
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "3BAA60A68AD1678A"
+					type: "item"
+					item: "bloodmagic:slate_ampoule"
+					count: 20
+				}
+				{
+					id: "04B22CE6E4F58B48"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.blood_orb2}"
+			x: 6.0d
+			y: -3.0d
+			dependencies: ["69C9DAD0D4E8352F"]
+			id: "287980228D5DD3BF"
+			tasks: [{
+				id: "502D22D77E7C3CEC"
+				type: "item"
+				item: "bloodmagic:apprenticebloodorb"
+			}]
+			rewards: [
+				{
+					id: "31E5D868CE1F7795"
+					type: "item"
+					item: "bloodmagic:blankslate"
+					count: 8
+				}
+				{
+					id: "60BBF5D8E1637B65"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.blood_orb1}"
+			x: 3.0d
+			y: -3.0d
+			dependencies: ["22BFEF0B87F267F9"]
+			id: "69C9DAD0D4E8352F"
+			tasks: [{
+				id: "6D46BFE38A636EB6"
+				type: "item"
+				item: "bloodmagic:weakbloodorb"
+			}]
+			rewards: [
+				{
+					id: "7212187431172D23"
+					type: "item"
+					item: "bloodmagic:slate_ampoule"
+					count: 20
+				}
+				{
+					id: "42D8A544E7450899"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.blood_orb3}"
+			x: 9.0d
+			y: -3.0d
+			dependencies: ["287980228D5DD3BF"]
+			id: "066FEF82719DFADA"
+			tasks: [{
+				id: "2C3D85564FF5CA5B"
+				type: "item"
+				item: "bloodmagic:magicianbloodorb"
+			}]
+			rewards: [
+				{
+					id: "331BCC8D2B56B9EF"
+					type: "item"
+					item: "bloodmagic:reinforcedslate"
+					count: 8
+				}
+				{
+					id: "0F0C4F010F492036"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.blood_orb4}"
+			x: 12.0d
+			y: -3.0d
+			dependencies: ["066FEF82719DFADA"]
+			dependency_requirement: "one_started"
+			id: "114C17B8ED86CDC2"
+			tasks: [{
+				id: "7B9FABED04E2BE08"
+				type: "item"
+				item: "bloodmagic:masterbloodorb"
+			}]
+			rewards: [
+				{
+					id: "6BC39DEAD45D49EE"
+					type: "item"
+					item: "bloodmagic:infusedslate"
+					count: 8
+				}
+				{
+					id: "6675F9F897EC0970"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.slate1}"
+			x: 6.0d
+			y: 0.0d
+			dependencies: ["22BFEF0B87F267F9"]
+			id: "3A0A953F270D7828"
+			tasks: [{
+				id: "29716BD9FBF0B7D1"
+				type: "item"
+				item: "bloodmagic:blankslate"
+				count: 8L
+			}]
+			rewards: [
+				{
+					id: "4464B84CFF3C550F"
+					type: "item"
+					item: "bloodmagic:blankslate"
+					count: 4
+				}
+				{
+					id: "0335C55F233F5704"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.slate2}"
+			x: 9.0d
+			y: 0.0d
+			dependencies: ["3A0A953F270D7828"]
+			id: "4DDFED6C69C6F9EB"
+			tasks: [{
+				id: "6BF387F7AAEF9FEA"
+				type: "item"
+				item: "bloodmagic:reinforcedslate"
+			}]
+			rewards: [
+				{
+					id: "692CD0DD8A566A03"
+					type: "item"
+					item: "bloodmagic:reinforcedslate"
+					count: 4
+				}
+				{
+					id: "3BF9DC1C793552F5"
+					type: "custom"
+					title: "{reward.emcworld.sea_lantern}"
+					icon: "minecraft:sea_lantern"
+					tags: ["sea_lantern"]
+				}
+				{
+					id: "06E4AC8E0266B3AA"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.slate3}"
+			x: 12.0d
+			y: 0.0d
+			description: ["{quest.emcworld.slate3.desc}"]
+			dependencies: ["4DDFED6C69C6F9EB"]
+			id: "2080D9F91A46618F"
+			tasks: [{
+				id: "1D591F6B99FBB0E8"
+				type: "item"
+				item: "bloodmagic:infusedslate"
+				count: 8L
+			}]
+			rewards: [
+				{
+					id: "319C7E005C822F0D"
+					type: "item"
+					item: "bloodmagic:infusedslate"
+					count: 4
+				}
+				{
+					id: "42722229BF224147"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.slate4}"
+			x: 15.0d
+			y: 0.0d
+			dependencies: ["2080D9F91A46618F"]
+			id: "5135D2C4039209B7"
+			tasks: [{
+				id: "51E6F1A166C61A82"
+				type: "item"
+				item: "bloodmagic:demonslate"
+				count: 8L
+			}]
+			rewards: [
+				{
+					id: "33A0251AA11DA7D6"
+					type: "item"
+					item: "bloodmagic:demonslate"
+					count: 4
+				}
+				{
+					id: "73B0D4BDB167A6A5"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.slate5}"
+			x: 18.0d
+			y: 0.0d
+			dependencies: ["5135D2C4039209B7"]
+			id: "79739610F8466FEC"
+			tasks: [{
+				id: "60D2B1D1810069D9"
+				type: "item"
+				item: "bloodmagic:etherealslate"
+				count: 8L
+			}]
+			rewards: [
+				{
+					id: "0A893302CE373D8C"
+					type: "item"
+					item: "bloodmagic:etherealslate"
+					count: 4
+				}
+				{
+					id: "4E150D4E1F3923A2"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.blank_rune}"
+			x: 6.0d
+			y: 3.0d
+			dependencies: ["3A0A953F270D7828"]
+			id: "2A8C84D39B6481CC"
+			tasks: [{
+				id: "0C9D215E6CBFB7CB"
+				type: "item"
+				item: "bloodmagic:blankrune"
+			}]
+			rewards: [
+				{
+					id: "099ABF7E2010C206"
+					type: "item"
+					item: "bloodmagic:blankrune"
+					count: 32
+				}
+				{
+					id: "14502851587206F3"
+					type: "random"
+					title: "{sheet.emcworld.bloodmagic}"
+					icon: "bloodmagic:chargingrune"
+					table_id: 6186764270916390356L
+				}
+				{
+					id: "5936554F54F58E81"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.element_tool}"
+			x: 6.0d
+			y: 6.0d
+			dependencies: ["2A8C84D39B6481CC"]
+			id: "7AD23D5858C88146"
+			tasks: [
+				{
+					id: "2B4BED1FD67F517F"
+					type: "item"
+					item: {
+						id: "bloodmagic:airscribetool"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "1163B1504845DD2B"
+					type: "item"
+					item: {
+						id: "bloodmagic:waterscribetool"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "345E821EE0625FA7"
+					type: "item"
+					item: {
+						id: "bloodmagic:firescribetool"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "1A01394969B5D2DD"
+					type: "item"
+					item: {
+						id: "bloodmagic:earthscribetool"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+			rewards: [
+				{
+					id: "34C93328F9E7207E"
+					type: "item"
+					item: "bloodmagic:blankslate"
+					count: 16
+				}
+				{
+					id: "51154090BFECBBFD"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.ritual_stone}"
+			x: 9.0d
+			y: 3.0d
+			dependencies: ["4DDFED6C69C6F9EB"]
+			id: "4CCB189C7CA9947C"
+			tasks: [
+				{
+					id: "26DACF5D323C8190"
+					type: "item"
+					item: "bloodmagic:ritualstone"
+					count: 32L
+				}
+				{
+					id: "2A53252286428D68"
+					type: "item"
+					item: "bloodmagic:masterritualstone"
+				}
+			]
+			rewards: [
+				{
+					id: "7CC71C40B755B4D1"
+					type: "item"
+					item: "bloodmagic:ritualstone"
+					count: 32
+				}
+				{
+					id: "7A15696AAEA5A3C8"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.diviner}"
+			x: 9.0d
+			y: 6.0d
+			dependencies: ["7AD23D5858C88146"]
+			id: "728A62D3AFC3B4A2"
+			tasks: [
+				{
+					id: "2E8FAD143DE0A327"
+					type: "item"
+					item: {
+						id: "bloodmagic:ritualdiviner"
+						Count: 1b
+						tag: { }
+					}
+				}
+				{
+					id: "07D890C323789058"
+					type: "item"
+					item: "bloodmagic:activationcrystalweak"
+				}
+			]
+			rewards: [
+				{
+					id: "00E76A13C692206F"
+					type: "random"
+					title: "{sheet.emcworld.bloodmagic}"
+					auto: "disabled"
+					table_id: 6186764270916390356L
+				}
+				{
+					id: "64C1D875DFCE0FF1"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.blood_dungeon}"
+			icon: "bloodmagic:strong_tau"
+			x: 12.0d
+			y: 4.5d
+			dependencies: [
+				"4CCB189C7CA9947C"
+				"728A62D3AFC3B4A2"
+			]
+			id: "7441F58A861B916B"
+			tasks: [
+				{
+					id: "30C73DBFD6408B3C"
+					type: "item"
+					item: "bloodmagic:strong_tau"
+				}
+				{
+					id: "1743556269622EA1"
+					type: "item"
+					item: "emcworld:blood_eye"
+				}
+			]
+			rewards: [
+				{
+					id: "35765CDA4FFC103D"
+					type: "item"
+					item: "bloodmagic:weakbloodshard"
+					count: 2
+				}
+				{
+					id: "208830F6CD687B56"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.update_core}"
+			x: 15.0d
+			y: 4.5d
+			dependencies: ["7441F58A861B916B"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			id: "0EBD670985A527E1"
+			tasks: [{
+				id: "3ABFC7289C30204B"
+				type: "item"
+				item: "emcworld:control_update_core"
+			}]
+			rewards: [{
+				id: "51BDA0E598FB92CC"
+				type: "item"
+				item: "emcworld:big_emc_gem"
+				count: 64
+			}]
+		}
+		{
+			title: "{quest.emcworld.gaia_pylon}"
+			x: 18.0d
+			y: 4.5d
+			dependencies: ["0EBD670985A527E1"]
+			id: "1C11B12FA094C5B3"
+			tasks: [{
+				id: "2E887F5536CF2826"
+				type: "item"
+				item: "botania:gaia_pylon"
+			}]
+			rewards: [
+				{
+					id: "4DDD8DABCDCE751B"
+					type: "item"
+					item: "botania:terrasteel_ingot"
+				}
+				{
+					id: "320EE4D3731A1E4B"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.gaia_ingot}"
+			x: 21.0d
+			y: 4.5d
+			dependencies: ["1C11B12FA094C5B3"]
+			id: "1B773191B21755EF"
+			tasks: [{
+				id: "3B3F9003DE2B3C82"
+				type: "item"
+				item: "botania:gaia_ingot"
+			}]
+			rewards: [
+				{
+					id: "6C1BFD4426606FD9"
+					type: "item"
+					item: "botania:life_essence"
+					count: 4
+				}
+				{
+					id: "6BED88469841BADD"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 24.0d
+			y: 4.5d
+			dependencies: ["1B773191B21755EF"]
+			id: "429D581AECE68C56"
+			tasks: [{
+				id: "0F242A5EF88EA318"
+				type: "item"
+				item: "projectex:dark_collector"
+			}]
+			rewards: [{
+				id: "348F10A58BDEC91E"
+				type: "custom"
+				title: "{quest.emcworld_stage_two}"
+				icon: "botania:pinkinator"
+				auto: "enabled"
+			}]
+		}
+	]
+}

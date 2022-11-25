@@ -1,0 +1,175 @@
+{
+	id: "58EC67EDB91D0D07"
+	group: "1BED04361D91412D"
+	order_index: 0
+	filename: "chapteremcworldthird_dream"
+	title: "{chapter.emcworld.third_dream}"
+	icon: "good_nights_sleep:strange_bed"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.third_dream_bed}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_dream_bed_desc}"]
+			dependencies: [
+				"27931BEB17395770"
+				"4CB97304534838B1"
+			]
+			dependency_requirement: "one_completed"
+			id: "7649C3CB5B894566"
+			tasks: [{
+				id: "06A7AE89F8C47AC0"
+				type: "item"
+				item: "good_nights_sleep:strange_bed"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_HM}"
+			x: -1.5d
+			y: -1.5d
+			description: ["{quest.emcworld.third_dream_HM_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "27931BEB17395770"
+			tasks: [{
+				id: "3C43895A50CA92B0"
+				type: "item"
+				item: "good_nights_sleep:hope_mushroom"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_DM}"
+			x: -1.5d
+			y: 1.5d
+			description: ["{quest.emcworld.third_dream_DM_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "4CB97304534838B1"
+			tasks: [{
+				id: "34D2A0366EC13C58"
+				type: "item"
+				item: "good_nights_sleep:despair_mushroom"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_gointogooddream}"
+			icon: "good_nights_sleep:dream_grass_block"
+			x: 1.5d
+			y: -1.5d
+			description: ["{quest.emcworld.third_dream_gointogooddream_desc}"]
+			dependencies: ["7649C3CB5B894566"]
+			id: "2C0AFC7F844451F7"
+			tasks: [{
+				id: "7F173C8ED2015BAE"
+				type: "dimension"
+				dimension: "good_nights_sleep:good_dream"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_gointobaddream}"
+			icon: "good_nights_sleep:nightmare_grass_block"
+			x: 1.5d
+			y: 1.5d
+			description: ["{quest.emcworld.third_dream_gointobaddream_desc}"]
+			dependencies: ["7649C3CB5B894566"]
+			id: "449CD2585008B6E9"
+			tasks: [{
+				id: "3EABA9648AB70C8D"
+				type: "dimension"
+				dimension: "good_nights_sleep:nightmare"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_gooddreammineral}"
+			x: 4.5d
+			y: -1.5d
+			description: ["{quest.emcworld.third_dream_gooddreammineral_desc}"]
+			dependencies: ["2C0AFC7F844451F7"]
+			id: "13561ACB454E37AD"
+			tasks: [
+				{
+					id: "5E31E4A876DAD3FB"
+					type: "item"
+					item: "good_nights_sleep:candy"
+				}
+				{
+					id: "2BF5417A5E2B463F"
+					type: "item"
+					item: "good_nights_sleep:rainbow_ingot"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_dream_baddreammineral}"
+			x: 4.5d
+			y: 1.5d
+			description: ["{quest.emcworld.third_dream_baddreammineral_desc}"]
+			dependencies: ["449CD2585008B6E9"]
+			dependency_requirement: "all_started"
+			id: "68DF23C0087E2DD0"
+			tasks: [
+				{
+					id: "445EE0BE08F18063"
+					type: "item"
+					item: "good_nights_sleep:necrum"
+				}
+				{
+					id: "5621C345D296B4CE"
+					type: "item"
+					item: "good_nights_sleep:zitrite_ingot"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_dream_gem}"
+			x: 6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_dream_gem_desc}"]
+			dependencies: [
+				"13561ACB454E37AD"
+				"68DF23C0087E2DD0"
+			]
+			id: "1C9C43B88B555B32"
+			tasks: [
+				{
+					id: "3878F4F696FC929A"
+					type: "item"
+					item: "good_nights_sleep:negatite_gem"
+				}
+				{
+					id: "774E185BE5630A0F"
+					type: "item"
+					item: "good_nights_sleep:positite_gem"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_dream_goodbed}"
+			x: 7.5d
+			y: -1.5d
+			description: ["{quest.emcworld.third_dream_goodbed_desc}"]
+			dependencies: ["1C9C43B88B555B32"]
+			id: "7062A6EE0A63D7CA"
+			tasks: [{
+				id: "26ED634809C65CAB"
+				type: "item"
+				item: "good_nights_sleep:luxurious_bed"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_badbed}"
+			x: 7.5d
+			y: 1.5d
+			description: ["{quest.emcworld.third_dream_badbed_desc}"]
+			dependencies: ["1C9C43B88B555B32"]
+			id: "7E7E3AADAB8D5990"
+			tasks: [{
+				id: "241FBEF98DFE30D3"
+				type: "item"
+				item: "good_nights_sleep:wretched_bed"
+			}]
+		}
+	]
+}

@@ -1,0 +1,322 @@
+{
+	id: "15F6BB4342BC1074"
+	group: "19E8D4A8DD89F202"
+	order_index: 1
+	filename: "chapteremcworldfifth_hals"
+	title: "{chapter.emcworld.fifth_hell}"
+	icon: "minecraft:netherrack"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fifth_hell_gointohell}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fifth_hell_gointohell_desc}"]
+			dependencies: ["6E9E29BB46ABEEF3"]
+			id: "45950F380D6786BA"
+			tasks: [{
+				id: "352EF8547A10D653"
+				type: "dimension"
+				dimension: "minecraft:the_nether"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_bastionremnant}"
+			x: 9.0d
+			y: -2.5d
+			dependencies: ["45950F380D6786BA"]
+			id: "1F3FF582ADB44DE1"
+			tasks: [{
+				id: "5CFDDC82BAE9828C"
+				type: "advancement"
+				advancement: "minecraft:nether/find_bastion"
+				criterion: ""
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_fortress}"
+			x: -9.0d
+			y: -2.5d
+			dependencies: ["45950F380D6786BA"]
+			id: "31D0B5703388CC36"
+			tasks: [{
+				id: "5720865B652B58C2"
+				type: "advancement"
+				advancement: "minecraft:nether/find_fortress"
+				criterion: ""
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_witherskeleton}"
+			x: -9.0d
+			y: -12.0d
+			dependencies: ["31D0B5703388CC36"]
+			id: "2BAF6757117A56F8"
+			tasks: [{
+				id: "37FCB82875517739"
+				type: "advancement"
+				advancement: "minecraft:nether/get_wither_skull"
+				criterion: ""
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_piglinbrute}"
+			x: 9.0d
+			y: -12.0d
+			dependencies: ["1F3FF582ADB44DE1"]
+			id: "21A754A072746CE7"
+			tasks: [{
+				id: "4EBFB9AA3547B1FD"
+				type: "kill"
+				icon: {
+					id: "minecraft:golden_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "minecraft:piglin_brute"
+				value: 10L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_wither}"
+			x: -4.5d
+			y: -9.0d
+			dependencies: ["2BAF6757117A56F8"]
+			id: "00DF69C05A1753D2"
+			tasks: [{
+				id: "24772FB8E5DB6839"
+				type: "kill"
+				icon: "minecraft:nether_star"
+				entity: "minecraft:wither"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_netheritemonstrosity}"
+			x: 4.0d
+			y: -9.0d
+			dependencies: ["21A754A072746CE7"]
+			id: "2E25A0CA957C6576"
+			tasks: [{
+				id: "3FDA7E3E3EC2EAB0"
+				type: "kill"
+				icon: {
+					id: "cataclysm:infernal_forge"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "cataclysm:netherite_monstrosity"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_lgnis}"
+			x: 0.0d
+			y: -15.0d
+			dependencies: [
+				"00DF69C05A1753D2"
+				"2E25A0CA957C6576"
+			]
+			id: "261589C836C5DDDB"
+			tasks: [{
+				id: "1AB3A05A898AF85C"
+				type: "kill"
+				icon: "cataclysm:bulwark_of_the_flame"
+				entity: "cataclysm:ignis"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_nethergobber}"
+			x: -4.5d
+			y: -4.5d
+			description: ["{quest.emcworld.fifth_hell_nethergobber_desc}"]
+			dependencies: ["45950F380D6786BA"]
+			id: "497214ECFFFA9746"
+			tasks: [{
+				id: "6022F0804C1211D1"
+				type: "item"
+				item: "gobber2:gobber2_ingot_nether"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_netherite}"
+			x: 4.5d
+			y: -4.5d
+			description: ["{quest.emcworld.fifth_hell_netherite_desc}"]
+			dependencies: ["45950F380D6786BA"]
+			id: "7E674642480023BA"
+			tasks: [{
+				id: "76ED8BC1FD49E542"
+				type: "item"
+				item: "minecraft:netherite_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_asgardrune}"
+			x: 0.0d
+			y: -9.0d
+			description: ["{quest.emcworld.fifth_hell_asgardrune_desc}"]
+			dependencies: [
+				"497214ECFFFA9746"
+				"7E674642480023BA"
+			]
+			id: "2E693D1C9D1187C5"
+			tasks: [{
+				id: "230F3835BE3259FA"
+				type: "item"
+				item: "mythicbotany:asgard_rune"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_keepingcastle}"
+			x: -6.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fifth_hell_keepingcastle_desc}"]
+			dependencies: ["45950F380D6786BA"]
+			id: "1EC2B9451DA98807"
+			tasks: [{
+				id: "38CBB13255CC9816"
+				type: "observation"
+				icon: "stalwart_dungeons:transient_block_close"
+				timer: 20L
+				observe_type: 0
+				to_observe: "stalwart_dungeons:transient_block_close"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_awfuldungeon}"
+			x: 6.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fifth_hell_awfuldungeon_desc}"]
+			dependencies: ["45950F380D6786BA"]
+			id: "6B3BDA430A0C58D3"
+			tasks: [{
+				id: "2DA39DFE33D1E8C3"
+				type: "observation"
+				icon: "stalwart_dungeons:soul_magma_bricks"
+				timer: 20L
+				observe_type: 0
+				to_observe: "stalwart_dungeons:soul_magma_bricks"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_tungsten}"
+			x: 0.0d
+			y: 4.5d
+			description: ["{quest.emcworld.fifth_hell_tungsten_desc}"]
+			dependencies: [
+				"6B3BDA430A0C58D3"
+				"1EC2B9451DA98807"
+			]
+			id: "41BAC35476425432"
+			tasks: [{
+				id: "24A6ED184912E3F5"
+				type: "item"
+				item: "stalwart_dungeons:tungsten_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_giddyblaze}"
+			icon: {
+				id: "minecraft:netherite_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: -12.0d
+			y: 0.0d
+			dependencies: ["1EC2B9451DA98807"]
+			id: "5B8C92A0364F57D7"
+			tasks: [{
+				id: "26C1EB1D88E75BAE"
+				type: "kill"
+				entity: "stalwart_dungeons:giddy_blaze"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_incompletewither}"
+			icon: {
+				id: "stalwart_dungeons:tungsten_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: 12.0d
+			y: 0.0d
+			dependencies: ["6B3BDA430A0C58D3"]
+			id: "4BEFE5EA8CEBADDA"
+			tasks: [{
+				id: "5A0650F83A0FA024"
+				type: "kill"
+				entity: "stalwart_dungeons:incomplete_wither"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_awfulghast}"
+			x: 12.0d
+			y: -9.0d
+			dependencies: ["4BEFE5EA8CEBADDA"]
+			id: "67649A1A32FE22BD"
+			tasks: [{
+				id: "780F16BBFC0D0D51"
+				type: "kill"
+				icon: {
+					id: "stalwart_dungeons:awful_gun"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "stalwart_dungeons:awful_ghast"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_netherkeeper}"
+			x: -12.0d
+			y: -9.0d
+			dependencies: ["5B8C92A0364F57D7"]
+			id: "3378F188662F54C3"
+			tasks: [{
+				id: "3E74255CC81465D5"
+				type: "kill"
+				icon: {
+					id: "stalwart_dungeons:ancient_fire"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "stalwart_dungeons:nether_keeper"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hell_thekey}"
+			x: 0.0d
+			y: -4.5d
+			shape: "diamond"
+			description: ["{quest.emcworld.fifth_hell_thekey_desc}"]
+			dependencies: ["29ED613D22684793"]
+			hide: true
+			dependency_requirement: "all_started"
+			size: 1.5d
+			id: "6E9E29BB46ABEEF3"
+			tasks: [{
+				id: "292AA37B6CFBE64B"
+				type: "item"
+				item: "minecraft:name_tag"
+			}]
+		}
+	]
+}

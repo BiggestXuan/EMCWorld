@@ -1,0 +1,18 @@
+{
+	id: "55DBCD53550CCDD4"
+	order_index: 0
+	title: "{sheet.emcworld.bloodmagic}"
+	icon: "bloodmagic:chargingrune"
+	loot_size: 1
+	rewards: [
+		{ item: "bloodmagic:speedrune", count: 8, weight: 3 }
+		{ item: "bloodmagic:sacrificerune", count: 8, weight: 2 }
+		{ item: "bloodmagic:selfsacrificerune", count: 8 }
+		{ item: "bloodmagic:dislocationrune", count: 8 }
+		{ item: "bloodmagic:altarcapacityrune", count: 8, weight: 3 }
+		{ item: "bloodmagic:bettercapacityrune", count: 8 }
+		{ item: "bloodmagic:orbcapacityrune", count: 8 }
+		{ item: "bloodmagic:accelerationrune", count: 8 }
+		{ item: "bloodmagic:chargingrune", count: 8 }
+	]
+}

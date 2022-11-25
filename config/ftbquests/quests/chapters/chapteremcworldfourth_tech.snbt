@@ -1,0 +1,225 @@
+{
+	id: "49DC4C04A5B4A2B5"
+	group: "16A68A44AFA4135F"
+	order_index: 4
+	filename: "chapteremcworldfourth_tech"
+	title: "{chapter.emcworld.fourth_tech}"
+	icon: "mekanismgenerators:fusion_reactor_controller"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fourth_tech_fusionreactormaterials}"
+			icon: "mekanismgenerators:fusion_reactor_frame"
+			x: -3.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_tech_fusionreactormaterials_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "7FFC56E0B5C1A635"
+			tasks: [
+				{
+					id: "3D186D02EDAD540D"
+					type: "item"
+					item: "mekanismgenerators:fusion_reactor_frame"
+					count: 60L
+				}
+				{
+					id: "0035CDBAE6541311"
+					type: "item"
+					item: "mekanismgenerators:laser_focus_matrix"
+				}
+				{
+					id: "0F993972D5714215"
+					type: "item"
+					item: "mekanismgenerators:fusion_reactor_controller"
+				}
+				{
+					id: "4A8FBF1BC66858D6"
+					type: "item"
+					item: "mekanismgenerators:fusion_reactor_port"
+					count: 4L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_constructfusionreactor}"
+			icon: "mekanismgenerators:fusion_reactor_controller"
+			x: 4.5d
+			y: 0.0d
+			shape: "gear"
+			description: ["{quest.emcworld.fourth_tech_constructfusionreactor_desc}"]
+			dependencies: [
+				"7FFC56E0B5C1A635"
+				"1718879B8AFA6C10"
+				"1129436C3D5E5B3E"
+				"33C795C83BF78BF5"
+				"11996BCC4E0C8859"
+			]
+			size: 2.0d
+			id: "3CB37FCC7A09D63F"
+			tasks: [{
+				id: "27FCD63ACF76DEBA"
+				type: "checkmark"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_preparhohlraum}"
+			icon: {
+				id: "mekanismgenerators:hohlraum"
+				Count: 1b
+				tag: {
+					mekData: {
+						GasTanks: [{
+							Tank: 0b
+							stored: {
+								gasName: "mekanismgenerators:fusion_fuel"
+								amount: 10L
+							}
+						}]
+					}
+				}
+			}
+			x: 0.0d
+			y: -4.5d
+			description: ["{quest.emcworld.fourth_tech_preparhohlraum_desc}"]
+			dependencies: ["3C940A3BB92F0315"]
+			id: "1718879B8AFA6C10"
+			tasks: [
+				{
+					id: "47E015C79D139094"
+					type: "checkmark"
+				}
+				{
+					id: "335001D332CE61C2"
+					type: "item"
+					item: "mekanism:chemical_infuser"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_hohlraum}"
+			x: 0.0d
+			y: -9.0d
+			description: ["{quest.emcworld.fourth_tech_hohlraum_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "3C940A3BB92F0315"
+			tasks: [{
+				id: "1B705B25E6B443A3"
+				type: "item"
+				item: "mekanismgenerators:hohlraum"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_preparlaser}"
+			icon: "mekanism:laser"
+			x: 4.5d
+			y: -7.5d
+			description: ["{quest.emcworld.fourth_tech_preparlaser_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "1129436C3D5E5B3E"
+			tasks: [
+				{
+					id: "30EDDA9CF5C59408"
+					type: "item"
+					item: "mekanism:laser_amplifier"
+				}
+				{
+					id: "567CA2BEADE07E90"
+					type: "item"
+					item: "mekanism:laser"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_prepartritium}"
+			x: 0.0d
+			y: 4.5d
+			description: ["{quest.emcworld.fourth_tech_prepartritium_desc}"]
+			dependencies: ["0BFCBC26DF165C6C"]
+			id: "33C795C83BF78BF5"
+			tasks: [{
+				id: "3ADBF369201A044C"
+				type: "item"
+				item: "mekanism:solar_neutron_activator"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_preparlithium}"
+			icon: { id: "mekanism:thermal_evaporation_controller", Count: 2b }
+			x: 0.0d
+			y: 10.5d
+			description: ["{quest.emcworld.fourth_tech_preparlithium_dec}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "0BFCBC26DF165C6C"
+			tasks: [
+				{
+					id: "68C6FD2EC1428EB1"
+					type: "item"
+					item: "mekanism:thermal_evaporation_valve"
+					count: 4L
+				}
+				{
+					id: "32682F306DF6BE92"
+					type: "item"
+					item: "mekanism:thermal_evaporation_block"
+					count: 64L
+				}
+				{
+					id: "1281EBE882107FCD"
+					type: "item"
+					item: "mekanism:thermal_evaporation_controller"
+					count: 2L
+				}
+				{
+					id: "6BEA69C90076CADB"
+					type: "item"
+					item: "mekanism:resistive_heater"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_prepardeuterium}"
+			x: 4.5d
+			y: 7.5d
+			description: ["{quest.emcworld.fourth_tech_prepardeuterium_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "11996BCC4E0C8859"
+			tasks: [
+				{
+					id: "3F284F2BBEE7F41F"
+					type: "item"
+					item: "mekanism:electric_pump"
+				}
+				{
+					id: "146C5B740611C9B8"
+					type: "item"
+					item: "mekanism:upgrade_filter"
+				}
+				{
+					id: "416F74A8D9953108"
+					type: "item"
+					item: "mekanism:electrolytic_separator"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fourth_tech_test}"
+			x: 11.5d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_tech_test_desc}"]
+			dependencies: ["3CB37FCC7A09D63F"]
+			optional: true
+			id: "35D9E6B63FA59A90"
+			tasks: [{
+				id: "303E08BC62CC2968"
+				type: "forge_energy"
+				value: 1000000000000L
+			}]
+		}
+	]
+}

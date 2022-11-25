@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.clock",
+  "colors": [
+    "bfb637",
+    "bfb637"
+  ],
+  "ingredient": {
+    "item":"minecraft:clock"
+  }
+}

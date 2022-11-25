@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.unobtainium",
+  "colors": [
+    "a62be0",
+    "a62be0"
+  ],
+  "ingredient": {
+    "item": "allthemodium:unobtainium_ingot"
+  }
+}

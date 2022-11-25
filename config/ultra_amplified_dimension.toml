@@ -1,0 +1,31 @@
+
+["General Dimension Options"]
+	#
+	# Adds very heavy fog to make the world look more spooky and limit visibility.
+	# This is not the same as distance fog which only applies weakly to chunks in the far distance.
+	heavyFog = false
+	#
+	# Maximum height for clouds to be at.
+	# Default is 245.
+	#Range: -50 ~ 400
+	cloudHeight = 245
+	#
+	# Darkens the dimension to be Nether's lighting which is darker skylight but has ambient lighting.
+	netherLighting = false
+	#
+	# What sky type the dimension should use. Only values allowed are NORMAL, END, and NONE.
+	skyType = "NORMAL"
+	#
+	# Lets Nether Portals be able to be created in Ultra Amplified Dimension.
+	# Using the portal in this dimension will take you to the Nether but Nether
+	# Portals in the Nether will take you to the Overworld instead. So this option
+	# is good if you want a second way of escaping the Ultra Amplified Dimension.
+	allowNetherPortal = false
+	#
+	# Makes leaving the Ultra Amplified dimension by Amplified Portal Block
+	# always places you back in the Overworld regardless of which dimension you
+	# originally came from. Use this option if this dimension becomes locked in
+	# with another dimension so you are stuck teleporting between the two and cannot
+	# get back to the Overworld.
+	forceExitToOverworld = false
+

@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.atm",
+  "colors": [
+    "fcc50c",
+    "fcc50c"
+  ],
+  "ingredient": {
+    "item": "allthemodium:allthemodium_ingot"
+  }
+}

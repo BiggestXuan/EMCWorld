@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.alfsteel",
+  "colors": [
+    "ab5f00",
+    "ab5f00"
+  ],
+  "ingredient": {
+    "item": "mythicbotany:alfsteel_ingot"
+  }
+}

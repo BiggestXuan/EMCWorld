@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.red_matter",
+  "colors": [
+    "bd4410",
+    "bd4410"
+  ],
+  "ingredient": {
+    "item": "projecte:red_matter"
+  }
+}

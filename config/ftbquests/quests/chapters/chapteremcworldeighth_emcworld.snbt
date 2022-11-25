@@ -1,0 +1,506 @@
+{
+	id: "1AE7591D24767FF9"
+	group: "45BD8B4A7A7B384D"
+	order_index: 2
+	filename: "chapteremcworldeighth_emcworld"
+	title: "{chapter.emcworld.eighth_emcworld}"
+	icon: {
+		id: "projecte:rm_katar"
+		Count: 1b
+		tag: { }
+		ForgeCaps: {
+			Parent: { }
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.eighth_third_emc_core}"
+			x: 1.0d
+			y: 0.0d
+			dependencies: ["2B417C069BE03D30"]
+			hide: true
+			id: "19F41E82A437BEED"
+			tasks: [{
+				id: "4DB2F722AC49A396"
+				type: "item"
+				item: "emcworld:emc_core"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_fading_matter}"
+			x: 1.0d
+			y: 2.5d
+			dependencies: ["19F41E82A437BEED"]
+			id: "40E37FE05954AE6F"
+			tasks: [{
+				id: "5CC13E4230D1AE09"
+				type: "item"
+				item: "emcworld:fading_matter"
+			}]
+		}
+		{
+			x: 3.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "71FBD6A460449F8D"
+			tasks: [{
+				id: "06EC766F241EBF34"
+				type: "item"
+				item: "projecte:dm_helmet"
+			}]
+		}
+		{
+			x: 5.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "37EFA53FAD816526"
+			tasks: [{
+				id: "0456D302704780A7"
+				type: "item"
+				item: "projecte:dm_chestplate"
+			}]
+		}
+		{
+			x: 7.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "00873FD2B99CE924"
+			tasks: [{
+				id: "5C9AF5B94E7DC07F"
+				type: "item"
+				item: "projecte:dm_leggings"
+			}]
+		}
+		{
+			x: 9.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "74566A64AEE6B910"
+			tasks: [{
+				id: "3119E13830CD2CA7"
+				type: "item"
+				item: "projecte:dm_boots"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_dark_sword}"
+			x: -1.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "35A9E0D97F8B8F67"
+			tasks: [{
+				id: "6823556E47D65025"
+				type: "item"
+				item: {
+					id: "projecte:dm_sword"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			x: -3.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "61FAD34C05375D10"
+			tasks: [{
+				id: "3D44B9ECDEC7B90C"
+				type: "item"
+				item: {
+					id: "projecte:dm_pick"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			x: -5.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "0DD7D55CAD3D18D0"
+			tasks: [{
+				id: "6958D3B7FB8511EB"
+				type: "item"
+				item: {
+					id: "projecte:dm_axe"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			x: -7.0d
+			y: 2.5d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			id: "5D97998CACF43844"
+			tasks: [{
+				id: "6A9FF9ACD78D1237"
+				type: "item"
+				item: {
+					id: "projecte:dm_hammer"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_clay_matter}"
+			x: 1.0d
+			y: 5.0d
+			dependencies: ["40E37FE05954AE6F"]
+			id: "5E177BA88333C3AF"
+			tasks: [{
+				id: "4888207ACDA6C439"
+				type: "item"
+				item: "emcworld:clay_matter"
+			}]
+		}
+		{
+			x: 3.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"71FBD6A460449F8D"
+				"5E177BA88333C3AF"
+			]
+			id: "24DA87A590B7E4FD"
+			tasks: [{
+				id: "518B9081DA4BF4AA"
+				type: "item"
+				item: "projecte:rm_helmet"
+			}]
+		}
+		{
+			x: 5.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"37EFA53FAD816526"
+				"5E177BA88333C3AF"
+			]
+			id: "3B61A52BACCF2CA8"
+			tasks: [{
+				id: "38319A8D8C748A12"
+				type: "item"
+				item: "projecte:rm_chestplate"
+			}]
+		}
+		{
+			x: 7.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"00873FD2B99CE924"
+				"5E177BA88333C3AF"
+			]
+			id: "6F66D67B6BC699F2"
+			tasks: [{
+				id: "10D870638805EBE3"
+				type: "item"
+				item: "projecte:rm_leggings"
+			}]
+		}
+		{
+			x: 9.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"74566A64AEE6B910"
+				"5E177BA88333C3AF"
+			]
+			id: "7158A909184DBACD"
+			tasks: [{
+				id: "512C3B233B37467B"
+				type: "item"
+				item: "projecte:rm_boots"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_red_sword}"
+			x: -1.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"35A9E0D97F8B8F67"
+				"5E177BA88333C3AF"
+			]
+			id: "16EDE307EF94D3EC"
+			tasks: [{
+				id: "71FBE522AEFBD2DE"
+				type: "item"
+				item: {
+					id: "projecte:rm_sword"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			x: -3.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"61FAD34C05375D10"
+				"5E177BA88333C3AF"
+			]
+			id: "0E9F1A410C819A1B"
+			tasks: [{
+				id: "6D615CD0FCC7BD3F"
+				type: "item"
+				item: {
+					id: "projecte:rm_pick"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			x: -5.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"0DD7D55CAD3D18D0"
+				"5E177BA88333C3AF"
+			]
+			id: "18A75FC449AEFCD0"
+			tasks: [{
+				id: "4665759AD4A7985B"
+				type: "item"
+				item: {
+					id: "projecte:rm_axe"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			x: -7.0d
+			y: 5.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"5D97998CACF43844"
+				"5E177BA88333C3AF"
+				"0E9F1A410C819A1B"
+			]
+			id: "1ABBDCE30DB3EA00"
+			tasks: [{
+				id: "5916EBE102A382A3"
+				type: "item"
+				item: {
+					id: "projecte:rm_morning_star"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_red_katar}"
+			x: -4.0d
+			y: 8.0d
+			shape: "gear"
+			dependencies: [
+				"1ABBDCE30DB3EA00"
+				"18A75FC449AEFCD0"
+				"0E9F1A410C819A1B"
+				"16EDE307EF94D3EC"
+				"3CEF61DC9E6F0BD5"
+				"068CDD637963872E"
+			]
+			size: 2.0d
+			id: "17D68A0A7B847998"
+			tasks: [{
+				id: "3395FAF0C44470CA"
+				type: "item"
+				item: {
+					id: "projecte:rm_katar"
+					Count: 1b
+					tag: { }
+					ForgeCaps: {
+						Parent: { }
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "4AA0B712E09A6EEF"
+					type: "choice"
+					title: "{reward.emcworld.sword_epic}"
+					icon: {
+						id: "emcworld:god_ice_sword"
+						Count: 1b
+						tag: {
+							Damage: 0
+							level: 20
+						}
+					}
+					team_reward: true
+					table_id: 3639516136504963919L
+				}
+				{
+					id: "643EB5AE97D178EB"
+					type: "custom"
+					title: "{quest.emcworld.eighth_third_final}"
+					icon: { id: "extendedcrafting:ultimate_singularity", Count: 8b }
+					tags: ["third_final"]
+					team_reward: true
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_super_ingot}"
+			x: 2.0d
+			y: 8.0d
+			hide_dependency_lines: true
+			dependencies: ["19F41E82A437BEED"]
+			size: 2.0d
+			id: "3CEF61DC9E6F0BD5"
+			tasks: [{
+				id: "40BA00D97003E87C"
+				type: "item"
+				item: "extendedcrafting:the_ultimate_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_third_super_sing}"
+			x: 6.0d
+			y: 8.0d
+			hide_dependency_lines: true
+			dependencies: ["19F41E82A437BEED"]
+			size: 2.0d
+			id: "068CDD637963872E"
+			tasks: [{
+				id: "0644DC7529E8A839"
+				type: "item"
+				item: "extendedcrafting:ultimate_singularity"
+			}]
+		}
+		{
+			x: -0.75d
+			y: 10.5d
+			hide_dependency_lines: true
+			dependencies: [
+				"3CEF61DC9E6F0BD5"
+				"068CDD637963872E"
+			]
+			size: 1.5d
+			id: "6A1A41CEB8AB2562"
+			tasks: [{
+				id: "4D1654087AB45C57"
+				type: "item"
+				item: "projecte:gem_helmet"
+			}]
+		}
+		{
+			x: 2.25d
+			y: 10.5d
+			hide_dependency_lines: true
+			dependencies: [
+				"3CEF61DC9E6F0BD5"
+				"068CDD637963872E"
+			]
+			size: 1.5d
+			id: "51C8F61F4426111F"
+			tasks: [{
+				id: "4485D6614FF67568"
+				type: "item"
+				item: "projecte:gem_chestplate"
+			}]
+		}
+		{
+			x: 5.25d
+			y: 10.5d
+			hide_dependency_lines: true
+			dependencies: [
+				"3CEF61DC9E6F0BD5"
+				"068CDD637963872E"
+			]
+			size: 1.5d
+			id: "734B7B81271631C2"
+			tasks: [{
+				id: "7E404F44418C5E6B"
+				type: "item"
+				item: "projecte:gem_leggings"
+			}]
+		}
+		{
+			x: 8.25d
+			y: 10.5d
+			hide_dependency_lines: true
+			dependencies: [
+				"3CEF61DC9E6F0BD5"
+				"068CDD637963872E"
+			]
+			size: 1.5d
+			id: "29B00A686602504B"
+			tasks: [{
+				id: "48CF44E255DB0AE7"
+				type: "item"
+				item: "projecte:gem_boots"
+			}]
+		}
+		{
+			x: 10.0d
+			y: 8.0d
+			hide_dependency_lines: true
+			dependencies: ["40E37FE05954AE6F"]
+			size: 2.0d
+			id: "3D24670AAC8740D9"
+			tasks: [{
+				id: "790E23933E04D6B3"
+				type: "item"
+				item: "projectex:white_collector"
+			}]
+		}
+		{
+			x: 14.0d
+			y: 8.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"3CEF61DC9E6F0BD5"
+				"068CDD637963872E"
+				"5E177BA88333C3AF"
+			]
+			size: 2.0d
+			id: "6693C3FEA3906457"
+			tasks: [{
+				id: "0A5F8718BCF3AE3F"
+				type: "item"
+				item: "projectex:fading_collector"
+			}]
+		}
+	]
+}

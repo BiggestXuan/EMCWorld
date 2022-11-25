@@ -1,0 +1,500 @@
+{
+	id: "00FAEAA493834139"
+	group: "45BD8B4A7A7B384D"
+	order_index: 0
+	filename: "chapteremcworldeighth_infinity"
+	title: "{chapter.emcworld.eighth_alfheim}"
+	icon: {
+		id: "emcworld:vibranium_sword"
+		Count: 1b
+		tag: {
+			Damage: 0
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			x: 0.0d
+			y: -4.0d
+			dependencies: ["7C31945A8C71D7E6"]
+			id: "50B470C53C3BEC42"
+			tasks: [{
+				id: "042DD90569A3C330"
+				type: "item"
+				item: "emcworld:update_base_orange"
+			}]
+		}
+		{
+			x: 3.0d
+			y: -4.0d
+			dependencies: ["4C3EDEF62881D6DE"]
+			id: "0CF3AE6A84317444"
+			tasks: [{
+				id: "217A71F46888DEC8"
+				type: "item"
+				item: "emcworld:update_base_red"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_knight}"
+			x: 0.0d
+			y: 0.0d
+			id: "55F95029FC1CB170"
+			tasks: [{
+				id: "6BB65ECC044B3F54"
+				type: "item"
+				item: "theabyss:knight_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_case}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["55F95029FC1CB170"]
+			id: "12AB89655F52148B"
+			tasks: [{
+				id: "3F369E2FA268D229"
+				type: "item"
+				item: "extendedcrafting:frame"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_compressor}"
+			x: 6.0d
+			y: 0.0d
+			dependencies: ["12AB89655F52148B"]
+			id: "07ADB7D2F7B66D5E"
+			tasks: [{
+				id: "206B8A95C37CC95A"
+				type: "item"
+				item: "extendedcrafting:compressor"
+			}]
+		}
+		{
+			x: 3.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: ["07ADB7D2F7B66D5E"]
+			id: "167BB7C90334F75E"
+			tasks: [{
+				id: "18AB7FA00EBB6C5A"
+				type: "item"
+				item: {
+					id: "extendedcrafting:singularity"
+					Count: 1b
+					tag: {
+						Id: "extendedcrafting:atm"
+					}
+				}
+			}]
+		}
+		{
+			x: 6.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"167BB7C90334F75E"
+				"24C7BADCE3F5D236"
+			]
+			id: "664F4FF43BD3FA32"
+			tasks: [{
+				id: "544185B75AA0CBC1"
+				type: "item"
+				item: {
+					id: "allthemodium:allthemodium_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 7.5d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"167BB7C90334F75E"
+				"2B6A14EBCC53B037"
+			]
+			id: "12780C45DF8308C7"
+			tasks: [{
+				id: "7546BEE8AB7B4D48"
+				type: "item"
+				item: {
+					id: "allthemodium:allthemodium_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+						AS_Amulet_Holder: [I;
+							691178348
+							1862487994
+							-1808373877
+							1768852203
+						]
+					}
+				}
+			}]
+		}
+		{
+			x: 10.5d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"167BB7C90334F75E"
+				"26E8C5B1C49A8998"
+			]
+			id: "7A926BFEC8F84F65"
+			tasks: [{
+				id: "0C9C0553DDBA6ECA"
+				type: "item"
+				item: {
+					id: "allthemodium:allthemodium_leggings"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 12.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"167BB7C90334F75E"
+				"70A98CC9AD0880B7"
+			]
+			id: "6E1D48E318A3D0CB"
+			tasks: [{
+				id: "2691DCCC8DA21B45"
+				type: "item"
+				item: {
+					id: "allthemodium:allthemodium_boots"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_atm_sword}"
+			x: 9.0d
+			y: 4.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"167BB7C90334F75E"
+				"6EE98A8A77DB9408"
+			]
+			id: "23BD5A78136332FF"
+			tasks: [{
+				id: "1F7C5662A422354E"
+				type: "item"
+				item: {
+					id: "emcworld:atm_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 3.0d
+			y: 2.0d
+			hide_dependency_lines: true
+			dependencies: ["07ADB7D2F7B66D5E"]
+			id: "5FB769258A914887"
+			tasks: [{
+				id: "273496D83F93FCFB"
+				type: "item"
+				item: {
+					id: "extendedcrafting:singularity"
+					Count: 1b
+					tag: {
+						Id: "extendedcrafting:alfsteel"
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_alfheim_sword}"
+			x: 9.0d
+			y: 2.0d
+			hide_dependency_lines: true
+			dependencies: ["5FB769258A914887"]
+			id: "6EE98A8A77DB9408"
+			tasks: [{
+				id: "105EF534D7B69FB4"
+				type: "item"
+				item: {
+					id: "mythicbotany:alfsteel_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+						AS_Amulet_Holder: [I;
+							691178348
+							1862487994
+							-1808373877
+							1768852203
+						]
+					}
+				}
+			}]
+		}
+		{
+			x: 6.0d
+			y: 2.0d
+			hide_dependency_lines: true
+			dependencies: ["5FB769258A914887"]
+			id: "24C7BADCE3F5D236"
+			tasks: [{
+				id: "677843B25BFE6ED8"
+				type: "item"
+				item: {
+					id: "mythicbotany:alfsteel_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 7.5d
+			y: 2.0d
+			hide_dependency_lines: true
+			dependencies: ["5FB769258A914887"]
+			id: "2B6A14EBCC53B037"
+			tasks: [{
+				id: "2A332F5A9135DDB5"
+				type: "item"
+				item: {
+					id: "mythicbotany:alfsteel_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+						AS_Amulet_Holder: [I;
+							691178348
+							1862487994
+							-1808373877
+							1768852203
+						]
+					}
+				}
+			}]
+		}
+		{
+			x: 10.5d
+			y: 2.0d
+			hide_dependency_lines: true
+			dependencies: ["5FB769258A914887"]
+			id: "26E8C5B1C49A8998"
+			tasks: [{
+				id: "67AA9AFFE022F4CE"
+				type: "item"
+				item: {
+					id: "mythicbotany:alfsteel_leggings"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 12.0d
+			y: 2.0d
+			hide_dependency_lines: true
+			dependencies: ["5FB769258A914887"]
+			id: "70A98CC9AD0880B7"
+			tasks: [{
+				id: "6BB7F0BB828EF234"
+				type: "item"
+				item: {
+					id: "mythicbotany:alfsteel_boots"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 3.0d
+			y: 6.0d
+			hide_dependency_lines: true
+			dependencies: ["07ADB7D2F7B66D5E"]
+			id: "35383154D1ABF1D6"
+			tasks: [{
+				id: "6970A771E3BBD017"
+				type: "item"
+				item: {
+					id: "extendedcrafting:singularity"
+					Count: 1b
+					tag: {
+						Id: "extendedcrafting:vibranium"
+					}
+				}
+			}]
+		}
+		{
+			x: 6.0d
+			y: 6.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"35383154D1ABF1D6"
+				"664F4FF43BD3FA32"
+			]
+			id: "1FFFFFA017A5FEE6"
+			tasks: [{
+				id: "6E634E3C004B4F5B"
+				type: "item"
+				item: {
+					id: "allthemodium:vibranium_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 7.5d
+			y: 6.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"35383154D1ABF1D6"
+				"12780C45DF8308C7"
+			]
+			id: "3B56A97B9C45A73C"
+			tasks: [{
+				id: "0E01B9AB1382D440"
+				type: "item"
+				item: {
+					id: "allthemodium:vibranium_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 10.5d
+			y: 6.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"35383154D1ABF1D6"
+				"7A926BFEC8F84F65"
+			]
+			id: "094F64962A8B0ADE"
+			tasks: [{
+				id: "4C5E6D248F24F868"
+				type: "item"
+				item: {
+					id: "allthemodium:vibranium_leggings"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 12.0d
+			y: 6.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"35383154D1ABF1D6"
+				"6E1D48E318A3D0CB"
+			]
+			id: "0A5A1F2E4A7A43A3"
+			tasks: [{
+				id: "653C66964B968271"
+				type: "item"
+				item: {
+					id: "allthemodium:vibranium_boots"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_vibranium_sword}"
+			x: 9.0d
+			y: 6.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"35383154D1ABF1D6"
+				"23BD5A78136332FF"
+			]
+			id: "68E4F8B22DD030A9"
+			tasks: [{
+				id: "6AAB962DB0DFD4FC"
+				type: "item"
+				item: {
+					id: "emcworld:vibranium_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+						AS_Amulet_Holder: [I;
+							691178348
+							1862487994
+							-1808373877
+							1768852203
+						]
+					}
+				}
+			}]
+			rewards: [{
+				id: "437EA06EB1875714"
+				type: "custom"
+				title: "{quest.emcworld.eighth_first_final}"
+				icon: "allthemodium:unobtainium_ingot"
+				tags: ["first_final"]
+				team_reward: true
+			}]
+		}
+		{
+			x: 0.0d
+			y: 4.0d
+			dependencies: [
+				"5FB769258A914887"
+				"167BB7C90334F75E"
+				"35383154D1ABF1D6"
+			]
+			id: "0072CCA8E57C7C88"
+			tasks: [{
+				id: "46AFBE9599585410"
+				type: "item"
+				item: "projectex:yellow_collector"
+			}]
+		}
+		{
+			x: 0.0d
+			y: -2.0d
+			id: "7C31945A8C71D7E6"
+			tasks: [{
+				id: "6CDACEA34CD2F248"
+				type: "item"
+				item: "emcworld:lime_matter"
+			}]
+		}
+		{
+			x: 3.0d
+			y: -2.0d
+			dependencies: ["7C31945A8C71D7E6"]
+			id: "4C3EDEF62881D6DE"
+			tasks: [{
+				id: "185A6B93207DD6D9"
+				type: "item"
+				item: "emcworld:yellow_matter"
+			}]
+		}
+	]
+}

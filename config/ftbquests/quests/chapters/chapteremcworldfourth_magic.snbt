@@ -1,0 +1,472 @@
+{
+	id: "0F84C0553C2B9A6C"
+	group: "16A68A44AFA4135F"
+	order_index: 3
+	filename: "chapteremcworldfourth_magic"
+	title: "{chapter.emcworld.fourth_magic}"
+	icon: {
+		id: "astralsorcery:rock_collector_crystal"
+		Count: 1b
+		tag: {
+			astralsorcery: {
+				constellation: "astralsorcery:evorsio"
+				crystalProperties: {
+					attributes: [
+						{
+							property: "astralsorcery:size"
+							pLevel: 3
+							discovered: 1b
+						}
+						{
+							property: "astralsorcery:purity"
+							pLevel: 2
+							discovered: 1b
+						}
+						{
+							property: "astralsorcery:shape"
+							pLevel: 3
+							discovered: 1b
+						}
+						{
+							property: "astralsorcery:collector.rate"
+							pLevel: 3
+							discovered: 1b
+						}
+						{
+							property: "astralsorcery:constellation.evorsio"
+							pLevel: 2
+							discovered: 1b
+						}
+					]
+				}
+			}
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fourth_magic_wand}"
+			x: -30.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_magic_wand_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "351671E807E63130"
+			tasks: [{
+				id: "5170087A37B76051"
+				type: "item"
+				item: "astralsorcery:wand"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_linkingtool}"
+			x: -18.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_magic_linkingtool_desc}"]
+			dependencies: ["44821BCC51AF752B"]
+			id: "6A85767AC5BF023A"
+			tasks: [{
+				id: "13BD3F3406EA5440"
+				type: "item"
+				item: "astralsorcery:linking_tool"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_rockcrystalore}"
+			icon: "astralsorcery:rock_crystal_ore"
+			x: -24.0d
+			y: -6.0d
+			shape: "diamond"
+			description: ["{quest.emcworld.fourth_magic_rockcrystalore_desc}"]
+			dependencies: ["351671E807E63130"]
+			size: 1.5d
+			id: "44821BCC51AF752B"
+			tasks: [{
+				id: "32D05E9DCA7CAAAB"
+				type: "observation"
+				timer: 0L
+				observe_type: 0
+				to_observe: "astralsorcery:rock_crystal_ore"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_well}"
+			x: -21.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_magic_well_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "5F477A7041CAC318"
+			tasks: [{
+				id: "284F25065DD52E50"
+				type: "item"
+				item: "astralsorcery:well"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_starlightliquid}"
+			x: -15.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_magic_starlightliquid_desc}"]
+			dependencies: ["5F477A7041CAC318"]
+			id: "4D329CF66A354908"
+			tasks: [{
+				id: "6A29A937FDDC8030"
+				type: "item"
+				item: "astralsorcery:liquid_starlight_bucket"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_altardiscovery}"
+			x: -12.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_magic_altardiscovery_desc}"]
+			dependencies: ["6A85767AC5BF023A"]
+			id: "7C62ACA7CC60E62F"
+			tasks: [{
+				id: "3B6E82CF1192F69A"
+				type: "item"
+				item: "astralsorcery:altar_discovery"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_starmetalore}"
+			x: -15.0d
+			y: -18.0d
+			description: ["{quest.emcworld.fourth_magic_starmetalore_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			id: "05CC7A9408F5A198"
+			tasks: [{
+				id: "1A9FA2DC04866EB4"
+				type: "item"
+				item: "astralsorcery:starmetal_ore"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_stardust}"
+			x: -12.0d
+			y: -15.0d
+			description: ["{quest.emcworld.fourth_magic_stardust_desc}"]
+			dependencies: [
+				"05CC7A9408F5A198"
+				"4D329CF66A354908"
+			]
+			id: "72798DD5387CA48F"
+			tasks: [{
+				id: "4C8A5C20C13A4FF4"
+				type: "item"
+				item: "astralsorcery:stardust"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_starmetal}"
+			x: -9.0d
+			y: -18.0d
+			description: ["{quest.emcworld.fourth_magic_starmetal_desc}"]
+			dependencies: ["72798DD5387CA48F"]
+			id: "6BB89E2A29395F59"
+			tasks: [{
+				id: "41D415C4A34F398F"
+				type: "item"
+				item: "astralsorcery:starmetal_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_infusedwoodcolumn}"
+			x: -9.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_magic_infusedwoodcolumn_desc}"]
+			dependencies: ["72798DD5387CA48F"]
+			id: "5E51D84F8885A932"
+			tasks: [{
+				id: "03E6AB3C91FFAE5C"
+				type: "item"
+				item: "astralsorcery:infused_wood_column"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_altarattunement}"
+			x: -3.0d
+			y: -6.0d
+			description: ["{quest.emcworld.fourth_magic_altarattunement_desc}"]
+			dependencies: [
+				"7C62ACA7CC60E62F"
+				"5E51D84F8885A932"
+				"4BB8C80DE4D8E5F4"
+			]
+			id: "542BDB03D2F49E98"
+			tasks: [{
+				id: "65DFD7FB618C91CE"
+				type: "observation"
+				icon: "astralsorcery:altar_attunement"
+				timer: 0L
+				observe_type: 0
+				to_observe: "astralsorcery:altar_attunement"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_altarconstellation}"
+			x: 3.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_magic_altarconstellation_desc}"]
+			dependencies: [
+				"542BDB03D2F49E98"
+				"349A5BB5984CB264"
+			]
+			id: "3D1D442B2A503BCB"
+			tasks: [{
+				id: "2B208EA90493BDDB"
+				type: "observation"
+				icon: "astralsorcery:altar_constellation"
+				timer: 0L
+				observe_type: 0
+				to_observe: "astralsorcery:altar_constellation"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_handtelescope}"
+			x: -3.0d
+			y: -18.0d
+			description: ["{quest.emcworld.fourth_magic_handtelescope_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			id: "6B625809953A4B19"
+			tasks: [{
+				id: "2C6DB5B05622E0D2"
+				type: "item"
+				item: "astralsorcery:hand_telescope"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_telescope}"
+			x: -3.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_magic_telescope_desc}"]
+			dependencies: ["6B625809953A4B19"]
+			id: "4BB8C80DE4D8E5F4"
+			tasks: [{
+				id: "59872CD7F68FB150"
+				type: "item"
+				item: "astralsorcery:telescope"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_attunementaltar}"
+			x: 4.0d
+			y: 7.5d
+			description: ["{quest.emcworld.fourth_magic_attunementaltar_desc}"]
+			dependencies: ["3D1D442B2A503BCB"]
+			id: "257E4A6919536F4C"
+			tasks: [{
+				id: "5AEEA4E11C5F9237"
+				type: "item"
+				item: "astralsorcery:attunement_altar"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_infuser}"
+			x: 10.5d
+			y: 1.5d
+			description: ["{quest.emcworld.fourth_magic_infuser_desc}"]
+			dependencies: ["3D1D442B2A503BCB"]
+			id: "38706A29C98E007F"
+			tasks: [{
+				id: "270514A720551ED6"
+				type: "item"
+				item: "astralsorcery:infuser"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_altarradiance}"
+			x: 12.0d
+			y: 9.0d
+			description: ["{quest.emcworld.fourth_magic_altarradiance_desc}"]
+			dependencies: [
+				"38706A29C98E007F"
+				"257E4A6919536F4C"
+			]
+			id: "64162D6185D1A516"
+			tasks: [{
+				id: "78E5643BB03F72FA"
+				type: "observation"
+				icon: "astralsorcery:altar_radiance"
+				timer: 0L
+				observe_type: 0
+				to_observe: "astralsorcery:altar_radiance"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_refractiontable}"
+			x: 3.0d
+			y: -12.0d
+			description: ["{quest.emcworld.fourth_magic_refractiontable_desc}"]
+			dependencies: ["3D1D442B2A503BCB"]
+			id: "421E6CF18C05DEC1"
+			tasks: [{
+				id: "355B9D16E3FC931A"
+				type: "item"
+				item: "astralsorcery:refraction_table"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_observatory}"
+			x: 10.0d
+			y: 19.0d
+			description: ["{quest.emcworld.fourth_magic_observatory_desc}"]
+			dependencies: ["64162D6185D1A516"]
+			id: "2DB6CBE2A3DC64DD"
+			tasks: [{
+				id: "54BC4020A32F567F"
+				type: "item"
+				item: "astralsorcery:observatory"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_chalice}"
+			x: 24.0d
+			y: 9.0d
+			description: ["{quest.emcworld.fourth_magic_chalice_desc}"]
+			dependencies: ["64162D6185D1A516"]
+			id: "71771D03D7913498"
+			tasks: [{
+				id: "0FB8EFA669A356DA"
+				type: "item"
+				item: "astralsorcery:chalice"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_magentacollector}"
+			x: 17.0d
+			y: 12.0d
+			description: ["{quest.emcworld.fourth_magic_magentacollector_desc}"]
+			dependencies: ["64162D6185D1A516"]
+			size: 2.0d
+			id: "10A9F07DBBB0E10D"
+			tasks: [{
+				id: "25FF343AA15E217B"
+				type: "item"
+				item: "projectex:magenta_collector"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_pinkcollector}"
+			x: 23.5d
+			y: 15.0d
+			description: ["{quest.emcworld.fourth_magic_pinkcollector_desc}"]
+			dependencies: ["10A9F07DBBB0E10D"]
+			id: "29ED613D22684793"
+			tasks: [{
+				id: "3FCC74E642B37F6B"
+				type: "item"
+				item: "projectex:pink_collector"
+			}]
+			rewards: [{
+				id: "01C89967AA16FF11"
+				type: "custom"
+				title: "{quest.emcworld_stage_four}"
+				icon: "mekanism:pellet_antimatter"
+				auto: "enabled"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_marbleruned}"
+			x: -9.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fourth_magic_marbleruned_desc}"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
+			id: "349A5BB5984CB264"
+			tasks: [{
+				id: "0B239D5B55816E54"
+				type: "item"
+				item: "astralsorcery:marble_runed"
+			}]
+		}
+		{
+			x: 18.0d
+			y: 3.0d
+			dependencies: ["64162D6185D1A516"]
+			id: "3CBD98CE48A9B3B5"
+			tasks: [{
+				id: "4F0501016A4E33CD"
+				type: "item"
+				title: "{quest.emcworld.fourth_magic_god_weapon_item}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:emc_god_weapon"
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.fourth_magic_weapon_upgrade}"
+			x: 4.5d
+			y: 17.0d
+			dependencies: [
+				"64162D6185D1A516"
+				"53CF388661F71ADF"
+			]
+			hide: true
+			id: "789B42F0948AC1EC"
+			tasks: [{
+				id: "437207ADDF8763DC"
+				type: "item"
+				item: "emcworld:weapon_upgrade_core"
+			}]
+		}
+		{
+			x: 16.0d
+			y: 18.5d
+			dependencies: ["64162D6185D1A516"]
+			id: "5E35FF13428A4AE7"
+			tasks: [
+				{
+					id: "1271A43CD5523472"
+					type: "item"
+					item: {
+						id: "emcworld:fire_red_helmet"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "63493D8698903EA8"
+					type: "item"
+					item: {
+						id: "emcworld:fire_red_chestplate"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "4E64C7A8978633CB"
+					type: "item"
+					item: {
+						id: "emcworld:fire_red_leggings"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "500555EE58EEAFAF"
+					type: "item"
+					item: {
+						id: "emcworld:fire_red_boots"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+	]
+}

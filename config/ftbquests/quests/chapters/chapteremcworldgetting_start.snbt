@@ -1,0 +1,373 @@
+{
+	id: "31E05A7ACF2D69B6"
+	group: "35CE8D0AFC937D5D"
+	order_index: 0
+	filename: "chapteremcworldgetting_start"
+	title: "{chapter.emcworld.getting_start}"
+	icon: "minecraft:grass_block"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.lets_go}"
+			x: -3.0d
+			y: -0.5d
+			subtitle: "{quest.emcworld.lets_go.subtitle}"
+			id: "1F128A24207B9059"
+			tasks: [{
+				id: "7B0C64E51A9F6CF9"
+				type: "item"
+				title: "{quest.emcworld.any_log}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "minecraft:logs"
+					}
+				}
+				count: 16L
+			}]
+			rewards: [
+				{
+					id: "7F99E0AFE8BD34E2"
+					type: "item"
+					item: "minecraft:oak_log"
+					count: 32
+				}
+				{
+					id: "0FBFC1B3A105E326"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.iron_pickaxe}"
+			x: 0.0d
+			y: -0.5d
+			dependencies: ["1F128A24207B9059"]
+			id: "2C33BC61257B151B"
+			tasks: [{
+				id: "72046C45E5AF215C"
+				type: "item"
+				item: "minecraft:iron_ingot"
+				count: 16L
+				only_from_crafting: true
+			}]
+			rewards: [
+				{
+					id: "38D31BCBFCA068C3"
+					type: "item"
+					item: "minecraft:iron_ingot"
+					count: 32
+				}
+				{
+					id: "6864B76B9455BE0F"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.diamond}"
+			x: 3.0d
+			y: 1.5d
+			dependencies: ["2C33BC61257B151B"]
+			id: "7ABA746ABC9B1490"
+			tasks: [{
+				id: "666993CBBEE4C732"
+				type: "item"
+				item: "minecraft:diamond"
+			}]
+			rewards: [
+				{
+					id: "38C4EB013D979391"
+					type: "item"
+					item: "minecraft:diamond_block"
+					count: 3
+				}
+				{
+					id: "6BF716F588C89D11"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 3.0d
+			y: -2.5d
+			dependencies: ["2C33BC61257B151B"]
+			id: "6DF5A3CCCA8269CC"
+			tasks: [{
+				id: "78B483D4059CBC96"
+				type: "item"
+				title: "{quest.emcworld.big_emc_gem}"
+				item: "emcworld:big_emc_gem"
+			}]
+			rewards: [{
+				id: "0E60F6BBE2C06516"
+				type: "item"
+				item: "emcworld:big_emc_gem"
+				count: 8
+				random_bonus: 8
+			}]
+		}
+		{
+			title: "{quest.emcworld.forever_fuel}"
+			x: 6.0d
+			y: 1.5d
+			dependencies: ["7ABA746ABC9B1490"]
+			id: "080F1EB633411F43"
+			tasks: [{
+				id: "22A6E00847B0DEF9"
+				type: "item"
+				item: "projecte:aeternalis_fuel"
+			}]
+			rewards: [
+				{
+					id: "2FD24950515A311B"
+					type: "item"
+					item: "minecraft:diamond"
+					count: 8
+				}
+				{
+					id: "78674D2BCD6EE9E9"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.dark_matter}"
+			x: 9.0d
+			y: 1.5d
+			dependencies: ["080F1EB633411F43"]
+			id: "74E0535812EC7EDC"
+			tasks: [{
+				id: "367A30FFDA486F17"
+				type: "item"
+				item: "projecte:dark_matter"
+				only_from_crafting: true
+			}]
+			rewards: [
+				{
+					id: "7D11EA024B7D3C0B"
+					type: "item"
+					item: "projecte:aeternalis_fuel"
+					count: 8
+				}
+				{
+					id: "406468B15D6353F0"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.table}"
+			x: 6.0d
+			y: -2.5d
+			dependencies: [
+				"6DF5A3CCCA8269CC"
+				"74E0535812EC7EDC"
+			]
+			id: "019C7A6602B94FF7"
+			tasks: [{
+				id: "1EA71AEF207F388A"
+				type: "item"
+				item: "projecte:transmutation_table"
+			}]
+			rewards: [
+				{
+					id: "5AFB2612CF232E6E"
+					type: "item"
+					item: {
+						id: "projecte:philosophers_stone"
+						Count: 1b
+						tag: { }
+						ForgeCaps: {
+							Parent: { }
+						}
+					}
+				}
+				{
+					id: "33D48A9B25AAF661"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 9.0d
+			y: -2.5d
+			description: ["{quest.emcworld.mk1_desc}"]
+			dependencies: [
+				"74E0535812EC7EDC"
+				"6DF5A3CCCA8269CC"
+			]
+			id: "1BF9E1763E01F176"
+			tasks: [{
+				id: "3014065277E4E4C5"
+				type: "item"
+				title: "{quest.emcworld.mk1}"
+				item: "projectex:basic_collector"
+				only_from_crafting: true
+			}]
+			rewards: [
+				{
+					id: "25B0A822B0157626"
+					type: "item"
+					item: "projecte:dark_matter"
+				}
+				{
+					id: "6C18516D82E63962"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+				{
+					id: "2BFF8BEB8DD2A192"
+					type: "item"
+					item: "emcworld:emc_check"
+				}
+				{
+					id: "720EDBC6F73E5CF3"
+					type: "custom"
+					title: "{quest.emcworld_stage_one}"
+					icon: "projecte:red_matter"
+					tags: ["stage_one"]
+					auto: "enabled"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.condenser_mk1}"
+			x: 12.0d
+			y: 1.5d
+			dependencies: ["74E0535812EC7EDC"]
+			id: "53718C57742CFB43"
+			tasks: [{
+				id: "2CE8863B87342068"
+				type: "item"
+				item: "projecte:condenser_mk1"
+			}]
+			rewards: [
+				{
+					id: "68CD48A3A13E6508"
+					type: "item"
+					item: "projecte:dark_matter"
+				}
+				{
+					id: "1A17085F71E0FA51"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.relay_mk1}"
+			x: 12.0d
+			y: -2.5d
+			dependencies: ["74E0535812EC7EDC"]
+			id: "77481942076D206F"
+			tasks: [{
+				id: "0B0C9DE683EE05AC"
+				type: "item"
+				item: "projectex:basic_relay"
+			}]
+			rewards: [
+				{
+					id: "1842C23409D95429"
+					type: "item"
+					item: "projecte:dark_matter"
+				}
+				{
+					id: "7319AD9D15060706"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.cauldron}"
+			x: 0.0d
+			y: 1.5d
+			dependencies: ["2C33BC61257B151B"]
+			id: "51EE35B65E167478"
+			tasks: [{
+				id: "3ADED8EA8D8609D2"
+				type: "item"
+				item: "minecraft:cauldron"
+			}]
+			rewards: [
+				{
+					id: "2AB7E29E841F5589"
+					type: "item"
+					item: "minecraft:cow_spawn_egg"
+				}
+				{
+					id: "71F372FCE4D59261"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.cheese}"
+			x: 0.0d
+			y: 3.5d
+			dependencies: ["51EE35B65E167478"]
+			id: "679CFF8000F65087"
+			tasks: [{
+				id: "2FF77F92DFA43A3C"
+				type: "item"
+				item: "rats:cheese"
+			}]
+			rewards: [
+				{
+					id: "64224C01AFD342E3"
+					type: "item"
+					item: "rats:block_of_cheese"
+					count: 4
+				}
+				{
+					id: "0C07A9AE50F71960"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+	]
+}

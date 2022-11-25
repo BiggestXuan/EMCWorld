@@ -1,0 +1,71 @@
+
+#Screen Config
+[screen]
+	#The duration of GUI background color and blur radius animation in milliseconds. (0 = OFF)
+	#Range: 0 ~ 800
+	animationDuration = 200
+	#The GUI background color in #RRGGBB or #AARRGGBB format. Default value: #66000000
+	#Can be one to four values representing top left, top right, bottom right and bottom left color.
+	#Multiple values produce a gradient effect, whereas one value produce a solid color.
+	#When values is less than 4, the rest of the corner color will be replaced by the last value.
+	backgroundColor = ["#66000000"]
+	#The 4-pass blur effect radius, higher values result in a small loss of performance.
+	#Range: 2 ~ 18
+	blurRadius = 9
+	#A list of GUI screen superclasses that won't activate blur effect when opened.
+	blurBlacklist = ["net.minecraft.client.gui.screen.ChatScreen"]
+	#Add blur effect to GUI background when opened, it is incompatible with OptiFine's FXAA shader and some mods.
+	blurEffect = true
+
+#Tooltip Config
+[tooltip]
+	#The tooltip STROKE color in #RRGGBB or #AARRGGBB format. Default: #F0AADCF0, #F0DAD0F4, #F0FFC3F7 and #F0DAD0F4
+	#Can be one to four values representing top left, top right, bottom right and bottom left color.
+	#Multiple values produce a gradient effect, whereas one value produce a solid color.
+	#When values is less than 4, the rest of the corner color will be replaced by the last value.
+	colorStroke = ["#F0AADCF0", "#F0DAD0F4", "#F0FFC3F7", "#F0DAD0F4"]
+	#Whether to enable Modern UI tooltip style, or back to vanilla style.
+	enable = true
+	#The tooltip FILL color in #RRGGBB or #AARRGGBB format. Default: #D4000000
+	#Can be one to four values representing top left, top right, bottom right and bottom left color.
+	#Multiple values produce a gradient effect, whereas one value produce a solid color.
+	#When values is less than 4, the rest of the corner color will be replaced by the last value.
+	colorFill = ["#D4000000"]
+
+#General Config
+[general]
+	#Play a sound effect when the game is loaded.
+	ding = true
+
+#Font Config
+[font]
+	#A set of font families with precedence relationships to determine the typeface to use.
+	#TrueType and OpenTrue are supported. Each list element can be one of the following three cases.
+	#1) Font family name for those installed on your PC, for instance: Segoe UI
+	#2) File path for external fonts on your PC, for instance: /usr/shared/fonts/x.otf
+	#3) Resource location for those loaded with resource packs, for instance: modernui:font/biliw.otf
+	#Using pixelated (bitmap) fonts should consider other settings, and glyph size should be 16x.
+	#This list is only read once when the game is loaded. A game restart is required to reload
+	fontFamily = ["Segoe UI", "modernui:font/biliw.otf", "Noto Sans", "Open Sans", "San Francisco", "Calibri", "Microsoft YaHei UI", "STHeiti", "SimHei", "SansSerif"]
+	#Bitmap-like mode, anti-aliasing and high precision for glyph layouts are OFF.
+	#A game restart is required to reload the setting properly.
+	bitmapLike = false
+	#Allow text renderer to draw text with shadow, setting to false can improve performance a bit.
+	allowShadow = true
+	#Bilinear sampling font textures with mipmaps, magnification sampling will be always NEAREST.
+	#If your fonts are not really bitmap fonts, then you should keep this setting true.
+	#A game restart is required to reload the setting properly.
+	linearSampling = true
+	#Use smaller or larger font for vanilla text layout. To be exact, small (7 * GuiScale), normal (8 * GuiScale), large (9 * GuiScale).
+	#A game restart is required to reload the setting properly.
+	#Allowed Values: SMALL, NORMAL, LARGE
+	fontSize = "NORMAL"
+	#Control vertical baseline for vanilla text layout, in normalized pixels.
+	#For smaller font, 6 is recommended. The default value is 7.
+	#Range: 5 ~ 9
+	baseline = 7
+	#Fixed resolution level. When the GUI scale increases, the resolution level will not increase.
+	#In this case, gui scale should be even numbers (2, 4, 6...), based on Minecraft GUI system.
+	#If your fonts are not really bitmap fonts, then you should keep this setting false.
+	fixedResolution = false
+

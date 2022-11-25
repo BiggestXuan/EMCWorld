@@ -1,0 +1,193 @@
+{
+	id: "5FEFA250A4F0214D"
+	group: "7E8ECD616F8A4334"
+	order_index: 1
+	filename: "chapteremcworldsixth_undergarden"
+	title: "{chapter.emcworld.sixth_undergarden}"
+	icon: "undergarden:catalyst"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.sixth_undergarden_catalyst}"
+			x: 3.0d
+			y: -3.5d
+			dependencies: ["131D06E6858EA93F"]
+			hide: true
+			id: "0EE509727333D7DC"
+			tasks: [{
+				id: "4AB8FC12B9A0BD2F"
+				type: "item"
+				item: "undergarden:catalyst"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_gointoundergarden}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["0EE509727333D7DC"]
+			id: "5B441ABDE7C28F3A"
+			tasks: [{
+				id: "582F624A796CBA28"
+				type: "dimension"
+				dimension: "undergarden:undergarden"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_yiyifudi}"
+			x: 0.0d
+			y: 3.0d
+			dependencies: ["5B441ABDE7C28F3A"]
+			id: "5B5D3F339A6DF240"
+			tasks: [{
+				id: "7EA4286266FB17DF"
+				type: "advancement"
+				advancement: "undergarden:undergarden/catacombs"
+				criterion: ""
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_ingots}"
+			x: 6.0d
+			y: 3.0d
+			dependencies: ["5B441ABDE7C28F3A"]
+			id: "2C681435C1D25523"
+			tasks: [
+				{
+					id: "5F72AB9CDBACAFC6"
+					type: "item"
+					item: "undergarden:cloggrum_ingot"
+				}
+				{
+					id: "3E0F4DD0A036508F"
+					type: "item"
+					item: "undergarden:utherium_ingot"
+				}
+				{
+					id: "0BCD6A116709A1EC"
+					type: "item"
+					item: "undergarden:regalium_ingot"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_forgottenguardian}"
+			x: -3.0d
+			y: 6.0d
+			dependencies: ["5B5D3F339A6DF240"]
+			id: "393E6E1B18C93E44"
+			tasks: [{
+				id: "1F376F16D4220076"
+				type: "kill"
+				icon: {
+					id: "undergarden:forgotten_battleaxe"
+					Count: 1b
+					tag: {
+						Damage: 0
+						Enchantments: [{
+							lvl: 4s
+							id: "minecraft:knockback"
+						}]
+					}
+				}
+				entity: "undergarden:forgotten_guardian"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_forgotteningot}"
+			x: 0.0d
+			y: 9.0d
+			dependencies: ["5B5D3F339A6DF240"]
+			id: "692861252431F06B"
+			tasks: [{
+				id: "4B9D37037610D60F"
+				type: "item"
+				item: "undergarden:forgotten_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_kill}"
+			x: 3.0d
+			y: 4.5d
+			dependencies: ["5B441ABDE7C28F3A"]
+			id: "5C4B2357DA0B607B"
+			tasks: [{
+				id: "3CC06C1801173A85"
+				type: "advancement"
+				advancement: "undergarden:undergarden/slay_all_rotspawn"
+				criterion: ""
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_stonborn}"
+			x: 6.0d
+			y: 6.0d
+			dependencies: ["2C681435C1D25523"]
+			id: "05AB39C7D5E63194"
+			tasks: [{
+				id: "18A02CA16EEE1B06"
+				type: "observation"
+				icon: "undergarden:stoneborn_spawn_egg"
+				timer: 0L
+				observe_type: 5
+				to_observe: "undergarden:stoneborn"
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_cloggrumbattleaxe}"
+			x: 9.0d
+			y: 9.0d
+			dependencies: ["05AB39C7D5E63194"]
+			id: "7EA7F547ECDC5147"
+			tasks: [{
+				id: "4240E9C2B3001CB0"
+				type: "item"
+				item: {
+					id: "undergarden:cloggrum_battleaxe"
+					Count: 1b
+					tag: {
+						Damage: 0
+						Enchantments: [{
+							lvl: 4s
+							id: "minecraft:knockback"
+						}]
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_masticator}"
+			x: 3.0d
+			y: 12.0d
+			dependencies: ["5C4B2357DA0B607B"]
+			id: "404D80762A0B1752"
+			tasks: [{
+				id: "193A51588C853BCE"
+				type: "kill"
+				icon: {
+					id: "undergarden:utheric_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "undergarden:masticator"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.sixth_undergarden_kuaweidushiwu}"
+			x: 6.0d
+			y: 11.5d
+			dependencies: ["05AB39C7D5E63194"]
+			id: "227CAD22FBB04AD8"
+			tasks: [{
+				id: "1156C858D1F422FA"
+				type: "advancement"
+				advancement: "undergarden:undergarden/trade_with_stoneborn"
+				criterion: ""
+			}]
+		}
+	]
+}

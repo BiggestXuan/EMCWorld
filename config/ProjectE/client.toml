@@ -1,0 +1,15 @@
+
+[client]
+	#Show DM pedestal functions in item tooltips
+	pedestalToolTips = true
+	#Requires holding shift to display the EMC value as a tooltip on items and blocks. Note: this does nothing if emcToolTips is disabled.
+	shiftEmcToolTips = false
+	#Show stats as tooltips for various ProjectE blocks
+	statToolTips = true
+	#Show the EMC value as a tooltip on items and blocks
+	emcToolTips = true
+	#Show item tags in tooltips (useful for custom EMC registration)
+	tagToolTips = false
+	#The Philosopher's Stone overlay softly pulsates
+	pulsatingOverlay = false
+

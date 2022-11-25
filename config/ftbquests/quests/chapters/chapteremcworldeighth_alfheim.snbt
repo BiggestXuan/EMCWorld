@@ -1,0 +1,89 @@
+{
+	id: "4D59B426950C19C8"
+	group: "45BD8B4A7A7B384D"
+	order_index: 3
+	filename: "chapteremcworldeighth_alfheim"
+	title: "{chapter.emcworld.eighth_infinity}"
+	icon: { id: "emcworld:infinity_catalyst", Count: 52b }
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.eighth_fourth_catalyst}"
+			x: -4.0d
+			y: 0.0d
+			dependencies: [
+				"3A9A7586DDD12C77"
+				"17D68A0A7B847998"
+			]
+			hide: true
+			size: 2.0d
+			id: "0B45CD6976FF1F5B"
+			tasks: [{
+				id: "63CF9DC8F9E285BC"
+				type: "item"
+				item: "emcworld:infinity_catalyst"
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_fourth_infinity_sword}"
+			tags: ["fourth_final"]
+			x: -0.5d
+			y: 6.0d
+			shape: "gear"
+			dependencies: [
+				"0B45CD6976FF1F5B"
+				"59942B2342728CA8"
+			]
+			size: 3.0d
+			id: "7EFDF58FAE545631"
+			tasks: [{
+				id: "03B5D9329FB1D80F"
+				type: "item"
+				item: {
+					id: "emcworld:infinity_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+						AS_Amulet_Holder: [I;
+							691178348
+							1862487994
+							-1808373877
+							1768852203
+						]
+					}
+				}
+			}]
+			rewards: [{
+				id: "7F1D002DFECC3FB2"
+				type: "custom"
+				title: "{quest.emcworld.eighth_fourth_infinity_sword}"
+				icon: {
+					id: "emcworld:infinity_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				tags: ["fourth_final"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_fourth_crystal_matrix}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: [
+				"17D68A0A7B847998"
+				"3A9A7586DDD12C77"
+			]
+			hide: true
+			size: 2.0d
+			id: "59942B2342728CA8"
+			tasks: [{
+				id: "02867196F0CBAA34"
+				type: "item"
+				item: "emcworld:crystal_matrix_ingot"
+			}]
+		}
+	]
+}

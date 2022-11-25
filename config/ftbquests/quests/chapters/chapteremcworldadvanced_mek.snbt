@@ -1,0 +1,622 @@
+{
+	id: "0F97D8F93BFBAAA6"
+	group: "253AC67EEE892A90"
+	order_index: 3
+	filename: "chapteremcworldadvanced_mek"
+	title: "{chapter.emcworld.advanced_mek}"
+	icon: "mekanism:thermal_evaporation_block"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.advanced_control}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "45DC5CCA2E931683"
+			tasks: [{
+				id: "7CC439E64B047C0D"
+				type: "item"
+				item: "mekanism:advanced_control_circuit"
+			}]
+			rewards: [
+				{
+					id: "0A1D921936F5D48D"
+					type: "item"
+					team_reward: true
+					item: "mekanism:advanced_control_circuit"
+					count: 8
+				}
+				{
+					id: "541902B7EFFCAF63"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.elite_control}"
+			x: 12.0d
+			y: 0.0d
+			dependencies: ["45DC5CCA2E931683"]
+			hide: true
+			id: "1EEF1DDC1FB45C02"
+			tasks: [{
+				id: "09824DFA7BAAC6AA"
+				type: "item"
+				item: "mekanism:elite_control_circuit"
+			}]
+			rewards: [
+				{
+					id: "086D32C94D23F434"
+					type: "item"
+					team_reward: true
+					item: "mekanism:elite_control_circuit"
+					count: 8
+				}
+				{
+					id: "6ED3DB8D0DB15A1F"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.thermal_blocks}"
+			x: -3.0d
+			y: 3.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "1C720B04B104DC6E"
+			tasks: [{
+				id: "3CE68773E59AF20A"
+				type: "item"
+				item: "mekanism:thermal_evaporation_block"
+				count: 16L
+			}]
+			rewards: [
+				{
+					id: "03119664FF17ACF2"
+					type: "item"
+					item: "mekanism:thermal_evaporation_block"
+					count: 16
+				}
+				{
+					id: "2EA56D0C602F4F18"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.thermal_control}"
+			x: 0.0d
+			y: 3.0d
+			dependencies: [
+				"45DC5CCA2E931683"
+				"1C720B04B104DC6E"
+			]
+			id: "1FD1E8C8A8FBDBDE"
+			tasks: [
+				{
+					id: "6FAE082A11690FA3"
+					type: "item"
+					item: "mekanism:thermal_evaporation_controller"
+				}
+				{
+					id: "412950D32EB1F4A5"
+					type: "item"
+					item: "mekanism:thermal_evaporation_valve"
+				}
+			]
+			rewards: [
+				{
+					id: "371CBC5C7827FFB4"
+					type: "item"
+					item: "mekanism:thermal_evaporation_block"
+					count: 32
+				}
+				{
+					id: "1FCB32AF098129C9"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.purification_chamber}"
+			x: 0.0d
+			y: -3.0d
+			dependencies: ["45DC5CCA2E931683"]
+			id: "7969385000184DF0"
+			tasks: [{
+				id: "0CCA8B614EAB0A38"
+				type: "item"
+				item: "mekanism:purification_chamber"
+			}]
+			rewards: [
+				{
+					id: "0BF9592C66F3F6D7"
+					type: "item"
+					item: "mekanism:ingot_steel"
+					count: 8
+				}
+				{
+					id: "4D9739DBD091D2D4"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.osmium_compressed}"
+			x: -3.0d
+			y: -3.0d
+			dependencies: ["45DC5CCA2E931683"]
+			id: "621C5F42F496BEB2"
+			tasks: [{
+				id: "11C78E27777910FE"
+				type: "item"
+				item: "mekanism:osmium_compressor"
+			}]
+			rewards: [
+				{
+					id: "76878821831A892E"
+					type: "item"
+					item: "mekanism:ingot_steel"
+					count: 8
+				}
+				{
+					id: "1DA1AC0C72816472"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.color_machine}"
+			x: 3.0d
+			y: -3.0d
+			dependencies: ["45DC5CCA2E931683"]
+			id: "3B2FFE42BEF373EA"
+			tasks: [{
+				id: "7D130DDAFF9C1A1A"
+				type: "item"
+				item: "mekanism:painting_machine"
+			}]
+			rewards: [
+				{
+					id: "16C6AAA5C95B6459"
+					type: "item"
+					item: "mekanism:ingot_steel"
+					count: 8
+				}
+				{
+					id: "795945DC133D0139"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.injection}"
+			x: 9.0d
+			y: 3.0d
+			dependencies: ["1EEF1DDC1FB45C02"]
+			id: "2DCB17E8AC809E8F"
+			tasks: [{
+				id: "4AF382E3EED118DC"
+				type: "item"
+				item: "mekanism:chemical_injection_chamber"
+			}]
+			rewards: [{
+				id: "5F8EA78C37B03BE3"
+				type: "item"
+				item: "mekanism:ingot_steel"
+				count: 16
+			}]
+		}
+		{
+			title: "{quest.emcworld.control_rod}"
+			x: 12.0d
+			y: 3.0d
+			dependencies: ["1EEF1DDC1FB45C02"]
+			id: "43026437A68C8778"
+			tasks: [{
+				id: "5354B6BAFA82E1F7"
+				type: "item"
+				item: "mekanismgenerators:control_rod_assembly"
+			}]
+			rewards: [{
+				id: "095C44E107AC5959"
+				type: "item"
+				item: "mekanismgenerators:control_rod_assembly"
+				count: 4
+			}]
+		}
+		{
+			title: "{quest.emcworld.combine}"
+			x: 15.0d
+			y: 3.0d
+			dependencies: ["1EEF1DDC1FB45C02"]
+			id: "0F693D5D04525378"
+			tasks: [{
+				id: "5924F6D110D4ACD1"
+				type: "item"
+				item: "mekanism:combiner"
+			}]
+			rewards: [{
+				id: "4AD202FA9F9FF44C"
+				type: "item"
+				item: "mekanism:ingot_steel"
+				count: 16
+			}]
+		}
+		{
+			title: "{quest.emcworld.qio_io}"
+			x: 15.0d
+			y: 0.0d
+			dependencies: ["1EEF1DDC1FB45C02"]
+			id: "304083BDB654B7FF"
+			tasks: [
+				{
+					id: "5763C5A40D1B8DE9"
+					type: "item"
+					item: "mekanism:qio_importer"
+				}
+				{
+					id: "55935E68C3D63668"
+					type: "item"
+					item: "mekanism:qio_exporter"
+				}
+			]
+			rewards: [
+				{
+					id: "68E21B517EF96725"
+					type: "item"
+					item: "mekanism:elite_control_circuit"
+					count: 4
+				}
+				{
+					id: "1B24FBD8DC8FF195"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.qio_dashboard}"
+			x: 12.0d
+			y: -3.0d
+			dependencies: ["1EEF1DDC1FB45C02"]
+			id: "1366CC37954750ED"
+			tasks: [{
+				id: "21D71A2FC28C49F7"
+				type: "item"
+				item: "mekanism:qio_dashboard"
+			}]
+			rewards: [
+				{
+					id: "7623F3F7052BE424"
+					type: "item"
+					team_reward: true
+					item: "mekanism:qio_drive_base"
+				}
+				{
+					id: "5D848055077028CA"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.taking_qio_dashboard}"
+			x: 15.0d
+			y: -3.0d
+			dependencies: ["1366CC37954750ED"]
+			id: "6239393B2764C4A9"
+			tasks: [{
+				id: "62C3C1BC395CCD05"
+				type: "item"
+				item: "mekanism:portable_qio_dashboard"
+			}]
+			rewards: [
+				{
+					id: "728B3ADE72EC2F27"
+					type: "item"
+					team_reward: true
+					item: "mekanism:qio_drive_base"
+				}
+				{
+					id: "497CA7A02538A28B"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 9.0d
+			y: -3.0d
+			dependencies: ["1EEF1DDC1FB45C02"]
+			id: "14AF6A421779B737"
+			tasks: [{
+				id: "7EDA5E32990B0DA9"
+				type: "item"
+				item: "mekanism:qio_drive_array"
+			}]
+			rewards: [
+				{
+					id: "75B8DE7FAAAC4EEA"
+					type: "item"
+					item: "mekanism:alloy_reinforced"
+					count: 16
+				}
+				{
+					id: "09CF28E2B8907E9C"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 6.0d
+			y: -3.0d
+			dependencies: ["14AF6A421779B737"]
+			id: "0E139E00F25DBBE9"
+			tasks: [{
+				id: "34FC7C20E3E3471B"
+				type: "item"
+				item: "mekanism:qio_drive_base"
+			}]
+			rewards: [
+				{
+					id: "1A4C7DF67522319F"
+					type: "item"
+					team_reward: true
+					item: "mekanism:qio_drive_base"
+				}
+				{
+					id: "127691DE08A801B9"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.turbine_valve}"
+			x: -3.0d
+			y: 0.0d
+			dependencies: [
+				"2F1E236DBA51F6B8"
+				"45DC5CCA2E931683"
+			]
+			id: "7CCCE2DD4A4007B5"
+			tasks: [{
+				id: "6F961F9818254A00"
+				type: "item"
+				item: "mekanismgenerators:turbine_valve"
+			}]
+			rewards: [
+				{
+					id: "5E980CA7BCC3F817"
+					type: "item"
+					item: "mekanismgenerators:turbine_casing"
+					count: 16
+				}
+				{
+					id: "30B5D169F8139EFD"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.turbine_case}"
+			x: -6.0d
+			y: 0.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			dependency_requirement: "one_started"
+			id: "2F1E236DBA51F6B8"
+			tasks: [{
+				id: "5B2469516DF0FF83"
+				type: "item"
+				item: "mekanismgenerators:turbine_casing"
+				count: 16L
+			}]
+			rewards: [
+				{
+					id: "504C22C30554D50D"
+					type: "item"
+					item: "mekanismgenerators:turbine_casing"
+					count: 64
+				}
+				{
+					id: "33CDAC7EBD8BAD89"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.turbine_blades}"
+			x: -6.0d
+			y: 3.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "6C77C4D470B91948"
+			tasks: [
+				{
+					id: "506FDEDAFE9ECC30"
+					type: "item"
+					item: "mekanismgenerators:turbine_rotor"
+				}
+				{
+					id: "09E5DF99188B2A22"
+					type: "item"
+					item: "mekanismgenerators:turbine_blade"
+				}
+			]
+			rewards: [
+				{
+					id: "2624FF43E9530E96"
+					type: "item"
+					item: "mekanismgenerators:turbine_casing"
+					count: 16
+				}
+				{
+					id: "03C0C419FE6F11DA"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.turbine_blocks}"
+			x: -9.0d
+			y: 0.0d
+			dependencies: ["2F1E236DBA51F6B8"]
+			id: "47C2A0FA88C15627"
+			tasks: [
+				{
+					id: "3EBCF88359BC2513"
+					type: "item"
+					item: "mekanismgenerators:turbine_vent"
+				}
+				{
+					id: "7A9C0D80ECD7AC4B"
+					type: "item"
+					item: "mekanismgenerators:saturating_condenser"
+				}
+				{
+					id: "2B7EC3C37DEDD360"
+					type: "item"
+					item: "mekanismgenerators:rotational_complex"
+				}
+			]
+			rewards: [
+				{
+					id: "085B5A42EC004A1E"
+					type: "item"
+					item: "mekanismgenerators:turbine_casing"
+					count: 64
+				}
+				{
+					id: "617BEEB4E68C6F1F"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.boiler_case}"
+			x: 6.0d
+			y: 3.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "01EC58E927097247"
+			tasks: [{
+				id: "25292D7D4780B39C"
+				type: "item"
+				item: "mekanism:boiler_casing"
+				count: 16L
+			}]
+			rewards: [
+				{
+					id: "2E5AFAE5A9CB7E81"
+					type: "item"
+					item: "mekanism:boiler_casing"
+					count: 32
+				}
+				{
+					id: "1479B9452CC69554"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.boiler_valve}"
+			x: 3.0d
+			y: 3.0d
+			dependencies: [
+				"45DC5CCA2E931683"
+				"01EC58E927097247"
+			]
+			id: "4EDCEC33FBFC638D"
+			tasks: [{
+				id: "60FCFF426BBF8267"
+				type: "item"
+				item: "mekanism:boiler_valve"
+			}]
+			rewards: [
+				{
+					id: "7617389E9600B3E7"
+					type: "item"
+					item: "mekanism:boiler_casing"
+					count: 32
+				}
+				{
+					id: "7F86930ECD216731"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,44 @@
+
+[General]
+	#Difficulty Setting
+	#Range: 0.5 ~ 3.0
+	"World Difficulty" = 3.0
+	#Let the values of the modpack be displayed in K, M, G instead of the full value
+	Format = false
+	#Enable free mode to delete all items stage
+	"Able Free Mode" = false
+	#Whether unable EMCWorld Admin Menu
+	"Able Admin Menu" = false
+	#Enable sponsorship messages that players send every 100 times they enter the game.
+	"Enable Info" = true
+
+[Festival]
+	#Get gifts on certain festivals,only configurable festivals that give gifts
+	SpringFestival = true
+	DragonBoatFestival = true
+	LanternFestival = true
+	FoolsDay = true
+	MidAutumnFestival = true
+
+[constellation]
+
+	[constellation.effect]
+
+		[constellation.effect.emc]
+			#Defines the radius (in blocks) in which the ritual will do its effects.
+			#Range: 1.0 ~ 512.0
+			range = 8.0
+			#Defines the increase in radius the ritual will get per active lens enhancing the ritual.
+			#Range: 0.0 ~ 128.0
+			rangePerLens = 8.0
+			#Set this to false to disable this ritual effect
+			enabled = true
+
+			[constellation.effect.emc.constellation]
+
+				[constellation.effect.emc.constellation.mantle]
+
+					[constellation.effect.emc.constellation.mantle.emc]
+						#Set this to false to disable this mantle effect
+						enabled = true
+

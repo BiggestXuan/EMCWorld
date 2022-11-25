@@ -1,0 +1,158 @@
+{
+	id: "7F8214A279BE6A6E"
+	group: "19E8D4A8DD89F202"
+	order_index: 0
+	filename: "chapteremcworldfifth_hell"
+	title: "{chapter.emcworld.fifth_hals}"
+	icon: "hem:copparite"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: [{
+		x: -16.0d
+		y: -3.0d
+		width: 16.0d
+		height: 9.0d
+		rotation: 0.0d
+		image: "ftbquests:textures/chuansongmeng.png"
+		hover: [ ]
+		click: ""
+		dev: false
+		corner: true
+		dependency: "3DB9D7C131CB7DDC"
+	}]
+	quests: [
+		{
+			title: "{quest.emcworld.fifth_hals_gointoblueleaf}"
+			icon: "hem:blueleaf_grass_block"
+			x: 0.0d
+			y: -4.5d
+			description: ["{quest.emcworld.fifth_hals_gointoblueleaf_desc}"]
+			dependencies: ["3DB9D7C131CB7DDC"]
+			id: "52720BB94D721E6A"
+			tasks: [{
+				id: "64DD1BDF054758A8"
+				type: "dimension"
+				dimension: "hem:blueleaf"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hals_transporter}"
+			icon: "hem:teir_one_computer"
+			x: -3.0d
+			y: -1.5d
+			description: ["{quest.emcworld.fifth_hals_transporter_desc}"]
+			dependencies: ["038E97744F7C955D"]
+			id: "3DB9D7C131CB7DDC"
+			tasks: [
+				{
+					id: "0EE002C85B2E751E"
+					type: "item"
+					item: "hem:transporter_bottom"
+				}
+				{
+					id: "75C41B0AEB64862F"
+					type: "item"
+					item: "hem:transporter_top"
+				}
+				{
+					id: "2EB89BDA42C410A7"
+					type: "item"
+					item: "hem:generator_piping"
+				}
+				{
+					id: "2E73CFA43E3A1303"
+					type: "item"
+					item: "hem:teir_one_computer"
+				}
+				{
+					id: "72CB4CF3E8FCD59D"
+					type: "item"
+					item: "hem:steam_engine"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_hals_copparite}"
+			x: -6.0d
+			y: 1.5d
+			description: ["{quest.emcworld.fifth_hals_copparite_desc}"]
+			dependencies: ["0498862A07B4D116"]
+			id: "038E97744F7C955D"
+			tasks: [{
+				id: "21B4E5E8FEB50C57"
+				type: "item"
+				item: "hem:copparite"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hals_copper}"
+			x: 0.0d
+			y: 1.5d
+			description: ["{quest.emcworld.fifth_hals_copper_desc}"]
+			dependencies: ["29ED613D22684793"]
+			hide: true
+			dependency_requirement: "all_started"
+			id: "0498862A07B4D116"
+			tasks: [{
+				id: "4B580541B8CD78FF"
+				type: "item"
+				item: "hem:rose_copper_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hals_buleleafleaves}"
+			x: 0.0d
+			y: -7.5d
+			description: ["{quest.emcworld.fifth_hals_buleleafleaves_desc}"]
+			dependencies: ["52720BB94D721E6A"]
+			id: "09E079AB471A0028"
+			tasks: [{
+				id: "48240108A89C986E"
+				type: "item"
+				item: "hem:blueleaf_leaves"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hals_killmilitarybot}"
+			x: -6.0d
+			y: -7.5d
+			description: ["{quest.emcworld.fifth_hals_killmilitarybot_desc}"]
+			dependencies: ["09E079AB471A0028"]
+			id: "6F1FFF663AC165B5"
+			tasks: [{
+				id: "45D60830447A4BF9"
+				type: "kill"
+				icon: {
+					id: "hem:shotgun"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "hem:militarybot"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_hals_killancien}"
+			x: -6.0d
+			y: -4.5d
+			description: ["{quest.emcworld.fifth_hals_killancien_desc}"]
+			dependencies: ["52720BB94D721E6A"]
+			id: "31824107B9D4670B"
+			tasks: [{
+				id: "327FE8A10E2E40D5"
+				type: "kill"
+				icon: {
+					id: "hem:ancient_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "hem:ancient_one"
+				value: 1L
+			}]
+		}
+	]
+}

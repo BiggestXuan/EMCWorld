@@ -1,0 +1,273 @@
+{
+	id: "62E52ABB8E437C10"
+	group: "19E8D4A8DD89F202"
+	order_index: 2
+	filename: "chapteremcworldfifth_magic"
+	title: "{chapter.emcworld.fifth_magic}"
+	icon: "naturesaura:nature_altar"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fifth_magic_goldfiber}"
+			x: 6.0d
+			y: -12.0d
+			dependencies: ["29ED613D22684793"]
+			hide: true
+			dependency_requirement: "all_started"
+			id: "2DD0F1D8047CE3D1"
+			tasks: [{
+				id: "75656FF57D66DC0B"
+				type: "item"
+				item: "naturesaura:gold_fiber"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_goldleaf}"
+			x: 10.5d
+			y: -7.5d
+			description: ["{quest.emcworld.fifth_magic_goldleaf_desc}"]
+			dependencies: ["2DD0F1D8047CE3D1"]
+			id: "49EF7A2F65F54001"
+			tasks: [{
+				id: "0C0268979042D51B"
+				type: "item"
+				item: "naturesaura:gold_leaf"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_goldpower}"
+			x: 6.0d
+			y: -3.0d
+			dependencies: ["49EF7A2F65F54001"]
+			id: "3E5F829D1784F290"
+			tasks: [{
+				id: "250ED7FC9E7F2797"
+				type: "item"
+				item: "naturesaura:gold_powder"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_woodstand}"
+			x: 1.5d
+			y: 0.0d
+			dependencies: ["29ED613D22684793"]
+			hide: true
+			id: "6A651214583225B4"
+			tasks: [{
+				id: "38C7F31731EABADC"
+				type: "item"
+				item: "naturesaura:wood_stand"
+				count: 8L
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_tokens}"
+			x: 10.5d
+			y: 0.0d
+			dependencies: ["29ED613D22684793"]
+			id: "7BC1D034B93D21D2"
+			tasks: [
+				{
+					id: "49327B837E35FDE4"
+					type: "item"
+					item: "naturesaura:token_joy"
+				}
+				{
+					id: "73FE06B0FE3E89A8"
+					type: "item"
+					item: "naturesaura:token_fear"
+				}
+				{
+					id: "4A46D6E04F4C4A88"
+					type: "item"
+					item: "naturesaura:token_anger"
+				}
+				{
+					id: "1992DC62030DAD3C"
+					type: "item"
+					item: "naturesaura:token_sorrow"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_naturealtar}"
+			icon: "naturesaura:nature_altar"
+			x: 6.0d
+			y: 3.0d
+			dependencies: [
+				"3E5F829D1784F290"
+				"7BC1D034B93D21D2"
+				"6A651214583225B4"
+			]
+			id: "39C52A7500BF9D69"
+			tasks: [
+				{
+					id: "5477A6296D619F88"
+					type: "item"
+					item: "naturesaura:nature_altar"
+				}
+				{
+					id: "06649F2D4B0A7080"
+					type: "item"
+					item: "naturesaura:gold_brick"
+					count: 8L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_infusediron}"
+			x: 1.5d
+			y: 3.0d
+			dependencies: ["39C52A7500BF9D69"]
+			id: "42C73CC65F5FA1AE"
+			tasks: [{
+				id: "663A9307DB94FFD3"
+				type: "item"
+				item: "naturesaura:infused_iron"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_taintedgold}"
+			x: 10.5d
+			y: 3.0d
+			dependencies: ["39C52A7500BF9D69"]
+			id: "56323A92BAF0D77E"
+			tasks: [{
+				id: "4B2B7219E6C17CC2"
+				type: "item"
+				item: "naturesaura:tainted_gold"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_skyingot}"
+			x: 1.5d
+			y: 9.0d
+			dependencies: ["020EAE4DED58CAD6"]
+			id: "2ED66118DCDE2663"
+			tasks: [{
+				id: "09120A87190E5CE5"
+				type: "item"
+				item: "naturesaura:sky_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_offeringtable}"
+			x: -3.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fifth_magic_offeringtable_desc}"]
+			dependencies: ["29ED613D22684793"]
+			hide: true
+			id: "020EAE4DED58CAD6"
+			tasks: [{
+				id: "4539A89E531777FC"
+				type: "item"
+				item: "naturesaura:offering_table"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_animalspawner}"
+			x: 6.0d
+			y: 9.0d
+			shape: "gear"
+			dependencies: [
+				"42C73CC65F5FA1AE"
+				"56323A92BAF0D77E"
+				"2ED66118DCDE2663"
+				"1AA6FFD24A09B407"
+			]
+			size: 1.5d
+			id: "0607C3BF3A236A9B"
+			tasks: [{
+				id: "311273CE909A7B69"
+				type: "item"
+				item: "naturesaura:animal_spawner"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_aure}"
+			x: 10.5d
+			y: 9.0d
+			description: ["{quest.emcworld.fifth_magic_aure_desc}"]
+			dependencies: ["78B42D8A1A8D2E7B"]
+			id: "1AA6FFD24A09B407"
+			tasks: [{
+				id: "16147989D74C0BAA"
+				type: "checkmark"
+				icon: {
+					id: "naturesaura:aura_trove"
+					Count: 1b
+					tag: {
+						aura: 1200000
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_eyeimproved}"
+			x: 15.0d
+			y: 3.0d
+			dependencies: ["29ED613D22684793"]
+			id: "78B42D8A1A8D2E7B"
+			tasks: [{
+				id: "256912D5C7E84A9C"
+				type: "item"
+				item: "naturesaura:eye_improved"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_ancientsapling}"
+			x: 3.0d
+			y: -7.5d
+			dependencies: ["29ED613D22684793"]
+			hide: true
+			size: 2.0d
+			id: "684EB420E5624393"
+			tasks: [{
+				id: "4E0A46829B65DE74"
+				type: "item"
+				item: "naturesaura:ancient_sapling"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_purplecollector}"
+			x: 6.0d
+			y: 6.0d
+			dependencies: [
+				"42C73CC65F5FA1AE"
+				"56323A92BAF0D77E"
+				"1AA6FFD24A09B407"
+				"2ED66118DCDE2663"
+			]
+			id: "30B5476FFB43D2ED"
+			tasks: [{
+				id: "376794D180510916"
+				type: "item"
+				item: "projectex:purple_collector"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_magic_violetcollector}"
+			x: 6.0d
+			y: 12.0d
+			dependencies: [
+				"30B5476FFB43D2ED"
+				"2ED66118DCDE2663"
+				"1AA6FFD24A09B407"
+			]
+			id: "131D06E6858EA93F"
+			tasks: [{
+				id: "4703E4CDD6AD30EE"
+				type: "item"
+				item: "projectex:violet_collector"
+			}]
+			rewards: [{
+				id: "1D1F5A3E82C61B11"
+				type: "custom"
+				title: "{quest.emcworld_stage_five}"
+				icon: "the_afterlight:workbench_of_ancients"
+				auto: "enabled"
+			}]
+		}
+	]
+}

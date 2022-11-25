@@ -1,0 +1,148 @@
+{
+	id: "17481E5576B066EF"
+	group: "082C00FA3A553D98"
+	order_index: 0
+	filename: "chapteremcworldoff_quest_skill"
+	title: "{chapter.emcworld.off_quest_skill}"
+	icon: "emcworld:red_matter_crystal"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{chapter.emcworld.off_quest_skill_set}"
+			x: 0.0d
+			y: 0.0d
+			id: "5B27B47C64B79EBA"
+			tasks: [{
+				id: "5A49179E32B9C731"
+				type: "item"
+				title: "{chapter.emcworld.off_quest_skill_set_item}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:setting_profession"
+					}
+				}
+			}]
+		}
+		{
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["5B27B47C64B79EBA"]
+			id: "2BBDA125622517FF"
+			tasks: [{
+				id: "230F4774EF935A54"
+				type: "item"
+				item: "emcworld:red_matter_crystal"
+			}]
+		}
+		{
+			x: 6.0d
+			y: 0.0d
+			dependencies: ["2BBDA125622517FF"]
+			id: "25C07FF7097A51C2"
+			tasks: [{
+				id: "2859BE4601576919"
+				type: "item"
+				item: "emcworld:ancient_icon"
+			}]
+		}
+		{
+			x: 9.0d
+			y: 0.0d
+			dependencies: ["25C07FF7097A51C2"]
+			id: "12A3A4E281F759C7"
+			tasks: [{
+				id: "0D7D64D4A24CDFF3"
+				type: "item"
+				item: "emcworld:fantasy_gem"
+			}]
+		}
+		{
+			x: 12.0d
+			y: 0.0d
+			dependencies: ["12A3A4E281F759C7"]
+			id: "569587555F628361"
+			tasks: [{
+				id: "7E863C2305A66847"
+				type: "item"
+				item: "emcworld:another_world_core"
+			}]
+		}
+		{
+			x: 15.0d
+			y: 0.0d
+			dependencies: ["569587555F628361"]
+			id: "5F7DDDA26B928947"
+			tasks: [{
+				id: "4FB917B97E0FC014"
+				type: "item"
+				item: "emcworld:demon_dust"
+			}]
+		}
+		{
+			x: 21.0d
+			y: 0.0d
+			dependencies: ["695FB0FEB6625B8B"]
+			id: "353962D1EBF12910"
+			tasks: [{
+				id: "1C098FAF03956E22"
+				type: "item"
+				item: "emcworld:broken_diamond_sword"
+			}]
+		}
+		{
+			x: 18.0d
+			y: 0.0d
+			dependencies: ["5F7DDDA26B928947"]
+			id: "695FB0FEB6625B8B"
+			tasks: [{
+				id: "1353601E3D7ED258"
+				type: "item"
+				item: "emcworld:hero_medal"
+			}]
+		}
+		{
+			title: "{chapter.emcworld.off_quest_skill_modify}"
+			x: 24.0d
+			y: 0.0d
+			dependencies: ["353962D1EBF12910"]
+			id: "78159BF30E46E0E8"
+			tasks: [{
+				id: "7FAD6687225FC98F"
+				type: "item"
+				title: "{chapter.emcworld.off_quest_skill_modi_item}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:modify_profession"
+					}
+				}
+			}]
+		}
+		{
+			x: 27.0d
+			y: 0.0d
+			dependencies: ["78159BF30E46E0E8"]
+			id: "6B4DF8ACF7FFE854"
+			tasks: [{
+				id: "5662AF259B174481"
+				type: "item"
+				item: "emcworld:evil_book"
+			}]
+		}
+		{
+			x: 30.0d
+			y: 0.0d
+			dependencies: ["6B4DF8ACF7FFE854"]
+			id: "596CB64D4FD03A44"
+			tasks: [{
+				id: "1B4108A88DB92B4A"
+				type: "item"
+				item: "emcworld:ultimate_singularity"
+			}]
+		}
+	]
+}

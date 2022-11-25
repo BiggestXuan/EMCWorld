@@ -1,0 +1,479 @@
+{
+	id: "76DFEEEBAF901563"
+	group: "253AC67EEE892A90"
+	order_index: 2
+	filename: "chapteremcworldatum"
+	title: "{chapter.emcworld.atum}"
+	icon: "minecraft:sandstone"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.atum}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "482C6594BFD687F8"
+			tasks: [{
+				id: "11CEF9AD099D2942"
+				type: "item"
+				item: "atum:scarab"
+			}]
+			rewards: [
+				{
+					id: "574F79C762CB5BE3"
+					type: "item"
+					item: "atum:crunchy_golden_scarab"
+					count: 8
+				}
+				{
+					id: "773BDC1C5415218D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.nebu_ore}"
+			x: 3.0d
+			y: -3.0d
+			dependencies: ["482C6594BFD687F8"]
+			id: "53E818CACBEEA1CC"
+			tasks: [{
+				id: "1D54F009A23C9E9A"
+				type: "item"
+				item: "atum:nebu_ore"
+			}]
+			rewards: [
+				{
+					id: "7345EF5E356DDB25"
+					type: "item"
+					item: "atum:nebu_ingot"
+				}
+				{
+					id: "66FEEB881EAE630D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.atum_bubbles}"
+			x: 3.0d
+			y: 3.0d
+			dependencies: ["482C6594BFD687F8"]
+			id: "40945851BB327323"
+			tasks: [{
+				id: "111D16571EC99BF1"
+				type: "item"
+				title: "{quest.emcworld.any_atum_bubbles}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "atum:relic_non_dirty"
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "626B0DAE8E3E0899"
+					type: "item"
+					item: "minecraft:diamond"
+					count: 8
+				}
+				{
+					id: "4753C6522B50594B"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.atum_boss}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["482C6594BFD687F8"]
+			id: "62F3D68D80230999"
+			tasks: [{
+				id: "4D96F4588BCBDD1E"
+				type: "advancement"
+				advancement: "atum:core/pyramidscheme"
+				criterion: ""
+			}]
+			rewards: [
+				{
+					id: "737DD48EA95A8B2E"
+					type: "item"
+					item: "emcworld:big_emc_gem"
+					count: 16
+				}
+				{
+					id: "200B76328CFFE472"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.nebu_torch}"
+			x: 6.0d
+			y: -3.0d
+			dependencies: ["53E818CACBEEA1CC"]
+			id: "38B788C45E6DF1EB"
+			tasks: [{
+				id: "02C1A92755BC86DA"
+				type: "item"
+				item: "atum:nebu_torch"
+				count: 4L
+			}]
+			rewards: [
+				{
+					id: "100AB105608B0207"
+					type: "item"
+					item: "atum:nebu_torch"
+					count: 8
+				}
+				{
+					id: "2E4E1B54D7A2F02A"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.copper_medal}"
+			x: -3.0d
+			y: 0.0d
+			dependencies: ["482C6594BFD687F8"]
+			id: "6230A1593972CBE1"
+			tasks: [{
+				id: "330EC29D3D03DAD3"
+				type: "item"
+				item: "emcworld:copper_medal"
+			}]
+			rewards: [
+				{
+					id: "7E45689315D1B656"
+					type: "item"
+					item: "emcworld:copper_medal"
+					count: 2
+				}
+				{
+					id: "51C33DB7453DB7DB"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.silver_medal}"
+			x: -6.0d
+			y: 0.0d
+			dependencies: ["6230A1593972CBE1"]
+			id: "0854911EEFFEF4FC"
+			tasks: [{
+				id: "7C9B3CC2AE3274BD"
+				type: "item"
+				item: "emcworld:silver_medal"
+			}]
+			rewards: [
+				{
+					id: "72194E6F6C616312"
+					type: "item"
+					item: "emcworld:copper_medal"
+					count: 6
+				}
+				{
+					id: "42FF14676A4E95A2"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.gold_medal}"
+			x: -9.0d
+			y: 0.0d
+			dependencies: ["0854911EEFFEF4FC"]
+			id: "1C03994C67D13ABC"
+			tasks: [{
+				id: "2CBE7A1E87855CB8"
+				type: "item"
+				item: "emcworld:gold_medal"
+			}]
+			rewards: [
+				{
+					id: "2CE7003BFA0F6214"
+					type: "item"
+					item: "emcworld:silver_medal"
+					count: 2
+				}
+				{
+					id: "45AD47031ECAA76A"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.atum_boss_kill}"
+			x: 6.0d
+			y: 0.0d
+			dependencies: [
+				"38B788C45E6DF1EB"
+				"62F3D68D80230999"
+			]
+			id: "08B013C8E0D8C900"
+			tasks: [{
+				id: "335474B84CB06D03"
+				type: "kill"
+				entity: "atum:pharaoh"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "5A6768337BAE28B5"
+					type: "item"
+					item: "atum:nebu_hammer"
+				}
+				{
+					id: "01D5E89A1053CEDE"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.nebu_furnace}"
+			x: 9.0d
+			y: -3.0d
+			dependencies: ["53E818CACBEEA1CC"]
+			id: "7CFD14339CE54803"
+			tasks: [{
+				id: "7C034E5DCF4A535A"
+				type: "item"
+				item: "atum:godforge"
+			}]
+			rewards: [
+				{
+					id: "66C9EF6A76027047"
+					type: "item"
+					item: "atum:nebu_ingot"
+				}
+				{
+					id: "214E176B61E87D8E"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.god_shards}"
+			x: 9.0d
+			y: 0.0d
+			dependencies: [
+				"7CFD14339CE54803"
+				"08B013C8E0D8C900"
+			]
+			id: "1DB75312534BD4EE"
+			tasks: [{
+				id: "17A10DF6329B1EAB"
+				type: "item"
+				title: "{quest.emcworld.any_god_shards}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "atum:godshards"
+					}
+				}
+				count: 4L
+			}]
+			rewards: [
+				{
+					id: "21C4EA0201195742"
+					type: "item"
+					item: "atum:nebu_torch"
+					count: 16
+				}
+				{
+					id: "56C736425FC3D544"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.gob_block}"
+			x: 12.0d
+			y: 0.0d
+			dependencies: ["1DB75312534BD4EE"]
+			id: "3061AF1EDA870A3B"
+			tasks: [{
+				id: "6C726DB0B34C3422"
+				type: "item"
+				item: "atum:godforged_block"
+			}]
+			rewards: [
+				{
+					id: "75E74BAC5DB51589"
+					type: "item"
+					item: "emcworld:gold_medal"
+				}
+				{
+					id: "6AF3278FEE31D63D"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.atum_rod}"
+			x: 9.0d
+			y: 3.0d
+			dependencies: [
+				"08B013C8E0D8C900"
+				"170EAAB6A067BD04"
+			]
+			id: "4B8AE6FC20596344"
+			tasks: [{
+				id: "459A2751E7A4BEC5"
+				type: "item"
+				item: {
+					id: "atum:atems_bounty"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "1E38D038AF1C7136"
+					type: "item"
+					item: {
+						id: "minecraft:fishing_rod"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "2592745739965891"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					team_reward: false
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.atum_fishs}"
+			x: 12.0d
+			y: 3.0d
+			dependencies: ["4B8AE6FC20596344"]
+			id: "6DBF584C09FCF5DE"
+			tasks: [
+				{
+					id: "0413FE04552CCA4A"
+					type: "item"
+					item: "atum:fish_forsaken"
+				}
+				{
+					id: "395F3F26C4232F1A"
+					type: "item"
+					item: "atum:fish_mummified"
+				}
+				{
+					id: "2B2B1A0236A836F8"
+					type: "item"
+					item: "atum:fish_jeweled"
+				}
+				{
+					id: "67A5D8FFFECD581C"
+					type: "item"
+					item: "atum:fish_skeletal"
+				}
+			]
+			rewards: [
+				{
+					id: "3042DCF292CD3771"
+					type: "item"
+					item: "emcworld:silver_medal"
+					count: 4
+				}
+				{
+					id: "3DBCCEDA8C092F47"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 6.0d
+			y: 3.0d
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			id: "170EAAB6A067BD04"
+			tasks: [{
+				id: "27318032A6BA2929"
+				type: "advancement"
+				title: "{quest.emcworld.green_land}"
+				advancement: "atum:core/ahope"
+				criterion: ""
+			}]
+			rewards: [{
+				id: "334CC60E5ADACE7E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
+		}
+	]
+}

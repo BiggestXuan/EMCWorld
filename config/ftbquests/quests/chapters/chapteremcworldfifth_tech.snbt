@@ -1,0 +1,138 @@
+{
+	id: "1BE03914E1C3A1B2"
+	group: "19E8D4A8DD89F202"
+	order_index: 3
+	filename: "chapteremcworldfifth_tech"
+	title: "{chapter.emcworld.fifth_tech}"
+	icon: "mekanism:pellet_antimatter"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fifth_tech_emcleaf}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["29ED613D22684793"]
+			id: "0D57223269D4C86B"
+			tasks: [{
+				id: "1661E6662E29C22D"
+				type: "item"
+				item: "emcworld:emc_leaf"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_pelletplutonium}"
+			x: -4.5d
+			y: 0.0d
+			dependencies: ["0D57223269D4C86B"]
+			hide: true
+			id: "18C4D3B4602CEF87"
+			tasks: [{
+				id: "779D97E0DD33A496"
+				type: "item"
+				item: "mekanism:pellet_plutonium"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_antiprotonivnucleosynthesizer}"
+			x: -4.5d
+			y: -7.5d
+			dependencies: ["18C4D3B4602CEF87"]
+			id: "26705C1078492BCF"
+			tasks: [{
+				id: "792DF3CEFB87586E"
+				type: "item"
+				item: "mekanism:antiprotonic_nucleosynthesizer"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_spscasing}"
+			icon: "mekanism:sps_port"
+			x: 0.0d
+			y: -4.5d
+			description: ["{quest.emcworld.fifth_tech_spscasing_desc}"]
+			dependencies: ["18C4D3B4602CEF87"]
+			id: "3347E859A73F193D"
+			tasks: [
+				{
+					id: "5EECC8E6779B6CD3"
+					type: "item"
+					item: "mekanism:sps_casing"
+					count: 60L
+				}
+				{
+					id: "61C9AB352FE77122"
+					type: "item"
+					item: "mekanism:sps_port"
+					count: 3L
+				}
+				{
+					id: "18DB46F977A97A80"
+					type: "item"
+					item: "mekanism:supercharged_coil"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_pelletantimatter}"
+			x: 0.0d
+			y: -9.0d
+			dependencies: ["3347E859A73F193D"]
+			id: "53CF388661F71ADF"
+			tasks: [{
+				id: "52BE82DCB30DB54E"
+				type: "item"
+				item: "mekanism:pellet_antimatter"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_flamethrower}"
+			x: -4.5d
+			y: 7.5d
+			description: ["{quest.emcworld.fifth_tech_flamethrower_desc}"]
+			dependencies: ["18C4D3B4602CEF87"]
+			id: "2145ADC04ADFA9D8"
+			tasks: [{
+				id: "05A744C07F84280B"
+				type: "item"
+				item: "mekanism:flamethrower"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_elitecomponent}"
+			x: 0.0d
+			y: 4.5d
+			dependencies: ["18C4D3B4602CEF87"]
+			id: "764BD91C252E8327"
+			tasks: [{
+				id: "3F2F3392CA8755A7"
+				type: "item"
+				item: "extendedcrafting:elite_component"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_elitecatalyst}"
+			x: 0.0d
+			y: 9.0d
+			dependencies: ["764BD91C252E8327"]
+			id: "4010472411CE1C64"
+			tasks: [{
+				id: "60506C21BC1709AF"
+				type: "item"
+				item: "extendedcrafting:elite_catalyst"
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_tech_elitetable}"
+			x: -12.0d
+			y: 0.0d
+			dependencies: ["18C4D3B4602CEF87"]
+			id: "237BA8B84B7655F2"
+			tasks: [{
+				id: "050D0FB6D613466A"
+				type: "item"
+				item: "extendedcrafting:elite_table"
+			}]
+		}
+	]
+}

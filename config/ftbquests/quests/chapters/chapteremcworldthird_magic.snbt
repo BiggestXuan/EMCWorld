@@ -1,0 +1,609 @@
+{
+	id: "7557165038444A81"
+	group: "1BED04361D91412D"
+	order_index: 2
+	filename: "chapteremcworldthird_magic"
+	title: "{chapter.emcworld.third_magic}"
+	icon: "mythicbotany:alfsteel_pylon"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.third_magic_manainfuser}"
+			x: 0.0d
+			y: 9.0d
+			description: ["{quest.emcworld.third_magic_manainfuser_desc}"]
+			dependencies: ["61FF0CDE31A9E16B"]
+			hide: true
+			id: "207EBDC4A0190E88"
+			tasks: [{
+				id: "7C617AE5E7FA7F7F"
+				type: "item"
+				item: "mythicbotany:mana_infuser"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_runes}"
+			x: -21.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_magic_runes_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "4DE0FAC73AC6B76A"
+			tasks: [
+				{
+					id: "3BCBBC842FB77830"
+					type: "item"
+					item: "mythicbotany:alfheim_rune"
+				}
+				{
+					id: "63604819FE238EFC"
+					type: "item"
+					item: "mythicbotany:niflheim_rune"
+				}
+				{
+					id: "24E63C0C35225AAD"
+					type: "item"
+					item: "mythicbotany:midgard_rune"
+				}
+				{
+					id: "7D2393B07255930F"
+					type: "item"
+					item: "mythicbotany:joetunheim_rune"
+				}
+				{
+					id: "5A9F1237420D8660"
+					type: "item"
+					item: "mythicbotany:muspelheim_rune"
+				}
+				{
+					id: "0128407D0D7B0AA8"
+					type: "item"
+					item: "mythicbotany:nidavellir_rune"
+				}
+				{
+					id: "60EC29885C3CB912"
+					type: "item"
+					item: "mythicbotany:helheim_rune"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_magic_prepar}"
+			x: 0.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_prepar_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "36450B91226EDBE4"
+			tasks: [
+				{
+					id: "3D646E79B42AB652"
+					type: "item"
+					item: "minecraft:gold_block"
+					count: 4L
+				}
+				{
+					id: "1262654DC8376F59"
+					type: "item"
+					item: "botania:shimmerrock"
+					count: 5L
+				}
+				{
+					id: "0D0D1F5E0DB07AB3"
+					type: "item"
+					item: "botania:spark"
+				}
+				{
+					id: "014254FBCAD3643B"
+					type: "item"
+					item: "botania:spark_upgrade_dominant"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_magic_alfsteel}"
+			x: 3.0d
+			y: 6.0d
+			shape: "diamond"
+			description: ["{quest.emcworld.third_magic_alfsteel_desc}"]
+			dependencies: [
+				"207EBDC4A0190E88"
+				"36450B91226EDBE4"
+			]
+			hide: true
+			size: 2.0d
+			id: "3548FDBE816D964B"
+			tasks: [{
+				id: "4376B10747232F01"
+				type: "item"
+				item: "mythicbotany:alfsteel_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_alchemicalreactionchamber}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_magic_alchemicalreactionchamber_desc}"]
+			dependencies: ["284F8A69E7322F8A"]
+			id: "37E61647625FF2AE"
+			tasks: [{
+				id: "5DD13DB64D9946EC"
+				type: "item"
+				item: "bloodmagic:alchemicalreactionchamber"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_alchemytable}"
+			x: -21.0d
+			y: -3.0d
+			description: ["{quest.emcworld.third_magic_alchemytable_desc}"]
+			dependencies: ["4DE0FAC73AC6B76A"]
+			id: "645D03CC1CD893AC"
+			tasks: [{
+				id: "549297DD163C8771"
+				type: "item"
+				item: "bloodmagic:alchemytable"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_soulforge}"
+			x: -18.0d
+			y: 0.0d
+			shape: "gear"
+			description: ["{quest.emcworld.third_magic_soulforge_desc}"]
+			dependencies: ["4DE0FAC73AC6B76A"]
+			size: 1.5d
+			id: "07A8B71D42826058"
+			tasks: [{
+				id: "186402306AC1DE26"
+				type: "item"
+				item: "bloodmagic:soulforge"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_reagentbinding}"
+			x: -3.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_magic_reagentbinding_desc}"]
+			dependencies: ["0421347EF0499BC3"]
+			hide: true
+			id: "284F8A69E7322F8A"
+			tasks: [{
+				id: "434C94FC44EB80B7"
+				type: "item"
+				item: "bloodmagic:reagentbinding"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_luminessence}"
+			x: -18.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_luminessence_desc}"]
+			dependencies: ["07A8B71D42826058"]
+			id: "421AC8A7B73C1F6B"
+			tasks: [{
+				id: "26F73D1A16686A70"
+				type: "item"
+				item: "extendedcrafting:luminessence"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_enderingot}"
+			x: 3.0d
+			y: 0.0d
+			description: ["{quest.emcworld.third_magic_enderingot_desc}"]
+			dependencies: ["37E61647625FF2AE"]
+			id: "6E2EFD9898DF555B"
+			tasks: [{
+				id: "3B38CA8BAB58B300"
+				type: "item"
+				item: "extendedcrafting:ender_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_demoncrucible}"
+			x: -9.0d
+			y: -3.0d
+			description: ["{quest.emcworld.third_magic_demoncrucible_desc}"]
+			dependencies: ["707D7E57D0FB5443"]
+			id: "024877BE872D6245"
+			tasks: [{
+				id: "1EAAF912F0A640CC"
+				type: "item"
+				item: "bloodmagic:demoncrucible"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_hellforgedingot}"
+			x: -15.0d
+			y: -3.0d
+			shape: "diamond"
+			description: ["{quest.emcworld.third_magic_hellforgedingot_desc}"]
+			dependencies: [
+				"07A8B71D42826058"
+				"38698F21124B387E"
+			]
+			id: "707D7E57D0FB5443"
+			tasks: [{
+				id: "6C2573B7E52B8358"
+				type: "item"
+				item: "bloodmagic:ingot_hellforged"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_hellforgeddust}"
+			x: -15.0d
+			y: -6.0d
+			description: ["{quest.emcworld.third_magic_hellforgeddust_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "38698F21124B387E"
+			tasks: [{
+				id: "774CC7B0C88B4670"
+				type: "item"
+				item: "bloodmagic:sand_hellforged"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_demoncrystals}"
+			x: -6.0d
+			y: 0.0d
+			shape: "hexagon"
+			description: ["{quest.emcworld.third_magic_demoncrystals_desc}"]
+			dependencies: [
+				"15A5C062A4774E5C"
+				"024877BE872D6245"
+			]
+			size: 1.5d
+			id: "0421347EF0499BC3"
+			tasks: [{
+				id: "2410000C254635D2"
+				type: "item"
+				item: "bloodmagic:defaultcrystal"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_demoncrystallizer}"
+			x: -9.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_demoncrystallizer_desc}"]
+			dependencies: ["251587A30F571C8A"]
+			id: "15A5C062A4774E5C"
+			tasks: [{
+				id: "639752D1388B7721"
+				type: "item"
+				item: "bloodmagic:demoncrystallizer"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_hypogealimperium}"
+			x: -12.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_hypogealimperium_desc}"]
+			dependencies: ["5EA5E662A1CE8AA3"]
+			id: "251587A30F571C8A"
+			tasks: [{
+				id: "360BCA04D06B0613"
+				type: "item"
+				item: "byg:hypogeal_imperium"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_shardcrystal}"
+			x: -15.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_shardcrystal_desc}"]
+			dependencies: ["07A8B71D42826058"]
+			id: "5EA5E662A1CE8AA3"
+			tasks: [{
+				id: "3F3B535C5D358453"
+				type: "item"
+				item: "byg:subzero_crystal_shard"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_yygdrasilbranch}"
+			x: 6.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_yygdrasilbranch_desc}"]
+			dependencies: ["3548FDBE816D964B"]
+			id: "35C6845569592B42"
+			tasks: [{
+				id: "41EA43DEC8208233"
+				type: "item"
+				item: "mythicbotany:yggdrasil_branch"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_gjallarhornempty}"
+			x: 6.0d
+			y: 9.0d
+			description: ["{quest.emcworld.third_magic_gjallarhornempty_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "730913B90D0F0FF8"
+			tasks: [{
+				id: "40853FB1BAFCF54F"
+				type: "item"
+				item: "mythicbotany:gjallar_horn_empty"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_gjallarhornfull}"
+			x: 9.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_magic_gjallarhornfull_desc}"]
+			dependencies: [
+				"730913B90D0F0FF8"
+				"35C6845569592B42"
+			]
+			hide: true
+			id: "55C421CFBC7E7E73"
+			tasks: [{
+				id: "3E89969679F95C1F"
+				type: "item"
+				item: "mythicbotany:gjallar_horn_full"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_runeholder}"
+			x: 12.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_magic_runeholder_desc}"]
+			dependencies: ["55C421CFBC7E7E73"]
+			id: "11F73F9933742CE9"
+			tasks: [
+				{
+					id: "6C15C171B85E1FB3"
+					type: "item"
+					item: "mythicbotany:rune_holder"
+				}
+				{
+					id: "36115C19BAA2EE77"
+					type: "item"
+					item: "mythicbotany:master_rune_holder"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_magic_kvasirblood}"
+			x: 15.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_magic_kvasirblood_desc}"]
+			dependencies: [
+				"0C0FA1CE702F3CD2"
+				"11F73F9933742CE9"
+			]
+			id: "79EEE09FBFB67862"
+			tasks: [{
+				id: "368AA091D25734FE"
+				type: "item"
+				item: "mythicbotany:kvasir_blood"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_enderdagger}"
+			x: 12.0d
+			y: 3.0d
+			description: ["{quest.emcworld.third_magic_enderdagger_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "0C0FA1CE702F3CD2"
+			tasks: [{
+				id: "62CFAF808F81A1C4"
+				type: "item"
+				item: {
+					id: "botania:ender_dagger"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_daggerofsacrifice}"
+			x: -12.0d
+			y: 12.0d
+			shape: "circle"
+			description: ["{quest.emcworld.third_magic_daggerofsacrifice_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "36A5C808F6AF0F32"
+			tasks: [{
+				id: "01D520A706B35EA5"
+				type: "item"
+				item: "bloodmagic:daggerofsacrifice"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_soulsword}"
+			x: -3.0d
+			y: 12.0d
+			description: ["{quest.emcworld.third_magic_soulsword_desc}"]
+			dependencies: ["36A5C808F6AF0F32"]
+			id: "00DA3EEC58EA59FA"
+			tasks: [{
+				id: "7EECCB465F20A487"
+				type: "item"
+				item: {
+					id: "bloodmagic:soulsword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_alfetellarmorupgrade}"
+			x: 3.0d
+			y: 12.0d
+			description: ["{quest.emcworld.third_magic_alfetellarmorupgrade_desc}"]
+			dependencies: ["3548FDBE816D964B"]
+			id: "4EB36AE5E1F130D8"
+			tasks: [{
+				id: "3100E3CCA21495D6"
+				type: "item"
+				item: "mythicbotany:alfsteel_armor_upgrade"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_terrasteel_helmet}"
+			x: -1.5d
+			y: 15.0d
+			description: ["{quest.emcworld.third_magic_terrasteel_helmet_desc}"]
+			dependencies: ["4EB36AE5E1F130D8"]
+			id: "08C07B9F562325C8"
+			tasks: [{
+				id: "0C0F02F4FB2473D0"
+				type: "item"
+				item: {
+					id: "botania:terrasteel_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_terrasteel_chestplate}"
+			x: 1.5d
+			y: 15.0d
+			description: ["{quest.emcworld.third_magic_terrasteel_chestplate_desc}"]
+			dependencies: ["4EB36AE5E1F130D8"]
+			id: "53218C0B21B5435A"
+			tasks: [{
+				id: "398D9E1E3FD96784"
+				type: "item"
+				item: {
+					id: "botania:terrasteel_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_terrasteel_leggings}"
+			x: 4.5d
+			y: 15.0d
+			description: ["{quest.emcworld.third_magic_terrasteel_leggings_desc}"]
+			dependencies: ["4EB36AE5E1F130D8"]
+			id: "56C2B6D9FEC9BEEC"
+			tasks: [{
+				id: "573B0C30A2A600EA"
+				type: "item"
+				item: {
+					id: "botania:terrasteel_leggings"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_terrasteelboots}"
+			x: 7.5d
+			y: 15.0d
+			description: ["{quest.emcworld.third_magic_terrasteelboots_desc}"]
+			dependencies: ["4EB36AE5E1F130D8"]
+			id: "1F5DDE63AE9DDFD6"
+			tasks: [{
+				id: "35177104BCD15F45"
+				type: "item"
+				item: {
+					id: "botania:terrasteel_boots"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_magic_livingarmor}"
+			icon: {
+				id: "bloodmagic:livingplate"
+				Count: 1b
+				tag: {
+					Damage: 0
+					livingStats: {
+						maxPoints: 100
+						upgrades: [ ]
+					}
+				}
+			}
+			x: -3.0d
+			y: 6.0d
+			description: ["{quest.emcworld.third_magic_livingarmor_desc}"]
+			dependencies: ["284F8A69E7322F8A"]
+			id: "47DB524D99B3EA9A"
+			tasks: [
+				{
+					id: "3FCFEDF3D623DC2C"
+					type: "item"
+					item: {
+						id: "bloodmagic:livinghelmet"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "732DB1E50FA7B481"
+					type: "item"
+					item: {
+						id: "bloodmagic:livingplate"
+						Count: 1b
+						tag: {
+							Damage: 0
+							livingStats: {
+								maxPoints: 100
+								upgrades: [ ]
+							}
+						}
+					}
+				}
+				{
+					id: "15449FDA2426FCBD"
+					type: "item"
+					item: {
+						id: "bloodmagic:livingleggings"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "05D70BD7A860AF2C"
+					type: "item"
+					item: {
+						id: "bloodmagic:livingboots"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			x: 15.0d
+			y: 9.0d
+			dependencies: ["11F73F9933742CE9"]
+			id: "2656E0BE28DB55BD"
+			tasks: [{
+				id: "6F6D6B1AE3FA0083"
+				type: "item"
+				item: "projectex:personal_link"
+			}]
+		}
+	]
+}
