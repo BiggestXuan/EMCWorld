@@ -17,6 +17,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -58,6 +59,9 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     protected abstract double getBaseBurstSpeed(ItemStack stack);
 
     @Override
+    protected abstract int getColor();
+
+    @Override
     public double getCriticalChance(ItemStack stack) {
         return tier.getCriticalChance() + getBaseCriticalChance(stack);
     }
@@ -95,5 +99,15 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     @Override
     protected double getManaBurstSpeed(ItemStack stack){
         return tier.getBurstSpeed() + getBaseBurstSpeed(stack);
+    }
+
+    @Nonnull
+    @Override
+    public Rarity getRarity(@Nonnull ItemStack p_77613_1_){
+        int level = getLevel(p_77613_1_);
+        if(level <= 8) return Rarity.COMMON;
+        if(level <= 14) return Rarity.UNCOMMON;
+        if(level <= 20) return Rarity.RARE;
+        return Rarity.EPIC;
     }
 }

@@ -65,25 +65,31 @@ public class MathUtils {
 
     @ZenCodeType.Method
     public static String format(String text){
+        if(text.length() <= 6 || !ConfigManager.FORMAT.get()){
+            int len = text.length();
+            ArrayList<String> stringContainer = new ArrayList<>();
+            while(len>3){
+                stringContainer.add(text.substring(len-3,len));
+                len-=3;
+            }
+            stringContainer.add(text.substring(0,len));
+            StringBuilder buffer = new StringBuilder();
+            for(int i = stringContainer.size()-1;i>=0;i--){
+                buffer.append(stringContainer.get(i)).append(",");
+            }
+            buffer.deleteCharAt(buffer.length()-1);
+            return buffer.toString();
+        }
         if(ConfigManager.FORMAT.get()){
             return KMT(text);
         }
-        int len = text.length();
-        ArrayList<String> stringContainer = new ArrayList<>();
-        while(len>3){
-            stringContainer.add(text.substring(len-3,len));
-            len-=3;
-        }
-        stringContainer.add(text.substring(0,len));
-        StringBuilder buffer = new StringBuilder();
-        for(int i = stringContainer.size()-1;i>=0;i--){
-            buffer.append(stringContainer.get(i)).append(",");
-        }
-        buffer.deleteCharAt(buffer.length()-1);
-        return buffer.toString();
+        return text;
     }
 
     public static String KMT(String text){
+        if(text.length() <= 6){
+            return format(text);
+        }
         String flag = getFlag(text);
         return formatAfter(text)+flag;
     }

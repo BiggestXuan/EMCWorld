@@ -19,6 +19,8 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.LuckyItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Other.HamBat;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.ScrollItem;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.TulyeScroll;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.NatureStaff;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.PurpleStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.*;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.FestivalItem.MoonCake;
@@ -165,6 +167,8 @@ public class EWItems {
     public static final RegistryObject<Item> GOLDEN_STAFF = ITEMS.register("golden_staff",() -> new StaffItem(api.getStaffTier("golden")));
     public static final RegistryObject<Item> DIAMOND_STAFF = ITEMS.register("diamond_staff",() -> new StaffItem(api.getStaffTier("diamond")));
     public static final RegistryObject<Item> NETHERITE_STAFF = ITEMS.register("netherite_staff",() -> new StaffItem(api.getStaffTier("netherite")));
+    public static final RegistryObject<Item> NATURE_STAFF = ITEMS.register("nature_staff", NatureStaff::new);
+    public static final RegistryObject<Item> PURPLE_STAFF = ITEMS.register("purple_staff", PurpleStaff::new);
 
     public static final RegistryObject<Item> CRYSTAL_EMC_GEM = ITEMS.register("crystal_emc_gem", EWOresItem::new);
     public static final RegistryObject<Item> SHARD_EMC_GEM = ITEMS.register("shard_emc_gem", EWOresItem::new);

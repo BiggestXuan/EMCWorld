@@ -89,3 +89,29 @@ public function copyFinalIngot(i as IItemStack) as void{
     var bx = <item:emcworld:biggest_xuan_ingot>;
     infuserRecipe([i,bx,bx,bx,bx],i*5,600000,1500000000,4);
 }
+
+public function addEMCStage(item as IItemStack,num as int) as void{
+    var stage as string = getStageName(num);
+    <recipetype:emcworld:emc_stage_limit>.addRecipe(getRecipeName(item)+"_emc_stage",item,stage);
+}
+
+private function getStageName(num as int) as string{
+    switch(num){
+        case 1:
+            return "one";
+        case 2:
+            return "two";
+        case 3:
+            return "three";
+        case 4:
+            return "four";
+        case 5:
+            return "five";
+        case 6:
+            return "six";
+        case 7:
+            return "seven";
+        default:
+            return "eight";
+    }
+}

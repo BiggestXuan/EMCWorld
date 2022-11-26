@@ -30,6 +30,9 @@ public class StaffAttackPacket {
                     StaffItem item = (StaffItem) stack.getItem();
                     item.spawnManaBurst(player);
                     stack.setDamageValue(stack.getDamageValue()+1);
+                    if(stack.getMaxDamage() - stack.getDamageValue() <= -1){
+                        stack.shrink(1);
+                    }
                 }
             }
         });

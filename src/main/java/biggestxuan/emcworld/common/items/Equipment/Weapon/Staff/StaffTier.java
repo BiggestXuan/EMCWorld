@@ -17,11 +17,11 @@ import javax.annotation.Nonnull;
 
 public enum StaffTier implements IStaffTier {
     WOODEN(50,-3.2,5,0.05,1.15,0x796653,1.0, Items.OAK_PLANKS),
-    STONE(120,-3,6,0.08,1.2,0x0,1.5,Items.STONE),
-    IRON(256,-2.6,7,0.1,1.25,0x0,3,Items.IRON_INGOT),
-    GOLDEN(64,-1.8,2.5,0.33,1.1,0x0,7,Items.GOLD_INGOT),
-    DIAMOND(2048,-2.4,8.5,0.13,1.33,0x0,4.5,Items.DIAMOND),
-    NETHERITE(4096,-2.2,10.0,0.15,1.4,0x0,6,Items.NETHERITE_INGOT),
+    STONE(120,-3,6,0.08,1.2,0x818181,1.5,Items.STONE),
+    IRON(256,-2.6,7,0.1,1.25,0xc0c0c0,3,Items.IRON_INGOT),
+    GOLDEN(64,-1.8,2.5,0.33,1.1,0xdbaf2d,7,Items.GOLD_INGOT),
+    DIAMOND(2048,-2.4,8.5,0.13,1.33,0x74c2b2,4.5,Items.DIAMOND),
+    NETHERITE(4096,-2.2,10.0,0.15,1.4,0x71615b,6,Items.NETHERITE_INGOT),
     GOD(10000,-2.4,8.5,0.2,1.3,0x0,5, EWItems.BIGGEST_EMC_GEM.get())
     ;
 

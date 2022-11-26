@@ -27,7 +27,11 @@ public class emcItem{
         <item:undergarden:catalyst>,
         <item:mekanism:hdpe_pellet>,
         <item:minecraft:sand>,
-        <item:minecraft:gravel>
+        <item:minecraft:gravel>,
+        <item:byg:emeraldite_shards>,
+        <item:minecraft:water_bucket>,
+        <item:minecraft:lava_bucket>,
+        <item:minecraft:milk_bucket>
     ];
 
     public getStack() as IItemStack[]{

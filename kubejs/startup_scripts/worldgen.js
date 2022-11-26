@@ -1,29 +1,24 @@
-function addOreSpawn(a,b,c,d,e){
+function addOre(a,b,c,d,e,f,g){
     onEvent('worldgen.add',event =>{
         event.addOre(ore =>{
             ore.block = a
             ore.clusterMaxSize = b
-            ore.minHeight = c
-            ore.maxHeight = d
-            ore.clusterCount = e
+            ore.spawnsIn.blacklist = false
+            ore.spawnsIn.values = c
+            ore.biomes.values = d
+            ore.minHeight = e
+            ore.maxHeight = f
+            ore.clusterCount = g
         })
     })
 }
 
+function addOreSpawn(a,b,c,d,e){
+    addOre(a,b,['minecraft:stone'],['minecraft:overworld'],c,d,e)
+}
+
 function addEnderOreSpawn(a,b,c,d,e){
-    onEvent('worldgen.add',event =>{
-        event.addOre(ore =>{
-            ore.block = a
-            ore.clusterMaxSize = b
-            ore.minHeight = c
-            ore.maxHeight = d
-            ore.clusterCount = e
-            ore.spawnsIn.blacklist = false
-            ore.spawnsIn.values = ['minecraft:end_stone']
-            ore.biomes.blacklist = false
-            ore.biomes.values = ['minecraft:the_end']
-        })
-    })
+    addOre(a,b,['minecraft:end_stone'],['#the_end'],c,d,e)
 }
 
 addOreSpawn('emcworld:emc_ore',6,16,64,5)
@@ -31,74 +26,10 @@ addOreSpawn('emcworld:rich_emc_ore',5,0,24,3)
 addEnderOreSpawn('emcworld:end_emc_ore',6,0,64,4)
 addEnderOreSpawn('emcworld:titanium_ore',6,0,64,4)
 addEnderOreSpawn('emcworld:end_rich_emc_ore',4,0,24,2)
-
-
-onEvent('worldgen.add',event=>{
-    event.addOre(ore=>{
-        ore.block = 'emcworld:indium_ore'
-        ore.clusterMaxSize = 8
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['minecraft:netherrack']
-        ore.biomes.values = ['#nether']
-        ore.minHeight = 0
-        ore.maxHeight = 110
-        ore.clusterCount = 6
-    })
-    event.addOre(ore=>{
-        ore.block = 'emcworld:nether_emc_ore'
-        ore.clusterMaxSize = 8
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['minecraft:netherrack']
-        ore.biomes.values = ['#nether']
-        ore.minHeight = 0
-        ore.maxHeight = 110
-        ore.clusterCount = 6
-    })
-    event.addOre(ore=>{
-        ore.block = 'emcworld:cold_ore'
-        ore.clusterMaxSize = 5
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['minecraft:packed_ice','minecraft:ice']
-        ore.minHeight = 0
-        ore.maxHeight = 128
-        ore.clusterCount = 100
-    })
-    event.addOre(ore=>{
-        ore.block = 'emcworld:chlorophyte_ore'
-        ore.clusterMaxSize = 5
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['minecraft:dirt']
-        ore.biomes.values = ['#jungle']
-        ore.minHeight = 0
-        ore.maxHeight = 96
-        ore.clusterCount = 45
-    })
-    event.addOre(ore=>{
-        ore.block = 'emcworld:aquamarine_ore'
-        ore.clusterMaxSize = 5
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['minecraft:sand']
-        ore.biomes.values = ['atlantis:atlantis_biome','hem:lush_forest']
-        ore.minHeight = 0
-        ore.maxHeight = 96
-        ore.clusterCount = 70
-    })
-    event.addOre(ore=>{
-        ore.block = 'emcworld:sunlit_ore'
-        ore.clusterMaxSize = 5
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['aether:holystone']
-        ore.minHeight = 32
-        ore.maxHeight = 50
-        ore.clusterCount = 20
-    })
-    event.addOre(ore=>{
-        ore.block = 'emcworld:drystone_ore'
-        ore.clusterMaxSize = 5
-        ore.spawnsIn.blacklist = false
-        ore.spawnsIn.values = ['minecraft:terracotta']
-        ore.minHeight = 16
-        ore.maxHeight = 96
-        ore.clusterCount = 35
-    })
-});
+addOre('emcworld:indium_ore',8,['minecraft:netherrack'],['#nether'],0,110,6)
+addOre('emcworld:nether_emc_ore',8,['minecraft:netherrack'],['#nether'],0,110,6)
+addOre('emcworld:cold_ore',5,['minecraft:packed_ice','minecraft:ice'],['#icy'],0,128,100)
+addOre('emcworld:chlorophyte_ore',5,['minecraft:dirt'],['#jungle'],0,96,45)
+addOre('emcworld:aquamarine_ore',5,['minecraft:sand'],['atlantis:atlantis_biome','hem:lush_forest'],0,96,70)
+addOre('emcworld:sunlit_ore',5,['aether:holystone'],['aether:aether_skylands'],32,50,20)
+addOre('emcworld:drystone_ore',5,['minecraft:terracotta'],['#mesa'],16,96,35)

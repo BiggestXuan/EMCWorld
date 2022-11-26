@@ -8,16 +8,17 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
-import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.CharaSword;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import mekanism.api.MekanismAPI;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -31,12 +32,19 @@ public class LivingDamageEvent {
     public static void livingDamageEvent(net.minecraftforge.event.entity.living.LivingDamageEvent event){
         LivingEntity entity = event.getEntityLiving();
         float damage = event.getAmount();
+        DamageSource source = event.getSource();
         if(entity.level.isClientSide) return;
         if(!(event.getEntityLiving() instanceof PlayerEntity) && MathUtils.isMaxDifficulty()) {
             damage *= 0.67f;
-            event.setAmount(damage);
         }
-        DamageSource source = event.getSource();
+        if(source instanceof EWDamageSource || source.equals(DamageSource.MAGIC)){
+            EffectInstance instance = entity.getEffect(EWEffects.MAGIC_PROTECT.get());
+            if(instance != null){
+                int level = instance.getAmplifier() + 1;
+                damage = (float) Math.max(damage * (1 - level * 0.1),0);
+            }
+        }
+        event.setAmount(damage);
         if(source instanceof EWDamageSource.ReallyDamage){
             EWDamageSource.ReallyDamage really = (EWDamageSource.ReallyDamage) source;
             PlayerEntity player = really.getPlayer();

@@ -12,19 +12,23 @@ import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
-import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
+import biggestxuan.emcworld.common.recipes.EMCStageLimit;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import mekanism.common.item.gear.ItemHazmatSuitArmor;
 import mekanism.common.registries.MekanismItems;
+import moze_intel.projecte.utils.EMCHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.Style;
@@ -40,9 +44,10 @@ import net.minecraftforge.fml.common.Mod;
         value = {Dist.CLIENT}
 )
 public class ItemToolTipEvent {
-    @SubscribeEvent(priority = EventPriority.LOW)
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void tooltipEvent(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
+        if(event.getPlayer() == null) return;
         final Item[] radiationItem = new Item[]{
                 MekanismItems.PLUTONIUM_PELLET.getItem(),MekanismItems.ANTIMATTER_PELLET.getItem(),MekanismItems.POLONIUM_PELLET.getItem()
         };
@@ -75,9 +80,36 @@ public class ItemToolTipEvent {
                 return;
             }
         }
+        long value;
+        String stage = "";
+        value = EMCHelper.getEmcValue(stack);
+        boolean isTrans = true;
+        boolean free = ConfigManager.FREE_MODE.get();
+        if(value > 0L){
+            RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
+            for(EMCStageLimit recipe:manager.getAllRecipesFor(EMCStageLimit.EMCStageLimitType.INSTANCE)){
+                if(recipe.getItem().equals(stack.getItem())){
+                    if(GameStageManager.hasStage(event.getPlayer(),recipe.getStage())){
+                        break;
+                    }
+                    isTrans = false;
+                    stage = recipe.getStage();
+                }
+            }
+            IFormattableTextComponent normal = EMCWorld.tc("tooltip.emcworld.emc",MathUtils.format(value));
+            IFormattableTextComponent stack_tip = EMCWorld.tc("tooltip.emcworld.emc_stack",MathUtils.format(value * stack.getCount()));
+            if(!(isTrans || free)){
+                normal.setStyle(Style.EMPTY.setStrikethrough(true));
+                //stack_tip.setStyle(Style.EMPTY.setStrikethrough(true));
+            }
+            event.getToolTip().add(normal);
+            if(stack.getCount() > 1){
+                event.getToolTip().add(stack_tip);
+            }
+        }
         if(stack.getItem() instanceof StaffItem){
             StaffItem i_s = (StaffItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",i_s.getBaseDamage(stack)));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",String.format("%.2f",i_s.getBaseDamage(stack))));
         }
         if(stack.getItem() instanceof BaseEMCGodWeapon){
             BaseEMCGodWeapon i_q = (BaseEMCGodWeapon) stack.getItem();
@@ -100,7 +132,7 @@ public class ItemToolTipEvent {
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
         }
-        if(stack.getItem() instanceof ICostEMCItem && stack.getItem() instanceof BaseWeaponItem){
+        if(stack.getItem() instanceof ICostEMCItem && (stack.getItem() instanceof BaseWeaponItem || stack.getItem() instanceof StaffItem)){
             ICostEMCItem item2 = (ICostEMCItem) stack.getItem();
             double cost = item2.costEMCWhenAttack(stack);
             if(cost >= 1){
@@ -158,6 +190,9 @@ public class ItemToolTipEvent {
             if(new Sponsors(player.getScoreboardName(),player.getUUID(), EMCWorldAPI.getInstance().getUtilCapability(player).getLevel()).equals(sp)){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
             }
+        }
+        if(!(isTrans || free) && !stage.equals("")){
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
         }
     }
 

@@ -316,6 +316,87 @@ public function emcworldRecipe() as void{
         <item:emcworld:unobtainium_sword>
     ];
     var sn as IItemStack[] = Ice.INSTANCE.getIce();
+    var emc_stage as IItemStack[][] = [
+        [
+            <item:mekanism:ingot_tin>,
+            <item:minecraft:iron_ingot>,
+            <item:mekanism:ingot_bronze>,
+            <item:mekanism:ingot_osmium>,
+            <item:mekanism:ingot_copper>,
+            <item:mekanism:ingot_lead>,
+            <item:mekanism:block_tin>,
+            <item:minecraft:iron_block>,
+            <item:mekanism:block_bronze>,
+            <item:mekanism:block_osmium>,
+            <item:mekanism:block_copper>,
+            <item:mekanism:block_lead>,
+            <item:mekanism:nugget_tin>,
+            <item:minecraft:iron_nugget>,
+            <item:mekanism:nugget_bronze>,
+            <item:mekanism:nugget_osmium>,
+            <item:mekanism:nugget_copper>,
+            <item:mekanism:nugget_lead>,
+            <item:mekanism:dust_tin>,
+            <item:mekanism:dust_iron>,
+            <item:mekanism:dust_bronze>,
+            <item:mekanism:dust_osmium>,
+            <item:mekanism:dust_copper>,
+            <item:mekanism:dust_lead>,
+            <item:emcworld:silver_ingot>,
+            <item:emcworld:magnesium_ingot>
+        ],
+        [
+            <item:mekanism:ingot_uranium>,
+            <item:mekanism:ingot_refined_glowstone>,
+            <item:minecraft:gold_ingot>,
+            <item:minecraft:diamond>,
+            <item:minecraft:emerald>,
+            <item:mekanism:block_uranium>,
+            <item:mekanism:block_refined_glowstone>,
+            <item:minecraft:gold_block>,
+            <item:minecraft:diamond_block>,
+            <item:minecraft:emerald_block>,
+            <item:mekanism:nugget_uranium>,
+            <item:mekanism:nugget_refined_glowstone>,
+            <item:minecraft:gold_nugget>,
+            <item:mekanism:dust_diamond>,
+            <item:mekanism:dust_emerald>,
+            <item:mekanism:dust_uranium>,
+            <item:mekanism:dust_gold>,
+            <item:emcworld:aluminum_ingot>,
+            <item:emcworld:nickel_ingot>,
+            <item:emcworld:drystone_ingot>
+        ],
+        [
+            <item:allthemodium:allthemodium_ingot>,
+            <item:byg:pendorite_ingot>,
+            <item:allthemodium:allthemodium_block>,
+            <item:byg:pendorite_block>,
+            <item:allthemodium:allthemodium_nugget>,
+            <item:allthemodium:allthemodium_dust>,
+            <item:emcworld:cold_ingot>,
+            <item:emcworld:chlorophyte_ingot>,
+            <item:emcworld:orichalcos_ingot>,
+            <item:emcworld:sunlit_ingot>
+        ],
+        [
+            <item:allthemodium:vibranium_ingot>,
+            <item:allthemodium:vibranium_block>,
+            <item:allthemodium:vibranium_nugget>,
+            <item:allthemodium:vibranium_dust>,
+            <item:emcworld:niobium_ingot>,
+            <item:minecraft:netherite_scrap>
+        ],
+        [
+            <item:allthemodium:unobtainium_ingot>,
+            <item:allthemodium:unobtainium_block>,
+            <item:allthemodium:unobtainium_nugget>,
+            <item:allthemodium:unobtainium_dust>
+        ],
+        [
+            <item:emcworld:titanium_ingot>
+        ]
+    ];
     var sing as IItemStack[][] = [
         [
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:atm" as string}),
@@ -368,7 +449,15 @@ public function emcworldRecipe() as void{
             <item:projecte:red_matter>
         ]
     ];
+    add_emc_stage(emc_stage[0],3);
+    add_emc_stage(emc_stage[1],4);
+    add_emc_stage(emc_stage[2],5);
+    add_emc_stage(emc_stage[3],6);
+    add_emc_stage(emc_stage[4],7);
+    add_emc_stage(emc_stage[5],8);
     removeRecipe([mt]);
+    craftingTable.removeByModid("projecte");
+    craftingTable.removeByModid("projectex");
     violet(<item:projectex:purple_collector>,<item:projectex:violet_collector>);
     violet(<item:projectex:purple_relay>,<item:projectex:violet_relay>);
     blue(<item:projectex:violet_collector>,<item:projectex:blue_collector>);
@@ -1159,6 +1248,12 @@ public function emcworldRecipe() as void{
             <item:hem:lush_flower_1>,
             <item:naturesaura:aura_bloom>
         ],eni,4);
+    }
+}
+
+private function add_emc_stage(item as IItemStack[],stage as int) as void{
+    for i in item{
+        addEMCStage(i,stage);
     }
 }
 

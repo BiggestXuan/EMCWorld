@@ -181,7 +181,7 @@ public class PlayerAttackEvent {
                     continue;
                 }
             }
-            if(MathUtils.isTwoLivingDistance(entity,entity1,distance) && !(entity1 instanceof PlayerEntity) && !(entity1.equals(entity))){
+            if(MathUtils.isTwoLivingDistance(entity,entity1,distance) && !(entity1.equals(entity)) && !(entity1.equals(attacker))){
                 if(entity1 instanceof TameableEntity){
                     TameableEntity entity2 = (TameableEntity) entity1;
                     if(entity2.getOwnerUUID() != null){

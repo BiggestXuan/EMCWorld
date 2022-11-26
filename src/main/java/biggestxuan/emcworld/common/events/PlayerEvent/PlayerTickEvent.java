@@ -273,7 +273,7 @@ public class PlayerTickEvent {
                     stack.setCount(0);
                 }
             }
-            if(stack.getOrCreateTag().getString("guide_book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
+            if(stack.getOrCreateTag().getString("patchouli:book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
                 stack.shrink(1);
             }
         };

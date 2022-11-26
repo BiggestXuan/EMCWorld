@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.registry;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.recipes.EMCStageLimit;
 import biggestxuan.emcworld.common.recipes.InfuserRecipe;
 import biggestxuan.emcworld.common.recipes.SteelFurnaceRecipe;
 import net.minecraft.item.crafting.IRecipe;
@@ -22,6 +23,7 @@ public class EWRecipeTypes {
 
     public static final RegistryObject<IRecipeSerializer<?>> INFUSER_RECIPE = RECIPES.register("infuser",() -> InfuserRecipe.Serializer.INSTANCE);
     public static final RegistryObject<IRecipeSerializer<?>> STEEL_FURNACE_RECIPE = RECIPES.register("steel_furnace",() -> SteelFurnaceRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<IRecipeSerializer<?>> EMC_STAGE_LIMIT_RECIPE = RECIPES.register("emc_stage_limit",() -> EMCStageLimit.EMCStageLimitSerializer.serializer);
 
     public static <T extends IRecipe<?>> IRecipeType<T> register(final String p_222147_0_) {
         return Registry.register(Registry.RECIPE_TYPE, EMCWorld.rl(p_222147_0_), new IRecipeType<T>() {

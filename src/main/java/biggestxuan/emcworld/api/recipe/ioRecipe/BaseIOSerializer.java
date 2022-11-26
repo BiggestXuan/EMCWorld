@@ -24,14 +24,7 @@ public abstract class BaseIOSerializer<T extends BaseIORecipe> implements IRecip
     public abstract T fromNetwork(ResourceLocation p_199426_1_, PacketBuffer p_199426_2_);
 
     @Override
-    public void toNetwork(PacketBuffer p_199427_1_, T p_199427_2_) {
-        p_199427_1_.writeInt(p_199427_2_.getIngredients().size());
-        for (Ingredient ing : p_199427_2_.getIngredients()) {
-            ing.toNetwork(p_199427_1_);
-        }
-        p_199427_1_.writeItemStack(p_199427_2_.getResultItem(), false);
-        p_199427_1_.writeInt(p_199427_2_.ticks);
-    }
+    public abstract void toNetwork(PacketBuffer p_199427_1_, T p_199427_2_);
 
     @Override
     public abstract IRecipeSerializer<?> setRegistryName(ResourceLocation name);

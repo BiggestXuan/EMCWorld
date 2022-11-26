@@ -14,6 +14,7 @@ import biggestxuan.emcworld.common.registry.EWEffects;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IItemStack;
+import moze_intel.projecte.api.ItemInfo;
 import moze_intel.projecte.api.ProjectEAPI;
 import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import moze_intel.projecte.api.nss.NSSItem;
@@ -25,6 +26,7 @@ import net.minecraftforge.common.MinecraftForge;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.math.BigInteger;
+import java.util.Set;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.EMCHelper")
@@ -94,5 +96,9 @@ public class EMCHelper {
     @ZenCodeType.Method
     public static void clearItemEMC(IItemStack item){
         setItemEMC(item.getInternal(),0);
+    }
+
+    public static Set<ItemInfo> getPlayerAllKnowledge(PlayerEntity player){
+        return getPlayerIKP(player).getKnowledge();
     }
 }

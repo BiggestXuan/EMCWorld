@@ -290,6 +290,8 @@
   "item.emcworld.golden_staff": "金法杖",
   "item.emcworld.diamond_staff": "钻石法杖",
   "item.emcworld.netherite_staff": "下界合金法杖",
+  "item.emcworld.nature_staff": "扶桑断枝",
+  "item.emcworld.purple_staff": "紫珀之影",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "EMC 矿石",
@@ -358,6 +360,7 @@
   "fluid.emcworld.sodium_cyanide" : "液态氰化钠",
 
   "effect.emcworld.emc_protect": "能量保护",
+  "effect.emcworld.magic_protect": "魔法保护",
 
   "gas.emcworld.end_air": "末地空气",
   "gas.emcworld.air": "空气",
@@ -702,6 +705,10 @@
   "tooltip.emcworld.critical_rate": "§9暴击伤害： %d",
   "tooltip.emcworld.critical_chance": "§9暴击概率： %d",
   "tooltip.emcworld.attack_range": "§9范围攻击模式：",
+  "tooltip.emcworld.emc": "§eEMC： %d",
+  "tooltip.emcworld.emc_stack": "§eEMC总和： %d",
+  "tooltip.emcworld.emc_zero": " §e(0)",
+  "tooltip.emcworld.emc_locked": "§e你需要 %d §e阶段以凝聚此物品",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

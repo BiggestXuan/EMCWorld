@@ -6,6 +6,8 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Staff;
  *  2022/11/21
  */
 
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
@@ -57,7 +59,7 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         if(!(stack.getItem() instanceof StaffItem)){
             return;
         }
-        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getManaBurstDamage(stack) * costEMCWhenAttack(stack));
+        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getManaBurstDamage(stack,player) * costEMCWhenAttack(stack));
         double s = getManaBurstSpeed(stack);
         burst.setColor(getColor());
         burst.setMana(100);
@@ -81,8 +83,15 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         return tier.getAttackDamageBonus();
     }
 
-    private float getManaBurstDamage(ItemStack stack){
-        float damage = tier.getAttackDamageBonus();
+    private float getManaBurstDamage(ItemStack stack,Entity entity){
+        float damage = getBaseDamage(stack);
+        if(entity instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entity;
+            IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
+            if(util.isRaid()){
+                damage *= util.getRaidRate();
+            }
+        }
         if(MathUtils.isRandom(getActCriticalChance(stack))){
             damage *= getActCriticalRate(stack);
         }
@@ -93,7 +102,7 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         return tier.getBurstSpeed();
     }
 
-    private int getColor(){
+    protected int getColor(){
         return tier.getColor();
     }
 
@@ -120,7 +129,7 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
     @Override
     public void updateBurst(@Nonnull IManaBurst burst, ItemStack stack) {
         ThrowableEntity entity = burst.entity();
-        AxisAlignedBB axis = new AxisAlignedBB(entity.getX(), entity.getY(), entity.getZ(), entity.getX()+1, entity.getY()+1, entity.getZ()+1);
+        AxisAlignedBB axis = MathUtils.expandAABB(entity.position(),1);
         List<LivingEntity> entities = entity.level.getEntitiesOfClass(LivingEntity.class, axis);
         Entity thrower = entity.getOwner();
         for (LivingEntity living : entities) {
@@ -132,7 +141,7 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
                 int mana = burst.getMana();
                 if (mana >= cost) {
                     burst.setMana(mana - cost);
-                    float damage = getManaBurstDamage(stack);
+                    float damage = getManaBurstDamage(stack,thrower);
                     if (!burst.isFake() && !entity.level.isClientSide) {
                         DamageSource source = EWDamageSource.REALLY;
                         living.hurt(source, damage);

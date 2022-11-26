@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.registry;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.potion.EMCProtectionEffect;
+import biggestxuan.emcworld.common.potion.*;
 import net.minecraft.potion.Effect;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,4 +17,5 @@ public class EWEffects {
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, EMCWorld.MODID);
 
     public static final RegistryObject<Effect> EMC_PROTECT = EFFECTS.register("emc_protect", EMCProtectionEffect::new);
+    public static final RegistryObject<Effect> MAGIC_PROTECT = EFFECTS.register("magic_protect", MagicProtectEffect::new);
 }

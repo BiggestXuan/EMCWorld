@@ -75,6 +75,16 @@ public class SteelFurnaceRecipe extends BaseIORecipe {
         }
 
         @Override
+        public void toNetwork(PacketBuffer p_199427_1_, SteelFurnaceRecipe p_199427_2_) {
+            p_199427_1_.writeInt(p_199427_2_.getIngredients().size());
+            for (Ingredient ing : p_199427_2_.getIngredients()) {
+                ing.toNetwork(p_199427_1_);
+            }
+            p_199427_1_.writeItemStack(p_199427_2_.getResultItem(), false);
+            p_199427_1_.writeInt(p_199427_2_.ticks);
+        }
+
+        @Override
         public IRecipeSerializer<?> setRegistryName(ResourceLocation name) {
             return INSTANCE;
         }

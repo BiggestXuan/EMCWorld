@@ -1,0 +1,48 @@
+
+[general]
+	display_low_health_warning = true
+	normal_colors = ["#FF0000", "#FFFF00", "#00FF00"]
+	full_absorption_bar = false
+	armor_toughness_color_values = ["#AAAAAA", "#FF5500", "#FFC747", "#27FFE3", "#00FF00", "#7F00FF"]
+	display_low_hunger_warning = true
+	show_health_numbers = true
+	show_armor_toughness_numbers = true
+	show_hunger_numbers = true
+	withered_fractions = [0.25, 0.5, 0.75]
+	show_exhaustion_overlay = true
+	saturation_bar_debuff_color = "#87BC00"
+	absorption_poison_color_values = ["#D4AF37", "#C2C73B", "#8DC337", "#36BA77", "#4A5BC4", "#D89AE2", "#DF9DC7", "#DFA99D", "#D4DF9D", "#3E84C6", "#B8C1E8", "#DFDFDF"]
+	show_saturation_bar = true
+	#Range: 0.0 ~ 1.7976931348623157E308
+	transition_speed = 3.0
+	right_order = ["blood", "healthmount", "food", "feathers", "armortoughness", "thirst", "air", "flighttiara", "decay"]
+	flight_bar_color = "#FFFFFF"
+	show_absorption_numbers = true
+	show_armor_numbers = true
+	armor_color_values = ["#AAAAAA", "#FF5500", "#FFC747", "#27FFE3", "#00FF00", "#7F00FF"]
+	show_held_food_overlay = true
+	poisoned_fractions = [0.25, 0.5, 0.75]
+	oxygen_bar_color = "#00E6E6"
+	lava_bar_color = "#FF8000"
+	poisoned_colors = ["#00FF00", "#55FF55", "#00FF00"]
+	hunger_bar_debuff_color = "#249016"
+	hunger_bar_color = "#B34D00"
+	absorption_color_values = ["#D4AF37", "#C2C73B", "#8DC337", "#36BA77", "#4A5BC4", "#D89AE2", "#DF9DC7", "#DFA99D", "#D4DF9D", "#3E84C6", "#B8C1E8", "#DFDFDF"]
+	left_order = ["health", "armor", "absorption", "lavacharm", "lavacharm2"]
+	#Whether to show icons next to the bars
+	display_icons = true
+	full_armor_bar = false
+	saturation_bar_color = "#FFCC00"
+	show_air_numbers = true
+	normal_fractions = [0.25, 0.5, 0.75]
+	withered_colors = ["#555555", "#AAAAAA", "#555555"]
+	full_toughness_bar = false
+	#Range: 0.0 ~ 1.0
+	low_hunger_threshold = 0.3
+	show_percent = false
+	show_mount_health_numbers = true
+	display_low_armor_warning = true
+	absorption_wither_color_values = ["#D4AF37", "#C2C73B", "#8DC337", "#36BA77", "#4A5BC4", "#D89AE2", "#DF9DC7", "#DFA99D", "#D4DF9D", "#3E84C6", "#B8C1E8", "#DFDFDF"]
+	#Range: 0.0 ~ 1.0
+	low_health_threshold = 0.2
+
