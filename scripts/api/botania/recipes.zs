@@ -4,6 +4,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.Ingredient;
 import crafttweaker.api.item.IIngredient;
 import mods.botania.PureDaisy;
+import mods.botania.PetalApothecary;
 
 import math.Functions;
 
@@ -41,4 +42,17 @@ public function terraPlateRecipe(input as IIngredient[],output as IItemStack,man
     val recipeName = getRecipeName(output);
     val manaC as int= mana * getAdditionCost();
     <recipetype:botania:terra_plate>.addRecipe(recipeName+"_terra_plate",output,manaC,input);
+}
+
+public function apothecaryRecipe(input as IIngredient[], output as IItemStack) as void{
+    <recipetype:botania:petal_apothecary>.addRecipe(getRecipeName(output)+"_apothecary",output,input);
+}
+
+public function removeApothecaryRecipe(output as IItemStack) as void{
+    <recipetype:botania:petal_apothecary>.removeRecipe(output);
+}
+
+public function modifyApothecaryRecipe(input as IIngredient[],output as IItemStack) as void{
+    removeApothecaryRecipe(output);
+    apothecaryRecipe(input,output);
 }

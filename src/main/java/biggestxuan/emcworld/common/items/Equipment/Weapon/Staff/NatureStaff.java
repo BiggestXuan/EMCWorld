@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class NatureStaff extends BaseEMCGodStaff {
     @Override
     protected long getBaseEMCModify(ItemStack stack) {
-        return Math.round(Math.pow(1.74,getLevel(stack)-5)*8);
+        return Math.round(Math.pow(1.6,getLevel(stack)-5)*8);
     }
 
     @Override

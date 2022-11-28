@@ -297,6 +297,9 @@ public class PlayerTickEvent {
                     }
                 }
             }
+            if(stack.getItem().getRegistryName().equals(new ResourceLocation("theabyss","guide_book"))){
+                stack.shrink(stack.getCount());
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "emcworld:item/clump_gravitite"
-  }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "emcworld:item/clump_gravitite"
+    }
 }

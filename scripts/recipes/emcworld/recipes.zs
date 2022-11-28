@@ -50,6 +50,7 @@ public function emcworldRecipe() as void{
     var ewi = <item:emcworld:wooden_ingot>;
     var essi = <item:emcworld:stone_ingot>;
     var evm = <item:emcworld:violet_matter>;
+    var dee = <item:quark:deepslate>;
     var eri = <item:emcworld:rune_ingot>;
     var eni = <item:emcworld:nature_ingot>;
     var vaai = <item:allthemodium:vibranium_allthemodium_alloy_ingot>;
@@ -77,6 +78,7 @@ public function emcworldRecipe() as void{
     var unqd = <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:unobtainium" as string});
     var zi = <item:good_nights_sleep:zitrite_ingot>;
     var sa = <item:minecraft:spectral_arrow>;
+    var iss = <item:mekanism:ingot_steel>;
     var ub = <item:emcworld:universal_ball>;
     var frc = <item:mekanismgenerators:fission_reactor_casing>;
     var aq = <item:astralsorcery:aquamarine>;
@@ -449,12 +451,37 @@ public function emcworldRecipe() as void{
             <item:projecte:red_matter>
         ]
     ];
+    var staff_item as IItemStack[][]=[
+        [
+            <item:minecraft:oak_planks>,
+            <item:minecraft:cobblestone>,
+            <item:minecraft:iron_ingot>,
+            <item:minecraft:gold_ingot>,
+            <item:minecraft:diamond>
+        ],
+        [
+            <item:emcworld:wooden_staff>,
+            <item:emcworld:stone_staff>,
+            <item:emcworld:iron_staff>,
+            <item:emcworld:golden_staff>,
+            <item:emcworld:diamond_staff>
+        ]
+    ];
+    for i in 0 .. 5{
+        staffRecipe(staff_item[0][i],staff_item[1][i]);
+    }
+    smithingRecipe(staff_item[1][4],<item:cataclysm:ignitium_ingot>,<item:emcworld:netherite_staff>);
     add_emc_stage(emc_stage[0],3);
     add_emc_stage(emc_stage[1],4);
     add_emc_stage(emc_stage[2],5);
     add_emc_stage(emc_stage[3],6);
     add_emc_stage(emc_stage[4],7);
     add_emc_stage(emc_stage[5],8);
+    setEMCStage(<item:mekanism:fluorite_gem>,1024,5);
+    setEMCStage(<item:mekanism:dust_sulfur>,32,4);
+    setEMCStage(<item:mekanism:pellet_antimatter>,46080000,114514);
+    setEMCStage(<item:the_afterlight:moon_crystal>,19200,6);
+    setEMCStage(<item:emcworld:universal_ball>,320000,8);
     removeRecipe([mt]);
     craftingTable.removeByModid("projecte");
     craftingTable.removeByModid("projectex");
@@ -478,8 +505,19 @@ public function emcworldRecipe() as void{
         [a,dm,a]
     ],<item:emcworld:red_matter_crystal>);
     for i in 0 .. 4{
-        nucleosyRecipe(ne_armor[i],<gas:mekanism:antimatter>*(200 * getDifficultyLoss()) as int,ne_armor[i+4],2000);
+        nucleosyRecipe(ne_armor[i+4],<gas:mekanism:antimatter>*(200 * getDifficultyLoss()) as int,ne_armor[i],2000);
     }
+    setEMCStage(<item:emcworld:niobium_nugget>,2048,5);
+    addCraftShapedRecipeNoName([
+        [iss,iss,iss],
+        [iss,<item:minecraft:gold_block>,iss],
+        [iss,iss,iss]
+    ],<item:emcworld:emc_flower>);
+    addCraftShapedRecipeNoName([
+        [dee,dee,dee],
+        [dee,<item:minecraft:iron_ingot>,dee],
+        [dee,dee,dee]
+    ],<item:emcworld:steel_furnace_core>);
     tartaricForgeRecipe([<item:emcworld:base_key>,<item:twilightforest:lamp_of_cinders>,<item:astralsorcery:rock_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:vicio" as string}}),<item:rats:dutchrat_wheel>],<item:emcworld:nether_key>,4096,1000);
     smithingRecipe(sword[0],atmqd*3,sword[1]);
     smithingRecipe(sword[1],viqd*3,sword[2]);

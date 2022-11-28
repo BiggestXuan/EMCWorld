@@ -77,6 +77,7 @@ public function modifyBotaniaRecipe() as void{
         [a,mi,a],
         [lt,<item:botania:livingwood_slab>,lt]
     ],<item:mythicbotany:rune_holder>);
+    modifyApothecaryRecipe([<tag:items:botania:petals/brown>, <tag:items:botania:petals/brown>, <tag:items:botania:petals/red>, <tag:items:botania:petals/light_gray>,<item:botania:mana_powder>],<item:botania:endoflame>);
     reactionChamberRecipe(
         ss,
         ts,

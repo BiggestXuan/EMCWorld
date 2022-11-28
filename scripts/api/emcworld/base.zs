@@ -1,9 +1,11 @@
 #priority 52
+import crafttweaker.api.item.ItemStack;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.IIngredient;
 
 import mods.emcworld.Infuser;
 import mods.emcworld.DifficultyItem;
+import mods.emcworld.EMCHelper;
 
 public class Ice{
     public static var INSTANCE as Ice = new Ice();
@@ -90,9 +92,23 @@ public function copyFinalIngot(i as IItemStack) as void{
     infuserRecipe([i,bx,bx,bx,bx],i*5,600000,1500000000,4);
 }
 
+public function setEMCStage(item as ItemStack,emc as long,stage as int) as void{
+    EMCHelper.setItemEMC(item,emc);
+    addEMCStage(item.asIItemStack(),stage);
+}
+
 public function addEMCStage(item as IItemStack,num as int) as void{
     var stage as string = getStageName(num);
     <recipetype:emcworld:emc_stage_limit>.addRecipe(getRecipeName(item)+"_emc_stage",item,stage);
+}
+
+public function staffRecipe(input as IItemStack,output as IItemStack) as void{
+    var a = <item:minecraft:air>;
+    addCraftShapedRecipe([
+        [a,input,<item:emcworld:big_emc_gem>],
+        [a,<tag:items:forge:rods/wooden>,input],
+        [<tag:items:forge:rods/wooden>,a,a]
+    ],output,"_staff");
 }
 
 private function getStageName(num as int) as string{
@@ -111,7 +127,9 @@ private function getStageName(num as int) as string{
             return "six";
         case 7:
             return "seven";
-        default:
+        case 8:
             return "eight";
+        default :
+            return "disabled";
     }
 }

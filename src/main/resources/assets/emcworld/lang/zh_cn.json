@@ -709,6 +709,7 @@
   "tooltip.emcworld.emc_stack": "§eEMC总和： %d",
   "tooltip.emcworld.emc_zero": " §e(0)",
   "tooltip.emcworld.emc_locked": "§e你需要 %d §e阶段以凝聚此物品",
+  "tooltip.emcworld.emc_disable": "§e该物品无法被凝聚",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

@@ -38,6 +38,8 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import javax.annotation.Nonnull;
+
 @Mod.EventBusSubscriber(
         modid = EMCWorld.MODID,
         bus = Mod.EventBusSubscriber.Bus.FORGE,
@@ -191,11 +193,16 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
             }
         }
+        if(!(isTrans || free) && stage.equals("disabled")){
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_disable"));
+            return;
+        }
         if(!(isTrans || free) && !stage.equals("")){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
         }
     }
 
+    @Nonnull
     private static Color getColor(int level){
         switch (level){
             case 2:
@@ -207,6 +214,7 @@ public class ItemToolTipEvent {
         }
     }
 
+    @Nonnull
     private static IFormattableTextComponent getGemName(int type){
         String pre = "item."+EMCWorld.MODID+".";
         String n = "";
