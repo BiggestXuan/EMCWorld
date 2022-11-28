@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Staff;
  */
 
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
@@ -53,14 +54,20 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         this.defaultModifiers = builder.build();
     }
 
-    public void spawnManaBurst(PlayerEntity player){
+    public void spawnManaBurst(PlayerEntity player,double speed){
         EntityManaBurst burst = new EntityManaBurst(player);
         ItemStack stack = player.getMainHandItem();
+        double costRate = 1;
         if(!(stack.getItem() instanceof StaffItem)){
             return;
         }
-        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getManaBurstDamage(stack,player) * costEMCWhenAttack(stack));
-        double s = getManaBurstSpeed(stack);
+        IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        if(cap.getModify() == 2 && cap.getProfession() == 3 && cap.getSkills()[36] != 0){
+            double r = cap.getSkills()[36] /10000f;
+            costRate *= 1-r;
+        }
+        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * costRate * getManaBurstDamage(stack,player) * costEMCWhenAttack(stack));
+        double s = getManaBurstSpeed(stack) * speed;
         burst.setColor(getColor());
         burst.setMana(100);
         burst.setStartingMana(100);
@@ -85,14 +92,29 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
 
     private float getManaBurstDamage(ItemStack stack,Entity entity){
         float damage = getBaseDamage(stack);
+        double chance = getActCriticalChance(stack);
         if(entity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entity;
+            IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+            if(cap.getProfession() == 3){
+                double skillRate = Math.pow(1+(cap.getSkills()[0]/10000f),cap.getLevel());
+                damage *= skillRate;
+                if(cap.getSkills()[12] != 0){
+                    damage += cap.getSkills()[12]/10000f;
+                }
+                if(cap.getSkills()[24] != 0){
+                    chance += cap.getSkills()[24]/10000f;
+                }
+                if(cap.getSkills()[28] != 0){
+                    damage += cap.getSkills()[28]/10000f;
+                }
+            }
             IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
             if(util.isRaid()){
                 damage *= util.getRaidRate();
             }
         }
-        if(MathUtils.isRandom(getActCriticalChance(stack))){
+        if(MathUtils.isRandom(chance)){
             damage *= getActCriticalRate(stack);
         }
         return damage;

@@ -63,9 +63,11 @@ public class PlayerTickEvent {
     private static final UUID EMCWORLD_MODIFY_HEALTH_ID = UUID.fromString("a80fcb74-82f3-4e06-8df7-7d8031e8976e");
     private static final UUID EMCWORLD_MODIFY_SPEED_ID = UUID.fromString("ec77a354-5dab-4ec4-8bde-496ba2b72860");
     private static final UUID EMCWORLD_REACH_DISTANCE_ID = UUID.fromString("4f6e18a2-d5ed-41bb-9e8e-ee816bd4d059");
+    private static final UUID EMCWORLD_ATTACK_SPEED_ID = UUID.fromString("64acff0d-09a2-4e4b-a397-e47b378e1d7f");
     private static final String EMCWORLD_MODIFY_HEALTH_NAME = "EMCWorld.HealthModifier";
     private static final String EMCWORLD_MODIFY_SPEED_NAME = "EMCWorld.SpeedModifier";
     private static final String EMCWORLD_REACH_DISTANCE_NAME = "EMCWorld.ReachDistanceModifier";
+    private static final String EMCWORLD_ATTACK_SPEED_NAME = "EMCWorld.AttackSpeedModifier";
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerTickEvent(TickEvent.PlayerTickEvent event) {
@@ -112,6 +114,18 @@ public class PlayerTickEvent {
                 speed_instance.removeModifier(EMCWORLD_MODIFY_SPEED_ID);
             }
             speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_MODIFY_SPEED_ID, EMCWORLD_MODIFY_SPEED_NAME,extraSpeed,AttributeModifier.Operation.ADDITION));
+        }
+        double attackSpeed = 1;
+        if(c.getProfession() == 3 && c.getSkills()[36] != 0 && c.getModify() == 1){
+            attackSpeed += c.getSkills()[36] /10000f;
+        }
+        ModifiableAttributeInstance attack_speed_instance = player.getAttribute(Attributes.ATTACK_SPEED);
+        if(attack_speed_instance != null){
+            AttributeModifier modifier = attack_speed_instance.getModifier(EMCWORLD_ATTACK_SPEED_ID);
+            if(modifier != null){
+                attack_speed_instance.removeModifier(EMCWORLD_ATTACK_SPEED_ID);
+            }
+            attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,attackSpeed,AttributeModifier.Operation.MULTIPLY_BASE));
         }
         double extraReachDistance = 0;
         for(ItemStack stack:player.inventory.armor){

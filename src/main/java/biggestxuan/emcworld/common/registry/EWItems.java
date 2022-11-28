@@ -149,6 +149,7 @@ public class EWItems {
     public static final RegistryObject<Item> NATURE_GEMSTONE = ITEMS.register("nature_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.NATURE));
     public static final RegistryObject<Item> LAKE_GEMSTONE = ITEMS.register("lake_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.LAKE));
     public static final RegistryObject<Item> ABYSS_GEMSTONE = ITEMS.register("abyss_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.ABYSS));
+    public static final RegistryObject<Item> NOPOWER_STAFF = ITEMS.register("nopower_staff", () -> new ProfessionalItem(3,"profession.emcworld.wizard"));
 
     public static final RegistryObject<Item> FIRE_RED_HELMET = ITEMS.register("fire_red_helmet",()->new fireRedArmor(1));
     public static final RegistryObject<Item> FIRE_RED_CHESTPLATE = ITEMS.register("fire_red_chestplate",()->new fireRedArmor(2));

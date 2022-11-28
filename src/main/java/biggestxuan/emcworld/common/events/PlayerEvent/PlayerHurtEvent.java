@@ -17,6 +17,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.entity.Player.Dctor_0415;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.api.entity.PlayerRaidBaseEntity;
+import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.player.PlayerEntity;
@@ -91,6 +92,20 @@ public class PlayerHurtEvent {
                 }
                 if(modify == 1 && util.getTimer() >0){
                     amount = 0f;
+                }
+            }
+            if(cap.getProfession() == 3){
+                if(cap.getSkills()[8] != 0){
+                    double chance = cap.getSkills()[8]/10000f;
+                    if(MathUtils.isRandom(chance)){
+                        player.addEffect(new EffectInstance(EWEffects.MAGIC_PROTECT.get(),600,1));
+                    }
+                }
+                if(cap.getModify() == 2 && cap.getSkills()[40] != 0 && cap.getSkills()[41] != 0){
+                    if(source.isMagic()){
+                        amount = 0;
+                        event.setCanceled(true);
+                    }
                 }
             }
             float armorRate = 0f;

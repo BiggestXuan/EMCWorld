@@ -143,6 +143,50 @@ public class PlayerSkillModify {
         skill10(player,1000,1);
     }
 
+    public static void default3_skill0(PlayerEntity player){
+        skill0(player,15);
+    }
+    public static void default3_skill1(PlayerEntity player){
+        skill1(player,200000,1000000);
+    }
+    public static void default3_skill2(PlayerEntity player){
+        skill2(player,35);
+    }
+    public static void default3_skill3(PlayerEntity player){
+        skill3(player,30000);
+    }
+    public static void default3_skill4(PlayerEntity player){
+        skill4(player,300000,3000000);
+    }
+    public static void default3_skill5(PlayerEntity player){
+        skill5(player,1000);
+    }
+    public static void default3_skill6(PlayerEntity player){
+        skill6(player,500);
+    }
+    public static void default3_skill7(PlayerEntity player){
+        skill7(player,3000);
+    }
+    public static void default3_skill8_modify1(PlayerEntity player){
+        skill8(player,100000,2000,10000000,0);
+    }
+    public static void default3_skill9_modify1(PlayerEntity player){
+        skill9(player,2000,1);
+    }
+    public static void default3_skill10_modify1(PlayerEntity player){
+        skill10(player,1,1);
+    }
+    public static void default3_skill8_modify2(PlayerEntity player){
+        skill8(player,100000,100000,10000000,0);
+    }
+    public static void default3_skill9_modify2(PlayerEntity player){
+        skill9(player,3500,1);
+    }
+    public static void default3_skill10_modify2(PlayerEntity player){
+        skill10(player,1,1);
+    }
+
+
     public static void makePlayerGetDefaultSkill(PlayerEntity player,AddMaxLevelItem item){
         makePlayerGetDefaultSkill(player,item.getMaxLevel(), item.getModify());
     }
@@ -240,6 +284,53 @@ public class PlayerSkillModify {
                 }
                 if(cap.getModify() == 2){
                     default2_skill10_modify2(player);
+                }
+            }
+        }
+        if(cap.getProfession() == 3){
+            switch (level){
+                case 20:
+                    default3_skill1(player);
+                    break;
+                case 30:
+                    default3_skill2(player);
+                    break;
+                case 40:
+                    default3_skill3(player);
+                    break;
+                case 50:
+                    default3_skill4(player);
+                    break;
+                case 60:
+                    default3_skill5(player);
+                    break;
+                case 70:
+                    default3_skill6(player);
+                    break;
+                case 80:
+                    default3_skill7(player);
+                    break;
+            }
+            if(modify == 1 && level == 90){
+                default3_skill8_modify1(player);
+            }
+            if(modify == 2 && level == 90){
+                default3_skill8_modify2(player);
+            }
+            if(level == 100){
+                if(cap.getModify() == 1){
+                    default3_skill9_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default3_skill9_modify2(player);
+                }
+            }
+            if(level == 110){
+                if(cap.getModify() == 1){
+                    default3_skill10_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default3_skill10_modify2(player);
                 }
             }
         }

@@ -528,6 +528,7 @@ public function emcworldRecipe() as void{
     for i in 24 .. 28{
         removeRecipe([armor[i],pdm[i]]);
     }
+    setEMCStage(emcc,112000000,114514);
     modifyExtendedCompressionRecipe(<item:allthemodium:unobtainium_ingot>,unqd,500,100);
     for i in 0 .. 20{
         extendedCompressionRecipe(sing[1][i],sing[0][i],amo[i],i);
@@ -568,7 +569,7 @@ public function emcworldRecipe() as void{
                 [eus,tui,tui,eeg,eeg,eeg,tui,tui,eus]
             ],pdm[i],4);
         }
-        extendedCompressionRecipe(ub,emcc,6,1);
+        extendedCompressionRecipe(ub,emcc,350,1);
         for i in pdm{
             Replacer.forTypes(craftingTable)
             .forMods("projecte")

@@ -292,6 +292,7 @@
   "item.emcworld.netherite_staff": "下界合金法杖",
   "item.emcworld.nature_staff": "扶桑断枝",
   "item.emcworld.purple_staff": "紫珀之影",
+  "item.emcworld.nopower_staff": "没有力量的法杖",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "EMC 矿石",
@@ -639,10 +640,13 @@
 
   "profession.emcworld.sword": "剑斗士",
   "profession.emcworld.tank": "坦克",
+  "profession.emcworld.wizard": "法师",
   "profession.emcworld.modify_kill": "转职 - 暴杀流",
   "profession.emcworld.modify_blood": "转职 - 饮血流",
   "profession.emcworld.modify_shied": "转职 - 遁甲流",
   "profession.emcworld.modify_addon": "转职 - 增益流",
+  "profession.emcworld.modify_big_wizard": "转职 - 大法师",
+  "profession.emcworld.modify_protect_wizard": "转职 - 拥护者",
   "profession.emcworld.null": "无职业",
 
   "menu.emcworld.sponsor": "成为赞助者",
@@ -723,7 +727,7 @@
 
   "skills.emcworld.p1_default": "[固有] 每级获得 %d 可叠加伤害加成",
   "skills.emcworld.p1_skill10": "[主动] 手持任意剑右击发动，在获得力量I效果 %d 秒，冷却时间 %d 秒",
-  "skills.emcworld.p1_skill20": "[被动] 所有攻击可以造成暴击，概率为 %d ，额外暴击伤害为固定的 3 点",
+  "skills.emcworld.p1_skill20": "[被动] 非魔法攻击可以造成暴击，概率为 %d ，额外暴击伤害为固定的 3 点",
   "skills.emcworld.p1_skill30": "[被动] 暴击伤害不再按固定伤害计算了，而是可叠加的 %d",
   "skills.emcworld.p1_skill40": "[主动] 消耗一个现实增强合剂，使自己和周围玩家获得力量II效果 %d 秒，冷却时间 %d 秒",
   "skills.emcworld.p1_skill50": "[被动] 获得的经验量提高 %d",
@@ -750,6 +754,21 @@
   "skills.emcworld.p2_skill80_addon2": "[主动] 消耗一个现实扭曲增幅仪，周围 %d 格内玩家获得随机 %d 种增益效果 %d 秒，冷却时间 %d 秒",
   "skills.emcworld.p2_skill90_addon2": "[被动] 自身的恢复量可以传递给周围5格内玩家，传递量为 %d",
   "skills.emcworld.p2_skill100_addon2": "[被动] 固有技能可以传递给周围5格内玩家，传递量为 %d",
+
+  "skills.emcworld.p3_default": "[固有] 每级获得 %d 可叠加质能伤害",
+  "skills.emcworld.p3_skill10": "[主动] 手持法杖右击发动，获得魔法抗性I效果 %d 秒，冷却时间 %d 秒",
+  "skills.emcworld.p3_skill20": "[被动] 被攻击有 %d 的概率获得魔法抗性II效果1分钟",
+  "skills.emcworld.p3_skill30": "[被动] 获得固定 %d 魔法伤害加成",
+  "skills.emcworld.p3_skill40": "[主动] 使用一个现实增强合剂，使自己和周围玩家获得魔法抗性III，持续 %d 秒，冷却时间 %d 秒",
+  "skills.emcworld.p3_skill50": "[被动] 获得的经验量提高 %d",
+  "skills.emcworld.p3_skill60": "[被动] 所有法杖质能暴击概率提高 %d",
+  "skills.emcworld.p3_skill70": "[被动] 再获得 %d 固定魔法伤害加成",
+  "skills.emcworld.p3_skill80_addon1": "[主动] 消耗一个现实扭曲增幅仪，对 %d 格内所有非玩家实体造成其最大生命值 %d 的质能真实伤害，冷却时间 %d 秒",
+  "skills.emcworld.p3_skill90_addon1": "[被动] 攻击速度提高 %d ",
+  "skills.emcworld.p3_skill100_addon1": "[被动] 每次攻击的时候额外发射一条射线",
+  "skills.emcworld.p3_skill80_addon2": "[主动] 消耗一个现实扭曲增幅仪，周围 %d 格内非玩家实体获得缓慢%d的效果，冷却 %d 秒",
+  "skills.emcworld.p3_skill90_addon2": "[被动] 减少法杖EMC消耗 %d",
+  "skills.emcworld.p3_skill100_addon2": "[被动] 免疫所有魔法伤害",
 
   "chapter.emcworld.first":"第一章：生存之道",
   "chapter.emcworld.getting_start":"第一节：初探世界",

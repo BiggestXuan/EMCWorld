@@ -6,6 +6,8 @@ package biggestxuan.emcworld.common.network;
  *  2022/11/22
  */
 
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -25,10 +27,14 @@ public class StaffAttackPacket {
         ctx.get().enqueueWork(()->{
             if(ctx.get().getDirection().getReceptionSide().isServer()) {
                 ServerPlayerEntity player = ctx.get().getSender();
+                IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
                 ItemStack stack = player.getMainHandItem();
                 if(stack.getItem() instanceof StaffItem && player.getAttackStrengthScale(0) == 1){
                     StaffItem item = (StaffItem) stack.getItem();
-                    item.spawnManaBurst(player);
+                    item.spawnManaBurst(player,1);
+                    if(cap.getModify() == 1 && cap.getProfession() == 3 && cap.getSkills()[40] != 0 && cap.getSkills()[41] != 0){
+                        item.spawnManaBurst(player,2);
+                    }
                     stack.setDamageValue(stack.getDamageValue()+1);
                     if(stack.getMaxDamage() - stack.getDamageValue() <= -1){
                         stack.shrink(1);

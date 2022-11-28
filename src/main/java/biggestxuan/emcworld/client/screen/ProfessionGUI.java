@@ -45,6 +45,8 @@ public class ProfessionGUI extends Screen {
                 return I18n.get("profession.emcworld.sword");
             case 2:
                 return I18n.get("profession.emcworld.tank");
+            case 3:
+                return I18n.get("profession.emcworld.wizard");
         }
         return I18n.get("profession.emcworld.null");
     }
@@ -97,9 +99,10 @@ public class ProfessionGUI extends Screen {
         String[] skillInfo = skill.toArray(new String[44]);
         if(getProfession() ==1) {
             renderString(matrixStack, EMCWorld.tc(base + "p1_default", skillInfo[0]), xPos, yPos);
-        }
-        else if(getProfession() == 2) {
+        } else if(getProfession() == 2) {
             renderString(matrixStack, EMCWorld.tc(base + "p2_default", skillInfo[0]), xPos, yPos);
+        } else if(getProfession() == 3) {
+            renderString(matrixStack, EMCWorld.tc(base + "p3_default", skillInfo[0]), xPos, yPos);
         }
         yPos += line;
         int level = 10;
@@ -152,6 +155,12 @@ public class ProfessionGUI extends Screen {
             }
             if(cap.getModify() == 2 && cap.getProfession() == 2){
                 renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_addon"),xPos,yPos,0xff0000);
+            }
+            if(cap.getModify() == 1 && cap.getProfession() == 3){
+                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_big_wizard"),xPos,yPos,0xff0000);
+            }
+            if(cap.getModify() == 2 && cap.getProfession() == 3){
+                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_protect_wizard"),xPos,yPos,0xff0000);
             }
         }
         yPos += line;

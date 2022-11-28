@@ -1,0 +1,62 @@
+
+#General settings
+[general]
+
+	#General Settings
+	[general.general]
+		#arcana y
+		#Range: 1 ~ 255
+		arcanaY = 18
+		#arcana x
+		#Range: 1 ~ 255
+		arcanaX = 111
+		#Maximum stored arcana
+		#Range: 1 ~ 10000
+		maxArcana = 200
+		#Enable welcome messages
+		welcomeMessage = true
+		#Hide Arcana bar unless depleted
+		hideArcanaBar = true
+
+	#World Gen Settings
+	[general."world gen"]
+		#Twilight ore vein size
+		#Range: 1 ~ 32
+		twilightVein = 10
+		#Rupee ore maximum spawn height
+		#Range: 1 ~ 256
+		rupeeMax = 16
+		#Nether ore vein size
+		#Range: 1 ~ 32
+		netherVein = 10
+		#Nether ore popularity
+		#Range: 1 ~ 32
+		netherTries = 8
+		#Rupee ore popularity
+		#Range: 1 ~ 32
+		rupeeTries = 4
+		#Rupee ore vein size
+		#Range: 1 ~ 256
+		rupeeVein = 5
+		#Arlemite ore vein size
+		#Range: 1 ~ 256
+		arlemiteVein = 5
+		#Arlemite ore popularity
+		#Range: 1 ~ 32
+		arlemiteTries = 4
+		#Arlemite ore maximum spawn height
+		#Range: 1 ~ 256
+		arlemiteMax = 16
+		#Realmite ore popularity
+		#Range: 1 ~ 32
+		realmiteTries = 8
+		#Twilight ore popularity
+		#Range: 1 ~ 32
+		twilightTries = 8
+		#Realmite ore maximum spawn height
+		#Range: 1 ~ 256
+		realmiteMax = 48
+		#Realmite ore vein size
+		#Range: 1 ~ 256
+		realmiteVein = 5
+

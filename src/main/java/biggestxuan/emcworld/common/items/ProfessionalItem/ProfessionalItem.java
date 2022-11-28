@@ -41,11 +41,16 @@ public class ProfessionalItem extends EWItem {
         if(p_77659_3_.equals(Hand.OFF_HAND) || cap.getProfession() !=0) return ActionResult.fail(stack);
         stack.shrink(1);
         cap.setProfession(profession);
+        cap.setMaxLevel(10);
+        cap.setModify(0);
         if(profession == 1){
             PlayerSkillModify.default1_skill0(p_77659_2_);
         }
         if(profession == 2){
             PlayerSkillModify.default2_skill0(p_77659_2_);
+        }
+        if(profession == 3){
+            PlayerSkillModify.default3_skill0(p_77659_2_);
         }
         return ActionResult.consume(stack);
     }

@@ -45,11 +45,16 @@ if(__name__ == '__main__'):
     for x in ore_names:
         name = get_name(x,ore_name)
         names.append("item.emcworld."+name)
-        json.dump(get_json(name),open(get_json_name(name),"w"),indent=4) # 输出models/item下的文件。
+
+        # 输出 models/item 下的文件
+        json.dump(get_json(name),open(get_json_name(name),"w"),indent=4)
+
+        # 输出物品注册时候的 Java 代码
+        print('public static final RegistryObject<Item> '+name.upper()+' = ITEMS.register("'+name+'", EWOresItem::new);')
 
     name_obj = {}
 
     for i in range(5):
         key = names[i]
         name_obj[key] = gen_cn_name()[i]
-    json.dump(name_obj,open("lang.json","w"),indent=4,ensure_ascii=False) #你需要使用GBK编码，然后再复制到utf-8的语言文件中。或者删除掉ensure后半段，但是会以\u输出。
+    json.dump(name_obj,open("lang.json","w"),indent=4,ensure_ascii=False) #需要使用GBK编码，然后再复制到utf-8的语言文件中。或者删除掉ensure后半段，但是会以\u输出。

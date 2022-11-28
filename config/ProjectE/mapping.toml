@@ -118,4 +118,6 @@
 	CustomConversionMapper = true
 	#Allows adding custom conversions through CraftTweaker. This behaves similarly to if someone used a custom conversion file instead.
 	CrTConversionEMCMapper = true
+	#Adds EMC to DivineRPG
+	DivineRPGMapper = true
 

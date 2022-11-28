@@ -60,6 +60,12 @@ public class AddMaxLevelItem extends EWItem {
             if(profession == 2 && this.modify == 2){
                 p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_addon"));
             }
+            if(profession == 3 && this.modify == 1){
+                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_big_wizard"));
+            }
+            if(profession == 3 && this.modify == 2){
+                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_protect_wizard"));
+            }
         }
     }
 
