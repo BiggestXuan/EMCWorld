@@ -41,7 +41,6 @@ public class sitem{
     public getS4() as ItemStack[]{
         return [
             r[5],r[6],c[5],c[6],
-<<<<<<< HEAD
             <item:mekanism:sps_casing>,
             <item:mekanism:sps_port>,
             <item:mekanism:supercharged_coil>,
@@ -80,46 +79,6 @@ public class sitem{
             <item:minecraft:netherite_chestplate>,
             <item:minecraft:netherite_leggings>,
             <item:minecraft:netherite_boots>
-=======
-            <item:mekanism:sps_casing>.mutable(),
-            <item:mekanism:sps_port>.mutable(),
-            <item:mekanism:supercharged_coil>.mutable(),
-            <item:mekanism:dust_netherite>.mutable(),
-            <item:emcworld:nether_emc_ore>.mutable(),
-            <item:minecraft:nether_wart_block>.mutable(),
-            <item:minecraft:netherite_hoe>.mutable(),
-            <item:minecraft:netherite_shovel>.mutable(),
-            <item:minecraft:netherite_axe>.mutable(),
-            <item:rats:nether_cheese>.mutable(),
-            <item:stalwart_dungeons:nether_keeper_altar>.mutable(),
-            <item:crockpot:netherosia>.mutable(),
-            <item:minecraft:netherrack>.mutable(),
-            <item:minecraft:nether_quartz_ore>.mutable(),
-            <item:minecraft:nether_wart>.mutable(),
-            <item:minecraft:netherite_ingot>.mutable(),
-            <item:minecraft:netherite_scrap>.mutable(),
-            <item:minecraft:quartz>.mutable(),
-            <item:minecraft:nether_brick>.mutable(),
-            <item:byg:yellow_nether_brick>.mutable(),
-            <item:gobber2:gobber2_globette_nether>.mutable(),
-            <item:gobber2:gobber2_seed_nether>.mutable(),
-            <item:gobber2:gobber2_glob_nether>.mutable(),
-            <item:gobber2:gobber2_ingot_nether>.mutable(),
-            <item:gobber2:gobber2_ore_nether>.mutable(),
-            <item:gobber2:gobber2_pickaxe_nether>.mutable(),
-            <item:gobber2:gobber2_foo_nether>.mutable(),
-            <item:gobber2:gobber2_sword_nether>.mutable(),
-            <item:gobber2:gobber2_helmet_nether>.mutable(),
-            <item:gobber2:gobber2_chestplate_nether>.mutable(),
-            <item:gobber2:gobber2_leggings_nether>.mutable(),
-            <item:gobber2:gobber2_boots_nether>.mutable(),
-            <item:minecraft:netherite_sword>.mutable(),
-            <item:minecraft:netherite_pickaxe>.mutable(),
-            <item:minecraft:netherite_helmet>.mutable(),
-            <item:minecraft:netherite_chestplate>.mutable(),
-            <item:minecraft:netherite_leggings>.mutable(),
-            <item:minecraft:netherite_boots>.mutable()
->>>>>>> 33718d615491a88367baa78093aebbf4321c12f8
         ];
     }
 
