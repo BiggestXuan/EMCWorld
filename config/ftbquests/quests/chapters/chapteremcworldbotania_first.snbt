@@ -398,5 +398,16 @@
 				}
 			]
 		}
+		{
+			title: "{quest.emcworld.emc_flower}"
+			x: 0.0d
+			y: 3.0d
+			id: "616C08AF58670B16"
+			tasks: [{
+				id: "0B3D5DF8C82EB91F"
+				type: "item"
+				item: "emcworld:emc_flower"
+			}]
+		}
 	]
 }

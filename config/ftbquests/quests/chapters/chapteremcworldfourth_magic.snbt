@@ -365,6 +365,7 @@
 				type: "custom"
 				title: "{quest.emcworld_stage_four}"
 				icon: "mekanism:pellet_antimatter"
+				tags: ["stage_four"]
 				auto: "enabled"
 			}]
 		}

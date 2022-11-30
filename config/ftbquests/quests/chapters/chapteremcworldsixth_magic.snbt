@@ -45,6 +45,14 @@
 				type: "item"
 				item: "projectex:blue_collector"
 			}]
+			rewards: [{
+				id: "327CBAB9347BCFE7"
+				type: "custom"
+				title: "{quest.emcworld.sixth_magic_go_on}"
+				icon: "astralsorcery:starmetal"
+				tags: ["stage_six"]
+				auto: "enabled"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_magic_bluerelay}"

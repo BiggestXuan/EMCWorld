@@ -673,6 +673,7 @@
 				type: "custom"
 				title: "{quest.emcworld_stage_two}"
 				icon: "botania:pinkinator"
+				tags: ["stage_two"]
 				auto: "enabled"
 			}]
 		}

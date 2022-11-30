@@ -2,7 +2,7 @@
 	id: "3C44B9D6A152011F"
 	group: "5E8F5E0284CC6998"
 	order_index: 1
-	filename: "3"
+	filename: "chapteremcworldseven_dead"
 	title: "{chapter.emcworld.seven_dead}"
 	icon: "dead_guys_untitled_deep_dark_:sculk_flagon"
 	default_quest_shape: ""
@@ -12,6 +12,8 @@
 			title: "{quest.emcworld.seven_dead_unactivatedlightndarkblock}"
 			x: 0.0d
 			y: 3.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "333BB74366269E00"
 			tasks: [{
 				id: "77B0BCC4EA5A5463"

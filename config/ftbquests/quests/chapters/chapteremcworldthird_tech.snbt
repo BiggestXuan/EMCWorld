@@ -172,6 +172,7 @@
 				type: "custom"
 				title: "{quest.emcworld_stage_three}"
 				icon: "astralsorcery:starmetal_ingot"
+				tags: ["stage_three"]
 				auto: "enabled"
 			}]
 		}

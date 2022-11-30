@@ -2,7 +2,7 @@
 	id: "4DAF9B3077CA269C"
 	group: "5E8F5E0284CC6998"
 	order_index: 0
-	filename: "2"
+	filename: "chapteremcworldseven_end"
 	title: "{chapter.emcworld.seven_end}"
 	icon: "minecraft:end_portal_frame"
 	default_quest_shape: ""
@@ -31,6 +31,8 @@
 			title: "{quest.emcworld.seven_end_magicandcorrupted}"
 			x: -3.0d
 			y: -3.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "1C7DB0B0B078D9C5"
 			tasks: [
 				{
@@ -61,6 +63,8 @@
 			title: "{quest.emcworld.seven_end_oldandrogue}"
 			x: 3.0d
 			y: -3.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "1670BF76DED2FF03"
 			tasks: [
 				{
@@ -91,6 +95,8 @@
 			title: "{quest.emcworld.seven_end_netherandwither}"
 			x: -4.5d
 			y: 0.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "7DC50125A0AB86A5"
 			tasks: [
 				{
@@ -121,6 +127,8 @@
 			title: "{quest.emcworld.seven_end_nlackandguardian}"
 			x: -3.0d
 			y: 3.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "3FF8DC6AB27D5CB0"
 			tasks: [
 				{
@@ -151,6 +159,8 @@
 			title: "{quest.emcworld.seven_end_witchandcrystal}"
 			x: 4.5d
 			y: 0.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "637F04ED39CE01C0"
 			tasks: [
 				{
@@ -181,6 +191,8 @@
 			title: "{quest.emcworld.seven_end_coldandlost}"
 			x: 3.0d
 			y: 3.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "531ED1E39D3B17DB"
 			tasks: [
 				{
@@ -256,6 +268,8 @@
 			title: "{quest.emcworld.seven_end_kill4}"
 			x: 6.0d
 			y: 12.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
 			id: "3DEE7FAF8AD9F113"
 			tasks: [{
 				id: "3B4D7A51249BAE34"
