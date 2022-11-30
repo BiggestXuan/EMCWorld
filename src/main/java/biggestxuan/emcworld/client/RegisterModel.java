@@ -25,8 +25,8 @@ public class RegisterModel {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.dctor_0415, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.depair_anwu, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.jaoxaono, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.juefei, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.maplefung, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.juefei, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.maplefung, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.mcyunxi, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.wanglaotou, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.xiangshushumiao, AtumBipedRender::new);

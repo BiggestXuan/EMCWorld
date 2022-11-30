@@ -1,0 +1,48 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 500,
+  "pattern": [
+    "AAAAA",
+    "AAAAA",
+    "AAAAA",
+    "AAAAA",
+    "AAAAA"
+  ],
+  "key": {
+    "A": {
+      "item": "emcworld:biggest_emc_gem"
+    }
+  },
+  "relay_inputs": [
+    {
+      "item": "quark:green_crystal_cluster"
+    },
+    {
+      "item": "quark:green_crystal_cluster"
+    },
+    {
+      "item": "quark:green_crystal_cluster"
+    },
+    {
+      "item": "quark:green_crystal_cluster"
+    }
+  ],
+  "output": [
+    {
+      "item": "emcworld:advanced_emc_gem",
+      "count": 1
+    }
+  ],
+  "focus_constellation": "emcworld:emc",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

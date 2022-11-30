@@ -42,6 +42,12 @@ public function modifyMEKRecipe() as void{
     var tc = <item:mekanism:teleportation_core>;
     var la = <item:mekanism:laser>;
     var et = <item:mekanism:energy_tablet>;
+    var ad = <item:mekanism:atomic_disassembler>;
+    var wa = <item:dead_guys_untitled_deep_dark_:warden_antler>;
+    var uic = <item:mekanism:ultimate_induction_cell>;
+    var vc = <item:stalwart_dungeons:void_crystal>;
+    var cho = <item:stalwart_dungeons:chorundum>;
+    var cei = <item:cataclysm:enderite_ingot>;
     var lfm = <item:mekanismgenerators:laser_focus_matrix>;
     var ai = <item:mekanism:alloy_infused>;
     var a = <item:minecraft:air>;
@@ -51,6 +57,7 @@ public function modifyMEKRecipe() as void{
     var hs = <item:mekanism:hdpe_sheet>;
     var rg = <item:mekanismgenerators:reactor_glass>;
     var ar2 = <item:mekanism:alloy_reinforced>;
+    var dm = <item:mekanism:digital_miner>;
     var a2 = <item:mekanism:alloy_reinforced>;
     var sia = <item:astralsorcery:starmetal_ingot>;
     var ro = <item:mekanism:ingot_refined_obsidian>;
@@ -76,6 +83,9 @@ public function modifyMEKRecipe() as void{
         <item:mekanism:elite_induction_provider>,
         <item:mekanism:ultimate_induction_provider>
     ];
+    for i in 1 .. 4{
+        removeRecipe([ic[i],ip[i]]);
+    }
     modifyShapedRecipe([
         [iron,iron,iron],
         [<tag:items:minecraft:planks>,gobber,<tag:items:minecraft:planks>],
@@ -117,19 +127,19 @@ public function modifyMEKRecipe() as void{
         [steel,ai,steel]
     ],<item:mekanismgenerators:turbine_rotor>,"one");
     modifyStageRecipe([
-        [<item:minecraft:air>,steel,<item:minecraft:air>],
+        [a,steel,a],
         [steel,ai,steel],
-        [<item:minecraft:air>,steel,<item:minecraft:air>]
+        [a,steel,a]
     ],<item:mekanismgenerators:turbine_blade>,"one");
     modifyStageRecipe([
-        [<item:minecraft:air>,steel,<item:minecraft:air>],
+        [a,steel,a],
         [steel,iron,steel],
-        [<item:minecraft:air>,steel,<item:minecraft:air>]
+        [a,steel,a]
     ],<item:mekanism:boiler_casing>,"one");
     modifyStageRecipe([
-        [<item:minecraft:air>,steel,<item:minecraft:air>],
+        [a,steel,a],
         [steel,<item:mekanism:ingot_osmium>,steel],
-        [<item:minecraft:air>,steel,<item:minecraft:air>]
+        [a,steel,a]
     ],<item:mekanismgenerators:turbine_casing>,"one");
     removeCraftRecipe([
         <item:mekanism:steel_casing>,
@@ -199,8 +209,28 @@ public function modifyMEKRecipe() as void{
         [hs,pp2,pp],
         [<item:stalwart_dungeons:awful_gun>,<item:cataclysm:ignitium_ingot>,<item:mekanism:ultimate_chemical_tank>]
     ],<item:mekanism:flamethrower>);
+    removeRecipe([ad,dm]);
     modifyShapelessRecipe([
         <item:extendedcrafting:black_iron_slate>,pp2,pp,pp
     ],<item:extendedcrafting:elite_component>);
+    extendedCraftingShapedRecipe([
+	    [wa, cho, cho, cei, cei, cei, <item:gobber2:gobber2_paxel_end>.withTag({Damage: 0 as int})], 
+	    [a, a, a, a, uic , <item:mekanism:pellet_antimatter>, cei], 
+	    [a, a, a, a, vc, uic, cei], 
+	    [a, a, a, vc, a, a, cei], 
+	    [a, a, <item:cataclysm:gauntlet_of_guard>, a, a, a, cho], 
+	    [a, <item:mekanism:ultimate_control_circuit>, a, a, a, a, cho], 
+	    [<item:astralsorcery:celestial_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:evorsio" as string}}), a, a, a, a, a, wa]
+    ],ad,3);
+    treeRitualRecipe([
+        <item:cataclysm:void_core>,
+        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:steel" as string}),
+        <item:dead_guys_untitled_deep_dark_:sculk_flagon>,
+        <item:mekanism:personal_chest>,
+        <item:astralsorcery:ritual_link>,
+        <item:astralsorcery:celestial_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:mineralis" as string}}),
+        <item:botania:orechid>,
+        <item:botania:orechid_ignem>
+    ],<item:byg:ether_sapling>,dm);
 }
  

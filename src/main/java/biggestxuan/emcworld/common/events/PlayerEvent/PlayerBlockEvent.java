@@ -12,6 +12,8 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.event.entity.player.*;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -72,5 +74,11 @@ public class PlayerBlockEvent {
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getCraftBaseCost(player) * MathUtils.difficultyLoss() * event.getCrafting().getCount() * (1.0 * 64 / event.getCrafting().getMaxStackSize())),playerEMC);
         if(costEMC == 0) return;
         EMCHelper.modifyPlayerEMC(player, Math.negateExact(costEMC),true);
+    }
+
+    @SubscribeEvent
+    public static void blockBreakEvent(BlockEvent.BreakEvent event){
+        if(event.getWorld().isClientSide()) return;
+
     }
 }

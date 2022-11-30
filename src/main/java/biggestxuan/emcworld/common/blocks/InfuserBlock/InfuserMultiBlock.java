@@ -13,7 +13,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.yezon.theabyss.block.StoneBrickPillarBlock;
 import quek.undergarden.registry.UGBlocks;
 import vazkii.botania.common.block.ModBlocks;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
@@ -139,7 +138,7 @@ public class InfuserMultiBlock {
                 if(!isBlock(u,-1,m, L_Ender.cataclysm.init.ModBlocks.CHISELED_END_STONE_BRICKS.get())){
                     i = false;
                 }
-                if(!isBlock(u,0,m, StoneBrickPillarBlock.block)){
+                if(!isBlock(u,0,m, Blocks.NETHERITE_BLOCK)){
                     i = false;
                 }
             }

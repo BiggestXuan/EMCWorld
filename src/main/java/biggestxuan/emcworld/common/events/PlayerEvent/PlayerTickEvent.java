@@ -287,10 +287,12 @@ public class PlayerTickEvent {
                     stack.setCount(0);
                 }
             }
-            if(stack.getOrCreateTag().getString("patchouli:book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
-                stack.shrink(1);
+            if(stack.hasTag()){
+                if(stack.getOrCreateTag().getString("patchouli:book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
+                    stack.shrink(1);
+                }
             }
-        };
+        }
         for(ItemStack stack:player.inventory.items){
             if(stack.getItem() instanceof BaseDifficultyItem){
                 BaseDifficultyItem item = (BaseDifficultyItem) stack.getItem();

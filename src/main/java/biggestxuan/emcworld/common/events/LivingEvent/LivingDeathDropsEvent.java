@@ -30,9 +30,6 @@ public class LivingDeathDropsEvent {
         if(entity.level.isClientSide) return;
         DamageSource source = event.getSource();
         ResourceLocation rl = entity.getLootTable();
-        double x = entity.getX();
-        double y = entity.getY();
-        double z = entity.getZ();
         if(rl.equals(new ResourceLocation("cataclysm","entities/ignis"))){
             int base = 6;
             if(MathUtils.isRandom(0.5)) base++;
@@ -47,16 +44,41 @@ public class LivingDeathDropsEvent {
                 if(entity.level == null){
                     break;
                 }
-                entity.level.addFreshEntity(new ItemEntity(entity.level,x,y,z,new ItemStack(ModItems.IGNITIUM_INGOT.get())));
+                addDrops(entity,ModItems.IGNITIUM_INGOT.get());
             }
             if(MathUtils.isRandom(0.1 * MathUtils.difficultyLoss())){
-                entity.level.addFreshEntity(new ItemEntity(entity.level,x,y,z,getRandomArmor()));
+                addDrops(entity,getRandomArmor());
             }
-            entity.level.addFreshEntity(new ItemEntity(entity.level,x,y,z,new ItemStack(ModItems.BULWARK_OF_THE_FLAME.get())));
+            addDrops(entity,ModItems.BULWARK_OF_THE_FLAME.get());
         }
         if(rl.equals(EMCWorld.rl("entities/tulye")) && MathUtils.isRandom(0.33)){
-            entity.level.addFreshEntity(new ItemEntity(entity.level,x,y,z,new ItemStack(EWItems.SCROLL_TULYE.get())));
+            addDrops(entity,EWItems.SCROLL_TULYE.get());
         }
+        if(rl.equals(new ResourceLocation("cataclysm","entities/ender_golem")) && MathUtils.isRandom(0.5)){
+            addDrops(entity,ModItems.ENDERITE_INGOT.get());
+        }
+        if(rl.equals(new ResourceLocation("cataclysm","entities/ender_guardian"))){
+            addDrops(entity,ModItems.ENDERITE_INGOT.get(),3);
+            if(MathUtils.isRandom(0.5)){
+                addDrops(entity,ModItems.ENDERITE_INGOT.get());
+            }
+        }
+        if(rl.equals(new ResourceLocation("dungeomsmod","entites/voidmaster"))){
+            addDrops(entity,ModItems.VOID_CORE.get());
+            event.setCanceled(true);
+        }
+    }
+
+    private static void addDrops(LivingEntity entity,Item item){
+        addDrops(entity,item,1);
+    }
+
+    private static void addDrops(LivingEntity entity,Item item,int count){
+        addDrops(entity,new ItemStack(item,count));
+    }
+
+    private static void addDrops(LivingEntity entity,ItemStack stack){
+        entity.level.addFreshEntity(new ItemEntity(entity.level,entity.getX(),entity.getY(),entity.getZ(),stack));
     }
 
     private static ItemStack getRandomArmor(){

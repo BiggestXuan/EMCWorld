@@ -29,7 +29,7 @@ public function modifyAstralRecipe() as void{
 
     removeCraftRecipe([well,wand,bmr]);
     //astralTransmutationRecipe(<blockstate:minecraft:diamond_block>,<block:astralsorcery:well>);
-    removeAstralAltarRecipe([well,wand,lt,bmr,<item:astralsorcery:infuser>,aa,ts,rp]);
+    removeAstralAltarRecipe([well,wand,lt,bmr,<item:astralsorcery:infuser>,aa,ts,rp,<item:astralsorcery:infused_wood_column>]);
     enderCraftingRecipe([
         [a,<item:twilightforest:steeleaf_ingot>,],
         [aq,<item:botania:livingwood_twig>,rc],

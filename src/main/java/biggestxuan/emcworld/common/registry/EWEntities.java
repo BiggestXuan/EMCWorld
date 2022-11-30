@@ -30,8 +30,8 @@ public class EWEntities {
     public static final EntityType<Dctor_0415> dctor_0415 = register("dctor_0415",Dctor_0415::new);
     public static final EntityType<Depair_Anwu> depair_anwu = register("depair_anwu",Depair_Anwu::new);
     public static final EntityType<Jaoxaono> jaoxaono = register("jaoxaono",Jaoxaono::new);
-    public static final EntityType<JueFei> juefei = register("juefei",JueFei::new);
-    public static final EntityType<Maplefung> maplefung = register("maplefung",Maplefung::new);
+    //public static final EntityType<JueFei> juefei = register("juefei",JueFei::new);
+    //public static final EntityType<Maplefung> maplefung = register("maplefung",Maplefung::new);
     public static final EntityType<MCyunxi> mcyunxi = register("mcyunxi",MCyunxi::new);
     public static final EntityType<Xy177> xy177 = register("xy177",Xy177::new);
     public static final EntityType<WangLaoTou> wanglaotou = register("wanglaotou",WangLaoTou::new);
@@ -51,8 +51,8 @@ public class EWEntities {
         event.put(dctor_0415,Dctor_0415.create().build());
         event.put(depair_anwu,Depair_Anwu.create().build());
         event.put(jaoxaono,Jaoxaono.create().build());
-        event.put(juefei,JueFei.create().build());
-        event.put(maplefung,Maplefung.create().build());
+        //event.put(juefei,JueFei.create().build());
+        //event.put(maplefung,Maplefung.create().build());
         event.put(mcyunxi,MCyunxi.create().build());
         event.put(wanglaotou,WangLaoTou.create().build());
         event.put(abunana,Abunana.create().build());

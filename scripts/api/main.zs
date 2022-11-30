@@ -21,7 +21,7 @@ public function main() as void{
     addEmeraldShardRecipe();
     setEMC();
     addAlloyRecipe();
-    modifyAbyssRecipe();
+    //modifyAbyssRecipe();
     modifyNatureAuraRecipe();
     modifyBotaniaTags();
     modifyDaisyRecipe();

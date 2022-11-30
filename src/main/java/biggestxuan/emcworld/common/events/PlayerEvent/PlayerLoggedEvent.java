@@ -18,6 +18,8 @@ import biggestxuan.emcworld.common.utils.CalendarUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.ModPackHelper;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
+import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
+import dev.ftb.mods.ftbquests.quest.TeamData;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -28,7 +30,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.yezon.theabyss.TheabyssModVariables;
 import vazkii.patchouli.common.item.PatchouliItems;
 
 import java.util.UUID;
@@ -46,10 +47,6 @@ public class PlayerLoggedEvent {
         if(!GameStageManager.hasStage(player,"Start")){
             GameStageManager.addStage(player,"Start");
         }
-        TheabyssModVariables.PlayerVariables v = player.getCapability(TheabyssModVariables.PLAYER_VARIABLES_CAPABILITY).orElseThrow(NullPointerException::new);
-        v.FirstJoin = true;
-        v.BookSpawn = true;
-        v.EA_Intro = true;
         ResearchManager.setTomeReceived(player);
         ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
         for(Sponsors sp:info.getSponsors()){
@@ -71,6 +68,12 @@ public class PlayerLoggedEvent {
             player.addItem(book);
             int emc = 150000;
             EMCHelper.modifyPlayerEMC(player,(int) (emc / MathUtils.difficultyLoss()),false);
+        }
+        if(ConfigManager.FREE_MODE.get()){
+            TeamData data = ServerQuestFile.INSTANCE.getData(player);
+            if(data != null){
+                data.setLocked(true);
+            }
         }
         CalendarUtils instance = CalendarUtils.INSTANCE;
         int year = instance.getYear();

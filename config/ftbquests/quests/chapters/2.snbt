@@ -1,0 +1,371 @@
+{
+	id: "66F505967468ED3C"
+	group: "5E8F5E0284CC6998"
+	order_index: 1
+	filename: "2"
+	title: "{chapter.emcworld.seven_end}"
+	icon: "minecraft:end_portal_frame"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.seven_end_gointoendland}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: [
+				"1C7DB0B0B078D9C5"
+				"7DC50125A0AB86A5"
+				"3FF8DC6AB27D5CB0"
+				"531ED1E39D3B17DB"
+				"637F04ED39CE01C0"
+				"1670BF76DED2FF03"
+			]
+			id: "24378A6BCDC17FC0"
+			tasks: [{
+				id: "15ABCECA9131DA0A"
+				type: "dimension"
+				dimension: "minecraft:the_end"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_magicandcorrupted}"
+			x: -3.0d
+			y: -3.0d
+			id: "07A7AEEC734116A1"
+			tasks: [
+				{
+					id: "5D8E0A9B59E38675"
+					type: "item"
+					item: {
+						id: "endrem:magical_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "0449FC9AC913DFF5"
+					type: "item"
+					item: {
+						id: "endrem:corrupted_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_end_oldandrogue}"
+			x: 3.0d
+			y: -3.0d
+			id: "02FF7BE847E511E9"
+			tasks: [
+				{
+					id: "1F46D23FE5ED6673"
+					type: "item"
+					item: {
+						id: "endrem:old_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "341B2BE1B96A48A8"
+					type: "item"
+					item: {
+						id: "endrem:rogue_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_end_netherandwither}"
+			x: -4.5d
+			y: 0.0d
+			id: "3F0F0FDBC2484AD1"
+			tasks: [
+				{
+					id: "4672B83C1B5D0F1D"
+					type: "item"
+					item: {
+						id: "endrem:nether_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "1CDD72F512E99AA9"
+					type: "item"
+					item: {
+						id: "endrem:wither_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_end_nlackandguardian}"
+			x: -3.0d
+			y: 3.0d
+			id: "325D2FE51DFC7000"
+			tasks: [
+				{
+					id: "3B449113A2A188D7"
+					type: "item"
+					item: {
+						id: "endrem:guardian_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "7B780D2AF3767239"
+					type: "item"
+					item: {
+						id: "endrem:black_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_end_witchandcrystal}"
+			x: 4.5d
+			y: 0.0d
+			id: "0F51F34DCE62D235"
+			tasks: [
+				{
+					id: "4239D6FAC248D75C"
+					type: "item"
+					item: {
+						id: "endrem:end_crystal_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "009DB281603BC28C"
+					type: "item"
+					item: {
+						id: "endrem:witch_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_end_coldandlost}"
+			x: 3.0d
+			y: 3.0d
+			id: "1AA7BD9962D7D40F"
+			tasks: [
+				{
+					id: "051225FC19875023"
+					type: "item"
+					item: {
+						id: "endrem:cold_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "779035BC76E05ACD"
+					type: "item"
+					item: {
+						id: "endrem:lost_eye"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_end_kill}"
+			x: 0.0d
+			y: 12.0d
+			dependencies: ["67986A0B3586A400"]
+			id: "5A6EA4761D139A0E"
+			tasks: [{
+				id: "56CCEBCD6ECFB76E"
+				type: "kill"
+				icon: "minecraft:dragon_head"
+				entity: "minecraft:ender_dragon"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_find1}"
+			x: -3.0d
+			y: 9.0d
+			dependencies: ["7BC944BCD0FA9D1A"]
+			id: "7FE4C35B020C555C"
+			tasks: [{
+				id: "3EC4A39A30988A1C"
+				type: "observation"
+				icon: "stalwart_dungeons:shelterer_altar"
+				timer: 0L
+				observe_type: 0
+				to_observe: "stalwart_dungeons:shelterer_altar"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_find2}"
+			x: 3.0d
+			y: 9.0d
+			dependencies: [
+				"7BC944BCD0FA9D1A"
+				"3DEE7FAF8AD9F113"
+			]
+			id: "6176245FCEDC8B5C"
+			tasks: [{
+				id: "3E6AAF6C24B97320"
+				type: "advancement"
+				advancement: "cataclysm:find_ruined_citadel"
+				criterion: ""
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_kill4}"
+			x: 6.0d
+			y: 12.0d
+			id: "324A030A941108DA"
+			tasks: [{
+				id: "13515656F68F4B41"
+				type: "kill"
+				icon: "cataclysm:gauntlet_of_guard"
+				entity: "cataclysm:ender_guardian"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_kill3}"
+			x: -6.0d
+			y: 12.0d
+			description: ["{quest.emcworld.seven_end_kill3_desc}"]
+			dependencies: ["746279B20874FD47"]
+			id: "6EC9C0890FB03443"
+			tasks: [{
+				id: "53F02F6BB9E267FF"
+				type: "kill"
+				icon: "stalwart_dungeons:void_crystal"
+				entity: "stalwart_dungeons:shelterer"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_chorundum}"
+			x: -3.0d
+			y: 15.0d
+			dependencies: ["746279B20874FD47"]
+			id: "6901023429866683"
+			tasks: [{
+				id: "7F23CEB72C0F0CED"
+				type: "item"
+				item: "stalwart_dungeons:chorundum"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_gebber2ingotend}"
+			x: 0.0d
+			y: 15.0d
+			hide_dependency_lines: true
+			dependencies: ["67986A0B3586A400"]
+			id: "0D50CF17CCE3A10B"
+			tasks: [{
+				id: "306C1B4A89947F1A"
+				type: "item"
+				item: "gobber2:gobber2_ingot_end"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_enderiteingot}"
+			x: 3.0d
+			y: 15.0d
+			dependencies: ["28D4CD48351EDFED"]
+			id: "48E354C4A0F4C683"
+			tasks: [{
+				id: "27CE4AFAB2F456FF"
+				type: "item"
+				item: "cataclysm:enderite_ingot"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_atomic_disassembleer}"
+			x: 0.0d
+			y: 18.0d
+			dependencies: [
+				"7FEC2C5F10DB05AE"
+				"2A6A9720B9CA7654"
+				"4055464294E18C8C"
+				"3DCF9B2F9FD17F84"
+				"3DEE7FAF8AD9F113"
+			]
+			id: "19DE260DFDBA82C8"
+			tasks: [{
+				id: "5DB540297541E903"
+				type: "item"
+				item: {
+					id: "mekanism:atomic_disassembler"
+					Count: 1b
+					tag: {
+						HideFlags: 2
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_kill2}"
+			x: 0.0d
+			y: -7.5d
+			dependencies: ["67986A0B3586A400"]
+			id: "02158E5703174CAA"
+			tasks: [{
+				id: "7BE33A72F896E8EB"
+				type: "kill"
+				icon: "cataclysm:void_core"
+				entity: "dungeonsmod:voidmaster"
+				value: 1L
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_end_digital_miner}"
+			x: 0.0d
+			y: -12.0d
+			dependencies: ["148895B7C862D77E"]
+			id: "43AB797758F3958C"
+			tasks: [{
+				id: "5A13E1C74DAD76B6"
+				type: "item"
+				item: "mekanism:digital_miner"
+			}]
+		}
+	]
+}

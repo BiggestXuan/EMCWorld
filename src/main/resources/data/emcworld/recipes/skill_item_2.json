@@ -1,0 +1,57 @@
+{
+  "type": "astralsorcery:altar",
+  "altar_type": 3,
+  "duration": 300,
+  "starlight": 500,
+  "pattern": [
+    "A___A",
+    "_BCB_",
+    "_CDC_",
+    "_BCB_",
+    "A___A"
+  ],
+  "key": {
+    "A": {
+      "item": "gobber2:gobber2_rod"
+    },
+    "B": {
+      "item": "mekanism:ultimate_control_circuit"
+    },
+    "C": {
+      "item": "mekanism:energy_tablet"
+    },
+    "D": {
+      "item": "emcworld:advanced_emc_gem"
+    }
+  },
+  "relay_inputs": [
+    {
+      "item": "emcworld:skill_item1"
+    },
+    {
+      "item": "emcworld:skill_item1"
+    },
+    {
+      "item": "emcworld:skill_item1"
+    },
+    {
+      "item": "emcworld:skill_item1"
+    }
+  ],
+  "output": [
+    {
+      "item": "emcworld:skill_item2",
+      "count": 10
+    }
+  ],
+  "focus_constellation": "emcworld:emc",
+  "effects": [
+    "astralsorcery:built_in_effect_constellation_finish",
+    "astralsorcery:built_in_effect_trait_relay_highlight",
+    "astralsorcery:built_in_effect_discovery_central_beam",
+    "astralsorcery:built_in_effect_trait_focus_circle",
+    "astralsorcery:altar_default_sparkle",
+    "astralsorcery:built_in_effect_constellation_lines",
+    "astralsorcery:built_in_effect_attunement_sparkle"
+  ]
+}

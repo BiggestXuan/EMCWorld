@@ -42,9 +42,9 @@
 			y: 0.0d
 			id: "55F95029FC1CB170"
 			tasks: [{
-				id: "6BB65ECC044B3F54"
+				id: "73C14CFEC20C9462"
 				type: "item"
-				item: "theabyss:knight_ingot"
+				item: "emcworld:test_block"
 			}]
 		}
 		{

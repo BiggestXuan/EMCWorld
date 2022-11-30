@@ -58,7 +58,7 @@ public function modifyBotaniaRecipe() as void{
         [l,l,l]
     ],<item:botania:alfheim_portal>);
     <recipetype:botania:pure_daisy>.removeByName("botania:pure_daisy/livingrock");
-    removeCraftRecipe([<item:botania:gaia_pylon>,<item:minecraft:sea_lantern>,<item:mythicbotany:mana_infuser>,mh,ts,dai,km]);
+    removeCraftRecipe([<item:botania:gaia_pylon>,<item:mythicbotany:yggdrasil_branch>,<item:minecraft:sea_lantern>,<item:mythicbotany:mana_infuser>,mh,ts,dai,km]);
     removeCraftRecipe(teb);
     modifyRuneAltarRecipe([ms,mp,<tag:items:forge:stone>,<item:minecraft:gunpowder>,<tag:items:forge:sand>],<item:botania:rune_fire>,5000);
     for i in 0 .. quark_runes.length{

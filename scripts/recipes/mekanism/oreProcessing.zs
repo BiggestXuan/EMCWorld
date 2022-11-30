@@ -10,13 +10,11 @@ public function extraOresProcessing() as void{
     extraOresRecipe(ItemStackIngredient.from(<tag:items:forge:ores/uranium>),<slurry:mekanism:dirty_uranium>,"uranium_ore_processing");
     extraOresRecipe(ItemStackIngredient.from(<tag:items:forge:ores/lead>),<slurry:mekanism:dirty_lead>,"lead_ore_processing");
     addIron([
-        <item:dead_guys_untitled_deep_dark_:deep_stone_iron>,
-        <item:theabyss:iron_variant>
+        <item:dead_guys_untitled_deep_dark_:deep_stone_iron>
     ]);
     addGold([
         <item:byg:blue_nether_gold_ore>,
         <item:byg:brimstone_nether_gold_ore>,
-        <item:dead_guys_untitled_deep_dark_:deep_stone_gold>,
-        <item:theabyss:gold_variant>
+        <item:dead_guys_untitled_deep_dark_:deep_stone_gold>
     ]);
 }

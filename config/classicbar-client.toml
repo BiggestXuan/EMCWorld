@@ -1,7 +1,7 @@
 
 [general]
-	display_low_health_warning = true
-	normal_colors = ["#FF0000", "#FFFF00", "#00FF00"]
+	display_low_health_warning = false
+	normal_colors = ["#00FF00", "#00FF00", "#00FF00"]
 	full_absorption_bar = false
 	armor_toughness_color_values = ["#AAAAAA", "#FF5500", "#FFC747", "#27FFE3", "#00FF00", "#7F00FF"]
 	display_low_hunger_warning = true

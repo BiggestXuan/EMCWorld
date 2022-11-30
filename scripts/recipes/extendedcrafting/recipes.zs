@@ -24,7 +24,7 @@ public function modifyExtendedCraftingRecipe() as void{
     var sc = <item:mekanism:steel_casing>;
     var ec = <item:extendedcrafting:elite_component>;
     var an = <item:mythicbotany:alfsteel_nugget>;
-    var ki = <item:theabyss:knight_ingot>;
+    var ki = <item:emcworld:test_block>;
     var com = <item:extendedcrafting:compressor>;
     var gl = <tag:items:forge:glass>;
     var fr = <item:extendedcrafting:frame>;

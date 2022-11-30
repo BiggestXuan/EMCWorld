@@ -1,0 +1,10 @@
+{
+  "name": "singularity.emcworld.sculk",
+  "colors": [
+    "07232a",
+    "07232a"
+  ],
+  "ingredient": {
+    "item": "minecraft:stone"
+  }
+}

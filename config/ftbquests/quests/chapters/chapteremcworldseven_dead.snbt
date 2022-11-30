@@ -1,0 +1,65 @@
+{
+	id: "3C44B9D6A152011F"
+	group: "5E8F5E0284CC6998"
+	order_index: 1
+	filename: "3"
+	title: "{chapter.emcworld.seven_dead}"
+	icon: "dead_guys_untitled_deep_dark_:sculk_flagon"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.seven_dead_unactivatedlightndarkblock}"
+			x: 0.0d
+			y: 3.0d
+			id: "333BB74366269E00"
+			tasks: [{
+				id: "77B0BCC4EA5A5463"
+				type: "item"
+				item: "dead_guys_untitled_deep_dark_:unactivated_lightn_dark_block"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_dead_gointodeepdarkfantasty}"
+			x: -3.0d
+			y: 0.0d
+			dependencies: [
+				"67986A0B3586A400"
+				"333BB74366269E00"
+			]
+			id: "115C45C8398E9C51"
+			tasks: [{
+				id: "52FCED8DCBB3CD42"
+				type: "dimension"
+				dimension: "dead_guys_untitled_deep_dark_:deep_darky"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_dead_unactivateddarknlight}"
+			x: 3.0d
+			y: 0.0d
+			dependencies: [
+				"67986A0B3586A400"
+				"7F6CE571B6CACBC2"
+			]
+			id: "5BC079E6B3BE28F5"
+			tasks: [{
+				id: "1769E44A2A68C590"
+				type: "item"
+				item: "dead_guys_untitled_deep_dark_:unactivated_darkn_light"
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_dead_warden}"
+			x: 0.0d
+			y: -3.0d
+			dependencies: ["115C45C8398E9C51"]
+			id: "7F6CE571B6CACBC2"
+			tasks: [{
+				id: "467D5CF555C5923A"
+				type: "item"
+				item: "dead_guys_untitled_deep_dark_:warden_antler"
+			}]
+		}
+	]
+}

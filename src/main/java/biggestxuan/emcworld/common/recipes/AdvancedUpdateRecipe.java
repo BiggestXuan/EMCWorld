@@ -21,6 +21,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import quek.undergarden.item.UGItem;
+import quek.undergarden.registry.UGItems;
 import vazkii.botania.common.block.ModBlocks;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
 
@@ -43,12 +45,19 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     AS_INFUSER(EWItems.INFUSE_CORE.get(),BlocksAS.INFUSER.asItem(),3500000,4),
     MAGENTA_MATTER(PEItems.RED_MATTER.get(),EWItems.MAGENTA_MATTER.get(),350000,3),
     FANTASY_GEM(Items.DIAMOND.getItem(),EWItems.FANTASY_GEM.get(), 500000,3),
+    BRIGHT_STONE(MekanismItems.POLONIUM_PELLET.getItem(), EWItems.BRIGHT_STONE.get(), 1500000000,8),
+    DARK_STONE(MekanismItems.PLUTONIUM_PELLET.getItem(), EWItems.DARK_STONE.get(), 1500000000,8),
+    EVIL_BOOK(RatsItemRegistry.PLAGUE_TOME.getItem(),EWItems.EVIL_BOOK.get(), 3000000000L,8),
+    INFINITY(EWItems.INFINITY_CATALYST.get(), EWItems.ULTIMATE_SINGULARITY.get(),30000000000L,8),
+    BROKEN_DIAMOND_SWORD(UGItems.CLOGGRUM_SWORD.get(),EWItems.BROKEN_DIAMOND_SWORD.get(),750000000,7),
     ANOTHER_WORLD_CORE(EWItems.FANTASY_GEM.get(), EWItems.ANOTHER_WORLD_CORE.get(), 2500000,4),
     DEMON_DUST(MekanismItems.REFINED_OBSIDIAN_DUST.getItem(), EWItems.DEMON_DUST.get(), 10000000,5),
     HERO_MEDAL(EWItems.GOLD_MEDAL.get(), EWItems.HERO_MEDAL.get(), 50000000,6),
     PURPLE_MATTER(EWItems.PINK_MATTER.get(),EWItems.PURPLE_MATTER.get(),1500000,4),
     VIOLET_MATTER(EWItems.PURPLE_MATTER.get(), EWItems.VIOLET_MATTER.get(), 2500000,4),
     BLUE_MATTER(EWItems.VIOLET_MATTER.get(), EWItems.BLUE_MATTER.get(), 7500000,5),
+    CYAN_MATTER(EWItems.BLUE_MATTER.get(),EWItems.CYAN_MATTER.get(), 15000000,5),
+    GREEN_MATTER(EWItems.CYAN_MATTER.get(),EWItems.GREEN_MATTER.get(), 40000000,6),
     TIME_DRIVE(MekanismItems.HYPER_DENSE_QIO_DRIVE.getItem(), MekanismItems.TIME_DILATING_QIO_DRIVE.getItem(), 15000000,4),
     SUPER_DRIVE(MekanismItems.TIME_DILATING_QIO_DRIVE.getItem(), MekanismItems.SUPERMASSIVE_QIO_DRIVE.getItem(), 120000000,6),
     BIRTH_SPIRIT(ModItems.CALLING_SPIRIT.getItem(),ModItems.BIRTH_SPIRIT.getItem(),100000,4),

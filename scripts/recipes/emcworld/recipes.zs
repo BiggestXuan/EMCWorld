@@ -66,6 +66,9 @@ public function emcworldRecipe() as void{
     var mhs = <item:mekanism:hdpe_sheet>;
     var cmi = <item:emcworld:crystal_matrix_ingot>;
     var pcm = <item:emcworld:clay_matter>;
+    var ip = <item:astralsorcery:illumination_powder>;
+    var sar = <item:bloodmagic:sacrificerune>;
+    var sel = <item:bloodmagic:selfsacrificerune>;
     var nei = <item:minecraft:netherite_ingot>;
     var viqd = <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:vibranium" as string});
     var ss = <item:emcworld:stainless_steel>;
@@ -153,7 +156,7 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_null_sword>.withTag({level: 24 as int})
     ;
     var amo as int[]=[
-        1500,1000,10000,15000,5000,100,10000,5000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400
+        1500,1000,10000,15000,5000,100,10000,5000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000
     ];
     var red_armor as ItemStack[]=[
         <item:emcworld:guardian_helmet>,
@@ -399,6 +402,20 @@ public function emcworldRecipe() as void{
             <item:emcworld:titanium_ingot>
         ]
     ];
+    var weapon_gem as IItemStack[][] =[
+        [
+            <item:emcworld:blood_gemstone>,
+            <item:emcworld:nature_gemstone>,
+            <item:emcworld:lake_gemstone>,
+            <item:emcworld:abyss_gemstone>
+        ],
+        [
+            <item:the_afterlight:glyph_of_power>,
+            <item:the_afterlight:glyph_of_sickness>,
+            <item:the_afterlight:spectral_glyph>,
+            <item:the_afterlight:glyph_of_knowledge>
+        ]
+    ];
     var sing as IItemStack[][] = [
         [
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:atm" as string}),
@@ -423,7 +440,8 @@ public function emcworldRecipe() as void{
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:bronze" as string}),
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:clock" as string}),
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:dark_matter" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:red_matter" as string})
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:red_matter" as string}),
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string})
         ],
         [
             <item:allthemodium:allthemodium_ingot>,
@@ -448,7 +466,8 @@ public function emcworldRecipe() as void{
             <item:mekanism:ingot_bronze>,
             <item:minecraft:clock>,
             <item:projecte:dark_matter>,
-            <item:projecte:red_matter>
+            <item:projecte:red_matter>,
+            <item:dead_guys_untitled_deep_dark_:sculk>
         ]
     ];
     var staff_item as IItemStack[][]=[
@@ -497,6 +516,7 @@ public function emcworldRecipe() as void{
     pink(<item:projectex:magenta_relay>,<item:projectex:pink_relay>);
     infuserRecipe([sp,sp,sp,sp,sp],sr,6000,1500000,3);
     infuserRecipe([sb,sb,sb,sb,sb],sp,2500,300000,2);
+    setEMCStage(<item:dead_guys_untitled_deep_dark_:sculk>,1024,8);
     addCraftShapelessRecipe([<item:minecraft:diamond_sword>,dm,dm],<item:emcworld:profession_sword>);
     addCraftShapelessRecipe([<item:minecraft:diamond_chestplate>,dm,dm],<item:emcworld:profession_tank>);
     addCraftShapedRecipeNoName([
@@ -513,6 +533,9 @@ public function emcworldRecipe() as void{
         [iss,<item:minecraft:gold_block>,iss],
         [iss,iss,iss]
     ],<item:emcworld:emc_flower>);
+    for i in 0 .. 4{
+        nucleosyRecipe(weapon_gem[1][i],<gas:mekanism:antimatter>*100,weapon_gem[0][i],1500);
+    }
     addCraftShapedRecipeNoName([
         [dee,dee,dee],
         [dee,<item:minecraft:iron_ingot>,dee],
@@ -521,6 +544,20 @@ public function emcworldRecipe() as void{
     tartaricForgeRecipe([<item:emcworld:base_key>,<item:twilightforest:lamp_of_cinders>,<item:astralsorcery:rock_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:vicio" as string}}),<item:rats:dutchrat_wheel>],<item:emcworld:nether_key>,4096,1000);
     smithingRecipe(sword[0],atmqd*3,sword[1]);
     smithingRecipe(sword[1],viqd*3,sword[2]);
+    infuserRecipe([
+        <item:cataclysm:ignitium_ingot>,
+        <item:mekanism:pellet_antimatter>,
+        <item:mekanism:ingot_refined_obsidian>,
+        <item:naturesaura:calling_spirit>,
+        <item:quark:rainbow_rune>
+    ],<item:emcworld:purple_staff>,30000,1000000,3);
+    infuserRecipe([
+        <item:cataclysm:ignitium_ingot>,
+        <item:naturesaura:netherite_finder>,
+        <item:quark:rainbow_rune>,
+        <item:mythicbotany:vanaheim_rune>,
+        <item:mythicbotany:yggdrasil_branch>
+    ],<item:emcworld:nature_staff>,30000,1000000,3);
     smithingRecipe(sword[2],unqd*3,sword[3]);
     for i in 20 .. 24{
         removeSmithingRecipe(armor[i]);
@@ -529,9 +566,12 @@ public function emcworldRecipe() as void{
         removeRecipe([armor[i],pdm[i]]);
     }
     setEMCStage(emcc,112000000,114514);
+    addCraftShapelessRecipe([
+        <item:minecraft:gold_nugget>
+    ],<item:pouchofunknown:pouch>);
     modifyExtendedCompressionRecipe(<item:allthemodium:unobtainium_ingot>,unqd,500,100);
-    for i in 0 .. 20{
-        extendedCompressionRecipe(sing[1][i],sing[0][i],amo[i],i);
+    for i in 0 .. amo.length{
+        extendedCompressionRecipe(sing[1][i],sing[0][i],amo[i],i as int);
     }
     if(getGameDifficulty() >= 1){
         removeRecipe(tor);
@@ -712,7 +752,62 @@ public function emcworldRecipe() as void{
     addCraftShapelessRecipe([
         <tag:items:forge:stone>,<item:emcworld:small_emc_gem>
     ],<item:emcworld:emc_check>);
+    var wp = <item:endrem:witch_pupil>;
+    var we = <item:endrem:witch_eye>;
+    var ece = <item:endrem:end_crystal_eye>;
     removeCraftRecipe(atm);
+    var uldb = <item:dead_guys_untitled_deep_dark_:unactivated_lightn_dark_block>;
+    var dwa = <item:dead_guys_untitled_deep_dark_:warden_antler>;
+    var dso = <item:dead_guys_untitled_deep_dark_:sculk_ossein_shard>;
+    var cei = <item:cataclysm:enderite_ingot>;
+    var dsr = <item:dead_guys_untitled_deep_dark_:sculk_rambler_cut_root>;
+    var aeg = <item:emcworld:advanced_emc_gem>;
+    var seg = <item:emcworld:super_emc_gem>;
+    var eeeg = <item:emcworld:epic_emc_gem>;
+    removeCraftRecipe([we,ece,uldb]);
+        extendedCombinationRecipe([
+        <item:extendedcrafting:the_ultimate_block>,eeeg,eeeg,eeeg,eeeg
+    ],<item:emcworld:infinity_emc_gem>);
+    addNuggetAndIngotRecipe(cei,<item:cataclysm:enderite_block>);
+    natureSpawnerRecipe([
+        <item:dead_guys_untitled_deep_dark_:warden_antler>,
+        <item:naturesaura:birth_spirit>,
+        <item:stalwart_dungeons:void_crystal>,
+        <item:cataclysm:void_jaw>
+    ],10000,<entitytype:dungeonsmod:voidmaster>,"_void_master");
+    combiningRecipe(<item:emcworld:big_emc_gem>*40,<item:minecraft:diamond>,<item:emcworld:biggest_emc_gem>);
+    treeRitualRecipe([
+        aeg,aeg,aeg,aeg,aeg,<item:cataclysm:ignitium_ingot>,<item:mekanism:pellet_antimatter>,<item:cataclysm:ignitium_ingot>
+    ],<item:twilightforest:rainboak_sapling>,seg*2);
+    infuserRecipe([
+        seg,seg,seg,<item:cataclysm:void_core>,<item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string})
+    ],eeeg,1000,50000000,4);
+    green(<item:projectex:cyan_collector>,<item:projectex:green_collector>);
+    green(<item:projectex:cyan_relay>,<item:projectex:green_relay>);
+    lime(<item:projectex:green_collector>,<item:projectex:lime_collector>);
+    lime(<item:projectex:green_relay>,<item:projectex:lime_relay>);
+    modifyShapedRecipe([
+        [dwa,<item:dead_guys_untitled_deep_dark_:miteasoma>,dwa],
+        [dso,<item:dead_guys_untitled_deep_dark_:sculk_flagon>,dso],
+        [dsr,<item:dead_guys_untitled_deep_dark_:sculk>,dsr]
+    ],<item:dead_guys_untitled_deep_dark_:unactivated_darkn_light>);
+    alchemalTableRecipe([
+        <item:botania:brew_flask>.withTag({brewKey: "botania:overload" as string}),
+        wp,
+        <item:bloodmagic:tauoil>,
+        <item:the_afterlight:spectral_glyph>,
+        <item:undergarden:regalium_block>
+    ],we,100000,4);
+    oxidizingRecipe(<item:stalwart_dungeons:void_crystal>,<gas:emcworld:no_shape_void>*10);
+    reactionRecipe(<item:emcworld:epic_emc_gem>,<fluid:mekanismgenerators:fusion_fuel>*10,<gas:emcworld:no_shape_void>*10,<item:emcworld:super_emc_gem>,<gas:emcworld:condensation_void>*20);
+    chemicalInfusingRecipe(<gas:emcworld:condensation_void>,<gas:emcworld:cosmic_flow>,<gas:emcworld:stable_void>);
+    nucleosyRecipe(<item:endrem:end_crystal_block>,<gas:mekanism:antimatter>*100,ece,100);
+    natureSpawnerRecipe([
+        cei,
+        <item:naturesaura:birth_spirit>,
+        <item:minecraft:dragon_breath>,
+        <item:stalwart_dungeons:chorundum>
+    ],500000,<entitytype:cataclysm:ender_guardian>,"ender_guardian_summoning");
     extendedCraftingShapedRecipe([
         [a,gi,um,si,a],
         [a,gi,<item:mekanism:teleportation_core>,si,a],
@@ -721,12 +816,17 @@ public function emcworldRecipe() as void{
         [a,a,ai,a,a]
     ],<item:emcworld:base_key>,2);
     metallurgicInfusingRecipe(con[0][1],<infuse_type:emcworld:gobber>*20,con[0][2]);
+    purifyingRecipe(<item:minecraft:coal_block>,<item:emcworld:activated_charcoal>,3);
+    alchemalTableRecipe([
+        <item:bloodmagic:looting_anointment_l>,
+        <item:botania:brew_vial>.withTag({brewKey: "botania:overload" as string}),
+        <item:bloodmagic:slate_vial>,
+        <item:emcworld:big_emc_gem>
+    ],<item:emcworld:skill_item1>*8,3000,3);
+    addEMCStage(<item:emcworld:activated_charcoal>,3);
     runeAltarRecipe([
         con[0][2],<item:bloodmagic:defaultcrystal>
     ],con[0][3],10000);
-    var ip = <item:astralsorcery:illumination_powder>;
-    var sar = <item:bloodmagic:sacrificerune>;
-    var sel = <item:bloodmagic:selfsacrificerune>;
     alchemalArrayRecipe(con[0][3],<item:rats:ghost_pirat_ectoplasm>,con[0][4]);
     astralAltarRecipe([
         [a,a,a,a,a],
@@ -735,6 +835,9 @@ public function emcworldRecipe() as void{
         [a,a,ip,a,a],
         [a,a,a,a,a]
     ],con[0][5],1);
+    addEMCStage(<item:emcworld:voucher>,114514);
+    cyan(<item:projectex:blue_collector>,<item:projectex:cyan_collector>);
+    cyan(<item:projectex:blue_relay>,<item:projectex:cyan_relay>);
     natureAltarRecipe(con[0][5],con[0][6],2,100000);
     nucleosyRecipe(con[0][6],<gas:mekanism:antimatter>*100,con[0][7],100);
     addCraftShapedRecipeNoName([
@@ -966,10 +1069,6 @@ public function emcworldRecipe() as void{
             <item:undergarden:utherium_ingot>,
             <item:undergarden:regalium_ingot>,
             <item:undergarden:forgotten_ingot>,
-            <item:theabyss:garnite_ingot>,
-            <item:theabyss:unorithe_ingot>,
-            <item:theabyss:florite_gem>,
-            <item:theabyss:knight_ingot>,
             <item:hem:rose_copper_ingot>,
             <item:hem:bronze_ingot>,
             <item:hem:copparite>,
@@ -1063,16 +1162,6 @@ public function emcworldRecipe() as void{
             <item:undergarden:smogstem_log>,
             <item:undergarden:wigglewood_log>,
             <item:undergarden:grongle_log>,
-            <item:theabyss:rotten_log>,
-            <item:theabyss:blaru_log>,
-            <item:theabyss:jungle_log>,
-            <item:theabyss:ruma_log>,
-            <item:theabyss:roggen_log>,
-            <item:theabyss:tantra_log>,
-            <item:theabyss:bog_shroom_log>,
-            <item:theabyss:sal_shroom_log>,
-            <item:theabyss:slimed_log>,
-            <item:theabyss:frozen_log>,
             <item:hem:blueleaf_log>,
             <item:hem:hardenedlog>,
             <item:hem:crystalized_log>,
@@ -1145,7 +1234,6 @@ public function emcworldRecipe() as void{
             <item:the_afterlight:void_rock>,
             <item:undergarden:depthrock>,
             <item:undergarden:shiverstone>,
-            <item:theabyss:tantra_stone>,
             <item:astralsorcery:marble_raw>,
             <item:bloodmagic:dungeon_stone>,
             <item:naturesaura:infused_stone>
@@ -1279,9 +1367,6 @@ public function emcworldRecipe() as void{
             <item:undergarden:frozen_deepturf>,
             <item:undergarden:tall_deepturf>,
             <item:undergarden:shimmerweed>,
-            <item:theabyss:loran_flower>,
-            <item:theabyss:fortis_ultima>,
-            <item:theabyss:grass_small>,
             <item:hem:blueleaf_grass>,
             <item:hem:blueleaf_flowering_lily>,
             <item:hem:lush_flower_1>,
@@ -1325,4 +1410,27 @@ private function blue(c as IItemStack,r as IItemStack) as void{
         <item:undergarden:regalium_block>,
         <item:emcworld:blue_matter>
     ],<item:undergarden:smogstem_sapling>,r);
+}
+
+private function cyan(c as IItemStack,r as IItemStack) as void{
+    mythicInfuserRecipe([
+        c,
+        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string}),
+        <item:emcworld:cyan_matter>,
+        <item:emcworld:super_emc_gem>,
+        <item:dead_guys_untitled_deep_dark_:warden_antler>
+    ],r,4000000,0xffffff,0xffffff);
+}
+
+private function green(c as IItemStack,r as IItemStack) as void{
+    nucleosyRecipe(c,<gas:emcworld:stable_void>*1000,r,100);
+}
+
+private function lime(c as IItemStack,r as IItemStack) as void{
+    alchemalTableRecipe([
+        c,<item:cataclysm:enderite_block>,
+        <item:byg:pendorite_block>,
+        <item:cataclysm:void_core>,
+        <item:emcworld:lime_matter>
+    ],r,300000,4);
 }

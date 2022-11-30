@@ -11,9 +11,12 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.client.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.darkhax.itemstages.Restriction;
 import net.darkhax.itemstages.RestrictionManager;
+import net.minecraft.client.Minecraft;
+import net.minecraft.crash.CrashReport;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -44,5 +47,7 @@ public class PlayerPickUpItemEvent {
         } else {
             EMCHelper.modifyPlayerEMC(player, Math.negateExact(costEMC), true);
         }
+        //DEBUG:
+        //Minecraft.crash(new CrashReport("DEBUG_CRASH",new EMCWorldCommonException()));
     }
 }

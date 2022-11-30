@@ -98,7 +98,7 @@
           "Q": "minecraft:end_stone_bricks",
           "R": "cataclysm:chiseled_end_stone_bricks",
           "S": "cataclysm:end_stone_pillar",
-          "T": "theabyss:stone_brick_pillar",
+          "T": "minecraft:netherite_block",
           "U": "gobber2:gobber2_block_end"
         }
       }
