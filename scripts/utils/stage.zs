@@ -78,8 +78,7 @@ public class sitem{
             <item:minecraft:netherite_helmet>.mutable(),
             <item:minecraft:netherite_chestplate>.mutable(),
             <item:minecraft:netherite_leggings>.mutable(),
-            <item:minecraft:netherite_boots>.mutable(),
-            <item:theabyss:nether_nugget>.mutable()
+            <item:minecraft:netherite_boots>.mutable()
         ];
     }
 
