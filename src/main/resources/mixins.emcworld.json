@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "biggestxuan.emcworld.common.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [
+    "MinecraftWindow"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "mixins.emcworld.refmap.json"
+}

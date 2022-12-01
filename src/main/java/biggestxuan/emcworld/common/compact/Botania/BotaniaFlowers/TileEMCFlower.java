@@ -18,7 +18,7 @@ import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 import java.util.List;
 
 public class TileEMCFlower extends TileEntityGeneratingFlower {
-    private static final int MAX_MANA = 1000;
+    private static final int MAX_MANA = 10000;
     private static final int RANGE = 6;
     private static final int[] VALUE = new int[]{100,1000};
 

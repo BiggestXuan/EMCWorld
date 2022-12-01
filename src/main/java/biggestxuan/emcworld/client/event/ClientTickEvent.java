@@ -26,7 +26,7 @@ public class ClientTickEvent {
     public static final boolean isCrash = true;
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void clientTick(TickEvent.ClientTickEvent event){
-        GLFW.glfwSetWindowTitle(Minecraft.getInstance().getWindow().getWindow(), EMCWorld.TITLE);
+        //GLFW.glfwSetWindowTitle(Minecraft.getInstance().getWindow().getWindow(), EMCWorld.TITLE);
     }
 
     /**
@@ -50,8 +50,8 @@ public class ClientTickEvent {
         if(player.level.isClientSide && !player.isDeadOrDying() && !player.level.dimension().getRegistryName().equals(new ResourceLocation("nether"))){
             IUtilCapability c = EMCWorldAPI.getInstance().getUtilCapability(player);
             if(c.getLevel() <2){
-                CrashReport crashReport = new CrashReport("EMCWorld is not completed!", new EMCWorldNotFinalException());
-                Minecraft.crash(crashReport);
+                //CrashReport crashReport = new CrashReport("EMCWorld is not completed!", new EMCWorldNotFinalException());
+                //Minecraft.crash(crashReport);
             }
         }
     }

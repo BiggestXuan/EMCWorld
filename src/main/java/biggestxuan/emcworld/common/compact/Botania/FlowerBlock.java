@@ -48,6 +48,6 @@ public class FlowerBlock extends EWBlock implements ITileEntityProvider, IWandab
 
     @Override
     public boolean onUsedByWand(PlayerEntity player, ItemStack stack, World world, BlockPos pos, Direction side) {
-        return ((TileEntitySpecialFlower) world.getBlockEntity(pos)).onWanded(player, stack);
+        return true;
     }
 }

@@ -43,8 +43,8 @@ public class EMCWorld
 {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 2;
-    public static final String PackVersion = "0.2.0";
+    public static final int ModPackVersion = 3;
+    public static final String PackVersion = "0.3.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
 
