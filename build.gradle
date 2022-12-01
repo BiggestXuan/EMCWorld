@@ -20,7 +20,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.2.0'
+version = '0.3.0'
 group = 'biggestxuan.emcworld'
 archivesBaseName = 'EMCWorld'
 
@@ -33,6 +33,7 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
+            arg "-mixin.config=mixins.emcworld.json"
             mods {
                 emcworld {
                     source sourceSets.main
@@ -44,6 +45,7 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
+            arg "-mixin.config=mixins.emcworld.json"
             mods {
                 emcworld {
                     source sourceSets.main
@@ -64,8 +66,6 @@ minecraft {
         }
     }
 }
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
@@ -103,6 +103,8 @@ dependencies {
 
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.30'
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.511")
     implementation fg.deobf("vazkii.botania:Botania:1.16.5-420.2")
     implementation fg.deobf("curse.maven:blood-magic-224791:3870899")
@@ -131,14 +133,16 @@ dependencies {
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:10.3.29")
     implementation fg.deobf("curse.maven:curios-309927:3725386")
     implementation fg.deobf("curse.maven:nature-306626:3472977")
-    implementation fg.deobf("curse.maven:abyss-440647:3776944")
     implementation fg.deobf("curse.maven:ftbq-316833:3333962")
     implementation fg.deobf("curse.maven:gobber-301700:4005586")
     implementation fg.deobf("curse.maven:atm-364466:3529763")
     implementation fg.deobf("curse.maven:projecte-226410:3736621")
     implementation fg.deobf("curse.maven:projectex-311378:3478250")
     implementation fg.deobf("curse.maven:quark-243121:3642325")
+    implementation fg.deobf("curse.maven:stalwart-dungeons-474817:3495397")
     implementation fg.deobf("curse.maven:sh-248027:3240365")
+    implementation fg.deobf("curse.maven:hem-408466:3836676")
+    implementation fg.deobf("curse.maven:DivineRPG-363543:4022627")
     implementation fg.deobf("curse.maven:shutup_experimental_settings-407174:3188120")
     implementation fg.deobf("curse.maven:cataclysm-551586:3875120")
     implementation fg.deobf("vazkii.patchouli:Patchouli:1.16.4-53.3")
@@ -152,6 +156,11 @@ dependencies {
     implementation fg.deobf("net.darkhax.itemstages:ItemStages-Forge-1.16.5:3.0.9")
 }
 
+mixin {
+    add sourceSets.main, "mixins.emcworld.refmap.json"
+    config "mixins.emcworld.json"
+}
+
 jar {
     manifest {
         attributes([
@@ -161,7 +170,10 @@ jar {
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"emcworldsareus",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
+            "TweakOrder": 0,
+            "MixinConfigs": "mixins.emcworld.json"
         ])
     }
 }
