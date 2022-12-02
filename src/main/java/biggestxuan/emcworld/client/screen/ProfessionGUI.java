@@ -39,7 +39,7 @@ public class ProfessionGUI extends Screen {
         drawString(m,this.font,t,x,y,color);
     }
 
-    private String getProfessionName(int p){
+    public static String getProfessionName(int p){
         switch (p){
             case 1:
                 return I18n.get("profession.emcworld.sword");

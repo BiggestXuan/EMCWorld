@@ -24,7 +24,7 @@ import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ClientTickEvent {
     public static final boolean isCrash = true;
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    //@SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void clientTick(TickEvent.ClientTickEvent event){
         //GLFW.glfwSetWindowTitle(Minecraft.getInstance().getWindow().getWindow(), EMCWorld.TITLE);
     }

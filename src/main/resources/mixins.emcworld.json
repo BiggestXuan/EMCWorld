@@ -2,7 +2,10 @@
   "required": true,
   "package": "biggestxuan.emcworld.common.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [],
+  "refmap": "emcworld.refmap.json",
+  "mixins": [
+    "QuarkInventoryHandler"
+  ],
   "client": [
     "MinecraftWindow"
   ],
@@ -10,5 +13,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "mixins.emcworld.refmap.json"
+  "minVersion": "0.8"
 }

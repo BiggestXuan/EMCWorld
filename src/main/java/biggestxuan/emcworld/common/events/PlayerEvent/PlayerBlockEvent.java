@@ -79,6 +79,6 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void blockBreakEvent(BlockEvent.BreakEvent event){
         if(event.getWorld().isClientSide()) return;
-
+        //Message.sendMessage(event.getPlayer(),EMCWorld.tc("111"));
     }
 }

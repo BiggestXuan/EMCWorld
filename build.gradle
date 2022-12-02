@@ -10,8 +10,7 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
-
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 apply plugin: 'java'
@@ -157,7 +156,7 @@ dependencies {
 }
 
 mixin {
-    add sourceSets.main, "mixins.emcworld.refmap.json"
+    add sourceSets.main, "emcworld.refmap.json"
     config "mixins.emcworld.json"
 }
 
@@ -171,9 +170,6 @@ jar {
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"emcworldsareus",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
-            "TweakOrder": 0,
-            "MixinConfigs": "mixins.emcworld.json"
         ])
     }
 }
