@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.network;
 
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.api.item.equipment.staff.BaseEMCGodStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -32,6 +33,10 @@ public class StaffAttackPacket {
                 if(stack.getItem() instanceof StaffItem && player.getAttackStrengthScale(0) == 1){
                     StaffItem item = (StaffItem) stack.getItem();
                     item.spawnManaBurst(player,1);
+                    if(stack.getItem() instanceof BaseEMCGodStaff){
+                        BaseEMCGodStaff staff = (BaseEMCGodStaff) stack.getItem();
+                        staff.cost(stack);
+                    }
                     if(cap.getModify() == 1 && cap.getProfession() == 3 && cap.getSkills()[40] != 0 && cap.getSkills()[41] != 0){
                         item.spawnManaBurst(player,2);
                     }

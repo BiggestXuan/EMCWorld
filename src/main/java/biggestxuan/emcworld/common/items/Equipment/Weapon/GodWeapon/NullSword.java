@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class NullSword extends BaseEMCGodWeapon {
     public NullSword() {
-        super(5f,"null_sword",0x323531);
+        super(5f,0x323531);
     }
 
     @Override

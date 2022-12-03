@@ -7,6 +7,7 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
@@ -44,16 +45,14 @@ import java.util.List;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.GodWeapon")
-public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon {
+public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem {
 
     protected final float baseDamage;
-    private final String name;
     private final int color;
 
-    public BaseEMCGodWeapon(float baseDamage,String name,int color){
+    public BaseEMCGodWeapon(float baseDamage,int color){
         super(EWGodWeaponTier.INSTANCE,(int) baseDamage,-2.4F);
         this.baseDamage = baseDamage;
-        this.name = name;
         this.color = color;
     }
 
@@ -142,12 +141,22 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public double getCriticalChance(ItemStack stack){
-        return getBaseCriticalChance(stack);
+        double b = getBaseCriticalChance(stack);
+        long costEMC = getCostEMC(stack);
+        if(costEMC >= 1){
+            b += Math.log(costEMC)/100;
+        }
+        return b;
     }
 
     @Override
     public double getCriticalRate(ItemStack stack){
-        return getBaseCriticalRate(stack);
+        double b = getBaseCriticalRate(stack);
+        long costEMC = getCostEMC(stack);
+        if(costEMC >= 1){
+            b += Math.log(costEMC)/100;
+        }
+        return b;
     }
 
     @Override
@@ -177,6 +186,10 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
     @Override
     public float getAdditionsDamage(ItemStack stack){
         float b = getBaseDamage(stack) * 0.75f;
+        long costEMC = getCostEMC(stack);
+        if(costEMC >= 1){
+            b *= (1 + Math.log(costEMC)/100);
+        }
         if(getGemType(stack) == 1){
             b *= 1.15f;
         }
@@ -187,6 +200,11 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
             b *= 0.95f;
         }
         return b;
+    }
+
+    @Override
+    public long getMaxInfuser(ItemStack stack){
+        return (long) (Math.pow(1.4,getLevel(stack)) * 500000);
     }
 
     @Override
@@ -208,7 +226,8 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
     @Override
     public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
         int level = getLevel(p_200295_1_);
-        return EMCWorld.tc("item.emcworld.god_"+this.name,level);
+        String name = this.toString();
+        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
     }
 
     private double getManaBurstSpeed(ItemStack stack){

@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.blocks.InfuserBlock;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
+import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.items.EMCGemItem;
@@ -177,6 +178,14 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
                 if(stack1.getDamageValue() == 0 || this.emc < getRadiationCost(level)) continue;
                 stack.setDamageValue(stack.getDamageValue() - rate);
                 this.emc -= this.getRadiationCost(level) * rate;
+            }
+            if(stack.getItem() instanceof IEMCInfuserItem){
+                IEMCInfuserItem item = (IEMCInfuserItem) stack.getItem();
+                long baseEMC = (long) (maxEMC * 0.003);
+                if(emc >= baseEMC && item.getMaxInfuser(stack) != item.getInfuser(stack)){
+                    emc -= baseEMC;
+                    item.addInfuser(stack, baseEMC);
+                }
             }
         }
         if(mainItem.getItem() instanceof EMCGemItem){

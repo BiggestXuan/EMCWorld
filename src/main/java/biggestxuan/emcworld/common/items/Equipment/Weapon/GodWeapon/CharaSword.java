@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 
 public class CharaSword extends BaseEMCGodWeapon implements ISponsorItem {
     public CharaSword() {
-        super(11,"chara_sword",0x44ccaa);
+        super(11,0x44ccaa);
     }
 
     @Override
@@ -53,6 +53,6 @@ public class CharaSword extends BaseEMCGodWeapon implements ISponsorItem {
 
     @Override
     public Sponsors getSponsor(){
-        return new Sponsors("cx02","1738cb1b-ea69-4e0f-8678-688aea7e8d1b",2);
+        return new Sponsors("cx02","1738cb1b-ea69-4e0f-8678-688aea7e8d1b",3);
     }
 }

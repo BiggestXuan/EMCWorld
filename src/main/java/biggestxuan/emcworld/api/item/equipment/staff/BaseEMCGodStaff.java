@@ -8,10 +8,7 @@ package biggestxuan.emcworld.api.item.equipment.staff;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
-import biggestxuan.emcworld.api.item.IEMCRepairableItem;
-import biggestxuan.emcworld.api.item.ISecondEMCItem;
-import biggestxuan.emcworld.api.item.IUpgradeableItem;
-import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -27,7 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem {
+public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem {
     public BaseEMCGodStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("god"));
     }
@@ -36,6 +33,11 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
         p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
+    }
+
+    @Override
+    public long getMaxInfuser(ItemStack stack){
+        return (long) (Math.pow(1.4,getLevel(stack)) * 500000);
     }
 
     @Nonnull
@@ -63,12 +65,22 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public double getCriticalChance(ItemStack stack) {
-        return tier.getCriticalChance() + getBaseCriticalChance(stack);
+        double b = getBaseCriticalChance(stack);
+        long costEMC = getCostEMC(stack);
+        if(costEMC >= 1){
+            b += Math.log(costEMC)/100;
+        }
+        return tier.getCriticalChance() + b;
     }
 
     @Override
     public double getCriticalRate(ItemStack stack) {
-        return tier.getCriticalRate() + getBaseCriticalRate(stack);
+        double b = getBaseCriticalRate(stack);
+        long costEMC = getCostEMC(stack);
+        if(costEMC >= 1){
+            b += Math.log(costEMC)/100;
+        }
+        return tier.getCriticalRate() + b;
     }
 
     @Override
@@ -93,7 +105,12 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public float getBaseDamage(ItemStack stack){
-        return tier.getAttackDamageBonus() + getBaseBurstDamage(stack);
+        double d = getBaseBurstDamage(stack);
+        long costEMC = getCostEMC(stack);
+        if(costEMC >= 1){
+            d *= (1 + Math.log(costEMC)/100);
+        }
+        return (float) (tier.getAttackDamageBonus() + d);
     }
 
     @Override

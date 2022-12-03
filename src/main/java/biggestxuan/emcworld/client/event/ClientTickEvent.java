@@ -6,7 +6,6 @@ package biggestxuan.emcworld.client.event;
  *  2022/08/27
  */
 
-import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.exception.EMCWorldNotFinalException;
@@ -19,7 +18,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ClientTickEvent {

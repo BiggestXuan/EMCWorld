@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
@@ -51,6 +52,10 @@ public class PlayerAttackEvent {
             IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
             ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
             ServerWorld world = player.getServer().overworld();
+            if(stack.getItem() instanceof IEMCInfuserItem){
+                IEMCInfuserItem emcItem = (IEMCInfuserItem) stack.getItem();
+                emcItem.cost(stack);
+            }
             if(stack.getItem() instanceof IAdditionsDamageWeapon){
                 damage += ((IAdditionsDamageWeapon) stack.getItem()).getAdditionsDamage(stack);
             }

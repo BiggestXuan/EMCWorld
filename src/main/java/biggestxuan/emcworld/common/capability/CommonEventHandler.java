@@ -38,18 +38,10 @@ public class CommonEventHandler {
         LazyOptional<IPlayerSkillCapability> oldLevelCap = event.getOriginal().getCapability(EMCWorldCapability.PLAYER_LEVEL);
         LazyOptional<IPlayerSkillCapability> newLevelCap = event.getPlayer().getCapability(EMCWorldCapability.PLAYER_LEVEL);
         if (oldUtilCap.isPresent() && newUtilCap.isPresent()) {
-            newUtilCap.ifPresent((newCap) -> {
-                oldUtilCap.ifPresent((oldCap) -> {
-                    newCap.deserializeNBT(oldCap.serializeNBT());
-                });
-            });
+            newUtilCap.ifPresent((newCap) -> oldUtilCap.ifPresent((oldCap) -> newCap.deserializeNBT(oldCap.serializeNBT())));
         }
         if (oldLevelCap.isPresent() && newLevelCap.isPresent()) {
-            newLevelCap.ifPresent((newCap) -> {
-                oldLevelCap.ifPresent((oldCap) -> {
-                    newCap.deserializeNBT(oldCap.serializeNBT());
-                });
-            });
+            newLevelCap.ifPresent((newCap) -> oldLevelCap.ifPresent((oldCap) -> newCap.deserializeNBT(oldCap.serializeNBT())));
         }
     }
 }

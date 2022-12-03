@@ -167,6 +167,10 @@ public class ItemToolTipEvent {
             IRangeAttackWeapon a_w = (IRangeAttackWeapon) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(a_w.getAttackMode(stack).getName())));
         }
+        if(stack.getItem() instanceof IEMCInfuserItem){
+            IEMCInfuserItem ii_i = (IEMCInfuserItem) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",String.format("%.1f",ii_i.getInfuserRate(stack)*100)).append("%"));
+        }
         for(Item item: radiationItem){
             if(stack.getItem().getItem().equals(item)){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.radiation_item"));

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class NatureSword extends BaseEMCGodWeapon {
     public NatureSword() {
-        super(6.25f,"nature_sword",0x2a8000);
+        super(6.25f,0x2a8000);
     }
 
     @Override

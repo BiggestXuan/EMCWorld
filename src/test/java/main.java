@@ -18,7 +18,13 @@ public class main {
             weight *= 1.15d;
             System.out.println(weight);
         }*/
-        System.out.println(UUID.randomUUID());
+        //System.out.println(UUID.randomUUID());
+        for (int i = 0; i < 25; i++) {
+            double a = Math.pow(1.4,i)*500000*0.0005;
+            System.out.println(a);
+            System.out.println(Math.log(a));
+            System.out.println("----");
+        }
     }
 }
 

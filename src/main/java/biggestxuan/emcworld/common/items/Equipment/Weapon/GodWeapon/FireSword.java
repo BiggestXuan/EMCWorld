@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class FireSword extends BaseEMCGodWeapon {
     public FireSword() {
-        super(8.75f,"fire_sword",0xc90c0c);
+        super(8.75f,0xc90c0c);
     }
 
     @Override

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class IceSword extends BaseEMCGodWeapon {
     public IceSword() {
-        super(7.5f,"ice_sword",0x244bb9);
+        super(7.5f,0x244bb9);
     }
 
     @Override
