@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.registry;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.item.base.BaseGetStageItem;
 import biggestxuan.emcworld.common.items.*;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.items.Curios.StoredTotem;
@@ -23,6 +24,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.NatureStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.PurpleStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.*;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.FestivalItem.MoonCake;
 import biggestxuan.emcworld.common.items.FestivalItem.TangYuan;
 import biggestxuan.emcworld.common.items.FestivalItem.YearCake;
@@ -77,7 +79,7 @@ public class EWItems {
     public static final RegistryObject<Item> SILVER_MEDAL = ITEMS.register("silver_medal", EWItem::new);
     public static final RegistryObject<Item> GOLD_MEDAL = ITEMS.register("gold_medal", EWItem::new);
     public static final RegistryObject<Item> GAIA_NUGGET = ITEMS.register("gaia_nugget", EWItem::new);
-    public static final RegistryObject<Item> TWILIGHT_KEY = ITEMS.register("twilight_key", EWItem::new);
+    public static final RegistryObject<Item> TWILIGHT_KEY = ITEMS.register("twilight_key", () -> new BaseGetStageItem("twilight"));
     public static final RegistryObject<Item> BASE_KEY = ITEMS.register("base_key",EWItem::new);
     public static final RegistryObject<Item> INFUSE_CORE = ITEMS.register("infuse_core",EWItem::new);
     public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1,"profession.emcworld.sword"));
@@ -130,7 +132,8 @@ public class EWItems {
     public static final RegistryObject<Item> SCROLL_TULYE = ITEMS.register("scroll_tulye", TulyeScroll::new);
     public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(1));
     public static final RegistryObject<Item> HARD_STEEL = ITEMS.register("hard_steel",() -> new EWItem(1));
-    public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key",EWItem::new);
+    public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key",() -> new BaseGetStageItem("nether"));
+    public static final RegistryObject<Item> FLYING_GEM = ITEMS.register("flying_gem",() -> new BaseGetStageItem("fly"));
     public static final RegistryObject<Item> RAINBOW_INGOT = ITEMS.register("rainbow_ingot",() -> new EWItem(1));
     public static final RegistryObject<Item> ATM_SWORD = ITEMS.register("atm_sword",AtmSword::new);
     public static final RegistryObject<Item> INFINITY_SWORD = ITEMS.register("infinity_sword", InfinitySword::new);
@@ -159,6 +162,13 @@ public class EWItems {
     public static final RegistryObject<Item> GUARDIAN_CHESTPLATE = ITEMS.register("guardian_chestplate",()->new guardianArmor(2));
     public static final RegistryObject<Item> GUARDIAN_LEGGINGS = ITEMS.register("guardian_leggings",()->new guardianArmor(3));
     public static final RegistryObject<Item> GUARDIAN_BOOTS = ITEMS.register("guardian_boots",()->new guardianArmor(4));
+
+    public static final RegistryObject<Item> WOODEN_WARHAMMER = ITEMS.register("wooden_warhammer",() -> new WarHammerItem(api.getWarHammerTier("wooden")));
+    public static final RegistryObject<Item> STONE_WARHAMMER = ITEMS.register("stone_warhammer",() -> new WarHammerItem(api.getWarHammerTier("stone")));
+    public static final RegistryObject<Item> IRON_WARHAMMER = ITEMS.register("iron_warhammer",() -> new WarHammerItem(api.getWarHammerTier("iron")));
+    public static final RegistryObject<Item> GOLDEN_WARHAMMER = ITEMS.register("golden_warhammer",() -> new WarHammerItem(api.getWarHammerTier("golden")));
+    public static final RegistryObject<Item> DIAMOND_WARHAMMER = ITEMS.register("diamond_warhammer",() -> new WarHammerItem(api.getWarHammerTier("diamond")));
+    public static final RegistryObject<Item> NETHERITE_WARHAMMER = ITEMS.register("netherite_warhammer",() -> new WarHammerItem(api.getWarHammerTier("netherite")));
 
     public static final RegistryObject<Item> EMC_FLOWER = registryBlock("emc_flower",EWBlocks.EMC_FLOWER);
 

@@ -293,6 +293,13 @@
   "item.emcworld.nature_staff": "扶桑断枝",
   "item.emcworld.purple_staff": "紫珀之影",
   "item.emcworld.nopower_staff": "没有力量的法杖",
+  "item.emcworld.flying_gem": "飞行宝石",
+  "item.emcworld.wooden_warhammer": "木战锤",
+  "item.emcworld.stone_warhammer": "石战锤",
+  "item.emcworld.iron_warhammer": "铁战锤",
+  "item.emcworld.golden_warhammer": "金战锤",
+  "item.emcworld.diamond_warhammer": "钻石战锤",
+  "item.emcworld.netherite_warhammer": "下界合金战锤",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "EMC 矿石",

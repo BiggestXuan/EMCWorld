@@ -9,10 +9,12 @@ package biggestxuan.emcworld.common.impl;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
+import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWAtmTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerTier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 
@@ -50,5 +52,10 @@ public class EMCWorldAPI implements biggestxuan.emcworld.api.EMCWorldAPI {
     @Override
     public IStaffTier getStaffTier(String name){
         return StaffTier.valueOf(name.toUpperCase());
+    }
+
+    @Override
+    public IWarHammerTier getWarHammerTier(String name){
+        return WarHammerTier.valueOf(name.toUpperCase());
     }
 }

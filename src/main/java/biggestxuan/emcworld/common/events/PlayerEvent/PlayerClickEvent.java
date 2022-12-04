@@ -241,14 +241,6 @@ public class PlayerClickEvent {
                 PlayerSkillModify.makePlayerGetDefaultSkill(player,item);
             }
         }
-        if(itemStack.getItem().equals(EWItems.NETHER_KEY.get())){
-            itemStack.shrink(1);
-            GameStageManager.addStage(player,"nether");
-        }
-        if(itemStack.getItem().equals(EWItems.TWILIGHT_KEY.get())){
-            itemStack.shrink(1);
-            GameStageManager.addStage(player,"twilight");
-        }
         if(itemStack.getItem().equals(EWItems.NONAME_CATFOOD.get())){
             itemStack.shrink(1);
             player.getFoodData().setFoodLevel(20);
