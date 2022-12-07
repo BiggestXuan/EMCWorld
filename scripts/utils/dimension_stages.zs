@@ -4,7 +4,9 @@ import mods.emcworld.configHelper;
 import mods.emcworld.CrTLang;
 
 public function addDIMStage() as void{
-    if(configHelper.isFreeMode()) return;
+    if(configHelper.isFreeMode()){
+        return;
+    }
     var dim as string[][]=[
         ["good_nights_sleep:good_dream","good_nights_sleep:nightmare","bloodmagic:dungeon","atlantis:altantis"],
         ["rats:ratlantis","mythicbotany:alfheim"],

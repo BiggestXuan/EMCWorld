@@ -7,137 +7,155 @@ package biggestxuan.emcworld.common.blocks.SteelFurnace;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
 import biggestxuan.emcworld.common.blocks.MultiBlock;
 import biggestxuan.emcworld.common.recipes.SteelFurnaceRecipe;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.Item;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIntArray;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.util.text.ITextComponent;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class SteelFurnaceTileEntity extends TileEntity implements ITickableTileEntity {
+public class SteelFurnaceTileEntity extends BaseContainerTileEntity implements ITickableTileEntity, INamedContainerProvider {
+    protected Inventory inventory = new Inventory(3);
     private int progress;
     private int maxProgress;
     private boolean canCraft;
-    private List<ItemStack> inventory;
+    private int speed;
+    private SteelFurnaceRecipe recipe = null;
+    public IIntArray data;
 
     public SteelFurnaceTileEntity() {
         super(EWTileEntityTypes.SteelFurnaceTileEntity.get());
+        this.data = new IIntArray() {
+            @Override
+            public int get(int p_221476_1_) {
+                if(p_221476_1_ == 0){
+                    return getProgress();
+                }
+                if(p_221476_1_ == 1){
+                    return speed;
+                }
+                return 0;
+            }
+
+            @Override
+            public void set(int p_221477_1_, int p_221477_2_) {
+                if(p_221477_1_ == 1){
+                    speed = p_221477_2_;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
     }
 
     @Override
     public void tick() {
-        if(this.level == null) return;
-        if(this.level.isClientSide) return;
-        canCraft = MultiBlock.SteelFurnaceCanCraft(this.level,this.getBlockPos());
-        if(!canCraft){
-            resetCraft();
+        if(level == null || level.isClientSide) return;
+        if(!MultiBlock.SteelFurnaceCanCraft(level,this.getBlockPos())){
+            progress = 0;
+            maxProgress = 0;
             return;
         }
-        inventory = new ArrayList<>();
-        if(getInputs(this).size() !=0 ) {
-            inventory.addAll(getInputs(this));
-        }
-        SteelFurnaceRecipe recipe = getRecipe(this);
-        if(recipe == null) return;
+        recipe = getRecipe();
+        if(!isCanCraft()) return;
         maxProgress = recipe.getTicks();
-        progress ++;
-        if(progress >= maxProgress && maxProgress != 0){
-            craftItem(recipe);
-            resetCraft();
+        progress++;
+        if(progress >= maxProgress){
+            craftItem();
+            progress = 0;
+            maxProgress = 0;
         }
+        recipe = null;
     }
 
-    private void craftItem(SteelFurnaceRecipe recipe){
-        World level = this.level;
-        if(level == null) return;
-        for(ItemEntity entity:getNearItem(this)){
-            if(isInRecipe(entity,recipe)){
-                ItemStack stack = entity.getItem();
-                stack.shrink(1);
-                entity.setItem(stack);
-            }
+    private void craftItem(){
+        inventory.getItem(0).shrink(1);
+        inventory.getItem(1).shrink(1);
+        if(inventory.getItem(2).equals(ItemStack.EMPTY)){
+            inventory.getItem(2).grow(recipe.getResultItem().getCount());
         }
-        level.addFreshEntity(new ItemEntity(level,this.getBlockPos().getX(),this.getBlockPos().getY()+1,this.getBlockPos().getZ(),recipe.getResultItem()));
+        inventory.setItem(2,recipe.getResultItem());
     }
 
-    private void resetCraft(){
-        progress = 0;
-        maxProgress = 0;
-    }
-
-    private boolean isInRecipe(ItemEntity entity,SteelFurnaceRecipe recipe){
-        Item entityItem = entity.getItem().getItem();
-        for (int i = 0; i < recipe.getIngredients().size(); i++) {
-            for(ItemStack s:recipe.getIngredients().get(i).getItems()){
-                if(entityItem.equals(s.getItem())){
-                    return true;
-                }
-            }
-        }
-        return false;
+    private boolean isCanCraft(){
+        if(recipe == null) return false;
+        return (inventory.getItem(2).equals(ItemStack.EMPTY) || inventory.getItem(2).equals(recipe.getResultItem())) && inventory.getItem(2).getCount()+recipe.getResultItem().getCount() <= inventory.getItem(2).getMaxStackSize();
     }
 
     @Nullable
-    private SteelFurnaceRecipe getRecipe(SteelFurnaceTileEntity entity){
-        if(entity.level == null || entity.level.getServer() == null ) return null;
-        List<SteelFurnaceRecipe> allRecipe = entity.level.getServer().getRecipeManager().getAllRecipesFor(SteelFurnaceRecipe.Type.INSTANCE);
-        for(SteelFurnaceRecipe recipe:allRecipe){
-            if(matchRecipe(recipe)){
-                return recipe;
+    private SteelFurnaceRecipe getRecipe(){
+        ItemStack s1 = inventory.getItem(0);
+        ItemStack s2 = inventory.getItem(1);
+        List<SteelFurnaceRecipe> recipeList = level.getRecipeManager().getAllRecipesFor(SteelFurnaceRecipe.Type.INSTANCE);
+        //System.out.println(recipeList.get(0).toString());
+        for(SteelFurnaceRecipe recipe2 : recipeList){
+            NonNullList<Ingredient> i = recipe2.getIngredients();
+            if(i.get(0).test(s1) && i.get(1).test(s2)){
+                return recipe2;
             }
         }
         return null;
     }
 
-    private boolean matchRecipe(SteelFurnaceRecipe recipe){
-        NonNullList<Ingredient> requireInputs = recipe.getIngredients();
-        List<Item> allItem = new ArrayList<>();
-        List<Item> inv = new ArrayList<>();
-        if(inventory.size() == 0) return false;
-        for(ItemStack s:inventory){
-            inv.add(s.getItem());
-        }
-        for(Ingredient ingredient:requireInputs){
-            for(ItemStack stack:ingredient.getItems()){
-                allItem.add(stack.getItem());
-            }
-        }
-        for(Item i :allItem){
-            if(!inv.contains(i)){
-                return false;
-            }
-        }
-        return true;
+    @Override
+    public void load(@Nonnull BlockState p_230337_1_, @Nonnull CompoundNBT p_230337_2_) {
+        super.load(p_230337_1_,p_230337_2_);
+        progress = p_230337_2_.getInt("progress");
+        speed = p_230337_2_.getInt("speed");
+        inventory.addItem(ItemStack.of(p_230337_2_.getCompound("item")));
+        inventory.addItem(ItemStack.of(p_230337_2_.getCompound("item1")));
+        inventory.addItem(ItemStack.of(p_230337_2_.getCompound("item2")));
     }
 
-    private List<ItemStack> getInputs(SteelFurnaceTileEntity entity){
-        List<ItemStack> o = new ArrayList<>();
-        for(ItemEntity i:getNearItem(entity)){
-            o.add(i.getItem());
-        }
-        return o;
+    @Nonnull
+    @Override
+    public CompoundNBT save(@Nonnull CompoundNBT p_189515_1_){
+        p_189515_1_.putInt("progress",progress);
+        p_189515_1_.putInt("speed",speed);
+        p_189515_1_.put("item",inventory.getItem(0).copy().serializeNBT());
+        p_189515_1_.put("item1",inventory.getItem(1).copy().serializeNBT());
+        p_189515_1_.put("item2",inventory.getItem(2).copy().serializeNBT());
+        super.save(p_189515_1_);
+        return p_189515_1_;
     }
 
-    private List<ItemEntity> getNearItem(SteelFurnaceTileEntity entity){
-        BlockPos pos = entity.getBlockPos();
-        int x = pos.getX();
-        int y = pos.getY();
-        int z = pos.getZ();
-        AxisAlignedBB aabb = new AxisAlignedBB(new BlockPos(x-1,y,z-1),new BlockPos(x+1,y+3,z+1));
-        if(entity.level == null){
-            return new ArrayList<>();
-        }
-        return entity.level.getLoadedEntitiesOfClass(ItemEntity.class,aabb);
+    @Override
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    @Nonnull
+    @Override
+    public ITextComponent getDisplayName() {
+        return EMCWorld.tc("block.emcworld.steel_furnace_core");
+    }
+
+    private int getProgress(){
+        return 100 * progress / maxProgress;
+    }
+
+    @Nullable
+    @Override
+    public Container createMenu(int p_createMenu_1_, @Nonnull PlayerInventory p_createMenu_2_, @Nonnull PlayerEntity p_createMenu_3_) {
+        return new SteelFurnaceCoreContainer(p_createMenu_1_,p_createMenu_2_,this,data);
     }
 }

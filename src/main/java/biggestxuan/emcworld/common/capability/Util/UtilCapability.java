@@ -30,6 +30,7 @@ public class UtilCapability implements IUtilCapability {
     private boolean modifyDifficulty;
     private int logAmount;
     private float speed;
+    private boolean share;
 
     public UtilCapability(){
         this.SponsorLevel = 0;
@@ -259,6 +260,16 @@ public class UtilCapability implements IUtilCapability {
     }
 
     @Override
+    public boolean share() {
+        return share;
+    }
+
+    @Override
+    public void setShare(boolean value) {
+        share = value;
+    }
+
+    @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT tag = new CompoundNBT();
         tag.putInt("sponsorLevel",this.SponsorLevel);
@@ -281,6 +292,7 @@ public class UtilCapability implements IUtilCapability {
         tag.putBoolean("modi",this.modifyDifficulty);
         tag.putInt("log",this.logAmount);
         tag.putFloat("speed",this.speed);
+        tag.putBoolean("share",share);
         return tag;
     }
 
@@ -306,5 +318,6 @@ public class UtilCapability implements IUtilCapability {
         this.modifyDifficulty = nbt.getBoolean("modi");
         this.logAmount = nbt.getInt("log");
         this.speed = nbt.getFloat("speed");
+        this.share = nbt.getBoolean("emc");
     }
 }

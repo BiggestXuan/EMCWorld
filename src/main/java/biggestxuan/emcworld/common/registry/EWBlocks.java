@@ -54,11 +54,11 @@ public class EWBlocks {
         public static final RegistryObject<Block> ADVANCED_UPDATE_CORE = BLOCKS.register("advanced_update_core", AdvancedUpdateBlock::new);
         public static final RegistryObject<Block> PROFESSION_CORE = BLOCKS.register("profession_core", ProfessionalBlock::new);
         public static final RegistryObject<Block> GEMSTONE_CORE = BLOCKS.register("gemstone_core", GemstoneBlock::new);
-        public static final RegistryObject<Block> EMC_ORE = BLOCKS.register("emc_ore",() -> new EWStoneOre(2,5.5F));
-        public static final RegistryObject<Block> RICH_EMC_ORE = BLOCKS.register("rich_emc_ore",() -> new EWStoneOre(3,10.0F));
-        public static final RegistryObject<Block> NETHER_EMC_ORE = BLOCKS.register("nether_emc_ore", () -> new EWStoneOre(2,6.5F));
-        public static final RegistryObject<Block> END_EMC_ORE = BLOCKS.register("end_emc_ore", () -> new EWStoneOre(3,8.5F));
-        public static final RegistryObject<Block> END_RICH_EMC_ORE = BLOCKS.register("end_rich_emc_ore", () -> new EWStoneOre(5,12.0F));
+        public static final RegistryObject<Block> EMC_ORE = BLOCKS.register("emc_ore",() -> new EWStoneOre(2,3F));
+        public static final RegistryObject<Block> RICH_EMC_ORE = BLOCKS.register("rich_emc_ore",() -> new EWStoneOre(3,7F));
+        public static final RegistryObject<Block> NETHER_EMC_ORE = BLOCKS.register("nether_emc_ore", () -> new EWStoneOre(2,5F));
+        public static final RegistryObject<Block> END_EMC_ORE = BLOCKS.register("end_emc_ore", () -> new EWStoneOre(3,7F));
+        public static final RegistryObject<Block> END_RICH_EMC_ORE = BLOCKS.register("end_rich_emc_ore", () -> new EWStoneOre(5,10F));
         public static final RegistryObject<Block> CHLOROPHYTE_ORE = BLOCKS.register("chlorophyte_ore",() -> new EWDirtOre(3,3.5F));
         public static final RegistryObject<Block> VIS_CONVERSION_CORE = BLOCKS.register("vis_conversion_core",VisConversionBlock::new);
         public static final RegistryObject<Block> ORICHALCOS_ORE = BLOCKS.register("orichalcos_ore",() -> new EWStoneOre(4,16.0F));
@@ -70,7 +70,7 @@ public class EWBlocks {
         public static final RegistryObject<Block> DRYSTONE_ORE = BLOCKS.register("drystone_ore",() -> new EWStoneOre(3,15.0F));
         public static final RegistryObject<Block> AQUAMARINE_ORE = BLOCKS.register("aquamarine_ore",() -> new EWDirtOre(1,3.0F));
         public static final RegistryObject<Block> INDIUM_ORE = BLOCKS.register("indium_ore",() -> new EWStoneOre(4,15.0F));
-        public static final RegistryObject<Block> MAGNESIUM_ORE = BLOCKS.register("magnesium_ore",() -> new EWStoneOre(3,8.0F));
+        public static final RegistryObject<Block> MAGNESIUM_ORE = BLOCKS.register("magnesium_ore",() -> new EWStoneOre(3,6F));
         public static final RegistryObject<Block> TITANIUM_ORE = BLOCKS.register("titanium_ore",() -> new EWDirtOre(5,22.5F));
 
         public static final RegistryObject<Block> UPDATE_BASE_PURPLE = BLOCKS.register("update_base_purple",() -> new EWUpdateBlock(1,1,1,1));

@@ -20,7 +20,7 @@ import java.util.List;
 public class TileEMCFlower extends TileEntityGeneratingFlower {
     private static final int MAX_MANA = 10000;
     private static final int RANGE = 6;
-    private static final int[] VALUE = new int[]{100,1000};
+    private static final int[] VALUE = new int[]{350,4000};
 
     public TileEMCFlower() {
         super(EWTileEntityTypes.EMC_FLOWER.get());

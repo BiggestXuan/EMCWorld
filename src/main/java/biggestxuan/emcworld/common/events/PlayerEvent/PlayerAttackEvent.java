@@ -17,6 +17,7 @@ import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.client.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
@@ -32,6 +33,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -197,5 +199,13 @@ public class PlayerAttackEvent {
             }
         }
         return list;
+    }
+
+    @SubscribeEvent
+    public static void attackEvent(AttackEntityEvent event){
+        PlayerEntity entity = event.getPlayer();
+        if(entity.getMainHandItem().getItem() instanceof WarHammerItem && entity.getAttackStrengthScale(0) != 1){
+            event.setCanceled(true);
+        }
     }
 }

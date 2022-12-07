@@ -45,7 +45,6 @@ import java.util.Optional;
 public class InfuserBlockTileEntity extends BaseContainerTileEntity implements ITickableTileEntity, INamedContainerProvider{
     private final Inventory inventory = new Inventory(7);
     protected IRecipeType<? extends InfuserRecipe> recipeType;
-
     private int progress;
     private int craftLevel;
     private int maxProgress;

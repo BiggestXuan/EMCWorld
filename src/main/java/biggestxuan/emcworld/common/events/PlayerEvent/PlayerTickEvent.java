@@ -14,6 +14,7 @@ import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.IPlayerDifficultyItem;
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
+import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
@@ -25,6 +26,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.DifficultyData;
+import biggestxuan.emcworld.common.data.ShareEMCData;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import dev.latvian.mods.projectex.Matter;
@@ -94,6 +96,22 @@ public class PlayerTickEvent {
         });
         IPlayerSkillCapability c = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
         IUtilCapability util = cap.orElseThrow(NullPointerException::new);
+        /*World world1 = server.overworld();
+        ShareEMCData emcData = ShareEMCData.getInstance(world1);
+        if(ConfigManager.SHARE_EMC.get()){
+            if(!util.share()){
+                emcData.addEMC(EMCHelper.getPlayerEMC(player));
+                util.setShare(true);
+            }
+        }else{
+            if(util.share()){
+                EMCHelper.clearPlayerEMC(player);
+                emcData.setEMC(0);
+                util.setShare(false);
+            }
+        }
+        emcData.setEMC(EMCHelper.getPlayerEMC(player));
+        EMCHelper.setPlayerEMC(player,emcData.getEMC());*/
         if(c.getSkills()[7] >0){
             c.setSkills(7,c.getSkills()[7]-1);
         }
@@ -119,13 +137,22 @@ public class PlayerTickEvent {
         if(c.getProfession() == 3 && c.getSkills()[36] != 0 && c.getModify() == 1){
             attackSpeed += c.getSkills()[36] /10000f;
         }
+        if(player.getMainHandItem().getItem() instanceof IAttackSpeedItem){
+            IAttackSpeedItem si = (IAttackSpeedItem) player.getMainHandItem().getItem();
+            attackSpeed *= si.getAttackSpeed(player.getMainHandItem());
+        }
         ModifiableAttributeInstance attack_speed_instance = player.getAttribute(Attributes.ATTACK_SPEED);
         if(attack_speed_instance != null){
             AttributeModifier modifier = attack_speed_instance.getModifier(EMCWORLD_ATTACK_SPEED_ID);
             if(modifier != null){
                 attack_speed_instance.removeModifier(EMCWORLD_ATTACK_SPEED_ID);
             }
-            attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,attackSpeed,AttributeModifier.Operation.MULTIPLY_BASE));
+            double d;
+            if(attackSpeed < 1){
+                d = 0.8 * attackSpeed - 0.8;
+            }
+            else d = 4 - 4 * attackSpeed;
+            attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,d,AttributeModifier.Operation.ADDITION));
         }
         double extraReachDistance = 0;
         for(ItemStack stack:player.inventory.armor){

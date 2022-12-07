@@ -140,9 +140,9 @@
 		}
 		{
 			title: "{quest.emcworld.infuser}"
-			x: 21.0d
+			x: 12.0d
 			y: 0.0d
-			dependencies: ["294C801164D9532F"]
+			dependencies: ["4E0116CF973CB009"]
 			id: "746F9857F1C6A3AB"
 			tasks: [{
 				id: "6A3444A4F07102EB"
@@ -198,10 +198,7 @@
 			title: "{quest.emcworld.steel_ingot}"
 			x: 15.0d
 			y: 0.0d
-			dependencies: [
-				"6C245A47BF0D5253"
-				"0296EA731418D290"
-			]
+			dependencies: ["746F9857F1C6A3AB"]
 			id: "5FB9B9EB82C25DDF"
 			tasks: [{
 				id: "08D8182BBD6D1156"
@@ -234,7 +231,6 @@
 				id: "30128F3142779EDD"
 				type: "item"
 				item: "mekanism:steel_casing"
-				only_from_crafting: true
 			}]
 			rewards: [
 				{
@@ -311,7 +307,7 @@
 		}
 		{
 			title: "{quest.emcworld.separator}"
-			x: 24.0d
+			x: 21.0d
 			y: 0.0d
 			dependencies: ["294C801164D9532F"]
 			id: "4C7001754FEFF24C"
@@ -368,7 +364,7 @@
 		}
 		{
 			title: "{quest.emcworld.jetpack}"
-			x: 27.0d
+			x: 24.0d
 			y: 0.0d
 			dependencies: ["4C7001754FEFF24C"]
 			id: "07F8F7EFF1EBA044"
@@ -402,7 +398,7 @@
 		}
 		{
 			title: "{quest.emcworld.jetpack_armor}"
-			x: 30.0d
+			x: 27.0d
 			y: 0.0d
 			dependencies: ["07F8F7EFF1EBA044"]
 			id: "1701E98A6864A8AE"
@@ -425,53 +421,6 @@
 					icon: "emcworld:small_emc_gem"
 					tags: ["easy"]
 					auto: "no_toast"
-				}
-			]
-		}
-		{
-			title: "{quest.emcworld.steel_core}"
-			x: 9.0d
-			y: -3.5d
-			dependencies: ["384C8A05B2A78663"]
-			id: "6C245A47BF0D5253"
-			tasks: [{
-				id: "66D4A8939F58176C"
-				type: "item"
-				item: "emcworld:steel_furnace_core"
-			}]
-			rewards: [{
-				id: "2C892BCB87C88D79"
-				type: "custom"
-				title: "{reward.emcworld.easy}"
-				icon: "emcworld:small_emc_gem"
-				tags: ["easy"]
-			}]
-		}
-		{
-			title: "{quest.emcworld.steel_brick}"
-			x: 9.0d
-			y: 3.0d
-			id: "0296EA731418D290"
-			tasks: [{
-				id: "2BD4D29A24351443"
-				type: "item"
-				item: "emcworld:steel_furnace_brick"
-				count: 16L
-				consume_items: true
-			}]
-			rewards: [
-				{
-					id: "34173B572EFB994E"
-					type: "item"
-					item: "emcworld:steel_furnace_brick"
-					count: 53
-				}
-				{
-					id: "39CEAE45DF8305BD"
-					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
 				}
 			]
 		}

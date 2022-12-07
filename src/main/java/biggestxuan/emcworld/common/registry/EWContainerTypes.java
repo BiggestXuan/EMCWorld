@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateContainer;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneContainer;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserContainer;
+import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceCoreContainer;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
@@ -34,6 +35,9 @@ public class EWContainerTypes {
 
     public static final RegistryObject<ContainerType<GemstoneContainer>> gemstoneContainer =
             registerMenuType(GemstoneContainer::new, "gemstone_container");
+
+    public static final RegistryObject<ContainerType<SteelFurnaceCoreContainer>> steelFurnaceContainer =
+            registerMenuType(SteelFurnaceCoreContainer::new, "steel_furnace_container");
 
 
     private static <T extends Container> RegistryObject<ContainerType<T>> registerMenuType(IContainerFactory<T> factory, String name) {

@@ -20,10 +20,6 @@ public class DifficultyData extends WorldSavedData {
         super(NAME);
     }
 
-    public DifficultyData(String name){
-        super(name);
-    }
-
     public void putDifficulty(double difficulty){
         this.difficulty = difficulty;
         setDirty();

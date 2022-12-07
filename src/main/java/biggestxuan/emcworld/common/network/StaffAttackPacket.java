@@ -38,7 +38,7 @@ public class StaffAttackPacket {
                         staff.cost(stack);
                     }
                     if(cap.getModify() == 1 && cap.getProfession() == 3 && cap.getSkills()[40] != 0 && cap.getSkills()[41] != 0){
-                        item.spawnManaBurst(player,2);
+                        //item.spawnManaBurst(player,2);
                     }
                     stack.setDamageValue(stack.getDamageValue()+1);
                     if(stack.getMaxDamage() - stack.getDamageValue() <= -1){

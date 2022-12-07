@@ -21,6 +21,7 @@ public function modifyProjecteRecipe() as void{
     var ra = <item:good_nights_sleep:rainbow_ingot>;
     var ru = <tag:items:emcworld:advanced_runes>;
     var ei = <item:extendedcrafting:ender_ingot>;
+    var a = <item:minecraft:air>;
     var ro = <item:mekanism:ingot_refined_obsidian>;
     var flowers as ItemStack[] = new Getter().getFlowers();
 
@@ -31,9 +32,9 @@ public function modifyProjecteRecipe() as void{
     addNuggetAndIngotRecipe(g[0],g[1]);
 
     addCraftShapedRecipeNoName([
-        [b,b,b],
+        [a,b,a],
         [b,d,b],
-        [b,b,b]
+        [a,b,a]
     ],table);
 
     addCraftShapedRecipeNoName([
@@ -69,13 +70,13 @@ public function modifyProjecteRecipe() as void{
     addCraftShapedRecipeNoName([
         [ecc,s[2],ecc],
         [si,collector[0],si],
-        [g[1],<item:atum:godforged_block>,g[1]]
+        [g[1],<item:botania:gaia_ingot>,g[1]]
     ],collector[1]);
 
     addCraftShapedRecipeNoName([
         [ecc,s[2],ecc],
         [si,relay[0],si],
-        [g[1],<item:atum:godforged_block>,g[1]]
+        [g[1],<item:botania:gaia_ingot>,g[1]]
     ],relay[1]);
 
     extendedCraftingShapedRecipe([

@@ -13,6 +13,7 @@ public function modifyBotaniaRecipe() as void{
     var eb = <item:botania:elementium_block>;
     var mg = <item:botania:mana_glass>;
     var ss = <item:bloodmagic:soulsword>;
+    var gll = <item:botania:glimmering_livingwood>;
     var mi = <item:botania:manasteel_ingot>;
     var lt = <item:botania:livingwood_twig>;
     var ai = <item:mythicbotany:alfsteel_ingot>;
@@ -60,11 +61,18 @@ public function modifyBotaniaRecipe() as void{
     <recipetype:botania:pure_daisy>.removeByName("botania:pure_daisy/livingrock");
     removeCraftRecipe([<item:botania:gaia_pylon>,<item:mythicbotany:yggdrasil_branch>,<item:minecraft:sea_lantern>,<item:mythicbotany:mana_infuser>,mh,ts,dai,km]);
     removeCraftRecipe(teb);
-    modifyRuneAltarRecipe([ms,mp,<tag:items:forge:stone>,<item:minecraft:gunpowder>,<tag:items:forge:sand>],<item:botania:rune_fire>,5000);
+    modifyShapelessRecipe([
+        l,<item:emcworld:small_emc_gem>
+    ],gll);
+    modifyRuneAltarRecipe([ms,mp,<tag:items:forge:stone>,<item:minecraft:gunpowder>,<tag:items:forge:sand>],<item:botania:rune_fire>*2,3000);
     for i in 0 .. quark_runes.length{
-        runeAltarRecipe([quark_runes[i]],new Getter().getRune()[i].asIItemStack()*2,10000);
+        runeAltarRecipe([quark_runes[i]],new Getter().getRune()[i].asIItemStack()*6,15000);
     }
     addNuggetAndIngotRecipe(<item:emcworld:gaia_nugget>,<item:botania:gaia_ingot>);
+    modifyApothecaryRecipe([
+        <tag:items:botania:petals/blue>,<tag:items:botania:petals/blue>,<tag:items:botania:petals/cyan>,<tag:items:botania:petals/cyan>,
+        <item:botania:mana_powder>
+    ],<item:botania:hydroangeas>);
     enderCraftingRecipe([
         [t,t,t],
         [eb,<item:botania:terrasteel_block>,eb],

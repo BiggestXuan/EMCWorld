@@ -91,4 +91,8 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     float getSpeed();
 
     void setSpeed(float speed);
+
+    boolean share();
+
+    void setShare(boolean value);
 }

@@ -18,6 +18,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.TranslationTextComponent;
+import wayoftime.bloodmagic.common.item.BloodMagicItems;
 
 
 public class EMCWorldHUD extends AbstractGui {
@@ -32,11 +33,17 @@ public class EMCWorldHUD extends AbstractGui {
     public void render(PlayerEntity player){
         long costEMC = MathUtils.getPlayerDeathBaseCost(player);
         String emc = "EMC: "+ MathUtils.format(String.valueOf(EMCHelper.getPlayerEMC(player))) +" ("+MathUtils.format(String.valueOf(costEMC))+")";
+        if(Minecraft.getInstance().player != null && player.isShiftKeyDown()){
+            emc = "EMC: "+ MathUtils.thousandSign(String.valueOf(EMCHelper.getPlayerEMC(player))) +" ("+MathUtils.thousandSign(String.valueOf(costEMC))+")";
+        }
         RenderSystem.color4f(1.0f,1.0f,1.0f,1.0f);
         int y = 1;
         int color = 0xFFFFFF;
         int line = 11;
         if(Minecraft.getInstance().options.renderDebug) return;
+        if(player.getMainHandItem().getItem().equals(BloodMagicItems.SEER_SIGIL.get()) || player.getMainHandItem().getItem().equals(BloodMagicItems.DIVINATION_SIGIL.get())){
+            y += 100;
+        }
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
             drawString(matrixStack,mc.font,emc,1,y,color);
         }

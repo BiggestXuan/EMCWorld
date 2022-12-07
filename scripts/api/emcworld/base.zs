@@ -25,19 +25,19 @@ public class Ice{
 }
 
 public function getModifyRecipeAmount() as int{
-    var amount as int = 1;
+    var amount as int = 6;
     var r as double = getGameDifficulty();
     if(r == 0.5){
-        amount = 8;
+        amount = 64;
     }
     else if(r <= 1){
-        amount = 5;
+        amount = 16;
     }
     else if(r <= 2){
-        amount = 3;
+        amount = 12;
     }
     else if(r <=2.5){
-        amount = 2;
+        amount = 10;
     }
     return amount;
 }
@@ -53,7 +53,7 @@ public function mythicInfuserRecipe(input as IIngredient[],output as IItemStack,
 }
 
 public function steelFurnaceRecipe(input as IIngredient[],output as IItemStack,time as int) as void{
-    <recipetype:emcworld:steel_furnace>.addRecipe(getRecipeName(output)+"_steel_furnace_"+time,input,output,time);
+    //<recipetype:emcworld:steel_furnace>.addRecipe(getRecipeName(output)+"_steel_furnace_"+time,input,output,time);
 }
 
 public function EMCWorldRecipe(item as IItemStack,item1 as IItemStack) as void{

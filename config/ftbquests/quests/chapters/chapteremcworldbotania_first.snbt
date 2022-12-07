@@ -10,28 +10,22 @@
 	quests: [
 		{
 			title: "{quest.emcworld.marble}"
-			icon: "astralsorcery:marble_raw"
+			icon: "quark:marble"
 			x: 0.0d
 			y: 1.5d
 			id: "68E2A629105C64AB"
 			tasks: [{
-				id: "27522D1C8D9ACE2F"
+				id: "552D82D72EE51BEA"
 				type: "item"
-				title: "{tag.emcworld.marble}"
-				item: {
-					id: "itemfilters:tag"
-					Count: 1b
-					tag: {
-						value: "forge:marble"
-					}
-				}
+				item: "quark:marble"
 				count: 16L
+				consume_items: true
 			}]
 			rewards: [
 				{
 					id: "1E736D5FB78B35F8"
 					type: "item"
-					item: "astralsorcery:marble_raw"
+					item: "quark:marble"
 					count: 64
 				}
 				{
@@ -160,7 +154,6 @@
 			dependencies: [
 				"5FB9B9EB82C25DDF"
 				"00CDB0F91998DB06"
-				"4C7001754FEFF24C"
 			]
 			id: "28EB515D75946D57"
 			tasks: [{

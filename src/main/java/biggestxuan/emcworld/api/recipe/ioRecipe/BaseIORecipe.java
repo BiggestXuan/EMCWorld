@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public abstract class BaseIORecipe implements IRecipe<NoInventoryRecipe> {
     protected final ResourceLocation id;
     protected final NonNullList<Ingredient> inputs;
-    protected final ItemStack output;
+    private final ItemStack output;
     protected final int ticks;
 
     public BaseIORecipe(ResourceLocation id,NonNullList<Ingredient> inputs,ItemStack output,int ticks){

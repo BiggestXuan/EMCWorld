@@ -175,3 +175,13 @@ public function bootRecipe(i as IItemStack,output as ItemStack) as void{
         [a,a,a]
     ],output);
 }
+
+public function warHammer(i as IItemStack,o as IItemStack) as void{
+    var be = <item:emcworld:big_emc_gem>;
+    var a = <item:minecraft:air>;
+    addCraftShapedRecipeNoName([
+        [i,be,i],
+        [i,be,i],
+        [a,<item:minecraft:stick>,a]
+    ],o);
+}

@@ -17,6 +17,8 @@ import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -63,22 +65,30 @@ public class MathUtils {
         return Integer.parseInt(String.valueOf(Math.round(multi*base)));
     }
 
+    public static String thousandSign(long text){
+        return thousandSign(String.valueOf(text));
+    }
+
+    public static String thousandSign(String text){
+        int len = text.length();
+        ArrayList<String> stringContainer = new ArrayList<>();
+        while(len>3){
+            stringContainer.add(text.substring(len-3,len));
+            len-=3;
+        }
+        stringContainer.add(text.substring(0,len));
+        StringBuilder buffer = new StringBuilder();
+        for(int i = stringContainer.size()-1;i>=0;i--){
+            buffer.append(stringContainer.get(i)).append(",");
+        }
+        buffer.deleteCharAt(buffer.length()-1);
+        return buffer.toString();
+    }
+
     @ZenCodeType.Method
     public static String format(String text){
         if(text.length() <= 6 || !ConfigManager.FORMAT.get()){
-            int len = text.length();
-            ArrayList<String> stringContainer = new ArrayList<>();
-            while(len>3){
-                stringContainer.add(text.substring(len-3,len));
-                len-=3;
-            }
-            stringContainer.add(text.substring(0,len));
-            StringBuilder buffer = new StringBuilder();
-            for(int i = stringContainer.size()-1;i>=0;i--){
-                buffer.append(stringContainer.get(i)).append(",");
-            }
-            buffer.deleteCharAt(buffer.length()-1);
-            return buffer.toString();
+            return thousandSign(text);
         }
         if(ConfigManager.FORMAT.get()){
             return KMT(text);
@@ -189,6 +199,13 @@ public class MathUtils {
     }
     public static double getCraftBaseCost(PlayerEntity player){
         return getBlockBaseCost(player) * 0.75d;
+    }
+
+    public static double getBreakBlockCost(PlayerEntity player){
+        if(!GameStageManager.hasStage(player,"two")){
+            return 0;
+        }
+        return getBlockBaseCost(player) * 0.2d;
     }
     public static double getQuestCompletedRewardBase(PlayerEntity player, CustomReward customReward){
         double base = 0d;

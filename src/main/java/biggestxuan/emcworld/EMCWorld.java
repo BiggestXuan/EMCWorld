@@ -12,6 +12,7 @@ import biggestxuan.emcworld.client.key.SpeedControl;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
+import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.events.commandEvent;
@@ -92,6 +93,7 @@ public class EMCWorld
             ScreenManager.register(EWContainerTypes.infuserContainer.get(), InfuserGUI::new);
             ScreenManager.register(EWContainerTypes.weaponUpgradeContainer.get(), WeaponUpgradeGUI::new);
             ScreenManager.register(EWContainerTypes.gemstoneContainer.get(), GemstoneGUI::new);
+            ScreenManager.register(EWContainerTypes.steelFurnaceContainer.get(), SteelFurnaceGUI::new);
             ClientRegistry.registerKeyBinding(Admin.ADMIN_KEY);
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG

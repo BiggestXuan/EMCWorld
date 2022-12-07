@@ -10,10 +10,12 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.CharaSword;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import mekanism.api.MekanismAPI;
+import mekanism.common.registries.MekanismDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -44,7 +46,6 @@ public class LivingDamageEvent {
                 damage = (float) Math.max(damage * (1 - level * 0.1),0);
             }
         }
-        event.setAmount(damage);
         if(source instanceof EWDamageSource.ReallyDamage){
             EWDamageSource.ReallyDamage really = (EWDamageSource.ReallyDamage) source;
             PlayerEntity player = really.getPlayer();
@@ -64,6 +65,13 @@ public class LivingDamageEvent {
                 }
             }
         }
+        if(entity instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entity;
+            if(source.equals(MekanismDamageSource.RADIATION)){
+                damage += player.getMaxHealth() * 0.25f;
+            }
+        }
+        event.setAmount(damage);
     }
 
     private static void addPlayerRaidDamage(PlayerEntity player,float value,LivingEntity target){

@@ -9,6 +9,7 @@ package biggestxuan.emcworld.client.event;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
@@ -26,6 +27,7 @@ import mekanism.common.registries.MekanismItems;
 import moze_intel.projecte.utils.EMCHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
@@ -100,6 +102,10 @@ public class ItemToolTipEvent {
             }
             IFormattableTextComponent normal = EMCWorld.tc("tooltip.emcworld.emc",MathUtils.format(value));
             IFormattableTextComponent stack_tip = EMCWorld.tc("tooltip.emcworld.emc_stack",MathUtils.format(value * stack.getCount()));
+            if(Screen.hasShiftDown()){
+                normal = EMCWorld.tc("tooltip.emcworld.emc",MathUtils.thousandSign(value));
+                stack_tip = EMCWorld.tc("tooltip.emcworld.emc_stack",MathUtils.thousandSign(value * stack.getCount()));
+            }
             if(!(isTrans || free)){
                 normal.setStyle(Style.EMPTY.setStrikethrough(true));
                 //stack_tip.setStyle(Style.EMPTY.setStrikethrough(true));
@@ -154,6 +160,16 @@ public class ItemToolTipEvent {
             ICriticalWeapon ww = (ICriticalWeapon) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",String.format("%.2f",ww.getActCriticalChance(stack)*100)).append("%"));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_rate",String.format("%.2f",ww.getActCriticalRate(stack)*100)).append("%"));
+        }
+        if(stack.getItem() instanceof IAttackSpeedItem){
+            IAttackSpeedItem si = (IAttackSpeedItem) stack.getItem();
+            double rate = si.getAttackSpeed(stack);
+            if(rate > 1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_add",String.format("%.2f",(rate-1)*100)).append("%"));
+            }
+            if(rate < 1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_loss",String.format("%.2f",(1-rate)*100)).append("%"));
+            }
         }
         if(stack.getItem() instanceof ISecondEMCItem){
             ISecondEMCItem item3 = (ISecondEMCItem) stack.getItem();

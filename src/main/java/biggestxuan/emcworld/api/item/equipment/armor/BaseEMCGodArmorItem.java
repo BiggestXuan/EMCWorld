@@ -54,26 +54,6 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
     public abstract float getSpeed(ItemStack stack);
 
     @Override
-    public int getLevel(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("level");
-    }
-
-    @Override
-    public void setLevel(ItemStack stack, int level) {
-        stack.getOrCreateTag().putInt("level",level);
-    }
-
-    @Override
-    public void addLevel(ItemStack stack, int level) {
-        setLevel(stack,Math.min(getLevel(stack)+level,getMaxLevel()));
-    }
-
-    @Override
-    public void lossLevel(ItemStack stack, int level) {
-        setLevel(stack,Math.max(getLevel(stack)-level,0));
-    }
-
-    @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
         p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));

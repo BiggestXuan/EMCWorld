@@ -5,7 +5,7 @@
 	"World Difficulty" = 3.0
 	#Let the values of the modpack be displayed in K, M, G instead of the full value
 	Format = true
-	#Enable free mode to delete all items stage
+	#Enable free mode to delete all gamestage
 	"Able Free Mode" = false
 	#Whether unable EMCWorld Admin Menu
 	"Able Admin Menu" = true

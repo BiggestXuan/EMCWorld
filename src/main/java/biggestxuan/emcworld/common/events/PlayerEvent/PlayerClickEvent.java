@@ -36,6 +36,7 @@ import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.skill.PlayerSkillModify;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -120,6 +121,7 @@ public class PlayerClickEvent {
                     Message.sendMessage(player, EMCWorld.tc("message.check.hoe",MathUtils.format(MathUtils.getUseHoeBaseCost(player) * dl)));
                     Message.sendMessage(player, EMCWorld.tc("message.check.fill",MathUtils.format(MathUtils.getFillBucketBaseCost(player) * dl)));
                     Message.sendMessage(player, EMCWorld.tc("message.check.craft",MathUtils.format(MathUtils.getCraftBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.break_block",MathUtils.format(obj.getBlockBase()* 0.2 * dl)));
                     Message.sendMessage(player, EMCWorld.tc("message.check.tip"));
                     Message.sendMessage(player, EMCWorld.tc("message.check.line"));
                     break;

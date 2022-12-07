@@ -237,7 +237,7 @@
   "item.emcworld.god_ice_sword": "极意砺刃",
   "item.emcworld.god_fire_sword": "淬火砺刃",
   "item.emcworld.god_nature_sword": "自然砺刃",
-  "item.emcworld.god_chara_sword": "Chara 剑",
+  "item.emcworld.chara_sword": "Chara 剑",
   "item.emcworld.scroll_white": "强化卷轴 - 白",
   "item.emcworld.scroll_green": "强化卷轴 - 绿",
   "item.emcworld.scroll_blue": "强化卷轴 - 蓝",
@@ -300,6 +300,7 @@
   "item.emcworld.golden_warhammer": "金战锤",
   "item.emcworld.diamond_warhammer": "钻石战锤",
   "item.emcworld.netherite_warhammer": "下界合金战锤",
+  "item.emcworld.creation": "创世纪",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "EMC 矿石",
@@ -536,6 +537,7 @@
   "message.check.container": "§2·打开容器会消耗 %d §2EMC/每份物品；",
   "message.check.craft": "§2·制作物品会消耗 %d §2EMC/每份物品；",
   "message.check.fill": "§2·使用桶需要消耗 %d §2EMC/每次；",
+  "message.check.break_block": "§2·破坏方块会消耗 %d §2EMC/每个方块",
   "message.check.tip": "§4需要消耗§f意味着必须要达到这个值，否则不会触发。§4会消耗§f意味着，触发后就消耗。",
   "message.evt.questcompleted": "你完成了难度为 %d 的任务，已获取 %d EMC",
   "message.welcome.default": "欢迎玩家 %d 加入游戏！",
@@ -559,6 +561,7 @@
   "message.emcworld.updatecd": "你还有 %d 秒才能使用这个结构",
   "message.raid.dim_cancel": "§4仅能在主世界发动袭击！",
   "message.raid.raid_light": "§4该物品仅在袭击时可用！",
+  "message.portal.cancel": "§4周围没有使用狱火之钥的玩家，无法激活下界门",
   "message.raid.successful_title": "§2-------------袭击统计-------------",
   "message.raid.successful_info": "§2第%d§2名：%d，§2伤害总量：%d (%d)",
   "message.festival.spring": "§4今天是春节，祝您春节快乐！",
@@ -628,11 +631,14 @@
 
   "death.attack.really": "%d 被强大的质能力量打击了",
   "death.attack.emcworld.really": "%d 被强大的质能力量打击了",
+  "death.attack.emcworld.really.player": "%d 被强大的质能力量打击了",
   "sound.emcworld.cxk_death": "练习生：死亡",
 
   "key.category.emcworld": "EMCWorld | 键位控制",
   "key.emcworld.admin": "打开管理员面板",
   "key.emcworld.speed": "套装速度控制",
+
+  "iris.shaders.disabled": "光影已禁用",
 
   "crystal.property.astralsorcery.constellation.emc.name": "聚焦：质能座",
 
@@ -705,6 +711,8 @@
   "tooltip.emcworld.weapon_god_emc_cost": "§9EMC消耗倍率： -%d",
   "tooltip.emcworld.weapon_god_emc_cost_addon": "§9EMC消耗倍率： + %d",
   "tooltip.emcworld.weapon_god_emc_second": "§9EMC产出： %d §9/秒",
+  "tooltip.emcworld.attack_speed_add": "§9攻击速度： + %d",
+  "tooltip.emcworld.attack_speed_loss": "§9攻击速度： - %d",
   "tooltip.emcworld.armor_god_hurt": "§9受伤倍率：-%d",
   "tooltip.emcworld.armor_god_speed": "§9+ %d §9移动速度",
   "tooltip.emcworld.armor_god_health": "§9+ %d §9最大生命值",
@@ -1431,6 +1439,8 @@
   "block.hem.bronze_ore": "纯铜矿",
   "item.hem.bronze_ingot": "纯铜锭",
   "item.hem.copparite": "硫酸铜锭",
+
+  "filled_map.dungenons_arise:thornborn_towers": "刺生玫瑰高塔",
 
   "item.bloodmagic.ingot_hellforged": "恶魔合金锭",
   "item.bloodmagic.sand_hellforged": "恶魔合金砂",

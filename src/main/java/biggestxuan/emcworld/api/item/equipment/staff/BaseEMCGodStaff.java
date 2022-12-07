@@ -37,7 +37,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.4,getLevel(stack)) * 500000);
+        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
     }
 
     @Nonnull
@@ -68,7 +68,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         double b = getBaseCriticalChance(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
-            b += Math.log(costEMC)/100;
+            b += Math.log(costEMC)/85;
         }
         return tier.getCriticalChance() + b;
     }
@@ -78,7 +78,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         double b = getBaseCriticalRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
-            b += Math.log(costEMC)/100;
+            b += Math.log(costEMC)/85;
         }
         return tier.getCriticalRate() + b;
     }
@@ -108,7 +108,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         double d = getBaseBurstDamage(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
-            d *= (1 + Math.log(costEMC)/100);
+            d *= (1 + Math.log(costEMC)/85);
         }
         return (float) (tier.getAttackDamageBonus() + d);
     }

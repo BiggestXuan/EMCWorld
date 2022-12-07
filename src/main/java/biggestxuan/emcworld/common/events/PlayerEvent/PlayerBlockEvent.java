@@ -8,14 +8,22 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerBlockEvent {
@@ -79,6 +87,40 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void blockBreakEvent(BlockEvent.BreakEvent event){
         if(event.getWorld().isClientSide()) return;
+        int level = event.getState().getHarvestLevel();
+        if(level <= 0) return;
+        PlayerEntity player = event.getPlayer();
+        long playerEMC = EMCHelper.getPlayerEMC(player);
+        long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getBreakBlockCost(player) * level * MathUtils.difficultyLoss()),playerEMC);
+        EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
         //Message.sendMessage(event.getPlayer(),EMCWorld.tc("111"));
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void spawn(BlockEvent.PortalSpawnEvent event){
+        if(ConfigManager.FREE_MODE.get()){
+            return;
+        }
+        IWorld world = event.getWorld();
+        if(world.isClientSide()){
+            return;
+        }
+        boolean cancel = true;
+        for(PlayerEntity player : getNearPlayer((World) world,event.getPos())){
+            if(GameStageManager.hasStage(player,"nether")){
+                cancel = false;
+            }
+        }
+        if(cancel){
+            event.setCanceled(true);
+            for(PlayerEntity player:getNearPlayer((World) world,event.getPos())){
+                Message.sendMessage(player,EMCWorld.tc("message.portal.cancel"));
+            }
+        }
+    }
+
+    private static List<PlayerEntity> getNearPlayer(World world, BlockPos pos){
+        AxisAlignedBB aabb = MathUtils.expandAABB(pos,32);
+        return world.getLoadedEntitiesOfClass(PlayerEntity.class,aabb);
     }
 }

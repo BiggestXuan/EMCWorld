@@ -40,9 +40,7 @@ public class InfuserBlock extends BaseTileBlock {
     public ActionResultType use(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull PlayerEntity player, @Nonnull Hand handIn, @Nonnull BlockRayTraceResult hit){
         if(!worldIn.isClientSide){
             InfuserBlockTileEntity entity = (InfuserBlockTileEntity) worldIn.getBlockEntity(pos);
-            NetworkHooks.openGui((ServerPlayerEntity) player,entity,(PacketBuffer p)->{
-                p.writeBlockPos(pos);
-            });
+            NetworkHooks.openGui((ServerPlayerEntity) player,entity,(PacketBuffer p)-> p.writeBlockPos(pos));
         }
         return ActionResultType.SUCCESS;
     }

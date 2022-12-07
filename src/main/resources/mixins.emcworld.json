@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "emcworld.refmap.json",
   "mixins": [
-    "QuarkInventoryHandler"
+    "QuarkInventoryHandler",
+    "WebHelperDisable"
   ],
   "client": [
     "MinecraftWindow"

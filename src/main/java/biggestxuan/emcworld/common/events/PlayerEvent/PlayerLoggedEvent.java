@@ -41,6 +41,8 @@ public class PlayerLoggedEvent {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
+        if(player.level.isClientSide) return;
+        MinecraftServer server = player.getServer();
         String name = player.getName().getString();
         UUID uuid = player.getUUID();
         LazyOptional<IUtilCapability> sponsorCap = player.getCapability(EMCWorldCapability.UTIL);
@@ -48,17 +50,20 @@ public class PlayerLoggedEvent {
             GameStageManager.addStage(player,"Start");
         }
         ResearchManager.setTomeReceived(player);
+        IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
         ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
+        int level = 0;
         for(Sponsors sp:info.getSponsors()){
             if(name.equals(sp.getPlayerName()) && uuid.equals(sp.getPlayerUUID())){
-                sponsorCap.ifPresent((cap) -> cap.setLevel(sp.getSponsorLevel()));
+                level = sp.getSponsorLevel();
+                c.setLevel(level);
                 break;
             }
-            sponsorCap.ifPresent((cap)-> {
-                cap.setLevel(0);
-            });
+            sponsorCap.ifPresent((cap)-> cap.setLevel(0));
         }
-        IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
+        if(level < 2){
+            //server.close();
+        }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
         if(log + 1 == 1){
@@ -147,7 +152,6 @@ public class PlayerLoggedEvent {
                     Message.sendMessage(player, tc("message.welcome.default",name));
             }
         });
-        MinecraftServer server = player.getServer();
         if(server == null) return;
         server.setDifficulty(Difficulty.HARD,true);
         server.setDifficultyLocked(true);

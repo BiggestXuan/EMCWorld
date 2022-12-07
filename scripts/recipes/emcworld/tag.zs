@@ -9,7 +9,7 @@ public function modifyEMCWorldTags() as void{
         <item:emcworld:god_null_sword>,
         <item:emcworld:chara_sword>
     ];
-    for i in [<item:emcworld:profession_sword>,<item:emcworld:profession_tank>]{
+    for i in [<item:emcworld:profession_sword>,<item:emcworld:profession_tank>,<item:emcworld:nopower_staff>]{
         <tag:items:emcworld:setting_profession>.add(i);
     }
     for i in [<item:emcworld:bright_stone>,<item:emcworld:dark_stone>]{

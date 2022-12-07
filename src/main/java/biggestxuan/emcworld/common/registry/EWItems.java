@@ -24,6 +24,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.NatureStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.PurpleStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.*;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.Creation;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.FestivalItem.MoonCake;
 import biggestxuan.emcworld.common.items.FestivalItem.TangYuan;
@@ -137,6 +138,7 @@ public class EWItems {
     public static final RegistryObject<Item> RAINBOW_INGOT = ITEMS.register("rainbow_ingot",() -> new EWItem(1));
     public static final RegistryObject<Item> ATM_SWORD = ITEMS.register("atm_sword",AtmSword::new);
     public static final RegistryObject<Item> INFINITY_SWORD = ITEMS.register("infinity_sword", InfinitySword::new);
+    public static final RegistryObject<Item> CREATION = ITEMS.register("creation", Creation::new);
     public static final RegistryObject<Item> UNIVERSAL_BALL = ITEMS.register("universal_ball",() -> new FinalItem(1));
     public static final RegistryObject<Item> EMC_CORE = ITEMS.register("emc_core",() -> new FinalItem(2));
     public static final RegistryObject<Item> WOODEN_INGOT = ITEMS.register("wooden_ingot",() -> new FinalItem(2));

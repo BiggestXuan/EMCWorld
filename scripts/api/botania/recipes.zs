@@ -35,7 +35,7 @@ public function modifyRuneAltarRecipe(input as IIngredient[],output as IItemStac
 }
 
 public function modifyDaisyRecipe() as void{
-    <recipetype:botania:pure_daisy>.addRecipe("marble_to_living_rock",<blockstate:botania:livingrock>,<tag:blocks:forge:marble>,70 * getAdditionCost());
+    <recipetype:botania:pure_daisy>.addRecipe("marble_to_living_rock",<blockstate:botania:livingrock>,<blockstate:quark:marble>,30 * getAdditionCost());
 }
 
 public function terraPlateRecipe(input as IIngredient[],output as IItemStack,mana as int) as void{

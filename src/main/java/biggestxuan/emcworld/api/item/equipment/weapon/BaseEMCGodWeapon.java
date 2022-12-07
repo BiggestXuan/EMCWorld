@@ -144,7 +144,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         double b = getBaseCriticalChance(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
-            b += Math.log(costEMC)/100;
+            b += Math.log(costEMC)/85;
         }
         return b;
     }
@@ -154,7 +154,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         double b = getBaseCriticalRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
-            b += Math.log(costEMC)/100;
+            b += Math.log(costEMC)/85;
         }
         return b;
     }
@@ -188,7 +188,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         float b = getBaseDamage(stack) * 0.75f;
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
-            b *= (1 + Math.log(costEMC)/100);
+            b *= (1 + Math.log(costEMC)/85);
         }
         if(getGemType(stack) == 1){
             b *= 1.15f;
@@ -204,7 +204,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.4,getLevel(stack)) * 500000);
+        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
     }
 
     @Override
