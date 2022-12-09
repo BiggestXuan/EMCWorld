@@ -140,13 +140,15 @@ public class ItemToolTipEvent {
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
         }
-        if(stack.getItem() instanceof ICostEMCItem && (stack.getItem() instanceof BaseWeaponItem || stack.getItem() instanceof StaffItem)){
+        if(stack.getItem() instanceof ICostEMCItem){
             ICostEMCItem item2 = (ICostEMCItem) stack.getItem();
             double cost = item2.costEMCWhenAttack(stack);
-            if(cost >= 1){
+            if(cost > 1){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost_addon",String.format("%.2f",(cost-1)*100)+"%"));
             }
-            else event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",String.format("%.2f",(1-cost)*100)+"%"));
+            if(cost < 1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",String.format("%.2f",(1-cost)*100)+"%"));
+            }
         }
         if(stack.getItem() instanceof ISpeedArmor){
             ISpeedArmor item_2_5 = (ISpeedArmor) stack.getItem();

@@ -588,7 +588,7 @@
 			x: 15.0d
 			y: 4.5d
 			dependencies: ["7441F58A861B916B"]
-			dependency_requirement: "one_started"
+			dependency_requirement: "one_completed"
 			size: 2.0d
 			id: "0EBD670985A527E1"
 			tasks: [{
@@ -659,14 +659,24 @@
 			]
 		}
 		{
+			title: "{quest.emcworld.stage_two}"
 			x: 24.0d
 			y: 4.5d
-			dependencies: ["1B773191B21755EF"]
+			dependencies: ["1BF9E1763E01F176"]
+			hide: true
+			dependency_requirement: "one_completed"
 			id: "429D581AECE68C56"
 			tasks: [{
 				id: "0F242A5EF88EA318"
 				type: "item"
-				item: "projectex:dark_collector"
+				title: "{quest.emcworld.stage_two}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_two"
+					}
+				}
 			}]
 			rewards: [{
 				id: "348F10A58BDEC91E"

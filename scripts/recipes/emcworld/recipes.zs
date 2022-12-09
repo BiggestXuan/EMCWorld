@@ -6,11 +6,13 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.recipe.Replacer;
 
 import mods.emcworld.CrTFoodValue;
+import mods.emcworld.EWItem;
 
 public function emcworldRecipe() as void{
     var al = <item:mythicbotany:alfheim_rune>;
     var a = <item:minecraft:air>;
     var sg = <item:emcworld:scroll_green>;
+    var em = <item:minecraft:emerald>;
     var sp = <item:emcworld:scroll_purple>;
     var sw = <item:emcworld:scroll_white>;
     var alt = <item:bloodmagic:altarcapacityrune>;
@@ -113,13 +115,19 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_ice_sword>.withTag({level: 14 as int})|
         <item:emcworld:god_fire_sword>.withTag({level: 14 as int})|
         <item:emcworld:god_nature_sword>.withTag({level: 14 as int})|
-        <item:emcworld:god_null_sword>.withTag({level: 14 as int})
+        <item:emcworld:god_null_sword>.withTag({level: 14 as int})|
+        <item:emcworld:purple_staff>.withTag({level: 14 as int})|
+        <item:emcworld:nature_staff>.withTag({level: 14 as int})|
+        <item:emcworld:creation>.withTag({level: 14 as int})
     ;
     var adss as IIngredient = 
         <item:emcworld:god_ice_sword>.withTag({level: 20 as int})|
         <item:emcworld:god_fire_sword>.withTag({level: 20 as int})|
         <item:emcworld:god_nature_sword>.withTag({level: 20 as int})|
-        <item:emcworld:god_null_sword>.withTag({level: 20 as int})
+        <item:emcworld:god_null_sword>.withTag({level: 20 as int})|
+        <item:emcworld:purple_staff>.withTag({level: 20 as int})|
+        <item:emcworld:nature_staff>.withTag({level: 20 as int})|
+        <item:emcworld:creation>.withTag({level: 20 as int})
     ;
     var con as IItemStack[][] = [
         [
@@ -167,10 +175,13 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_ice_sword>.withTag({level: 24 as int})|
         <item:emcworld:god_fire_sword>.withTag({level: 24 as int})|
         <item:emcworld:god_nature_sword>.withTag({level: 24 as int})|
-        <item:emcworld:god_null_sword>.withTag({level: 24 as int})
+        <item:emcworld:god_null_sword>.withTag({level: 24 as int})|
+        <item:emcworld:purple_staff>.withTag({level: 24 as int})|
+        <item:emcworld:nature_staff>.withTag({level: 24 as int})|
+        <item:emcworld:creation>.withTag({level: 24 as int})
     ;
     var amo as int[]=[
-        1500,1000,10000,15000,5000,100,10000,5000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000
+        1500,1000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,500
     ];
     var red_armor as ItemStack[]=[
         <item:emcworld:guardian_helmet>,
@@ -465,7 +476,9 @@ public function emcworldRecipe() as void{
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:clock" as string}),
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:dark_matter" as string}),
             <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:red_matter" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string})
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string}),
+            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:aluminum" as string}),
+            unqd
         ],
         [
             <item:allthemodium:allthemodium_ingot>,
@@ -491,7 +504,9 @@ public function emcworldRecipe() as void{
             <item:minecraft:clock>,
             <item:projecte:dark_matter>,
             <item:projecte:red_matter>,
-            <item:dead_guys_untitled_deep_dark_:sculk>
+            <item:dead_guys_untitled_deep_dark_:sculk>,
+            <item:emcworld:aluminum_ingot>,
+            <item:allthemodium:unobtainium_ingot>
         ]
     ];
     var staff_item as IItemStack[][]=[
@@ -598,13 +613,22 @@ public function emcworldRecipe() as void{
     for i in 24 .. 28{
         removeRecipe([armor[i],pdm[i]]);
     }
+    addCraftShapedRecipeNoName([
+        [a,em,a],
+        [em,<item:emcworld:hardcore_stone>,em],
+        [a,em,a]
+    ],<item:emcworld:profession_core>);
     setEMCStage(emcc,112000000,114514);
     addCraftShapelessRecipe([
         <item:minecraft:gold_nugget>
     ],<item:pouchofunknown:pouch>);
-    modifyExtendedCompressionRecipe(<item:allthemodium:unobtainium_ingot>,unqd,500,100);
+    removeCompressionRecipe(unqd);
     for i in 0 .. amo.length{
         extendedCompressionRecipe(sing[1][i],sing[0][i],amo[i],i as int);
+        if(EWItem.getItemEMC(sing[1][i]) != 0){
+            var value as long = (EWItem.getItemEMC(sing[1][i]) * amo[i] as long) as long;
+            setEMCStageName(sing[0][i],value,114514);
+        }
     }
     if(getGameDifficulty() >= 1){
         removeRecipe(tor);
@@ -735,7 +759,7 @@ public function emcworldRecipe() as void{
     removeCraftRecipe([nei]);
     removeCraftRecipe(tung);
     furnaceRecipeNoName(aq*3,<item:emcworld:aquamarine_ore>,1);
-    bloodAltarRecipe(<item:mekanism:steel_casing>,<item:emcworld:control_update_core>,15000,2);
+    bloodAltarRecipe(<item:mekanism:steel_casing>,<item:emcworld:control_update_core>,15000,3);
     addNuggetAndBlockRecipe(
         <item:emcworld:copper_medal>,
         <item:emcworld:silver_medal>,
@@ -864,6 +888,7 @@ public function emcworldRecipe() as void{
     cyan(<item:projectex:blue_collector>,<item:projectex:cyan_collector>);
     cyan(<item:projectex:blue_relay>,<item:projectex:cyan_relay>);
     natureAltarRecipe(con[0][5],con[0][6],2,100000);
+    removeRecipe([<item:the_afterlight:golden_shards_of_radiance>]);
     nucleosyRecipe(con[0][6],<gas:mekanism:antimatter>*100,con[0][7],100);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],

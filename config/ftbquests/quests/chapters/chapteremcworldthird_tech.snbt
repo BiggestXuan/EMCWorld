@@ -21,6 +21,22 @@
 				type: "item"
 				item: "extendedcrafting:black_iron_ingot"
 			}]
+			rewards: [
+				{
+					id: "7650147142E93B2B"
+					type: "item"
+					item: "extendedcrafting:black_iron_ingot"
+					count: 16
+				}
+				{
+					id: "34B18BCB90017893"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_endercatalyst}"
@@ -37,6 +53,22 @@
 				type: "item"
 				item: "extendedcrafting:ender_catalyst"
 			}]
+			rewards: [
+				{
+					id: "185F12B69DDE9F4F"
+					type: "item"
+					item: "extendedcrafting:ender_ingot"
+					count: 6
+				}
+				{
+					id: "0A7BC59B9D0EBBAE"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_basiccomponent}"
@@ -53,6 +85,14 @@
 				type: "item"
 				item: "extendedcrafting:basic_component"
 			}]
+			rewards: [{
+				id: "1235701D480AFB07"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_blackironslate}"
@@ -66,6 +106,22 @@
 				type: "item"
 				item: "extendedcrafting:black_iron_slate"
 			}]
+			rewards: [
+				{
+					id: "5CEDC9F290FD5F5B"
+					type: "item"
+					item: "extendedcrafting:black_iron_slate"
+					count: 16
+				}
+				{
+					id: "3269210E05610267"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_basiccatalyst}"
@@ -78,6 +134,14 @@
 				id: "4DCD819E6B412524"
 				type: "item"
 				item: "extendedcrafting:basic_catalyst"
+			}]
+			rewards: [{
+				id: "25244B6151B89C9B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -95,6 +159,22 @@
 				type: "item"
 				item: "extendedcrafting:ender_component"
 			}]
+			rewards: [
+				{
+					id: "42F5AA3D407221A7"
+					type: "item"
+					item: "extendedcrafting:ender_ingot"
+					count: 3
+				}
+				{
+					id: "6F73FD8717E6D0FD"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_enderalternator}"
@@ -111,6 +191,22 @@
 				type: "item"
 				item: "extendedcrafting:ender_alternator"
 			}]
+			rewards: [
+				{
+					id: "7AFB3A9D0713D169"
+					type: "item"
+					item: "extendedcrafting:ender_ingot"
+					count: 4
+				}
+				{
+					id: "262BC9286A85BC4D"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_basictable}"
@@ -124,6 +220,14 @@
 				type: "item"
 				item: "extendedcrafting:basic_table"
 			}]
+			rewards: [{
+				id: "243FAD873A4E7A85"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_advancedcomponent}"
@@ -136,6 +240,14 @@
 				id: "6068B972FB65ED3F"
 				type: "item"
 				item: "extendedcrafting:advanced_component"
+			}]
+			rewards: [{
+				id: "2E3ED48660BBE673"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -153,28 +265,62 @@
 				type: "item"
 				item: "extendedcrafting:advanced_table"
 			}]
+			rewards: [
+				{
+					id: "5CE9474FB7576CB7"
+					type: "item"
+					item: "extendedcrafting:black_iron_ingot"
+					count: 32
+				}
+				{
+					id: "7C30C1C389B9224B"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_redcollector}"
 			x: 27.0d
 			y: -3.0d
 			description: ["{quest.emcworld.third_tech_redcollector_desc}"]
-			dependencies: ["4E9A6C5F8284BFB1"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
 			size: 2.0d
 			id: "3AED6FB5DAA015C5"
 			tasks: [{
 				id: "283ED5F92D371994"
 				type: "item"
-				item: "projectex:red_collector"
+				title: "{quest.emcworld.third_tech_redcollector}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_three"
+					}
+				}
 			}]
-			rewards: [{
-				id: "73731A06ADF9CAA6"
-				type: "custom"
-				title: "{quest.emcworld_stage_three}"
-				icon: "astralsorcery:starmetal_ingot"
-				tags: ["stage_three"]
-				auto: "enabled"
-			}]
+			rewards: [
+				{
+					id: "73731A06ADF9CAA6"
+					type: "custom"
+					title: "{quest.emcworld_stage_three}"
+					icon: "astralsorcery:starmetal_ingot"
+					tags: ["stage_three"]
+					auto: "enabled"
+				}
+				{
+					id: "20E9F087CE52474F"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_refinedobsidiandust}"
@@ -189,6 +335,14 @@
 				type: "item"
 				item: "mekanism:dust_refined_obsidian"
 			}]
+			rewards: [{
+				id: "549BFD76B3D7C98B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_refinedobsidianingot}"
@@ -202,6 +356,22 @@
 				type: "item"
 				item: "mekanism:ingot_refined_obsidian"
 			}]
+			rewards: [
+				{
+					id: "01772B970460F531"
+					type: "item"
+					item: "mekanism:ingot_refined_obsidian"
+					count: 6
+				}
+				{
+					id: "65FFEA451ED3BDEE"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_alloyatomic}"
@@ -215,6 +385,22 @@
 				type: "item"
 				item: "mekanism:alloy_atomic"
 			}]
+			rewards: [
+				{
+					id: "1E68B67CBA3B4C95"
+					type: "item"
+					item: "mekanism:alloy_atomic"
+					count: 6
+				}
+				{
+					id: "79B782BE2743FD94"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_chemicaldissolutionchamber}"
@@ -234,6 +420,22 @@
 				type: "item"
 				item: "mekanism:chemical_dissolution_chamber"
 			}]
+			rewards: [
+				{
+					id: "4DA876DB3AB8B0C6"
+					type: "item"
+					item: "mekanism:ingot_refined_obsidian"
+					count: 2
+				}
+				{
+					id: "0909E08C99CEFE22"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_fivetimes}"
@@ -254,6 +456,14 @@
 					item: "mekanism:chemical_crystallizer"
 				}
 			]
+			rewards: [{
+				id: "0DC91CE6B10E7568"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_auxiliarymaterials}"
@@ -273,6 +483,28 @@
 					id: "52C26CEB4B6AA081"
 					type: "item"
 					item: "mekanism:fluorite_gem"
+				}
+			]
+			rewards: [
+				{
+					id: "1CE618764A6D7392"
+					type: "item"
+					item: "mekanism:fluorite_gem"
+					count: 8
+				}
+				{
+					id: "24F58F021DA37AF4"
+					type: "item"
+					item: "mekanism:dust_sulfur"
+					count: 16
+				}
+				{
+					id: "65C774C73BAC7F86"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
 				}
 			]
 		}
@@ -308,6 +540,14 @@
 					item: "mekanism:rotary_condensentrator"
 				}
 			]
+			rewards: [{
+				id: "3D5C198FF2E3B66B"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_isotopiccentrifuge}"
@@ -321,6 +561,22 @@
 				type: "item"
 				item: "mekanism:isotopic_centrifuge"
 			}]
+			rewards: [
+				{
+					id: "05CC442FAF66A5E5"
+					type: "item"
+					item: "mekanism:ingot_refined_obsidian"
+					count: 3
+				}
+				{
+					id: "720831EA381E9525"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_fissionreactor}"
@@ -338,6 +594,22 @@
 				id: "0112E389CF3BDFDB"
 				type: "checkmark"
 			}]
+			rewards: [
+				{
+					id: "367078E816E258AC"
+					type: "item"
+					item: "mekanismgenerators:fission_reactor_casing"
+					count: 128
+				}
+				{
+					id: "1A5A8B20E8013475"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_reactorstructure}"
@@ -367,6 +639,14 @@
 					count: 4L
 				}
 			]
+			rewards: [{
+				id: "65097D5A470E8BD2"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_corematerials}"
@@ -381,6 +661,22 @@
 				type: "item"
 				item: "mekanism:yellow_cake_uranium"
 			}]
+			rewards: [
+				{
+					id: "3C346D6EF482B66B"
+					type: "item"
+					item: "mekanism:yellow_cake_uranium"
+					count: 64
+				}
+				{
+					id: "3AEF5D00AC012F73"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_inductionmatrix}"
@@ -416,6 +712,14 @@
 					count: 32L
 				}
 			]
+			rewards: [{
+				id: "0A6A6BD2AC9C3C9A"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_tech_dustlithium}"
@@ -430,6 +734,22 @@
 				type: "item"
 				item: "mekanism:dust_lithium"
 			}]
+			rewards: [
+				{
+					id: "348C1EF878B5B84F"
+					type: "item"
+					item: "mekanism:dust_lithium"
+					count: 16
+				}
+				{
+					id: "4F91336EA680F996"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_advancedcatalyst}"
@@ -442,6 +762,14 @@
 				id: "09FBDE5732C3D93B"
 				type: "item"
 				item: "extendedcrafting:advanced_catalyst"
+			}]
+			rewards: [{
+				id: "7949D1A9FF975DDD"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -456,6 +784,22 @@
 				type: "item"
 				item: "extendedcrafting:ender_crafter"
 			}]
+			rewards: [
+				{
+					id: "0AB71A46B1266E60"
+					type: "item"
+					item: "extendedcrafting:ender_ingot"
+					count: 4
+				}
+				{
+					id: "0E69D1DCA7E363B6"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_tech_ultimatecontrolcircuit}"
@@ -471,6 +815,14 @@
 				id: "361F047ED7FB484E"
 				type: "item"
 				item: "mekanism:ultimate_control_circuit"
+			}]
+			rewards: [{
+				id: "2D6816FE450EA10C"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+				auto: "no_toast"
 			}]
 		}
 	]

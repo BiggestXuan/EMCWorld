@@ -30,7 +30,7 @@ public class StaffAttackPacket {
                 ServerPlayerEntity player = ctx.get().getSender();
                 IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
                 ItemStack stack = player.getMainHandItem();
-                if(stack.getItem() instanceof StaffItem && player.getAttackStrengthScale(0) == 1){
+                /*if(stack.getItem() instanceof StaffItem && player.getAttackStrengthScale(0) == 1){
                     StaffItem item = (StaffItem) stack.getItem();
                     item.spawnManaBurst(player,1);
                     if(stack.getItem() instanceof BaseEMCGodStaff){
@@ -44,7 +44,7 @@ public class StaffAttackPacket {
                     if(stack.getMaxDamage() - stack.getDamageValue() <= -1){
                         stack.shrink(1);
                     }
-                }
+                }*/
             }
         });
         ctx.get().setPacketHandled(true);

@@ -20,6 +20,21 @@
 				type: "dimension"
 				dimension: "minecraft:the_nether"
 			}]
+			rewards: [
+				{
+					id: "6415E7189B0442A6"
+					type: "item"
+					item: "gobber2:gobber2_seed"
+				}
+				{
+					id: "39F79BD994C394BD"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_bastionremnant}"
@@ -33,6 +48,22 @@
 				advancement: "minecraft:nether/find_bastion"
 				criterion: ""
 			}]
+			rewards: [
+				{
+					id: "2CDA44732EFF7238"
+					type: "item"
+					item: "minecraft:gold_block"
+					count: 16
+				}
+				{
+					id: "02BF3F3B30036B2A"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_fortress}"
@@ -46,6 +77,21 @@
 				advancement: "minecraft:nether/find_fortress"
 				criterion: ""
 			}]
+			rewards: [
+				{
+					id: "0F292C1467F04D4F"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+				}
+				{
+					id: "7F602BC01007086E"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_witherskeleton}"
@@ -58,6 +104,13 @@
 				type: "advancement"
 				advancement: "minecraft:nether/get_wither_skull"
 				criterion: ""
+			}]
+			rewards: [{
+				id: "21DC18B9AE09B5A1"
+				type: "item"
+				team_reward: true
+				item: "minecraft:wither_skeleton_skull"
+				count: 2
 			}]
 		}
 		{
@@ -79,6 +132,21 @@
 				entity: "minecraft:piglin_brute"
 				value: 10L
 			}]
+			rewards: [
+				{
+					id: "0A57A4E259061403"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+				}
+				{
+					id: "568BED1B6DF265F4"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_wither}"
@@ -93,6 +161,21 @@
 				entity: "minecraft:wither"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "171FF9FF9035FE7B"
+					type: "item"
+					item: "minecraft:nether_star"
+				}
+				{
+					id: "1ADEC9B81A01230F"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netheritemonstrosity}"
@@ -113,6 +196,21 @@
 				entity: "cataclysm:netherite_monstrosity"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "661E284EE6256288"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+				}
+				{
+					id: "7D21318BA3D44C71"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_lgnis}"
@@ -130,6 +228,23 @@
 				entity: "cataclysm:ignis"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "2911619ED3C999CB"
+					type: "item"
+					item: "cataclysm:ignitium_ingot"
+					count: 2
+					random_bonus: 6
+				}
+				{
+					id: "793398DF1286C784"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_nethergobber}"
@@ -143,6 +258,22 @@
 				type: "item"
 				item: "gobber2:gobber2_ingot_nether"
 			}]
+			rewards: [
+				{
+					id: "1FC48E7D6F052499"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+					count: 6
+				}
+				{
+					id: "5BACC051BEA5E594"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netherite}"
@@ -156,6 +287,23 @@
 				type: "item"
 				item: "minecraft:netherite_ingot"
 			}]
+			rewards: [
+				{
+					id: "661CCDFE5A947871"
+					type: "item"
+					team_reward: true
+					item: "minecraft:netherite_ingot"
+					count: 3
+				}
+				{
+					id: "6D6B5D7BD9661CFA"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_asgardrune}"
@@ -172,6 +320,22 @@
 				type: "item"
 				item: "mythicbotany:asgard_rune"
 			}]
+			rewards: [
+				{
+					id: "413EA8316789FD0C"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+					count: 2
+				}
+				{
+					id: "41DF8DCEABB2E9F8"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_keepingcastle}"
@@ -188,6 +352,22 @@
 				observe_type: 0
 				to_observe: "stalwart_dungeons:transient_block_close"
 			}]
+			rewards: [
+				{
+					id: "4644F7E29F1CF7B7"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+					count: 2
+				}
+				{
+					id: "0D93EAFA910EB373"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_awfuldungeon}"
@@ -203,6 +383,14 @@
 				timer: 20L
 				observe_type: 0
 				to_observe: "stalwart_dungeons:soul_magma_bricks"
+			}]
+			rewards: [{
+				id: "1FAA0BD42FA0BA7F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -220,6 +408,22 @@
 				type: "item"
 				item: "stalwart_dungeons:tungsten_ingot"
 			}]
+			rewards: [
+				{
+					id: "2CD56AECF58325FE"
+					type: "item"
+					item: "stalwart_dungeons:tungsten_ingot"
+					count: 6
+				}
+				{
+					id: "2011062B57695165"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_giddyblaze}"
@@ -240,6 +444,22 @@
 				entity: "stalwart_dungeons:giddy_blaze"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "6BE039539DD592B4"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+					count: 4
+				}
+				{
+					id: "3907873871106F6B"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_incompletewither}"
@@ -260,6 +480,22 @@
 				entity: "stalwart_dungeons:incomplete_wither"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "322C77CB170DD6A4"
+					type: "item"
+					item: "stalwart_dungeons:tungsten_ingot"
+					count: 8
+				}
+				{
+					id: "5D2B1BB1FFE50669"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_awfulghast}"
@@ -280,6 +516,22 @@
 				entity: "stalwart_dungeons:awful_ghast"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "394ED9B2F52998FC"
+					type: "item"
+					item: "gobber2:gobber2_globette_nether"
+					count: 4
+				}
+				{
+					id: "74D1BD86D49F883C"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netherkeeper}"
@@ -300,6 +552,21 @@
 				entity: "stalwart_dungeons:nether_keeper"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "618C37B6A2EEC0A0"
+					type: "item"
+					item: "minecraft:netherite_ingot"
+				}
+				{
+					id: "6DC8EA47A3ACCF7F"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_thekey}"
@@ -315,7 +582,15 @@
 			tasks: [{
 				id: "292AA37B6CFBE64B"
 				type: "item"
-				item: "minecraft:name_tag"
+				item: "emcworld:nether_key"
+			}]
+			rewards: [{
+				id: "03119E56D2E976EE"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
 			}]
 		}
 	]

@@ -23,6 +23,14 @@
 				observe_type: 0
 				to_observe: "the_afterlight:ritual_altar"
 			}]
+			rewards: [{
+				id: "59E152C3741B0EBD"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_themooncrystal}"
@@ -36,6 +44,22 @@
 				type: "item"
 				item: "the_afterlight:moon_crystal"
 			}]
+			rewards: [
+				{
+					id: "78E4E919F589F872"
+					type: "item"
+					item: "the_afterlight:moon_crystal"
+					count: 8
+				}
+				{
+					id: "759CE767E99FABCF"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_prepar}"
@@ -72,6 +96,14 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "1FB2C13E120706DF"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_gointoafterlight}"
@@ -83,6 +115,14 @@
 				id: "1F4F666C2DD9248C"
 				type: "dimension"
 				dimension: "the_afterlight:the_afterlight"
+			}]
+			rewards: [{
+				id: "04D4E34437E0A3EA"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -111,6 +151,14 @@
 					item: "the_afterlight:living_essence"
 				}
 			]
+			rewards: [{
+				id: "5202FB17841D32BD"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_licingessenceingot}"
@@ -123,6 +171,22 @@
 				type: "item"
 				item: "the_afterlight:livingessenceingot"
 			}]
+			rewards: [
+				{
+					id: "7FA1B5C6770C7010"
+					type: "item"
+					item: "the_afterlight:livingessenceingot"
+					count: 4
+				}
+				{
+					id: "258A1DC54B75C81F"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_ingots}"
@@ -147,6 +211,34 @@
 					item: "the_afterlight:lunariteingot"
 				}
 			]
+			rewards: [
+				{
+					id: "4BC3FB2F4BC8585D"
+					type: "item"
+					item: "the_afterlight:moonsteel_ingot"
+					count: 4
+				}
+				{
+					id: "168B88D836DA9BF7"
+					type: "item"
+					item: "the_afterlight:crystillium_ingot"
+					count: 4
+				}
+				{
+					id: "4FB87EF03BCD03F3"
+					type: "item"
+					item: "the_afterlight:lunariteingot"
+					count: 4
+				}
+				{
+					id: "4EA522D4DE711157"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_ecliptic}"
@@ -158,6 +250,14 @@
 				id: "4312BDFBBE8736F0"
 				type: "item"
 				item: "the_afterlight:ecliptic_rock"
+			}]
+			rewards: [{
+				id: "5AB1B547B98DB53F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -173,6 +273,14 @@
 				id: "0E3DD665A98E0BF2"
 				type: "item"
 				item: "the_afterlight:glyph_altar"
+			}]
+			rewards: [{
+				id: "663382FCEEF392AF"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -218,6 +326,28 @@
 					item: "the_afterlight:verdant_quartz"
 				}
 			]
+			rewards: [
+				{
+					id: "0AFCEA2857FF9EA1"
+					type: "item"
+					item: "the_afterlight:radiant_shards"
+					count: 4
+				}
+				{
+					id: "55FD8AD07EE1235A"
+					type: "item"
+					item: "the_afterlight:moon_crystal"
+					count: 16
+				}
+				{
+					id: "6F89A8F1D0FA0386"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_goldenshardsofradiance}"
@@ -230,6 +360,22 @@
 				type: "item"
 				item: "the_afterlight:golden_shards_of_radiance"
 			}]
+			rewards: [
+				{
+					id: "59A10AEB1A4C8F4D"
+					type: "item"
+					item: "the_afterlight:golden_shards_of_radiance"
+					count: 3
+				}
+				{
+					id: "43DA17F73748A527"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_glyphs}"
@@ -268,6 +414,22 @@
 					item: "the_afterlight:glyph_of_radiance"
 				}
 			]
+			rewards: [
+				{
+					id: "1F9B9B67ECB0BBCD"
+					type: "item"
+					item: "the_afterlight:blank_glyph"
+					count: 16
+				}
+				{
+					id: "4D58DF31BD0CAA4F"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_workbenchofancients}"
@@ -279,6 +441,14 @@
 				id: "47CD01230EA61196"
 				type: "item"
 				item: "the_afterlight:workbench_of_ancients"
+			}]
+			rewards: [{
+				id: "4277F63FA4FC58C8"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -298,6 +468,14 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "0CC8FBFA4BE57360"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_elementalamulet}"
@@ -316,6 +494,14 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "6EFF92DCB2EF5DBD"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_moonblade}"
@@ -333,6 +519,14 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "453CFEAE34D6CAA0"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 	]

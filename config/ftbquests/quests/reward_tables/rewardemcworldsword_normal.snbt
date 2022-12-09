@@ -44,5 +44,45 @@
 				}
 			}
 		}
+		{
+			item: {
+				id: "emcworld:chara_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 14
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:purple_staff"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 14
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:nature_staff"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 14
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:creation"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 14
+				}
+			}
+		}
 	]
 }

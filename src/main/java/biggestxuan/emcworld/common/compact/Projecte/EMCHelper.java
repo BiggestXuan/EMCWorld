@@ -98,6 +98,10 @@ public class EMCHelper {
         setItemEMC(item.getInternal(),0);
     }
 
+    public static long getItemEMC(ItemStack stack){
+        return moze_intel.projecte.utils.EMCHelper.getEmcValue(stack);
+    }
+
     public static Set<ItemInfo> getPlayerAllKnowledge(PlayerEntity player){
         return getPlayerIKP(player).getKnowledge();
     }

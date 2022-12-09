@@ -102,6 +102,11 @@ public function addEMCStage(item as IItemStack,num as int) as void{
     <recipetype:emcworld:emc_stage_limit>.addRecipe(getRecipeName(item)+"_emc_stage",item,stage);
 }
 
+public function setEMCStageName(item as ItemStack,emc as long,stage as int) as void{
+    EMCHelper.setItemEMC(item,emc);
+    <recipetype:emcworld:emc_stage_limit>.addRecipe(getRecipeName(item)+"_emc_stage_"+emc,item,getStageName(stage));
+}
+
 public function staffRecipe(input as IItemStack,output as IItemStack) as void{
     var a = <item:minecraft:air>;
     addCraftShapedRecipe([

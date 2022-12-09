@@ -19,6 +19,14 @@
 				type: "item"
 				item: "astralsorcery:ritual_pedestal"
 			}]
+			rewards: [{
+				id: "4C0CD2639B09190B"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_magic_rituallink}"
@@ -32,40 +40,61 @@
 				type: "item"
 				item: "astralsorcery:ritual_link"
 			}]
+			rewards: [
+				{
+					id: "2DA3629609206FE8"
+					type: "item"
+					item: "astralsorcery:ritual_link"
+					count: 4
+				}
+				{
+					id: "03A7476FE87B32AA"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_magic_bluecollector}"
-			x: -1.5d
-			y: -1.5d
+			x: 0.0d
+			y: -6.0d
 			dependencies: ["131D06E6858EA93F"]
 			hide: true
+			size: 3.0d
 			id: "19FEE6859A400A57"
 			tasks: [{
 				id: "2C55F82A2730634E"
 				type: "item"
-				item: "projectex:blue_collector"
+				title: "{quest.emcworld.sixth_magic_bluecollector}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_six"
+					}
+				}
 			}]
-			rewards: [{
-				id: "327CBAB9347BCFE7"
-				type: "custom"
-				title: "{quest.emcworld.sixth_magic_go_on}"
-				icon: "astralsorcery:starmetal"
-				tags: ["stage_six"]
-				auto: "enabled"
-			}]
-		}
-		{
-			title: "{quest.emcworld.sixth_magic_bluerelay}"
-			x: 1.5d
-			y: -1.5d
-			dependencies: ["131D06E6858EA93F"]
-			hide: true
-			id: "726366671060FC66"
-			tasks: [{
-				id: "5FF7A1AAFCD53C17"
-				type: "item"
-				item: "projectex:blue_relay"
-			}]
+			rewards: [
+				{
+					id: "327CBAB9347BCFE7"
+					type: "custom"
+					title: "{quest.emcworld.sixth_magic_go_on}"
+					icon: "astralsorcery:starmetal"
+					tags: ["stage_six"]
+					auto: "enabled"
+				}
+				{
+					id: "53A55462545C7BD6"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 	]
 }

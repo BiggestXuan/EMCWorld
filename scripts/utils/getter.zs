@@ -203,6 +203,7 @@ public class Getter{
     public getSlate() as ItemStack[]{
         return this.BloodMagicslate;
     }
+    
     public getRunes() as ItemStack[]{
         return this.MBRunes;
     }

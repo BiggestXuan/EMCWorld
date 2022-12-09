@@ -21,18 +21,17 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import quek.undergarden.item.UGItem;
 import quek.undergarden.registry.UGItems;
 import vazkii.botania.common.block.ModBlocks;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
 
 public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     GLOW_STONE(Items.COAL_BLOCK,Items.GLOWSTONE,384,1),
-    THERMAL_BLOCK(MekanismItems.STEEL_INGOT.getItem(), MekanismBlocks.THERMAL_EVAPORATION_BLOCK.getItem(),10000,1),
+    THERMAL_BLOCK(MekanismItems.STEEL_INGOT.getItem(), MekanismBlocks.THERMAL_EVAPORATION_BLOCK.getItem(),3000,1),
     RAT_FLOWER(ModBlocks.whiteShinyFlower.asItem(), RatlantisBlockRegistry.RATGLOVE_FLOWER.asItem(), 10000,1),
-    BASIC_CONTROL(MekanismItems.BASIC_CONTROL_CIRCUIT.getItem(),MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),35000,1),
+    BASIC_CONTROL(MekanismItems.BASIC_CONTROL_CIRCUIT.getItem(),MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),20000,1),
     OCEAN_LANTERN(Blocks.SEA_LANTERN.asItem(), BlockInit.OCEAN_LANTERN.get().asItem(),50000,1),
-    ADVANCED_CONTROL(MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),175000,1),
+    ADVANCED_CONTROL(MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),100000,1),
     GAIA_PYLON(ModBlocks.naturaPylon.asItem(),ModBlocks.gaiaPylon.asItem(),250000,1),
     BX_INGOT(AtumBlocks.GODFORGED_BLOCK.asItem(), EWItems.BIGGEST_XUAN_INGOT.get(),300000,1),
     DARK_MATTER(PEItems.DARK_MATTER.get(),PEItems.RED_MATTER.get(),350000,2),

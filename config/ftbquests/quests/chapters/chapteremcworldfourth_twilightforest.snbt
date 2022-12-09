@@ -21,6 +21,21 @@
 				type: "item"
 				item: "emcworld:base_key"
 			}]
+			rewards: [
+				{
+					id: "76E24A7475245500"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "5C05AC3B5446C10E"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_key2}"
@@ -34,6 +49,21 @@
 				type: "item"
 				item: "emcworld:twilight_key"
 			}]
+			rewards: [
+				{
+					id: "363640C9E87E017D"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "51CD68256C1D5968"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_naga}"
@@ -47,6 +77,22 @@
 				type: "item"
 				item: "twilightforest:naga_trophy"
 			}]
+			rewards: [
+				{
+					id: "107A51D2676B8DD4"
+					type: "item"
+					item: "twilightforest:naga_scale"
+					count: 4
+				}
+				{
+					id: "3B3C99BB8BB7CE4E"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_lich}"
@@ -65,6 +111,21 @@
 				type: "item"
 				item: "twilightforest:lich_trophy"
 			}]
+			rewards: [
+				{
+					id: "5111C54011DA983D"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "299642A62C7C814F"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_magicmapempty}"
@@ -78,6 +139,21 @@
 				type: "item"
 				item: "twilightforest:magic_map_empty"
 			}]
+			rewards: [
+				{
+					id: "5077635F55C84042"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "6A65A1655AB0947D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_magicmapfocus}"
@@ -92,6 +168,14 @@
 				type: "item"
 				item: "twilightforest:magic_map_focus"
 			}]
+			rewards: [{
+				id: "168318DF37E32FC8"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_minoshroom}"
@@ -105,6 +189,22 @@
 				type: "item"
 				item: "twilightforest:minoshroom_trophy"
 			}]
+			rewards: [
+				{
+					id: "1DC592423D472897"
+					type: "item"
+					item: "twilightforest:maze_wafer"
+					count: 16
+				}
+				{
+					id: "02FEA03175CF7DF0"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_phantom}"
@@ -118,6 +218,22 @@
 				type: "item"
 				item: "twilightforest:knight_phantom_trophy"
 			}]
+			rewards: [
+				{
+					id: "5E614166E53B970F"
+					type: "item"
+					item: "twilightforest:maze_wafer"
+					count: 16
+				}
+				{
+					id: "3F712A698582B159"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_yeti}"
@@ -131,6 +247,22 @@
 				type: "item"
 				item: "twilightforest:yeti_trophy"
 			}]
+			rewards: [
+				{
+					id: "182E568B9C679827"
+					type: "item"
+					item: "twilightforest:maze_wafer"
+					count: 16
+				}
+				{
+					id: "144371FC1C53C1FC"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_hydra}"
@@ -144,6 +276,22 @@
 				type: "item"
 				item: "twilightforest:hydra_trophy"
 			}]
+			rewards: [
+				{
+					id: "3179D16B01CE7EE1"
+					type: "item"
+					item: "twilightforest:hydra_chop"
+					count: 8
+				}
+				{
+					id: "54C0304F7B2E6516"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_ghast}"
@@ -157,6 +305,22 @@
 				type: "item"
 				item: "twilightforest:ur_ghast_trophy"
 			}]
+			rewards: [
+				{
+					id: "1D84172A57A09275"
+					type: "item"
+					item: "twilightforest:fiery_ingot"
+					count: 4
+				}
+				{
+					id: "28FD7C73A930869C"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_snowqueen}"
@@ -170,6 +334,22 @@
 				type: "item"
 				item: "twilightforest:snow_queen_trophy"
 			}]
+			rewards: [
+				{
+					id: "43C0BFBFC44C228A"
+					type: "item"
+					item: "twilightforest:alpha_fur"
+					count: 8
+				}
+				{
+					id: "5A0922FE507642B7"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_lampofcinders}"
@@ -189,6 +369,22 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "490E7D672F48165E"
+					type: "item"
+					item: "twilightforest:knightmetal_ingot"
+					count: 12
+				}
+				{
+					id: "7F503D656DEC475E"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_mazemapempty}"
@@ -201,6 +397,14 @@
 				id: "49EFF24BF3AEB66C"
 				type: "item"
 				item: "twilightforest:maze_map"
+			}]
+			rewards: [{
+				id: "0D92FC481B9FA735"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -215,6 +419,22 @@
 				type: "item"
 				item: "twilightforest:maze_map_focus"
 			}]
+			rewards: [
+				{
+					id: "2C3E5678E57B4C23"
+					type: "item"
+					item: "twilightforest:maze_wafer"
+					count: 32
+				}
+				{
+					id: "108620996DF2948C"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_mazebreakerpickaxe}"
@@ -249,6 +469,27 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "79BB11B9EB5AA3EF"
+					type: "item"
+					item: {
+						id: "twilightforest:ore_magnet"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "65EAF27BB8295DA3"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_gointotheforest}"
@@ -263,6 +504,22 @@
 				type: "dimension"
 				dimension: "twilightforest:twilightforest"
 			}]
+			rewards: [
+				{
+					id: "4A9EBB2718E1AA65"
+					type: "item"
+					item: "twilightforest:ironwood_ingot"
+					count: 8
+				}
+				{
+					id: "351A17A320A49556"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_questramtrophy}"
@@ -279,6 +536,21 @@
 				type: "item"
 				item: "twilightforest:quest_ram_trophy"
 			}]
+			rewards: [
+				{
+					id: "05D701C9D30C7831"
+					type: "item"
+					item: "mythicbotany:alfsteel_armor_upgrade"
+				}
+				{
+					id: "2DCE35D9BBC1D7AF"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_questram}"
@@ -297,6 +569,14 @@
 				observe_type: 5
 				to_observe: "twilightforest:quest_ram"
 			}]
+			rewards: [{
+				id: "39735F5AD390D1C6"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_magicbeans}"
@@ -314,6 +594,21 @@
 				type: "item"
 				item: "twilightforest:magic_beans"
 			}]
+			rewards: [
+				{
+					id: "506AE3635FECF902"
+					type: "item"
+					item: "twilightforest:fiery_ingot"
+				}
+				{
+					id: "2DEE9C56C43EA487"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_castle}"
@@ -330,6 +625,21 @@
 				observe_type: 0
 				to_observe: "twilightforest:castle_brick"
 			}]
+			rewards: [
+				{
+					id: "3BD81A7D1980B856"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "3B7CBB54719DEC9F"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 	]
 }

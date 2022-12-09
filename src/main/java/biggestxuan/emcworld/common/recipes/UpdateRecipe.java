@@ -17,10 +17,10 @@ import vazkii.botania.common.block.ModBlocks;
 
 public enum UpdateRecipe implements IUpdateRecipe {
     GLOW_STONE(new ItemStack(Items.COAL_BLOCK),new ItemStack(Items.GLOWSTONE),384),
-    THERMAL_BLOCK(MekanismItems.STEEL_INGOT.getItemStack(), MekanismBlocks.THERMAL_EVAPORATION_BLOCK.getItemStack(),10000),
-    BASIC_CONTROL(MekanismItems.BASIC_CONTROL_CIRCUIT.getItemStack(),MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItemStack(1),35000),
+    THERMAL_BLOCK(MekanismItems.STEEL_INGOT.getItemStack(), MekanismBlocks.THERMAL_EVAPORATION_BLOCK.getItemStack(),3000),
+    BASIC_CONTROL(MekanismItems.BASIC_CONTROL_CIRCUIT.getItemStack(),MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItemStack(1),20000),
     OCEAN_LANTERN(new ItemStack(Blocks.SEA_LANTERN.asItem()),new ItemStack(BlockInit.OCEAN_LANTERN.get().asItem()),50000),
-    ADVANCED_CONTROL(MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItemStack(1),MekanismItems.ELITE_CONTROL_CIRCUIT.getItemStack(1),175000),
+    ADVANCED_CONTROL(MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItemStack(1),MekanismItems.ELITE_CONTROL_CIRCUIT.getItemStack(1),100000),
     GAIA_PYLON(new ItemStack(ModBlocks.naturaPylon.asItem()),new ItemStack(ModBlocks.gaiaPylon.asItem()),250000);
 
     private final ItemStack input;

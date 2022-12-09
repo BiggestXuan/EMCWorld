@@ -119,7 +119,7 @@ public function modifyMEKRecipe() as void{
     modifyShapedRecipe([
         [l,c3,l],
         [c3,<tag:items:forge:glass_panes>,c3],
-        [l,<item:mekanism:teleportation_core>,l]
+        [l,<item:emcworld:silver_medal>,l]
     ],<item:mekanism:qio_dashboard>);
     modifyStageRecipe([
         [steel,ai,steel],

@@ -21,6 +21,22 @@
 				type: "item"
 				item: "mythicbotany:mana_infuser"
 			}]
+			rewards: [
+				{
+					id: "479D4C0083FD0469"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 2
+				}
+				{
+					id: "0600FB0B00ED54C4"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_runes}"
@@ -67,6 +83,22 @@
 					item: "mythicbotany:helheim_rune"
 				}
 			]
+			rewards: [
+				{
+					id: "3F6AE70CE9417345"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 4
+				}
+				{
+					id: "2C853748F59CF149"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_prepar}"
@@ -100,6 +132,22 @@
 					item: "botania:spark_upgrade_dominant"
 				}
 			]
+			rewards: [
+				{
+					id: "71B0CA437D5B481C"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 3
+				}
+				{
+					id: "1715CC670DF4C95B"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_alfsteel}"
@@ -119,6 +167,21 @@
 				type: "item"
 				item: "mythicbotany:alfsteel_ingot"
 			}]
+			rewards: [
+				{
+					id: "18A147F8BEBC88F7"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "22200D8ADF6BC884"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_alchemicalreactionchamber}"
@@ -132,6 +195,14 @@
 				type: "item"
 				item: "bloodmagic:alchemicalreactionchamber"
 			}]
+			rewards: [{
+				id: "2F0A64BAA8CAA51E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_alchemytable}"
@@ -144,6 +215,14 @@
 				id: "549297DD163C8771"
 				type: "item"
 				item: "bloodmagic:alchemytable"
+			}]
+			rewards: [{
+				id: "1DDA0F805EA2BD92"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -160,6 +239,14 @@
 				type: "item"
 				item: "bloodmagic:soulforge"
 			}]
+			rewards: [{
+				id: "5F2481CB98B9B336"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_reagentbinding}"
@@ -174,6 +261,22 @@
 				type: "item"
 				item: "bloodmagic:reagentbinding"
 			}]
+			rewards: [
+				{
+					id: "54F9B3EFBE1B5E11"
+					type: "item"
+					item: "bloodmagic:reagentbinding"
+					count: 6
+				}
+				{
+					id: "30C04C474F6B771E"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_luminessence}"
@@ -187,6 +290,22 @@
 				type: "item"
 				item: "extendedcrafting:luminessence"
 			}]
+			rewards: [
+				{
+					id: "50761CD9C86973FA"
+					type: "item"
+					item: "extendedcrafting:luminessence"
+					count: 16
+				}
+				{
+					id: "6F6B48BDF68E5A60"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_enderingot}"
@@ -200,6 +319,22 @@
 				type: "item"
 				item: "extendedcrafting:ender_ingot"
 			}]
+			rewards: [
+				{
+					id: "6BB4DF10ECC93455"
+					type: "item"
+					item: "extendedcrafting:ender_ingot"
+					count: 8
+				}
+				{
+					id: "373DCAE5BE72413E"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_demoncrucible}"
@@ -212,6 +347,14 @@
 				id: "1EAAF912F0A640CC"
 				type: "item"
 				item: "bloodmagic:demoncrucible"
+			}]
+			rewards: [{
+				id: "3AD326D279F5A03C"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -230,6 +373,22 @@
 				type: "item"
 				item: "bloodmagic:ingot_hellforged"
 			}]
+			rewards: [
+				{
+					id: "7A213B792373061E"
+					type: "item"
+					item: "bloodmagic:ingot_hellforged"
+					count: 8
+				}
+				{
+					id: "78B2FF90C9ECE301"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_hellforgeddust}"
@@ -243,6 +402,14 @@
 				id: "774CC7B0C88B4670"
 				type: "item"
 				item: "bloodmagic:sand_hellforged"
+			}]
+			rewards: [{
+				id: "6401DBF9D743ABF9"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -262,6 +429,14 @@
 				type: "item"
 				item: "bloodmagic:defaultcrystal"
 			}]
+			rewards: [{
+				id: "4354F637B447CF1C"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_demoncrystallizer}"
@@ -274,6 +449,14 @@
 				id: "639752D1388B7721"
 				type: "item"
 				item: "bloodmagic:demoncrystallizer"
+			}]
+			rewards: [{
+				id: "76980C0A2F8A240B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -288,6 +471,14 @@
 				type: "item"
 				item: "byg:hypogeal_imperium"
 			}]
+			rewards: [{
+				id: "537B5DBE741AD30D"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_shardcrystal}"
@@ -300,6 +491,14 @@
 				id: "3F3B535C5D358453"
 				type: "item"
 				item: "byg:subzero_crystal_shard"
+			}]
+			rewards: [{
+				id: "67F2D70EBFDE1582"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -314,6 +513,22 @@
 				type: "item"
 				item: "mythicbotany:yggdrasil_branch"
 			}]
+			rewards: [
+				{
+					id: "79AE45FE88E1B520"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 2
+				}
+				{
+					id: "77F7A7349D7526A3"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_gjallarhornempty}"
@@ -328,6 +543,22 @@
 				type: "item"
 				item: "mythicbotany:gjallar_horn_empty"
 			}]
+			rewards: [
+				{
+					id: "662CD00570E5B791"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 3
+				}
+				{
+					id: "72339C606E71B68D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_gjallarhornfull}"
@@ -345,6 +576,22 @@
 				type: "item"
 				item: "mythicbotany:gjallar_horn_full"
 			}]
+			rewards: [
+				{
+					id: "6B352634DEE936A5"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 3
+				}
+				{
+					id: "6EC3B3167C28C4C0"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_runeholder}"
@@ -365,6 +612,22 @@
 					item: "mythicbotany:master_rune_holder"
 				}
 			]
+			rewards: [
+				{
+					id: "314931F3BB841B3F"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+					count: 3
+				}
+				{
+					id: "4B2D29DB03201FE4"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_kvasirblood}"
@@ -381,6 +644,22 @@
 				type: "item"
 				item: "mythicbotany:kvasir_blood"
 			}]
+			rewards: [
+				{
+					id: "38F7D162B9658025"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+					count: 3
+				}
+				{
+					id: "420738A4F78CFB97"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_enderdagger}"
@@ -401,6 +680,21 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "44745D233EC55FF0"
+					type: "item"
+					item: "botania:blacker_lotus"
+				}
+				{
+					id: "01F86D6C478980D7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_daggerofsacrifice}"
@@ -415,6 +709,14 @@
 				id: "01D520A706B35EA5"
 				type: "item"
 				item: "bloodmagic:daggerofsacrifice"
+			}]
+			rewards: [{
+				id: "0B29CFD846AA29E2"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -435,6 +737,14 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "71AE109AF9521C7D"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_alfetellarmorupgrade}"
@@ -448,6 +758,21 @@
 				type: "item"
 				item: "mythicbotany:alfsteel_armor_upgrade"
 			}]
+			rewards: [
+				{
+					id: "5661A036BDDE93FA"
+					type: "item"
+					item: "mythicbotany:alfsteel_ingot"
+				}
+				{
+					id: "688009CFB5EC5320"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteel_helmet}"
@@ -466,6 +791,14 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "145D9A1C2269611C"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -486,6 +819,14 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "06D904488846EA79"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteel_leggings}"
@@ -505,6 +846,14 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "5805BCDF00453449"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteelboots}"
@@ -523,6 +872,14 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "5FBDD641621004E3"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -593,6 +950,14 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "6ED3BE7D295343D6"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			x: 15.0d
@@ -604,6 +969,29 @@
 				type: "item"
 				item: "projectex:personal_link"
 			}]
+			rewards: [
+				{
+					id: "373C65C570A70D1B"
+					type: "item"
+					item: "botania:blacker_lotus"
+					count: 6
+				}
+				{
+					id: "010B297E7B86D236"
+					type: "item"
+					item: "emcworld:biggest_emc_gem"
+					count: 8
+					random_bonus: 8
+				}
+				{
+					id: "2824491D11E98EF5"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 	]
 }

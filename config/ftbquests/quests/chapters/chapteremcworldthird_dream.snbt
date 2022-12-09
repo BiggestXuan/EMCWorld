@@ -24,6 +24,14 @@
 				type: "item"
 				item: "good_nights_sleep:strange_bed"
 			}]
+			rewards: [{
+				id: "59704C21CE6E9485"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_dream_HM}"
@@ -37,6 +45,14 @@
 				id: "3C43895A50CA92B0"
 				type: "item"
 				item: "good_nights_sleep:hope_mushroom"
+			}]
+			rewards: [{
+				id: "608D068A9D1112EA"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -52,6 +68,14 @@
 				type: "item"
 				item: "good_nights_sleep:despair_mushroom"
 			}]
+			rewards: [{
+				id: "0BAD51F6CC1ABC9D"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_dream_gointogooddream}"
@@ -66,6 +90,14 @@
 				type: "dimension"
 				dimension: "good_nights_sleep:good_dream"
 			}]
+			rewards: [{
+				id: "237D99098168DFBA"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_dream_gointobaddream}"
@@ -79,6 +111,14 @@
 				id: "3EABA9648AB70C8D"
 				type: "dimension"
 				dimension: "good_nights_sleep:nightmare"
+			}]
+			rewards: [{
+				id: "5B869DD167811EC9"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -100,6 +140,22 @@
 					item: "good_nights_sleep:rainbow_ingot"
 				}
 			]
+			rewards: [
+				{
+					id: "633FB979479EEE2C"
+					type: "item"
+					item: "good_nights_sleep:rainbow_ingot"
+					count: 8
+				}
+				{
+					id: "223247A765B5DF54"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_dream_baddreammineral}"
@@ -119,6 +175,22 @@
 					id: "5621C345D296B4CE"
 					type: "item"
 					item: "good_nights_sleep:zitrite_ingot"
+				}
+			]
+			rewards: [
+				{
+					id: "0D960E265552A893"
+					type: "item"
+					item: "good_nights_sleep:zitrite_ingot"
+					count: 8
+				}
+				{
+					id: "72F1EC5DE1A3E465"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
 				}
 			]
 		}
@@ -144,6 +216,14 @@
 					item: "good_nights_sleep:positite_gem"
 				}
 			]
+			rewards: [{
+				id: "37250415719B79E4"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_dream_goodbed}"
@@ -157,6 +237,14 @@
 				type: "item"
 				item: "good_nights_sleep:luxurious_bed"
 			}]
+			rewards: [{
+				id: "033D54A888C9D658"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.third_dream_badbed}"
@@ -169,6 +257,14 @@
 				id: "241FBEF98DFE30D3"
 				type: "item"
 				item: "good_nights_sleep:wretched_bed"
+			}]
+			rewards: [{
+				id: "12DC21B32C4289C2"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 	]

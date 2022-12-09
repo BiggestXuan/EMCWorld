@@ -28,7 +28,7 @@ private function getVoucherEMC() as int{
 
 public function setEMC() as void{
     var emcValue as long[]=[16384,1024,2048,2048,0,128,1024,2048,256,256,64,2048,32767,128,getVoucherEMC(),24652,34206,46384,12068,5622,3780
-    ,126204,2048,2048,4682,6026,768205
+    ,126204,2048,2048,4682,6026,768205,512
     ];
     var item as ItemStack[]=[
         <item:byg:pendorite_scraps>,
@@ -57,7 +57,8 @@ public function setEMC() as void{
         <item:emcworld:magnesium_ingot>,
         <item:emcworld:drystone_ingot>,
         <item:emcworld:sunlit_ingot>,
-        <item:allthemodium:unobtainium_ingot>
+        <item:allthemodium:unobtainium_ingot>,
+        <item:emcworld:aluminum_ingot>
     ];
     clearEMC(Ice.INSTANCE.getIce());
     for i in 0 .. item.length{

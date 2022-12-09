@@ -21,6 +21,22 @@
 				type: "item"
 				item: "naturesaura:gold_fiber"
 			}]
+			rewards: [
+				{
+					id: "7FA05B91A7B3F216"
+					type: "item"
+					item: "naturesaura:gold_fiber"
+					count: 4
+				}
+				{
+					id: "4EF22D570A304CE6"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_goldleaf}"
@@ -34,6 +50,22 @@
 				type: "item"
 				item: "naturesaura:gold_leaf"
 			}]
+			rewards: [
+				{
+					id: "21EC883A47044506"
+					type: "item"
+					item: "naturesaura:gold_leaf"
+					count: 6
+				}
+				{
+					id: "1E65BF8B317EE8E2"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_goldpower}"
@@ -46,6 +78,22 @@
 				type: "item"
 				item: "naturesaura:gold_powder"
 			}]
+			rewards: [
+				{
+					id: "33B9832918E1FEEC"
+					type: "item"
+					item: "naturesaura:gold_powder"
+					count: 8
+				}
+				{
+					id: "1B9B90C3007C7B76"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_woodstand}"
@@ -60,6 +108,21 @@
 				item: "naturesaura:wood_stand"
 				count: 8L
 			}]
+			rewards: [
+				{
+					id: "16E476C024E8FE27"
+					type: "item"
+					item: "naturesaura:infused_iron"
+				}
+				{
+					id: "7003A235AC52AE0E"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_tokens}"
@@ -89,6 +152,22 @@
 					item: "naturesaura:token_sorrow"
 				}
 			]
+			rewards: [
+				{
+					id: "0259052905B2052E"
+					type: "item"
+					item: "naturesaura:infused_iron"
+					count: 2
+				}
+				{
+					id: "5D5C0B813A9C56A7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_naturealtar}"
@@ -114,6 +193,22 @@
 					count: 8L
 				}
 			]
+			rewards: [
+				{
+					id: "44664667385AB375"
+					type: "item"
+					item: "naturesaura:gold_fiber"
+					count: 8
+				}
+				{
+					id: "33AE8C366A284270"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_infusediron}"
@@ -126,6 +221,23 @@
 				type: "item"
 				item: "naturesaura:infused_iron"
 			}]
+			rewards: [
+				{
+					id: "22EF6D81E77B40DB"
+					type: "item"
+					team_reward: true
+					item: "naturesaura:infused_iron"
+					count: 8
+				}
+				{
+					id: "23F3B7AE4F1F7AD7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_taintedgold}"
@@ -138,6 +250,23 @@
 				type: "item"
 				item: "naturesaura:tainted_gold"
 			}]
+			rewards: [
+				{
+					id: "42F31CB647842D25"
+					type: "item"
+					team_reward: true
+					item: "naturesaura:tainted_gold"
+					count: 8
+				}
+				{
+					id: "34F8BB114E5F1F2A"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_skyingot}"
@@ -150,6 +279,22 @@
 				type: "item"
 				item: "naturesaura:sky_ingot"
 			}]
+			rewards: [
+				{
+					id: "215DEEF5EA25CD3B"
+					type: "item"
+					item: "naturesaura:sky_ingot"
+					count: 5
+				}
+				{
+					id: "4EC1A14C8044DEB7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_offeringtable}"
@@ -163,6 +308,14 @@
 				id: "4539A89E531777FC"
 				type: "item"
 				item: "naturesaura:offering_table"
+			}]
+			rewards: [{
+				id: "43DDCDC76473A361"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -183,6 +336,21 @@
 				type: "item"
 				item: "naturesaura:animal_spawner"
 			}]
+			rewards: [
+				{
+					id: "7953B963E823E8C6"
+					type: "item"
+					item: "minecraft:nether_star"
+				}
+				{
+					id: "3A66CCB7E4438746"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_aure}"
@@ -192,16 +360,25 @@
 			dependencies: ["78B42D8A1A8D2E7B"]
 			id: "1AA6FFD24A09B407"
 			tasks: [{
-				id: "16147989D74C0BAA"
-				type: "checkmark"
-				icon: {
-					id: "naturesaura:aura_trove"
-					Count: 1b
-					tag: {
-						aura: 1200000
-					}
-				}
+				id: "5A6A42999FB6D39D"
+				type: "item"
+				item: "emcworld:vis_conversion_core"
 			}]
+			rewards: [
+				{
+					id: "5143E65CC37BF42F"
+					type: "item"
+					item: "naturesaura:sky_ingot"
+				}
+				{
+					id: "0D93D666BF3BA435"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_eyeimproved}"
@@ -213,6 +390,14 @@
 				id: "256912D5C7E84A9C"
 				type: "item"
 				item: "naturesaura:eye_improved"
+			}]
+			rewards: [{
+				id: "6F3822EE6687AC75"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -228,6 +413,21 @@
 				type: "item"
 				item: "naturesaura:ancient_sapling"
 			}]
+			rewards: [
+				{
+					id: "4A9C386F82598DBF"
+					type: "item"
+					item: "minecraft:nether_star"
+				}
+				{
+					id: "4A254E13777DD281"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_purplecollector}"
@@ -245,29 +445,64 @@
 				type: "item"
 				item: "projectex:purple_collector"
 			}]
+			rewards: [
+				{
+					id: "617D496726F62327"
+					type: "item"
+					item: "minecraft:nether_star"
+				}
+				{
+					id: "6E90004A8E7FECAE"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_violetcollector}"
 			x: 6.0d
 			y: 12.0d
-			dependencies: [
-				"30B5476FFB43D2ED"
-				"2ED66118DCDE2663"
-				"1AA6FFD24A09B407"
-			]
+			dependencies: ["29ED613D22684793"]
+			hide: true
 			id: "131D06E6858EA93F"
 			tasks: [{
 				id: "4703E4CDD6AD30EE"
 				type: "item"
-				item: "projectex:violet_collector"
+				title: "{quest.emcworld.fifth_magic_violetcollector}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_five"
+					}
+				}
 			}]
-			rewards: [{
-				id: "1D1F5A3E82C61B11"
-				type: "custom"
-				title: "{quest.emcworld_stage_five}"
-				icon: "the_afterlight:workbench_of_ancients"
-				auto: "enabled"
-			}]
+			rewards: [
+				{
+					id: "1D1F5A3E82C61B11"
+					type: "custom"
+					title: "{quest.emcworld_stage_five}"
+					icon: "the_afterlight:workbench_of_ancients"
+					tags: ["stage_five"]
+					auto: "enabled"
+				}
+				{
+					id: "6DC38EF4D961799B"
+					type: "item"
+					item: "minecraft:nether_star"
+				}
+				{
+					id: "640B398C8F75689E"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 	]
 }

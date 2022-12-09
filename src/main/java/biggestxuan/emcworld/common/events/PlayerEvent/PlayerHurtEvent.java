@@ -143,7 +143,7 @@ public class PlayerHurtEvent {
                 }
             }
             event.setAmount(amount);
-            EMCWorld.LOGGER.info("Source"+source.toString()+",Amount"+amount);
+            //EMCWorld.LOGGER.info("Source"+source.toString()+",Amount"+amount);
         }
     }
 }

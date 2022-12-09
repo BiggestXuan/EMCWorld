@@ -19,6 +19,24 @@
 				type: "item"
 				item: "emcworld:emc_leaf"
 			}]
+			rewards: [
+				{
+					id: "7895293E33F5424C"
+					type: "item"
+					team_reward: true
+					item: "emcworld:emc_leaf"
+					count: 32
+					random_bonus: 16
+				}
+				{
+					id: "0AA73A59E113ED2B"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_pelletplutonium}"
@@ -32,6 +50,22 @@
 				type: "item"
 				item: "mekanism:pellet_plutonium"
 			}]
+			rewards: [
+				{
+					id: "54CC0D2C04FBE5F0"
+					type: "item"
+					item: "mekanism:pellet_plutonium"
+					count: 3
+				}
+				{
+					id: "12557D03A850DAD9"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_antiprotonivnucleosynthesizer}"
@@ -43,6 +77,14 @@
 				id: "792DF3CEFB87586E"
 				type: "item"
 				item: "mekanism:antiprotonic_nucleosynthesizer"
+			}]
+			rewards: [{
+				id: "5BEFCFEF906CBF2F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -72,6 +114,14 @@
 					item: "mekanism:supercharged_coil"
 				}
 			]
+			rewards: [{
+				id: "221B472148051155"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_pelletantimatter}"
@@ -84,6 +134,21 @@
 				type: "item"
 				item: "mekanism:pellet_antimatter"
 			}]
+			rewards: [
+				{
+					id: "0A71BF03B1AF4E65"
+					type: "item"
+					item: "mekanism:pellet_antimatter"
+				}
+				{
+					id: "0AC18C93B1B5FA65"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_flamethrower}"
@@ -97,6 +162,14 @@
 				type: "item"
 				item: "mekanism:flamethrower"
 			}]
+			rewards: [{
+				id: "10AD056CCD0A7C8F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_elitecomponent}"
@@ -108,6 +181,14 @@
 				id: "3F2F3392CA8755A7"
 				type: "item"
 				item: "extendedcrafting:elite_component"
+			}]
+			rewards: [{
+				id: "2F811EF3D93B2724"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -121,6 +202,14 @@
 				type: "item"
 				item: "extendedcrafting:elite_catalyst"
 			}]
+			rewards: [{
+				id: "277D27266AD60CC6"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_elitetable}"
@@ -132,6 +221,14 @@
 				id: "050D0FB6D613466A"
 				type: "item"
 				item: "extendedcrafting:elite_table"
+			}]
+			rewards: [{
+				id: "699E94BEE785EE97"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
 			}]
 		}
 	]

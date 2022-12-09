@@ -151,7 +151,10 @@
 			icon: { id: "mekanism:thermal_evaporation_controller", Count: 2b }
 			x: 0.0d
 			y: 10.5d
-			description: ["{quest.emcworld.fourth_tech_preparlithium_dec}"]
+			description: [
+				"{quest.emcworld.fourth_tech_preparlithium_desc}"
+				""
+			]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
 			id: "0BFCBC26DF165C6C"

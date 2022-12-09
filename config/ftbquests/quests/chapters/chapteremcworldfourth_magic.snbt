@@ -58,6 +58,22 @@
 				type: "item"
 				item: "astralsorcery:wand"
 			}]
+			rewards: [
+				{
+					id: "1C8837CE7DC1AF34"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "5511136A4670CCCF"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_linkingtool}"
@@ -71,6 +87,22 @@
 				type: "item"
 				item: "astralsorcery:linking_tool"
 			}]
+			rewards: [
+				{
+					id: "748DD26C109EEDCB"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 8
+				}
+				{
+					id: "12D65A90973DA931"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_rockcrystalore}"
@@ -89,6 +121,22 @@
 				observe_type: 0
 				to_observe: "astralsorcery:rock_crystal_ore"
 			}]
+			rewards: [
+				{
+					id: "43A90965AA309373"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "39CBE0D75EF32292"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_well}"
@@ -103,6 +151,22 @@
 				type: "item"
 				item: "astralsorcery:well"
 			}]
+			rewards: [
+				{
+					id: "6AC6EB7FE7700AE0"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "4942B094B30F5EA2"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_starlightliquid}"
@@ -116,6 +180,22 @@
 				type: "item"
 				item: "astralsorcery:liquid_starlight_bucket"
 			}]
+			rewards: [
+				{
+					id: "68CD1A3FB1698A90"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "2567182B645C2288"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altardiscovery}"
@@ -129,6 +209,22 @@
 				type: "item"
 				item: "astralsorcery:altar_discovery"
 			}]
+			rewards: [
+				{
+					id: "4D4793385CD22869"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 8
+				}
+				{
+					id: "70F673C20FEF3045"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_starmetalore}"
@@ -142,6 +238,22 @@
 				type: "item"
 				item: "astralsorcery:starmetal_ore"
 			}]
+			rewards: [
+				{
+					id: "088ACF888E8B61C2"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "44253AD3D92BC4E3"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_stardust}"
@@ -158,6 +270,22 @@
 				type: "item"
 				item: "astralsorcery:stardust"
 			}]
+			rewards: [
+				{
+					id: "17F625FF730E440F"
+					type: "item"
+					item: "astralsorcery:stardust"
+					count: 2
+				}
+				{
+					id: "7CF017ECEAFA7EB6"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_starmetal}"
@@ -171,6 +299,22 @@
 				type: "item"
 				item: "astralsorcery:starmetal_ingot"
 			}]
+			rewards: [
+				{
+					id: "2CCD40642791299F"
+					type: "item"
+					item: "astralsorcery:starmetal_ingot"
+					count: 2
+				}
+				{
+					id: "2525D6388B794695"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_infusedwoodcolumn}"
@@ -184,6 +328,22 @@
 				type: "item"
 				item: "astralsorcery:infused_wood_column"
 			}]
+			rewards: [
+				{
+					id: "336CF2B6F64D38FD"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 8
+				}
+				{
+					id: "0C7B9AA7DE072011"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altarattunement}"
@@ -204,6 +364,22 @@
 				observe_type: 0
 				to_observe: "astralsorcery:altar_attunement"
 			}]
+			rewards: [
+				{
+					id: "2306854C1EBFFCD0"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 8
+				}
+				{
+					id: "139919DE1C8FE624"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altarconstellation}"
@@ -223,6 +399,14 @@
 				observe_type: 0
 				to_observe: "astralsorcery:altar_constellation"
 			}]
+			rewards: [{
+				id: "6DB3A6C758EEA06A"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_handtelescope}"
@@ -236,6 +420,22 @@
 				type: "item"
 				item: "astralsorcery:hand_telescope"
 			}]
+			rewards: [
+				{
+					id: "168BBB2CEBA9BB07"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "0CB56547A3320A88"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_telescope}"
@@ -249,6 +449,22 @@
 				type: "item"
 				item: "astralsorcery:telescope"
 			}]
+			rewards: [
+				{
+					id: "0408F1A68538205F"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "1FB38610E7368FB1"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_attunementaltar}"
@@ -262,6 +478,22 @@
 				type: "item"
 				item: "astralsorcery:attunement_altar"
 			}]
+			rewards: [
+				{
+					id: "178C2860FE8E8884"
+					type: "item"
+					item: "astralsorcery:resonating_gem"
+					count: 4
+				}
+				{
+					id: "6FEB412F8EDB13B6"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_infuser}"
@@ -275,6 +507,22 @@
 				type: "item"
 				item: "astralsorcery:infuser"
 			}]
+			rewards: [
+				{
+					id: "019A7F885C3B83DD"
+					type: "item"
+					item: "astralsorcery:resonating_gem"
+					count: 4
+				}
+				{
+					id: "6E06F964A6A4D264"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altarradiance}"
@@ -285,6 +533,7 @@
 				"38706A29C98E007F"
 				"257E4A6919536F4C"
 			]
+			dependency_requirement: "one_completed"
 			id: "64162D6185D1A516"
 			tasks: [{
 				id: "78E5643BB03F72FA"
@@ -294,6 +543,28 @@
 				observe_type: 0
 				to_observe: "astralsorcery:altar_radiance"
 			}]
+			rewards: [
+				{
+					id: "12BCED4834E8EA11"
+					type: "item"
+					item: "astralsorcery:resonating_gem"
+					count: 16
+				}
+				{
+					id: "464B7278AA08857D"
+					type: "item"
+					item: "astralsorcery:starmetal_ingot"
+					count: 16
+				}
+				{
+					id: "7B871838F28967A0"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_refractiontable}"
@@ -306,6 +577,14 @@
 				id: "355B9D16E3FC931A"
 				type: "item"
 				item: "astralsorcery:refraction_table"
+			}]
+			rewards: [{
+				id: "0C5325D2E64B4462"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -320,6 +599,22 @@
 				type: "item"
 				item: "astralsorcery:observatory"
 			}]
+			rewards: [
+				{
+					id: "134C96EBAB291C49"
+					type: "item"
+					item: "astralsorcery:illumination_powder"
+					count: 8
+				}
+				{
+					id: "2B1034A97D0B4077"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_chalice}"
@@ -333,6 +628,22 @@
 				type: "item"
 				item: "astralsorcery:chalice"
 			}]
+			rewards: [
+				{
+					id: "70A54250FDF54992"
+					type: "item"
+					item: "astralsorcery:resonating_gem"
+					count: 8
+				}
+				{
+					id: "1A5D1BFAAA56BBC7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_magentacollector}"
@@ -347,27 +658,66 @@
 				type: "item"
 				item: "projectex:magenta_collector"
 			}]
+			rewards: [
+				{
+					id: "38C3BB0A33F9AD72"
+					type: "item"
+					item: "emcworld:scroll_tulye"
+					count: 2
+				}
+				{
+					id: "3E7E00C4CE29517D"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_pinkcollector}"
 			x: 23.5d
 			y: 15.0d
 			description: ["{quest.emcworld.fourth_magic_pinkcollector_desc}"]
-			dependencies: ["10A9F07DBBB0E10D"]
+			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
 			id: "29ED613D22684793"
 			tasks: [{
 				id: "3FCC74E642B37F6B"
 				type: "item"
-				item: "projectex:pink_collector"
+				title: "{quest.emcworld.fourth_magic_pinkcollector}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_four"
+					}
+				}
 			}]
-			rewards: [{
-				id: "01C89967AA16FF11"
-				type: "custom"
-				title: "{quest.emcworld_stage_four}"
-				icon: "mekanism:pellet_antimatter"
-				tags: ["stage_four"]
-				auto: "enabled"
-			}]
+			rewards: [
+				{
+					id: "01C89967AA16FF11"
+					type: "custom"
+					title: "{quest.emcworld_stage_four}"
+					icon: "mekanism:pellet_antimatter"
+					tags: ["stage_four"]
+					auto: "enabled"
+				}
+				{
+					id: "3A0C7B392113BC27"
+					type: "item"
+					item: "emcworld:scroll_tulye"
+				}
+				{
+					id: "2F0DC479806F1AE7"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_marbleruned}"
@@ -382,6 +732,22 @@
 				type: "item"
 				item: "astralsorcery:marble_runed"
 			}]
+			rewards: [
+				{
+					id: "2266396697F80848"
+					type: "item"
+					item: "astralsorcery:aquamarine"
+					count: 4
+				}
+				{
+					id: "7B848322503195CB"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			x: 18.0d
@@ -396,10 +762,26 @@
 					id: "itemfilters:tag"
 					Count: 1b
 					tag: {
-						value: "emcworld:emc_god_weapon"
+						value: "emcworld:god_weapon"
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "673B9B346E476BA9"
+					type: "item"
+					item: "emcworld:scroll_white"
+					count: 16
+				}
+				{
+					id: "4CACA78600713056"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_weapon_upgrade}"
@@ -416,6 +798,22 @@
 				type: "item"
 				item: "emcworld:weapon_upgrade_core"
 			}]
+			rewards: [
+				{
+					id: "1D23CDB655DC3307"
+					type: "item"
+					item: "emcworld:scroll_green"
+					count: 8
+				}
+				{
+					id: "7DCEDCCF4E962F6A"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			x: 16.0d
@@ -466,6 +864,21 @@
 							Damage: 0
 						}
 					}
+				}
+			]
+			rewards: [
+				{
+					id: "7AA5A3C3EBDAF154"
+					type: "item"
+					item: "emcworld:scroll_blue"
+				}
+				{
+					id: "71DA94F669108538"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
 				}
 			]
 		}

@@ -20,6 +20,14 @@
 				type: "item"
 				item: "undergarden:catalyst"
 			}]
+			rewards: [{
+				id: "0B8AB98F703D3078"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_gointoundergarden}"
@@ -31,6 +39,14 @@
 				id: "582F624A796CBA28"
 				type: "dimension"
 				dimension: "undergarden:undergarden"
+			}]
+			rewards: [{
+				id: "51FE40E4C7C75260"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -44,6 +60,14 @@
 				type: "advancement"
 				advancement: "undergarden:undergarden/catacombs"
 				criterion: ""
+			}]
+			rewards: [{
+				id: "7C736F9947FD8ABF"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -67,6 +91,34 @@
 					id: "0BCD6A116709A1EC"
 					type: "item"
 					item: "undergarden:regalium_ingot"
+				}
+			]
+			rewards: [
+				{
+					id: "51616BCB63FE583B"
+					type: "item"
+					item: "undergarden:cloggrum_ingot"
+					count: 4
+				}
+				{
+					id: "198FBAAA34CB2EF5"
+					type: "item"
+					item: "undergarden:utherium_ingot"
+					count: 4
+				}
+				{
+					id: "55EF99B8AE6701E8"
+					type: "item"
+					item: "undergarden:regalium_ingot"
+					count: 4
+				}
+				{
+					id: "3CAE0DB457871FAC"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
 				}
 			]
 		}
@@ -93,6 +145,14 @@
 				entity: "undergarden:forgotten_guardian"
 				value: 1L
 			}]
+			rewards: [{
+				id: "051219AA45579062"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_forgotteningot}"
@@ -105,6 +165,22 @@
 				type: "item"
 				item: "undergarden:forgotten_ingot"
 			}]
+			rewards: [
+				{
+					id: "3172F157DCBB694D"
+					type: "item"
+					item: "undergarden:forgotten_ingot"
+					count: 4
+				}
+				{
+					id: "65276B520A03B7BA"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_kill}"
@@ -117,6 +193,14 @@
 				type: "advancement"
 				advancement: "undergarden:undergarden/slay_all_rotspawn"
 				criterion: ""
+			}]
+			rewards: [{
+				id: "30D6EF0436592745"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -132,6 +216,14 @@
 				timer: 0L
 				observe_type: 5
 				to_observe: "undergarden:stoneborn"
+			}]
+			rewards: [{
+				id: "7798B0380DCF5CED"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -155,6 +247,14 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "0C3862A0979D0087"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_masticator}"
@@ -175,6 +275,14 @@
 				entity: "undergarden:masticator"
 				value: 1L
 			}]
+			rewards: [{
+				id: "68781A82D2240EC3"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_kuaweidushiwu}"
@@ -187,6 +295,14 @@
 				type: "advancement"
 				advancement: "undergarden:undergarden/trade_with_stoneborn"
 				criterion: ""
+			}]
+			rewards: [{
+				id: "67D05B328700A4C6"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 	]

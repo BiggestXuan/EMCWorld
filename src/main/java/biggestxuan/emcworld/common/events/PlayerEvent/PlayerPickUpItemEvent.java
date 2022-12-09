@@ -11,12 +11,9 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.client.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
-import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.darkhax.itemstages.Restriction;
 import net.darkhax.itemstages.RestrictionManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.crash.CrashReport;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -31,6 +28,7 @@ public class PlayerPickUpItemEvent {
         ItemStack item = event.getItem().getItem();
         if (player.getCommandSenderWorld().isClientSide) return;
         int amt = item.getCount() * (64 / item.getMaxStackSize());
+        if(item.getMaxStackSize() >= 65) amt *= 1145141919;
         double rate = 1d;
         if (item.getItem() instanceof ICostEMCItem) {
             rate = ((ICostEMCItem) item.getItem()).getEMCCostRate();
@@ -39,6 +37,7 @@ public class PlayerPickUpItemEvent {
         if (restriction != null && restriction.shouldPreventPickup()) {
             return;
         }
+        if(full(player,item)) return;
         long costEMC = MathUtils.doubleToLong(amt * rate * MathUtils.difficultyLoss() * MathUtils.getPickUpItemBaseCost(player));
         if (costEMC == 0) return;
         if (EMCHelper.getPlayerEMC(player) < costEMC) {
@@ -47,7 +46,17 @@ public class PlayerPickUpItemEvent {
         } else {
             EMCHelper.modifyPlayerEMC(player, Math.negateExact(costEMC), true);
         }
-        //DEBUG:
-        //Minecraft.crash(new CrashReport("DEBUG_CRASH",new EMCWorldCommonException()));
+    }
+
+    private static boolean full(PlayerEntity player,ItemStack stack){
+        for(ItemStack s : player.inventory.items){
+            if(s.equals(ItemStack.EMPTY)){
+                return false;
+            }
+            if(s.getItem().equals(stack.getItem()) && s.getCount() + stack.getCount() <= s.getMaxStackSize()){
+                return false;
+            }
+        }
+        return true;
     }
 }

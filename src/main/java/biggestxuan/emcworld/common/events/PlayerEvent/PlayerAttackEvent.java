@@ -26,6 +26,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -39,6 +40,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerAttackEvent {
@@ -149,6 +151,25 @@ public class PlayerAttackEvent {
                 }
             }
             event.setAmount(damage);
+        }
+        if(source.getDirectEntity() instanceof TameableEntity){
+            TameableEntity entity = (TameableEntity) source.getDirectEntity();
+            LivingEntity owner = entity.getOwner();
+            if(owner == null) return;
+            if(owner instanceof PlayerEntity){
+                PlayerEntity player = (PlayerEntity) owner;
+                float damage = event.getAmount();
+                long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
+                if (cost != 0){
+                    if(EMCHelper.getPlayerEMC(player)>cost){
+                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
+                    }
+                    else{
+                        event.setCanceled(true);
+                        Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
+                    }
+                }
+            }
         }
     }
 

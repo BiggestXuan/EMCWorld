@@ -335,7 +335,7 @@ public class PlayerTickEvent {
             }
             if(ConfigManager.FREE_MODE.get()){
                 for(MAP m : MAP.values()){
-                    if(stack.getItem().getRegistryName().equals(m.getItem()) && !GameStageManager.hasStage(player,m.stage)){
+                    if((stack.getItem().getRegistryName().equals(m.getItem()[0]) || stack.getItem().getRegistryName().equals(m.getItem()[1])) && !GameStageManager.hasStage(player,m.stage)){
                         GameStageManager.addStage(player, m.getStage());
                     }
                 }
@@ -447,8 +447,11 @@ public class PlayerTickEvent {
             this.stage = stage;
         }
 
-        public ResourceLocation getItem() {
-            return new ResourceLocation("projectex",item.name+"_collector");
+        public ResourceLocation[] getItem() {
+            return new ResourceLocation[]{
+                new ResourceLocation("projectex",item.name+"_collector"),
+                    new ResourceLocation("projectex",item.name+"_relay"),
+            };
         }
 
         public String getStage() {

@@ -21,6 +21,22 @@
 				type: "item"
 				item: "rats:filth"
 			}]
+			rewards: [
+				{
+					id: "08F5751DC40ED65C"
+					type: "item"
+					item: "rats:cheese"
+					count: 16
+				}
+				{
+					id: "45381A6058119A93"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_filthcorruption}"
@@ -34,6 +50,22 @@
 				type: "item"
 				item: "rats:filth_corruption"
 			}]
+			rewards: [
+				{
+					id: "507FC8896E8A5ABC"
+					type: "item"
+					item: "rats:cheese"
+					count: 16
+				}
+				{
+					id: "7B156F9726222A20"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_tangledrattails}"
@@ -46,6 +78,14 @@
 				id: "5710D0C86775051A"
 				type: "item"
 				item: "rats:tangled_rat_tails"
+			}]
+			rewards: [{
+				id: "289CFB0380D4DA5B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -61,6 +101,22 @@
 				entity: "rats:rat_king"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "765CECDC1019F19A"
+					type: "item"
+					item: "rats:cheese"
+					count: 16
+				}
+				{
+					id: "7C61FF56B486014D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_chunkycheesetoken}"
@@ -77,6 +133,21 @@
 				type: "item"
 				item: "rats:chunky_cheese_token"
 			}]
+			rewards: [
+				{
+					id: "37309DFE7F41D4E4"
+					type: "item"
+					item: "rats:plague_stew"
+				}
+				{
+					id: "293DDF1884B88BE3"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_gointoratlantis_desc}"
@@ -93,6 +164,22 @@
 				type: "dimension"
 				dimension: "rats:ratlantis"
 			}]
+			rewards: [
+				{
+					id: "679DE451FAC8F003"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+					count: 4
+				}
+				{
+					id: "05F034E759B77349"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_plaguetome}"
@@ -107,6 +194,21 @@
 				type: "item"
 				item: "rats:plague_tome"
 			}]
+			rewards: [
+				{
+					id: "74072D0A420E0106"
+					type: "item"
+					item: "rats:plague_doctorate"
+				}
+				{
+					id: "1A8E0278F1FBCDE0"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_plaguescythe}"
@@ -128,6 +230,21 @@
 				entity: "rats:black_death"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "4C241202EFE8C41A"
+					type: "item"
+					item: "rats:plague_stew"
+				}
+				{
+					id: "3026D474B3C83587"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_neoratlantean}"
@@ -143,6 +260,22 @@
 				entity: "rats:neo_ratlantean"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "37FA5715AF639AF3"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+					count: 2
+				}
+				{
+					id: "430B51490F2810C0"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_dutchrat}"
@@ -158,6 +291,22 @@
 				entity: "rats:ratlantean_automaton"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "1A193F9BA80B5014"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+					count: 2
+				}
+				{
+					id: "59B8D65F332FB065"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_ratlanteanautomaton}"
@@ -168,11 +317,26 @@
 			dependencies: ["12B95F9789315A24"]
 			id: "3C945FA7C482E255"
 			tasks: [{
-				id: "59F54DFE188E38C2"
-				type: "kill"
-				entity: "rats:dutchrat"
-				value: 1L
+				id: "5EE7DD1B581A2F4A"
+				type: "item"
+				item: "rats:dutchrat_wheel"
 			}]
+			rewards: [
+				{
+					id: "3E34DA2019A291CB"
+					type: "item"
+					item: "rats:ghost_pirat_ectoplasm"
+					count: 4
+				}
+				{
+					id: "015526A5F581A6B6"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_vialofsentience}"
@@ -187,6 +351,22 @@
 				type: "item"
 				item: "rats:vial_of_sentience"
 			}]
+			rewards: [
+				{
+					id: "0D2AC194D70A4753"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+					count: 2
+				}
+				{
+					id: "3900B36AF3B45EB1"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_dutchratbell}"
@@ -201,6 +381,21 @@
 				type: "item"
 				item: "rats:dutchrat_bell"
 			}]
+			rewards: [
+				{
+					id: "72B1CEADB80026BC"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+				}
+				{
+					id: "374EBECEA0A5B834"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_marbledcheeseratheadandcore}"
@@ -223,6 +418,22 @@
 					item: "rats:marbled_cheese_golem_core"
 				}
 			]
+			rewards: [
+				{
+					id: "4271DB22AC88BAEA"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+					count: 2
+				}
+				{
+					id: "5FE45B1DE53800DD"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_idolofratlantis}"
@@ -243,6 +454,23 @@
 				type: "item"
 				item: "rats:idol_of_ratlantis"
 			}]
+			rewards: [
+				{
+					id: "32182A25CC235DC5"
+					type: "item"
+					item: "rats:oratchalcum_ingot"
+					count: 8
+					random_bonus: 4
+				}
+				{
+					id: "6E783DDFFB16BFA9"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_ratupgradearcheologist}"
@@ -255,6 +483,14 @@
 				id: "35CC4E9D1A0DCEB1"
 				type: "item"
 				item: "rats:rat_upgrade_archeologist"
+			}]
+			rewards: [{
+				id: "06665A553D7ADC8B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 		{
@@ -275,6 +511,14 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "3EDBAB4813966FF8"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
 		}
 	]

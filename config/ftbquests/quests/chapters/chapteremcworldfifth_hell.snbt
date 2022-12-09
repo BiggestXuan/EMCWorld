@@ -34,6 +34,22 @@
 				type: "dimension"
 				dimension: "hem:blueleaf"
 			}]
+			rewards: [
+				{
+					id: "4A3077551DFA194E"
+					type: "item"
+					item: "hem:copparite"
+					count: 4
+				}
+				{
+					id: "1C84576BD419BEA0"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_transporter}"
@@ -70,6 +86,22 @@
 					item: "hem:steam_engine"
 				}
 			]
+			rewards: [
+				{
+					id: "73DA6B1B2DFF2A48"
+					type: "item"
+					item: "hem:copparite"
+					count: 4
+				}
+				{
+					id: "23B1AC03AEE72E58"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_copparite}"
@@ -83,6 +115,22 @@
 				type: "item"
 				item: "hem:copparite"
 			}]
+			rewards: [
+				{
+					id: "027A41554431E210"
+					type: "item"
+					item: "hem:copparite"
+					count: 2
+				}
+				{
+					id: "27AFAA6612FE26CE"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_copper}"
@@ -98,6 +146,22 @@
 				type: "item"
 				item: "hem:rose_copper_ingot"
 			}]
+			rewards: [
+				{
+					id: "5E5F99EC15A66ACF"
+					type: "item"
+					item: "hem:bronze_ingot"
+					count: 3
+				}
+				{
+					id: "4809EC1202C19531"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_buleleafleaves}"
@@ -111,6 +175,22 @@
 				type: "item"
 				item: "hem:blueleaf_leaves"
 			}]
+			rewards: [
+				{
+					id: "611BCD8DDD8557EE"
+					type: "item"
+					item: "hem:copparite"
+					count: 2
+				}
+				{
+					id: "5CCC0D5F069DDF86"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_killmilitarybot}"
@@ -132,12 +212,31 @@
 				entity: "hem:militarybot"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "29B447F29BF24CD4"
+					type: "item"
+					item: "hem:copparite"
+					count: 4
+				}
+				{
+					id: "32661BB60AB04058"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+					auto: "no_toast"
+				}
+			]
 		}
 		{
-			title: "{quest.emcworld.fifth_hals_killancien}"
+			title: "{quest.emcworld.fifth_hals_killancient}"
 			x: -6.0d
 			y: -4.5d
-			description: ["{quest.emcworld.fifth_hals_killancien_desc}"]
+			description: [
+				"{quest.emcworld.fifth_hals_killancient_desc}"
+				""
+			]
 			dependencies: ["52720BB94D721E6A"]
 			id: "31824107B9D4670B"
 			tasks: [{
@@ -153,6 +252,22 @@
 				entity: "hem:ancient_one"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "775FB895CDA76C69"
+					type: "item"
+					item: "hem:copparite"
+					count: 4
+				}
+				{
+					id: "51AEECC483DCC0B8"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
 		}
 	]
 }

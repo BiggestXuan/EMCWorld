@@ -785,7 +785,7 @@
   "skills.emcworld.p3_skill70": "[被动] 再获得 %d 固定魔法伤害加成",
   "skills.emcworld.p3_skill80_addon1": "[主动] 消耗一个现实扭曲增幅仪，对 %d 格内所有非玩家实体造成其最大生命值 %d 的质能真实伤害，冷却时间 %d 秒",
   "skills.emcworld.p3_skill90_addon1": "[被动] 攻击速度提高 %d ",
-  "skills.emcworld.p3_skill100_addon1": "[被动] 每次攻击的时候额外发射一条射线",
+  "skills.emcworld.p3_skill100_addon1": "[被动] 使用法杖不会有冷却时间",
   "skills.emcworld.p3_skill80_addon2": "[主动] 消耗一个现实扭曲增幅仪，周围 %d 格内非玩家实体获得缓慢%d的效果，冷却 %d 秒",
   "skills.emcworld.p3_skill90_addon2": "[被动] 减少法杖EMC消耗 %d",
   "skills.emcworld.p3_skill100_addon2": "[被动] 免疫所有魔法伤害",
@@ -878,6 +878,7 @@
   "reward.emcworld.sea_lantern":"解锁转换物品 - 海晶灯",
   "quest.emcworld.gaia_pylon":"应对大地守护者！",
   "quest.emcworld.gaia_ingot":"灵魂之锭",
+  "quest.emcworld.stage_two":"更高级生产EMC的方式",
   "quest.emcworld.glowstone":"下界特产属于是",
   "quest.emcworld.aether_medal":"天境之王",
   "quest.emcworld.cold_parachute":"冷冷的云朵",
@@ -1439,8 +1440,6 @@
   "block.hem.bronze_ore": "纯铜矿",
   "item.hem.bronze_ingot": "纯铜锭",
   "item.hem.copparite": "硫酸铜锭",
-
-  "filled_map.dungenons_arise:thornborn_towers": "刺生玫瑰高塔",
 
   "item.bloodmagic.ingot_hellforged": "恶魔合金锭",
   "item.bloodmagic.sand_hellforged": "恶魔合金砂",

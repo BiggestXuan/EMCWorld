@@ -16,10 +16,10 @@ public function main() as void{
     modifyTERecipe();
     fixTEAlloyRecipe();
     addEMCWorldOresTag();
+    setEMC();
     emcworldRecipe();
     modifyHemRecipe();
     addEmeraldShardRecipe();
-    setEMC();
     addAlloyRecipe();
     //modifyAbyssRecipe();
     modifyNatureAuraRecipe();

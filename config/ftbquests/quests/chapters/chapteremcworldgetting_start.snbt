@@ -216,7 +216,7 @@
 			]
 		}
 		{
-			x: 9.0d
+			x: 12.0d
 			y: -2.5d
 			description: ["{quest.emcworld.mk1_desc}"]
 			dependencies: [
@@ -228,7 +228,13 @@
 				id: "3014065277E4E4C5"
 				type: "item"
 				title: "{quest.emcworld.mk1}"
-				item: "projectex:basic_collector"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_one"
+					}
+				}
 				only_from_crafting: true
 			}]
 			rewards: [
@@ -283,33 +289,6 @@
 					title: "{reward.emcworld.easy}"
 					icon: "emcworld:small_emc_gem"
 					tags: ["easy"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
-			title: "{quest.emcworld.relay_mk1}"
-			x: 12.0d
-			y: -2.5d
-			dependencies: ["74E0535812EC7EDC"]
-			id: "77481942076D206F"
-			tasks: [{
-				id: "0B0C9DE683EE05AC"
-				type: "item"
-				item: "projectex:basic_relay"
-			}]
-			rewards: [
-				{
-					id: "1842C23409D95429"
-					type: "item"
-					item: "projecte:dark_matter"
-				}
-				{
-					id: "7319AD9D15060706"
-					type: "custom"
-					title: "{reward.emcworld.normal}"
-					icon: "emcworld:big_emc_gem"
-					tags: ["normal"]
 					auto: "no_toast"
 				}
 			]

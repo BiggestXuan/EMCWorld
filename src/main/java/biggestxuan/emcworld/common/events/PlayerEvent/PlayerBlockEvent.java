@@ -31,7 +31,7 @@ public class PlayerBlockEvent {
     public static void playerWakeUpEvent(PlayerWakeUpEvent event){
         PlayerEntity player = event.getPlayer();
         if(player.getCommandSenderWorld().isClientSide) return;
-        long baseEMC = MathUtils.doubleToLong(MathUtils.getWakeUpBaseCost(player) * MathUtils.difficultyLoss());
+        long baseEMC = MathUtils.doubleToLong(MathUtils.getWakeUpBaseCost(player) * MathUtils.difficultyLoss() * 5);
         if(baseEMC == 0) return;
         long costEMC = Math.min(baseEMC, EMCHelper.getPlayerEMC(player));
         EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);

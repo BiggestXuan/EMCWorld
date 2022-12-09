@@ -9,7 +9,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.entity.MCEntityType;
 
 public function getRecipeName(item as ItemStack) as string{
-    return item.asIItemStack().registryName.getPath()+"_processing";
+    return item.asIItemStack().registryName.getPath()+"_crafting";
 }
 
 public function name(item as IItemStack) as string{
