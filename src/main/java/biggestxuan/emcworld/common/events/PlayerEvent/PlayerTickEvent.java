@@ -151,7 +151,7 @@ public class PlayerTickEvent {
             if(attackSpeed < 1){
                 d = 0.8 * attackSpeed - 0.8;
             }
-            else d = 4 - 4 * attackSpeed;
+            else d = 4 * attackSpeed - 4;
             attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,d,AttributeModifier.Operation.ADDITION));
         }
         double extraReachDistance = 0;

@@ -8,8 +8,10 @@ package biggestxuan.emcworld.common.impl;
 
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWAtmTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -57,5 +59,10 @@ public class EMCWorldAPI implements biggestxuan.emcworld.api.EMCWorldAPI {
     @Override
     public IWarHammerTier getWarHammerTier(String name){
         return WarHammerTier.valueOf(name.toUpperCase());
+    }
+
+    @Override
+    public IDaggerTier getDaggerTier(String name){
+        return DaggerTier.valueOf(name.toUpperCase());
     }
 }

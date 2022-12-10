@@ -9,6 +9,7 @@ package biggestxuan.emcworld.api;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
 import net.minecraft.entity.player.PlayerEntity;
@@ -59,6 +60,10 @@ public interface EMCWorldAPI{
 
     default IStaffTier getStaffTier(String name){
         return DUMMY_TIER;
+    }
+
+    default IDaggerTier getDaggerTier(String name){
+        return null;
     }
 
     default IWarHammerTier getWarHammerTier(String name){

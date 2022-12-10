@@ -6,10 +6,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
  *  2022/10/20
  */
 
-import biggestxuan.emcworld.api.item.ISecondEMCItem;
-import biggestxuan.emcworld.api.item.IEMCRepairableItem;
-import biggestxuan.emcworld.api.item.ICostEMCItem;
-import biggestxuan.emcworld.api.item.IPlayerDifficultyItem;
+import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import net.minecraft.item.IItemTier;
@@ -17,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.crafting.Ingredient;
 
-public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem {
+public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem {
     public InfinitySword() {
         super(new IItemTier() {
             @Override

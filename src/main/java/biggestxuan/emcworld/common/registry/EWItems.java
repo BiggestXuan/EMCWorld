@@ -15,6 +15,9 @@ import biggestxuan.emcworld.common.items.Curios.StoredTotem;
 import biggestxuan.emcworld.common.items.Equipment.Armor.fireRedArmor;
 import biggestxuan.emcworld.common.items.Equipment.Armor.guardianArmor;
 import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.NightLight;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.RedGreenDagger;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.*;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.LuckyItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Other.HamBat;
@@ -139,6 +142,8 @@ public class EWItems {
     public static final RegistryObject<Item> ATM_SWORD = ITEMS.register("atm_sword",AtmSword::new);
     public static final RegistryObject<Item> INFINITY_SWORD = ITEMS.register("infinity_sword", InfinitySword::new);
     public static final RegistryObject<Item> CREATION = ITEMS.register("creation", Creation::new);
+    public static final RegistryObject<Item> NIGHT_LIGHT = ITEMS.register("night_light", NightLight::new);
+    public static final RegistryObject<Item> RED_GREEN_DAGGER = ITEMS.register("red_green_dagger", RedGreenDagger::new);
     public static final RegistryObject<Item> UNIVERSAL_BALL = ITEMS.register("universal_ball",() -> new FinalItem(1));
     public static final RegistryObject<Item> EMC_CORE = ITEMS.register("emc_core",() -> new FinalItem(2));
     public static final RegistryObject<Item> WOODEN_INGOT = ITEMS.register("wooden_ingot",() -> new FinalItem(2));
@@ -171,6 +176,13 @@ public class EWItems {
     public static final RegistryObject<Item> GOLDEN_WARHAMMER = ITEMS.register("golden_warhammer",() -> new WarHammerItem(api.getWarHammerTier("golden")));
     public static final RegistryObject<Item> DIAMOND_WARHAMMER = ITEMS.register("diamond_warhammer",() -> new WarHammerItem(api.getWarHammerTier("diamond")));
     public static final RegistryObject<Item> NETHERITE_WARHAMMER = ITEMS.register("netherite_warhammer",() -> new WarHammerItem(api.getWarHammerTier("netherite")));
+
+    public static final RegistryObject<Item> WOODEN_DAGGER = ITEMS.register("wooden_dagger",() -> new DaggerItem(api.getDaggerTier("wooden")));
+    public static final RegistryObject<Item> STONE_DAGGER = ITEMS.register("stone_dagger",() -> new DaggerItem(api.getDaggerTier("stone")));
+    public static final RegistryObject<Item> IRON_DAGGER = ITEMS.register("iron_dagger",() -> new DaggerItem(api.getDaggerTier("iron")));
+    public static final RegistryObject<Item> GOLDEN_DAGGER = ITEMS.register("golden_dagger",() -> new DaggerItem(api.getDaggerTier("golden")));
+    public static final RegistryObject<Item> DIAMOND_DAGGER = ITEMS.register("diamond_dagger",() -> new DaggerItem(api.getDaggerTier("diamond")));
+    public static final RegistryObject<Item> NETHERITE_DAGGER = ITEMS.register("netherite_dagger",() -> new DaggerItem(api.getDaggerTier("netherite")));
 
     public static final RegistryObject<Item> EMC_FLOWER = registryBlock("emc_flower",EWBlocks.EMC_FLOWER);
 
@@ -374,6 +386,43 @@ public class EWItems {
     public static final RegistryObject<Item> DUST_TITANIUM= ITEMS.register("dust_titanium",EWOresItem::new);
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",EWOresItem::new);
     public static final RegistryObject<Item> NIOBIUM_INGOT = ITEMS.register("niobium_ingot",EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_RUPEE = ITEMS.register("clump_rupee", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_RUPEE = ITEMS.register("crystal_rupee", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_RUPEE = ITEMS.register("dirty_dust_rupee", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_RUPEE = ITEMS.register("dust_rupee", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_RUPEE = ITEMS.register("shard_rupee", EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_ARLEMITE = ITEMS.register("clump_arlemite", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_ARLEMITE = ITEMS.register("crystal_arlemite", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_ARLEMITE = ITEMS.register("dirty_dust_arlemite", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_ARLEMITE = ITEMS.register("dust_arlemite", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_ARLEMITE = ITEMS.register("shard_arlemite", EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_REALMITE = ITEMS.register("clump_realmite", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_REALMITE = ITEMS.register("crystal_realmite", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_REALMITE = ITEMS.register("dirty_dust_realmite", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_REALMITE = ITEMS.register("dust_realmite", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_REALMITE = ITEMS.register("shard_realmite", EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_TUNGSTEN = ITEMS.register("clump_tungsten", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_TUNGSTEN = ITEMS.register("crystal_tungsten", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_TUNGSTEN = ITEMS.register("dirty_dust_tungsten", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_TUNGSTEN = ITEMS.register("dust_tungsten", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_TUNGSTEN = ITEMS.register("shard_tungsten", EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_TORRIDITE = ITEMS.register("clump_torridite", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_TORRIDITE = ITEMS.register("crystal_torridite", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_TORRIDITE = ITEMS.register("dirty_dust_torridite", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_TORRIDITE = ITEMS.register("dust_torridite", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_TORRIDITE = ITEMS.register("shard_torridite", EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_BLOODGEM = ITEMS.register("clump_bloodgem", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_BLOODGEM = ITEMS.register("crystal_bloodgem", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_BLOODGEM = ITEMS.register("dirty_dust_bloodgem", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_BLOODGEM = ITEMS.register("dust_bloodgem", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_BLOODGEM = ITEMS.register("shard_bloodgem", EWOresItem::new);
+
     public static final RegistryObject<Item> NIOBIUM_NUGGET = ITEMS.register("niobium_nugget",EWOresItem::new);
     public static final RegistryObject<Item> VOUCHER = ITEMS.register("voucher",Voucher::new);
 

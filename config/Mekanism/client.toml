@@ -31,10 +31,10 @@
 	[client.qio]
 		#Sorting direction when viewing items in a QIO Item Viewer.
 		#Allowed Values: ASCENDING, DESCENDING
-		itemViewerSortDirection = "ASCENDING"
+		itemViewerSortDirection = "DESCENDING"
 		#Sorting strategy when viewing items in a QIO Item Viewer.
 		#Allowed Values: NAME, SIZE, MOD
-		itemViewerSortType = "NAME"
+		itemViewerSortType = "SIZE"
 		#Number of slots to view horizontally on a QIO Item Viewer.
 		#Range: 8 ~ 16
 		itemViewerSlotsX = 8
@@ -86,7 +86,7 @@
 				y = 2147483647
 
 			[client.gui.window.crafting1]
-				x = -92
+				x = 21
 				y = 112
 
 			[client.gui.window.upgrade]
@@ -94,8 +94,8 @@
 				y = 15
 
 			[client.gui.window.crafting0]
-				x = 68
-				y = 110
+				x = -154
+				y = 136
 
 			[client.gui.window.rename]
 				x = 2147483647
@@ -110,7 +110,7 @@
 				y = 60
 
 			[client.gui.window.crafting2]
-				x = -45
+				x = 52
 				y = 179
 
 			[client.gui.window.transporterConfig]

@@ -50,4 +50,10 @@ public class EWSlurries {
     public static final SlurryRegistryObject<Slurry, Slurry> INDIUM = SLURRY.registry(new EWSlurry("indium",0x9C5701));
     public static final SlurryRegistryObject<Slurry, Slurry> STARMETAL = SLURRY.registry(new EWSlurry("starmetal",0x2B56BE));
     public static final SlurryRegistryObject<Slurry, Slurry> CUPRIC_SULFATE = SLURRY.registry(new EWSlurry("cupric_sulfate",0x00745B));
+    public static final SlurryRegistryObject<Slurry, Slurry> RUPEE = SLURRY.registry(new EWSlurry("rupee",0x359CD1));
+    public static final SlurryRegistryObject<Slurry, Slurry> ARLEMITE = SLURRY.registry(new EWSlurry("arlemite",0x92E151));
+    public static final SlurryRegistryObject<Slurry, Slurry> REALMITE = SLURRY.registry(new EWSlurry("realmite",0xEEB022));
+    public static final SlurryRegistryObject<Slurry, Slurry> TUNGSTEN = SLURRY.registry(new EWSlurry("tungsten",0x728E3C));
+    public static final SlurryRegistryObject<Slurry, Slurry> TORRIDITE = SLURRY.registry(new EWSlurry("torridite",0xE14C35));
+    public static final SlurryRegistryObject<Slurry, Slurry> BLOODGEM = SLURRY.registry(new EWSlurry("bloodgem",0xE74D90));
 }

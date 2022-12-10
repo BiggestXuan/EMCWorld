@@ -6,13 +6,14 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
  *  2022/10/19
  */
 
+import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWAtmTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import net.minecraft.item.ItemStack;
 
-public class VibraniumSword extends BaseWeaponItem implements IRangeAttackWeapon, ISecondEMCItem {
+public class VibraniumSword extends BaseWeaponItem implements IRangeAttackWeapon, ISecondEMCItem, INeedLevelItem {
     public VibraniumSword() {
         super(EWAtmTier.VIBRANIUM,0,-2.4F);
     }

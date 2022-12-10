@@ -9,7 +9,9 @@ package biggestxuan.emcworld.common.items;
 import biggestxuan.emcworld.api.item.EMCWorldBaseItem;
 
 public class EWItem extends EMCWorldBaseItem {
-    public EWItem() {}
+    public EWItem() {
+        super();
+    }
 
     public EWItem(Properties properties){
         super(properties);

@@ -345,6 +345,24 @@ public function emcworldRecipe() as void{
         <item:emcworld:vibranium_sword>,
         <item:emcworld:unobtainium_sword>
     ];
+    var abag as ItemStack[] = [
+        <item:projecte:light_gray_alchemical_bag>,
+        <item:projecte:gray_alchemical_bag>,
+        <item:projecte:red_alchemical_bag>,
+        <item:projecte:magenta_alchemical_bag>,
+        <item:projecte:pink_alchemical_bag>,
+        <item:projecte:purple_alchemical_bag>,
+        <item:projecte:blue_alchemical_bag>,
+        <item:projecte:cyan_alchemical_bag>,
+        <item:projecte:light_blue_alchemical_bag>,
+        <item:projecte:green_alchemical_bag>,
+        <item:projecte:lime_alchemical_bag>,
+        <item:projecte:yellow_alchemical_bag>,
+        <item:projecte:orange_alchemical_bag>,
+        <item:projecte:white_alchemical_bag>,
+        <item:projecte:brown_alchemical_bag>,
+        <item:projecte:black_alchemical_bag>
+    ];
     var sn as IItemStack[] = Ice.INSTANCE.getIce();
     var emc_stage as IItemStack[][] = [
         [
@@ -765,6 +783,13 @@ public function emcworldRecipe() as void{
         <item:emcworld:silver_medal>,
         <item:emcworld:gold_medal>
     );
+    for i in 0 .. 15{
+        var c as ItemStack = new Getter().getCollector()[i];
+        var b as ItemStack = abag[i];
+        addCraftShapelessRecipe([
+            <item:pouchofunknown:pouch>,c
+        ],b.asIItemStack());
+    }
     addCraftShapelessRecipe([
         <item:emcworld:wooden_staff>,<item:projecte:dark_matter>,<item:projecte:dark_matter>
     ],<item:emcworld:nopower_staff>);
@@ -895,6 +920,9 @@ public function emcworldRecipe() as void{
         [con[0][0],<item:botania:conjuration_catalyst>,con[0][0]],
         [a,con[0][0],a]
     ],con[2][0]*4);
+    extraOresRecipe(<item:allthemodium:allthemodium_ore>,<slurry:allthemodium:dirty_allthemodium>,"atm_extra");
+    extraOresRecipe(<item:allthemodium:vibranium_ore>,<slurry:allthemodium:dirty_vibranium>,"vib_extra");
+    extraOresRecipe(<item:allthemodium:unobtainium_ore>,<slurry:allthemodium:dirty_unobtainium>,"uno_extra");
     addCraftShapedRecipeNoName([
         [con[0][1],sar,con[0][1]],
         [sel,<item:bloodmagic:apprenticebloodorb>.reuse(),sel],

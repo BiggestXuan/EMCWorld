@@ -20,15 +20,18 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -40,6 +43,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
@@ -158,6 +162,24 @@ public class PlayerAttackEvent {
             if(owner == null) return;
             if(owner instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) owner;
+                float damage = event.getAmount();
+                long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
+                if (cost != 0){
+                    if(EMCHelper.getPlayerEMC(player)>cost){
+                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
+                    }
+                    else{
+                        event.setCanceled(true);
+                        Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
+                    }
+                }
+            }
+        }
+        if(source.getDirectEntity() instanceof ProjectileEntity){
+            ProjectileEntity proEntity = (ProjectileEntity) source.getDirectEntity();
+            Entity entity = proEntity.getOwner();
+            if(entity instanceof PlayerEntity){
+                PlayerEntity player = (PlayerEntity) entity;
                 float damage = event.getAmount();
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
                 if (cost != 0){

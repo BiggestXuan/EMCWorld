@@ -1,4 +1,4 @@
-#priority 48
+#priority 62
 import mods.mekanism.api.chemical.SlurryStack;
 import mods.mekanism.api.ingredient.ItemStackIngredient;
 import mods.mekanism.api.ingredient.ChemicalStackIngredient.GasStackIngredient;

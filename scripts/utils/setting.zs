@@ -74,6 +74,9 @@ public function setEMC() as void{
     for i in <tag:items:minecraft:flowers>.elements{
         setItemEMC(i.getDefaultInstance(),0);
     }
+    for i in <tag:items:minecraft:carpets>.elements{
+        setItemEMC(i.getDefaultInstance(),0);
+    }
     for i in <tag:items:atum:godshards>.elements{
         setItemEMC(i.getDefaultInstance(),0);
     }

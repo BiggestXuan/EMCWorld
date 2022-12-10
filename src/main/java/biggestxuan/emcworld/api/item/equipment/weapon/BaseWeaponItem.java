@@ -15,7 +15,7 @@ import net.minecraft.item.SwordItem;
 
 import javax.annotation.Nonnull;
 
-public abstract class BaseWeaponItem extends SwordItem implements INeedLevelItem {
+public abstract class BaseWeaponItem extends SwordItem{
     public BaseWeaponItem(IItemTier tier,int damage,float damageSpeed){
         super(tier,damage,damageSpeed,new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB));
     }

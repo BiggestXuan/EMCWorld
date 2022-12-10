@@ -9,6 +9,7 @@ package biggestxuan.emcworld.api.item.equipment.staff;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -24,7 +25,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem {
+public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel {
     public BaseEMCGodStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("god"));
     }

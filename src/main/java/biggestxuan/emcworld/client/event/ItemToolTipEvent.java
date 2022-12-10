@@ -79,7 +79,7 @@ public class ItemToolTipEvent {
             ClientPlayerEntity player = Minecraft.getInstance().player;
             int playerLevel = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new).getLevel();
             int itemLevel = item_1.getUseLevel(stack);
-            if(playerLevel < itemLevel && !player.isCreative()){
+            if(playerLevel < itemLevel && !player.isCreative() && itemLevel <= 1){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.need_level_to_use",itemLevel));
                 return;
             }

@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
@@ -28,7 +29,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem, ICriticalWeapon, IAdditionsDamageWeapon, IAttackSpeedItem {
+public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem, ICriticalWeapon, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel {
     public BaseEMCGodWarHammer(){
         super(EMCWorldAPI.getInstance().getWarHammerTier("god"));
     }

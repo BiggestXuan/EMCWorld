@@ -232,6 +232,7 @@
 			y: -18.0d
 			description: ["{quest.emcworld.fourth_magic_starmetalore_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
 			id: "05CC7A9408F5A198"
 			tasks: [{
 				id: "1A9FA2DC04866EB4"
@@ -414,6 +415,7 @@
 			y: -18.0d
 			description: ["{quest.emcworld.fourth_magic_handtelescope_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
+			hide: true
 			id: "6B625809953A4B19"
 			tasks: [{
 				id: "2C6DB5B05622E0D2"

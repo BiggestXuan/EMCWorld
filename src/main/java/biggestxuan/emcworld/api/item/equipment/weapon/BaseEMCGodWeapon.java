@@ -9,6 +9,7 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -45,7 +46,7 @@ import java.util.List;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.GodWeapon")
-public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem {
+public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem, IEMCGodWeaponLevel {
 
     protected final float baseDamage;
     private final int color;
@@ -69,19 +70,6 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(diff < 2) return 14;
         if(diff < 3) return 20;
         else return 24;
-    }
-
-    @Override
-    public int getUseLevel(ItemStack stack){
-        int weaponLevel = getLevel(stack);
-        if(weaponLevel >= 22) return 100;
-        if(weaponLevel >= 20) return 91;
-        if(weaponLevel >= 18) return 81;
-        if(weaponLevel >= 16) return 71;
-        if(weaponLevel >= 14) return 61;
-        if(weaponLevel >= 12) return 51;
-        if(weaponLevel >= 10) return 41;
-        return 31;
     }
 
     @Override

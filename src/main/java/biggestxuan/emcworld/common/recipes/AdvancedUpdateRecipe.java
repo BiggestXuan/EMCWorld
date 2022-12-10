@@ -24,18 +24,20 @@ import net.minecraft.item.Items;
 import quek.undergarden.registry.UGItems;
 import vazkii.botania.common.block.ModBlocks;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.item.BloodMagicItems;
 
 public enum AdvancedUpdateRecipe implements IUpdateRecipe {
-    GLOW_STONE(Items.COAL_BLOCK,Items.GLOWSTONE,384,1),
-    THERMAL_BLOCK(MekanismItems.STEEL_INGOT.getItem(), MekanismBlocks.THERMAL_EVAPORATION_BLOCK.getItem(),3000,1),
-    RAT_FLOWER(ModBlocks.whiteShinyFlower.asItem(), RatlantisBlockRegistry.RATGLOVE_FLOWER.asItem(), 10000,1),
-    BASIC_CONTROL(MekanismItems.BASIC_CONTROL_CIRCUIT.getItem(),MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),20000,1),
-    OCEAN_LANTERN(Blocks.SEA_LANTERN.asItem(), BlockInit.OCEAN_LANTERN.get().asItem(),50000,1),
-    ADVANCED_CONTROL(MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),100000,1),
-    GAIA_PYLON(ModBlocks.naturaPylon.asItem(),ModBlocks.gaiaPylon.asItem(),250000,1),
-    BX_INGOT(AtumBlocks.GODFORGED_BLOCK.asItem(), EWItems.BIGGEST_XUAN_INGOT.get(),300000,1),
+    GLOW_STONE(Items.COAL_BLOCK,Items.GLOWSTONE,384),
+    THERMAL_BLOCK(MekanismItems.STEEL_INGOT.getItem(), MekanismBlocks.THERMAL_EVAPORATION_BLOCK.getItem(),3000),
+    RAT_FLOWER(ModBlocks.whiteShinyFlower.asItem(), RatlantisBlockRegistry.RATGLOVE_FLOWER.asItem(), 10000),
+    BASIC_CONTROL(MekanismItems.BASIC_CONTROL_CIRCUIT.getItem(),MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),20000),
+    OCEAN_LANTERN(Blocks.SEA_LANTERN.asItem(), BlockInit.OCEAN_LANTERN.get().asItem(),50000),
+    IRON_KEY(Blocks.IRON_BLOCK.asItem(),BloodMagicItems.DUNGEON_SIMPLE_KEY.get(),75000),
+    ADVANCED_CONTROL(MekanismItems.ADVANCED_CONTROL_CIRCUIT.getItem(),MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),100000),
+    GAIA_PYLON(ModBlocks.naturaPylon.asItem(),ModBlocks.gaiaPylon.asItem(),250000),
+    BX_INGOT(AtumBlocks.GODFORGED_BLOCK.asItem(), EWItems.BIGGEST_XUAN_INGOT.get(),300000),
     DARK_MATTER(PEItems.DARK_MATTER.get(),PEItems.RED_MATTER.get(),350000,2),
-    ULTIMATE_CONTROL(MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),MekanismItems.ULTIMATE_CONTROL_CIRCUIT.getItem(),600000,1 ),
+    ULTIMATE_CONTROL(MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),MekanismItems.ULTIMATE_CONTROL_CIRCUIT.getItem(),600000),
     FILTH(RatsItemRegistry.FILTH.getItem(),RatsItemRegistry.FILTH_CORRUPTION.asItem(),2000000,3),
     WELL(BloodMagicBlocks.BLOOD_ALTAR.get().asItem(), BlocksAS.WELL.asItem(),2500000,3),
     EMC_LEAF(ModItems.GOLD_LEAF.getItem(),EWItems.EMC_LEAF.get(),100000,4),
@@ -73,6 +75,10 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     private final Item output;
     private final long cost;
     private final int level;
+
+    AdvancedUpdateRecipe(Item input, Item output, long cost) {
+        this(input,output,cost,1);
+    }
 
     AdvancedUpdateRecipe(Item input, Item output, long cost,int level) {
         this.input = input;
