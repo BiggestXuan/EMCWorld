@@ -37,7 +37,7 @@ License: [GNU General Public License v3.0](https://github.com/FledgeXu/BosonSour
   
 ### [Tile Entity](https://blog.csdn.net/Jay_fearless/article/details/125549815)  
 Author: [Jay_fearless](https://blog.csdn.net/Jay_fearless)  
-License: CC 4.0 BY-SA 
+License: CC BY-SA 4.0
 
 ### [Mekanism](https://github.com/mekanism/Mekanism)  
 Author: [mekanism](https://github.com/mekanism)  
@@ -51,7 +51,7 @@ License: [MIT License](https://github.com/CraftTweaker/CraftTweaker/blob/1.16/LI
   
 ### [I18N Package](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package)
 Author: [CFPAOrg](https://github.com/CFPAOrg)  
-License: [CC 4.0 BY-NC-SA](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/main/LICENSE)
+License: [CC BY-NC-SA 4.0](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/main/LICENSE)
   
 ### [OPEREO-langpack-1.16](https://github.com/Kzeroko/OPEREO-langpack-1.16)  
 Author: [Kzeroko](https://github.com/Kzeroko)
