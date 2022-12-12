@@ -31,10 +31,6 @@
   
 ## CODE:
   
-### [BosonSourceCode](https://github.com/FledgeXu/BosonSourceCode)
-Author: [FledgeXu](https://github.com/FledgeXu)  
-License: [GNU General Public License v3.0](https://github.com/FledgeXu/BosonSourceCode/blob/master/LICENSE.txt)
-  
 ### [Tile Entity](https://blog.csdn.net/Jay_fearless/article/details/125549815)  
 Author: [Jay_fearless](https://blog.csdn.net/Jay_fearless)  
 License: CC BY-SA 4.0
