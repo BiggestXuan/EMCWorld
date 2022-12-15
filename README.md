@@ -45,10 +45,6 @@ License: [MIT License](https://github.com/CraftTweaker/CraftTweaker/blob/1.16/LI
 
 ## ASSET:  
   
-### [I18N Package](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package)
-Author: [CFPAOrg](https://github.com/CFPAOrg)  
-License: [CC BY-NC-SA 4.0](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/main/LICENSE)
-  
 ### [OPEREO-langpack-1.16](https://github.com/Kzeroko/OPEREO-langpack-1.16)  
 Author: [Kzeroko](https://github.com/Kzeroko)  
   
