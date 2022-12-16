@@ -31,10 +31,6 @@
   
 ## CODE:
   
-### [BosonSourceCode](https://github.com/FledgeXu/BosonSourceCode)
-Author: [FledgeXu](https://github.com/FledgeXu)  
-License: [GNU General Public License v3.0](https://github.com/FledgeXu/BosonSourceCode/blob/master/LICENSE.txt)
-  
 ### [Tile Entity](https://blog.csdn.net/Jay_fearless/article/details/125549815)  
 Author: [Jay_fearless](https://blog.csdn.net/Jay_fearless)  
 License: CC BY-SA 4.0
@@ -49,9 +45,13 @@ License: [MIT License](https://github.com/CraftTweaker/CraftTweaker/blob/1.16/LI
 
 ## ASSET:  
   
-### [I18N Package](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package)
-Author: [CFPAOrg](https://github.com/CFPAOrg)  
-License: [CC BY-NC-SA 4.0](https://github.com/CFPAOrg/Minecraft-Mod-Language-Package/blob/main/LICENSE)
-  
 ### [OPEREO-langpack-1.16](https://github.com/Kzeroko/OPEREO-langpack-1.16)  
-Author: [Kzeroko](https://github.com/Kzeroko)
+Author: [Kzeroko](https://github.com/Kzeroko)  
+  
+### [Avaritia](https://github.com/Morpheus1101/Avaritia)  
+Author: [Morpheus1101](https://github.com/Morpheus1101)  
+License: [MIT License](https://github.com/Morpheus1101/Avaritia/blob/master/README.md)  
+  
+### [StorageDrawers](https://github.com/jaquadro/StorageDrawers)  
+Author: [jaquadro](https://github.com/jaquadro)  
+License: [MIT License](https://github.com/jaquadro/StorageDrawers/blob/1.16/LICENSE)
