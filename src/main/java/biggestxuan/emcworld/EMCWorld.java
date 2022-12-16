@@ -39,13 +39,15 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.swing.*;
+import java.lang.reflect.InvocationTargetException;
+
 @Mod(EMCWorld.MODID)
-public class EMCWorld
-{
+public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 3;
-    public static final String PackVersion = "0.3.0 - Pre4";
+    public static final String PackVersion = "0.3.0 - Pre10";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
 

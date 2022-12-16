@@ -11,7 +11,7 @@ import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.ILuckyItem;
 import biggestxuan.emcworld.common.registry.EWItems;

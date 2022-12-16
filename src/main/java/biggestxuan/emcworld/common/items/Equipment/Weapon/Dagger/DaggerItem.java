@@ -52,4 +52,5 @@ public class DaggerItem extends TieredItem implements IAttackSpeedItem {
     public double getAttackSpeed(ItemStack stack) {
         return tier.getAttackSpeed(stack);
     }
+
 }

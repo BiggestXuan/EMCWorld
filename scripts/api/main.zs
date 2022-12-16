@@ -2,10 +2,14 @@
 
 public function main() as void{
     addNitrogenRecipe();
+    setEMC();
+    modifyBotaniaTags();
     combiningRecipe(<item:minecraft:stone>*2,<item:minecraft:chorus_fruit>,<item:minecraft:end_stone>*2);
     addCyanideRecipe();
     modifyEMCWorldTags();
+    tweakerEMCWorld();
     extraOresProcessing();
+    modifyProjecteRecipe();
     removeGobberRecipe();
     addGobberOresProceRecipe();
     modifyGobberRecipe();
@@ -16,17 +20,14 @@ public function main() as void{
     modifyTERecipe();
     fixTEAlloyRecipe();
     addEMCWorldOresTag();
-    setEMC();
     emcworldRecipe();
     modifyHemRecipe();
     addEmeraldShardRecipe();
     addAlloyRecipe();
     //modifyAbyssRecipe();
     modifyNatureAuraRecipe();
-    modifyBotaniaTags();
     modifyDaisyRecipe();
     modifyBotaniaRecipe();
-    modifyProjecteRecipe();
     addMarbleTags();
     modifyMEKRecipe();
     modifyFood();

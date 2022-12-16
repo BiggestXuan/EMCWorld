@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.compact.GameStage;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;

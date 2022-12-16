@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.compact.Projecte;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWEffects;

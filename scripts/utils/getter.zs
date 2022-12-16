@@ -180,6 +180,58 @@ public class Getter{
         <item:projectex:final_power_flower>
     ];
 
+    var peItem as ItemStack[] = [
+        <item:projecte:medium_covalence_dust>,
+        <item:projecte:low_covalence_dust>,
+        <item:projecte:klein_star_omega>,
+        <item:projecte:klein_star_sphere>,
+        <item:projecte:klein_star_vier>,
+        <item:projecte:klein_star_drei>,
+        <item:projecte:klein_star_zwei>,
+        <item:projecte:arcana_ring>,
+        <item:projecte:interdiction_torch>,
+        <item:projecte:transmutation_tablet>,
+        <item:projecte:tome>,
+        <item:projecte:catalytic_lens>,
+        <item:projecte:hyperkinetic_lens>,
+        <item:projecte:destruction_catalyst>,
+        <item:projecte:divining_rod_3>,
+        <item:projecte:divining_rod_2>,
+        <item:projecte:divining_rod_1>,
+        <item:projecte:volcanite_amulet>,
+        <item:projecte:gem_of_eternal_density>,
+        <item:projecte:mercurial_eye>,
+        <item:projecte:void_ring>,
+        <item:projecte:soul_stone>,
+        <item:projecte:body_stone>,
+        <item:projecte:klein_star_zwei>,
+        <item:projecte:mind_stone>,
+        <item:projecte:life_stone>,
+        <item:projecte:evertide_amulet>,
+        <item:projecte:watch_of_flowing_time>,
+        <item:projecte:swiftwolf_rending_gale>,
+        <item:projecte:zero_ring>,
+        <item:projecte:ignition_ring>,
+        <item:projecte:harvest_goddess_band>,
+        <item:projecte:archangel_smite>,
+        <item:projecte:black_hole_band>,
+        <item:projecte:iron_band>,
+        <item:projecte:high_covalence_dust>,
+        <item:projecte:nova_cataclysm>,
+        <item:projecte:nova_catalyst>,
+        <item:projecte:red_matter_block>,
+        <item:projecte:dark_matter_block>,
+        <item:projecte:rm_furnace>,
+        <item:projecte:dm_pedestal>,
+        <item:projecte:dm_furnace>,
+        <item:projecte:philosophers_stone>,
+        <item:projecte:alchemical_chest>
+    ];
+
+    public getPEItem() as ItemStack[]{
+        return this.peItem;
+    }
+
     public getGem() as ItemStack[]{
         return this.EMCWorldGems;
     }

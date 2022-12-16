@@ -19,6 +19,7 @@ import hellfirepvp.astralsorcery.common.util.block.ILocatable;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
 import mekanism.api.radiation.IRadiationManager;
+import net.mehvahdjukaar.dummmmmmy.setup.Registry;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -87,7 +88,7 @@ public class EMCConstellationEffects extends ConstellationEffect {
         List<LivingEntity> output = new ArrayList<>();
         List<LivingEntity> cache = world.getEntitiesOfClass(LivingEntity.class,new AxisAlignedBB(new BlockPos(pos.getX()+range,pos.getY()+range/2,pos.getZ()+range),new BlockPos(pos.getX()-range,pos.getY()-range/2,pos.getZ()-range)));
         for(LivingEntity entity:cache){
-            if(entity instanceof PlayerEntity || entity instanceof TameableEntity){
+            if(entity instanceof PlayerEntity || entity instanceof TameableEntity || entity.getType().equals(Registry.TARGET_DUMMY.get())){
                 continue;
             }
             output.add(entity);

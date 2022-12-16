@@ -37,5 +37,6 @@ public class RegisterModel {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.btmy, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.cxk, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.dytlj7788,AtumBipedRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EWEntities.lamb_kisara,AtumBipedRender::new);
     }
 }

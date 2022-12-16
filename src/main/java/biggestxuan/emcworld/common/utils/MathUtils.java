@@ -32,9 +32,11 @@ import org.openzen.zencode.java.ZenCodeType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.math")
+@SuppressWarnings("unused")
 public class MathUtils {
 
     @ZenCodeType.Method
@@ -45,6 +47,20 @@ public class MathUtils {
     @ZenCodeType.Method
     public static boolean isRandom(double chance){
         return Random() <= chance;
+    }
+
+    @ZenCodeType.Method
+    public static int getRandom(int max){
+        return new Random().nextInt(max);
+    }
+
+    @ZenCodeType.Method
+    public static int getRangeRandom(int min,int max){
+        int r;
+        do {
+            r = getRandom(max);
+        } while (r < min);
+        return r;
     }
 
     public static long getEMCWhenUseGem(long baseEMC){

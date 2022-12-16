@@ -37,7 +37,7 @@ public class Creation extends BaseEMCGodWarHammer {
 
     @Override
     protected double attackRange(ItemStack stack) {
-        return Math.pow(1.09,getLevel(stack));
+        return Math.pow(1.1,getLevel(stack));
     }
 
     @Override

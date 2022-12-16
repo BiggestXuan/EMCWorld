@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.network;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.events.PlayerEvent.PlayerTickEvent;
 import net.minecraft.entity.player.ServerPlayerEntity;

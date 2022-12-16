@@ -7,9 +7,8 @@ public function addEmeraldShardRecipe() as void{
     crushingRecipe(<item:minecraft:emerald>,<item:byg:emeraldite_shards>,1);
     tartaricForgeRecipe([
         <item:minecraft:blue_ice>,
-        <item:thermal:blizz_rod>,
         <item:botania:rune_winter>
-    ],<item:byg:subzero_crystal_shard>,65,20);
+    ],<item:byg:subzero_crystal_shard>,65,10);
     modifyShapedRecipe([
         [tt,pb,tt],
         [pb,<item:mythicbotany:niflheim_rune>,pb],

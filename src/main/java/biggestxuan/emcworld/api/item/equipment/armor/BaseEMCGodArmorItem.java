@@ -30,7 +30,7 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return 0;
+        return 1;
     }
 
     @Override

@@ -53,6 +53,7 @@ public class EMCWorldHUD extends AbstractGui {
         y += line;
         drawString(matrixStack,mc.font,level,1,y,color);
         y += line;
+        y += 50;
         IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
         if(util.isRaid()){
             drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_info"),1,y,color);

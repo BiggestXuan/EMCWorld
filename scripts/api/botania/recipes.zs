@@ -40,8 +40,9 @@ public function modifyDaisyRecipe() as void{
 
 public function terraPlateRecipe(input as IIngredient[],output as IItemStack,mana as int) as void{
     val recipeName = getRecipeName(output);
-    val manaC as int= mana * getAdditionCost();
+    val manaC as int = mana * getAdditionCost();
     <recipetype:botania:terra_plate>.addRecipe(recipeName+"_terra_plate",output,manaC,input);
+    mythicInfuserRecipe(input,output,manaC,0xffffff,0xffffff);
 }
 
 public function apothecaryRecipe(input as IIngredient[], output as IItemStack) as void{

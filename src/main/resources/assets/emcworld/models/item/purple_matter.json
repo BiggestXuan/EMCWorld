@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "emcworld:item/matter/purple"
+		"layer0": "projectex:item/matter/purple"
 	}
 }

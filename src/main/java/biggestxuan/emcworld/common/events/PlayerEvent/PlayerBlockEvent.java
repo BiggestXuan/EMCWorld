@@ -7,16 +7,23 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BowItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.SwordItem;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -116,6 +123,15 @@ public class PlayerBlockEvent {
             for(PlayerEntity player:getNearPlayer((World) world,event.getPos())){
                 Message.sendMessage(player,EMCWorld.tc("message.portal.cancel"));
             }
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void PlayerTossEvent(ItemTossEvent event){
+        Item item = event.getEntityItem().getItem().getItem();
+        if(event.getPlayer().level.isClientSide) return;
+        if((item instanceof SwordItem || item instanceof StaffItem || item instanceof WarHammerItem || item instanceof DaggerItem || item instanceof BowItem) && ConfigManager.PREVENT_TOSS_WEAPON.get()){
+            //event.setCanceled(true);
         }
     }
 

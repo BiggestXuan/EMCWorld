@@ -67,7 +67,7 @@ public function modifyExtendedCraftingRecipe() as void{
         <item:minecraft:glowstone_dust>,
         <item:botania:mana_powder>,
         <item:mekanism:dust_gold>
-    ],<item:extendedcrafting:luminessence>*2,65,5);
+    ],<item:extendedcrafting:luminessence>*16,65,5);
     blockRecipe([
         <item:extendedcrafting:ender_nugget>,
         <item:extendedcrafting:ender_ingot>,

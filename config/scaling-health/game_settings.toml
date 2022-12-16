@@ -43,7 +43,7 @@
 		#ADD: Flat increase for all mobs, no matter their base hp.
 		modifierMode = "MULTI_HALF"
 		#This modifier affects the hp scale of mobs spawned by spawners, a normal 100 hp boost, will be of 30 using default value
-		spawner = 0.3
+		spawner = 0.23
 
 		[mob.health.multiplier]
 			passive = 0.15
@@ -97,7 +97,7 @@
 
 	#Chance for mobs to receive a random potion effect (assuming their difficulty is high enough)
 	[mob.potionChance]
-		hostile = 0.375
+		hostile = 0.155
 		peaceful = 0.025
 
 	[[mob.randomPotionEffects]]

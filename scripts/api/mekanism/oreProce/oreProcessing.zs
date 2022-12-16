@@ -59,7 +59,7 @@ public function enrichingRecipe(input as ItemStack,output as ItemStack,rate as i
 }
 
 public function combiningRecipe(input as ItemStack,extra as ItemStack,output as ItemStack) as void{
-    var recipeName as string = getRecipeName(input)+"_combining";
+    var recipeName as string = getRecipeName(output)+"_combining";
     <recipetype:mekanism:combining>.addRecipe(recipeName,input.asIItemStack(),extra.asIItemStack(),output.asIItemStack());
 }
 

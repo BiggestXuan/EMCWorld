@@ -40,6 +40,12 @@ public class oreGen {
         event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
                 Feature.ORE.configured(
                                 new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                                            EWBlocks.NICKEL_ORE.get().defaultBlockState(),5)
+                        ).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,5,24)))
+                        .squared().count(6));
+        event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
+                Feature.ORE.configured(
+                                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
                                         EWBlocks.HARDCORE_STONE.get().defaultBlockState(),31)
                         ).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,48)))
                         .squared().count(30));

@@ -4,11 +4,17 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "emcworld.refmap.json",
   "mixins": [
+    "AtlantisDisableMixin",
+    "GaiaMixin",
+    "ItemStageMixin",
+    "LootrMixin",
+    "QuarkHandlerMixin",
     "QuarkInventoryHandler",
     "WebHelperDisable"
   ],
   "client": [
-    "MinecraftWindow"
+    "MinecraftWindow",
+    "RatsPlagueMixin"
   ],
   "server": [],
   "injectors": {

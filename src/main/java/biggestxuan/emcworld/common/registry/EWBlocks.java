@@ -27,9 +27,7 @@ import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.registries.MekanismBlockTypes;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
@@ -42,6 +40,7 @@ import java.util.function.Supplier;
 
 import static vazkii.botania.common.block.ModBlocks.register;
 
+@SuppressWarnings("unused")
 public class EWBlocks {
         public static final BlockDeferredRegister B = new BlockDeferredRegister(EMCWorld.MODID);
         public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EMCWorld.MODID);

@@ -181,7 +181,7 @@ public function emcworldRecipe() as void{
         <item:emcworld:creation>.withTag({level: 24 as int})
     ;
     var amo as int[]=[
-        1500,1000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,500
+        1500,2000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,1500
     ];
     var red_armor as ItemStack[]=[
         <item:emcworld:guardian_helmet>,
@@ -554,6 +554,9 @@ public function emcworldRecipe() as void{
         staffRecipe(staff_item[0][i],staff_item[1][i]);
         warHammer(staff_item[0][i],staff_item[2][i]);
     }
+    craftingTable.removeByModid("projectex");
+    //craftingTable.removeByModid("projecte");
+    removeCraftRecipe(abag);
     smithingRecipe(staff_item[1][4],<item:cataclysm:ignitium_ingot>,<item:emcworld:netherite_staff>);
     smithingRecipe(staff_item[2][4],<item:cataclysm:ignitium_ingot>,<item:emcworld:netherite_warhammer>);
     add_emc_stage(emc_stage[0],3);
@@ -568,8 +571,6 @@ public function emcworldRecipe() as void{
     setEMCStage(<item:the_afterlight:moon_crystal>,19200,6);
     setEMCStage(<item:emcworld:universal_ball>,320000,8);
     removeRecipe([mt]);
-    craftingTable.removeByModid("projecte");
-    craftingTable.removeByModid("projectex");
     violet(<item:projectex:purple_collector>,<item:projectex:violet_collector>);
     violet(<item:projectex:purple_relay>,<item:projectex:violet_relay>);
     blue(<item:projectex:violet_collector>,<item:projectex:blue_collector>);
@@ -610,6 +611,13 @@ public function emcworldRecipe() as void{
     tartaricForgeRecipe([<item:emcworld:base_key>,<item:twilightforest:lamp_of_cinders>,<item:astralsorcery:rock_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:vicio" as string}}),<item:rats:dutchrat_wheel>],<item:emcworld:nether_key>,4096,1000);
     smithingRecipe(sword[0],atmqd*3,sword[1]);
     smithingRecipe(sword[1],viqd*3,sword[2]);
+    terraPlateRecipe([<item:atum:ptah_godshard>],<item:good_nights_sleep:hope_mushroom>,125000);
+    terraPlateRecipe([<item:atum:anput_godshard>],<item:good_nights_sleep:despair_mushroom>,125000);
+    modifyShapedRecipe([
+        [<item:minecraft:lapis_lazuli>,<item:mekanism:alloy_reinforced>,<item:minecraft:lapis_lazuli>],
+        [<item:minecraft:gold_ingot>,<item:minecraft:diamond>,<item:minecraft:gold_ingot>],
+        [<item:minecraft:lapis_lazuli>,<item:mekanism:alloy_reinforced>,<item:minecraft:lapis_lazuli>],
+    ],<item:mekanism:teleportation_core>);
     infuserRecipe([
         <item:astralsorcery:starmetal_ingot>,
         <item:astralsorcery:infused_crystal_sword>,
@@ -790,6 +798,9 @@ public function emcworldRecipe() as void{
             <item:pouchofunknown:pouch>,c
         ],b.asIItemStack());
     }
+    combiningRecipe(<item:minecraft:stone>,<item:minecraft:obsidian>,<item:minecraft:blackstone>);
+    removeFurnaceRecipe([<item:minecraft:nether_brick>]);
+    runeAltarRecipe([<item:emcworld:drystone_ingot>,<item:botania:rune_fire>],<item:minecraft:nether_brick>*2,5000);
     addCraftShapelessRecipe([
         <item:emcworld:wooden_staff>,<item:projecte:dark_matter>,<item:projecte:dark_matter>
     ],<item:emcworld:nopower_staff>);
@@ -1063,7 +1074,7 @@ public function emcworldRecipe() as void{
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
     infuserRecipe([ali,alv,a,a,a],vaai*32,10000,10000000,3);
-    infuserRecipe([eoi,sn[5],ci,di,esi],rai,3000,1000000,3);
+    infuserRecipe([eoi,sn[5],ci,di,esi],rai,3000,800000,1);
     steelFurnaceRecipe([<item:gobber2:gobber2_ingot>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,300);
     steelFurnaceRecipe([<item:emcworld:enriched_gobber>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,600);
     infuserRecipe([ss,rai,ki,zi,asi],hs,5000,15000000,2);

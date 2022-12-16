@@ -55,14 +55,12 @@ public function modifyBloodMagicRecipe() as void{
     modifyAltarRecipe(<item:minecraft:tnt>,<item:bloodmagic:firescribetool>,1500,2);
     modifyAltarRecipe(<item:minecraft:sugar_cane>,<item:bloodmagic:waterscribetool>,1500,2);
     modifyAltarRecipe(<item:minecraft:obsidian>,<item:bloodmagic:earthscribetool>,1500,2);
-    bloodAltarRecipe(<item:emcworld:dust_aquamarine>,<item:bloodmagic:sand_hellforged>,20000,3);
+    bloodAltarRecipe(<item:emcworld:dust_aquamarine>,<item:bloodmagic:sand_hellforged>,5000,3);
     removeAlchemalTableRecipe([rb]);
     alchemalTableRecipe([
         <item:extendedcrafting:luminessence>,
         <item:bloodmagic:lavacrystal>,
-        <item:bloodmagic:weakbloodshard>,
-        <item:bloodmagic:holy_water_anointment>,
-        <item:bloodmagic:fortune_anointment>
+        <item:bloodmagic:weakbloodshard>
     ],rb,10000,4);
     removeFurnaceRecipe([he]);
     tartaricForgeRecipe([
@@ -71,9 +69,9 @@ public function modifyBloodMagicRecipe() as void{
         <item:botania:mana_powder>
     ],he,100,1);
     modifyShapedRecipe([
-        [ag,mms,ag],
+        [ag,qr,ag],
         [qr,<item:atlantis:orb_of_atlantis>,qr],
-        [ms,<item:mekanism:energized_smelter>,ms]
+        [ag,qr,ag]
     ],<item:bloodmagic:soulforge>);
     modifyShapedRecipe([
         [he,a,he],

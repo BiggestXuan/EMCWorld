@@ -74,9 +74,9 @@ public function modifyBotaniaRecipe() as void{
         <item:botania:mana_powder>
     ],<item:botania:hydroangeas>);
     enderCraftingRecipe([
-        [t,t,t],
+        [eb,t,eb],
         [eb,<item:botania:terrasteel_block>,eb],
-        [gb,<item:botania:dragonstone_block>,gb]
+        [eb,<item:botania:dragonstone_block>,eb]
     ],<item:mythicbotany:mana_infuser>);
     removeManaInfusionRecipe([<item:mythicbotany:gjallar_horn_empty>]);
     terraPlateRecipe([r[2],r[3],r[4],r[5],r[6],r[7],r[8],<item:botania:horn_grass>],<item:mythicbotany:gjallar_horn_empty>,1000000);

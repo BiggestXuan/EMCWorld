@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.IEMCRepairableItem;
@@ -18,7 +19,7 @@ import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
@@ -26,7 +27,6 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.DifficultyData;
-import biggestxuan.emcworld.common.data.ShareEMCData;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import dev.latvian.mods.projectex.Matter;
@@ -94,8 +94,8 @@ public class PlayerTickEvent {
                     c.setTimer(c.getTimer()-1);
                 }
         });
-        IPlayerSkillCapability c = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
-        IUtilCapability util = cap.orElseThrow(NullPointerException::new);
+        IPlayerSkillCapability c = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
         /*World world1 = server.overworld();
         ShareEMCData emcData = ShareEMCData.getInstance(world1);
         if(ConfigManager.SHARE_EMC.get()){
@@ -295,10 +295,16 @@ public class PlayerTickEvent {
             for(ItemStack stack:getPlayerAllItem(player)){
                 if(stack.getItem() instanceof ISecondEMCItem){
                     ISecondEMCItem item = (ISecondEMCItem) stack.getItem();
+                    if(stack.getItem() instanceof INeedLevelItem){
+                        INeedLevelItem levelItem = (INeedLevelItem) stack.getItem();
+                        if(c.getLevel() < levelItem.getUseLevel(stack) && !player.isCreative()){
+                            continue;
+                        }
+                    }
                     amount += item.EMCModifySecond(stack);
                 }
             }
-            EMCHelper.modifyPlayerEMC(player,amount,false);;
+            EMCHelper.modifyPlayerEMC(player,amount,false);
         }
         for(ItemStack stack:getPlayerAllItem(player)){
             if(stack.getItem() instanceof IEMCRepairableItem){

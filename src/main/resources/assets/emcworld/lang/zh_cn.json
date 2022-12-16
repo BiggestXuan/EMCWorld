@@ -339,6 +339,7 @@
   "item.emcworld.netherite_dagger": "下界合金匕首",
   "item.emcworld.night_light": "夜光",
   "item.emcworld.red_green_dagger": "赤铸青锋",
+  "item.emcworld.super_star": "超新星",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -537,6 +538,7 @@
   "entity.emcworld.btmy": "亿年",
   "entity.emcworld.cxk": "练习生",
   "entity.emcworld.dytlj7788": "小高",
+  "entity.emcworld.lamb_kisara": "清瞳",
 
   "jei.emcworld.piglin.title": "以物易物",
   "jei.emcworld.infuser_emc_amount1": "很少",
@@ -557,6 +559,7 @@
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
+  "message.evt.display": "§9~ %d §9EMC",
   "message.evt.gemcancel": "§4知识浅薄：你需要达成 %d §4阶段才能使用",
   "message.evt.attackcancel": "§4身体虚弱：你至少需要 %d §4EMC 才能发动本次攻击",
   "message.evt.breakcancel": "§4身体虚弱：你至少需要 %d §4EMC 才能挖掘这个方块",
@@ -690,6 +693,14 @@
 
   "iris.shaders.disabled": "光影已禁用",
 
+  "screen.pcl.title": "§4警告：你在使用整合包不支持的PCL2启动器！",
+  "screen.pcl.ik": "我知道了",
+  "screen.pcl.line1": "尽管PCL是优秀的启动器，但是在EMCWorld中存在以下问题：",
+  "screen.pcl.line2": "因为PCL特有的崩溃猜模组功能，因此有时候因为区块生成问题，会在日志产生world字眼，因此PCL会猜测是EMCWorld干的。",
+  "screen.pcl.line3": "但是经过作者多次测试，实际上并不是这样。",
+  "screen.pcl.line4": "这就意味着PCL导出的日志压缩包无效，如果你需要反馈问题，请提交latest.log文件到作者团队。",
+  "screen.pcl.line5": "只要你使用PCL启动器，这个窗口会在你每次启动游戏时弹出。",
+
   "crystal.property.astralsorcery.constellation.emc.name": "聚焦：质能座",
 
   "hwyla.tip.cd": "冷却：%d 秒",
@@ -758,8 +769,8 @@
   "tooltip.emcworld.lucky_item": "§6提高武器强化概率 %d §6倍",
   "tooltip.emcworld.weapon_god": "§6质能圣器",
   "tooltip.emcworld.weapon_god_addition_damage": "§9+ %d §9攻击伤害",
-  "tooltip.emcworld.weapon_god_emc_cost": "§9EMC消耗倍率： -%d",
-  "tooltip.emcworld.weapon_god_emc_cost_addon": "§9EMC消耗倍率： + %d",
+  "tooltip.emcworld.weapon_god_emc_cost": "§9EMC攻击消耗： - %d",
+  "tooltip.emcworld.weapon_god_emc_cost_addon": "§9EMC攻击消耗： + %d",
   "tooltip.emcworld.weapon_god_emc_second": "§9EMC产出： %d §9/秒",
   "tooltip.emcworld.attack_speed_add": "§9攻击速度： + %d",
   "tooltip.emcworld.attack_speed_loss": "§9攻击速度： - %d",
@@ -1500,6 +1511,27 @@
   "item.the_afterlight.golden_shards_of_radiance": "金色光辉石碎片",
   "block.the_afterlight.block_of_radiance_shards": "金色光辉石块",
   "block.the_afterlight.workbench_of_ancients": "远古工作台",
+
+  "item.gobber2.gobber2_ring_return": "回城戒指",
+  "item.gobber2.ring_return.line1": "欢迎回家！",
+  "item.gobber2.ring_return.line2": "你必须在床上睡觉后才能使用",
+  "item.gobber2.ring_return.line3": "长按右击回到出生点",
+  "item.gobber2.ring_return.line4": "只能回到主世界的出生点",
+
+  "item.gobber2.gobber2_ring_teleport": "传送戒指",
+  "item.gobber2.ring_teleport.line1": "坐标设置",
+  "item.gobber2.ring_teleport.line2": "坐标已经设定了",
+  "item.gobber2.ring_teleport.line3": "坐标已清空",
+  "item.gobber2.ring_teleport.line4": "欢迎回到主世界",
+  "item.gobber2.ring_teleport.line5": "欢迎回到末地",
+  "item.gobber2.ring_teleport.line6": "欢迎回到下界",
+  "item.gobber2.ring_teleport.line7": "只有原版的维度受支持",
+  "item.gobber2.ring_teleport.line8": "回到存储的维度",
+  "item.gobber2.ring_teleport.line9": "允许玩家右击时传送到设置好的坐标位置",
+  "item.gobber2.ring_teleport.line10": "不能跨纬度使用",
+  "item.gobber2.ring_teleport.line11": "设置：按下Shift右击方块",
+  "item.gobber2.ring_teleport.line12": "清除：按下Shift右击空气",
+  "item.gobber2.ring_teleport.line13": "坐标存储：",
 
   "advancement.aether.altar": "你相信魔法吗?",
   "advancement.aether.altar.desc": "制作一个神能祭坛",

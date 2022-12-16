@@ -192,28 +192,14 @@
 				type: "item"
 				item: "projecte:transmutation_table"
 			}]
-			rewards: [
-				{
-					id: "5AFB2612CF232E6E"
-					type: "item"
-					item: {
-						id: "projecte:philosophers_stone"
-						Count: 1b
-						tag: { }
-						ForgeCaps: {
-							Parent: { }
-						}
-					}
-				}
-				{
-					id: "33D48A9B25AAF661"
-					type: "custom"
-					title: "{reward.emcworld.normal}"
-					icon: "emcworld:big_emc_gem"
-					tags: ["normal"]
-					auto: "no_toast"
-				}
-			]
+			rewards: [{
+				id: "33D48A9B25AAF661"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+				auto: "no_toast"
+			}]
 		}
 		{
 			x: 12.0d

@@ -42,3 +42,6 @@
 						#Set this to false to disable this mantle effect
 						enabled = true
 
+["Game Setting"]
+	"Prevent toss all weapons" = true
+

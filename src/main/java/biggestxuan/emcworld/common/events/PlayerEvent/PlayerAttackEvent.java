@@ -11,15 +11,18 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
+import biggestxuan.emcworld.api.item.equipment.dagger.BaseEMCGodDagger;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import net.mehvahdjukaar.dummmmmmy.setup.Registry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -28,10 +31,8 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
-import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -43,8 +44,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerAttackEvent {
@@ -131,6 +130,9 @@ public class PlayerAttackEvent {
             }
             long damageCost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
             long costEMC = damageCost;
+            if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
+                costEMC = 0;
+            }
             if(stack.getItem() instanceof IRangeAttackWeapon){
                 IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
                 if(weapon.getAttackRange(stack) > 0d){
@@ -139,22 +141,20 @@ public class PlayerAttackEvent {
                         for(LivingEntity entity:canRangeAttack){
                             if(costEMC > EMCHelper.getPlayerEMC(player)) break;
                             entity.hurt(new EWDamageSource.ReallyDamage(player),damage);
+                            if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
+                                continue;
+                            }
                             costEMC += damageCost;
                         }
                     }
                 }
             }
             costEMC =(long) (costEMC * rate);
-            if (costEMC != 0){
-                if(EMCHelper.getPlayerEMC(player)>costEMC){
-                    EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
-                }
-                else{
-                    event.setCanceled(true);
-                    Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(costEMC)));
-                }
-            }
+            CostPlayer(player,costEMC,event);
             event.setAmount(damage);
+        }
+        if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
+            return;
         }
         if(source.getDirectEntity() instanceof TameableEntity){
             TameableEntity entity = (TameableEntity) source.getDirectEntity();
@@ -164,15 +164,7 @@ public class PlayerAttackEvent {
                 PlayerEntity player = (PlayerEntity) owner;
                 float damage = event.getAmount();
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
-                if (cost != 0){
-                    if(EMCHelper.getPlayerEMC(player)>cost){
-                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
-                    }
-                    else{
-                        event.setCanceled(true);
-                        Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
-                    }
-                }
+                CostPlayer(player,cost,event);
             }
         }
         if(source.getDirectEntity() instanceof ProjectileEntity){
@@ -182,15 +174,19 @@ public class PlayerAttackEvent {
                 PlayerEntity player = (PlayerEntity) entity;
                 float damage = event.getAmount();
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
-                if (cost != 0){
-                    if(EMCHelper.getPlayerEMC(player)>cost){
-                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
-                    }
-                    else{
-                        event.setCanceled(true);
-                        Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
-                    }
-                }
+                CostPlayer(player,cost,event);
+            }
+        }
+    }
+
+    private static void CostPlayer(PlayerEntity player,long emc,LivingHurtEvent event){
+        if (emc != 0){
+            if(EMCHelper.getPlayerEMC(player)>emc){
+                EMCHelper.modifyPlayerEMC(player,Math.negateExact(emc),true);
+            }
+            else{
+                event.setCanceled(true);
+                Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(emc)));
             }
         }
     }
@@ -247,8 +243,23 @@ public class PlayerAttackEvent {
     @SubscribeEvent
     public static void attackEvent(AttackEntityEvent event){
         PlayerEntity entity = event.getPlayer();
+        Entity entity1 = entity.getEntity();
         if(entity.getMainHandItem().getItem() instanceof WarHammerItem && entity.getAttackStrengthScale(0) != 1){
             event.setCanceled(true);
+        }
+        if(entity1 instanceof LivingEntity){
+            LivingEntity livingEntity = (LivingEntity) entity1;
+            if(entity.getMainHandItem().getItem() instanceof DaggerItem){
+                DaggerItem daggerItem = (DaggerItem) entity.getMainHandItem().getItem();
+                if(daggerItem.getTier().getSpeed() >= -1.6){
+                    return;
+                }
+                livingEntity.hurtTime -= 8;
+                if(daggerItem instanceof BaseEMCGodDagger){
+                    BaseEMCGodDagger emcGodDagger = (BaseEMCGodDagger) daggerItem;
+                    livingEntity.hurtTime -= Math.round(0.5 * emcGodDagger.getLevel(entity.getMainHandItem()));
+                }
+            }
         }
     }
 }

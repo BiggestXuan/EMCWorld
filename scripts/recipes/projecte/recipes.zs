@@ -94,4 +94,8 @@ public function modifyProjecteRecipe() as void{
         [coals[4],zi,g[1],ra,coals[4]],
         [ru,ucc,ro,ucc,ru],
     ],relay[2],2);
+
+    craftingTable.removeByName("projecte:conversions/emerald_to_diamond");
+
+    removeCraftRecipe(new Getter().getPEItem());
 }

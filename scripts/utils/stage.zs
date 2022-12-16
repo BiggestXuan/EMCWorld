@@ -59,7 +59,6 @@ public class sitem{
             <item:minecraft:netherite_ingot>,
             <item:minecraft:netherite_scrap>,
             <item:minecraft:quartz>,
-            <item:minecraft:nether_brick>,
             <item:byg:yellow_nether_brick>,
             <item:gobber2:gobber2_globette_nether>,
             <item:gobber2:gobber2_seed_nether>,

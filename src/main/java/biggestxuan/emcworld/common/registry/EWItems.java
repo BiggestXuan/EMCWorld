@@ -28,6 +28,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.PurpleStaff;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.*;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.Creation;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.SuperStar;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.FestivalItem.MoonCake;
 import biggestxuan.emcworld.common.items.FestivalItem.TangYuan;
@@ -47,6 +48,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+@SuppressWarnings("unused")
 public class EWItems {
     private static final EMCWorldAPI api = EMCWorldAPI.getInstance();
     
@@ -142,6 +144,7 @@ public class EWItems {
     public static final RegistryObject<Item> ATM_SWORD = ITEMS.register("atm_sword",AtmSword::new);
     public static final RegistryObject<Item> INFINITY_SWORD = ITEMS.register("infinity_sword", InfinitySword::new);
     public static final RegistryObject<Item> CREATION = ITEMS.register("creation", Creation::new);
+    public static final RegistryObject<Item> SUPER_STAR = ITEMS.register("super_star", SuperStar::new);
     public static final RegistryObject<Item> NIGHT_LIGHT = ITEMS.register("night_light", NightLight::new);
     public static final RegistryObject<Item> RED_GREEN_DAGGER = ITEMS.register("red_green_dagger", RedGreenDagger::new);
     public static final RegistryObject<Item> UNIVERSAL_BALL = ITEMS.register("universal_ball",() -> new FinalItem(1));

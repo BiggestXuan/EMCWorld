@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
-import biggestxuan.emcworld.client.Message;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import net.minecraft.entity.LivingEntity;
