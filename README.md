@@ -4,8 +4,10 @@
   
 ### 内测条件：  
 - 在 2021/1/1 之前认识 Biggest_Xuan 并且对 Minecraft 的模组有一定了解。  
-- 会 Java 和 CraftTweaker 以及 KubeJS 开发，能够帮我们优化代码和增加新功能（详情见上方的 Wiki）  
+- 会 Java 和 CraftTweaker，能够帮我们优化代码和增加新功能（详情见上方的 Wiki）  
 - 是大轩整合包的高级赞助者或是 EMCWorld 的中级赞助者。  
+  
+自 `0.3.0-pre10`起，整合包完全弃用kubejs。
   
 如果满足上方任一条件，请加入开发 QQ 群：772115049 （请备注 ID ）  
   
