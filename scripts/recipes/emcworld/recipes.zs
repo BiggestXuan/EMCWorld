@@ -6,6 +6,7 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.recipe.Replacer;
 
 import mods.emcworld.CrTFoodValue;
+import mods.emcworld.CTRequirement;
 import mods.emcworld.EWItem;
 
 public function emcworldRecipe() as void{
@@ -571,6 +572,7 @@ public function emcworldRecipe() as void{
     setEMCStage(<item:the_afterlight:moon_crystal>,19200,6);
     setEMCStage(<item:emcworld:universal_ball>,320000,8);
     removeRecipe([mt]);
+    crockPotRecipe(new CTRequirement().addCategoryMin(new CrTFoodValue().put("meat",3.5)).addMustItem(<item:farmersdelight:ham>,1),<item:emcworld:ham_bat>,100);
     violet(<item:projectex:purple_collector>,<item:projectex:violet_collector>);
     violet(<item:projectex:purple_relay>,<item:projectex:violet_relay>);
     blue(<item:projectex:violet_collector>,<item:projectex:blue_collector>);
@@ -633,6 +635,7 @@ public function emcworldRecipe() as void{
         <item:quark:rainbow_rune>
     ],<item:emcworld:nature_staff>,30000,1000000,2);
     smithingRecipe(sword[2],unqd*3,sword[3]);
+    crockPotRecipe(new CTRequirement().addCategoryMin(new CrTFoodValue().put("meat",1.5).put("sweetener",1.5)).addMustItem(<item:farmersdelight:smoked_ham>,1),<item:farmersdelight:honey_glazed_ham_block>,30);
     for i in 20 .. 24{
         removeSmithingRecipe(armor[i]);
     }

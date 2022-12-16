@@ -28,11 +28,11 @@ public class PCLWarningScreen extends Screen {
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(matrixStack);
         drawCenteredString(matrixStack, font, title, width / 2, 30, 16777215);
-        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line1"), width / 10, 60, 16777215);
-        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line2"), width / 10, 85, 16777215);
-        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line3"), width / 10, 110, 16777215);
-        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line4"), width / 10, 135, 16777215);
-        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line5"), width / 10, 160, 16777215);
+        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line1"), width / 12, 60, 16777215);
+        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line2"), width / 12, 85, 16777215);
+        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line3"), width / 12, 110, 16777215);
+        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line4"), width / 12, 135, 16777215);
+        drawString(matrixStack, font, EMCWorld.tc("screen.pcl.line5"), width / 12, 160, 16777215);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
 }

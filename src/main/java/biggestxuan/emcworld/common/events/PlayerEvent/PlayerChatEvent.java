@@ -33,6 +33,7 @@ public class PlayerChatEvent {
                     event.setComponent(EMCWorld.tc("message.chat.base2",name,saying));
                     break;
                 case 3:
+                case 4:
                 case 5:
                     event.setComponent(EMCWorld.tc("message.chat.base3",name,saying));
                     break;

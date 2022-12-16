@@ -41,7 +41,15 @@ public class CrTFoodValue{
         return this;
     }
 
-    private static FoodCategory getCategory(String name) throws NullPointerException{
+    public List<Float> getValue() {
+        return value;
+    }
+
+    public List<String> getCategory() {
+        return Category;
+    }
+
+    public static FoodCategory getCategory(String name){
         switch (name.toLowerCase()){
             case "meat":
                 return FoodCategory.MEAT;
@@ -61,10 +69,8 @@ public class CrTFoodValue{
                 return FoodCategory.SWEETENER;
             case "frozen":
                 return FoodCategory.FROZEN;
-            case "inedible":
-                return FoodCategory.INEDIBLE;
             default:
-                throw new NullPointerException();
+                return FoodCategory.INEDIBLE;
         }
     }
 }

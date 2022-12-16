@@ -596,6 +596,7 @@
   "message.welcome.default": "欢迎玩家 %d 加入游戏！",
   "message.welcome.normal": "§2欢迎赞助者 %d §2加入游戏！",
   "message.welcome.advanced": "§3欢迎高级赞助者 %d §3加入游戏！",
+  "message.welcome.advanced": "§3欢迎吉祥物 %d §3加入游戏！",
   "message.welcome.highest": "§6欢迎顶级赞助者 %d §6加入游戏！",
   "message.welcome.dev": "§4欢迎开发者 %d §4加入游戏！",
   "message.update_fail": "§4EMCWorld 更新检查失败，请检查你的网络连接！",

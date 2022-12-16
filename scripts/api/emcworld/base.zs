@@ -6,6 +6,7 @@ import crafttweaker.api.item.IIngredient;
 import mods.emcworld.Infuser;
 import mods.emcworld.DifficultyItem;
 import mods.emcworld.EMCHelper;
+import mods.emcworld.CTRequirement;
 
 public class Ice{
     public static var INSTANCE as Ice = new Ice();
@@ -114,6 +115,10 @@ public function staffRecipe(input as IItemStack,output as IItemStack) as void{
         [a,<tag:items:forge:rods/wooden>,input],
         [<tag:items:forge:rods/wooden>,a,a]
     ],output,"_staff");
+}
+
+public function crockPotRecipe(re as CTRequirement,output as IItemStack,pri as int) as void{
+    <recipetype:crockpot:crock_pot_cooking>.addRecipe(getRecipeName(output)+"_crock_pot",re,output,pri);
 }
 
 private function getStageName(num as int) as string{

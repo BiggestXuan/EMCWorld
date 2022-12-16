@@ -145,6 +145,9 @@ public class PlayerLoggedEvent {
                 case 3:
                     Message.sendMessageToAllPlayer(player, tc("message.welcome.highest",name));
                     break;
+                case 4:
+                    Message.sendMessageToThisWorldPlayer(player, tc("message.welcome.mascot",name));
+                    break;
                 case 5:
                     Message.sendMessageToAllPlayer(player, tc("message.welcome.dev",name));
                     break;
