@@ -115,8 +115,7 @@ public function modifyBotaniaRecipe() as void{
     removeRuneAltarRecipe(ar);
     runeAltarRecipe([
         <item:botania:dandelifeon>,
-        <item:mythicbotany:midgard_rune>,
-        lt,lt,lt,<item:botania:alfheim_portal>,<item:emcworld:god_steel_ingot>
+        <item:botania:alfheim_portal>,<item:emcworld:god_steel_ingot>
     ],<item:mythicbotany:yggdrasil_branch>,10000);
     reactionChamberRecipe(
         <item:mythicbotany:kvasir_blood>,

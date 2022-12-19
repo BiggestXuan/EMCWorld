@@ -273,6 +273,9 @@ public class PlayerClickEvent {
     private static void craftRecipe(IUpdateRecipe recipe, PlayerEntity player, MultiBlock.UpdateMath info){
         ItemStack itemStack = player.getItemInHand(Hand.MAIN_HAND);
         ItemStack output = recipe.getOutput();
+        if(PlayerPickUpItemEvent.full(player,output)){
+            return;
+        }
         long costEMC = MathUtils.doubleToLong(recipe.costEMC() * MathUtils.difficultyLoss() * info.getCost());
         long playerEMC = EMCHelper.getPlayerEMC(player);
         if(playerEMC < costEMC) return;

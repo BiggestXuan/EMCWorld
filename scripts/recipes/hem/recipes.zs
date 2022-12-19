@@ -20,9 +20,9 @@ public function modifyHemRecipe() as void{
 
     removeCraftRecipe([cb,cop]);
     modifyShapedRecipe([
-        [ifo,cop,ifg],
+        [ifo,cop,ifo],
         [uuc,uuc,uuc],
-        [ifo,cop,ifg]
+        [ifo,cop,ifo]
     ],gp*15);
     modifyShapedRecipe([
         [bc,bc,bc],
@@ -31,22 +31,22 @@ public function modifyHemRecipe() as void{
     ],bo);
     modifyShapedRecipe([
         [tc,tc,tc],
-        [tc,<item:mekanismgenerators:turbine_rotor>,<item:mekanismgenerators:turbine_valve>],
-        [tc,bo,gp]
+        [tc,<item:mekanismgenerators:turbine_rotor>,tc],
+        [tc,<item:mekanismgenerators:turbine_rotor>,tc]
     ],se);
     modifyShapedRecipe([
-        [<item:minecraft:black_stained_glass>,cb,aa],
-        [aa,<item:mekanism:energy_tablet>,cop],
-        [cop,cop,gp]
+        [aa,cb,aa],
+        [aa,<item:botania:life_essence>,aa],
+        [cop,cop,cop]
     ],toc);
     modifyShapedRecipe([
-        [gr,<item:minecraft:iron_door>,gr],
+        [cop,<item:minecraft:iron_door>,cop],
         [cop,cb,cop],
-        [gp,qe,gp]
+        [gp,gp,gp]
     ],<item:hem:transporter_bottom>);
     modifyShapedRecipe([
         [cop,cop,cop],
-        [bp,<item:mekanism:teleportation_core>,bp],
+        [gr,<item:minecraft:diamond>,gr],
         [gr,cb,gr]
     ],<item:hem:transporter_top>);
     combiningRecipe(<item:mekanism:ultimate_control_circuit>,cop,cb);

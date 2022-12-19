@@ -47,7 +47,7 @@ public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 3;
-    public static final String PackVersion = "0.3.0 - Pre10";
+    public static final String PackVersion = "0.3.0 - Pre12";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
 
@@ -73,6 +73,8 @@ public class EMCWorld {
         EWContainerTypes.CONTAINERS.register(bus);
         EWRecipeTypes.RECIPES.register(bus);
         EWSounds.SOUND.register(bus);
+        EWVillagers.POI.register(bus);
+        EWVillagers.PROFESSION.register(bus);
 
         bus.addGenericListener(Block.class,EWBlocks::botaniaInit);
 

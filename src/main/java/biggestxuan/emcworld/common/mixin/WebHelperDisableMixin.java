@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.io.BufferedReader;
 
 @Mixin(WebHelper.class)
-public abstract class WebHelperDisable {
+public abstract class WebHelperDisableMixin {
     @Inject(method = "getURLContents",at = @At("HEAD"), cancellable = true, remap = false)
     private static void getURLContents(String urlString, String backupFileLoc, CallbackInfoReturnable<BufferedReader> cir){
         cir.setReturnValue(null);

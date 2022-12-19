@@ -11,10 +11,10 @@
 		{
 			title: "{quest.emcworld.third_sea_gointoatlantis}"
 			icon: "atlantis:aquamarine_ore"
-			x: 6.0d
-			y: 0.0d
+			x: 18.0d
+			y: -3.0d
 			description: ["{quest.emcworld.third_sea_gointoatlantis_desc}"]
-			dependencies: ["38C977391C9E78C0"]
+			dependencies: ["0D798CA0677DB2ED"]
 			id: "205DDCEF033E892C"
 			tasks: [{
 				id: "38FC8A68FF7F8148"
@@ -39,42 +39,12 @@
 			]
 		}
 		{
-			title: "{quest.emcworld.third_sea_killelderguardian}"
-			icon: {
-				id: "atlantis:sword_aquamarine"
-				Count: 1b
-				tag: {
-					Damage: 0
-				}
-			}
-			x: 0.0d
-			y: 0.0d
-			description: ["{quest.emcworld.third_sea_killelderguardian_desc}"]
-			dependencies: ["429D581AECE68C56"]
-			hide: true
-			id: "38C977391C9E78C0"
-			tasks: [{
-				id: "7AF0823E6BD9E685"
-				type: "kill"
-				icon: "minecraft:elder_guardian_spawn_egg"
-				entity: "minecraft:elder_guardian"
-				value: 1L
-			}]
-			rewards: [{
-				id: "49BBB8134025C7DE"
-				type: "custom"
-				title: "{reward.emcworld.normal}"
-				icon: "emcworld:big_emc_gem"
-				tags: ["normal"]
-				auto: "no_toast"
-			}]
-		}
-		{
 			title: "{quest.emcworld.third_sea_aquamarinegem}"
 			x: 12.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_sea_aquamarinegem_desc}"]
-			dependencies: ["205DDCEF033E892C"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
 			id: "767E18633CE0A377"
 			tasks: [{
 				id: "6A174212CC62335D"
@@ -134,8 +104,8 @@
 		{
 			title: "{quest.emcworld.third_sea_oceanlantern}"
 			icon: "atlantis:ocean_lantern"
-			x: 6.0d
-			y: 6.0d
+			x: 9.0d
+			y: 3.0d
 			description: ["{quest.emcworld.third_sea_oceanlantern_desc}"]
 			dependencies: ["6D2DAAEA72AF0A33"]
 			id: "6722CB9795761861"
@@ -176,7 +146,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_sea_oceanstone}"
-			x: 6.0d
+			x: 12.0d
 			y: -3.0d
 			description: ["{quest.emcworld.third_sea_oceanstone_desc}"]
 			dependencies: ["12067D6C368347DD"]
@@ -232,8 +202,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_sea_pcrystals}"
-			x: 0.0d
-			y: 6.0d
+			x: 9.0d
+			y: 0.0d
 			description: ["{quest.emcworld.third_sea_pcrystals_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -263,7 +233,7 @@
 		{
 			title: "{quest.emcworld.third_sea_atlanteancore}"
 			x: 12.0d
-			y: 6.0d
+			y: 3.0d
 			description: ["{quest.emcworld.third_sea_atlanteancore_desc}"]
 			dependencies: ["6722CB9795761861"]
 			id: "37D88D1A25709223"
@@ -291,7 +261,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_sea_pshard}"
-			x: 0.0d
+			x: 9.0d
 			y: -3.0d
 			description: ["{quest.emcworld.third_sea_pshard_desc}"]
 			dependencies: ["429D581AECE68C56"]
@@ -328,6 +298,7 @@
 				"3CE978AB8E60E3F4"
 				"137F3233E682ED44"
 				"71B5A4DF8F09FD8B"
+				"767E18633CE0A377"
 			]
 			size: 1.5d
 			id: "0D798CA0677DB2ED"

@@ -185,3 +185,13 @@ public function warHammer(i as IItemStack,o as IItemStack) as void{
         [a,<item:minecraft:stick>,a]
     ],o);
 }
+
+public function dagger(aa as IItemStack,b as IItemStack) as void{
+    var a = <item:minecraft:air>;
+    var s = <tag:items:forge:rods/wooden>;
+    addCraftShapedRecipeNoName([
+        [a,a,aa],
+        [a,aa,a],
+        [s,a,a]
+    ],b);
+}

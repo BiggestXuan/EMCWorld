@@ -8,6 +8,8 @@ package biggestxuan.emcworld.common.world.gen;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.registry.EWBlocks;
+import hellfirepvp.astralsorcery.common.lib.BlocksAS;
+import hellfirepvp.astralsorcery.common.registry.RegistryBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
@@ -18,6 +20,7 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import vazkii.botania.common.block.ModBlocks;
 
 public class EMCWorldOreFeature {
     public static ConfiguredFeature<?, ?> COLD_ORE;
@@ -27,6 +30,7 @@ public class EMCWorldOreFeature {
     public static ConfiguredFeature<?, ?> DRYSTONE_ORE;
     public static ConfiguredFeature<?, ?> CHLOROPHYTE_ORE;
     public static ConfiguredFeature<?, ?> AQUA_ORE;
+    public static ConfiguredFeature<?, ?> STAR_ORE;
 
     private static ConfiguredFeature<?, ?> get(String name,ConfiguredFeature<?, ?> config){
         Registry.register(WorldGenRegistries.CONFIGURED_FEATURE,EMCWorld.rl(name),config);
@@ -41,5 +45,6 @@ public class EMCWorldOreFeature {
         END_EMC_ORE = get("end_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE), EWBlocks.END_EMC_ORE.get().defaultBlockState(),6)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(24));
         RICH_END_EMC_ORE = get("rich_end_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE), EWBlocks.END_RICH_EMC_ORE.get().defaultBlockState(),3)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(6));
         TITAN_ORE = get("titan_end_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE), EWBlocks.TITANIUM_ORE.get().defaultBlockState(),3)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(3));
+        STAR_ORE = get("star_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(ModBlocks.livingrock), BlocksAS.STARMETAL_ORE.defaultBlockState(),3)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(4));
     }
 }

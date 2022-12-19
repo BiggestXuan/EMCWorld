@@ -9,7 +9,5 @@ package biggestxuan.emcworld.api.item;
 import net.minecraft.item.ItemStack;
 
 public interface INeedLevelItem {
-    default int getUseLevel(ItemStack stack){
-        return 0;
-    }
+    int getUseLevel(ItemStack stack);
 }

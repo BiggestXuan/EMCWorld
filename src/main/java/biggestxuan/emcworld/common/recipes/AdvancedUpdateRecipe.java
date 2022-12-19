@@ -40,6 +40,7 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     ULTIMATE_CONTROL(MekanismItems.ELITE_CONTROL_CIRCUIT.getItem(),MekanismItems.ULTIMATE_CONTROL_CIRCUIT.getItem(),250000),
     FILTH(RatsItemRegistry.FILTH.getItem(),RatsItemRegistry.FILTH_CORRUPTION.asItem(),2000000,3),
     WELL(BloodMagicBlocks.BLOOD_ALTAR.get().asItem(), BlocksAS.WELL.asItem(),2500000,3),
+    PLAGUE_TOME(Items.BOOK,RatsItemRegistry.PLAGUE_TOME,3000000,4),
     EMC_LEAF(ModItems.GOLD_LEAF.getItem(),EWItems.EMC_LEAF.get(),100000,4),
     STAR_ORE(RatlantisBlockRegistry.RATLANTEAN_GEM_ORE.asItem(),BlocksAS.STARMETAL_ORE.asItem(),200000,4 ),
     QIO_DRIVE(MekanismItems.BASE_QIO_DRIVE.getItem(),MekanismItems.HYPER_DENSE_QIO_DRIVE.getItem(),3500000,2),

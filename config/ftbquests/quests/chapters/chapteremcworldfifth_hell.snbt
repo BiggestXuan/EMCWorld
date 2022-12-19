@@ -96,9 +96,9 @@
 				{
 					id: "23B1AC03AEE72E58"
 					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
 					auto: "no_toast"
 				}
 			]
@@ -120,7 +120,7 @@
 					id: "027A41554431E210"
 					type: "item"
 					item: "hem:copparite"
-					count: 2
+					count: 6
 				}
 				{
 					id: "27AFAA6612FE26CE"

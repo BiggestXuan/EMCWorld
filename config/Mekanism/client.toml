@@ -86,8 +86,8 @@
 				y = 2147483647
 
 			[client.gui.window.crafting1]
-				x = 40
-				y = 85
+				x = -65
+				y = 75
 
 			[client.gui.window.upgrade]
 				x = 10
@@ -102,16 +102,16 @@
 				y = 2147483647
 
 			[client.gui.window.sideConfig]
-				x = 2147483647
-				y = 2147483647
+				x = 10
+				y = 15
 
 			[client.gui.window.confirmation]
 				x = 2147483647
 				y = 2147483647
 
 			[client.gui.window.crafting2]
-				x = 208
-				y = 76
+				x = 151
+				y = 79
 
 			[client.gui.window.transporterConfig]
 				x = 2147483647

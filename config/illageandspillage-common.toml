@@ -1,0 +1,43 @@
+
+["Raid settings"]
+	#How many Igniters each wave
+	#Requires game restart
+	#Must have no more and no less than 8 integers
+	igniter_raidcount = [0, 0, 1, 2, 0, 2, 1, 4]
+	#Should the Magispeller only be allowed to fight once all other raiders in the wave are killed?
+	#Default = true
+	magispeller_forcefield = true
+	#Controls if Magispeller should despawn if it spawns in the 7th wave before the bonus wave.
+	#Overrides magispeller_raidcount
+	#Default = true
+	magispeller_onlyOneAllowed = true
+	#How many Magispellers each wave
+	#Requires game restart
+	#Must have no more and no less than 8 integers
+	magispeller_raidcount = [0, 0, 0, 0, 0, 0, 0, 0]
+
+	["Raid settings"."Boss Randomizer settings"]
+		#Mobs put in this list will be randomly selected by the Boss Randomizer.
+		#Format must be like 'examplemod:entity'. Example: "minecraft:zombie"
+		#You can use the /summon command to scroll through and find the IDs for mobs you want!
+		#Invalid entity registry names will spawn the boss randomizer itself as an illager. Same goes for if this list is empty
+		#Only entities extending the Abstract Raider class will actually join the Raid upon spawning
+		#Requires game restart
+		bossrandomizer_bosstypes = []
+		#How many Boss Randomizers each wave
+		#Requires game restart
+		#Must have no more and no less than 8 integers
+		#Note that Boss Randomizers on the final Raid wave will be considered the 'Final Boss'
+		bossrandomizer_raidcount = [0, 0, 0, 0, 0, 0, 0, 1]
+		#Mobs put in this list will be randomly selected by the Final Boss Randomizer. Only insanely powerful mobs like the Magispeller should go here
+		#Format must be like 'examplemod:entity'. Example: "minecraft:zombie"
+		#You can use the /summon command to scroll through and find the IDs for mobs you want!
+		#Invalid entity registry names will spawn the boss randomizer itself as an illager. Same goes for if this list is empty
+		#Only entities extending the Abstract Raider class will actually join the Raid upon spawning
+		#Requires game restart
+		bossrandomizer_finalbosstypes = ["illageandspillage:magispeller"]
+		#Controls if the Boss Randomizer should despawn if it spawns in the 7th wave before the bonus wave.
+		#Overrides bossrandomizer_raidcount
+		#Default = true
+		bossrandomizer_onlyOneAllowed = true
+

@@ -26,7 +26,7 @@ public function tartaricForgeRecipe(input as IIngredient[],output as IItemStack,
 }
 
 public function reactionChamberRecipe(input as IIngredient,output as IItemStack,inputFluid as IFluidStack,outputFluid as IFluidStack,tool as IIngredient,addedItems as MCWeightedItemStack[]) as void{
-    <recipetype:bloodmagic:arc>.addRecipe(getRecipeName(output)+"_reaction_chamber",output,outputFluid,input,inputFluid,tool,false,addedItems);
+    <recipetype:bloodmagic:arc>.addRecipe(getRecipeName(output)+"_reaction_chamber",output,outputFluid,input,inputFluid,<tag:items:bloodmagic:arc/tool>,false,addedItems);
 }
 
 public function alchemalTableRecipe(input as IIngredient[],output as IItemStack,cost as int,tier as int) as void{

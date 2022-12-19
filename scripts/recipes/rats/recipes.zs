@@ -29,7 +29,7 @@ public function modifyRatsRecipe() as void{
     removeCraftRecipe([cct,ft,fc,mcgc,db,vs,ah,rua]);
     removeAllRecipe([gr]);
     enderCraftingRecipe([
-        [tp,<item:emcworld:base_key>,tp],
+        [tp,<item:rats:plague_scythe>,tp],
         [tp,<item:rats:cheese>,tp],
         [tp,<item:rats:tangled_rat_tails>,tp],
     ],cct);
@@ -55,9 +55,6 @@ public function modifyRatsRecipe() as void{
     ],db,500000);
     alchemalTableRecipe([
         <item:bloodmagic:slate_vial>,
-        <item:bloodmagic:fortune_anointment>,
-        <item:bloodmagic:looting_anointment>,
-        <item:bloodmagic:life_essence_bucket>,
         rf,gr
     ],vs,5000,2);
     alchemalArrayRecipe(<item:minecraft:leather_helmet>,<item:bloodmagic:reagentsight>,ah);

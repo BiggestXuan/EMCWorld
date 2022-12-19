@@ -5,15 +5,18 @@
   "refmap": "emcworld.refmap.json",
   "mixins": [
     "AtlantisDisableMixin",
+    "ConjurerMixin",
     "GaiaMixin",
     "ItemStageMixin",
     "LootrMixin",
+    "MagispellerMixin",
     "QuarkHandlerMixin",
-    "QuarkInventoryHandler",
-    "WebHelperDisable"
+    "QuarkInventoryHandlerMixin",
+    "RatMixin",
+    "WebHelperDisableMixin"
   ],
   "client": [
-    "MinecraftWindow",
+    "MinecraftWindowMixin",
     "RatsPlagueMixin"
   ],
   "server": [],

@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Other;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.items.EWItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import net.minecraft.client.util.ITooltipFlag;
@@ -23,9 +24,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevelItem {
+public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevelItem, IRangeAttackWeapon {
     public HamBat(){
-        super(new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB));
+        super(new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB).stacksTo(1));
     }
 
     private int getFresh(ItemStack stack){
@@ -42,31 +43,36 @@ public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevel
 
     @Override
     public int getUseLevel(ItemStack stack) {
-        return 21;
+        return 25;
     }
 
     @Override
     public float getAdditionsDamage(ItemStack stack) {
-        return 25 * (getFresh(stack) / 100f);
+        return getFresh(stack) >= 100 ? 0.3F * getFresh(stack) - 10 : 0.1F * getFresh(stack) + 10;
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.ham_bat_fresh",getFresh(p_77624_1_)).append(" %"));
+        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.ham_bat_fresh",getFresh(p_77624_1_)/2).append(" %"));
     }
 
     @Override
     public void inventoryTick(@Nonnull ItemStack p_77663_1_, @Nonnull World p_77663_2_, @Nonnull Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
         if(p_77663_2_.isClientSide) return;
         if(p_77663_1_.getTag() == null || p_77663_1_.getTag().get("fresh") == null){
-            p_77663_1_.getOrCreateTag().putInt("fresh",100);
+            p_77663_1_.getOrCreateTag().putInt("fresh",200);
         }
-        if(p_77663_2_.getDayTime() % 450 == 0){
+        if(p_77663_2_.getDayTime() % 500 == 0){
             waste(p_77663_1_);
         }
-        if(p_77663_1_.getTag().getInt("fresh")== 0){
+        if(p_77663_1_.getTag().getInt("fresh") == 0){
             p_77663_1_.shrink(1);
         }
+    }
+
+    @Override
+    public double getAttackRange(ItemStack stack) {
+        return 3.5D * getFresh(stack) / 200;
     }
 }

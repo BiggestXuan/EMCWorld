@@ -80,19 +80,19 @@ public function modifyProjecteRecipe() as void{
     ],relay[1]);
 
     extendedCraftingShapedRecipe([
-        [ru,ucc,ro,ucc,ru],
-        [coals[4],ra,g[1],zi,coals[4]],
+        [ru,ucc,coals[4],ucc,ru],
+        [ro,ra,g[1],ra,ro],
         [ei,g[1],collector[1],g[1],ei],
-        [coals[4],zi,g[1],ra,coals[4]],
-        [ru,ucc,ro,ucc,ru],
+        [ro,ra,g[1],ra,ro],
+        [ru,ucc,coals[4],ucc,ru],
     ],collector[2],2);
 
     extendedCraftingShapedRecipe([
-        [ru,ucc,ro,ucc,ru],
-        [coals[4],ra,g[1],zi,coals[4]],
+        [ru,ucc,coals[4],ucc,ru],
+        [ro,ra,g[1],ra,ro],
         [ei,g[1],relay[1],g[1],ei],
-        [coals[4],zi,g[1],ra,coals[4]],
-        [ru,ucc,ro,ucc,ru],
+        [ro,ra,g[1],ra,ro],
+        [ru,ucc,coals[4],ucc,ru],
     ],relay[2],2);
 
     craftingTable.removeByName("projecte:conversions/emerald_to_diamond");

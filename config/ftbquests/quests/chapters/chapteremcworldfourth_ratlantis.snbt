@@ -249,7 +249,7 @@
 		{
 			title: "{quest.emcworld.fourth_ratlantis_neoratlantean}"
 			icon: "rats:psionic_rat_brain"
-			x: 21.0d
+			x: 18.0d
 			y: 3.0d
 			description: ["{quest.emcworld.fourth_ratlantis_neoratlantean_desc}"]
 			dependencies: ["01D6E4E4C3F3DA5F"]
@@ -377,9 +377,12 @@
 			dependencies: ["04EF976625980809"]
 			id: "12B95F9789315A24"
 			tasks: [{
-				id: "1ED300F17D345781"
-				type: "item"
-				item: "rats:dutchrat_bell"
+				id: "25E00A4F511928FF"
+				type: "observation"
+				icon: "rats:dutchrat_bell"
+				timer: 0L
+				observe_type: 0
+				to_observe: "rats:dutchrat_bell"
 			}]
 			rewards: [
 				{
@@ -437,8 +440,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_idolofratlantis}"
-			x: 27.0d
-			y: 3.0d
+			x: 21.13690476190476d
+			y: 3.0357142857142776d
 			description: ["{quest.emcworld.fourth_ratlantis_idolofratlantis_desc}"]
 			hide_dependency_lines: true
 			dependencies: [

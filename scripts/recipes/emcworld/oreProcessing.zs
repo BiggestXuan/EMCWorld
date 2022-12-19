@@ -85,7 +85,7 @@ public function emcworldOresProcessing() as void{
         <item:atlantis:aquamarine_gem>
     );
     addNormalOreProceRecipe(
-        <item:hem:rose_copper_ore>,
+        <item:hem:raw_rose_copper>,
         <slurry:emcworld:dirty_rose_copper>,
         <slurry:emcworld:clean_rose_copper>,
         <item:emcworld:crystal_rose_copper>,

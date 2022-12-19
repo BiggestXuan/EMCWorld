@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vazkii.quark.base.handler.InventoryTransferHandler;
 
 @Mixin(InventoryTransferHandler.class)
-public abstract class QuarkInventoryHandler {
+public abstract class QuarkInventoryHandlerMixin {
     @Inject(
             method = "accepts",
             at = @At(value ="HEAD"),

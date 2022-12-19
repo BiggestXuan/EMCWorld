@@ -36,7 +36,7 @@ public class LeftClickPacket {
                 ctx.get().enqueueWork(()-> {
                     List<? extends LivingEntity> canRangeAttack = getNearEntity(ctx.get().getSender(),ctx.get().getSender(),64);
                     for(LivingEntity entity:canRangeAttack){
-                        entity.hurt(EWDamageSource.REALLY,114514);
+                        entity.hurt(new EWDamageSource.ReallyDamage(ctx.get().getSender()),114514);
                     }
                 });
             }

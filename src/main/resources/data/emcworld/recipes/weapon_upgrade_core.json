@@ -15,10 +15,10 @@
       "item": "emcworld:advanced_emc_gem"
     },
     "B": {
-      "item": "mekanism:pellet_polonium"
+      "item": "astralsorcery:starmetal_ingot"
     },
     "C": {
-      "item": "mekanism:pellet_antimatter"
+      "item": "emcworld:pink_matter"
     }
   },
   "relay_inputs": [

@@ -46,12 +46,12 @@
 		spawner = 0.23
 
 		[mob.health.multiplier]
-			passive = 0.15
-			hostile = 0.15
+			passive = 0.4
+			hostile = 0.4
 
 	[mob.damage]
 		#How rapidly mob attack damage rises with difficulty (0 = no damage boost)
-		boostScale = 0.1
+		boostScale = 0.25
 		#The maximum extra attack damage a mob can receive
 		maxBoost = 10.0
 

@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.CharaSword;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -19,6 +20,7 @@ import mekanism.common.registries.MekanismDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.server.MinecraftServer;
@@ -69,6 +71,19 @@ public class LivingDamageEvent {
             PlayerEntity player = (PlayerEntity) entity;
             if(source.equals(MekanismDamageSource.RADIATION)){
                 damage += player.getMaxHealth() * 0.25f;
+            }
+            if(source.getDirectEntity() instanceof AbstractRaiderEntity){
+                damage *= GameStageManager.hasStage(player,"one") ? 1 : 3;
+                damage *= GameStageManager.hasStage(player,"two") ? 1 : 3;
+                damage *= GameStageManager.hasStage(player,"three") ? 1 : 2;
+            }
+            if(source.getDirectEntity() instanceof ProjectileEntity){
+                ProjectileEntity entity1 = (ProjectileEntity) source.getDirectEntity();
+                if(entity1.getOwner() instanceof AbstractRaiderEntity){
+                    damage *= GameStageManager.hasStage(player,"one") ? 1 : 3;
+                    damage *= GameStageManager.hasStage(player,"two") ? 1 : 2.5;
+                    damage *= GameStageManager.hasStage(player,"three") ? 1 : 2;
+                }
             }
         }
         event.setAmount(damage);

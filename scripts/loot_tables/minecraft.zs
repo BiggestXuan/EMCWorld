@@ -92,10 +92,10 @@ public function tweakerMinecraftLootTable() as void{
     var vn = <item:allthemodium:vibranium_nugget>;
     for i in 1 .. 5{
         var rl5 as MCResourceLocation = getRL(tableList[i]);
-        modifyLootTable(vn*4,0.05f,rl5);
-        modifyLootTable(vn*3,0.08f,rl5);
-        modifyLootTable(vn*2,0.12f,rl5);
-        modifyLootTable(vn*1,0.15f,rl5);
+        modifyLootTable(vn*4,0.08f,rl5);
+        modifyLootTable(vn*3,0.1f,rl5);
+        modifyLootTable(vn*2,0.15f,rl5);
+        modifyLootTable(vn*1,0.2f,rl5);
     } 
     var rl6 as MCResourceLocation = getRL(tableList[7]);
     var un = <item:allthemodium:unobtainium_nugget>;

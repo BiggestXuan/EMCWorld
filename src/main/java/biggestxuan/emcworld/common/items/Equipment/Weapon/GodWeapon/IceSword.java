@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 
 public class IceSword extends BaseEMCGodWeapon {
     public IceSword() {
-        super(7.5f,0x244bb9);
+        super(6.25f,0x244bb9);
     }
 
     @Override
     public float getBaseDamage(ItemStack stack) {
         int level = this.getLevel(stack);
-        return (float) ((Math.pow(1.15f,level)*baseDamage)-baseDamage);
+        return (float) ((Math.pow(1.16f,level)*baseDamage)-baseDamage);
     }
 
     @Override

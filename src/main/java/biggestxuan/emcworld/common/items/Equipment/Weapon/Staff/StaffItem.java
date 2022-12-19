@@ -48,7 +48,7 @@ import vazkii.botania.common.entity.EntityManaBurst;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapon, INeedLevelItem {
+public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapon {
     protected final IStaffTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
 

@@ -549,12 +549,21 @@ public function emcworldRecipe() as void{
             <item:emcworld:iron_warhammer>,
             <item:emcworld:golden_warhammer>,
             <item:emcworld:diamond_warhammer>
+        ],
+        [
+            <item:emcworld:wooden_dagger>,
+            <item:emcworld:stone_dagger>,
+            <item:emcworld:iron_dagger>,
+            <item:emcworld:golden_dagger>,
+            <item:emcworld:diamond_dagger>
         ]
     ];
     for i in 0 .. 5{
         staffRecipe(staff_item[0][i],staff_item[1][i]);
         warHammer(staff_item[0][i],staff_item[2][i]);
+        dagger(staff_item[0][i],staff_item[3][i]);
     }
+    staffRecipe(<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_staff>);
     craftingTable.removeByModid("projectex");
     //craftingTable.removeByModid("projecte");
     removeCraftRecipe(abag);
@@ -949,7 +958,7 @@ public function emcworldRecipe() as void{
         sing[0][21],baseqd,<item:projecte:catalytic_lens>,<item:projecte:gem_of_eternal_density>,con[0][7]
     ],con[1][7],4000,1500000,3);
     reactionChamberRecipe(con[0][2],con[2][2],<fluid:emcworld:sodium_cyanide>*5000,<fluid:minecraft:empty>,<item:mythicbotany:nidavellir_rune>,[]);
-    alchemalArrayRecipe(<item:emcworld:base_key>,<item:mythicbotany:kvasir_blood>,<item:emcworld:twilight_key>);
+    alchemalArrayRecipe(<item:emcworld:base_key>,<item:bloodmagic:life_essence_bucket>,<item:emcworld:twilight_key>);
     addNuggetAndIngotRecipe(<item:emcworld:niobium_nugget>,<item:emcworld:niobium_ingot>);
     addCraftShapedRecipeNoName([
         [dm,sc,dm],

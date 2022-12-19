@@ -179,22 +179,21 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netheritemonstrosity}"
-			x: 4.0d
+			x: 4.5d
 			y: -9.0d
-			dependencies: ["21A754A072746CE7"]
+			hide_dependency_lines: true
+			dependencies: ["45950F380D6786BA"]
 			id: "2E25A0CA957C6576"
 			tasks: [{
-				id: "3FDA7E3E3EC2EAB0"
-				type: "kill"
-				icon: {
+				id: "4B72F3BE4E52A87C"
+				type: "item"
+				item: {
 					id: "cataclysm:infernal_forge"
 					Count: 1b
 					tag: {
 						Damage: 0
 					}
 				}
-				entity: "cataclysm:netherite_monstrosity"
-				value: 1L
 			}]
 			rewards: [
 				{

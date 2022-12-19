@@ -16,9 +16,8 @@ public function modifyAtlantisRecipe() as void{
     runeAltarRecipe([
         <item:atlantis:ocean_stone>,
         <item:botania:rune_water>,
-        <item:botania:life_essence>,
-        <item:minecraft:prismarine_crystals>
-        ],<item:atlantis:atlantean_crystal>,20000
+        <item:botania:life_essence>
+        ],<item:atlantis:atlantean_crystal>,10000
     );
     combiningRecipe(<item:atlantis:atlantean_crystal>*3,<item:atlantis:atlantean_core>,<item:atlantis:drop_of_atlantis>);
     compressingRecipe(<item:minecraft:gold_block>,<item:atlantis:chiseled_golden_block>);
@@ -30,8 +29,6 @@ public function modifyAtlantisRecipe() as void{
     ],<item:atlantis:orb_of_atlantis>,200000);
     runeAltarRecipe([
         <item:atlantis:orb_of_atlantis>,
-        <item:botania:rune_winter>,
-        <item:atlantis:atlantean_crystal>,
         <item:botania:life_essence>
     ],<item:atlantis:orb_of_atlantis>*2,100000);
     var list as string[]=[];

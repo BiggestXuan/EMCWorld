@@ -33,6 +33,9 @@ public class PlayerQuestCompletedEvent {
         if(event.getReward().hasTag("sea_lantern")){
             KnowledgeHelper.addPlayerKnowledge(player, new ItemStack(Blocks.SEA_LANTERN.asItem()));
         }
+        if(event.getReward().hasTag("hard")){
+            player.addItem(new ItemStack(EWItems.MONEY.get(),1));
+        }
         for(String tag:event.getReward().getTags()){
             if(tag.contains("stage_")){
                 if(ConfigManager.FREE_MODE.get()){

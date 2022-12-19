@@ -99,5 +99,6 @@ public class oreGen {
         event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,EMCWorldOreFeature.RICH_END_EMC_ORE);
         event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,EMCWorldOreFeature.TITAN_ORE);
         event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,EMCWorldOreFeature.DRYSTONE_ORE);
+        event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,EMCWorldOreFeature.STAR_ORE);
     }
 }

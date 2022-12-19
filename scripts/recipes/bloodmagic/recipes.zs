@@ -76,7 +76,7 @@ public function modifyBloodMagicRecipe() as void{
     modifyShapedRecipe([
         [he,a,he],
         [a,<item:aether:altar>,a],
-        [br,<item:mythicbotany:helheim_rune>,br]
+        [br,<item:emcworld:hardcore_stone>,br]
     ],<item:bloodmagic:demoncrucible>);
     removeTartaricForgeRecipe([ds]);
     modifyShapedRecipe([

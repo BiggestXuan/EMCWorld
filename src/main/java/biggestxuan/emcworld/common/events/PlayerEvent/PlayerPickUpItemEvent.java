@@ -48,7 +48,7 @@ public class PlayerPickUpItemEvent {
         }
     }
 
-    private static boolean full(PlayerEntity player,ItemStack stack){
+    public static boolean full(PlayerEntity player,ItemStack stack){
         for(ItemStack s : player.inventory.items){
             if(s.equals(ItemStack.EMPTY)){
                 return false;

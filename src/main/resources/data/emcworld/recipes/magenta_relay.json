@@ -4,24 +4,18 @@
   "duration": 300,
   "starlight": 3200,
   "pattern": [
-    "ABCDE",
-    "EGHIJ",
+    "AEDEA",
+    "JGHGJ",
     "KLMLK",
-    "JIHGE",
-    "EDCBA"
+    "JGHGJ",
+    "AEDEA"
   ],
   "key": {
     "A": {
       "item": "twilightforest:fiery_ingot"
     },
-    "B": {
-      "item": "astralsorcery:rock_crystal"
-    },
-    "C": {
-      "item": "rats:gem_of_ratlantis"
-    },
     "D": {
-      "item": "projectex:magenta_matter"
+      "item": "emcworld:magenta_matter"
     },
     "E": {
       "item": "astralsorcery:resonating_gem"
@@ -31,9 +25,6 @@
     },
     "H": {
       "item": "emcworld:biggest_emc_gem"
-    },
-    "I": {
-      "item": "emcworld:god_steel_ingot"
     },
     "J": {
       "item": "astralsorcery:starmetal_ingot"

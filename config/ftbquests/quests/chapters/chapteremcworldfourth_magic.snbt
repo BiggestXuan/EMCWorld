@@ -47,7 +47,7 @@
 	quests: [
 		{
 			title: "{quest.emcworld.fourth_magic_wand}"
-			x: -30.0d
+			x: -21.0d
 			y: -6.0d
 			description: ["{quest.emcworld.fourth_magic_wand_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
@@ -76,38 +76,9 @@
 			]
 		}
 		{
-			title: "{quest.emcworld.fourth_magic_linkingtool}"
-			x: -18.0d
-			y: -6.0d
-			description: ["{quest.emcworld.fourth_magic_linkingtool_desc}"]
-			dependencies: ["44821BCC51AF752B"]
-			id: "6A85767AC5BF023A"
-			tasks: [{
-				id: "13BD3F3406EA5440"
-				type: "item"
-				item: "astralsorcery:linking_tool"
-			}]
-			rewards: [
-				{
-					id: "748DD26C109EEDCB"
-					type: "item"
-					item: "astralsorcery:aquamarine"
-					count: 8
-				}
-				{
-					id: "12D65A90973DA931"
-					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
 			title: "{quest.emcworld.fourth_magic_rockcrystalore}"
 			icon: "astralsorcery:rock_crystal_ore"
-			x: -24.0d
+			x: -15.0d
 			y: -6.0d
 			shape: "diamond"
 			description: ["{quest.emcworld.fourth_magic_rockcrystalore_desc}"]
@@ -199,10 +170,10 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altardiscovery}"
-			x: -12.0d
+			x: -9.0d
 			y: -6.0d
 			description: ["{quest.emcworld.fourth_magic_altardiscovery_desc}"]
-			dependencies: ["6A85767AC5BF023A"]
+			dependencies: ["44821BCC51AF752B"]
 			id: "7C62ACA7CC60E62F"
 			tasks: [{
 				id: "3B6E82CF1192F69A"
@@ -350,12 +321,14 @@
 			title: "{quest.emcworld.fourth_magic_altarattunement}"
 			x: -3.0d
 			y: -6.0d
+			shape: "gear"
 			description: ["{quest.emcworld.fourth_magic_altarattunement_desc}"]
 			dependencies: [
 				"7C62ACA7CC60E62F"
 				"5E51D84F8885A932"
 				"4BB8C80DE4D8E5F4"
 			]
+			dependency_requirement: "one_completed"
 			id: "542BDB03D2F49E98"
 			tasks: [{
 				id: "65DFD7FB618C91CE"
@@ -591,8 +564,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_observatory}"
-			x: 10.0d
-			y: 19.0d
+			x: 10.5d
+			y: 18.0d
 			description: ["{quest.emcworld.fourth_magic_observatory_desc}"]
 			dependencies: ["64162D6185D1A516"]
 			id: "2DB6CBE2A3DC64DD"
@@ -649,11 +622,10 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_magentacollector}"
-			x: 17.0d
-			y: 12.0d
+			x: 18.5d
+			y: 12.5d
 			description: ["{quest.emcworld.fourth_magic_magentacollector_desc}"]
 			dependencies: ["64162D6185D1A516"]
-			size: 2.0d
 			id: "10A9F07DBBB0E10D"
 			tasks: [{
 				id: "25FF343AA15E217B"
@@ -679,11 +651,12 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_pinkcollector}"
-			x: 23.5d
-			y: 15.0d
+			x: 7.5d
+			y: 4.5d
 			description: ["{quest.emcworld.fourth_magic_pinkcollector_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
+			size: 3.0d
 			id: "29ED613D22684793"
 			tasks: [{
 				id: "3FCC74E642B37F6B"
@@ -789,10 +762,7 @@
 			title: "{quest.emcworld.fourth_magic_weapon_upgrade}"
 			x: 4.5d
 			y: 17.0d
-			dependencies: [
-				"64162D6185D1A516"
-				"53CF388661F71ADF"
-			]
+			dependencies: ["64162D6185D1A516"]
 			hide: true
 			id: "789B42F0948AC1EC"
 			tasks: [{
@@ -819,7 +789,7 @@
 		}
 		{
 			x: 16.0d
-			y: 18.5d
+			y: 17.0d
 			dependencies: ["64162D6185D1A516"]
 			id: "5E35FF13428A4AE7"
 			tasks: [
