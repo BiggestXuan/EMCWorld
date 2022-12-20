@@ -35,7 +35,7 @@
   
 ### [Tile Entity](https://blog.csdn.net/Jay_fearless/article/details/125549815)  
 Author: [Jay_fearless](https://blog.csdn.net/Jay_fearless)  
-License: CC BY-SA 4.0
+License: ~~CC BY-SA 4.0~~ Additional authorization from author -> [Here](https://biggestxuan.top/emcworld/license/license.png)
 
 ### [Mekanism](https://github.com/mekanism/Mekanism)  
 Author: [mekanism](https://github.com/mekanism)  
