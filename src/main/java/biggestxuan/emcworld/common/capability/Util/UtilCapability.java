@@ -31,6 +31,9 @@ public class UtilCapability implements IUtilCapability {
     private int logAmount;
     private float speed;
     private boolean share;
+    private float arcana;
+    private float maxArcana;
+    private boolean showArcana;
 
     public UtilCapability(){
         this.SponsorLevel = 0;
@@ -52,6 +55,9 @@ public class UtilCapability implements IUtilCapability {
         this.difficulty = 0;
         this.modifyDifficulty = false;
         this.speed = 0f;
+        this.arcana = 0f;
+        this.maxArcana = 200f;
+        this.showArcana = true;
     }
 
     @Override
@@ -270,6 +276,36 @@ public class UtilCapability implements IUtilCapability {
     }
 
     @Override
+    public float getArcana() {
+        return arcana;
+    }
+
+    @Override
+    public void setArcana(float value) {
+        arcana = value;
+    }
+
+    @Override
+    public float getMaxArcana() {
+        return maxArcana;
+    }
+
+    @Override
+    public void setMaxArcana(float value) {
+        this.maxArcana = value;
+    }
+
+    @Override
+    public boolean showArcana() {
+        return showArcana;
+    }
+
+    @Override
+    public void setShowArcana(boolean value) {
+        showArcana = value;
+    }
+
+    @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT tag = new CompoundNBT();
         tag.putInt("sponsorLevel",this.SponsorLevel);
@@ -293,6 +329,9 @@ public class UtilCapability implements IUtilCapability {
         tag.putInt("log",this.logAmount);
         tag.putFloat("speed",this.speed);
         tag.putBoolean("share",share);
+        tag.putFloat("arcana",arcana);
+        tag.putFloat("maxArcana",maxArcana);
+        tag.putBoolean("showArcana",showArcana);
         return tag;
     }
 
@@ -319,5 +358,8 @@ public class UtilCapability implements IUtilCapability {
         this.logAmount = nbt.getInt("log");
         this.speed = nbt.getFloat("speed");
         this.share = nbt.getBoolean("emc");
+        this.arcana = nbt.getFloat("arcana");
+        this.maxArcana = nbt.getFloat("maxArcana");
+        this.showArcana = nbt.getBoolean("showArcana");
     }
 }

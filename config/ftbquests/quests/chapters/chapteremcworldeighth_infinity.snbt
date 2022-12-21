@@ -15,27 +15,6 @@
 	default_hide_dependency_lines: false
 	quests: [
 		{
-			x: 0.0d
-			y: -4.0d
-			id: "50B470C53C3BEC42"
-			tasks: [{
-				id: "042DD90569A3C330"
-				type: "item"
-				item: "emcworld:update_base_orange"
-			}]
-		}
-		{
-			x: 3.0d
-			y: -4.0d
-			dependencies: ["50B470C53C3BEC42"]
-			id: "0CF3AE6A84317444"
-			tasks: [{
-				id: "217A71F46888DEC8"
-				type: "item"
-				item: "emcworld:update_base_red"
-			}]
-		}
-		{
 			title: "{quest.emcworld.eighth_first_knight}"
 			x: 0.0d
 			y: 0.0d
@@ -468,15 +447,23 @@
 				"35383154D1ABF1D6"
 			]
 			id: "0072CCA8E57C7C88"
-			tasks: [{
-				id: "46AFBE9599585410"
-				type: "item"
-				item: "projectex:yellow_collector"
-			}]
+			tasks: [
+				{
+					id: "59C7AD166DE8C9AA"
+					type: "item"
+					item: "projectex:lime_collector"
+				}
+				{
+					id: "5B16413621E720CA"
+					type: "item"
+					item: "projectex:lime_relay"
+				}
+			]
 		}
 		{
-			x: 0.0d
+			x: 3.0d
 			y: -2.0d
+			dependencies: ["0B78BC3352D742A6"]
 			id: "7C31945A8C71D7E6"
 			tasks: [{
 				id: "6CDACEA34CD2F248"
@@ -485,14 +472,13 @@
 			}]
 		}
 		{
-			x: 3.0d
+			x: 0.0d
 			y: -2.0d
-			dependencies: ["7C31945A8C71D7E6"]
-			id: "4C3EDEF62881D6DE"
+			id: "0B78BC3352D742A6"
 			tasks: [{
-				id: "185A6B93207DD6D9"
+				id: "09C6FE9FEFFA56F7"
 				type: "item"
-				item: "emcworld:yellow_matter"
+				item: "emcworld:green_matter"
 			}]
 		}
 	]

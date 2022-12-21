@@ -1,0 +1,46 @@
+{
+	id: "6A3D09C407EAAE39"
+	order_index: 3
+	title: "{sheet.emcworld.snowpark}"
+	icon: "divinerpg:snowflake"
+	loot_size: 1
+	rewards: [
+		{
+			item: {
+				id: "divinerpg:serenade_striker"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:sandslash"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{ item: "divinerpg:bedrock_maul" }
+		{
+			item: {
+				id: "divinerpg:frost_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:slime_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}

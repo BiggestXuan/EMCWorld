@@ -592,5 +592,34 @@
 				auto: "no_toast"
 			}]
 		}
+		{
+			title: "{quest.emcworld.fifth_hell_purpleblaze}"
+			x: 0.0d
+			y: 3.0d
+			dependencies: ["45950F380D6786BA"]
+			id: "79D8462D6F56E2ED"
+			tasks: [{
+				id: "479D02FB697785A5"
+				type: "kill"
+				entity: "divinerpg:scorcher"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "24B67B7DE1032543"
+					type: "item"
+					item: "divinerpg:purple_blaze"
+					count: 8
+					random_bonus: 8
+				}
+				{
+					id: "68CEAB7D970897F5"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
+		}
 	]
 }

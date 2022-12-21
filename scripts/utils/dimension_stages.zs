@@ -11,13 +11,21 @@ public function addDIMStage() as void{
         ["good_nights_sleep:good_dream","good_nights_sleep:nightmare","bloodmagic:dungeon","atlantis:altantis","aether:the_aether"],
         ["rats:ratlantis","mythicbotany:alfheim"],
         ["hem:blueleaf"],
-        ["the_afterlight:the_afterlight","undergarden:undergarden"]
+        ["the_afterlight:the_afterlight","undergarden:undergarden"],
+        ["minecraft:the_end"],
+        [""]
+    ];
+    var dm as string[] = [
+        "eden","wildwood","apalachia","skythern","mortum"
     ];
     var s as string[] = [
-        "one","two","three","four"
+        "one","two","three","four","five","six"
     ];
     for i in 0 .. s.length{
         st(dim[i],s[i]);
+    }
+    for i in dm{
+        st(["divinerpg:"+i],"six");
     }
     st(["twilightforest:twilightforest"],"twilight");
     st(["minecraft:nether"],"nether");

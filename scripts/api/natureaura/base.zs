@@ -37,7 +37,7 @@ public function natureSpawnerRecipe(input as IIngredient[],aura as int,entity as
 }
 
 public function treeRitualRecipe(inputs as IIngredient[],sapling as IIngredient,output as IItemStack) as void{
-    <recipetype:naturesaura:tree_ritual>.addRecipe(getRecipeName(output)+"_tree_ritual",sapling,output,inputs);
+    <recipetype:naturesaura:tree_ritual>.addRecipe(getRecipeName(output)+"_tree_ritual",<item:minecraft:oak_sapling>,output,inputs);
 }
 
 public function removeTreeRitualRecipe(output as IItemStack[]) as void{

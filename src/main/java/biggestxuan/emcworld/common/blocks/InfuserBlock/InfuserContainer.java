@@ -24,12 +24,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-/**
- * References and citations from: <a href="https://blog.csdn.net/Jay_fearless/article/details/125549815">...</a>
- * Author:Jay_fearless
- * LICENCE: CC 4.0 BY-SA
- */
-
 public class InfuserContainer extends BaseContainer {
     private final BlockPos pos;
     private final World world;

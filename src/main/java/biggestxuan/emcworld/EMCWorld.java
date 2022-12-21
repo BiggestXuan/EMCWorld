@@ -8,6 +8,7 @@ package biggestxuan.emcworld;
 
 import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.Admin;
+import biggestxuan.emcworld.client.key.ArcanaDisplay;
 import biggestxuan.emcworld.client.key.SpeedControl;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
@@ -100,6 +101,7 @@ public class EMCWorld {
             ScreenManager.register(EWContainerTypes.steelFurnaceContainer.get(), SteelFurnaceGUI::new);
             ClientRegistry.registerKeyBinding(Admin.ADMIN_KEY);
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
+            ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
     }

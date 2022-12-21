@@ -1,0 +1,68 @@
+{
+	id: "6F4CA68E0F75CCF9"
+	order_index: 9
+	title: "{sheet.emcworld.halitepark}"
+	icon: "divinerpg:halite_slicer"
+	loot_size: 1
+	rewards: [
+		{ item: "divinerpg:halite_slicer", count: 128 }
+		{ item: "divinerpg:halite_blitz" }
+		{ item: "divinerpg:halite_shield" }
+		{ item: "divinerpg:halite_bow" }
+		{
+			item: {
+				id: "divinerpg:halite_blade"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{ item: "divinerpg:halite_shickaxe" }
+		{
+			item: {
+				id: "divinerpg:halite_phaser"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:halite_helmet"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:halite_chestplate"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:halite_leggings"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:halite_boots"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}

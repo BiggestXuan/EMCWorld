@@ -45,10 +45,10 @@ public function modifyEMCWorldTags() as void{
     for i in [c[7],r[7]]{
         <tag:items:emcworld:stage_six>.add(i.asIItemStack());
     }
-    for i in [c[9],r[9]]{
+    for i in [c[8],r[8]]{
         <tag:items:emcworld:stage_seven>.add(i.asIItemStack());
     }
-    for i in [c[10],r[10]]{
+    for i in [c[9],r[9]]{
         <tag:items:emcworld:stage_eight>.add(i.asIItemStack());
     }
 }

@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.compact.Hwyla;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateBlock;
+import biggestxuan.emcworld.common.blocks.EWUpdateBlock;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.registry.EWBlocks;
@@ -33,7 +34,7 @@ public class DataProvider implements IComponentProvider {
         Block block = accessor.getBlock();
         if(Minecraft.getInstance().player == null) return;
         ClientPlayerEntity player = Minecraft.getInstance().player;
-        if(block instanceof AdvancedUpdateBlock || accessor.getBlockState().equals(EWBlocks.CONTROL_UPDATE_CORE.get().defaultBlockState()) ){
+        if(block instanceof AdvancedUpdateBlock || block instanceof EWUpdateBlock){
             IUtilCapability cap = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
             tooltip.add(EMCWorld.tc("hwyla.tip.cd", MathUtils.format(cap.getCoolDown()/20)));
         }

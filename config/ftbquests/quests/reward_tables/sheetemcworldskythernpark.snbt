@@ -1,0 +1,48 @@
+{
+	id: "031EEFF42273F32B"
+	order_index: 7
+	title: "{sheet.emcworld.skythernpark}"
+	icon: "divinerpg:skythern_chunk"
+	loot_size: 1
+	rewards: [
+		{ item: "divinerpg:skythern_slicer", count: 64 }
+		{ item: "divinerpg:skythern_blitz" }
+		{
+			item: {
+				id: "divinerpg:skythern_shield"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{ item: "divinerpg:skythern_bow" }
+		{
+			item: {
+				id: "divinerpg:skythern_blade"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:skythern_shickaxe"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:skythern_phaser"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}

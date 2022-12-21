@@ -281,7 +281,7 @@ public class PlayerClickEvent {
         if(playerEMC < costEMC) return;
         IUtilCapability c = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
         long time = info.getTime();
-        if(c.getCoolDown() ==0){
+        if(c.getCoolDown() == 0){
             int craftAmount = MathUtils.getMaxAmount(playerEMC,costEMC);
             int hasAmount = itemStack.getCount();
             int actAmount = Math.min(craftAmount,hasAmount);
@@ -294,6 +294,7 @@ public class PlayerClickEvent {
             player.addItem(output);
             itemStack.setCount(itemStack.getCount()-actAmount);
             EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+            time = recipe.recipeLevel() == 0 ? 0 : time;
             c.setCoolDown(time);
         }
         else {

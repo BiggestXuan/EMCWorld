@@ -56,9 +56,11 @@
 			x: 0.0d
 			y: 1.5d
 			dependencies: [
+				"6D9272A5E61D451F"
 				"4FD7E2217250CFCE"
 				"73F55F509EB74E18"
 			]
+			dependency_requirement: "one_completed"
 			id: "1A55B612F8AA8869"
 			tasks: [{
 				id: "7DDD2F8544B59C2D"
@@ -395,28 +397,35 @@
 		{
 			x: 0.0d
 			y: 6.5d
-			hide_dependency_lines: true
+			hide_dependency_lines: false
 			dependencies: [
 				"0EAE2ED948788A6B"
 				"1825866580F61539"
+				"4C3EDEF62881D6DE"
 			]
 			id: "4FA17032FC60A6FE"
-			tasks: [{
-				id: "5D74F13015DA0AEC"
-				type: "item"
-				item: "projectex:orange_collector"
-			}]
+			tasks: [
+				{
+					id: "2A64061EFF65DD1C"
+					type: "item"
+					item: "projectex:yellow_collector"
+				}
+				{
+					id: "7B87A452C5CEFCDA"
+					type: "item"
+					item: "projectex:yellow_relay"
+				}
+			]
 		}
 		{
 			x: -2.0d
 			y: 6.5d
-			hide_dependency_lines: true
-			dependencies: ["6D9272A5E61D451F"]
-			id: "1825866580F61539"
+			dependencies: ["7C31945A8C71D7E6"]
+			id: "4C3EDEF62881D6DE"
 			tasks: [{
-				id: "7E4AA59DF9F67ADF"
+				id: "185A6B93207DD6D9"
 				type: "item"
-				item: "emcworld:orange_matter"
+				item: "emcworld:yellow_matter"
 			}]
 		}
 	]

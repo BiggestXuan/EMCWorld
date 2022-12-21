@@ -63,5 +63,35 @@
 				item: "dead_guys_untitled_deep_dark_:warden_antler"
 			}]
 		}
+		{
+			title: "{quest.emcworld.seventh.collector}"
+			x: 0.0d
+			y: -6.0d
+			dependencies: ["7F6CE571B6CACBC2"]
+			id: "6312D4AF7D08BF4F"
+			tasks: [{
+				id: "7EE4CB3353C4D570"
+				type: "item"
+				title: "Any #emcworld:stage_seven"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_seven"
+					}
+				}
+			}]
+			rewards: [{
+				id: "312E9BC106B98584"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: [
+					"hard"
+					"stage_seven"
+				]
+				auto: "enabled"
+			}]
+		}
 	]
 }

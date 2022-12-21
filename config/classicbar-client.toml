@@ -15,7 +15,7 @@
 	show_saturation_bar = true
 	#Range: 0.0 ~ 1.7976931348623157E308
 	transition_speed = 3.0
-	right_order = ["blood", "healthmount", "food", "feathers", "armortoughness", "thirst", "air", "flighttiara", "decay"]
+	right_order = ["blood", "healthmount", "food", "feathers", "armortoughness", "thirst", "air", "flighttiara", "decay", "arcana"]
 	flight_bar_color = "#FFFFFF"
 	show_absorption_numbers = true
 	show_armor_numbers = true

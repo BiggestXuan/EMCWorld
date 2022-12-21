@@ -1,0 +1,48 @@
+{
+	id: "56D5211E4D6A8D8E"
+	order_index: 8
+	title: "{sheet.emcworld.mortumpark}"
+	icon: "divinerpg:mortum_chunk"
+	loot_size: 1
+	rewards: [
+		{ item: "divinerpg:mortum_slicer", count: 64 }
+		{ item: "divinerpg:mortum_blitz" }
+		{
+			item: {
+				id: "divinerpg:mortum_shield"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{ item: "divinerpg:mortum_bow" }
+		{
+			item: {
+				id: "divinerpg:mortum_blade"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:mortum_shickaxe"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:mortum_phaser"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}

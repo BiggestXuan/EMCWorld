@@ -1,0 +1,868 @@
+{
+	id: "1EE9D068A66F4FC4"
+	group: "5E8F5E0284CC6998"
+	order_index: 2
+	filename: "chapteremcworldseven_divine"
+	title: "{chapter.emcworld.seven_divine}"
+	icon: {
+		id: "patchouli:guide_book"
+		Count: 1b
+		tag: {
+			"patchouli:book": "divinerpg:divine"
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.seven_divine_divineshards}"
+			x: 0.0d
+			y: 0.0d
+			dependencies: [
+				"740A9CD9D5CA5F4C"
+				"342F7D8452559C52"
+				"739E906F979FBA1F"
+			]
+			dependency_requirement: "one_completed"
+			id: "0D987089C5822B23"
+			tasks: [{
+				id: "5254489329BAA3EF"
+				type: "item"
+				item: "divinerpg:divine_shards"
+			}]
+			rewards: [
+				{
+					id: "74810CC97E81C83B"
+					type: "item"
+					item: "divinerpg:divine_shards"
+					count: 4
+					random_bonus: 4
+				}
+				{
+					id: "5763E254CCB4104F"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_watcher}"
+			x: -3.0d
+			y: -3.0d
+			dependencies: ["3CE380AC36DF2A9C"]
+			id: "740A9CD9D5CA5F4C"
+			tasks: [{
+				id: "7915A2048B058981"
+				type: "kill"
+				icon: "divinerpg:gray_divine_sword"
+				entity: "divinerpg:the_watcher"
+				value: 1L
+			}]
+			rewards: [{
+				id: "18326024217C3F09"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_protecter}"
+			x: -4.5d
+			y: 0.0d
+			dependencies: ["637EDF2ECCAAC279"]
+			id: "342F7D8452559C52"
+			tasks: [{
+				id: "502F9D3F69E01C55"
+				type: "kill"
+				icon: "divinerpg:divine_sword"
+				entity: "divinerpg:ancient_entity"
+				value: 1L
+			}]
+			rewards: [{
+				id: "5E34A477C711FEF4"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_horde}"
+			icon: "divinerpg:green_divine_sword"
+			x: -3.0d
+			y: 3.0d
+			dependencies: ["49A239BBDF897201"]
+			id: "739E906F979FBA1F"
+			tasks: [
+				{
+					id: "00F7A0E4AE4BD343"
+					type: "kill"
+					entity: "divinerpg:ayeraco_green"
+					value: 1L
+				}
+				{
+					id: "431779543D6A01F1"
+					type: "kill"
+					entity: "divinerpg:ayeraco_blue"
+					value: 1L
+				}
+				{
+					id: "3F7F8B2AB1F99D51"
+					type: "kill"
+					entity: "divinerpg:ayeraco_purple"
+					value: 1L
+				}
+				{
+					id: "2C2E16FE2BC339D4"
+					type: "kill"
+					entity: "divinerpg:ayeraco_red"
+					value: 1L
+				}
+				{
+					id: "41C48C4A8E127674"
+					type: "kill"
+					entity: "divinerpg:ayeraco_yellow"
+					value: 1L
+				}
+			]
+			rewards: [{
+				id: "00D3AAFB1C40D0F6"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_callofthewatcher}"
+			x: -7.5d
+			y: -3.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"19FEE6859A400A57"
+				"3AED6FB5DAA015C5"
+				"0A34151F4948C98D"
+			]
+			hide: true
+			id: "3CE380AC36DF2A9C"
+			tasks: [{
+				id: "229AC923E1470536"
+				type: "item"
+				item: "divinerpg:call_of_the_watcher"
+			}]
+			rewards: [{
+				id: "644CC5B541B58E35"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_mysteriousclock}"
+			x: -9.0d
+			y: 0.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"19FEE6859A400A57"
+				"3AED6FB5DAA015C5"
+				"0A34151F4948C98D"
+			]
+			hide: true
+			id: "637EDF2ECCAAC279"
+			tasks: [{
+				id: "603F7FF95BC87362"
+				type: "item"
+				item: "divinerpg:mysterious_clock"
+			}]
+			rewards: [{
+				id: "5F332E089B0C6A26"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_hordehorn}"
+			icon: "divinerpg:horde_horn"
+			x: -7.5d
+			y: 3.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"19FEE6859A400A57"
+				"3AED6FB5DAA015C5"
+				"0A34151F4948C98D"
+			]
+			hide: true
+			id: "49A239BBDF897201"
+			tasks: [{
+				id: "5E9431A4892E8E8F"
+				type: "item"
+				item: "divinerpg:horde_horn"
+			}]
+			rewards: [{
+				id: "5EF654C25E589D0A"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_twilightclock}"
+			x: 9.0d
+			y: -3.0d
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
+			id: "3FA3B16C9C45B543"
+			tasks: [{
+				id: "1FF31854B1EE32E6"
+				type: "item"
+				item: "divinerpg:twilight_clock"
+			}]
+			rewards: [{
+				id: "693EF0F93D8DE080"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_divinerock}"
+			x: 4.5d
+			y: 0.0d
+			dependencies: ["0D987089C5822B23"]
+			id: "15708E351C0B8371"
+			tasks: [{
+				id: "0FEA9776E4ABE7E4"
+				type: "item"
+				item: "divinerpg:divine_rock"
+			}]
+			rewards: [{
+				id: "7521544FA46687E1"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_eden}"
+			icon: "divinerpg:eden_block"
+			x: 9.0d
+			y: 3.0d
+			dependencies: [
+				"3FA3B16C9C45B543"
+				"15708E351C0B8371"
+			]
+			id: "725F0E4BB0910040"
+			tasks: [{
+				id: "33D426DFF7EB0603"
+				type: "dimension"
+				dimension: "divinerpg:eden"
+			}]
+			rewards: [{
+				id: "65DC225C7CFC5850"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_edenchunk}"
+			x: 9.0d
+			y: 9.0d
+			dependencies: ["725F0E4BB0910040"]
+			id: "5FE2AC6134D76E1B"
+			tasks: [{
+				id: "5E2304D40D6C6D98"
+				type: "item"
+				item: "divinerpg:eden_chunk"
+			}]
+			rewards: [
+				{
+					id: "7FC64E4684697011"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "21EE33D1C032B753"
+					type: "item"
+					item: "divinerpg:eden_chunk"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_sunstorm}"
+			x: 9.0d
+			y: 15.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"5FE2AC6134D76E1B"
+				"725F0E4BB0910040"
+			]
+			hide: true
+			id: "012390F967B398C6"
+			tasks: [{
+				id: "0A99DC671769B5EC"
+				type: "kill"
+				icon: {
+					id: "divinerpg:eden_blade"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "divinerpg:sunstorm"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "40116FFFB85D466F"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "1F4A8EB5C3D53236"
+					type: "loot"
+					table_id: 7423051805813095662L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_wildwood}"
+			icon: "divinerpg:wildwood_block"
+			x: 12.0d
+			y: 12.0d
+			dependencies: [
+				"012390F967B398C6"
+				"5FE2AC6134D76E1B"
+			]
+			id: "17E38C910E65BBF1"
+			tasks: [{
+				id: "612FC6B05A771F70"
+				type: "dimension"
+				dimension: "divinerpg:wildwood"
+			}]
+			rewards: [{
+				id: "61ADAAD2D4149AA5"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_wildwoodchunk}"
+			x: 15.0d
+			y: 9.0d
+			dependencies: ["17E38C910E65BBF1"]
+			id: "3660F03A803693D8"
+			tasks: [{
+				id: "18FE008EBA5E157D"
+				type: "item"
+				item: "divinerpg:wildwood_chunk"
+			}]
+			rewards: [
+				{
+					id: "48E3456FB95F6C39"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "528CC0E20CFA19C5"
+					type: "item"
+					item: "divinerpg:wildwood_chunk"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_termasect}"
+			x: 21.0d
+			y: 15.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"17E38C910E65BBF1"
+				"3660F03A803693D8"
+			]
+			hide: true
+			id: "17610FAEEAE63B34"
+			tasks: [{
+				id: "33CC551D073317F6"
+				type: "kill"
+				icon: {
+					id: "divinerpg:wildwood_shickaxe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "divinerpg:termasect"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "6A67F17C4538713F"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "2A2ABB87153C4817"
+					type: "loot"
+					table_id: 1707998136127517670L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_aplachia}"
+			icon: "divinerpg:apalachia_block"
+			x: 18.0d
+			y: 12.0d
+			dependencies: [
+				"3660F03A803693D8"
+				"17610FAEEAE63B34"
+			]
+			id: "1B69F55F00DCC53B"
+			tasks: [{
+				id: "08021C10BC163049"
+				type: "dimension"
+				dimension: "divinerpg:apalachia"
+			}]
+			rewards: [{
+				id: "4D24596D0EE4023E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_apalachiachunk}"
+			x: 21.0d
+			y: 9.0d
+			dependencies: ["1B69F55F00DCC53B"]
+			id: "5CBD4B6ED73EB457"
+			tasks: [{
+				id: "3D7C2BFD645EAE5B"
+				type: "item"
+				item: "divinerpg:apalachia_chunk"
+			}]
+			rewards: [
+				{
+					id: "110724514F29DD96"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "083D7261835C7B4E"
+					type: "item"
+					item: "divinerpg:apalachia_chunk"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_eternalarcher}"
+			x: 21.0d
+			y: -3.0d
+			hide_dependency_lines: true
+			dependencies: [
+				"1B69F55F00DCC53B"
+				"5CBD4B6ED73EB457"
+			]
+			hide: true
+			id: "29651D235320DF90"
+			tasks: [{
+				id: "54AE2967B4796FDA"
+				type: "kill"
+				icon: "divinerpg:apalachia_blitz"
+				entity: "divinerpg:eternal_archer"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "68A71150616575B5"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "05B5AAB8BF177706"
+					type: "loot"
+					table_id: 1032985958541955872L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_skythem}"
+			icon: "divinerpg:skythern_block"
+			x: 21.0d
+			y: 3.0d
+			dependencies: [
+				"5CBD4B6ED73EB457"
+				"29651D235320DF90"
+			]
+			id: "6E1591103B3830C9"
+			tasks: [{
+				id: "71CD4264D723E7DB"
+				type: "dimension"
+				dimension: "divinerpg:skythern"
+			}]
+			rewards: [{
+				id: "101913401C5F3FEB"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_skythemchunk}"
+			x: 27.0d
+			y: 9.0d
+			dependencies: ["6E1591103B3830C9"]
+			id: "0626EDD94A927434"
+			tasks: [{
+				id: "313E5F202BFBD56D"
+				type: "item"
+				item: "divinerpg:skythern_chunk"
+			}]
+			rewards: [
+				{
+					id: "4CFD0E83BADCB514"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "4AAA06DC07589604"
+					type: "item"
+					item: "divinerpg:skythern_chunk"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_experiencedcori}"
+			x: 27.0d
+			y: -3.0d
+			dependencies: ["6E1591103B3830C9"]
+			id: "6195A677821DA121"
+			tasks: [{
+				id: "46773EF67155297E"
+				type: "kill"
+				icon: "divinerpg:skythern_bow"
+				entity: "divinerpg:experienced_cori"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "112D47F251A7378A"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "27853F157D958238"
+					type: "loot"
+					table_id: 224880863244186411L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_mortum}"
+			icon: "divinerpg:mortum_block"
+			x: 33.0d
+			y: 3.0d
+			dependencies: [
+				"0626EDD94A927434"
+				"6195A677821DA121"
+			]
+			id: "228B67A447B915FF"
+			tasks: [{
+				id: "1015C5103682D7AA"
+				type: "dimension"
+				dimension: "divinerpg:mortum"
+			}]
+			rewards: [
+				{
+					id: "33171D50906E3C08"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "3E998266F19F8C99"
+					type: "item"
+					item: "divinerpg:mortum_chunk"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_book}"
+			icon: {
+				id: "patchouli:guide_book"
+				Count: 1b
+				tag: {
+					"patchouli:book": "divinerpg:divine"
+				}
+			}
+			x: 0.0d
+			y: -12.0d
+			description: ["{quest.emcworld.seven_divine_book_desc}"]
+			dependencies: ["19FEE6859A400A57"]
+			hide: true
+			size: 3.0d
+			id: "0A34151F4948C98D"
+			tasks: [{
+				id: "5FCECA3F3E6B05B5"
+				type: "checkmark"
+			}]
+			rewards: [{
+				id: "35AE973AEB0E7D87"
+				type: "item"
+				item: {
+					id: "patchouli:guide_book"
+					Count: 1b
+					tag: {
+						"patchouli:book": "divinerpg:divine"
+					}
+				}
+			}]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_tips}"
+			x: 41.5d
+			y: 3.0d
+			description: ["{quest.emcworld.seven_divine_tips_desc}"]
+			dependencies: ["228B67A447B915FF"]
+			id: "4EF149E30C1D6D7B"
+			tasks: [{
+				id: "4C689947A55EDA9F"
+				type: "checkmark"
+				icon: "divinerpg:base_spawn_crystal"
+			}]
+			rewards: [
+				{
+					id: "15A7AEA0A604A045"
+					type: "item"
+					item: "divinerpg:base_spawn_crystal"
+					count: 6
+				}
+				{
+					id: "3758143236F49CC2"
+					type: "loot"
+					table_id: 6256943671332736398L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_karot}"
+			x: 41.5d
+			y: -1.5d
+			dependencies: ["4EF149E30C1D6D7B"]
+			id: "718FBD3B99A52FC4"
+			tasks: [{
+				id: "3ED5AAF54F8DD806"
+				type: "kill"
+				icon: "divinerpg:karot_crystal"
+				entity: "divinerpg:karot"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "20575F267D24307C"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+				{
+					id: "6D19D010BECF6ACD"
+					type: "random"
+					table_id: 8019968165514956025L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_twilightdemon}"
+			x: 41.5d
+			y: 7.5d
+			dependencies: ["4EF149E30C1D6D7B"]
+			id: "6328D740B215B3F5"
+			tasks: [{
+				id: "6604606DBA9D4AA7"
+				type: "kill"
+				icon: "divinerpg:twilight_demon_crystal"
+				entity: "divinerpg:twilight_demon"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "4020FE52277366C1"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+				{
+					id: "1DB55DEB582206F9"
+					type: "random"
+					table_id: 8019968165514956025L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_fiend}"
+			x: 48.0d
+			y: -1.5d
+			dependencies: ["4EF149E30C1D6D7B"]
+			id: "0B31E915F81C5CCC"
+			tasks: [{
+				id: "7EAB95AB844C017F"
+				type: "kill"
+				icon: "divinerpg:soul_fiend_crystal"
+				entity: "divinerpg:soul_fiend"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "563354101EE77E43"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+				{
+					id: "48B79AB830EB1DC6"
+					type: "random"
+					table_id: 8019968165514956025L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_vamacheron}"
+			x: 48.0d
+			y: 7.5d
+			dependencies: ["4EF149E30C1D6D7B"]
+			id: "19E0753B0926C9D6"
+			tasks: [{
+				id: "7EED4FC2814865CD"
+				type: "kill"
+				icon: "divinerpg:vamacheron_crystal"
+				entity: "divinerpg:vamacheron"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "666ECED67B732AAA"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+				{
+					id: "07EB3E5FA4492FBE"
+					type: "random"
+					table_id: 8019968165514956025L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seven_divine_reyvor}"
+			x: 48.0d
+			y: 3.0d
+			description: ["{quest.emcworld.seven_divine_reyvor_desc}"]
+			dependencies: ["4EF149E30C1D6D7B"]
+			id: "209CAB2EDF95069E"
+			tasks: [
+				{
+					id: "6F287EDEFDEE9B47"
+					type: "kill"
+					icon: "divinerpg:reyvor_crystal"
+					entity: "divinerpg:reyvor"
+					value: 1L
+				}
+				{
+					id: "507788799093E655"
+					type: "kill"
+					icon: "divinerpg:densos_crystal"
+					entity: "divinerpg:densos"
+					value: 1L
+				}
+			]
+			rewards: [
+				{
+					id: "710E6F4F2971C14B"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+				{
+					id: "57F659983C2EB6E1"
+					type: "random"
+					table_id: 8019968165514956025L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.seventh_final}"
+			x: 36.5d
+			y: 7.5d
+			dependencies: ["4EF149E30C1D6D7B"]
+			id: "5AB9DC515457786D"
+			tasks: [{
+				id: "40F0426C672F8AE4"
+				type: "item"
+				title: "Any #emcworld:stage_eight"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:stage_eight"
+					}
+				}
+			}]
+			rewards: [{
+				id: "15497547C705AED0"
+				type: "custom"
+				title: "{reward.emcworld.epic}"
+				icon: "emcworld:advanced_emc_gem"
+				tags: [
+					"epic"
+					"stage_eight"
+				]
+				auto: "enabled"
+			}]
+		}
+	]
+}

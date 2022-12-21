@@ -11,7 +11,7 @@
 		{
 			title: "{quest.emcworld.lets_go}"
 			x: -3.0d
-			y: -0.5d
+			y: 0.0d
 			subtitle: "{quest.emcworld.lets_go.subtitle}"
 			id: "1F128A24207B9059"
 			tasks: [{
@@ -47,7 +47,7 @@
 		{
 			title: "{quest.emcworld.iron_pickaxe}"
 			x: 0.0d
-			y: -0.5d
+			y: 0.0d
 			dependencies: ["1F128A24207B9059"]
 			id: "2C33BC61257B151B"
 			tasks: [{
@@ -77,7 +77,7 @@
 		{
 			title: "{quest.emcworld.diamond}"
 			x: 3.0d
-			y: 1.5d
+			y: 2.0d
 			dependencies: ["2C33BC61257B151B"]
 			id: "7ABA746ABC9B1490"
 			tasks: [{
@@ -104,7 +104,7 @@
 		}
 		{
 			x: 3.0d
-			y: -2.5d
+			y: -2.0d
 			dependencies: ["2C33BC61257B151B"]
 			id: "6DF5A3CCCA8269CC"
 			tasks: [{
@@ -124,7 +124,7 @@
 		{
 			title: "{quest.emcworld.forever_fuel}"
 			x: 6.0d
-			y: 1.5d
+			y: 2.0d
 			dependencies: ["7ABA746ABC9B1490"]
 			id: "080F1EB633411F43"
 			tasks: [{
@@ -152,7 +152,7 @@
 		{
 			title: "{quest.emcworld.dark_matter}"
 			x: 9.0d
-			y: 1.5d
+			y: 2.0d
 			dependencies: ["080F1EB633411F43"]
 			id: "74E0535812EC7EDC"
 			tasks: [{
@@ -181,7 +181,7 @@
 		{
 			title: "{quest.emcworld.table}"
 			x: 6.0d
-			y: -2.5d
+			y: -2.0d
 			dependencies: [
 				"6DF5A3CCCA8269CC"
 				"74E0535812EC7EDC"
@@ -203,7 +203,7 @@
 		}
 		{
 			x: 12.0d
-			y: -2.5d
+			y: -2.0d
 			description: ["{quest.emcworld.mk1_desc}"]
 			dependencies: [
 				"74E0535812EC7EDC"
@@ -255,7 +255,7 @@
 		{
 			title: "{quest.emcworld.condenser_mk1}"
 			x: 12.0d
-			y: 1.5d
+			y: 2.0d
 			dependencies: ["74E0535812EC7EDC"]
 			id: "53718C57742CFB43"
 			tasks: [{
@@ -282,7 +282,7 @@
 		{
 			title: "{quest.emcworld.cauldron}"
 			x: 0.0d
-			y: 1.5d
+			y: 2.0d
 			dependencies: ["2C33BC61257B151B"]
 			id: "51EE35B65E167478"
 			tasks: [{
@@ -309,7 +309,7 @@
 		{
 			title: "{quest.emcworld.cheese}"
 			x: 0.0d
-			y: 3.5d
+			y: 4.0d
 			dependencies: ["51EE35B65E167478"]
 			id: "679CFF8000F65087"
 			tasks: [{
@@ -333,6 +333,108 @@
 					auto: "no_toast"
 				}
 			]
+		}
+		{
+			title: "{quest.emcworld.snow_snowglobe}"
+			x: 6.0d
+			y: 4.0d
+			dependencies: ["2FE6DB43DFD4F02A"]
+			id: "410209ECA7194461"
+			tasks: [{
+				id: "71DB84BE17E62E3E"
+				type: "item"
+				item: "divinerpg:snow_globe"
+			}]
+			rewards: [{
+				id: "254C756DF3D437B9"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
+		}
+		{
+			title: "{quest.emcworld.snow_iceika}"
+			x: 9.0d
+			y: 4.0d
+			dependencies: ["410209ECA7194461"]
+			id: "7F4D038409298A0F"
+			tasks: [{
+				id: "5AA01F17B60185F9"
+				type: "dimension"
+				icon: "divinerpg:frozen_grass"
+				dimension: "divinerpg:iceika"
+			}]
+			rewards: [{
+				id: "7F490364FC2EF1E4"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
+			}]
+		}
+		{
+			title: "{quest.emcworld.snow_workshop}"
+			icon: "divinerpg:workshop_carpet"
+			x: 12.0d
+			y: 4.0d
+			description: ["{quest.emcworld.snow_workshop_desc}"]
+			dependencies: ["7F4D038409298A0F"]
+			id: "7A55F6BA0AE116EC"
+			tasks: [
+				{
+					id: "57009A02DE18D015"
+					type: "observation"
+					title: "{quest.emcworld.find_snow_villager}"
+					timer: 0L
+					observe_type: 5
+					to_observe: "divinerpg:workshop_tinkerer"
+				}
+				{
+					id: "42CE81341C1A3F30"
+					type: "observation"
+					title: "{quest.emcworld.find_snow_villager1}"
+					timer: 0L
+					observe_type: 5
+					to_observe: "divinerpg:workshop_merchant"
+				}
+			]
+			rewards: [
+				{
+					id: "3665B9B95BE1AD44"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+				{
+					id: "7A37C02904A7984B"
+					type: "item"
+					item: "divinerpg:snowflake"
+					count: 32
+				}
+				{
+					id: "32E4A33DBD910ADA"
+					type: "choice"
+					table_id: 7655285679150771769L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.snow_shadowbar}"
+			x: 3.0d
+			y: 4.0d
+			description: ["{quest.emcworld.snow_shadowbar_desc}"]
+			dependencies: ["7ABA746ABC9B1490"]
+			id: "2FE6DB43DFD4F02A"
+			tasks: [{
+				id: "20DE7E9082E2F340"
+				type: "item"
+				item: "divinerpg:shadow_bar"
+			}]
 		}
 	]
 }

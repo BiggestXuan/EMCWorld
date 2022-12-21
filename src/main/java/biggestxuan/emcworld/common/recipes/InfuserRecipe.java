@@ -17,16 +17,9 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-
-/**
- * References and citations from: https://blog.csdn.net/Jay_fearless/article/details/125549815
- * Author:Jay_fearless
- * LICENCE: CC 4.0 BY-SA
- */
 
 public class InfuserRecipe implements IRecipe<Inventory> {
     public static final IRecipeType<InfuserRecipe> RECIPE = Type.INSTANCE;
@@ -127,9 +120,7 @@ public class InfuserRecipe implements IRecipe<Inventory> {
         @Override
         public InfuserRecipe fromNetwork(ResourceLocation p_199426_1_, PacketBuffer p_199426_2_) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(p_199426_2_.readInt(), Ingredient.EMPTY);
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(p_199426_2_));
-            }
+            inputs.replaceAll(ignored -> Ingredient.fromNetwork(p_199426_2_));
             ItemStack output = p_199426_2_.readItem();
             int craftLevel = p_199426_2_.readInt();
             int costEMC = p_199426_2_.readInt();

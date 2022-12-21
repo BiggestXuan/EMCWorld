@@ -624,6 +624,11 @@ public function emcworldRecipe() as void{
     smithingRecipe(sword[1],viqd*3,sword[2]);
     terraPlateRecipe([<item:atum:ptah_godshard>],<item:good_nights_sleep:hope_mushroom>,125000);
     terraPlateRecipe([<item:atum:anput_godshard>],<item:good_nights_sleep:despair_mushroom>,125000);
+    setEMCStage(<item:twilightforest:fiery_blood>,32768*2,6);
+    setEMCStage(<item:twilightforest:fiery_tears>,32768*2,6);
+    setEMCStage(<item:twilightforest:knightmetal_ingot>,16384,6);
+    setEMCStage(<item:twilightforest:carminite>,8192,6);
+    setEMCStage(<item:emcworld:unreal_metal>,(8192*2.5) as int,6);
     modifyShapedRecipe([
         [<item:minecraft:lapis_lazuli>,<item:mekanism:alloy_reinforced>,<item:minecraft:lapis_lazuli>],
         [<item:minecraft:gold_ingot>,<item:minecraft:diamond>,<item:minecraft:gold_ingot>],
@@ -670,6 +675,8 @@ public function emcworldRecipe() as void{
     }
     if(getGameDifficulty() >= 1){
         removeRecipe(tor);
+        yellow(<item:projectex:lime_collector>,<item:projectex:yellow_collector>);
+        yellow(<item:projectex:lime_relay>,<item:projectex:yellow_relay>);
     }
     if(getGameDifficulty() == 3){
         for i in 0 .. 4{
@@ -691,6 +698,8 @@ public function emcworldRecipe() as void{
         ],<item:emcworld:infinity_sword>,4);
     }
     if(getGameDifficulty() >= 2){
+        orange();
+        white();
         for i in 24 .. 28{
             extendedCraftingShapedRecipe([
                 [eus,tui,tui,eeg,eeg,eeg,tui,tui,eus],
@@ -895,8 +904,8 @@ public function emcworldRecipe() as void{
         <item:the_afterlight:spectral_glyph>,
         <item:undergarden:regalium_block>
     ],we,100000,4);
-    oxidizingRecipe(<item:stalwart_dungeons:void_crystal>,<gas:emcworld:no_shape_void>*10);
-    reactionRecipe(<item:emcworld:epic_emc_gem>,<fluid:mekanismgenerators:fusion_fuel>*10,<gas:emcworld:no_shape_void>*10,<item:emcworld:super_emc_gem>,<gas:emcworld:condensation_void>*20);
+    oxidizingRecipe(<item:stalwart_dungeons:void_crystal>,<gas:emcworld:no_shape_void>*1000);
+    reactionRecipe(<item:divinerpg:mortum_heart>,<fluid:mekanismgenerators:fusion_fuel>*10,<gas:emcworld:no_shape_void>*2000,<item:emcworld:super_emc_gem>,<gas:emcworld:condensation_void>*500);
     chemicalInfusingRecipe(<gas:emcworld:condensation_void>,<gas:emcworld:cosmic_flow>,<gas:emcworld:stable_void>);
     nucleosyRecipe(<item:endrem:end_crystal_block>,<gas:mekanism:antimatter>*100,ece,100);
     natureSpawnerRecipe([
@@ -937,7 +946,7 @@ public function emcworldRecipe() as void{
     cyan(<item:projectex:blue_relay>,<item:projectex:cyan_relay>);
     natureAltarRecipe(con[0][5],con[0][6],2,100000);
     removeRecipe([<item:the_afterlight:golden_shards_of_radiance>]);
-    nucleosyRecipe(con[0][6],<gas:mekanism:antimatter>*100,con[0][7],100);
+    nucleosyRecipe(con[0][6],<gas:mekanism:antimatter>*3,con[0][7],100);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
         [con[0][0],<item:botania:conjuration_catalyst>,con[0][0]],
@@ -1543,9 +1552,35 @@ private function green(c as IItemStack,r as IItemStack) as void{
 
 private function lime(c as IItemStack,r as IItemStack) as void{
     alchemalTableRecipe([
-        c,<item:cataclysm:enderite_block>,
-        <item:byg:pendorite_block>,
-        <item:cataclysm:void_core>,
-        <item:emcworld:lime_matter>
+        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:alfsteel" as string}),
+        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:atm" as string}),
+        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:vibranium" as string}),
+        c
     ],r,300000,4);
+}
+
+private function p(a as IItemStack,b as IItemStack,c as IItemStack,d as IItemStack) as void{
+    addCraftShapedRecipeNoName([
+        [a,b,a],
+        [b,c,b],
+        [a,b,a]
+    ],d);
+}
+
+private function kt(a as IItemStack,b as IItemStack,c as IItemStack[][]) as void{
+    for i in c{
+        p(a,b,i[0],i[1]);
+    }
+}
+
+private function yellow(c as IItemStack,r as IItemStack) as void{
+    p(<item:emcworld:yellow_matter>,<item:emcworld:dragon_steel>,c,r);
+}
+
+private function orange() as void{
+    kt(<item:emcworld:orange_matter>,<item:emcworld:emc_core>,[[<item:projectex:yellow_collector>,<item:projectex:orange_collector>],[<item:projectex:yellow_relay>,<item:projectex:orange_relay>]]);
+}
+
+private function white() as void{
+    kt(<item:emcworld:clay_matter>,<item:extendedcrafting:the_ultimate_ingot>,[[<item:projectex:orange_relay>,<item:projectex:white_relay>],[<item:projectex:orange_collector>,<item:projectex:white_collector>]]);
 }

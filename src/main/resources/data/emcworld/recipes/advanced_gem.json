@@ -17,16 +17,16 @@
   },
   "relay_inputs": [
     {
-      "item": "quark:green_crystal_cluster"
+      "item": "emcworld:chlorophyte_ingot"
     },
     {
-      "item": "quark:green_crystal_cluster"
+      "item": "emcworld:chlorophyte_ingot"
     },
     {
-      "item": "quark:green_crystal_cluster"
+      "item": "emcworld:chlorophyte_ingot"
     },
     {
-      "item": "quark:green_crystal_cluster"
+      "item": "emcworld:chlorophyte_ingot"
     }
   ],
   "output": [

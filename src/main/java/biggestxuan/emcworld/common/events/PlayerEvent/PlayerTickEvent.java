@@ -30,6 +30,8 @@ import biggestxuan.emcworld.common.data.DifficultyData;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import dev.latvian.mods.projectex.Matter;
+import divinerpg.capability.Arcana;
+import divinerpg.capability.ArcanaCapability;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
 import mekanism.common.registries.MekanismDamageSource;
@@ -123,6 +125,11 @@ public class PlayerTickEvent {
         }
         if(c.getSkills()[43] >0){
             c.setSkills(43,c.getSkills()[43]-1);
+        }
+        if(!player.isDeadOrDying()){
+            Arcana arcana = player.getCapability(ArcanaCapability.CAPABILITY_ARCANA).orElseThrow(NullPointerException::new);
+            util.setMaxArcana(arcana.getMaxArcana());
+            util.setArcana(arcana.getArcana());
         }
         float extraSpeed = Math.min(util.getSpeed(),getPlayerMaxSpeed(player));
         ModifiableAttributeInstance speed_instance = player.getAttribute(Attributes.MOVEMENT_SPEED);

@@ -57,6 +57,13 @@ public class PacketHandler {
                 StaffAttackPacket::decode,
                 StaffAttackPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                ArcanaDisplayPacket.class,
+                ArcanaDisplayPacket::encode,
+                ArcanaDisplayPacket::decode,
+                ArcanaDisplayPacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

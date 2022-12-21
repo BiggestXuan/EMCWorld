@@ -95,4 +95,16 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     boolean share();
 
     void setShare(boolean value);
+
+    float getArcana();
+
+    void setArcana(float value);
+
+    float getMaxArcana();
+
+    void setMaxArcana(float value);
+
+    boolean showArcana();
+
+    void setShowArcana(boolean value);
 }

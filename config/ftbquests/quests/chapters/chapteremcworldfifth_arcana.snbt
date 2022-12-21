@@ -1,0 +1,330 @@
+{
+	id: "14D52A41DE5BE93E"
+	group: "19E8D4A8DD89F202"
+	order_index: 4
+	filename: "chapteremcworldfifth_arcana"
+	title: "{chapter.emcworld.fifth_arcana}"
+	icon: "divinerpg:degraded_bricks"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.fifth_arcana_gointoarcana}"
+			icon: "divinerpg:arcana_portal_frame"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fifth_arcana_gointoarcana_desc}"]
+			dependencies: ["5D7398CCF1CD4EE4"]
+			id: "5D375F4F1E4FEBB6"
+			tasks: [{
+				id: "5C0C797EB991FE6D"
+				type: "dimension"
+				dimension: "divinerpg:arcana"
+			}]
+			rewards: [{
+				id: "0CD5262123586C71"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_kingofscorchers}"
+			x: -3.0d
+			y: 0.0d
+			dependencies: ["79D8462D6F56E2ED"]
+			id: "5D7398CCF1CD4EE4"
+			tasks: [{
+				id: "273247E465E7780C"
+				type: "kill"
+				icon: "divinerpg:bluefire_stone"
+				entity: "divinerpg:king_of_scorchers"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "2C58354B0956A5D3"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "11838663A20C479F"
+					type: "item"
+					item: "divinerpg:bluefire_stone"
+					random_bonus: 9
+					only_one: true
+				}
+				{
+					id: "596F98988C120B04"
+					type: "item"
+					item: {
+						id: "patchouli:guide_book"
+						Count: 1b
+						tag: {
+							"patchouli:book": "divinerpg:divine"
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_rawarcanium}"
+			x: 3.0d
+			y: 3.0d
+			description: ["{quest.emcworld.fifth_arcana_rawarcanium_desc}"]
+			dependencies: ["5D375F4F1E4FEBB6"]
+			id: "61F92A6E07464190"
+			tasks: [
+				{
+					id: "37FEAAE5571B39D1"
+					type: "item"
+					item: "divinerpg:collector_fragments"
+				}
+				{
+					id: "48CA6680EEDFF477"
+					type: "item"
+					item: "divinerpg:raw_arcanium"
+				}
+			]
+			rewards: [
+				{
+					id: "7342CA8187D9AECA"
+					type: "item"
+					item: "divinerpg:collector"
+					random_bonus: 4
+				}
+				{
+					id: "7B3A57EA8F6E7360"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+				{
+					id: "0FBAA0B776A1B9AD"
+					type: "item"
+					item: "divinerpg:raw_arcanium"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_arcaniumextractor}"
+			x: 3.0d
+			y: -3.0d
+			description: ["{quest.emcworld.fifth_arcana_arcaniumextractor_desc}"]
+			dependencies: ["5D375F4F1E4FEBB6"]
+			id: "55F7AD7E0BB1E998"
+			tasks: [{
+				id: "4A7AA1FFC309E770"
+				type: "item"
+				item: "divinerpg:arcanium_extractor"
+			}]
+			rewards: [{
+				id: "41E4A3F88AD64675"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_arcanium}"
+			x: 6.0d
+			y: 0.0d
+			dependencies: [
+				"61F92A6E07464190"
+				"55F7AD7E0BB1E998"
+			]
+			id: "3DE2C6D547DE07AF"
+			tasks: [{
+				id: "57A4C08C8D30F5B4"
+				type: "item"
+				item: "divinerpg:arcanium"
+			}]
+			rewards: [
+				{
+					id: "31129B19566D494A"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "1261148BF1D8FD0D"
+					type: "item"
+					item: "divinerpg:arcanium"
+					count: 4
+					random_bonus: 4
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_lordvatticus}"
+			x: 9.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fifth_arcana_lordvatticus_desc}"]
+			dependencies: ["5D375F4F1E4FEBB6"]
+			id: "130170565966D1DB"
+			tasks: [{
+				id: "06AD9F61F76AF719"
+				type: "observation"
+				icon: "divinerpg:lord_vatticus_spawn_egg"
+				timer: 0L
+				observe_type: 5
+				to_observe: "divinerpg:lord_vatticus"
+			}]
+			rewards: [{
+				id: "543AE630AD0793D9"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_wizardsbook}"
+			x: 12.0d
+			y: 0.0d
+			description: ["{quest.emcworld.fifth_arcana_wizardsbook_desc}"]
+			dependencies: [
+				"130170565966D1DB"
+				"3DE2C6D547DE07AF"
+			]
+			id: "23740273B5C0A8E9"
+			tasks: [{
+				id: "78C619B1734194FC"
+				type: "item"
+				item: "divinerpg:wizards_book"
+			}]
+			rewards: [{
+				id: "2559B5AEAAF4C42F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_parasectaaltar}"
+			x: 15.0d
+			y: 3.0d
+			dependencies: ["23740273B5C0A8E9"]
+			id: "6C746AA9138D4227"
+			tasks: [{
+				id: "177845F7DB8D17D1"
+				type: "observation"
+				icon: "divinerpg:parasecta_altar"
+				timer: 0L
+				observe_type: 0
+				to_observe: "divinerpg:parasecta_altar"
+			}]
+			rewards: [{
+				id: "35CF7269FE3FB0C4"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_dramixaltar}"
+			x: 15.0d
+			y: -3.0d
+			dependencies: ["23740273B5C0A8E9"]
+			id: "2EF6B6C0B2D5883E"
+			tasks: [{
+				id: "77ED788D1A646448"
+				type: "observation"
+				icon: "divinerpg:dramix_altar"
+				timer: 0L
+				observe_type: 0
+				to_observe: "divinerpg:dramix_altar"
+			}]
+			rewards: [{
+				id: "2BF287CB27EC844B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_dramix}"
+			x: 21.0d
+			y: -3.0d
+			description: ["{quest.emcworld.fifth_arcana_dramix_desc}"]
+			dependencies: ["2EF6B6C0B2D5883E"]
+			id: "33A3CC2C222EEE56"
+			tasks: [{
+				id: "632F1ECAB6FA70E3"
+				type: "kill"
+				icon: {
+					id: "divinerpg:arcanite_blade"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "divinerpg:dramix"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "0A2E586089D08760"
+					type: "item"
+					item: "divinerpg:dungeon_tokens"
+					count: 4
+					random_bonus: 4
+				}
+				{
+					id: "3BEF10166EF7F978"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.fifth_arcana_parasecta}"
+			x: 21.0d
+			y: 3.0d
+			dependencies: ["6C746AA9138D4227"]
+			id: "249E4F35A2AB982D"
+			tasks: [{
+				id: "601C8E7F86B86489"
+				type: "kill"
+				icon: {
+					id: "divinerpg:arcanite_blaster"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "divinerpg:parasecta"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "38A0CF9002B33F14"
+					type: "item"
+					item: "divinerpg:dungeon_tokens"
+					count: 4
+					random_bonus: 4
+				}
+				{
+					id: "7F3408F89C6D5A3B"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+	]
+}

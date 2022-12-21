@@ -4,7 +4,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "emcworld.refmap.json",
   "mixins": [
+    "ArcanaMixin",
+    "ArcanaRenderMixin",
     "AtlantisDisableMixin",
+    "ClassicBarMixin",
     "ConjurerMixin",
     "GaiaMixin",
     "ItemStageMixin",
@@ -13,7 +16,8 @@
     "QuarkHandlerMixin",
     "QuarkInventoryHandlerMixin",
     "RatMixin",
-    "WebHelperDisableMixin"
+    "WebHelperDisableMixin",
+    "WorldMixin"
   ],
   "client": [
     "MinecraftWindowMixin",

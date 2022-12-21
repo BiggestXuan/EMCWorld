@@ -473,6 +473,11 @@
 					tags: ["hard"]
 					auto: "no_toast"
 				}
+				{
+					id: "13B9159AF35D4DBD"
+					type: "item"
+					item: "rats:rat_upgrade_archeologist"
+				}
 			]
 		}
 		{

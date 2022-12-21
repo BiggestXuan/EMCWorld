@@ -382,7 +382,7 @@
 		}
 		{
 			title: "{quest.emcworld.eighth_third_super_ingot}"
-			x: 2.0d
+			x: 1.0d
 			y: 8.0d
 			hide_dependency_lines: true
 			dependencies: ["19F41E82A437BEED"]
@@ -473,10 +473,13 @@
 			}]
 		}
 		{
-			x: 10.0d
+			x: 14.0d
 			y: 8.0d
 			hide_dependency_lines: true
-			dependencies: ["40E37FE05954AE6F"]
+			dependencies: [
+				"40E37FE05954AE6F"
+				"5262FB44F61EFD24"
+			]
 			size: 2.0d
 			id: "3D24670AAC8740D9"
 			tasks: [{
@@ -486,20 +489,28 @@
 			}]
 		}
 		{
-			x: 14.0d
+			x: 10.0d
 			y: 8.0d
 			hide_dependency_lines: true
-			dependencies: [
-				"3CEF61DC9E6F0BD5"
-				"068CDD637963872E"
-				"5E177BA88333C3AF"
-			]
+			dependencies: ["1825866580F61539"]
 			size: 2.0d
-			id: "6693C3FEA3906457"
+			id: "5262FB44F61EFD24"
 			tasks: [{
-				id: "0A5F8718BCF3AE3F"
+				id: "25DF810DD7EC6131"
 				type: "item"
-				item: "projectex:fading_collector"
+				item: "projectex:orange_collector"
+			}]
+		}
+		{
+			x: 1.0d
+			y: -2.0d
+			hide_dependency_lines: true
+			dependencies: ["6D9272A5E61D451F"]
+			id: "1825866580F61539"
+			tasks: [{
+				id: "7E4AA59DF9F67ADF"
+				type: "item"
+				item: "emcworld:orange_matter"
 			}]
 		}
 	]

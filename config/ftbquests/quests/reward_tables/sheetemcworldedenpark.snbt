@@ -1,0 +1,48 @@
+{
+	id: "6703FA49D2CFBCEE"
+	order_index: 4
+	title: "{sheet.emcworld.edenpark}"
+	icon: "divinerpg:eden_chunk"
+	loot_size: 1
+	rewards: [
+		{ item: "divinerpg:eden_slicer", count: 64 }
+		{ item: "divinerpg:eden_blitz" }
+		{
+			item: {
+				id: "divinerpg:eden_shield"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{ item: "divinerpg:eden_bow" }
+		{
+			item: {
+				id: "divinerpg:eden_blade"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:eden_shickaxe"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:eden_phaser"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}

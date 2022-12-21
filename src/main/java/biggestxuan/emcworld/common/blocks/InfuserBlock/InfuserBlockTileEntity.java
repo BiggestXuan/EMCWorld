@@ -36,12 +36,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
-/**
- * References and citations from: https://blog.csdn.net/Jay_fearless/article/details/125549815
- * Author:Jay_fearless
- * LICENCE: CC 4.0 BY-SA
- */
-
 public class InfuserBlockTileEntity extends BaseContainerTileEntity implements ITickableTileEntity, INamedContainerProvider{
     private final Inventory inventory = new Inventory(7);
     protected IRecipeType<? extends InfuserRecipe> recipeType;
@@ -189,7 +183,7 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
         }
         if(mainItem.getItem() instanceof EMCGemItem){
             for(EMCGemsMapping emcGem : EMCGemsMapping.values()){
-                if(mainItem.getItem().equals(emcGem.getItem()) && emcGem.getBaseEMC() < this.maxEMC && this.emc < this.maxEMC){
+                if(mainItem.getItem().equals(emcGem.getItem()) && emcGem.getBaseEMC() < this.maxEMC - this.emc && this.emc < this.maxEMC){
                     this.emc = (int) Math.min(emcGem.getBaseEMC()+nowEMC,this.maxEMC);
                     this.inventory.getItem(2).setCount(mainItem.getCount()-1);
                     break;

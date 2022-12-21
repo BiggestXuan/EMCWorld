@@ -93,7 +93,7 @@ public function modifyMEKRecipe() as void{
     ],<item:mekanismgenerators:heat_generator>);
     modifyShapedRecipe([
         [iron,furnace,iron],
-        [redstone,<item:emcworld:hardcore_stone>,redstone],
+        [redstone,<item:divinerpg:shadow_bar>,redstone],
         [iron,furnace,iron]
     ],<item:mekanism:metallurgic_infuser>);
     modifyShapedRecipe([

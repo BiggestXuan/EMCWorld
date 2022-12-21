@@ -25,8 +25,11 @@ public class UtilDataPack {
     private final long cd;
     private final double difficulty;
     private final int level;
+    private final float arcana;
+    private final float maxArcana;
+    private final boolean showArcana;
 
-    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level){
+    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level,float arcana,float maxArcana,boolean showArcana){
         this.isRaid = isRaid;
         this.state = state;
         this.pillagerAmount = pillagerAmount;
@@ -37,6 +40,9 @@ public class UtilDataPack {
         this.cd = cd;
         this.difficulty = difficulty;
         this.level = level;
+        this.arcana = arcana;
+        this.maxArcana = maxArcana;
+        this.showArcana = showArcana;
     }
 
     public UtilDataPack(PacketBuffer buffer){
@@ -50,6 +56,9 @@ public class UtilDataPack {
         cd = buffer.readLong();
         difficulty = buffer.readDouble();
         level = buffer.readInt();
+        arcana = buffer.readFloat();
+        maxArcana = buffer.readFloat();
+        showArcana = buffer.readBoolean();
     }
 
     public void encode(PacketBuffer buffer){
@@ -63,13 +72,14 @@ public class UtilDataPack {
         buffer.writeLong(cd);
         buffer.writeDouble(difficulty);
         buffer.writeInt(level);
+        buffer.writeFloat(arcana);
+        buffer.writeFloat(maxArcana);
+        buffer.writeBoolean(showArcana);
     }
 
     public void handle(Supplier<NetworkEvent.Context> context){
         NetworkEvent.Context c = context.get();
-        c.enqueueWork(()->{
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()-> ClientHandler.handleUtilPacket(this,context));
-        });
+        c.enqueueWork(()-> DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()-> ClientHandler.handleUtilPacket(this,context)));
         c.setPacketHandled(true);
     }
 
@@ -111,6 +121,18 @@ public class UtilDataPack {
 
     public long getCd() {
         return cd;
+    }
+
+    public boolean isShowArcana() {
+        return showArcana;
+    }
+
+    public float getArcana() {
+        return arcana;
+    }
+
+    public float getMaxArcana() {
+        return maxArcana;
     }
 }
 

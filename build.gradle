@@ -1,12 +1,12 @@
 buildscript {
     repositories {
-        mavenCentral()
         maven { url = 'https://maven.minecraftforge.net' }
         maven {
             name "Sponge"
             url "https://repo.spongepowered.org/repository/maven-public/"
             content { includeGroup "org.spongepowered" }
         }
+        mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
@@ -114,7 +114,11 @@ dependencies {
     implementation fg.deobf("curse.maven:ftbq-289412:3672855")
     implementation fg.deobf("curse.maven:byg-247560:3485079")
     implementation fg.deobf("curse.maven:slientlib-242998:3385768")
+    implementation fg.deobf("curse.maven:Structure-378802:3498310")
+    implementation fg.deobf("curse.maven:LiteWolfCore-655678:3925019")
+    implementation fg.deobf("curse.maven:Blueprint-382216:3607198")
     implementation fg.deobf("curse.maven:Undergarden-379849:3477594")
+    implementation fg.deobf("curse.maven:classic-bars-317642:4031993")
     implementation fg.deobf("curse.maven:item_filters-309674:3376819")
     implementation fg.deobf("curse.maven:Architectury-419699:3857643")
     implementation fg.deobf("curse.maven:Citadel-331936:3441028")
@@ -135,8 +139,14 @@ dependencies {
     implementation fg.deobf("curse.maven:ftbq-316833:3333962")
     implementation fg.deobf("curse.maven:gobber-301700:4005586")
     implementation fg.deobf("curse.maven:atm-364466:3529763")
+    implementation fg.deobf("curse.maven:mmm-225738:3473005")
+    implementation fg.deobf("curse.maven:lootr-361276:4110873")
     implementation fg.deobf("curse.maven:projecte-226410:3736621")
     implementation fg.deobf("curse.maven:projectex-311378:3478250")
+    implementation fg.deobf("curse.maven:ias-576368:3771469")
+    implementation fg.deobf("curse.maven:Conjurer-377798:3107953")
+    implementation fg.deobf("curse.maven:Illagers-325851:3965718")
+    implementation fg.deobf("curse.maven:sr-381736:3560051")
     implementation fg.deobf("curse.maven:quark-243121:3642325")
     implementation fg.deobf("curse.maven:stalwart-dungeons-474817:3495397")
     implementation fg.deobf("curse.maven:sh-248027:3240365")

@@ -1,0 +1,48 @@
+{
+	id: "0E55E7419CDC1320"
+	order_index: 6
+	title: "{sheet.emcworld.apalachiapark}"
+	icon: "divinerpg:apalachia_chunk"
+	loot_size: 1
+	rewards: [
+		{ item: "divinerpg:apalachia_slicer", count: 64 }
+		{ item: "divinerpg:apalachia_blitz" }
+		{
+			item: {
+				id: "divinerpg:apalachia_shield"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{ item: "divinerpg:apalachia_bow" }
+		{
+			item: {
+				id: "divinerpg:apalachia_blade"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:apalachia_shickaxe"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "divinerpg:apalachia_phaser"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}
