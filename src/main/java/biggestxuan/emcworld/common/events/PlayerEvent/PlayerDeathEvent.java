@@ -33,10 +33,10 @@ public class PlayerDeathEvent {
     @SubscribeEvent
     public static void playerDeathEvent(LivingDeathEvent event){
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity.getCommandSenderWorld().isClientSide) return;
+        if(livingEntity.level.isClientSide) return;
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
-            MinecraftServer server = livingEntity.getCommandSenderWorld().getServer();
+            MinecraftServer server = livingEntity.level.getServer();
             assert server != null;
             ServerWorld world = server.overworld();
             BlockPos deathPos = new BlockPos(livingEntity.position());
@@ -45,7 +45,7 @@ public class PlayerDeathEvent {
                 for(PlayerEntity p: getNearPlayer(raid)){
                     Message.sendMessage(p, EMCWorld.tc("message.raid.loss"));
                 }
-                raid.stop();
+                raid.status = Raid.Status.LOSS;
             }
             IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
             if(cap.getProfession() == 2 && cap.getModify() == 1 && cap.getSkills()[40] != 0 && cap.getSkills()[42] == 0){

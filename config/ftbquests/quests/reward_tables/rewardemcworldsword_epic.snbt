@@ -84,5 +84,35 @@
 				}
 			}
 		}
+		{
+			item: {
+				id: "emcworld:super_star"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:night_light"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
+		{
+			item: {
+				id: "emcworld:red_green_dagger"
+				Count: 1b
+				tag: {
+					Damage: 0
+					level: 20
+				}
+			}
+		}
 	]
 }

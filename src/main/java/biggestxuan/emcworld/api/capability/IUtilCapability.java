@@ -107,4 +107,16 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     boolean showArcana();
 
     void setShowArcana(boolean value);
+
+    double getSHDifficulty();
+
+    void setSHDifficulty(double value);
+
+    float getMaxShield();
+
+    float getShield();
+
+    void setMaxShield(float value);
+
+    void setShield(float value);
 }

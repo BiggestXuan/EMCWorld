@@ -262,9 +262,15 @@ public class PlayerClickEvent {
                     return;
                 }
                 itemStack.setDamageValue(itemStack.getDamageValue()+1);
-                player.getCooldowns().addCooldown(item,1200);
+                if(!player.isCreative()){
+                    player.getCooldowns().addCooldown(item,1200);
+                }
                 for(AbstractRaiderEntity entity:getNearRaidEntity(player)){
                     entity.addEffect(new EffectInstance(Effects.GLOWING,1200,0));
+                    if(player.isShiftKeyDown()){
+                        BlockPos pos = entity.blockPosition();
+                        Message.sendMessage(player,EMCWorld.tc("message.raid.pos",entity.getDisplayName().getString(),pos.getX(),pos.getY(),pos.getZ()));
+                    }
                 }
             }
         }

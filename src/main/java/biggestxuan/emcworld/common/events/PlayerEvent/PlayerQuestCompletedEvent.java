@@ -7,7 +7,6 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
@@ -16,13 +15,18 @@ import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.Message;
 import dev.ftb.mods.ftbquests.events.CustomRewardEvent;
+import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
+import dev.ftb.mods.ftbquests.quest.reward.Reward;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerQuestCompletedEvent {
@@ -66,7 +70,12 @@ public class PlayerQuestCompletedEvent {
                 final_pack(player,"message.final_diff4");
             }
         }
-        long baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(player,event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
+        long baseGet;
+        if(getQuestStage(event.getReward()) == null){
+            baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(player,event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
+        }else{
+            baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(getQuestStage(event.getReward()),event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
+        }
         if(baseGet == 0) return;
         EMCHelper.modifyPlayerEMC(player,baseGet,true);
         for(QuestReward obj : QuestReward.values()){
@@ -91,6 +100,32 @@ public class PlayerQuestCompletedEvent {
         send(player,info);
         send(player,"");
         Message.sendMessage(player,EMCWorld.tc("message.final.thanks",player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new).getDifficulty()));
+    }
+
+    @Nullable
+    private static String getQuestStage(Reward reward){
+        Quest quest = reward.quest;
+        if(quest.getQuestChapter() == null || quest.getQuestChapter().group == null){
+            return null;
+        }
+        long id = quest.getQuestChapter().group.id;
+        String[] ids = new String[]{
+                "35CE8D0AFC937D5D","253AC67EEE892A90","1BED04361D91412D","16A68A44AFA4135F","19E8D4A8DD89F202","7E8ECD616F8A4334","5E8F5E0284CC6998","45BD8B4A7A7B384D"
+        };
+        String[] stages = new String[]{
+                "one","two","three","four","five","six","seven","eight"
+        };
+        int index = 0;
+        for(String s : ids){
+            System.out.println(id);
+            System.out.println(Long.parseLong(s,16));
+            if(id == Long.parseLong(s,16)){
+                System.out.println("output:"+stages[index]);
+                return stages[index];
+            }
+            index++;
+        }
+        return null;
     }
 
     private static String getStage(String tag){

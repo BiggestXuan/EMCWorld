@@ -28,8 +28,11 @@ public class UtilDataPack {
     private final float arcana;
     private final float maxArcana;
     private final boolean showArcana;
+    private final double sh_difficulty;
+    private final float shield;
+    private final float maxShield;
 
-    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level,float arcana,float maxArcana,boolean showArcana){
+    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield){
         this.isRaid = isRaid;
         this.state = state;
         this.pillagerAmount = pillagerAmount;
@@ -43,6 +46,9 @@ public class UtilDataPack {
         this.arcana = arcana;
         this.maxArcana = maxArcana;
         this.showArcana = showArcana;
+        this.sh_difficulty = sh_difficulty;
+        this.shield = shield;
+        this.maxShield = maxShield;
     }
 
     public UtilDataPack(PacketBuffer buffer){
@@ -59,6 +65,9 @@ public class UtilDataPack {
         arcana = buffer.readFloat();
         maxArcana = buffer.readFloat();
         showArcana = buffer.readBoolean();
+        sh_difficulty = buffer.readDouble();
+        shield = buffer.readFloat();
+        maxShield = buffer.readFloat();
     }
 
     public void encode(PacketBuffer buffer){
@@ -75,6 +84,9 @@ public class UtilDataPack {
         buffer.writeFloat(arcana);
         buffer.writeFloat(maxArcana);
         buffer.writeBoolean(showArcana);
+        buffer.writeDouble(sh_difficulty);
+        buffer.writeFloat(shield);
+        buffer.writeFloat(maxShield);
     }
 
     public void handle(Supplier<NetworkEvent.Context> context){
@@ -133,6 +145,18 @@ public class UtilDataPack {
 
     public float getMaxArcana() {
         return maxArcana;
+    }
+
+    public double getSh_difficulty() {
+        return sh_difficulty;
+    }
+
+    public float getMaxShield() {
+        return maxShield;
+    }
+
+    public float getShield() {
+        return shield;
     }
 }
 

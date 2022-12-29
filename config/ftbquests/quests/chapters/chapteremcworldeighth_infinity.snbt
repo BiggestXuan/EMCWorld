@@ -15,45 +15,14 @@
 	default_hide_dependency_lines: false
 	quests: [
 		{
-			title: "{quest.emcworld.eighth_first_knight}"
-			x: 0.0d
-			y: 0.0d
-			id: "55F95029FC1CB170"
-			tasks: [{
-				id: "73C14CFEC20C9462"
-				type: "item"
-				item: "emcworld:test_block"
-			}]
-		}
-		{
-			title: "{quest.emcworld.eighth_first_case}"
-			x: 3.0d
-			y: 0.0d
-			dependencies: ["55F95029FC1CB170"]
-			id: "12AB89655F52148B"
-			tasks: [{
-				id: "3F369E2FA268D229"
-				type: "item"
-				item: "extendedcrafting:frame"
-			}]
-		}
-		{
-			title: "{quest.emcworld.eighth_first_compressor}"
-			x: 6.0d
-			y: 0.0d
-			dependencies: ["12AB89655F52148B"]
-			id: "07ADB7D2F7B66D5E"
-			tasks: [{
-				id: "206B8A95C37CC95A"
-				type: "item"
-				item: "extendedcrafting:compressor"
-			}]
-		}
-		{
 			x: 3.0d
 			y: 4.0d
 			hide_dependency_lines: true
-			dependencies: ["07ADB7D2F7B66D5E"]
+			dependencies: [
+				"07ADB7D2F7B66D5E"
+				"5AB9DC515457786D"
+			]
+			hide: true
 			id: "167BB7C90334F75E"
 			tasks: [{
 				id: "18AB7FA00EBB6C5A"
@@ -66,6 +35,27 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "425D9F3CB4A7B963"
+					type: "item"
+					team_reward: true
+					item: {
+						id: "extendedcrafting:singularity"
+						Count: 1b
+						tag: {
+							Id: "extendedcrafting:atm"
+						}
+					}
+				}
+				{
+					id: "1FB3B041E7AE9139"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			x: 6.0d
@@ -86,6 +76,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "75CCFBB8E6A06BB6"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -114,6 +111,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "5E5B046792E0A4B2"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 10.5d
@@ -135,6 +139,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "55AEBD9E5ADF2444"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 12.0d
@@ -155,6 +166,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "6DE21AA2F1259C7D"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -178,12 +196,23 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "0513B11026E9F670"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: 3.0d
 			y: 2.0d
 			hide_dependency_lines: true
-			dependencies: ["07ADB7D2F7B66D5E"]
+			dependencies: [
+				"07ADB7D2F7B66D5E"
+				"5AB9DC515457786D"
+			]
+			hide: true
 			id: "5FB769258A914887"
 			tasks: [{
 				id: "273496D83F93FCFB"
@@ -196,6 +225,27 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "5E9E7C5F09ACEB17"
+					type: "item"
+					team_reward: true
+					item: {
+						id: "extendedcrafting:singularity"
+						Count: 1b
+						tag: {
+							Id: "extendedcrafting:alfsteel"
+						}
+					}
+				}
+				{
+					id: "72EAF1BA1FBBE162"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.eighth_first_alfheim_sword}"
@@ -221,6 +271,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "6673081314188FFA"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: 6.0d
@@ -238,6 +295,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "21A3F81A0E24A15E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -263,6 +327,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "43840452F2312C17"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 10.5d
@@ -280,6 +351,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "4E1DEB56CF7B438C"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -299,12 +377,23 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "12428F5DCD944525"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 3.0d
 			y: 6.0d
 			hide_dependency_lines: true
-			dependencies: ["07ADB7D2F7B66D5E"]
+			dependencies: [
+				"07ADB7D2F7B66D5E"
+				"5AB9DC515457786D"
+			]
+			hide: true
 			id: "35383154D1ABF1D6"
 			tasks: [{
 				id: "6970A771E3BBD017"
@@ -317,6 +406,27 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "6A819323BEEA001B"
+					type: "item"
+					team_reward: true
+					item: {
+						id: "extendedcrafting:singularity"
+						Count: 1b
+						tag: {
+							Id: "extendedcrafting:vibranium"
+						}
+					}
+				}
+				{
+					id: "3C9ABE90ED69BF86"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			x: 6.0d
@@ -337,6 +447,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "5B13F88104E17F43"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -359,6 +476,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "3189CBF760F30DD7"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 10.5d
@@ -380,6 +504,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "2FE733A0E87C078E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 12.0d
@@ -400,6 +531,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "6D8C58410A59781E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -429,14 +567,23 @@
 					}
 				}
 			}]
-			rewards: [{
-				id: "437EA06EB1875714"
-				type: "custom"
-				title: "{quest.emcworld.eighth_first_final}"
-				icon: "allthemodium:unobtainium_ingot"
-				tags: ["first_final"]
-				team_reward: true
-			}]
+			rewards: [
+				{
+					id: "437EA06EB1875714"
+					type: "custom"
+					title: "{quest.emcworld.eighth_first_final}"
+					icon: "allthemodium:unobtainium_ingot"
+					tags: ["first_final"]
+					team_reward: true
+				}
+				{
+					id: "75EA3322EDCC04A4"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			x: 0.0d
@@ -459,6 +606,13 @@
 					item: "projectex:lime_relay"
 				}
 			]
+			rewards: [{
+				id: "45D1AEFC7D9097E4"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: 3.0d
@@ -470,16 +624,46 @@
 				type: "item"
 				item: "emcworld:lime_matter"
 			}]
+			rewards: [
+				{
+					id: "422FB4E428B795F6"
+					type: "item"
+					item: "emcworld:lime_matter"
+				}
+				{
+					id: "6F56836F763083F2"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			x: 0.0d
 			y: -2.0d
+			dependencies: ["5AB9DC515457786D"]
+			hide: true
 			id: "0B78BC3352D742A6"
 			tasks: [{
 				id: "09C6FE9FEFFA56F7"
 				type: "item"
 				item: "emcworld:green_matter"
 			}]
+			rewards: [
+				{
+					id: "0026C803E09C10DA"
+					type: "item"
+					item: "emcworld:green_matter"
+				}
+				{
+					id: "6989B644BEB41392"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 	]
 }

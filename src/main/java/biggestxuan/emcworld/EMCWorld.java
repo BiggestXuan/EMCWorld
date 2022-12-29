@@ -21,11 +21,16 @@ import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
-import biggestxuan.emcworld.common.utils.RaidMembers;
+import biggestxuan.emcworld.common.utils.RaidUtils;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.resources.FilePack;
+import net.minecraft.resources.IPackNameDecorator;
+import net.minecraft.resources.ResourcePackInfo;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -37,22 +42,23 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
+import java.io.File;
 
 @Mod(EMCWorld.MODID)
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 3;
-    public static final String PackVersion = "0.3.0 - Pre12";
+    public static final String PackVersion = "0.3.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
-
     public static final long MAX_EMC = 1_000_000_000_000_000L;
+    public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
 
     public EMCWorld(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -82,12 +88,21 @@ public class EMCWorld {
         MinecraftForge.EVENT_BUS.register(this);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigManager.COMMON_CONFIG);
+        if(FMLEnvironment.dist == Dist.CLIENT){
+            Minecraft.getInstance().getResourcePackRepository().addPackFinder((consumer, factory) -> {
+                ResourcePackInfo info = ResourcePackInfo.create(MODID,true,() -> new FilePack(RP),factory, ResourcePackInfo.Priority.TOP, IPackNameDecorator.BUILT_IN);
+                if(info != null){
+                    consumer.accept(info);
+                }
+            });
+            Minecraft.getInstance().getResourcePackRepository().reload();
+        }
     }
 
     private void doStuff(FMLCommonSetupEvent event){
         event.enqueueWork(UtilNetworking::registerMessage);
         event.enqueueWork(SkillNetworking::registerMessage);
-        event.enqueueWork(RaidMembers::init);
+        event.enqueueWork(RaidUtils::init);
         event.enqueueWork(PacketHandler::init);
         MinecraftForge.EVENT_BUS.register(new commandEvent());
     }

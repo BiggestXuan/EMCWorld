@@ -22,27 +22,27 @@ public class Creation extends BaseEMCGodWarHammer {
 
     @Override
     protected double criticalChance(ItemStack stack) {
-        return Math.pow(1.024,getLevel(stack)) - 1;
+        return Math.pow(1.0245,getLevel(stack)) - 1;
     }
 
     @Override
     protected double criticalRate(ItemStack stack) {
-        return Math.pow(1.022,getLevel(stack));
+        return Math.pow(1.0225,getLevel(stack));
     }
 
     @Override
     protected float damage(ItemStack stack) {
-        return (float) (Math.pow(1.18,getLevel(stack)) * 7);
+        return (float) (Math.pow(1.186,getLevel(stack)) * 7);
     }
 
     @Override
     protected double attackRange(ItemStack stack) {
-        return Math.pow(1.1,getLevel(stack));
+        return Math.pow(1.14,getLevel(stack));
     }
 
     @Override
     public double getAttackSpeed(ItemStack stack) {
-        return Math.pow(0.97,getLevel(stack));
+        return Math.pow(0.98,getLevel(stack));
     }
 
 }

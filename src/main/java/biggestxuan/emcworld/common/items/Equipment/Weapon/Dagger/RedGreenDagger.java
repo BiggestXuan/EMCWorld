@@ -22,7 +22,7 @@ public class RedGreenDagger extends BaseEMCGodDagger {
 
     @Override
     protected long EMCModify(ItemStack stack) {
-        return Math.round(Math.pow(1.8,getLevel(stack)));
+        return Math.round(Math.pow(1.7,getLevel(stack)));
     }
 
     @Override

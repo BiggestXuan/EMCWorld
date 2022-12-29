@@ -26,6 +26,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -40,6 +41,16 @@ public class LivingDamageEvent {
         if(entity.level.isClientSide) return;
         if(!(event.getEntityLiving() instanceof PlayerEntity) && MathUtils.isMaxDifficulty()) {
             damage *= 0.67f;
+        }
+        if(entity instanceof AbstractRaiderEntity){
+            MinecraftServer server = entity.getServer();
+            if(server == null) return;
+            Raid raid = server.overworld().getRaidAt(entity.blockPosition());
+            damage *= raid != null && (source.getDirectEntity() instanceof AbstractRaiderEntity || source.isFire() || source.isExplosion() || source.equals(DamageSource.FALL)) ? 0 : 1;
+            if(raid != null && source.getDirectEntity() instanceof ProjectileEntity){
+                ProjectileEntity entity1 = (ProjectileEntity) source.getDirectEntity();
+                damage *= entity1.getOwner() instanceof AbstractRaiderEntity ? 0 : 1;
+            }
         }
         if(source instanceof EWDamageSource || source.equals(DamageSource.MAGIC)){
             EffectInstance instance = entity.getEffect(EWEffects.MAGIC_PROTECT.get());

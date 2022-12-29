@@ -55,6 +55,7 @@ public function emcworldRecipe() as void{
     var ewi = <item:emcworld:wooden_ingot>;
     var essi = <item:emcworld:stone_ingot>;
     var evm = <item:emcworld:violet_matter>;
+    var eis = <item:emcworld:illager_shard>;
     var dee = <item:quark:deepslate>;
     var eri = <item:emcworld:rune_ingot>;
     var eni = <item:emcworld:nature_ingot>;
@@ -103,6 +104,7 @@ public function emcworldRecipe() as void{
     var frc = <item:mekanismgenerators:fission_reactor_casing>;
     var aq = <item:astralsorcery:aquamarine>;
     var pa = <item:minecraft:paper>;
+    var camt = getColorBlockCount();
     var baseqd as IIngredient = 
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:iron" as string})|
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:steel" as string})|
@@ -119,7 +121,10 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_null_sword>.withTag({level: 14 as int})|
         <item:emcworld:purple_staff>.withTag({level: 14 as int})|
         <item:emcworld:nature_staff>.withTag({level: 14 as int})|
-        <item:emcworld:creation>.withTag({level: 14 as int})
+        <item:emcworld:creation>.withTag({level: 14 as int})|
+        <item:emcworld:super_star>.withTag({level: 14 as int})|
+        <item:emcworld:night_light>.withTag({level: 14 as int})|
+        <item:emcworld:red_green_dagger>.withTag({level: 14 as int})
     ;
     var adss as IIngredient = 
         <item:emcworld:god_ice_sword>.withTag({level: 20 as int})|
@@ -128,7 +133,10 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_null_sword>.withTag({level: 20 as int})|
         <item:emcworld:purple_staff>.withTag({level: 20 as int})|
         <item:emcworld:nature_staff>.withTag({level: 20 as int})|
-        <item:emcworld:creation>.withTag({level: 20 as int})
+        <item:emcworld:creation>.withTag({level: 20 as int})|
+        <item:emcworld:super_star>.withTag({level: 20 as int})|
+        <item:emcworld:night_light>.withTag({level: 20 as int})|
+        <item:emcworld:red_green_dagger>.withTag({level: 20 as int})
     ;
     var con as IItemStack[][] = [
         [
@@ -179,7 +187,10 @@ public function emcworldRecipe() as void{
         <item:emcworld:god_null_sword>.withTag({level: 24 as int})|
         <item:emcworld:purple_staff>.withTag({level: 24 as int})|
         <item:emcworld:nature_staff>.withTag({level: 24 as int})|
-        <item:emcworld:creation>.withTag({level: 24 as int})
+        <item:emcworld:creation>.withTag({level: 24 as int})|
+        <item:emcworld:super_star>.withTag({level: 24 as int})|
+        <item:emcworld:night_light>.withTag({level: 24 as int})|
+        <item:emcworld:red_green_dagger>.withTag({level: 24 as int})
     ;
     var amo as int[]=[
         1500,2000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,1500
@@ -603,7 +614,7 @@ public function emcworldRecipe() as void{
         [a,dm,a]
     ],<item:emcworld:red_matter_crystal>);
     for i in 0 .. 4{
-        nucleosyRecipe(ne_armor[i+4],<gas:mekanism:antimatter>*(200 * getDifficultyLoss()) as int,ne_armor[i],2000);
+        nucleosyRecipe(ne_armor[i+4],<gas:mekanism:antimatter>*(10 * getDifficultyLoss()) as int,ne_armor[i],2000);
     }
     setEMCStage(<item:emcworld:niobium_nugget>,2048,5);
     addCraftShapedRecipeNoName([
@@ -685,6 +696,22 @@ public function emcworldRecipe() as void{
         extendedCraftingShapelessRecipe([
             tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,eus,eus,eus,eus,eus,eus,eus
         ],ifc,4);
+        addCraftShapedRecipeNoName([
+            [eis,eis,eis],
+            [eis,eis,eis],
+            [eis,eis,eis]
+        ],tui);
+        for i in [tui,<item:mekanism:pellet_antimatter>]{
+            addCraftShapelessRecipe([
+                eis,i
+            ],i*8);
+        }
+        var kl as IItemStack[] = [ewi,essi,eri,eni];
+        for i in kl{
+            addCraftShapelessRecipe([
+                eis,i
+            ],i*64);
+        }
         extendedCraftingShapedRecipe([
             [a,a,a,a,a,a,cmi,cmi,cmi],
             [a,a,a,a,a,cmi,ifc,ifc,cmi],
@@ -921,7 +948,7 @@ public function emcworldRecipe() as void{
         [a,a,ai,a,a],
         [a,a,ai,a,a]
     ],<item:emcworld:base_key>,2);
-    metallurgicInfusingRecipe(con[0][1],<infuse_type:emcworld:gobber>*20,con[0][2]);
+    metallurgicInfusingRecipe(con[0][1]*camt,<infuse_type:emcworld:gobber>*20,con[0][2]*camt);
     purifyingRecipe(<item:minecraft:coal_block>,<item:emcworld:activated_charcoal>,3);
     alchemalTableRecipe([
         <item:bloodmagic:looting_anointment_l>,
@@ -931,22 +958,22 @@ public function emcworldRecipe() as void{
     ],<item:emcworld:skill_item1>*8,3000,3);
     addEMCStage(<item:emcworld:activated_charcoal>,3);
     runeAltarRecipe([
-        con[0][2],<item:bloodmagic:defaultcrystal>
-    ],con[0][3],10000);
-    alchemalArrayRecipe(con[0][3],<item:rats:ghost_pirat_ectoplasm>,con[0][4]);
+        con[0][2],con[0][2],con[0][2],con[0][2],con[0][2],<item:bloodmagic:defaultcrystal>
+    ],con[0][3]*camt,10000);
+    alchemalArrayRecipe(con[0][3]*camt,<item:rats:ghost_pirat_ectoplasm>,con[0][4]*camt);
     astralAltarRecipe([
         [a,a,a,a,a],
-        [a,a,ip,a,a],
+        [a,con[0][4],ip,con[0][4],a],
         [a,ip,con[0][4],ip,a],
-        [a,a,ip,a,a],
+        [a,con[0][4],ip,con[0][4],a],
         [a,a,a,a,a]
-    ],con[0][5],1);
+    ],con[0][5]*camt,1);
     addEMCStage(<item:emcworld:voucher>,114514);
     cyan(<item:projectex:blue_collector>,<item:projectex:cyan_collector>);
     cyan(<item:projectex:blue_relay>,<item:projectex:cyan_relay>);
-    natureAltarRecipe(con[0][5],con[0][6],2,100000);
+    natureAltarRecipe(con[0][5]*camt,con[0][6]*camt,2,100000);
     removeRecipe([<item:the_afterlight:golden_shards_of_radiance>]);
-    nucleosyRecipe(con[0][6],<gas:mekanism:antimatter>*3,con[0][7],100);
+    nucleosyRecipe(con[0][6]*camt,<gas:mekanism:antimatter>*3,con[0][7]*camt,100);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
         [con[0][0],<item:botania:conjuration_catalyst>,con[0][0]],
@@ -973,7 +1000,7 @@ public function emcworldRecipe() as void{
         [dm,sc,dm],
         [sc,dm,sc],
         [dm,sc,dm]
-    ],<item:emcworld:update_base_purple>*getModifyRecipeAmount());
+    ],con[0][0]*camt);
     infuserRecipe([
         <item:hem:copparite>,<item:mythicbotany:asgard_rune>,<item:minecraft:nether_star>,con[0][4],con[0][4]
     ],con[2][4]*2,300,100000,1);
@@ -1112,6 +1139,7 @@ public function emcworldRecipe() as void{
     EMCWorldIce(sn[3],36);
     EMCWorldIce(sn[4],324);
     EMCWorldIce(sn[5],600);
+    combiningRecipe(<item:mekanism:teleportation_core>,<item:astralsorcery:starmetal_ingot>,<item:emcworld:infuse_core>);
     for i in 0 .. sn.length-2{
         enrichingRecipe(sn[i]*2,sn[i+1],1);
     }
@@ -1135,7 +1163,7 @@ public function emcworldRecipe() as void{
     }
     addCraftShapelessRecipe([sg,sg,sg,sg],sb);
     addCraftShapelessRecipe([sw,sw,sw,sw],sg);
-    infuserRecipe([pa,pa,pa,pa,pa],sw,300,5000,1);
+    //infuserRecipe([pa,pa,pa,pa,pa],sw,300,5000,1);
     removeCraftRecipe(ngb);
     removeCraftRecipe(ngb1);
     rotaryRecipe(<fluid:emcworld:sodium_cyanide>,<gas:emcworld:sodium_cyanide>);
@@ -1145,7 +1173,7 @@ public function emcworldRecipe() as void{
     removeFurnaceRecipeByName(["stalwart_dungeons:tungsten_ingot_recipe"]);
     combiningRecipe(<item:stalwart_dungeons:tungsten_ingot>,<item:minecraft:netherite_scrap>*2,nei);
     metallurgicInfusingRecipe(<item:mekanism:ingot_steel>*2,<infuse_type:emcworld:ice>*1000,<item:emcworld:stainless_steel>);
-    <recipetype:mekanism:painting>.addRecipe("bx",<item:emcworld:update_base_purple>,<pigment:emcworld:bx>*128,<item:emcworld:update_base_bx_purple>);
+    <recipetype:mekanism:painting>.addRecipe("bx",<item:emcworld:update_base_purple>*camt,<pigment:emcworld:bx>*128,<item:emcworld:update_base_bx_purple>*camt);
     if(getGameDifficulty() >=2){
         extendedCraftingShapelessRecipe([
             <item:minecraft:iron_ingot>,

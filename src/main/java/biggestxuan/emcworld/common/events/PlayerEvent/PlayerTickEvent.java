@@ -16,19 +16,22 @@ import biggestxuan.emcworld.api.item.IPlayerDifficultyItem;
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
-import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.DifficultyData;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.common.utils.RaidUtils;
 import dev.latvian.mods.projectex.Matter;
 import divinerpg.capability.Arcana;
 import divinerpg.capability.ArcanaCapability;
@@ -45,7 +48,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
@@ -57,7 +59,12 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+
+import static biggestxuan.emcworld.common.utils.RaidUtils.getRaidAllPlayers;
 
 @Mod.EventBusSubscriber(
         modid = EMCWorld.MODID,
@@ -131,6 +138,7 @@ public class PlayerTickEvent {
             util.setMaxArcana(arcana.getMaxArcana());
             util.setArcana(arcana.getArcana());
         }
+        util.setSHDifficulty(DifficultyHelper.getPlayerDifficulty(player));
         float extraSpeed = Math.min(util.getSpeed(),getPlayerMaxSpeed(player));
         ModifiableAttributeInstance speed_instance = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if(speed_instance != null){
@@ -154,11 +162,7 @@ public class PlayerTickEvent {
             if(modifier != null){
                 attack_speed_instance.removeModifier(EMCWORLD_ATTACK_SPEED_ID);
             }
-            double d;
-            if(attackSpeed < 1){
-                d = 0.8 * attackSpeed - 0.8;
-            }
-            else d = 4 * attackSpeed - 4;
+            double d = attackSpeed < 1 ? 0.8 * attackSpeed - 0.8 : 4 * attackSpeed - 4;
             attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,d,AttributeModifier.Operation.ADDITION));
         }
         double extraReachDistance = 0;
@@ -211,16 +215,15 @@ public class PlayerTickEvent {
             }
         }
         assert server != null;
-        Iterable<ServerWorld> allWorlds = server.getAllLevels();
         ServerWorld world = server.overworld();
         BlockPos playerPos = new BlockPos(player.position());
         if(world.dayTime() % 100 == 0){
-            for(ServerWorld w:allWorlds){
-                if(w.isRaided(playerPos) && !w.equals(world)){
-                    for(PlayerEntity player1 : PlayerDeathEvent.getNearPlayer(Objects.requireNonNull(w.getRaidAt(playerPos)),w)){
+            if(!player.level.dimension().equals(World.OVERWORLD)){
+                if(world.isRaided(playerPos)){
+                    for(PlayerEntity player1 : PlayerDeathEvent.getNearPlayer(world.getRaidAt(playerPos),world)){
                         Message.sendMessage(player1, EMCWorld.tc("message.raid.dim_cancel"));
                     }
-                    Objects.requireNonNull(w.getRaidAt(playerPos)).stop();
+                    world.getRaidAt(playerPos).stop();
                 }
             }
         }
@@ -257,9 +260,7 @@ public class PlayerTickEvent {
                 util.setVillager(getVillagerAmount(raid));
                 util.setWave(raid.getGroupsSpawned());
                 util.setRaidRate(rate);
-                int addon = 0;
-                if(raid.getBadOmenLevel() >1) ++addon;
-                util.setMaxWave(raid.getNumGroups(world.getDifficulty())+addon);
+                util.setMaxWave(RaidUtils.getRaidWave());
                 if(c.getModify() == 0 || c.getLevel() < 80){
                     for(PlayerEntity player1 : PlayerDeathEvent.getNearPlayer(raid)){
                         Message.sendMessage(player1, EMCWorld.tc("message.raid.cancel"));
@@ -313,6 +314,8 @@ public class PlayerTickEvent {
             }
             EMCHelper.modifyPlayerEMC(player,amount,false);
         }
+        float max_total = 0f;
+        float total = 0f;
         for(ItemStack stack:getPlayerAllItem(player)){
             if(stack.getItem() instanceof IEMCRepairableItem){
                 IEMCRepairableItem item = (IEMCRepairableItem) stack.getItem();
@@ -332,8 +335,12 @@ public class PlayerTickEvent {
                     stack.shrink(1);
                 }
             }
-        }
-        for(ItemStack stack:player.inventory.items){
+            if(stack.getItem() instanceof IEMCShieldArmor){
+                IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
+                armor.setMaxShield(stack,armor.maxShield(stack));
+                armor.modifyShield(stack,0);
+                armor.setShieldSpeed(stack,armor.shieldSpeed(stack));
+            }
             if(stack.getItem() instanceof BaseDifficultyItem){
                 BaseDifficultyItem item = (BaseDifficultyItem) stack.getItem();
                 double diff = CrTConfig.getWorldDifficulty();
@@ -353,27 +360,37 @@ public class PlayerTickEvent {
                     }
                 }
             }
-            if(stack.getItem().getRegistryName().equals(new ResourceLocation("theabyss","guide_book"))){
-                stack.shrink(stack.getCount());
+        }
+        for(ItemStack stack:player.inventory.armor){
+            if(stack.getItem() instanceof IEMCShieldArmor){
+                IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
+                long cost = (long) (-100000 * armor.getShieldSpeed(stack) / 100);
+                if(armor.getShield(stack) < armor.getMaxShield(stack) && armor.getInfuser(stack) >= cost){
+                    armor.addInfuser(stack, cost);
+                    armor.heal(stack);
+                }
+                total += armor.getShield(stack);
+                max_total += armor.getMaxShield(stack);
             }
         }
+        util.setShield(total);
+        util.setMaxShield(max_total);
     }
 
-    static class RaidInfo{
+    public static class RaidInfo{
         private final PlayerEntity player;
         private final float damage;
 
-        RaidInfo(PlayerEntity player){
-            IUtilCapability cap = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
+        public RaidInfo(PlayerEntity player){
+            this.damage = player == null ? 0 : player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new).getRaidDamage();
             this.player = player;
-            this.damage = cap.getRaidDamage();
         }
 
-        PlayerEntity getPlayer(){
+        public PlayerEntity getPlayer(){
             return player;
         }
 
-        Float getDamage(){
+        public Float getDamage(){
             return damage;
         }
 
@@ -390,20 +407,9 @@ public class PlayerTickEvent {
         return player.inventory.armor;
     }
 
-    private static List<? extends VillagerEntity> getVillager(Raid raid){
-        World world = raid.getLevel();
-        BlockPos pos = raid.getCenter();
-        int x = pos.getX();
-        int y = pos.getY();
-        int z = pos.getZ();
-        AxisAlignedBB aabb = new AxisAlignedBB(x+96,Math.min(256,y+96),z+96,x-96,Math.max(0,y-96),z-96);
-        return world.getLoadedEntitiesOfClass(VillagerEntity.class,aabb);
-
-    }
-
     private static int getVillagerAmount(Raid raid){
         int size = 0;
-        for(VillagerEntity villager:getVillager(raid)){
+        for(VillagerEntity villager:new RaidUtils(raid).getVillager()){
             if(Objects.requireNonNull(villager.getServer()).overworld().isRaided(new BlockPos(villager.position()))){
                 if(Objects.requireNonNull(villager.getServer().overworld().getRaidAt(new BlockPos(villager.position()))).getId() == raid.getId()){
                     size++;
@@ -411,23 +417,6 @@ public class PlayerTickEvent {
             }
         }
         return size;
-    }
-
-    private static List<? extends RaidInfo> getRaidAllPlayers(Raid raid){
-        List<RaidInfo> list = new ArrayList<>();
-        World world = raid.getLevel();
-        for(PlayerEntity p : world.players()){
-            BlockPos playerPos = new BlockPos(p.position());
-            ServerWorld world1 = p.getServer().overworld();
-            if(world1.isRaided(playerPos)){
-                Raid raid1 = world1.getRaidAt(playerPos);
-                if(raid1.getId() == raid.getId()){
-                    list.add(new RaidInfo(p));
-                }
-            }
-        }
-        list.sort((o1, o2) -> o2.getDamage().compareTo(o1.getDamage()));
-        return list;
     }
 
     public static float getPlayerMaxSpeed(PlayerEntity player){

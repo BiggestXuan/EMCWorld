@@ -33,6 +33,9 @@ public class ClientHandler {
                 cap.setArcana(pack.getArcana());
                 cap.setMaxArcana(pack.getMaxArcana());
                 cap.setShowArcana(pack.isShowArcana());
+                cap.setSHDifficulty(pack.getSh_difficulty());
+                cap.setShield(pack.getShield());
+                cap.setMaxShield(pack.getMaxShield());
             });
         }
     }

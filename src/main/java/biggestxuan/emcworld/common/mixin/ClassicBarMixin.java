@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.client.render.ArcanaBar;
+import biggestxuan.emcworld.client.render.EMCShieldBar;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,5 +24,6 @@ public abstract class ClassicBarMixin {
     ),remap = false)
     public void postInit(FMLClientSetupEvent event, CallbackInfo info){
         EventHandler.register(new ArcanaBar());
+        EventHandler.register(new EMCShieldBar());
     }
 }

@@ -7,18 +7,15 @@ package biggestxuan.emcworld.common.utils;
  */
 
 import biggestxuan.emcworld.api.EMCWorldAPI;
-import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
-import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -56,10 +53,17 @@ public class MathUtils {
 
     @ZenCodeType.Method
     public static int getRangeRandom(int min,int max){
+        if(min == max) return min;
+        int m1 = min;
+        int m2 = max;
+        if(m2 < m1){
+            m1 = max;
+            m2 = min;
+        }
         int r;
         do {
-            r = getRandom(max);
-        } while (r < min);
+            r = getRandom(m2);
+        } while (r < m1);
         return r;
     }
 
@@ -223,6 +227,23 @@ public class MathUtils {
         }
         return getBlockBaseCost(player) * 0.2d;
     }
+    public static double getQuestCompletedRewardBase(String stage, CustomReward customReward){
+        double base = 0d;
+        for(DifficultySetting obj:DifficultySetting.values()){
+            if(stage.equals(obj.getGameStage().toLowerCase())){
+                for(QuestReward reward: QuestReward.values()){
+                    if(customReward.hasTag(reward.getTag())){
+                        base += reward.getBaseEMC();
+                        break;
+                    }
+                }
+                base *= obj.getFtbBase();
+                break;
+            }
+        }
+        return base;
+    }
+
     public static double getQuestCompletedRewardBase(PlayerEntity player, CustomReward customReward){
         double base = 0d;
         for(DifficultySetting obj:DifficultySetting.values()){

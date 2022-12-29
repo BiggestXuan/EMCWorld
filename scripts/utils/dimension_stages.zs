@@ -12,8 +12,8 @@ public function addDIMStage() as void{
         ["rats:ratlantis","mythicbotany:alfheim"],
         ["hem:blueleaf"],
         ["the_afterlight:the_afterlight","undergarden:undergarden"],
-        ["minecraft:the_end"],
-        [""]
+        [""],
+        ["minecraft:the_end"]
     ];
     var dm as string[] = [
         "eden","wildwood","apalachia","skythern","mortum"

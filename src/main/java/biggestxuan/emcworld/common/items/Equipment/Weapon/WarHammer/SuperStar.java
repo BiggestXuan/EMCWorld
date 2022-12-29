@@ -22,12 +22,12 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     protected double criticalChance(ItemStack stack) {
-        return Math.pow(1.022,getLevel(stack)) - 1;
+        return Math.pow(1.023,getLevel(stack)) - 1;
     }
 
     @Override
     protected double criticalRate(ItemStack stack) {
-        return Math.pow(1.02,getLevel(stack));
+        return Math.pow(1.024,getLevel(stack));
     }
 
     @Override
@@ -37,12 +37,12 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     protected double attackRange(ItemStack stack) {
-        return Math.pow(1.082,getLevel(stack));
+        return Math.pow(1.097,getLevel(stack));
     }
 
     @Override
     public double getAttackSpeed(ItemStack stack) {
-        return Math.pow(0.974,getLevel(stack));
+        return Math.pow(0.973,getLevel(stack));
     }
 
 }

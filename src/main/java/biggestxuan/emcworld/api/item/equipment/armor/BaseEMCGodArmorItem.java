@@ -23,9 +23,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor {
+public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor {
+    protected final int index;
     public BaseEMCGodArmorItem(IArmorMaterial p_i48534_1_, int p_i48534_2_) {
         super(p_i48534_1_, getType(p_i48534_2_));
+        index = p_i48534_2_;
     }
 
     @Override
@@ -103,5 +105,19 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
             default:
                 return EquipmentSlotType.FEET;
         }
+    }
+
+    protected float getShieldRate(){
+        switch (index){
+            case 1:
+                return 0.7f;
+            case 2:
+                return 1.5f;
+            case 3:
+                return 1.25f;
+            case 4:
+                return 0.55f;
+        }
+        return 1f;
     }
 }

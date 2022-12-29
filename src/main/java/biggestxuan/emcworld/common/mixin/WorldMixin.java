@@ -34,17 +34,17 @@ public abstract class WorldMixin {
     @Inject(method = "tickBlockEntities",at = @At("HEAD"))
     public void tickEntities(CallbackInfo ci){
         World world = (World)(Object)this;
+        MinecraftServer server = world.getServer();
+        if(server == null) return;
+        ServerWorld serverWorld = server.overworld();
         if(ban.size() != 0){
             for(TileEntity entity:ban){
-                if(!world.tickableBlockEntities.contains(entity)){
+                if(!world.tickableBlockEntities.contains(entity) && !serverWorld.isRaided(entity.getBlockPos())){
                     world.tickableBlockEntities.add(entity);
                 }
             }
         }
         for(TileEntity tileEntity : world.tickableBlockEntities){
-            MinecraftServer server = world.getServer();
-            if(server == null) return;
-            ServerWorld serverWorld = server.overworld();
             Raid raid = serverWorld.getRaidAt(tileEntity.getBlockPos());
             blockEntitiesToUnload.remove(tileEntity);
             if(raid != null && tileEntity instanceof ITickableTileEntity && !(tileEntity instanceof TileEntitySynchronized)){

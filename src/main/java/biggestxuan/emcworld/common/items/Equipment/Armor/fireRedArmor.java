@@ -16,6 +16,11 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
     }
 
     @Override
+    public long getMaxInfuser(ItemStack stack){
+        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
+    }
+
+    @Override
     public long EMCModifySecond(ItemStack stack) {
         int level = getLevel(stack);
         if(level == 0) return 0L;
@@ -50,5 +55,15 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
     @Override
     public double getReachDistance(ItemStack stack) {
         return 0.1 * getLevel(stack);
+    }
+
+    @Override
+    public float maxShield(ItemStack stack) {
+        return 4f * getLevel(stack) * getShieldRate();
+    }
+
+    @Override
+    public float shieldSpeed(ItemStack stack) {
+        return 0.45f * getLevel(stack);
     }
 }

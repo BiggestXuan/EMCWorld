@@ -51,9 +51,9 @@
 
 	[mob.damage]
 		#How rapidly mob attack damage rises with difficulty (0 = no damage boost)
-		boostScale = 0.25
+		boostScale = 0.5
 		#The maximum extra attack damage a mob can receive
-		maxBoost = 10.0
+		maxBoost = 2048.0
 
 	[mob.xp]
 		#Xp scaling multiplied by difficulty - xp scale of 0.1 with difficulty 10 will give about 11x more xp

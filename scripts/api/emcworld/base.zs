@@ -143,3 +143,12 @@ private function getStageName(num as int) as string{
             return "disabled";
     }
 }
+
+public function getColorBlockCount() as int{
+    var d = getGameDifficulty();
+    if(d == 0.5) return 64;
+    if(d <= 1) return 60;
+    if(d <= 2) return 48;
+    if(d <3) return 32;
+    return 16;
+}

@@ -1,5 +1,7 @@
 package biggestxuan.emcworld.common.utils;
 
+import biggestxuan.emcworld.common.config.ConfigManager;
+
 /**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
@@ -66,6 +68,6 @@ public enum DifficultySetting{
     }
 
     public double getDifficulty() {
-        return difficulty;
+        return difficulty * ConfigManager.DIFFICULTY.get() / 3.0d;
     }
 }

@@ -1,5 +1,7 @@
 import java.util.UUID;
 
+import static biggestxuan.emcworld.common.utils.MathUtils.getRangeRandom;
+
 /**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
@@ -19,12 +21,11 @@ public class main {
             System.out.println(weight);
         }*/
         //System.out.println(UUID.randomUUID());
-        for (int i = 0; i < 25; i++) {
-            double a = Math.pow(1.4,i)*500000*0.0005;
-            System.out.println(a);
-            System.out.println(Math.log(a));
-            System.out.println("----");
-        }
+        System.out.println(getRangeRandom(100,300));
+        System.out.println(getRangeRandom(300,100));
+        System.out.println(getRangeRandom(-300,100));
+        System.out.println(getRangeRandom(100,100));
+        System.out.println(getRangeRandom(1100,-555));
     }
 }
 

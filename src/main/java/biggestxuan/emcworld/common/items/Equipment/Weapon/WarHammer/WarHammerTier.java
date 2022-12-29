@@ -12,13 +12,13 @@ import net.minecraft.item.crafting.Ingredient;
 import javax.annotation.Nonnull;
 
 public enum WarHammerTier implements IWarHammerTier {
-    WOODEN(6,120,0,1,0.6,1.25,1.05,0.8),
-    STONE(7.5,256,1,4,0.9,1.35,1.1,0.7),
-    IRON(8.5,512,2,8,1.3,1.45,1.2,0.63),
-    GOLDEN(4,50,0,30,0.2,1.05,1.7,1),
-    DIAMOND(10,1024,3,13,1.8,1.5,1.25,0.5),
-    NETHERITE(12,2048,4,18,2.5,1.65,1.35,0.4),
-    GOD(9.5,4096,4,20,1,2,1.2,0.5)
+    WOODEN(7.25,120,0,1,1.2,1.25,1.1,0.8),
+    STONE(8.5,256,1,4,1.5,1.35,1.2,0.7),
+    IRON(10.5,512,2,8,1.9,1.45,1.3,0.63),
+    GOLDEN(5,50,0,30,0.4,1.05,1.9,1),
+    DIAMOND(12,1024,3,13,2.7,1.5,1.35,0.5),
+    NETHERITE(17.5,2048,4,18,4.5,1.65,1.4,0.4),
+    GOD(11.25,4096,4,20,2.25,2,1.25,0.5)
     ;
 
     private final double damage;

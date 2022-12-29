@@ -39,6 +39,7 @@ import biggestxuan.emcworld.common.items.Food.MoneyFood;
 import biggestxuan.emcworld.common.items.ModPack.Voucher;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
 import biggestxuan.emcworld.common.items.ProfessionalItem.ProfessionalItem;
+import biggestxuan.emcworld.common.items.RaidItem.IllagerShard;
 import biggestxuan.emcworld.common.items.RaidItem.RaidLightItem;
 import biggestxuan.emcworld.common.items.SponsorsItem.AbunanaLoot;
 import biggestxuan.emcworld.common.items.SponsorsItem.NoNameCatFood;
@@ -92,6 +93,7 @@ public class EWItems {
     public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1,"profession.emcworld.sword"));
     public static final RegistryObject<Item> PROFESSION_TANK = ITEMS.register("profession_tank",() -> new ProfessionalItem(2,"profession.emcworld.tank"));
     public static final RegistryObject<Item> BIGGEST_XUAN_INGOT = ITEMS.register("biggest_xuan_ingot",EWItem::new);
+    public static final RegistryObject<Item> ILLAGER_SHARD = ITEMS.register("illager_shard", IllagerShard::new);
     public static final RegistryObject<Item> SKILL_ITEM1 = ITEMS.register("skill_item1",EWItem::new);
     public static final RegistryObject<Item> SKILL_ITEM2 = ITEMS.register("skill_item2",EWItem::new);
     public static final RegistryObject<Item> CHAOS_SWORD = ITEMS.register("chaos_sword", ChaosSword::new);

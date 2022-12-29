@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
@@ -158,6 +159,11 @@ public class ItemToolTipEvent {
             IReachArmor item_2_6 = (IReachArmor) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_reach_distance",String.format("%.2f",item_2_6.getReachDistance(stack))));
         }
+        if(stack.getItem() instanceof IEMCShieldArmor){
+            IEMCShieldArmor item_2_7_3 = (IEMCShieldArmor) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_emc_max_shield",String.format("%.2f",item_2_7_3.getMaxShield(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_emc_speed",String.format("%.2f",item_2_7_3.getShieldSpeed(stack))));
+        }
         if(stack.getItem() instanceof ICriticalWeapon){
             ICriticalWeapon ww = (ICriticalWeapon) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",String.format("%.2f",ww.getActCriticalChance(stack)*100)).append("%"));
@@ -187,7 +193,8 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IEMCInfuserItem){
             IEMCInfuserItem ii_i = (IEMCInfuserItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",String.format("%.1f",ii_i.getInfuserRate(stack)*100)).append("%"));
+            double v = ii_i.getInfuserRate(stack) >= 0 ? ii_i.getInfuserRate(stack) * 100 : 0;
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",String.format("%.1f",v)).append("%"));
         }
         for(Item item: radiationItem){
             if(stack.getItem().getItem().equals(item)){

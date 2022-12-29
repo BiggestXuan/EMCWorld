@@ -232,5 +232,43 @@
 				auto: "no_toast"
 			}]
 		}
+		{
+			title: "{quest.emcworld.eighth_first_case}"
+			x: 3.0d
+			y: -4.5d
+			dependencies: ["0D57223269D4C86B"]
+			id: "12AB89655F52148B"
+			tasks: [{
+				id: "3F369E2FA268D229"
+				type: "item"
+				item: "extendedcrafting:frame"
+			}]
+			rewards: [{
+				id: "06384323F06295A9"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.eighth_first_compressor}"
+			x: 6.5d
+			y: -4.5d
+			dependencies: ["12AB89655F52148B"]
+			id: "07ADB7D2F7B66D5E"
+			tasks: [{
+				id: "206B8A95C37CC95A"
+				type: "item"
+				item: "extendedcrafting:compressor"
+			}]
+			rewards: [{
+				id: "5AB6DDD26FB6E440"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
 	]
 }

@@ -24,6 +24,21 @@
 				type: "item"
 				item: "emcworld:infinity_catalyst"
 			}]
+			rewards: [
+				{
+					id: "39F0EECAAE9DEAC4"
+					type: "item"
+					team_reward: true
+					item: "emcworld:infinity_catalyst"
+				}
+				{
+					id: "4A81133200768758"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.eighth_fourth_infinity_sword}"
@@ -84,6 +99,21 @@
 				type: "item"
 				item: "emcworld:crystal_matrix_ingot"
 			}]
+			rewards: [
+				{
+					id: "00E27D0ECA81E306"
+					type: "item"
+					item: "emcworld:crystal_matrix_ingot"
+					count: 8
+				}
+				{
+					id: "2BBDB9D3E49D6667"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
 		}
 	]
 }

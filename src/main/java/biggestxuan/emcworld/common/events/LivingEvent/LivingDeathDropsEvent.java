@@ -8,19 +8,28 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 
 import L_Ender.cataclysm.init.ModItems;
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.events.PlayerEvent.PlayerTickEvent;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.RaidUtils;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.raid.Raid;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class LivingDeathDropsEvent {
@@ -30,6 +39,20 @@ public class LivingDeathDropsEvent {
         if(entity.level.isClientSide) return;
         DamageSource source = event.getSource();
         ResourceLocation rl = entity.getLootTable();
+        if(entity instanceof AbstractRaiderEntity){
+            AbstractRaiderEntity entity1 = (AbstractRaiderEntity) entity;
+            Raid raid = RaidUtils.getRaid(entity1);
+            if(raid != null && (source.getDirectEntity() instanceof PlayerEntity || source instanceof EWDamageSource)){
+                List<PlayerTickEvent.RaidInfo> info = RaidUtils.getRaidAllPlayers(raid);
+                if(info.size() >= 1){
+                    PlayerEntity player = info.get(0).getPlayer();
+                    double chance = RaidUtils.getIllagerShardDropRate(entity1,player);
+                    if(MathUtils.isRandom(chance)){
+                        addDrops(entity1,EWItems.ILLAGER_SHARD.get(),1);
+                    }
+                }
+            }
+        }
         if(rl.equals(new ResourceLocation("cataclysm","entities/ignis"))){
             int base = 6;
             if(MathUtils.isRandom(0.5)) base++;

@@ -17,6 +17,11 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     }
 
     @Override
+    public long getMaxInfuser(ItemStack stack){
+        return (long) (Math.pow(1.417,getLevel(stack)+12) * 500000);
+    }
+
+    @Override
     public long EMCModifySecond(ItemStack stack) {
         int level = getLevel(stack);
         return (long) (13000 + Math.pow(2.3,level));
@@ -60,5 +65,15 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     @Override
     public double getReachDistance(ItemStack stack) {
         return 1.2 + 0.2 * getLevel(stack);
+    }
+
+    @Override
+    public float maxShield(ItemStack stack) {
+        return 60 + 5.5f * getLevel(stack) * getShieldRate();
+    }
+
+    @Override
+    public float shieldSpeed(ItemStack stack) {
+        return 6.5f + 0.75f * getLevel(stack);
     }
 }

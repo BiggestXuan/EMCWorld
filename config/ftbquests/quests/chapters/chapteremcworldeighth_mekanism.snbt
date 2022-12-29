@@ -26,6 +26,22 @@
 				type: "item"
 				item: "emcworld:universal_ball"
 			}]
+			rewards: [
+				{
+					id: "362F963EE733B2B1"
+					type: "item"
+					team_reward: true
+					item: "emcworld:universal_ball"
+					count: 4
+				}
+				{
+					id: "2B3D6571107B5D70"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:emc_gem"
+					tags: ["normal"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.eighth_second_ob_vi_alloy}"
@@ -38,6 +54,22 @@
 				type: "item"
 				item: "allthemodium:unobtainium_vibranium_alloy_ingot"
 			}]
+			rewards: [
+				{
+					id: "24E4A065A6CDB6A3"
+					type: "item"
+					team_reward: true
+					item: "allthemodium:unobtainium_vibranium_alloy_ingot"
+					count: 4
+				}
+				{
+					id: "7901963769701AA9"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.eighth_second_ob_atm_alloy}"
@@ -50,6 +82,22 @@
 				type: "item"
 				item: "allthemodium:unobtainium_allthemodium_alloy_ingot"
 			}]
+			rewards: [
+				{
+					id: "3BC05DFA7C0E77F5"
+					type: "item"
+					team_reward: true
+					item: "allthemodium:unobtainium_allthemodium_alloy_ingot"
+					count: 4
+				}
+				{
+					id: "730843AE88606166"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.eighth_second_ob_sing}"
@@ -73,6 +121,27 @@
 					}
 				}
 			}]
+			rewards: [
+				{
+					id: "43949B277578B1E8"
+					type: "item"
+					team_reward: true
+					item: {
+						id: "extendedcrafting:singularity"
+						Count: 1b
+						tag: {
+							Id: "extendedcrafting:unobtainium"
+						}
+					}
+				}
+				{
+					id: "7C29FF06863090B0"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			x: 2.0d
@@ -91,6 +160,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "6902034492C84BF8"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			x: 4.0d
@@ -108,6 +184,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "6BDDE656A7FE142A"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:emc_gem"
+				tags: ["normal"]
 			}]
 		}
 		{
@@ -133,6 +216,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "2AC779C68FCCE1A3"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			x: 10.0d
@@ -150,6 +240,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "6846E7AA85C14491"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:emc_gem"
+				tags: ["normal"]
 			}]
 		}
 		{
@@ -169,6 +266,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "021690D93055D3CF"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
 			}]
 		}
 		{
@@ -191,6 +295,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "58053B8A28377B04"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 4.0d
@@ -211,6 +322,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "47B3D96DE325EF3B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -233,6 +351,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "69AF75964B4BC49F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
 		}
 		{
 			x: 10.0d
@@ -253,6 +378,13 @@
 						Damage: 0
 					}
 				}
+			}]
+			rewards: [{
+				id: "276AA1CBE9068EB2"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -308,6 +440,13 @@
 						}
 					}
 				}
+				{
+					id: "60E567CAABC178C3"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
 			]
 		}
 		{
@@ -327,6 +466,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "0138D41E20CAD3F0"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: 4.0d
@@ -344,6 +490,13 @@
 						HideFlags: 2
 					}
 				}
+			}]
+			rewards: [{
+				id: "156576B5DD361C9D"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
 			}]
 		}
 		{
@@ -363,6 +516,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "6B5D11408902F8F9"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: 10.0d
@@ -381,6 +541,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "0F0CD1289EA34C29"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: 0.0d
@@ -393,6 +560,23 @@
 				type: "item"
 				item: "emcworld:dragon_steel"
 			}]
+			rewards: [
+				{
+					id: "6DF6C3EEDC951049"
+					type: "item"
+					team_reward: true
+					item: "emcworld:dragon_steel"
+					count: 6
+					random_bonus: 2
+				}
+				{
+					id: "61B18B355DDF6D64"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
 		}
 		{
 			x: 0.0d
@@ -416,6 +600,13 @@
 					item: "projectex:yellow_relay"
 				}
 			]
+			rewards: [{
+				id: "22482B0696EFB947"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
 		}
 		{
 			x: -2.0d
@@ -427,6 +618,21 @@
 				type: "item"
 				item: "emcworld:yellow_matter"
 			}]
+			rewards: [
+				{
+					id: "00E4F0EBCAE01FFB"
+					type: "item"
+					team_reward: true
+					item: "emcworld:yellow_matter"
+				}
+				{
+					id: "07F0E81C39988B09"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 	]
 }
