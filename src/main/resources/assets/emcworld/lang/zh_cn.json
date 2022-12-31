@@ -815,6 +815,9 @@
 
   "curios.identifier.emc_totem": "EMC图腾",
   "curios.identifier.curios_nuclear_ball": "辐射保护球",
+  "curios.identifier.emc_shield": "质能护盾发生器",
+
+  "emcworld.not_final": "\u8bf7\u4f7f\u7528\u6b63\u7248\u767b\u5f55\uff01",
 
   "skills.emcworld.p1_default": "[固有] 每级获得 %d 可叠加伤害加成",
   "skills.emcworld.p1_skill10": "[主动] 手持任意剑右击发动，在获得力量I效果 %d 秒，冷却时间 %d 秒",

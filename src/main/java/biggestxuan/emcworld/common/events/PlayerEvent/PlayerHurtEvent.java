@@ -7,7 +7,9 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
@@ -125,6 +127,14 @@ public class PlayerHurtEvent {
                     break;
                 }
             }
+            for(ItemStack stack : player.inventory.armor){
+                if(stack.getItem() instanceof IEMCShieldArmor && !(source instanceof EWDamageSource || source.equals(DamageSource.OUT_OF_WORLD))){
+                    IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
+                    amount -= armor.getShield(stack);
+                    armor.setShield(stack,0);
+                }
+            }
+            amount = Math.max(0,amount);
             for(DifficultySetting obj:DifficultySetting.values()){
                 if(GameStageManager.hasStage(player, obj.getGameStage())){
                     long costEMC =MathUtils.doubleToLong(obj.getHurtBase() * amount * MathUtils.difficultyLoss());
@@ -136,7 +146,7 @@ public class PlayerHurtEvent {
                     }
                     else{
                         event.setAmount(player.getMaxHealth()*1000.0f);
-                        //Message.sendMessage(player, EMCWorld.tc("message.evt.hurtcancel",MathUtils.format(String.valueOf(costEMC))));
+                        Message.sendMessage(player, EMCWorld.tc("message.evt.hurtcancel",MathUtils.format(String.valueOf(costEMC))));
                         return;
                     }
                     break;

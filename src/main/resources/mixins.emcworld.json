@@ -10,6 +10,7 @@
     "BlockMixin",
     "ClassicBarMixin",
     "ConjurerMixin",
+    "DisableBonus",
     "GaiaMixin",
     "ItemMixin",
     "ItemStageMixin",
@@ -23,6 +24,7 @@
     "WorldMixin"
   ],
   "client": [
+    "MinecraftMixin",
     "MinecraftWindowMixin",
     "RatsPlagueMixin"
   ],

@@ -22,6 +22,7 @@ import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Difficulty;
@@ -43,6 +44,7 @@ public class PlayerLoggedEvent {
         PlayerEntity player = event.getPlayer();
         if(player.level.isClientSide) return;
         MinecraftServer server = player.getServer();
+        if(server == null) return;
         String name = player.getName().getString();
         UUID uuid = player.getUUID();
         LazyOptional<IUtilCapability> sponsorCap = player.getCapability(EMCWorldCapability.UTIL);
@@ -61,8 +63,9 @@ public class PlayerLoggedEvent {
             }
             sponsorCap.ifPresent((cap)-> cap.setLevel(0));
         }
-        if(level < 2){
-            //server.close();
+        if(level < 2 && player instanceof ServerPlayerEntity && server.usesAuthentication()){
+            ServerPlayerEntity player1 = (ServerPlayerEntity) player;
+            player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
         }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
@@ -129,6 +132,12 @@ public class PlayerLoggedEvent {
         }else{
             Message.sendMessage(player,tc("message.update_none"));
         }
+        server.setDifficulty(Difficulty.HARD,true);
+        server.setDifficultyLocked(true);
+        if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel() == 0){
+            Message.sendMessage(player,EMCWorld.tc("message.log.sponsor",log+1));
+        }
+        if(EMCWorld.isOffline || !server.usesAuthentication()) return;
         sponsorCap.ifPresent((cap) -> {
             int sponsorLevel = cap.getLevel();
             if(instance.isAprilFoolsDay()){
@@ -155,11 +164,5 @@ public class PlayerLoggedEvent {
                     Message.sendMessage(player, tc("message.welcome.default",name));
             }
         });
-        if(server == null) return;
-        server.setDifficulty(Difficulty.HARD,true);
-        server.setDifficultyLocked(true);
-        if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel() == 0){
-            Message.sendMessage(player,EMCWorld.tc("message.log.sponsor",log+1));
-        }
     }
 }

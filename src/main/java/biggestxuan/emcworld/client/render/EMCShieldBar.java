@@ -43,8 +43,8 @@ public class EMCShieldBar implements BarOverlay {
     @Override
     public void renderBar(MatrixStack matrixStack, PlayerEntity playerEntity, int i, int i1) {
         if(playerEntity == null || playerEntity.isDeadOrDying()) return;
-        int a = i - 90;
-        int b = i1 - this.getSidedOffset() + 28;
+        int a = i /2 - 10 - 81;
+        int b = i1 - this.getSidedOffset();
         matrixStack.pushPose();
         GlStateManager._enableBlend();
         Color.reset();
@@ -65,17 +65,19 @@ public class EMCShieldBar implements BarOverlay {
         PlayerEntity player = Minecraft.getInstance().player;
         if(player == null) return;
         player.getCapability(EMCWorldCapability.UTIL).ifPresent((ar)->{
-            int a = i - 112;
-            int b = i1 - this.getSidedOffset() + 28;
-            String value = ar.getShield() == ar.getMaxShield() ? String.valueOf((int)ar.getMaxShield()) : String.format("%.1f",ar.getShield());
-            ModUtils.drawStringOnHUD(matrixStack, value,a,b-1,0xc1eeff);
+            int a = i / 2 - 12 - 20 - 81;
+            int b = i1 - this.getSidedOffset();
+            if(ar.getShield() < 10) a += 3;
+            if(ar.getShield() >= 100) a -= 3;
+            if(ar.getShield() >= 1000) a -= 3;
+            ModUtils.drawStringOnHUD(matrixStack, String.valueOf((int)ar.getShield()),a,b-1,0xc1eeff);
         });
     }
 
     @Override
     public void renderIcon(MatrixStack matrixStack, PlayerEntity playerEntity, int i, int i1) {
-        int a = i - 119;
-        int b = i1 - this.getSidedOffset() + 29;
+        int a = i / 2 - 9 - 10 - 81;
+        int b = i1 - this.getSidedOffset();
         ModUtils.mc.getTextureManager().bind(ICON);
         GlStateManager._enableBlend();
         ModUtils.drawTexturedModalRect(matrixStack, a,b, 0, 0, 8, 8);

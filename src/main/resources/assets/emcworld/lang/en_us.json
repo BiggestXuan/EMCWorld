@@ -785,7 +785,7 @@
   "tooltip.emcworld.armor_god_health": "§9+ %d §9最大生命值",
   "tooltip.emcworld.armor_reach_distance": "§9+ %d §9触及距离",
   "tooltip.emcworld.scroll_weight": "§2提供 %d §2升级权重",
-  "tooltip.emcworld.emc_power": "§9质能充能： %d",
+  "tooltip.emcworld.emc_power": "§9EMC Power： %d",
   "tooltip.emcworld.scroll_weight_fail": "§2提供 %d §2升级权重，§2失败有 %d §2概率破坏武器",
   "tooltip.emcworld.weapon_god_attack_range": "§9+ %d §9攻击范围",
   "tooltip.emcworld.staff_damage": "§9+ %d §9质能真实伤害",
@@ -815,6 +815,7 @@
 
   "curios.identifier.emc_totem": "EMC Totem",
   "curios.identifier.curios_nuclear_ball": "Nuclear Protect Ball",
+  "curios.identifier.emc_shield": "EMC Shield Power Supply",
 
   "skills.emcworld.p1_default": "[固有] 每级获得 %d 可叠加伤害加成",
   "skills.emcworld.p1_skill10": "[主动] 手持任意剑右击发动，在获得力量I效果 %d 秒，冷却时间 %d 秒",

@@ -44,14 +44,15 @@ public class ArcanaBar implements BarOverlay {
     @Override
     public void renderBar(MatrixStack matrixStack, PlayerEntity playerEntity, int i, int i1){
         if(playerEntity == null || playerEntity.isDeadOrDying()) return;
-        int a = i - 90;
-        int b = i1 - this.getSidedOffset() + 40;
+        int a = i / 2 +10;
+        int b = i1 - this.getSidedOffset();
         matrixStack.pushPose();
         GlStateManager._enableBlend();
         Color.reset();
         ModUtils.drawTexturedModalRect(matrixStack,a,b, 0, 0, 81, 9);
         ColorUtils.hex2Color("#248BFF").color2Gl();
-        ModUtils.drawTexturedModalRect(matrixStack,a+1, b+1, 1, 10, getPercents(), 7);
+        int c = a + 79 - getPercents();
+        ModUtils.drawTexturedModalRect(matrixStack,c+1, b+1, 1, 10, getPercents(), 7);
         matrixStack.popPose();
     }
 
@@ -66,19 +67,19 @@ public class ArcanaBar implements BarOverlay {
         PlayerEntity player = Minecraft.getInstance().player;
         if(player == null) return;
         player.getCapability(EMCWorldCapability.UTIL).ifPresent((ar)->{
-            int a = i - 112;
-            int b = i1 - this.getSidedOffset() + 40;
-            ModUtils.drawStringOnHUD(matrixStack, String.valueOf((int)ar.getArcana()),a,b-1,0x248BFF);
+            int a = i /2 + 20 + 2;
+            int b = i1 - this.getSidedOffset();
+            ModUtils.drawStringOnHUD(matrixStack, String.valueOf((int)ar.getArcana()),a+79,b-1,0x248BFF);
         });
     }
 
     @Override
     public void renderIcon(MatrixStack matrixStack, PlayerEntity playerEntity, int i, int i1) {
-        int a = i - 119;
-        int b = i1 - this.getSidedOffset() + 41;
+        int a = i / 2 + 10;
+        int b = i1 - this.getSidedOffset() + 1;
         ModUtils.mc.getTextureManager().bind(ICON);
         GlStateManager._enableBlend();
-        ModUtils.drawTexturedModalRect(matrixStack, a,b, 3, 10, 8, 7);
+        ModUtils.drawTexturedModalRect(matrixStack, a+82,b, 3, 10, 8, 7);
     }
 
     @Override

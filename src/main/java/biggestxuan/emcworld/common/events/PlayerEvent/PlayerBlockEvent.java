@@ -130,7 +130,7 @@ public class PlayerBlockEvent {
     public static void PlayerTossEvent(ItemTossEvent event){
         Item item = event.getEntityItem().getItem().getItem();
         if(event.getPlayer().level.isClientSide) return;
-        if((item instanceof SwordItem || item instanceof StaffItem || item instanceof WarHammerItem || item instanceof DaggerItem || item instanceof BowItem) && ConfigManager.PREVENT_TOSS_WEAPON.get()){
+        if((item instanceof SwordItem || item instanceof StaffItem || item instanceof WarHammerItem || item instanceof DaggerItem || item instanceof BowItem)){
             //event.setCanceled(true);
         }
     }

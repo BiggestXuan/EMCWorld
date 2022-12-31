@@ -58,6 +58,7 @@ public class EMCWorld {
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
+    public static boolean isOffline = false;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
 
     public EMCWorld(){

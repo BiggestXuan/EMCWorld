@@ -22,11 +22,13 @@ public class EWCurios {
 
     public static final ResourceLocation icon = EMCWorld.rl("curios/emc_totem");
     public static final ResourceLocation icon1 = EMCWorld.rl("curios/curios_nuclear_ball");
+    public static final ResourceLocation icon2 = EMCWorld.rl("curios/emc_shield");
 
     @SubscribeEvent
     public static void setup(FMLCommonSetupEvent event) {
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,()-> new SlotTypeMessage.Builder("emc_totem").icon(icon).size(3).build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,()-> new SlotTypeMessage.Builder("curios_nuclear_ball").icon(icon1).size(1).build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,()-> new SlotTypeMessage.Builder("emc_shield").icon(icon2).size(1).build());
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -34,5 +36,6 @@ public class EWCurios {
     public static void stitch(TextureStitchEvent.Pre event){
         event.addSprite(icon);
         event.addSprite(icon1);
+        event.addSprite(icon2);
     }
 }

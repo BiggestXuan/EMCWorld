@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -21,6 +22,9 @@ public class PlayerChatEvent {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerChatEvent(ServerChatEvent event){
         LazyOptional<IUtilCapability> sponsorCap = event.getPlayer().getCapability(EMCWorldCapability.UTIL);
+        MinecraftServer server = event.getPlayer().server;
+        assert server != null;
+        if(EMCWorld.isOffline || !server.usesAuthentication()) return;
         sponsorCap.ifPresent((cap) -> {
             String name = event.getUsername();
             String saying = event.getMessage();

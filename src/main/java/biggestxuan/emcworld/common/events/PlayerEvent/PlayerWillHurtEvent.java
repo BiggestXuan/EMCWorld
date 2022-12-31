@@ -8,9 +8,12 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -25,14 +28,16 @@ public class PlayerWillHurtEvent {
         LivingEntity entity = event.getEntityLiving();
         if(entity.level.isClientSide || !(entity instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) entity;
-        if(costEMCShield(player,event.getAmount())){
+        if(costEMCShield(player,event.getAmount(),event.getSource())){
             event.setCanceled(true);
-            player.hurtTime += 5;
         }
     }
 
-    private static boolean costEMCShield(PlayerEntity player,float amount){
-        if(player.hurtTime != 0) return true;
+    private static boolean costEMCShield(PlayerEntity player, float amount, DamageSource source){
+        if(source instanceof EWDamageSource || source.equals(DamageSource.OUT_OF_WORLD) || player.isCreative()){
+            return false;
+        }
+        if(MathUtils.isMaxDifficulty()) amount *= 1.167f;
         float shield = 0f;
         float maxShield = 0f;
         List<ItemStack> armors = new ArrayList<>();

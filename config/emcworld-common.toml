@@ -3,10 +3,10 @@
 	#Difficulty Setting
 	#Range: 0.5 ~ 3.0
 	"World Difficulty" = 3.0
-	#Let the values of the modpack be displayed in K, M, G instead of the full value
-	Format = true
 	#Enable free mode to delete all gamestage
 	"Able Free Mode" = false
+	#Let the values of the modpack be displayed in K, M, G instead of the full value
+	"Format Text" = true
 	#Whether unable EMCWorld Admin Menu
 	"Able Admin Menu" = true
 	#Enable sponsorship messages that players send every 100 times they enter the game.
@@ -41,7 +41,4 @@
 					[constellation.effect.emc.constellation.mantle.emc]
 						#Set this to false to disable this mantle effect
 						enabled = true
-
-["Game Setting"]
-	"Prevent toss all weapons" = true
 

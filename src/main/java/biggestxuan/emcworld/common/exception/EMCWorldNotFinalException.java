@@ -10,4 +10,8 @@ public class EMCWorldNotFinalException extends Exception{
     public EMCWorldNotFinalException(){
         super("EMCWorld is not completed, only sponsors above level 2 can join world.");
     }
+
+    public EMCWorldNotFinalException(String info){
+        super(info);
+    }
 }
