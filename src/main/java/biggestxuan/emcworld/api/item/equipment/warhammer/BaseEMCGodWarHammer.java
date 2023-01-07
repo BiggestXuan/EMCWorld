@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -48,6 +49,11 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public abstract double getAttackSpeed(ItemStack stack);
+
+    @Override
+    public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
+        return false;
+    }
 
     @Override
     public double getAttackRange(ItemStack stack) {

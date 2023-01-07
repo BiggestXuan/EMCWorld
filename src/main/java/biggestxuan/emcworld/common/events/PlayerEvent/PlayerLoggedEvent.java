@@ -85,7 +85,7 @@ public class PlayerLoggedEvent {
         }
         CalendarUtils instance = CalendarUtils.INSTANCE;
         int year = instance.getYear();
-        if(instance.isNewYear()){
+        if(instance.isSpringFestival()){
             Message.sendMessage(player,tc("message.festival.spring"));
             if(c.getF1() != year){
                 player.addItem(new ItemStack(EWItems.YEARCAKE.get(),8));

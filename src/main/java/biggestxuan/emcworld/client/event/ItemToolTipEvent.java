@@ -181,7 +181,10 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof ISecondEMCItem){
             ISecondEMCItem item3 = (ISecondEMCItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_second", MathUtils.format(item3.EMCModifySecond(stack))));
+            long emc = item3.EMCModifySecond(stack);
+            if(emc != 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_second", MathUtils.format(emc)));
+            }
         }
         if(stack.getItem() instanceof BaseEMCGodWeapon){
             BaseEMCGodWeapon w = (BaseEMCGodWeapon) stack.getItem();

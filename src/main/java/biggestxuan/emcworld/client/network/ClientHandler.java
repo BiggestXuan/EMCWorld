@@ -36,6 +36,7 @@ public class ClientHandler {
                 cap.setSHDifficulty(pack.getSh_difficulty());
                 cap.setShield(pack.getShield());
                 cap.setMaxShield(pack.getMaxShield());
+                cap.setLastShield(pack.isLastShield());
             });
         }
     }

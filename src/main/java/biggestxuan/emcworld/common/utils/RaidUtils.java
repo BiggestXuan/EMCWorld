@@ -200,7 +200,7 @@ public class RaidUtils {
     }
 
     public static int getRaidWave(){
-        final int maxWave = 15;
+        final int maxWave = 20;
         double diff = ConfigManager.DIFFICULTY.get();
         int waves;
         if(diff <= 1){

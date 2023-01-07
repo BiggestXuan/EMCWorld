@@ -60,11 +60,8 @@ public class MathUtils {
             m1 = max;
             m2 = min;
         }
-        int r;
-        do {
-            r = getRandom(m2);
-        } while (r < m1);
-        return r;
+        int range = m2 - m1;
+        return (int) (m2 - Random() * range);
     }
 
     public static long getEMCWhenUseGem(long baseEMC){

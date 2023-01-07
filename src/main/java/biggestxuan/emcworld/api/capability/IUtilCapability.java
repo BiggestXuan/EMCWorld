@@ -119,4 +119,8 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     void setMaxShield(float value);
 
     void setShield(float value);
+
+    boolean isLastShield();
+
+    void setLastShield(boolean value);
 }

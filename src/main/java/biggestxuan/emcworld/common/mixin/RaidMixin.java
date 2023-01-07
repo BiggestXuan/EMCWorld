@@ -63,7 +63,14 @@ public abstract class RaidMixin {
 
     @Inject(method = "getDefaultNumSpawns",at = @At("HEAD"),cancellable = true)
     public void getDefaultNumSpawns(Raid.WaveMember p_221330_1_, int p_221330_2_, boolean p_221330_3_, CallbackInfoReturnable<Integer> cir){
-        if(groupsSpawned >= 7){
+        if(groupsSpawned >= 14){
+            int i =  groupsSpawned - 14;
+            List<Raid.WaveMember> members = new ArrayList<>(Arrays.asList(Raid.WaveMember.values()));
+            for(Raid.WaveMember m : members){
+                cir.setReturnValue(m.spawnsPerWaveBeforeBonus[i] + m.spawnsPerWaveBeforeBonus[7] * 2);
+                cir.cancel();
+            }
+        }else if(groupsSpawned >= 7){
             int i =  groupsSpawned - 7;
             List<Raid.WaveMember> members = new ArrayList<>(Arrays.asList(Raid.WaveMember.values()));
             for(Raid.WaveMember m : members){
@@ -81,14 +88,8 @@ public abstract class RaidMixin {
 
     @Inject(method = "getPotentialBonusSpawns",at = @At("HEAD"),cancellable = true)
     public void getAddonSpawns(Raid.WaveMember p_221335_1_, Random p_221335_2_, int p_221335_3_, DifficultyInstance p_221335_4_, boolean p_221335_5_, CallbackInfoReturnable<Integer> cir){
-        if(groupsSpawned > 8){
-            int i =  groupsSpawned - 8;
-            List<Raid.WaveMember> members = new ArrayList<>(Arrays.asList(Raid.WaveMember.values()));
-            for(Raid.WaveMember m : members){
-                cir.setReturnValue(m.spawnsPerWaveBeforeBonus[i]);
-                cir.cancel();
-            }
-        }
+        cir.setReturnValue(0);
+        cir.cancel();
     }
 
     @Inject(method = "updateRaiders",at = @At("HEAD"))

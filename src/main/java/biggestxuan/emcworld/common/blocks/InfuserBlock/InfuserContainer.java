@@ -10,19 +10,14 @@ import biggestxuan.emcworld.api.block.BaseContainer;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.Slot.GemSlot;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.Slot.ResultSlot;
 import biggestxuan.emcworld.common.registry.EWContainerTypes;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.IntArray;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import javax.annotation.Nonnull;
 
 public class InfuserContainer extends BaseContainer {
     private final BlockPos pos;

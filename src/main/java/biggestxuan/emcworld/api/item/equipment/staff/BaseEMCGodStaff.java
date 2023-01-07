@@ -16,6 +16,7 @@ import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -35,6 +36,12 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
         p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
     }
+
+    @Override
+    public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
+        return false;
+    }
+
 
     @Override
     public long getMaxInfuser(ItemStack stack){

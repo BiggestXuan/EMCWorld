@@ -7,8 +7,6 @@ package biggestxuan.emcworld.common.blocks.GemstoneBlock;
  */
 
 import biggestxuan.emcworld.api.block.BaseTileBlock;
-import biggestxuan.emcworld.common.blocks.EWBlock;
-import biggestxuan.emcworld.common.utils.Network.Network;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;

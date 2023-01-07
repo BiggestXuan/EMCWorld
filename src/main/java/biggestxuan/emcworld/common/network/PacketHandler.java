@@ -64,6 +64,13 @@ public class PacketHandler {
                 ArcanaDisplayPacket::decode,
                 ArcanaDisplayPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                LastShieldPacket.class,
+                LastShieldPacket::encode,
+                LastShieldPacket::decode,
+                LastShieldPacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

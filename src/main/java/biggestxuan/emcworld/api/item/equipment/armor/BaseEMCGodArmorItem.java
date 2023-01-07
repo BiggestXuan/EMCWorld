@@ -14,6 +14,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,6 +30,12 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
         super(p_i48534_1_, getType(p_i48534_2_));
         index = p_i48534_2_;
     }
+
+    @Override
+    public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
+        return false;
+    }
+
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {

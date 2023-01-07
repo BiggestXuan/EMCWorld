@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
@@ -49,10 +50,20 @@ public class PlayerWillHurtEvent {
                 maxShield += armor.getMaxShield(stack);
             }
         }
+        ItemStack stack1 = PlayerCurios.getPlayerEMCShield(player);
+        if(!stack1.equals(ItemStack.EMPTY) && stack1.getItem() instanceof IEMCShieldArmor){
+            IEMCShieldArmor shieldArmor = (IEMCShieldArmor) stack1.getItem();
+            shield += shieldArmor.getShield(stack1);
+            maxShield += shieldArmor.getMaxShield(stack1);
+        }
         if(shield < amount) return false;
         for (ItemStack stack : armors) {
-            IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
+            IEMCShieldArmor armor = (IEMCShieldArmor) armors.get(0).getItem();
             armor.modifyShield(stack, negateExact(amount * armor.getMaxShield(stack) / maxShield));
+        }
+        if(!stack1.equals(ItemStack.EMPTY)){
+            IEMCShieldArmor armor = (IEMCShieldArmor) stack1.getItem();
+            armor.modifyShield(stack1,negateExact(amount * armor.getMaxShield(stack1) / maxShield));
         }
         return true;
     }

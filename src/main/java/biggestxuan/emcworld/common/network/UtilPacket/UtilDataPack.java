@@ -31,8 +31,9 @@ public class UtilDataPack {
     private final double sh_difficulty;
     private final float shield;
     private final float maxShield;
+    private final boolean isLastShield;
 
-    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield){
+    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield,boolean lastShield){
         this.isRaid = isRaid;
         this.state = state;
         this.pillagerAmount = pillagerAmount;
@@ -49,6 +50,7 @@ public class UtilDataPack {
         this.sh_difficulty = sh_difficulty;
         this.shield = shield;
         this.maxShield = maxShield;
+        this.isLastShield = lastShield;
     }
 
     public UtilDataPack(PacketBuffer buffer){
@@ -68,6 +70,7 @@ public class UtilDataPack {
         sh_difficulty = buffer.readDouble();
         shield = buffer.readFloat();
         maxShield = buffer.readFloat();
+        isLastShield = buffer.readBoolean();
     }
 
     public void encode(PacketBuffer buffer){
@@ -87,6 +90,7 @@ public class UtilDataPack {
         buffer.writeDouble(sh_difficulty);
         buffer.writeFloat(shield);
         buffer.writeFloat(maxShield);
+        buffer.writeBoolean(isLastShield);
     }
 
     public void handle(Supplier<NetworkEvent.Context> context){
@@ -157,6 +161,10 @@ public class UtilDataPack {
 
     public float getShield() {
         return shield;
+    }
+
+    public boolean isLastShield() {
+        return isLastShield;
     }
 }
 

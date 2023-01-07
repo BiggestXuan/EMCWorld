@@ -28,6 +28,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.DifficultyData;
+import biggestxuan.emcworld.common.items.Curios.EMCShieldSupply;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -350,7 +351,7 @@ public class PlayerTickEvent {
             }
             for(Item item:radiationItem){
                 if(stack.getItem().equals(item)){
-                    MekanismAPI.getRadiationManager().radiate(new Coord4D(player),0.2d);
+                    //MekanismAPI.getRadiationManager().radiate(new Coord4D(player),0.2d);
                 }
             }
             if(ConfigManager.FREE_MODE.get()){
@@ -364,7 +365,7 @@ public class PlayerTickEvent {
         for(ItemStack stack:player.inventory.armor){
             if(stack.getItem() instanceof IEMCShieldArmor){
                 IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
-                long cost = (long) (-100000 * armor.getShieldSpeed(stack) / 100);
+                long cost = (long) (-100000 * Math.pow(1.145,armor.getShieldSpeed(stack)) / 100);
                 if(armor.getShield(stack) < armor.getMaxShield(stack) && armor.getInfuser(stack) >= cost){
                     armor.addInfuser(stack, cost);
                     armor.heal(stack);
@@ -372,6 +373,17 @@ public class PlayerTickEvent {
                 total += armor.getShield(stack);
                 max_total += armor.getMaxShield(stack);
             }
+        }
+        ItemStack shield = PlayerCurios.getPlayerEMCShield(player);
+        if(!shield.equals(ItemStack.EMPTY) && shield.getItem() instanceof IEMCShieldArmor && shield.getItem() instanceof EMCShieldSupply){
+            EMCShieldSupply supply = (EMCShieldSupply) shield.getItem();
+            long cost = (long) (-100000 * Math.pow(1.135,Math.pow(1.5,supply.getLevel(shield))) / 100);
+            if(supply.getShield(shield) < supply.getMaxShield(shield) && supply.getInfuser(shield) >= cost){
+                supply.addInfuser(shield, cost);
+                supply.heal(shield);
+            }
+            max_total += supply.getMaxShield(shield);
+            total += supply.getShield(shield);
         }
         util.setShield(total);
         util.setMaxShield(max_total);

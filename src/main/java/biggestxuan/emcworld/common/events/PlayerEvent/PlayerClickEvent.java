@@ -67,7 +67,7 @@ public class PlayerClickEvent {
         if(stack.getItem() instanceof BaseEMCGodWeapon){
             BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) stack.getItem();
             if(weapon.getLevel(stack) >= 12){
-                PacketHandler.sendToServer(new LeftClickPacket());
+                //PacketHandler.sendToServer(new LeftClickPacket());
             }
         }
         if(stack.getItem() instanceof InfinitySword){

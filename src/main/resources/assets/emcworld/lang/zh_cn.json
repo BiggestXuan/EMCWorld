@@ -289,7 +289,7 @@
   "item.emcworld.atm_sword": "ATM 剑",
   "item.emcworld.vibranium_sword": "振金剑",
   "item.emcworld.unobtainium_sword": "难得素剑",
-  "item.emcworld.infinity_sword": "寰宇支配之剑",
+  "item.emcworld.infinity_sword": "质能支配之剑",
   "item.emcworld.universal_ball": "宇宙能量球",
   "item.emcworld.emc_core": "质能核心",
   "item.emcworld.infinity_catalyst": "无尽催化剂",
@@ -342,6 +342,7 @@
   "item.emcworld.red_green_dagger": "赤铸青锋",
   "item.emcworld.super_star": "超新星",
   "item.emcworld.illager_shard": "灾厄碎片",
+  "item.emcworld.emc_shield_supply": "质能护盾发生器",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -644,6 +645,10 @@
   "message.doing_diff1": "§2你成功征服了精灵过度，成为了精灵王朝的主宰。\n但你知道，你需要继续征服整个世界。",
   "message.doing_diff2": "§2你使用科技征服了这个世界。\n但你的野心驱使你去征服更远，更强大的力量。",
   "message.doing_diff3": "§2你掌握了质能世界的一切，成为了世界的霸主。\n此时，你已经走火入魔了，你想要去获取更强大的力量。",
+  "message.disable.deny": "§4整合包已禁用该方块！",
+  "message.shield.on": "最后防线已开启",
+  "message.shield.off": "最后防线已关闭",
+  "message.shield.deny": "你没有足够的EMC开启最后防线",
 
   "gui.emcworld.update_core": "进阶升级核心架构",
   "gui.emcworld.gemstone_core": "宝石核心",
@@ -696,6 +701,7 @@
   "key.emcworld.admin": "打开管理员面板",
   "key.emcworld.speed": "套装速度控制",
   "key.emcworld.arcana": "显示魔力条",
+  "key.emcworld.last_shield": "切换最后防线模式",
 
   "iris.shaders.disabled": "光影已禁用",
 
@@ -816,8 +822,6 @@
   "curios.identifier.emc_totem": "EMC图腾",
   "curios.identifier.curios_nuclear_ball": "辐射保护球",
   "curios.identifier.emc_shield": "质能护盾发生器",
-
-  "emcworld.not_final": "\u8bf7\u4f7f\u7528\u6b63\u7248\u767b\u5f55\uff01",
 
   "skills.emcworld.p1_default": "[固有] 每级获得 %d 可叠加伤害加成",
   "skills.emcworld.p1_skill10": "[主动] 手持任意剑右击发动，在获得力量I效果 %d 秒，冷却时间 %d 秒",

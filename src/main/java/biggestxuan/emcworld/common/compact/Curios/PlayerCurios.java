@@ -50,6 +50,11 @@ public class PlayerCurios {
         return stack;
     }
 
+    public static ItemStack getPlayerEMCShield(PlayerEntity player){
+        List<SlotResult> results = getPlayerCurios(player,EWItems.EMC_SHIELD_SUPPLY.get());
+        return results.size() == 0 ? ItemStack.EMPTY : results.get(0).getStack();
+    }
+
     public static long getPlayerAdditionEMC(PlayerEntity player){
         long emc = 0L;
         for(ItemStack itemStack : getPlayerAllEMCStoredTotem(player)){

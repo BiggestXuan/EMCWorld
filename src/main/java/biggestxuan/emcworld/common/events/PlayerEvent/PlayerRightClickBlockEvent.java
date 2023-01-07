@@ -12,6 +12,7 @@ import hellfirepvp.astralsorcery.common.block.tile.BlockAltar;
 import hellfirepvp.astralsorcery.common.block.tile.BlockRitualPedestal;
 import mythicbotany.alfheim.Alfheim;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,6 +30,10 @@ public class PlayerRightClickBlockEvent {
                 Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.altar.cancel"));
                 event.setCanceled(true);
             }
+        }
+        if(state.getBlock() instanceof ShulkerBoxBlock){
+            event.setCanceled(true);
+            Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.disable.deny"));
         }
     }
 }

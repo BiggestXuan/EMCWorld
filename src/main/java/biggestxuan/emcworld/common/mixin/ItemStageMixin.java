@@ -6,9 +6,12 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/13
  */
 
+import net.darkhax.gamestages.data.GameStageSaveHandler;
+import net.darkhax.gamestages.data.IStageData;
 import net.darkhax.itemstages.ItemStages;
 import net.darkhax.itemstages.Restriction;
 import net.darkhax.itemstages.RestrictionManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.FakePlayer;
@@ -17,6 +20,7 @@ import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemStages.class)
@@ -34,6 +38,7 @@ public abstract class ItemStageMixin {
         if(player != null && !player.level.isClientSide && !(player instanceof FakePlayer)){
             final ItemStack stack = event.getItem().getItem();
             final Restriction restriction = RestrictionManager.INSTANCE.getRestriction(event.getPlayer(), stack);
+            final Restriction restriction1 = RestrictionManager.INSTANCE.getRestriction(event.getPlayer(), new ItemStack(stack.getItem(),1));
             if (restriction != null && restriction.shouldPreventPickup()) {
                 event.setCanceled(true);
                 event.getItem().setPickUpDelay(restriction.getPickupDelay());

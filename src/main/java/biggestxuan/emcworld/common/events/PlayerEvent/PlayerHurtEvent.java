@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -127,11 +128,19 @@ public class PlayerHurtEvent {
                     break;
                 }
             }
+            ItemStack curios_shield = PlayerCurios.getPlayerEMCShield(player);
             for(ItemStack stack : player.inventory.armor){
                 if(stack.getItem() instanceof IEMCShieldArmor && !(source instanceof EWDamageSource || source.equals(DamageSource.OUT_OF_WORLD))){
                     IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
                     amount -= armor.getShield(stack);
                     armor.setShield(stack,0);
+                }
+            }
+            if(!curios_shield.equals(ItemStack.EMPTY)){
+                if(curios_shield.getItem() instanceof IEMCShieldArmor){
+                    IEMCShieldArmor armor = (IEMCShieldArmor) curios_shield.getItem();
+                    amount -= armor.getShield(curios_shield);
+                    armor.setShield(curios_shield,0);
                 }
             }
             amount = Math.max(0,amount);

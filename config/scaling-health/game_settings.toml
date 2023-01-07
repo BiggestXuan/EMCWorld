@@ -51,7 +51,7 @@
 
 	[mob.damage]
 		#How rapidly mob attack damage rises with difficulty (0 = no damage boost)
-		boostScale = 0.5
+		boostScale = 0.25
 		#The maximum extra attack damage a mob can receive
 		maxBoost = 2048.0
 

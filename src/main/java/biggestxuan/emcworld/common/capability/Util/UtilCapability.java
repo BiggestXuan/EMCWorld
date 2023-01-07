@@ -37,6 +37,7 @@ public class UtilCapability implements IUtilCapability {
     private double SHDifficulty;
     private float maxShield;
     private float shield;
+    private boolean lastShield;
 
     public UtilCapability(){
         this.SponsorLevel = 0;
@@ -64,6 +65,7 @@ public class UtilCapability implements IUtilCapability {
         this.SHDifficulty = 0;
         this.maxShield = 0f;
         this.shield = 0f;
+        this.lastShield = false;
     }
 
     @Override
@@ -342,6 +344,16 @@ public class UtilCapability implements IUtilCapability {
     }
 
     @Override
+    public boolean isLastShield() {
+        return lastShield;
+    }
+
+    @Override
+    public void setLastShield(boolean value) {
+        lastShield = value;
+    }
+
+    @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT tag = new CompoundNBT();
         tag.putInt("sponsorLevel",this.SponsorLevel);
@@ -371,6 +383,7 @@ public class UtilCapability implements IUtilCapability {
         tag.putDouble("sh_difficulty",SHDifficulty);
         tag.putFloat("shield",shield);
         tag.putFloat("maxShield",maxShield);
+        tag.putBoolean("last_shield",lastShield);
         return tag;
     }
 
@@ -403,5 +416,6 @@ public class UtilCapability implements IUtilCapability {
         this.SHDifficulty = nbt.getFloat("sh_difficulty");
         this.shield = nbt.getFloat("shield");
         this.maxShield = nbt.getFloat("maxShield");
+        this.lastShield = nbt.getBoolean("last_shield");
     }
 }

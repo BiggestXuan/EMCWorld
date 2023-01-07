@@ -13,8 +13,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 
 public enum EMCWorldArmorMaterial implements IArmorMaterial {
-    FIRE_RED("fire_red",new int[]{800,1200,1000,600},new int[]{4,8,6,3},13,3,0.1f),
-    GUARDIAN("guardian",new int[]{1400,1800,1600,1100},new int[]{7,11,9,6},28,6,0.35f);
+    FIRE_RED("fire_red",new int[]{8000,12000,10000,6000},new int[]{4,8,6,3},13,3,0.1f),
+    GUARDIAN("guardian",new int[]{14000,18000,16000,11000},new int[]{7,11,9,6},28,6,0.35f);
 
     EMCWorldArmorMaterial(String name,int[] durability,int[] defense,int enchantment,float toughness,float knockback) {
         this.name = name;

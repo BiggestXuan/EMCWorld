@@ -13,6 +13,9 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.DamageSource;
+
+import javax.annotation.Nonnull;
 
 public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem {
     public InfinitySword() {
@@ -93,4 +96,10 @@ public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon,
     public double requireDifficulty() {
         return 3;
     }
+
+    @Override
+    public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
+        return false;
+    }
+
 }

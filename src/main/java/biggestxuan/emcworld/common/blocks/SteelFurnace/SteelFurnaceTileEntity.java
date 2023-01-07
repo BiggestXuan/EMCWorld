@@ -27,7 +27,6 @@ import net.minecraft.util.text.ITextComponent;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Iterator;
 import java.util.List;
 
 public class SteelFurnaceTileEntity extends BaseContainerTileEntity implements ITickableTileEntity, INamedContainerProvider {

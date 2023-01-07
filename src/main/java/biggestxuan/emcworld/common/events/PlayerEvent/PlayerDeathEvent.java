@@ -7,21 +7,27 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -36,6 +42,27 @@ public class PlayerDeathEvent {
         if(livingEntity.level.isClientSide) return;
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
+            boolean isTrigger = true;
+            for(ItemStack stack:player.inventory.armor){
+                if(stack.getItem() instanceof IEMCShieldArmor){
+                    IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
+                    if(armor.getInfuser(stack) < 10000000L){
+                        isTrigger = false;
+                        break;
+                    }
+                }else isTrigger = false;
+            }
+            if(isTrigger && !event.getSource().equals(DamageSource.OUT_OF_WORLD) && EMCWorldAPI.getInstance().getUtilCapability(player).isLastShield()){
+                player.setHealth(player.getMaxHealth());
+                event.setCanceled(true);
+                player.inventory.armor.forEach((s)->{
+                    IEMCShieldArmor armor = (IEMCShieldArmor) s.getItem();
+                    armor.addInfuser(s,-10000000L);
+                    armor.setShield(s,armor.getMaxShield(s)/3L);
+                });
+                player.level.broadcastEntityEvent(player, (byte) 35);
+                return;
+            }
             MinecraftServer server = livingEntity.level.getServer();
             assert server != null;
             ServerWorld world = server.overworld();

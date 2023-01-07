@@ -43,13 +43,14 @@ public class EMCShieldBar implements BarOverlay {
     @Override
     public void renderBar(MatrixStack matrixStack, PlayerEntity playerEntity, int i, int i1) {
         if(playerEntity == null || playerEntity.isDeadOrDying()) return;
+        String color = EMCWorldAPI.getInstance().getUtilCapability(playerEntity).isLastShield() ? "#E1B90E" : "#C1EEFF";
         int a = i /2 - 10 - 81;
         int b = i1 - this.getSidedOffset();
         matrixStack.pushPose();
         GlStateManager._enableBlend();
         Color.reset();
         ModUtils.drawTexturedModalRect(matrixStack,a,b, 0, 0, 81, 9);
-        ColorUtils.hex2Color("#C1EEFF").color2Gl();
+        ColorUtils.hex2Color(color).color2Gl();
         ModUtils.drawTexturedModalRect(matrixStack,a+1, b+1, 1, 10, getPercents(), 7);
         matrixStack.popPose();
     }
@@ -64,13 +65,14 @@ public class EMCShieldBar implements BarOverlay {
         if(playerEntity == null || playerEntity.isDeadOrDying()) return;
         PlayerEntity player = Minecraft.getInstance().player;
         if(player == null) return;
+        int color = EMCWorldAPI.getInstance().getUtilCapability(playerEntity).isLastShield() ? 0xE1B90E : 0xC1EEFF;
         player.getCapability(EMCWorldCapability.UTIL).ifPresent((ar)->{
             int a = i / 2 - 12 - 20 - 81;
             int b = i1 - this.getSidedOffset();
             if(ar.getShield() < 10) a += 3;
             if(ar.getShield() >= 100) a -= 3;
-            if(ar.getShield() >= 1000) a -= 3;
-            ModUtils.drawStringOnHUD(matrixStack, String.valueOf((int)ar.getShield()),a,b-1,0xc1eeff);
+            if(ar.getShield() >= 1000) a -= 5;
+            ModUtils.drawStringOnHUD(matrixStack, String.valueOf((int)ar.getShield()),a,b-1,color);
         });
     }
 
@@ -78,9 +80,15 @@ public class EMCShieldBar implements BarOverlay {
     public void renderIcon(MatrixStack matrixStack, PlayerEntity playerEntity, int i, int i1) {
         int a = i / 2 - 9 - 10 - 81;
         int b = i1 - this.getSidedOffset();
+        if(playerEntity == null || playerEntity.isDeadOrDying()) return;
+        boolean isLastShield = EMCWorldAPI.getInstance().getUtilCapability(playerEntity).isLastShield();
         ModUtils.mc.getTextureManager().bind(ICON);
         GlStateManager._enableBlend();
-        ModUtils.drawTexturedModalRect(matrixStack, a,b, 0, 0, 8, 8);
+        if(isLastShield){
+            ModUtils.drawTexturedModalRect(matrixStack, a,b, 8, 0, 8, 8);
+        }else{
+            ModUtils.drawTexturedModalRect(matrixStack, a,b, 0, 0, 8, 8);
+        }
     }
 
     @Override

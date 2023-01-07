@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.base.BaseGetStageItem;
 import biggestxuan.emcworld.common.items.*;
+import biggestxuan.emcworld.common.items.Curios.EMCShieldSupply;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.items.Curios.StoredTotem;
 import biggestxuan.emcworld.common.items.Equipment.Armor.fireRedArmor;
@@ -97,6 +98,7 @@ public class EWItems {
     public static final RegistryObject<Item> SKILL_ITEM1 = ITEMS.register("skill_item1",EWItem::new);
     public static final RegistryObject<Item> SKILL_ITEM2 = ITEMS.register("skill_item2",EWItem::new);
     public static final RegistryObject<Item> CHAOS_SWORD = ITEMS.register("chaos_sword", ChaosSword::new);
+    public static final RegistryObject<Item> EMC_SHIELD_SUPPLY = ITEMS.register("emc_shield_supply", EMCShieldSupply::new);
     public static final RegistryObject<Item> HAM_BAT = ITEMS.register("ham_bat", HamBat::new);
     public static final RegistryObject<Item> RED_MATTER_CRYSTAL = ITEMS.register("red_matter_crystal",() -> new AddMaxLevelItem(20,0));
     public static final RegistryObject<Item> ANCIENT_ICON = ITEMS.register("ancient_icon",() -> new AddMaxLevelItem(30,0));

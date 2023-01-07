@@ -20,6 +20,7 @@
     "QuarkInventoryHandlerMixin",
     "RaidMixin",
     "RatMixin",
+    "RestrictionManagerMixin",
     "WebHelperDisableMixin",
     "WorldMixin"
   ],

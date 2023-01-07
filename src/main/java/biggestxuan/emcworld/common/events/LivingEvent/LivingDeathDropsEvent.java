@@ -42,7 +42,7 @@ public class LivingDeathDropsEvent {
         if(entity instanceof AbstractRaiderEntity){
             AbstractRaiderEntity entity1 = (AbstractRaiderEntity) entity;
             Raid raid = RaidUtils.getRaid(entity1);
-            if(raid != null && (source.getDirectEntity() instanceof PlayerEntity || source instanceof EWDamageSource)){
+            if(raid != null && (source.getDirectEntity() instanceof PlayerEntity || source instanceof EWDamageSource) && !raid.isLoss()){
                 List<PlayerTickEvent.RaidInfo> info = RaidUtils.getRaidAllPlayers(raid);
                 if(info.size() >= 1){
                     PlayerEntity player = info.get(0).getPlayer();
