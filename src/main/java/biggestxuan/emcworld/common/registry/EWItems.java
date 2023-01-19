@@ -44,6 +44,7 @@ import biggestxuan.emcworld.common.items.RaidItem.IllagerShard;
 import biggestxuan.emcworld.common.items.RaidItem.RaidLightItem;
 import biggestxuan.emcworld.common.items.SponsorsItem.AbunanaLoot;
 import biggestxuan.emcworld.common.items.SponsorsItem.NoNameCatFood;
+import biggestxuan.emcworld.common.items.SponsorsItem.XiangshushumiaoPillow;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -78,6 +79,7 @@ public class EWItems {
     public static final RegistryObject<Item> TANGYUAN = ITEMS.register("tangyuan", TangYuan::new);
     public static final RegistryObject<Item> YEARCAKE = ITEMS.register("year_cake", YearCake::new);
     public static final RegistryObject<Item> ZONGZI = ITEMS.register("zongzi", ZongZi::new);
+    public static final RegistryObject<Item> XIANGSHUSHUMIAO_PILLOW = ITEMS.register("xiangshushumiao_pillow", XiangshushumiaoPillow::new);
     public static final RegistryObject<Item> EMC_CHECK = ITEMS.register("emc_check", EWItem::new);
     public static final RegistryObject<Item> MONEY = ITEMS.register("money", MoneyFood::new);
     public static final RegistryObject<Item> STONE_SHARD = ITEMS.register("stone_shard", EWItem::new);
@@ -98,6 +100,7 @@ public class EWItems {
     public static final RegistryObject<Item> SKILL_ITEM1 = ITEMS.register("skill_item1",EWItem::new);
     public static final RegistryObject<Item> SKILL_ITEM2 = ITEMS.register("skill_item2",EWItem::new);
     public static final RegistryObject<Item> CHAOS_SWORD = ITEMS.register("chaos_sword", ChaosSword::new);
+    public static final RegistryObject<Item> GAIA_SWORD = ITEMS.register("gaia_sword", GaiaSword::new);
     public static final RegistryObject<Item> EMC_SHIELD_SUPPLY = ITEMS.register("emc_shield_supply", EMCShieldSupply::new);
     public static final RegistryObject<Item> HAM_BAT = ITEMS.register("ham_bat", HamBat::new);
     public static final RegistryObject<Item> RED_MATTER_CRYSTAL = ITEMS.register("red_matter_crystal",() -> new AddMaxLevelItem(20,0));
@@ -183,6 +186,7 @@ public class EWItems {
     public static final RegistryObject<Item> IRON_WARHAMMER = ITEMS.register("iron_warhammer",() -> new WarHammerItem(api.getWarHammerTier("iron")));
     public static final RegistryObject<Item> GOLDEN_WARHAMMER = ITEMS.register("golden_warhammer",() -> new WarHammerItem(api.getWarHammerTier("golden")));
     public static final RegistryObject<Item> DIAMOND_WARHAMMER = ITEMS.register("diamond_warhammer",() -> new WarHammerItem(api.getWarHammerTier("diamond")));
+    public static final RegistryObject<Item> GAIA_WARHAMMER = ITEMS.register("gaia_warhammer",() -> new WarHammerItem(api.getWarHammerTier("gaia")));
     public static final RegistryObject<Item> NETHERITE_WARHAMMER = ITEMS.register("netherite_warhammer",() -> new WarHammerItem(api.getWarHammerTier("netherite")));
 
     public static final RegistryObject<Item> WOODEN_DAGGER = ITEMS.register("wooden_dagger",() -> new DaggerItem(api.getDaggerTier("wooden")));
@@ -190,6 +194,7 @@ public class EWItems {
     public static final RegistryObject<Item> IRON_DAGGER = ITEMS.register("iron_dagger",() -> new DaggerItem(api.getDaggerTier("iron")));
     public static final RegistryObject<Item> GOLDEN_DAGGER = ITEMS.register("golden_dagger",() -> new DaggerItem(api.getDaggerTier("golden")));
     public static final RegistryObject<Item> DIAMOND_DAGGER = ITEMS.register("diamond_dagger",() -> new DaggerItem(api.getDaggerTier("diamond")));
+    public static final RegistryObject<Item> GAIA_DAGGER = ITEMS.register("gaia_dagger",() -> new DaggerItem(api.getDaggerTier("gaia")));
     public static final RegistryObject<Item> NETHERITE_DAGGER = ITEMS.register("netherite_dagger",() -> new DaggerItem(api.getDaggerTier("netherite")));
 
     public static final RegistryObject<Item> EMC_FLOWER = registryBlock("emc_flower",EWBlocks.EMC_FLOWER);
@@ -199,6 +204,7 @@ public class EWItems {
     public static final RegistryObject<Item> IRON_STAFF = ITEMS.register("iron_staff",() -> new StaffItem(api.getStaffTier("iron")));
     public static final RegistryObject<Item> GOLDEN_STAFF = ITEMS.register("golden_staff",() -> new StaffItem(api.getStaffTier("golden")));
     public static final RegistryObject<Item> DIAMOND_STAFF = ITEMS.register("diamond_staff",() -> new StaffItem(api.getStaffTier("diamond")));
+    public static final RegistryObject<Item> GAIA_STAFF = ITEMS.register("gaia_staff",() -> new StaffItem(api.getStaffTier("gaia")));
     public static final RegistryObject<Item> NETHERITE_STAFF = ITEMS.register("netherite_staff",() -> new StaffItem(api.getStaffTier("netherite")));
     public static final RegistryObject<Item> RAINBOW_STAFF = ITEMS.register("rainbow_staff", RainbowStaff::new);
     public static final RegistryObject<Item> NATURE_STAFF = ITEMS.register("nature_staff", NatureStaff::new);

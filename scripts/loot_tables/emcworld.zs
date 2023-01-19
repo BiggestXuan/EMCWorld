@@ -2,7 +2,7 @@
 import crafttweaker.api.item.IItemStack;
 import mods.emcworld.math;
 
-private function tweakerBotania() as void{
+public function tweakerBotania() as void{
     var ei = <item:extendedcrafting:ender_ingot>;
     var eei = <item:botania:elementium_ingot>;
     var name as string = "botania:gaia_guardian_2";
@@ -33,7 +33,7 @@ private function tweakerBotania() as void{
     modifyLootTable(<item:emcworld:base_emc_stored_totem>.withDamage(math.getRangeRandom(0,50000)),1f,getRL(name));
 }
 
-private function gns() as void{
+public function gns() as void{
     var names as string[] = [
         "good_nights_sleep:entities/baby_creeper",
         "good_nights_sleep:entities/gns_spawner",
@@ -50,7 +50,7 @@ private function gns() as void{
     }
 }
 
-private function ip() as void{
+public function ip() as void{
     var ri = <item:mekanism:ingot_refined_obsidian>;
     var names as string[] = [
         "illagers_plus:structure/fort_common",
@@ -88,12 +88,12 @@ private function ip() as void{
     }
 }
 
-private function r() as void{
+public function r() as void{
     k(<item:rats:oratchalcum_ingot>,1f);
     k(<item:rats:ratlantean_flame>,3.5f);
 }
 
-private function k(a as IItemStack,p as float) as void{
+public function k(a as IItemStack,p as float) as void{
     var n = "rats:chest/dutchrat_ship";
     modifyLootTable(a,0.07f*p,getRL(n));
     modifyLootTable(a*2,0.03f*p,getRL(n));

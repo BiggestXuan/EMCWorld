@@ -8,7 +8,7 @@ import crafttweaker.api.loot.modifiers.CommonLootModifiers;
 import crafttweaker.api.util.MCResourceLocation;
 import crafttweaker.api.item.IItemStack;
 
-private function getLootTableName(item as IItemStack,namepath as MCResourceLocation) as string{
+public function getLootTableName(item as IItemStack,namepath as MCResourceLocation) as string{
     return "emcworld_loot_tables_"+item.registryName.getPath()+namepath.getPath()+item.amount;
 }
 

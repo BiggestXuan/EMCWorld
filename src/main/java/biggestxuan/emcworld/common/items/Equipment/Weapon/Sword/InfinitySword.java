@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -17,7 +18,7 @@ import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem {
+public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem {
     public InfinitySword() {
         super(new IItemTier() {
             @Override
@@ -72,9 +73,15 @@ public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon,
         return 64;
     }
 
+    @Nonnull
     @Override
     public Rarity getRarity(ItemStack stack){
         return Rarity.EPIC;
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 0;
     }
 
     @Override
@@ -102,4 +109,8 @@ public class InfinitySword extends BaseWeaponItem implements IRangeAttackWeapon,
         return false;
     }
 
+    @Override
+    public float getAdditionsDamage(ItemStack stack) {
+        return 0;
+    }
 }

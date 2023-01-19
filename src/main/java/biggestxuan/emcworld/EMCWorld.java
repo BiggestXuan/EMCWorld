@@ -55,11 +55,12 @@ public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 4;
-    public static final String PackVersion = "0.4.0 - Pre1";
+    public static final String PackVersion = "0.4.0 - Pre2";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
     public static boolean isOffline = false;
+    public static int HOMO = 114514;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
 
     public EMCWorld(){

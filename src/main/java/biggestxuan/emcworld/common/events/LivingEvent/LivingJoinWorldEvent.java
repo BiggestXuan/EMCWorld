@@ -27,7 +27,7 @@ import java.util.List;
 public class LivingJoinWorldEvent {
     @SubscribeEvent
     public static void livingJoinWorldEvent(EntityJoinWorldEvent event){
-        if(event.getEntity().level.isClientSide) return;
+        if(event.getEntity().level.isClientSide ||event.getEntity() == null) return;
         if(event.getEntity() instanceof Tulye){
             Tulye e = (Tulye) event.getEntity();
             e.addEffect(new EffectInstance(Effects.INVISIBILITY,600,0));

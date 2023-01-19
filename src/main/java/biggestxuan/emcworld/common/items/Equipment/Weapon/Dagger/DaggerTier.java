@@ -16,8 +16,9 @@ public enum DaggerTier implements IDaggerTier {
     IRON(1.07,256,-1.8F,3.75f,2,8),
     GOLDEN(1.2,32,-0.8F,1.5f,0,20),
     DIAMOND(1.13,1541,-1.6F,4.25f,3,12),
-    NETHERITE(1.15,2496,-1.4F,5.5f,4,16),
-    GOD(1.05,2048,-2F,3.75f,4,15)
+    NETHERITE(1.25,2496,-1.1F,12f,4,16),
+    GOD(1.05,2048,-2F,3.75f,4,15),
+    GAIA(1.16,2200,-1.4F,6.25f,4,13)
     ;
 
     private final double speed;

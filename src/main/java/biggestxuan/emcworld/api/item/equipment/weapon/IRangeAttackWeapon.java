@@ -23,6 +23,7 @@ public interface IRangeAttackWeapon {
     }
 
     default void switchAttackMode(ItemStack stack){
+        if(getAttackRange(stack) < 0)return;
         int index = getAttackMode(stack).index;
         index++;
         if(index > 5){

@@ -12,7 +12,7 @@ import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerTier;
-import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWAtmTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWSwordTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffTier;
@@ -38,17 +38,17 @@ public class EMCWorldAPI implements biggestxuan.emcworld.api.EMCWorldAPI {
 
     @Override
     public IItemTier getATMTier(){
-        return EWAtmTier.ATM;
+        return EWSwordTier.ATM;
     }
 
     @Override
     public IItemTier getVibraniumTier(){
-        return EWAtmTier.VIBRANIUM;
+        return EWSwordTier.VIBRANIUM;
     }
 
     @Override
     public IItemTier getUnobtainiumTier(){
-        return EWAtmTier.UNOBTAINIUM;
+        return EWSwordTier.UNOBTAINIUM;
     }
 
     @Override

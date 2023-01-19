@@ -18,9 +18,9 @@ import vazkii.botania.api.subtile.TileEntityGeneratingFlower;
 import java.util.List;
 
 public class TileEMCFlower extends TileEntityGeneratingFlower {
-    private static final int MAX_MANA = 10000;
-    private static final int RANGE = 6;
-    private static final int[] VALUE = new int[]{350,4000};
+    private static final int MAX_MANA = 1000000;
+    private static final int RANGE = 3;
+    private static final int[] VALUE = new int[]{1200,12000,800000};
 
     public TileEMCFlower() {
         super(EWTileEntityTypes.EMC_FLOWER.get());
@@ -51,6 +51,12 @@ public class TileEMCFlower extends TileEntityGeneratingFlower {
             if(item.getItem().equals(EWItems.BIG_EMC_GEM.get())){
                 item.shrink(1);
                 addMana(VALUE[1]);
+                sync();
+                return;
+            }
+            if(item.getItem().equals(EWItems.BIGGEST_EMC_GEM.get())){
+                item.shrink(1);
+                addMana(VALUE[2]);
                 sync();
                 return;
             }

@@ -5,7 +5,7 @@ import crafttweaker.api.item.IIngredient;
 
 import crafttweaker.api.entity.MCEntityType;
 
-private function getAuraType(type as int) as string{
+public function getAuraType(type as int) as string{
     switch(type){
         case 1:
             return "overworld";

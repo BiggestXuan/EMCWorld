@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.ILuckyItem;
@@ -133,11 +134,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         Inventory inventory = entity.getInventory();
         if(stack.getItem() instanceof IUpgradeableItem){
             IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
-            return item.getLevel(stack) < item.getMaxLevel() &&
-                    (!inventory.getItem(1).equals(ItemStack.EMPTY)||
-                            !inventory.getItem(2).equals(ItemStack.EMPTY)||
-                            !inventory.getItem(3).equals(ItemStack.EMPTY)||
-                            !inventory.getItem(4).equals(ItemStack.EMPTY));
+            return item.getLevel(stack) < item.getMaxLevel() && (getChance(inventory) > 0 && getChance(inventory) < 114513);
         }
         return false;
     }
@@ -172,7 +169,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
     }
 
     private boolean isSendMessage(ItemStack stack){
-        if(stack.getItem() instanceof IUpgradeableItem){
+        if(stack.getItem() instanceof IUpgradeableItem && stack.getItem() instanceof IEMCGodWeaponLevel){
             IUpgradeableItem weapon = (IUpgradeableItem) stack.getItem();
             int level = weapon.getLevel(stack);
             int maxLevel = weapon.getMaxLevel();
@@ -221,16 +218,16 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         double diff = CrTConfig.getWorldDifficulty();
         float chance = 1f;
         if(diff < 1){
-            chance *= 0.92f;
+            chance *= 0.8f;
         }
         if(diff <= 1.75){
-            chance *= 0.94f;
+            chance *= 0.9f;
         }
         if(diff <= 2.25){
-            chance *= 0.96f;
+            chance *= 0.93f;
         }
         if(diff <= 2.75){
-            chance *= 0.98f;
+            chance *= 0.95f;
         }
         return chance;
     }
@@ -244,7 +241,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         Item mainItem = inventory.getItem(0).getItem();
         if(mainItem instanceof IUpgradeableItem){
             IUpgradeableItem weapon = (IUpgradeableItem) mainItem;
-            if(weapon.getMaxLevel() == weapon.getLevel(inventory.getItem(0))){
+            if(weapon.getMaxLevel() <= weapon.getLevel(inventory.getItem(0))){
                 return 1919810;
             }
             requireWeight = weapon.getWeightRequired(inventory.getItem(0));

@@ -343,6 +343,11 @@
   "item.emcworld.super_star": "超新星",
   "item.emcworld.illager_shard": "灾厄碎片",
   "item.emcworld.emc_shield_supply": "质能护盾发生器",
+  "item.emcworld.gaia_sword": "盖亚剑",
+  "item.emcworld.gaia_warhammer": "盖亚战锤",
+  "item.emcworld.gaia_staff": "盖亚法杖",
+  "item.emcworld.gaia_dagger": "盖亚匕首",
+  "item.emcworld.xiangshushumiao_pillow": "橡树树苗抱枕",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -811,6 +816,8 @@
   "tooltip.emcworld.illager_shard_desc": "§2当前掉率为： %d",
   "tooltip.emcworld.armor_emc_max_shield": "§9最大护盾： %d",
   "tooltip.emcworld.armor_emc_speed": "§9护盾恢复： %d",
+  "tooltip.emcworld.tool_speed": "§9+ %d §9挖掘速度",
+  "tooltip.emcworld.xiangshushumiao_pillow": "抱着它，睡醒的时候不会损失EMC，在诡异的床上一定进入美梦世界",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

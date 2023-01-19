@@ -16,10 +16,7 @@ import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.Rarity;
+import net.minecraft.item.*;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -30,11 +27,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem, ICriticalWeapon, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, ICriticalWeapon, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel {
     public BaseEMCGodWarHammer(){
         super(EMCWorldAPI.getInstance().getWarHammerTier("god"));
     }
-
     protected abstract double getAttackCostRate(ItemStack stack);
 
     protected abstract long modifyEMCSecond(ItemStack stack);
@@ -118,14 +114,6 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
             b *= (1 + Math.log(costEMC)/85);
         }
         return (float) b;
-    }
-
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
     }
 
     @Nonnull

@@ -152,6 +152,7 @@ dependencies {
     implementation fg.deobf("curse.maven:stalwart-dungeons-474817:3495397")
     implementation fg.deobf("curse.maven:sh-248027:3240365")
     implementation fg.deobf("curse.maven:hem-408466:3836676")
+    implementation fg.deobf("curse.maven:good_night-61461:3226536")
     implementation fg.deobf("curse.maven:DivineRPG-363543:4022627")
     implementation fg.deobf("curse.maven:shutup_experimental_settings-407174:3188120")
     implementation fg.deobf("curse.maven:cataclysm-551586:3875120")

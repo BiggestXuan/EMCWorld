@@ -59,6 +59,6 @@ public class AbunanaLoot extends EWItem implements ISponsorItem {
 
     @Override
     public Sponsors getSponsor(){
-        return new Sponsors("Abunana","6105dab8-94a6-440f-b797-00d046587eda",1);
+        return Sponsors.ABunana;
     }
 }

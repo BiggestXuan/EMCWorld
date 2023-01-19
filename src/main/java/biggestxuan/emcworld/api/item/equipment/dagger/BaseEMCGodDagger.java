@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCItem, IEMCInfuserItem, IUpgradeableItem, IUpgradeableMaterial, IAdditionsDamageWeapon, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IEMCGodWeaponLevel {
     public BaseEMCGodDagger() {
         super(EMCWorldAPI.getInstance().getDaggerTier("god"));
     }
@@ -46,14 +46,6 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
     @Override
     public long getMaxInfuser(ItemStack stack){
         return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
-    }
-
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
     }
 
     @Override

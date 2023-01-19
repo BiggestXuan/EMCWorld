@@ -31,7 +31,7 @@ public function addDIMStage() as void{
     st(["minecraft:nether"],"nether");
 }
 
-private function st(dim as string[],s as string) as void{
+public function st(dim as string[],s as string) as void{
     for d in dim{
        DimensionStages.stageDimensionWithMessage(d,CrTLang.DimTip(),s);  
     }

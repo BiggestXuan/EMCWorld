@@ -84,6 +84,10 @@ public class InfuserRecipe implements IRecipe<Inventory> {
         return costEMC;
     }
 
+    public int getCostEMCRate(){
+        return costEMC / costTime;
+    }
+
     public int getCostTime() {
         return costTime;
     }

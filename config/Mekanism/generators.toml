@@ -28,11 +28,11 @@
 		#The number of blades on each turbine coil per blade applied.
 		turbineBladesPerCoil = 4
 		#The rate at which steam is vented into the turbine.
-		turbineVentGasFlow = 32000.0
+		turbineVentGasFlow = 3200000.0
 		#The rate at which steam is dispersed into the turbine.
-		turbineDisperserGasFlow = 1280.0
+		turbineDisperserGasFlow = 128000.0
 		#The rate at which steam is condensed in the turbine.
-		condenserRate = 64000
+		condenserRate = 6400000
 
 	#Heat Generator Settings
 	[generators.heat_generator]

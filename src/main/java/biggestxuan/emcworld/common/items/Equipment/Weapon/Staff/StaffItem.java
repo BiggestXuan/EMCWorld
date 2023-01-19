@@ -10,15 +10,17 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.api.item.INeedLevelItem;
+import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.staff.BaseEMCGodStaff;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
-import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.Message;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
@@ -36,9 +38,11 @@ import net.minecraft.item.TieredItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
@@ -48,7 +52,7 @@ import vazkii.botania.common.entity.EntityManaBurst;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapon {
+public class StaffItem extends TieredItem implements IUpgradeableWeapon, IUpgradeableMaterial,ILensEffect, ICriticalWeapon {
     protected final IStaffTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
 
@@ -58,6 +62,11 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", tier.getSpeed(), AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
+    }
+
+    @Override
+    public int getWeightRequired(ItemStack stack){
+        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 2.3);
     }
 
     private double getCostRate(PlayerEntity player){
@@ -90,12 +99,12 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         player.level.addFreshEntity(burst);
     }
 
-    protected double costEMCWhenAttack(ItemStack stack) {
+    public double costEMCWhenAttack(ItemStack stack) {
         return 1d;
     }
 
     public float getBaseDamage(ItemStack stack){
-        return tier.getAttackDamageBonus();
+        return (float) (tier.getAttackDamageBonus() + tier.getAttackDamageBonus() * 0.13 * getLevel(stack));
     }
 
     private float getManaBurstDamage(ItemStack stack,Entity entity){
@@ -128,9 +137,21 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
         return damage;
     }
 
+    @Nonnull
+    @Override
+    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
+        int level = getLevel(p_200295_1_);
+        String name = this.toString();
+        ResourceLocation rl = getRegistryName();
+        if(rl == null || getMaxLevel() == 0){
+            return super.getName(p_200295_1_);
+        }
+        return EMCWorld.tc("item."+rl.getNamespace()+"."+name).append(" (+"+level+")");
+    }
+
     @Override
     public ActionResult<ItemStack> use(World p_77659_1_, PlayerEntity p_77659_2_, Hand p_77659_3_){
-        if(p_77659_2_.level.isClientSide) return ActionResult.fail(new ItemStack(this));
+        if(p_77659_2_.level.isClientSide || p_77659_3_ == Hand.OFF_HAND) return ActionResult.fail(new ItemStack(this));
         IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(p_77659_2_);
         ItemStack staff = p_77659_2_.getMainHandItem();
         this.spawnManaBurst(p_77659_2_,1);
@@ -154,6 +175,11 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
 
     protected int getColor(){
         return tier.getColor();
+    }
+
+    @Override
+    public float getAdditionsDamage(ItemStack stack) {
+        return 0;
     }
 
     @Override
@@ -232,5 +258,25 @@ public class StaffItem extends TieredItem implements ILensEffect, ICriticalWeapo
     @Override
     public boolean hurtEnemy(ItemStack p_77644_1_, LivingEntity p_77644_2_, LivingEntity p_77644_3_) {
         return false;
+    }
+
+    @Override
+    public long getTickCost(ItemStack stack) {
+        return 0;
+    }
+
+    @Override
+    public long EMCModifySecond(ItemStack stack) {
+        return 0;
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return (int) ((tier.getLevel() + 1) * ConfigManager.DIFFICULTY.get() * 0.75d);
+    }
+
+    @Override
+    public double getAttackRange(ItemStack stack) {
+        return 0;
     }
 }

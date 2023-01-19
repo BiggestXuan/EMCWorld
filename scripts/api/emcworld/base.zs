@@ -121,7 +121,7 @@ public function crockPotRecipe(re as CTRequirement,output as IItemStack,pri as i
     <recipetype:crockpot:crock_pot_cooking>.addRecipe(getRecipeName(output)+"_crock_pot",re,output,pri);
 }
 
-private function getStageName(num as int) as string{
+public function getStageName(num as int) as string{
     switch(num){
         case 1:
             return "one";

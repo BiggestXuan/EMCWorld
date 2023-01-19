@@ -240,7 +240,6 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
             ItemStack c = inventory.getItem(6);
             c.grow(count);
         }
-        recipe.ifPresent(infuserRecipe -> this.emc -= infuserRecipe.getCostEMC());
         resetRecipe(entity);
     }
 
@@ -253,10 +252,11 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
         assert world != null;
         Inventory inventory = entity.getInventory();
         Optional<InfuserRecipe> match = world.getRecipeManager().getRecipeFor(InfuserRecipe.Type.INSTANCE,inventory,world);
-        boolean out = match.isPresent() && canOutPut(inventory,match.get().getResultItem()) && this.craftLevel >= match.get().getCraftLevel() && this.emc >= match.get().getCostEMC();
+        boolean out = match.isPresent() && canOutPut(inventory,match.get().getResultItem()) && this.craftLevel >= match.get().getCraftLevel() && this.emc >= match.get().getCostEMCRate();
         if(out){
             this.maxProgress = match.get().getCostTime();
             this.data.set(1,this.maxProgress);
+            this.emc -= match.get().getCostEMCRate();
             return true;
         }else{
             return false;

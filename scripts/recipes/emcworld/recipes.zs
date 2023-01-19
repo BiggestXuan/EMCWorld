@@ -21,6 +21,8 @@ public function emcworldRecipe() as void{
     var sr = <item:emcworld:scroll_red>;
     var ra = <item:good_nights_sleep:rainbow_ingot>;
     var gi = <item:minecraft:gold_ingot>;
+    var ws = <item:emcworld:scroll_white>;
+    var bge = <item:emcworld:biggest_emc_gem>;
     var um = <item:emcworld:unreal_metal>;
     var si = <item:thermal:signalum_ingot>;
     var bs = <item:naturesaura:birth_spirit>;
@@ -1118,6 +1120,11 @@ public function emcworldRecipe() as void{
         torchRecipe(<item:emcworld:orange_matter>,<item:emcworld:dragon_steel>,ub);
         torchRecipe1(15,25);
     }
+    addCraftShapedRecipeNoName([
+        [bge,ws,bge],
+        [ws,<item:emcworld:hardcore_stone>,ws],
+        [bge,ws,bge]
+    ],<item:emcworld:weapon_upgrade_core>);
     infuserRecipe([sa,sa,sa,sa,sa],<item:emcworld:raid_light>,15000,100000,1);
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
@@ -1527,13 +1534,13 @@ public function emcworldRecipe() as void{
     }
 }
 
-private function add_emc_stage(item as IItemStack[],stage as int) as void{
+public function add_emc_stage(item as IItemStack[],stage as int) as void{
     for i in item{
         addEMCStage(i,stage);
     }
 }
 
-private function pink(c as IItemStack,r as IItemStack) as void{
+public function pink(c as IItemStack,r as IItemStack) as void{
     infuserRecipe([
         <item:emcworld:pink_matter>,
         <item:rats:oratchalcum_block>,
@@ -1543,7 +1550,7 @@ private function pink(c as IItemStack,r as IItemStack) as void{
     ],r,4000,5000000,2);
 }
 
-private function violet(c as IItemStack,r as IItemStack) as void{
+public function violet(c as IItemStack,r as IItemStack) as void{
     var evm = <item:emcworld:violet_matter>;
     treeRitualRecipe([
         <item:cataclysm:ignitium_block>,evm,evm,<item:emcworld:advanced_emc_gem>,<item:gobber2:gobber2_block_nether>,
@@ -1551,7 +1558,7 @@ private function violet(c as IItemStack,r as IItemStack) as void{
     ],<item:byg:blue_enchanted_sapling>,r);
 }
 
-private function blue(c as IItemStack,r as IItemStack) as void{
+public function blue(c as IItemStack,r as IItemStack) as void{
     treeRitualRecipe([
         c,
         <item:undergarden:forgotten_block>,
@@ -1564,7 +1571,7 @@ private function blue(c as IItemStack,r as IItemStack) as void{
     ],<item:undergarden:smogstem_sapling>,r);
 }
 
-private function cyan(c as IItemStack,r as IItemStack) as void{
+public function cyan(c as IItemStack,r as IItemStack) as void{
     mythicInfuserRecipe([
         c,
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string}),
@@ -1574,11 +1581,11 @@ private function cyan(c as IItemStack,r as IItemStack) as void{
     ],r,4000000,0xffffff,0xffffff);
 }
 
-private function green(c as IItemStack,r as IItemStack) as void{
+public function green(c as IItemStack,r as IItemStack) as void{
     nucleosyRecipe(c,<gas:emcworld:stable_void>*1000,r,100);
 }
 
-private function lime(c as IItemStack,r as IItemStack) as void{
+public function lime(c as IItemStack,r as IItemStack) as void{
     alchemalTableRecipe([
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:alfsteel" as string}),
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:atm" as string}),
@@ -1587,7 +1594,7 @@ private function lime(c as IItemStack,r as IItemStack) as void{
     ],r,300000,4);
 }
 
-private function p(a as IItemStack,b as IItemStack,c as IItemStack,d as IItemStack) as void{
+public function p(a as IItemStack,b as IItemStack,c as IItemStack,d as IItemStack) as void{
     addCraftShapedRecipeNoName([
         [a,b,a],
         [b,c,b],
@@ -1595,20 +1602,20 @@ private function p(a as IItemStack,b as IItemStack,c as IItemStack,d as IItemSta
     ],d);
 }
 
-private function kt(a as IItemStack,b as IItemStack,c as IItemStack[][]) as void{
+public function kt(a as IItemStack,b as IItemStack,c as IItemStack[][]) as void{
     for i in c{
         p(a,b,i[0],i[1]);
     }
 }
 
-private function yellow(c as IItemStack,r as IItemStack) as void{
+public function yellow(c as IItemStack,r as IItemStack) as void{
     p(<item:emcworld:yellow_matter>,<item:emcworld:dragon_steel>,c,r);
 }
 
-private function orange() as void{
+public function orange() as void{
     kt(<item:emcworld:orange_matter>,<item:emcworld:emc_core>,[[<item:projectex:yellow_collector>,<item:projectex:orange_collector>],[<item:projectex:yellow_relay>,<item:projectex:orange_relay>]]);
 }
 
-private function white() as void{
+public function white() as void{
     kt(<item:emcworld:clay_matter>,<item:extendedcrafting:the_ultimate_ingot>,[[<item:projectex:orange_relay>,<item:projectex:white_relay>],[<item:projectex:orange_collector>,<item:projectex:white_collector>]]);
 }

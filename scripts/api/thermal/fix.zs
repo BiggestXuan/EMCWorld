@@ -3,99 +3,99 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.ItemStack;
 import mods.jei.JEI;
 
-private function removePress(item as IItemStack) as void{
+public function removePress(item as IItemStack) as void{
     <recipetype:thermal:press>.removeRecipe(item);
 }
 
-private function hide(item as IItemStack) as void{
+public function hide(item as IItemStack) as void{
     JEI.hideItem(item);
 }
 
-private function removeIngot(item as IItemStack) as void{
+public function removeIngot(item as IItemStack) as void{
     <tag:items:forge:ingots>.remove(item);
     hide(item);
 }
 
-private function removeBlock(item as IItemStack) as void{
+public function removeBlock(item as IItemStack) as void{
     <tag:items:forge:storage_blocks>.remove(item);
     removePress(item);
     hide(item);
 }
 
-private function removeNugget(item as IItemStack) as void{
+public function removeNugget(item as IItemStack) as void{
     <tag:items:forge:nuggets>.remove(item);
     hide(item);
 }
 
-private function removeCopperNugget(item as IItemStack[]) as void{
+public function removeCopperNugget(item as IItemStack[]) as void{
     for i in item{
         <tag:items:forge:nuggets/copper>.remove(i);
         removeNugget(i);  
     }
 }
 
-private function removeBronze(item as IItemStack) as void{
+public function removeBronze(item as IItemStack) as void{
     <tag:items:forge:ingots/bronze>.remove(item);
     removeIngot(item);
 }
 
-private function removeCopper(i as ItemStack) as void{
+public function removeCopper(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:ingots/copper>.remove(item);
     removeIngot(item);
     removeAllRecipe([i]);
 }
 
-private function removeTin(i as ItemStack) as void{
+public function removeTin(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:ingots/tin>.remove(item);
     removeIngot(item);
     removeAllRecipe([i]);
 }
 
-private function removeLead(i as ItemStack) as void{
+public function removeLead(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:ingots/lead>.remove(item);
     removeIngot(item);
     removeAllRecipe([i]);
 }
 
-private function removeSilver(i as ItemStack) as void{
+public function removeSilver(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:ingots/silver>.remove(item);
     removeIngot(item);
     removeAllRecipe([i]);
 }
 
-private function removeNickel(i as ItemStack) as void{
+public function removeNickel(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:ingots/nickel>.remove(item);
     removeIngot(item);
     removeAllRecipe([i]);
 }
 
-private function removeTinBlock(i as ItemStack) as void{
+public function removeTinBlock(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:storage_blocks/tin>.remove(item);
     removeBlock(item);
     removeAllRecipe([i]);
 }
 
-private function removeLeadBlock(i as ItemStack) as void{
+public function removeLeadBlock(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:storage_blocks/lead>.remove(item);
     removeBlock(item);
     removeAllRecipe([i]);
 }
 
-private function removeSilverBlock(i as ItemStack) as void{
+public function removeSilverBlock(i as ItemStack) as void{
     var item as IItemStack = i.asIItemStack();
     <tag:items:forge:storage_blocks/silver>.remove(item);
     removeBlock(item);
     removeAllRecipe([i]);
 }
 
-private function removeCopperBlock(item as ItemStack[]) as void{
+public function removeCopperBlock(item as ItemStack[]) as void{
     for i in item{
         <tag:items:forge:storage_blocks/copper>.remove(i.asIItemStack());
         removeBlock(i.asIItemStack());
@@ -103,7 +103,7 @@ private function removeCopperBlock(item as ItemStack[]) as void{
     removeAllRecipe(item);
 }
 
-private function removeDust(item as IItemStack[]) as void{
+public function removeDust(item as IItemStack[]) as void{
     for i in item{
         removeCraftRecipe([i]);
         <tag:items:forge:dusts>.remove(i);

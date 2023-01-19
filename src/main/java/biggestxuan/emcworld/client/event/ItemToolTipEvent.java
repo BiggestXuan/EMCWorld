@@ -130,16 +130,26 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IAdditionsDamageWeapon){
             IAdditionsDamageWeapon item = (IAdditionsDamageWeapon) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",item.getAdditionsDamage(stack))));
+            double damage = item.getAdditionsDamage(stack);
+            if(damage > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",damage)));
+            }
         }
         if(stack.getItem() instanceof IRangeAttackWeapon){
             IRangeAttackWeapon item1 = (IRangeAttackWeapon) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_attack_range",String.format("%.1f",item1.getAttackRange(stack))));
+            double range = item1.getAttackRange(stack);
+            if(range >0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_attack_range",String.format("%.1f",range)));
+            }
         }
         if(stack.getItem() instanceof IUpgradeableArmor){
             IUpgradeableArmor item_1_1 = (IUpgradeableArmor) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
+            if(item_1_1.hurtRate(stack) != 1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
+            }
+            if(item_1_1.extraHealth(stack) > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
+            }
         }
         if(stack.getItem() instanceof ICostEMCItem){
             ICostEMCItem item2 = (ICostEMCItem) stack.getItem();
@@ -179,6 +189,12 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_loss",String.format("%.2f",(1-rate)*100)).append("%"));
             }
         }
+        if(stack.getItem() instanceof IUpgradeableTool){
+            IUpgradeableTool tool = (IUpgradeableTool) stack.getItem();
+            if(tool.getAdditionSpeed(stack) > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed",String.format("%.2f",(tool.getAdditionSpeed(stack)-1)*100)+"%"));
+            }
+        }
         if(stack.getItem() instanceof ISecondEMCItem){
             ISecondEMCItem item3 = (ISecondEMCItem) stack.getItem();
             long emc = item3.EMCModifySecond(stack);
@@ -192,7 +208,9 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IRangeAttackWeapon){
             IRangeAttackWeapon a_w = (IRangeAttackWeapon) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(a_w.getAttackMode(stack).getName())));
+            if(a_w.getAttackRange(stack) > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(a_w.getAttackMode(stack).getName())));
+            }
         }
         if(stack.getItem() instanceof IEMCInfuserItem){
             IEMCInfuserItem ii_i = (IEMCInfuserItem) stack.getItem();
@@ -207,7 +225,7 @@ public class ItemToolTipEvent {
         if(stack.getItem() instanceof ItemHazmatSuitArmor || stack.getItem().equals(MekanismItems.MODULE_RADIATION_SHIELDING.getItem().getItem())){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.unclear_limit"));
         }
-        if(stack.getItem() instanceof ISponsorItem){
+        if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){
             ISponsorItem item4 = (ISponsorItem) stack.getItem();
             Sponsors sp = item4.getSponsor();
             int level = 0;

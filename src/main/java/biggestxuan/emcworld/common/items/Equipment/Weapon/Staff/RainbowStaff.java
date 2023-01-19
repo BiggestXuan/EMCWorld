@@ -48,7 +48,8 @@ public class RainbowStaff extends StaffItem implements IEMCInfuserItem, INeedLev
 
     @Override
     public float getBaseDamage(ItemStack stack){
-        return getInfuser(stack) >= Math.E ? 27.5F + (float) (Math.log(getInfuser(stack)*0.8)) : 27.5F;
+        float damage =  getInfuser(stack) >= Math.E ? 27.5F + (float) (Math.log(getInfuser(stack)*0.65)) : 27.5F;
+        return damage + getLevel(stack) * 0.06f * damage;
     }
 
     @Override

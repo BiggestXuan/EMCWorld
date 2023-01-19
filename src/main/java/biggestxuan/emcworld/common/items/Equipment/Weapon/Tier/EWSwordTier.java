@@ -11,10 +11,11 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 
-public enum EWAtmTier implements IItemTier {
+public enum EWSwordTier implements IItemTier {
     ATM(10000,20,150,6),
     VIBRANIUM(50000,30,300,7),
-    UNOBTAINIUM(100000,60,700,10)
+    UNOBTAINIUM(100000,60,700,10),
+    GAIA(2048,6,17.5f,4)
     ;
 
     final int use;
@@ -22,7 +23,7 @@ public enum EWAtmTier implements IItemTier {
     final float damage;
     final int level;
 
-    EWAtmTier(int use,int speed,float damage,int level){
+    EWSwordTier(int use, int speed, float damage, int level){
         this.use = use;
         this.speed = speed;
         this.damage = damage;

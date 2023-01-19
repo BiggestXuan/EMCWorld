@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, IUpgradeableItem, IUpgradeableMaterial, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel {
     public BaseEMCGodStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("god"));
     }
@@ -46,14 +46,6 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     @Override
     public long getMaxInfuser(ItemStack stack){
         return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
-    }
-
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
     }
 
     protected abstract long getBaseEMCModify(ItemStack stack);

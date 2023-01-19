@@ -14,13 +14,13 @@ public function setItemsEMC(item as ItemStack[],emc as long) as void{
     }
 }
 
-private function clearEMC(i as IItemStack[]) as void{
+public function clearEMC(i as IItemStack[]) as void{
     for k in i{
         EMCHelper.clearItemEMC(k);
     }
 }
 
-private function getVoucherEMC() as int{
+public function getVoucherEMC() as int{
     var diff as double = getDifficultyLoss();
     if(diff >= 1) return 114514;
     else return (-10 * diff + 11) as int * 114514;

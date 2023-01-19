@@ -343,6 +343,11 @@
   "item.emcworld.super_star": "Super Star",
   "item.emcworld.illager_shard": "Illager Shard",
   "item.emcworld.emc_shield_supply": "EMC Shield Power Supply",
+  "item.emcworld.gaia_sword": "Gaia Sword",
+  "item.emcworld.gaia_warhammer": "Gaia Warhammer",
+  "item.emcworld.gaia_staff": "Gaia Staff",
+  "item.emcworld.gaia_dagger": "Gaia Dagger",
+  "item.emcworld.xiangshushumiao_pillow": "Xiangshushumiao Pillow",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -811,6 +816,8 @@
   "tooltip.emcworld.illager_shard_desc": "§2The current drop rate is: %d",
   "tooltip.emcworld.armor_emc_max_shield": "§9Max Shield: %d",
   "tooltip.emcworld.armor_emc_speed": "§9Shield Heal Speed: %d",
+  "tooltip.emcworld.tool_speed": "§9+ %d §9Destroy Speed:",
+  "tooltip.emcworld.xiangshushumiao_pillow": "Don't use emc when you wake up, enter good dream on Strange Bed",
 
   "attack_range_none": "Off",
   "attack_range_all": "All",

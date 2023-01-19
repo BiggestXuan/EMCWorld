@@ -320,7 +320,7 @@ public class PlayerTickEvent {
         for(ItemStack stack:getPlayerAllItem(player)){
             if(stack.getItem() instanceof IEMCRepairableItem){
                 IEMCRepairableItem item = (IEMCRepairableItem) stack.getItem();
-                if(EMCHelper.getPlayerEMC(player) >= item.getTickCost(stack) && stack.getDamageValue() != 0){
+                if(EMCHelper.getPlayerEMC(player) >= item.getTickCost(stack) && stack.getDamageValue() != 0 && item.getTickCost(stack) > 0){
                     EMCHelper.modifyPlayerEMC(player,Math.negateExact(item.getTickCost(stack)),false);
                     stack.setDamageValue(stack.getDamageValue()-1);
                 }

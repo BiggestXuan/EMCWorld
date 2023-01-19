@@ -8,12 +8,15 @@ package biggestxuan.emcworld.common.utils;
 
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import net.minecraft.entity.LivingEntity;
@@ -27,8 +30,10 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import org.openzen.zencode.java.ZenCodeType;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @ZenRegister
@@ -328,6 +333,18 @@ public class MathUtils {
 
     public static AxisAlignedBB expandAABB(Vector3d v ,int range){
         return expandAABB(new BlockPos(v),range);
+    }
+
+    @Nullable
+    public static Sponsors getSponsor(PlayerEntity player){
+        Sponsors sponsor;
+        if(!player.getCapability(EMCWorldCapability.UTIL).isPresent()){
+            sponsor = null;
+        }else{
+            IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
+            sponsor = new Sponsors(player.getScoreboardName(),player.getUUID(),cap.getLevel());
+        }
+        return sponsor;
     }
 
     private static String getFlag(String value){

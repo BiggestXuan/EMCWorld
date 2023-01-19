@@ -1,11 +1,11 @@
 #priority 28
 import crafttweaker.api.item.IItemStack;
 
-private function onetonine(input as IItemStack,output as IItemStack) as void{
+public function onetonine(input as IItemStack,output as IItemStack) as void{
     addCraftShapelessRecipe([input],output*9);
 }
 
-private function fix(input as IItemStack[]) as void{
+public function fix(input as IItemStack[]) as void{
     var ingot = input[0];
     var dust = input[1];
     var block = input[2];

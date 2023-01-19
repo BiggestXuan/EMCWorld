@@ -63,9 +63,9 @@ public class PlayerLoggedEvent {
             }
             sponsorCap.ifPresent((cap)-> cap.setLevel(0));
         }
-        if(level < 2 && player instanceof ServerPlayerEntity && server.usesAuthentication()){
+        if(level < 2 && player instanceof ServerPlayerEntity && !server.usesAuthentication()){
             ServerPlayerEntity player1 = (ServerPlayerEntity) player;
-            player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
+            //player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
         }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
@@ -155,7 +155,7 @@ public class PlayerLoggedEvent {
                     Message.sendMessageToAllPlayer(player, tc("message.welcome.highest",name));
                     break;
                 case 4:
-                    Message.sendMessageToThisWorldPlayer(player, tc("message.welcome.mascot",name));
+                    Message.sendMessageToAllPlayer(player, tc("message.welcome.mascot",name));
                     break;
                 case 5:
                     Message.sendMessageToAllPlayer(player, tc("message.welcome.dev",name));
