@@ -129,13 +129,6 @@ public class PlayerClickEvent {
         }
         BlockPos blockPos = evt.getPlayer().blockPosition();
         BlockPos act = new BlockPos(blockPos.getX(),blockPos.getY()-1,blockPos.getZ());
-        if(itemStack.getItem() instanceof IRangeAttackWeapon){
-            IRangeAttackWeapon weapon = (IRangeAttackWeapon) itemStack.getItem();
-            if(weapon.getAttackRange(itemStack) > 0){
-                weapon.switchAttackMode(itemStack);
-                Message.sendMessage(player,EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(weapon.getAttackMode(itemStack).getName())));
-            }
-        }
         if(world.getBlockState(act).equals(EWBlocks.CONTROL_UPDATE_CORE.get().defaultBlockState())){
             MultiBlock.UpdateMath info = MultiBlock.getUpdateInfo(world,act);
             for(UpdateRecipe obj:UpdateRecipe.values()){

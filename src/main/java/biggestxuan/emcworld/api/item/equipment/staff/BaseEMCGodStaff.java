@@ -127,4 +127,9 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         if(level <= 20) return Rarity.RARE;
         return Rarity.EPIC;
     }
+
+    @Override
+    public int getWeightRequired(ItemStack stack){
+        return super.lv(stack);
+    }
 }

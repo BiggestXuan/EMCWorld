@@ -8,7 +8,9 @@ package biggestxuan.emcworld.api.item.equipment.dagger;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
-import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.IEMCInfuserItem;
+import biggestxuan.emcworld.api.item.ISecondEMCItem;
+import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
@@ -26,7 +28,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IEMCGodWeaponLevel,IUpgradeableItem {
     public BaseEMCGodDagger() {
         super(EMCWorldAPI.getInstance().getDaggerTier("god"));
     }
@@ -104,5 +106,10 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         if(level <= 14) return Rarity.UNCOMMON;
         if(level <= 20) return Rarity.RARE;
         return Rarity.EPIC;
+    }
+
+    @Override
+    public int getWeightRequired(ItemStack stack){
+        return super.lv(stack);
     }
 }

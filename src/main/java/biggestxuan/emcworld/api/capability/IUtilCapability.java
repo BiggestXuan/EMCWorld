@@ -123,4 +123,8 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     boolean isLastShield();
 
     void setLastShield(boolean value);
+
+    int gaiaPlayer();
+
+    void setGaiaPlayer(int amt);
 }

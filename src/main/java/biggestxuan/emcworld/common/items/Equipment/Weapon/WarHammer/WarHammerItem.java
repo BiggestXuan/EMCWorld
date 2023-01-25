@@ -73,7 +73,7 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon, IUp
 
     @Override
     public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 2.6);
+        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 3.2);
     }
 
     @Override
@@ -94,5 +94,9 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon, IUp
     @Override
     public float getAdditionsDamage(ItemStack stack) {
         return (float) (tier.getAttackDamageBonus() * 0.13 * getLevel(stack));
+    }
+
+    protected int lv(ItemStack stack){
+        return IUpgradeableWeapon.super.getWeightRequired(stack);
     }
 }

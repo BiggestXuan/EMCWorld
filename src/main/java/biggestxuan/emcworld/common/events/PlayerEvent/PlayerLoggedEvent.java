@@ -65,7 +65,7 @@ public class PlayerLoggedEvent {
         }
         if(level < 2 && player instanceof ServerPlayerEntity && !server.usesAuthentication()){
             ServerPlayerEntity player1 = (ServerPlayerEntity) player;
-            //player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
+            player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
         }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);

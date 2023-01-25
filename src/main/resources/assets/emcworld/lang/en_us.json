@@ -702,11 +702,12 @@
   "death.attack.emcworld.really.player": "%d 被强大的质能力量打击了",
   "sound.emcworld.cxk_death": "练习生：死亡",
 
-  "key.category.emcworld": "EMCWorld | 键位控制",
+  "key.category.emcworld": "EMCWorld | Key Control",
   "key.emcworld.admin": "打开管理员面板",
   "key.emcworld.speed": "套装速度控制",
   "key.emcworld.arcana": "显示魔力条",
   "key.emcworld.last_shield": "Switch Last Shield Mode",
+  "key.emcworld.range_attack": "Switch Range Attack Mode",
 
   "iris.shaders.disabled": "光影已禁用",
 
@@ -780,7 +781,7 @@
   "tooltip.emcworld.nuclear_ball": "使防辐射和 Meka 套装可以抵挡 %d Sv/h及以下的辐射",
   "tooltip.emcworld.nuclear_ball_all": "用于抵挡所有辐射",
   "tooltip.emcworld.nuclear_ball_time": "§2还能使用 %d §2秒",
-  "tooltip.emcworld.modpack": "整合包联动： %d",
+  "tooltip.emcworld.modpack": "[整合包联动] - %d",
   "tooltip.emcworld.chaos_sword": "§o§8无序的有序",
   "tooltip.emcworld.voucher": "§2仅用于售卖获得 EMC",
   "tooltip.emcworld.lucky_item": "§6提高武器强化概率 %d §6倍",

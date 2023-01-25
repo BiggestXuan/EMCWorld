@@ -119,6 +119,7 @@ public class ItemToolTipEvent {
         if(stack.getItem() instanceof StaffItem){
             StaffItem i_s = (StaffItem) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",String.format("%.2f",i_s.getBaseDamage(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(StaffItem.getMode(stack).getName())));
         }
         if(stack.getItem() instanceof BaseEMCGodWeapon){
             BaseEMCGodWeapon i_q = (BaseEMCGodWeapon) stack.getItem();

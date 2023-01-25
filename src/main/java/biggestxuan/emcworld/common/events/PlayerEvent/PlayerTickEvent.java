@@ -59,6 +59,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import vazkii.botania.common.entity.EntityDoppleganger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,6 +139,13 @@ public class PlayerTickEvent {
             Arcana arcana = player.getCapability(ArcanaCapability.CAPABILITY_ARCANA).orElseThrow(NullPointerException::new);
             util.setMaxArcana(arcana.getMaxArcana());
             util.setArcana(arcana.getArcana());
+            List<EntityDoppleganger> gaias = player.level.getEntitiesOfClass(EntityDoppleganger.class,MathUtils.expandAABB(player.blockPosition(),16));
+            if(gaias.size() >= 1){
+                EntityDoppleganger gaia = gaias.get(0);
+                if(gaia != null){
+                    util.setGaiaPlayer(gaia.getPlayersAround().size());
+                }
+            }
         }
         util.setSHDifficulty(DifficultyHelper.getPlayerDifficulty(player));
         float extraSpeed = Math.min(util.getSpeed(),getPlayerMaxSpeed(player));

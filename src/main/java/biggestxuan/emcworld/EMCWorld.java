@@ -7,10 +7,7 @@ package biggestxuan.emcworld;
  */
 
 import biggestxuan.emcworld.client.event.ClientTickEvent;
-import biggestxuan.emcworld.client.key.Admin;
-import biggestxuan.emcworld.client.key.ArcanaDisplay;
-import biggestxuan.emcworld.client.key.LastShield;
-import biggestxuan.emcworld.client.key.SpeedControl;
+import biggestxuan.emcworld.client.key.*;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
@@ -55,7 +52,7 @@ public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 4;
-    public static final String PackVersion = "0.4.0 - Pre2";
+    public static final String PackVersion = "0.4.0 - Pre3";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -121,6 +118,7 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
             ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
             ClientRegistry.registerKeyBinding(LastShield.Last_Shield);
+            ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
     }

@@ -83,7 +83,7 @@ public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpg
 
     @Override
     public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 1.8);
+        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 2.5);
     }
 
     @Override
@@ -99,5 +99,9 @@ public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpg
     @Override
     public double getAttackRange(ItemStack stack) {
         return 0;
+    }
+
+    protected int lv(ItemStack stack){
+        return IUpgradeableWeapon.super.getWeightRequired(stack);
     }
 }

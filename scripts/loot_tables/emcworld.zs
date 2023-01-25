@@ -5,7 +5,9 @@ import mods.emcworld.math;
 public function tweakerBotania() as void{
     var ei = <item:extendedcrafting:ender_ingot>;
     var eei = <item:botania:elementium_ingot>;
+    var iss = <item:mekanism:ingot_steel>;
     var name as string = "botania:gaia_guardian_2";
+    var bn as string = "botania:gaia_guardian";
     var ii as IItemStack[] = [
         <item:mythicbotany:asgard_rune>,
         <item:mythicbotany:vanaheim_rune>,
@@ -30,6 +32,14 @@ public function tweakerBotania() as void{
         modifyLootTable(i*2,0.2f,getRL(name));
         modifyLootTable(i*1,0.15f,getRL(name));
     }
+    modifyLootTable(iss,0.45f,getRL(bn));
+    modifyLootTable(iss*2,0.4f,getRL(bn));
+    modifyLootTable(iss*3,0.3f,getRL(bn));
+    modifyLootTable(iss*4,0.25f,getRL(bn));
+    modifyLootTable(iss*5,0.2f,getRL(bn));
+    modifyLootTable(iss*6,0.15f,getRL(bn));
+    modifyLootTable(iss*7,0.1f,getRL(bn));
+    modifyLootTable(iss*8,0.05f,getRL(bn));
     modifyLootTable(<item:emcworld:base_emc_stored_totem>.withDamage(math.getRangeRandom(0,50000)),1f,getRL(name));
 }
 

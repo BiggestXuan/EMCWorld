@@ -78,7 +78,8 @@ public function modifyBotaniaRecipe() as void{
         [eb,<item:botania:terrasteel_block>,eb],
         [eb,<item:botania:dragonstone_block>,eb]
     ],<item:mythicbotany:mana_infuser>);
-    removeManaInfusionRecipe([<item:mythicbotany:gjallar_horn_empty>]);
+    removeManaInfusionRecipe([<item:mythicbotany:gjallar_horn_empty>,<item:botania:manasteel_block>]);
+    manaInfusionRecipe(<item:mekanism:block_steel>,<item:botania:manasteel_block>,5000);
     terraPlateRecipe([r[2],r[3],r[4],r[5],r[6],r[7],r[8],<item:botania:horn_grass>],<item:mythicbotany:gjallar_horn_empty>,1000000);
     modifyShapedRecipe([
         [a,mg,a],

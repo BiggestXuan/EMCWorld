@@ -25,6 +25,6 @@ public abstract class MinecraftMixin {
             at = @At(value = "INVOKE",target = "Lorg/apache/logging/log4j/Logger;error(Ljava/lang/String;Ljava/lang/Throwable;)V",remap = false))
     public void createSocialInteractions(YggdrasilAuthenticationService p_244735_1_, GameConfiguration p_244735_2_, CallbackInfoReturnable<SocialInteractionsService> cir){
         EMCWorld.isOffline = true;
-        //Minecraft.crash(new CrashReport("\u8bf7\u4f7f\u7528\u6b63\u7248\u767b\u5f55\uff01",new EMCWorldNotFinalException("\u56e0\u4e3a\u6574\u5408\u5305\u672a\u5b8c\u5de5\uff0c\u4ec5\u9650\u5185\u6d4b\u73a9\u5bb6\u8fdb\u5165\u3002\u5f3a\u5236\u6b63\u7248\u9a8c\u8bc1\u4e3a\u4e86\u9a8c\u8bc1\u60a8\u7684\u6743\u9650\u3002")));
+        Minecraft.crash(new CrashReport("\u8bf7\u4f7f\u7528\u6b63\u7248\u767b\u5f55\uff01",new EMCWorldNotFinalException("\u56e0\u4e3a\u6574\u5408\u5305\u672a\u5b8c\u5de5\uff0c\u4ec5\u9650\u5185\u6d4b\u73a9\u5bb6\u8fdb\u5165\u3002\u5f3a\u5236\u6b63\u7248\u9a8c\u8bc1\u4e3a\u4e86\u9a8c\u8bc1\u60a8\u7684\u6743\u9650\u3002")));
     }
 }

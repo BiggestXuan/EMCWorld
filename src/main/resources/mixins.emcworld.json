@@ -32,7 +32,8 @@
   "client": [
     "MinecraftMixin",
     "MinecraftWindowMixin",
-    "RatsPlagueMixin"
+    "RatsPlagueMixin",
+    "GaiaClientMixin"
   ],
   "server": [],
   "injectors": {

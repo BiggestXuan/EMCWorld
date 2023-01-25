@@ -21,9 +21,9 @@ public class RegisterModel {
     public static void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.biggest_xuan, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.tulye, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.chiyuanovo, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.chiyuanovo, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.dctor_0415, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.depair_anwu, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.depair_anwu, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.jaoxaono, AtumBipedRender::new);
         //RenderingRegistry.registerEntityRenderingHandler(EWEntities.juefei, AtumBipedRender::new);
         //RenderingRegistry.registerEntityRenderingHandler(EWEntities.maplefung, AtumBipedRender::new);
@@ -32,10 +32,10 @@ public class RegisterModel {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.xiangshushumiao, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.xk9940, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.xy177, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.abunana, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.alfie_zh, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.abunana, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.alfie_zh, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.btmy, AtumBipedRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EWEntities.cxk, AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.cxk, AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.dytlj7788,AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.lamb_kisara,AtumBipedRender::new);
     }

@@ -21,11 +21,13 @@ public class main {
             System.out.println(weight);
         }*/
         //System.out.println(UUID.randomUUID());
-        System.out.println(getRangeRandom(100,300));
-        System.out.println(getRangeRandom(300,100));
-        System.out.println(getRangeRandom(-300,100));
-        System.out.println(getRangeRandom(100,100));
-        System.out.println(getRangeRandom(1100,-555));
+        for (int i = 0; i < 10; i++) {
+            int weight = 10;
+            for (int j = 0; j < i; j++) {
+                weight = (int) (1.7f * weight);
+            }
+            System.out.println("level"+i+"->"+weight*2);
+        }
     }
 }
 

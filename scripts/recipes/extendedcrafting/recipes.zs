@@ -30,14 +30,17 @@ public function modifyExtendedCraftingRecipe() as void{
     var fr = <item:extendedcrafting:frame>;
     var ei = <item:thermal:electrum_ingot>;
     var et = <item:extendedcrafting:elite_table>;
-    var eec = <item:extendedcrafting:elite_catalyst>;
+    var eec = cc4;
     var at = <item:extendedcrafting:advanced_table>;
     removeRecipe([et]);
+    modifyShapelessRecipe([
+        <item:extendedcrafting:black_iron_slate>,lm,<item:minecraft:diamond_block>,<item:minecraft:diamond_block>
+    ],c4);
     extendedCraftingShapedRecipe([
         [a,a,a,a,a],
         [a,c4,cc4,c4,a],
-        [a,ct,<item:mekanism:pellet_antimatter>,ct,a],
-        [a,c4,<item:mekanism:sps_port>,c4,a],
+        [a,ct,<item:minecraft:netherite_ingot>,ct,a],
+        [a,c4,<item:minecraft:nether_star>,c4,a],
         [a,a,a,a,a]
     ],et,2);
     modifyShapedRecipe([
@@ -52,7 +55,7 @@ public function modifyExtendedCraftingRecipe() as void{
     ],fr);
     modifyShapedRecipe([
         [si,ec,si],
-        [ec,<item:mekanism:pellet_antimatter>,ec],
+        [ec,<item:naturesaura:sky_ingot>,ec],
         [si,ec,si]
     ],eec);
     removeCraftRecipe([

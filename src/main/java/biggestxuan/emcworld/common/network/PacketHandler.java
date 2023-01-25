@@ -71,6 +71,13 @@ public class PacketHandler {
                 LastShieldPacket::decode,
                 LastShieldPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                RangeAttackKeyPacket.class,
+                RangeAttackKeyPacket::encode,
+                RangeAttackKeyPacket::decode,
+                RangeAttackKeyPacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

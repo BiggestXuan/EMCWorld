@@ -98,7 +98,7 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
         int l = getLevel(stack);
         int weight = 10;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.46f * weight);
+            weight = (int) (1.65f * weight);
         }
         return (int) (weight * 1.25);
     }

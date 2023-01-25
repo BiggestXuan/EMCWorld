@@ -10,6 +10,6 @@ import biggestxuan.emcworld.api.item.base.BaseModPackItem;
 
 public class Voucher extends BaseModPackItem {
     public Voucher(){
-        super("Hydrogen Skyblock","tooltip.emcworld.voucher");
+        super("\u6c22\u91cf\u7a7a\u5c9b (Hydrogen Skyblock)",null);
     }
 }

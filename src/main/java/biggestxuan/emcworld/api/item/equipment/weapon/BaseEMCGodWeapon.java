@@ -57,6 +57,16 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         this.color = color;
     }
 
+    @Override
+    public int getWeightRequired(ItemStack stack){
+        int l = getLevel(stack);
+        int weight = 10;
+        for (int i = 0; i < l; i++) {
+            weight = (int) (1.42f * weight);
+        }
+        return weight;
+    }
+
     @ZenCodeType.Method
     public static int getWeaponMaxLevel(){
         IUpgradeableWeapon item = (IUpgradeableWeapon) EWItems.FIRE_SWORD.get();

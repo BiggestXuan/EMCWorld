@@ -29,7 +29,7 @@ public class LastShieldPacket {
 
     public static void handle(LastShieldPacket msg, Supplier<NetworkEvent.Context> context) {
         context.get().enqueueWork(()-> {
-            boolean flag = false;
+            boolean flag = true;
             boolean showMessage = true;
             ServerPlayerEntity player = context.get().getSender();
             if(player != null){
@@ -44,10 +44,10 @@ public class LastShieldPacket {
                                     cap.setLastShield(false);
                                 }
                                 showMessage = false;
+                                flag = false;
                                 break;
                             }
-                        }
-                        flag = true;
+                        }else flag = false;
                     }
                 }
                 if(flag){

@@ -210,9 +210,6 @@ public function modifyMEKRecipe() as void{
         [<item:stalwart_dungeons:awful_gun>,<item:cataclysm:ignitium_ingot>,<item:mekanism:ultimate_chemical_tank>]
     ],<item:mekanism:flamethrower>);
     removeRecipe([ad,dm]);
-    modifyShapelessRecipe([
-        <item:extendedcrafting:black_iron_slate>,pp2,pp,pp
-    ],<item:extendedcrafting:elite_component>);
     extendedCraftingShapedRecipe([
 	    [wa, cho, cho, cei, cei, cei, <item:gobber2:gobber2_paxel_end>.withTag({Damage: 0 as int})], 
 	    [a, a, a, a, uic , <item:mekanism:pellet_antimatter>, cei], 

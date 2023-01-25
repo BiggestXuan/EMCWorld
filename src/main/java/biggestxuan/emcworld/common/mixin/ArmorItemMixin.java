@@ -52,7 +52,7 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableMateria
         int l = getLevel(stack);
         int weight = 15;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.465f * weight);
+            weight = (int) (1.58f * weight);
         }
         return (int) (weight * 1.75);
     }

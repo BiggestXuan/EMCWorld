@@ -23,7 +23,7 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
         super(new IItemTier() {
             @Override
             public int getUses() {
-                return 1919810;
+                return 20000000;
             }
 
             @Override
@@ -33,7 +33,7 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
 
             @Override
             public float getAttackDamageBonus() {
-                return 114513;
+                return 888887;
             }
 
             @Override

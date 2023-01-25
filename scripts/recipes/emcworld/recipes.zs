@@ -21,6 +21,7 @@ public function emcworldRecipe() as void{
     var sr = <item:emcworld:scroll_red>;
     var ra = <item:good_nights_sleep:rainbow_ingot>;
     var gi = <item:minecraft:gold_ingot>;
+    var bgi = <item:botania:gaia_ingot>;
     var ws = <item:emcworld:scroll_white>;
     var bge = <item:emcworld:biggest_emc_gem>;
     var um = <item:emcworld:unreal_metal>;
@@ -541,6 +542,12 @@ public function emcworldRecipe() as void{
             <item:allthemodium:unobtainium_ingot>
         ]
     ];
+    var gaia_item as IItemStack[]=[
+        <item:emcworld:gaia_sword>,
+        <item:emcworld:gaia_staff>,
+        <item:emcworld:gaia_warhammer>,
+        <item:emcworld:gaia_dagger>
+    ];
     var staff_item as IItemStack[][]=[
         [
             <item:minecraft:oak_planks>,
@@ -571,6 +578,10 @@ public function emcworldRecipe() as void{
             <item:emcworld:diamond_dagger>
         ]
     ];
+    for i in 1 .. 4{
+        smithingRecipe(staff_item[i][4],bgi,gaia_item[i]);
+    }
+    smithingRecipe(<item:minecraft:diamond_sword>,bgi,gaia_item[0]);
     for i in 0 .. 5{
         staffRecipe(staff_item[0][i],staff_item[1][i]);
         warHammer(staff_item[0][i],staff_item[2][i]);
@@ -603,6 +614,11 @@ public function emcworldRecipe() as void{
     treeRitualRecipe([
         bx,bx,bx,bx
     ],bx,bx*3); // end
+    addCraftShapedRecipeNoName([
+        [dm,dm,dm],
+        [dm,rm,dm],
+        [dm,dm,dm]
+    ],<item:emcworld:emc_shield_supply>.withTag({emc_shield_speed: 4.0 as float, emc_shield: 0.0 as float, emc_maxShield: 30.0 as float}));
     pink(<item:projectex:magenta_collector>,<item:projectex:pink_collector>);
     pink(<item:projectex:magenta_relay>,<item:projectex:pink_relay>);
     infuserRecipe([sp,sp,sp,sp,sp],sr,6000,1500000,3);

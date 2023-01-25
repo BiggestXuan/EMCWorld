@@ -23,7 +23,7 @@ public function modifyNatureAuraRecipe() as void{
         gf,gp,<item:naturesaura:wood_stand>,gb,gnb,<item:naturesaura:offering_table>,cs
     ]);
     removeOfferingRecipe([si]);
-    natureAltarRecipe(ti,ii,1,100000);
+    natureAltarRecipe(<item:emcworld:chlorophyte_ingot>,ii,1,100000);
     natureAltarRecipe(fi,tg,1,100000);
     offeringRecipe(<item:astralsorcery:starmetal_ingot>,cs,si*2);
     astralInfusionRecipe(<item:hem:blueleaf_leaves>,gf*4);
@@ -71,7 +71,7 @@ public function modifyNatureAuraRecipe() as void{
     .execute();
     alchemalTableRecipe([
         <item:botania:life_essence>*2,
-        <item:naturesaura:infused_iron>,
+        ii,
         <item:naturesaura:tainted_gold>,
         <item:bloodmagic:defaultcrystal>
     ],cs,20000,4);

@@ -38,7 +38,7 @@
 					id: "2B3D6571107B5D70"
 					type: "custom"
 					title: "{reward.emcworld.normal}"
-					icon: "emcworld:emc_gem"
+					icon: "emcworld:big_emc_gem"
 					tags: ["normal"]
 				}
 			]
@@ -164,7 +164,7 @@
 				id: "6902034492C84BF8"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -189,7 +189,7 @@
 				id: "6BDDE656A7FE142A"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -220,7 +220,7 @@
 				id: "2AC779C68FCCE1A3"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -245,7 +245,7 @@
 				id: "6846E7AA85C14491"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}

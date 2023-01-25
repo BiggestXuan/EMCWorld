@@ -86,7 +86,7 @@
 				id: "56E9E4D585FC7FF1"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -105,7 +105,7 @@
 				id: "4C02764DE13D1F13"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -124,7 +124,7 @@
 				id: "2262F91BECE06DBE"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -143,7 +143,7 @@
 				id: "5AF64989DF535583"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -170,7 +170,7 @@
 				id: "1A226306BA44F632"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -196,7 +196,7 @@
 				id: "772ABE2F7A2E741A"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -222,7 +222,7 @@
 				id: "686D5F379975BB08"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}
@@ -248,7 +248,7 @@
 				id: "40CED14C45484AEF"
 				type: "custom"
 				title: "{reward.emcworld.normal}"
-				icon: "emcworld:emc_gem"
+				icon: "emcworld:big_emc_gem"
 				tags: ["normal"]
 			}]
 		}

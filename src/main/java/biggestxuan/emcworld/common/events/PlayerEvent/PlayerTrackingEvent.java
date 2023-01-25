@@ -27,7 +27,7 @@ public class PlayerTrackingEvent {
                     cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
             )));
             event.player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
-                    cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield()
+                    cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer()
             )));
         }
     }

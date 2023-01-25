@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import twilightforest.entity.boss.LichEntity;
 
 import java.util.List;
 
@@ -27,12 +28,12 @@ import java.util.List;
 public class LivingJoinWorldEvent {
     @SubscribeEvent
     public static void livingJoinWorldEvent(EntityJoinWorldEvent event){
-        if(event.getEntity().level.isClientSide ||event.getEntity() == null) return;
+        if(event.getEntity().level.isClientSide || event.getEntity() == null) return;
         if(event.getEntity() instanceof Tulye){
             Tulye e = (Tulye) event.getEntity();
             e.addEffect(new EffectInstance(Effects.INVISIBILITY,600,0));
         }
-        if(event.getEntity() instanceof LivingEntity){
+        if(event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof LichEntity)){
             LivingEntity livingEntity = (LivingEntity) event.getEntity();
             if(livingEntity.getLootTable().getNamespace().equals("divinerpg") && livingEntity.level.dimension().equals(World.OVERWORLD)){
                 AxisAlignedBB aabb = MathUtils.expandAABB(livingEntity.position(),64);

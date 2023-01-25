@@ -37,6 +37,7 @@ public class ClientHandler {
                 cap.setShield(pack.getShield());
                 cap.setMaxShield(pack.getMaxShield());
                 cap.setLastShield(pack.isLastShield());
+                cap.setGaiaPlayer(pack.getGaiaPlayer());
             });
         }
     }
