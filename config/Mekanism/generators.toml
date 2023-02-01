@@ -28,9 +28,9 @@
 		#The number of blades on each turbine coil per blade applied.
 		turbineBladesPerCoil = 4
 		#The rate at which steam is vented into the turbine.
-		turbineVentGasFlow = 3200000.0
+		turbineVentGasFlow = 640000.0
 		#The rate at which steam is dispersed into the turbine.
-		turbineDisperserGasFlow = 128000.0
+		turbineDisperserGasFlow = 25600.0
 		#The rate at which steam is condensed in the turbine.
 		condenserRate = 6400000
 

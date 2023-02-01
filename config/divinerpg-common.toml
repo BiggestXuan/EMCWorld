@@ -14,7 +14,7 @@
 		#Range: 1 ~ 10000
 		maxArcana = 200
 		#Enable welcome messages
-		welcomeMessage = true
+		welcomeMessage = false
 		#Hide Arcana bar unless depleted
 		hideArcanaBar = true
 

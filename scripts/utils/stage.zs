@@ -110,36 +110,36 @@ public class sitem{
         ];
     }
 
-    public getS1() as ItemStack[]{
-        return [
-            c[1],
-            r[1],
-            <item:mekanism:advanced_control_circuit>,
-            <item:mekanism:elite_control_circuit>,
-            <item:mekanism:boiler_casing>,
-            <item:mekanism:boiler_valve>,
-            <item:mekanismgenerators:turbine_blade>,
-            <item:mekanismgenerators:turbine_rotor>,
-            <item:mekanismgenerators:turbine_casing>,
-            <item:mekanismgenerators:turbine_valve>,
-            <item:mekanismgenerators:turbine_vent>,
-            <item:mekanism:thermal_evaporation_controller>,
-            <item:mekanism:thermal_evaporation_valve>,
-            <item:mekanism:thermal_evaporation_block>,
-            <item:mekanism:qio_drive_array>,
-            <item:mekanism:portable_qio_dashboard>,
-            <item:mekanism:qio_drive_base>,
-            <item:mekanism:qio_dashboard>,
-            <item:mekanism:qio_importer>,
-            <item:mekanism:qio_redstone_adapter>,
-            <item:mekanism:qio_exporter>,
-            <item:mekanism:reprocessed_fissile_fragment>,
-            <item:mekanismgenerators:fission_reactor_casing>,
-            <item:mekanismgenerators:fission_reactor_port>,
-            <item:mekanismgenerators:fission_reactor_logic_adapter>,
-            <item:mekanismgenerators:fission_fuel_assembly>,
-            <item:mekanismgenerators:rotational_complex>,
-            <item:mekanism:pressure_disperser>
-        ];
-    }
+    public getS1() as ItemStack[] => 
+    [
+        c[1],
+        r[1],
+        <item:mekanism:advanced_control_circuit>,
+        <item:mekanism:elite_control_circuit>,
+        <item:mekanism:boiler_casing>,
+        <item:mekanism:boiler_valve>,
+        <item:mekanismgenerators:turbine_blade>,
+        <item:mekanismgenerators:turbine_rotor>,
+        <item:mekanismgenerators:turbine_casing>,
+        <item:mekanismgenerators:turbine_valve>,
+        <item:mekanismgenerators:turbine_vent>,
+        <item:mekanism:thermal_evaporation_controller>,
+        <item:mekanism:thermal_evaporation_valve>,
+        <item:mekanism:thermal_evaporation_block>,
+        <item:mekanism:qio_drive_array>,
+        <item:mekanism:portable_qio_dashboard>,
+        <item:mekanism:qio_drive_base>,
+        <item:mekanism:qio_dashboard>,
+        <item:mekanism:qio_importer>,
+        <item:mekanism:qio_redstone_adapter>,
+        <item:mekanism:qio_exporter>,
+        <item:mekanism:reprocessed_fissile_fragment>,
+        <item:mekanismgenerators:fission_reactor_casing>,
+        <item:mekanismgenerators:fission_reactor_port>,
+        <item:mekanismgenerators:fission_reactor_logic_adapter>,
+        <item:mekanismgenerators:fission_fuel_assembly>,
+        <item:mekanismgenerators:rotational_complex>,
+        <item:mekanism:pressure_disperser>
+    ];
+    
 }

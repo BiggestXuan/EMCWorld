@@ -27,10 +27,6 @@ public function modifyAtlantisRecipe() as void{
         <item:mekanism:teleportation_core>,
         <item:emcworld:cold_ingot>
     ],<item:atlantis:orb_of_atlantis>,200000);
-    runeAltarRecipe([
-        <item:atlantis:orb_of_atlantis>,
-        <item:botania:life_essence>
-    ],<item:atlantis:orb_of_atlantis>*2,100000);
     var list as string[]=[];
     <recipetype:botania:pure_daisy>.addRecipe("sea_lantern",<blockstate:atlantis:atlantean_core>,<block:atlantis:ocean_lantern>,70 * getAdditionCost());
 }

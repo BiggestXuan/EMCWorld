@@ -118,28 +118,28 @@ public function emcworldRecipe() as void{
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:silver" as string})
     ;
     var bases as IIngredient =
-        <item:emcworld:god_ice_sword>.withTag({level: 14 as int})|
-        <item:emcworld:god_fire_sword>.withTag({level: 14 as int})|
-        <item:emcworld:god_nature_sword>.withTag({level: 14 as int})|
-        <item:emcworld:god_null_sword>.withTag({level: 14 as int})|
-        <item:emcworld:purple_staff>.withTag({level: 14 as int})|
-        <item:emcworld:nature_staff>.withTag({level: 14 as int})|
-        <item:emcworld:creation>.withTag({level: 14 as int})|
-        <item:emcworld:super_star>.withTag({level: 14 as int})|
-        <item:emcworld:night_light>.withTag({level: 14 as int})|
-        <item:emcworld:red_green_dagger>.withTag({level: 14 as int})
+        <item:emcworld:god_ice_sword>.withLevel(14)|
+        <item:emcworld:god_fire_sword>.withLevel(14)|
+        <item:emcworld:god_nature_sword>.withLevel(14)|
+        <item:emcworld:god_null_sword>.withLevel(14)|
+        <item:emcworld:purple_staff>.withLevel(14)|
+        <item:emcworld:nature_staff>.withLevel(14)|
+        <item:emcworld:creation>.withLevel(14)|
+        <item:emcworld:super_star>.withLevel(14)|
+        <item:emcworld:night_light>.withLevel(14)|
+        <item:emcworld:red_green_dagger>.withLevel(14)
     ;
     var adss as IIngredient = 
-        <item:emcworld:god_ice_sword>.withTag({level: 20 as int})|
-        <item:emcworld:god_fire_sword>.withTag({level: 20 as int})|
-        <item:emcworld:god_nature_sword>.withTag({level: 20 as int})|
-        <item:emcworld:god_null_sword>.withTag({level: 20 as int})|
-        <item:emcworld:purple_staff>.withTag({level: 20 as int})|
-        <item:emcworld:nature_staff>.withTag({level: 20 as int})|
-        <item:emcworld:creation>.withTag({level: 20 as int})|
-        <item:emcworld:super_star>.withTag({level: 20 as int})|
-        <item:emcworld:night_light>.withTag({level: 20 as int})|
-        <item:emcworld:red_green_dagger>.withTag({level: 20 as int})
+        <item:emcworld:god_ice_sword>.withLevel(20)|
+        <item:emcworld:god_fire_sword>.withLevel(20)|
+        <item:emcworld:god_nature_sword>.withLevel(20)|
+        <item:emcworld:god_null_sword>.withLevel(20)|
+        <item:emcworld:purple_staff>.withLevel(20)|
+        <item:emcworld:nature_staff>.withLevel(20)|
+        <item:emcworld:creation>.withLevel(20)|
+        <item:emcworld:super_star>.withLevel(20)|
+        <item:emcworld:night_light>.withLevel(20)|
+        <item:emcworld:red_green_dagger>.withLevel(20)
     ;
     var con as IItemStack[][] = [
         [
@@ -184,16 +184,16 @@ public function emcworldRecipe() as void{
         ]
     ];
     var epss as IIngredient = 
-        <item:emcworld:god_ice_sword>.withTag({level: 24 as int})|
-        <item:emcworld:god_fire_sword>.withTag({level: 24 as int})|
-        <item:emcworld:god_nature_sword>.withTag({level: 24 as int})|
-        <item:emcworld:god_null_sword>.withTag({level: 24 as int})|
-        <item:emcworld:purple_staff>.withTag({level: 24 as int})|
-        <item:emcworld:nature_staff>.withTag({level: 24 as int})|
-        <item:emcworld:creation>.withTag({level: 24 as int})|
-        <item:emcworld:super_star>.withTag({level: 24 as int})|
-        <item:emcworld:night_light>.withTag({level: 24 as int})|
-        <item:emcworld:red_green_dagger>.withTag({level: 24 as int})
+        <item:emcworld:god_ice_sword>.withMax()|
+        <item:emcworld:god_fire_sword>.withMax()|
+        <item:emcworld:god_nature_sword>.withMax()|
+        <item:emcworld:god_null_sword>.withMax()|
+        <item:emcworld:purple_staff>.withMax()|
+        <item:emcworld:nature_staff>.withMax()|
+        <item:emcworld:creation>.withMax()|
+        <item:emcworld:super_star>.withMax()|
+        <item:emcworld:night_light>.withMax()|
+        <item:emcworld:red_green_dagger>.withMax()
     ;
     var amo as int[]=[
         1500,2000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,1500
@@ -616,7 +616,7 @@ public function emcworldRecipe() as void{
     ],bx,bx*3); // end
     addCraftShapedRecipeNoName([
         [dm,dm,dm],
-        [dm,rm,dm],
+        [dm,<item:emcworld:god_steel_ingot>,dm],
         [dm,dm,dm]
     ],<item:emcworld:emc_shield_supply>.withTag({emc_shield_speed: 4.0 as float, emc_shield: 0.0 as float, emc_maxShield: 30.0 as float}));
     pink(<item:projectex:magenta_collector>,<item:projectex:pink_collector>);
@@ -666,7 +666,7 @@ public function emcworldRecipe() as void{
     infuserRecipe([
         <item:astralsorcery:starmetal_ingot>,
         <item:astralsorcery:infused_crystal_sword>,
-        <item:mekanism:pellet_antimatter>,
+        <item:mekanism:pellet_polonium>|<item:mekanism:pellet_plutonium>,
         <item:mekanism:ingot_refined_obsidian>,
         <item:quark:rainbow_rune>
     ],<item:emcworld:purple_staff>,30000,1000000,2);

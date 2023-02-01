@@ -1,0 +1,20 @@
+{
+	id: "7B5AF7C6379B2BDF"
+	order_index: 10
+	title: "{sheet.emcworld.template}"
+	icon: "divinerpg:disk_template"
+	loot_size: 1
+	rewards: [
+		{ item: "divinerpg:staff_template" }
+		{ item: "divinerpg:backsword_template" }
+		{ item: "divinerpg:cannon_template" }
+		{ item: "divinerpg:bow_template" }
+		{ item: "divinerpg:claw_template" }
+		{ item: "divinerpg:hammer_template" }
+		{ item: "divinerpg:disk_template" }
+		{ item: "divinerpg:degraded_template" }
+		{ item: "divinerpg:glistening_template" }
+		{ item: "divinerpg:tormented_template" }
+		{ item: "divinerpg:demonized_template" }
+	]
+}

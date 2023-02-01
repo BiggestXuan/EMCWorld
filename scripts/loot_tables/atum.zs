@@ -33,7 +33,9 @@ public function tweakerAtumLootTable() as void{
     var cm = <item:emcworld:copper_medal>;
     var nb = <item:atum:nebu_ingot>;
     for i in name{
-        modifyLootTable(cm,0.07f,getRL(i));
+        modifyLootTable(cm*3,0.06f,getRL(i));
+        modifyLootTable(cm*2,0.1f,getRL(i));
+        modifyLootTable(cm,0.15f,getRL(i));
         modifyLootTable(nb*1,0.1f,getRL(i));
         modifyLootTable(nb*2,0.08f,getRL(i));
         modifyLootTable(nb*3,0.04f,getRL(i));

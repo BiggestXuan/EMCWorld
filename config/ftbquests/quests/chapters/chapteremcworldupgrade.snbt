@@ -1,0 +1,361 @@
+{
+	id: "4ED7942600F4340C"
+	group: "082C00FA3A553D98"
+	order_index: 0
+	filename: "chapteremcworldupgrade"
+	title: "{chapter.emcworld.upgrade}"
+	icon: "emcworld:weapon_upgrade_core"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.villager_table}"
+			x: 0.5d
+			y: 0.0d
+			id: "54BA2C7A26837C77"
+			tasks: [
+				{
+					id: "5C4EF7DA51A6598A"
+					type: "observation"
+					title: "{quest.emcworld.find_villager}"
+					icon: "minecraft:emerald"
+					timer: 0L
+					observe_type: 5
+					to_observe: "minecraft:villager"
+				}
+				{
+					id: "61E304A4C25A2FBA"
+					type: "observation"
+					title: "{quest.emcworld.villager_work}"
+					icon: "projecte:transmutation_table"
+					timer: 0L
+					observe_type: 0
+					to_observe: "projecte:transmutation_table"
+				}
+			]
+			rewards: [{
+				id: "6B5CE97CFEB0C508"
+				type: "item"
+				team_reward: true
+				item: "minecraft:emerald"
+				count: 32
+			}]
+		}
+		{
+			title: "{quest.emcworld.hardcore_stone}"
+			x: 0.5d
+			y: -3.0d
+			description: ["{quest.emcworld.hardcore_stone_desc}"]
+			id: "5B9D5F0F49C0AFD0"
+			tasks: [{
+				id: "29814ACE332645D3"
+				type: "item"
+				item: "emcworld:hardcore_stone"
+			}]
+			rewards: [{
+				id: "3B85E49F9F737FB4"
+				type: "item"
+				item: "emcworld:hardcore_stone"
+				count: 8
+				random_bonus: 8
+			}]
+		}
+		{
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["54BA2C7A26837C77"]
+			id: "41DD157BBBBF8CCA"
+			tasks: [{
+				id: "2EC155CEE93B6DDD"
+				type: "item"
+				item: "emcworld:scroll_white"
+			}]
+			rewards: [{
+				id: "4A56CC15AB487EB4"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_white"
+				count: 16
+			}]
+		}
+		{
+			x: 5.5d
+			y: 0.0d
+			dependencies: ["41DD157BBBBF8CCA"]
+			id: "3CEA432641E2E08D"
+			tasks: [{
+				id: "5343B56CBDBE6F60"
+				type: "item"
+				item: "emcworld:scroll_green"
+			}]
+			rewards: [{
+				id: "46D19AF12AF9DBC3"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_green"
+				count: 4
+			}]
+		}
+		{
+			x: 8.0d
+			y: 0.0d
+			dependencies: ["3CEA432641E2E08D"]
+			id: "09C4D5652B73F175"
+			tasks: [{
+				id: "5219A38BBE1DED64"
+				type: "item"
+				item: "emcworld:scroll_blue"
+			}]
+		}
+		{
+			x: 13.0d
+			y: 0.0d
+			dependencies: ["3BBB9F7FBECF4952"]
+			id: "7E319C3C0A6C921A"
+			tasks: [{
+				id: "02B67CCF27824DE0"
+				type: "item"
+				item: "emcworld:scroll_red"
+			}]
+			rewards: [{
+				id: "6EA74CABDBB02B71"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_red"
+				count: 2
+			}]
+		}
+		{
+			x: 10.5d
+			y: 0.0d
+			dependencies: ["09C4D5652B73F175"]
+			id: "3BBB9F7FBECF4952"
+			tasks: [{
+				id: "6E492D8543B7A1C0"
+				type: "item"
+				item: "emcworld:scroll_purple"
+			}]
+			rewards: [{
+				id: "6DBBA0282BCA6ECB"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_blue"
+				count: 3
+			}]
+		}
+		{
+			x: 15.5d
+			y: 0.0d
+			dependencies: ["7E319C3C0A6C921A"]
+			id: "6255A582FB88E88B"
+			tasks: [{
+				id: "558AC4EE49412300"
+				type: "item"
+				item: "emcworld:scroll_gold"
+			}]
+			rewards: [{
+				id: "5F453A36DAE3DD6F"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_gold"
+			}]
+		}
+		{
+			x: 3.0d
+			y: -3.0d
+			dependencies: [
+				"41DD157BBBBF8CCA"
+				"5B9D5F0F49C0AFD0"
+			]
+			id: "3C88A9AE577B17CC"
+			tasks: [{
+				id: "5B88DA789E70E77D"
+				type: "item"
+				item: "emcworld:weapon_upgrade_core"
+			}]
+		}
+		{
+			x: 3.0d
+			y: -5.5d
+			dependencies: ["78159BF30E46E0E8"]
+			id: "223AA3F67C09EEF5"
+			tasks: [{
+				id: "7546A3FDB2F571C9"
+				type: "item"
+				item: "emcworld:scroll_tulye"
+			}]
+			rewards: [{
+				id: "509A86BA61F68C16"
+				type: "item"
+				item: "emcworld:scroll_tulye"
+				count: 4
+			}]
+		}
+		{
+			x: 5.5d
+			y: -3.0d
+			dependencies: ["3C88A9AE577B17CC"]
+			id: "3F6F141B38EFC4F9"
+			tasks: [{
+				id: "01DBA2F457EE3CC2"
+				type: "item"
+				item: "emcworld:lucky_gem_blue"
+			}]
+			rewards: [{
+				id: "29D5AC61EE3DFB35"
+				type: "item"
+				team_reward: true
+				item: "emcworld:lucky_gem_blue"
+				count: 8
+			}]
+		}
+		{
+			x: 8.0d
+			y: -3.0d
+			dependencies: ["3F6F141B38EFC4F9"]
+			id: "07F52738F5794F25"
+			tasks: [{
+				id: "0291FC58994DD555"
+				type: "item"
+				item: "emcworld:lucky_gem_red"
+			}]
+			rewards: [{
+				id: "1AC3D7A302ADC3F0"
+				type: "item"
+				item: "emcworld:lucky_gem_red"
+				count: 4
+			}]
+		}
+		{
+			x: 10.5d
+			y: -3.0d
+			dependencies: ["07F52738F5794F25"]
+			id: "2CCBE659B6074F0E"
+			tasks: [{
+				id: "7695B3B94400AFC8"
+				type: "item"
+				item: "emcworld:lucky_gem_purple"
+			}]
+			rewards: [{
+				id: "4679BF4A0F79D4F2"
+				type: "item"
+				team_reward: true
+				item: "emcworld:lucky_gem_purple"
+				count: 2
+			}]
+		}
+		{
+			x: 13.0d
+			y: -3.0d
+			dependencies: ["2CCBE659B6074F0E"]
+			id: "3A77D827371686BD"
+			tasks: [{
+				id: "00E0CF8D7B2F3C95"
+				type: "item"
+				item: "emcworld:lucky_gem_gold"
+			}]
+			rewards: [{
+				id: "23E1B093198251BF"
+				type: "item"
+				team_reward: true
+				item: "emcworld:lucky_gem_gold"
+				count: 2
+			}]
+		}
+		{
+			x: 7.5d
+			y: -6.0d
+			dependencies: ["64162D6185D1A516"]
+			size: 3.0d
+			id: "3CBD98CE48A9B3B5"
+			tasks: [{
+				id: "4F0501016A4E33CD"
+				type: "item"
+				title: "{quest.emcworld.fourth_magic_god_weapon_item}"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:god_weapon"
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "673B9B346E476BA9"
+					type: "item"
+					item: "emcworld:scroll_white"
+					count: 16
+				}
+				{
+					id: "4CACA78600713056"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 3.0d
+			y: 2.5d
+			subtitle: "WIP"
+			dependencies: ["53CF388661F71ADF"]
+			id: "31C5C07F9F759B4C"
+			tasks: [{
+				id: "7388D57E28A3BC31"
+				type: "item"
+				item: "emcworld:gemstone_core"
+			}]
+		}
+		{
+			x: 5.5d
+			y: 2.5d
+			subtitle: "WIP"
+			dependencies: ["53CF388661F71ADF"]
+			id: "4BF8F12846C81FFE"
+			tasks: [{
+				id: "320815F2428CED3B"
+				type: "item"
+				item: "emcworld:blood_gemstone"
+			}]
+		}
+		{
+			x: 8.0d
+			y: 2.5d
+			subtitle: "WIP"
+			dependencies: ["53CF388661F71ADF"]
+			id: "69984CC318151F71"
+			tasks: [{
+				id: "5BE02E6F9ADBF4B8"
+				type: "item"
+				item: "emcworld:nature_gemstone"
+			}]
+		}
+		{
+			x: 10.5d
+			y: 2.5d
+			subtitle: "WIP"
+			dependencies: ["53CF388661F71ADF"]
+			id: "049B481BC4952FEE"
+			tasks: [{
+				id: "6FB39EB5E0A45B3B"
+				type: "item"
+				item: "emcworld:lake_gemstone"
+			}]
+		}
+		{
+			x: 13.0d
+			y: 2.5d
+			subtitle: "WIP"
+			dependencies: ["53CF388661F71ADF"]
+			id: "23CC3900ECC6CB62"
+			tasks: [{
+				id: "5B06A1A677AA640E"
+				type: "item"
+				item: "emcworld:abyss_gemstone"
+			}]
+		}
+	]
+}

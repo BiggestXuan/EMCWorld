@@ -25,7 +25,7 @@ public function getLootTableAddition(base as float) as float{
 
 public function addStage(items as ItemStack[],stage as string) as void{
     for i in items{
-        ItemStages.restrict(i.asIItemStack(),stage);
+        ItemStages.restrict(i.asIItemStack().anyDamage(),stage);
     }
 }
 

@@ -1,0 +1,445 @@
+{
+	id: "6CA6216C1CF0029D"
+	group: "082C00FA3A553D98"
+	order_index: 2
+	filename: "chapteremcworldor_nightmare"
+	title: "{chapter.emcworld.or_nightmare}"
+	icon: "divinerpg:arksiane_lump"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.or_nightmare_bed}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.or_nightmare_bed_desc}"]
+			id: "5F2896CD2A8F85C0"
+			tasks: [{
+				id: "487466CA8F54A5AA"
+				type: "item"
+				item: "divinerpg:nightmare_bed"
+			}]
+			rewards: [{
+				id: "3BEC11D853EA0519"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_goin}"
+			x: 6.0d
+			y: 0.0d
+			dependencies: ["5F2896CD2A8F85C0"]
+			id: "55F539B8351341DB"
+			tasks: [{
+				id: "53D912A7EA587C19"
+				type: "dimension"
+				dimension: "divinerpg:vethea"
+			}]
+			rewards: [
+				{
+					id: "5A8A435DEAA3B4D7"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "16E228F83B87CB8F"
+					type: "item"
+					item: "mekanism:qio_dashboard"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_zz1}"
+			x: 6.0d
+			y: 4.5d
+			dependencies: ["55F539B8351341DB"]
+			id: "0DB5FE6D77586257"
+			tasks: [{
+				id: "169309831784C41D"
+				type: "item"
+				item: "divinerpg:dirty_pearls"
+			}]
+			rewards: [
+				{
+					id: "5E3015CDC3214A82"
+					type: "item"
+					item: "divinerpg:dirty_pearls"
+					random_bonus: 31
+				}
+				{
+					id: "43122671E2203B48"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+				{
+					id: "5FA0427EB8A3815B"
+					type: "choice"
+					table_id: 8888689245277596639L
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_npc}"
+			icon: "divinerpg:the_hunger_spawn_egg"
+			x: 6.0d
+			y: -4.5d
+			dependencies: ["55F539B8351341DB"]
+			id: "05654AC34CB51D1D"
+			tasks: [{
+				id: "37C0B7EF628EBD35"
+				type: "observation"
+				icon: "divinerpg:the_hunger_spawn_egg"
+				timer: 0L
+				observe_type: 5
+				to_observe: "divinerpg:the_hunger"
+			}]
+			rewards: [
+				{
+					id: "1CCD8A8404F69197"
+					type: "choice"
+					table_id: 8888689245277596639L
+				}
+				{
+					id: "7A8C1E839AEC080F"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk11}"
+			x: 12.0d
+			y: 0.0d
+			dependencies: ["55F539B8351341DB"]
+			id: "582C80F6BECC8153"
+			tasks: [{
+				id: "4C58CC28BD5D105F"
+				type: "item"
+				item: "divinerpg:teaker_lump"
+			}]
+			rewards: [
+				{
+					id: "3382538A69DD836F"
+					type: "item"
+					item: "divinerpg:infusion_table"
+				}
+				{
+					id: "3BF9E228093AA0E3"
+					type: "item"
+					item: "divinerpg:teaker_lump"
+					random_bonus: 15
+				}
+				{
+					id: "16857C67B0EB7E31"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk12}"
+			x: 12.0d
+			y: -4.5d
+			dependencies: ["582C80F6BECC8153"]
+			id: "7D20EA5157FD6AEF"
+			tasks: [{
+				id: "7B8B7C215395A80B"
+				type: "item"
+				item: "divinerpg:amthirmis_lump"
+			}]
+			rewards: [
+				{
+					id: "1BD5B0541744C912"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+				{
+					id: "29DBE12F80EBB0BF"
+					type: "item"
+					item: "divinerpg:amthirmis_lump"
+					random_bonus: 15
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk21}"
+			x: 16.5d
+			y: 0.0d
+			dependencies: ["582C80F6BECC8153"]
+			id: "669727C8ADEF4B29"
+			tasks: [{
+				id: "78F943BF13A35F72"
+				type: "item"
+				item: "divinerpg:darven_lump"
+			}]
+			rewards: [
+				{
+					id: "639528556286563B"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+				{
+					id: "3ABCBE9F50D6F04D"
+					type: "item"
+					item: "divinerpg:darven_lump"
+					random_bonus: 15
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk22}"
+			x: 16.5d
+			y: 4.5d
+			dependencies: ["669727C8ADEF4B29"]
+			id: "59D2B14790E0B585"
+			tasks: [{
+				id: "3C2C2AE4C36C07A9"
+				type: "item"
+				item: "divinerpg:cermile_lump"
+			}]
+			rewards: [
+				{
+					id: "4D8050B63634900A"
+					type: "item"
+					item: "divinerpg:cermile_lump"
+					random_bonus: 15
+				}
+				{
+					id: "3F2C5918EF8D83C5"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk32}"
+			x: 21.0d
+			y: 0.0d
+			dependencies: ["669727C8ADEF4B29"]
+			id: "5C707003C53176C6"
+			tasks: [{
+				id: "2AF3B1E404DFBB11"
+				type: "item"
+				item: "divinerpg:pardimal_lump"
+			}]
+			rewards: [
+				{
+					id: "18630198D92C0FF6"
+					type: "item"
+					item: "divinerpg:pardimal_lump"
+					random_bonus: 15
+				}
+				{
+					id: "0DEDC98BEE71B7F7"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk31}"
+			x: 21.0d
+			y: -4.5d
+			dependencies: ["5C707003C53176C6"]
+			id: "26D448E696B5F0E5"
+			tasks: [{
+				id: "175F431E8BE53D2D"
+				type: "item"
+				item: "divinerpg:quadrotic_lump"
+			}]
+			rewards: [
+				{
+					id: "4AD3448E7744B2F6"
+					type: "item"
+					item: "divinerpg:quadrotic_lump"
+					random_bonus: 15
+				}
+				{
+					id: "032AA68222F6946C"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk33}"
+			x: 21.0d
+			y: 4.5d
+			dependencies: ["5C707003C53176C6"]
+			id: "3E5BF3A702319A4B"
+			tasks: [{
+				id: "7569AA14858483F7"
+				type: "item"
+				item: "divinerpg:karos_lump"
+			}]
+			rewards: [
+				{
+					id: "37FFCD120E3F3B38"
+					type: "item"
+					item: "divinerpg:karos_lump"
+					random_bonus: 15
+				}
+				{
+					id: "74A8190869868DEB"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk41}"
+			x: 25.5d
+			y: 0.0d
+			dependencies: ["5C707003C53176C6"]
+			id: "0B5FECE385F3ABEC"
+			tasks: [{
+				id: "13C7A33DEBF14132"
+				type: "item"
+				item: "divinerpg:heliosis_lump"
+			}]
+			rewards: [
+				{
+					id: "15D47F74173CB430"
+					type: "item"
+					item: "divinerpg:heliosis_lump"
+					random_bonus: 15
+				}
+				{
+					id: "18B65646CD0CF7F8"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_tk42}"
+			x: 25.5d
+			y: 4.5d
+			dependencies: ["0B5FECE385F3ABEC"]
+			id: "1C805046453670F6"
+			tasks: [{
+				id: "37F700FE5355239D"
+				type: "item"
+				item: "divinerpg:arksiane_lump"
+			}]
+			rewards: [
+				{
+					id: "35EB48681185D269"
+					type: "item"
+					item: "divinerpg:arksiane_lump"
+					random_bonus: 15
+				}
+				{
+					id: "78E3A4ED38881E67"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_zz2}"
+			x: 6.0d
+			y: 9.0d
+			dependencies: ["0DB5FE6D77586257"]
+			id: "76C5D591D10CDCFF"
+			tasks: [{
+				id: "6D61C89F43A24C07"
+				type: "item"
+				item: "divinerpg:clean_pearls"
+			}]
+			rewards: [
+				{
+					id: "7CEDEFD124A2F251"
+					type: "choice"
+					table_id: 8888689245277596639L
+				}
+				{
+					id: "12DC7EC332804BD8"
+					type: "custom"
+					title: "{{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_zz3}"
+			x: 6.0d
+			y: 13.5d
+			dependencies: ["76C5D591D10CDCFF"]
+			id: "76BEF5458305229A"
+			tasks: [{
+				id: "289FD44A8C64DCC3"
+				type: "item"
+				item: "divinerpg:polished_pearls"
+			}]
+			rewards: [
+				{
+					id: "2A41F346E1F2C3BB"
+					type: "choice"
+					table_id: 8888689245277596639L
+				}
+				{
+					id: "3699D70FC535441E"
+					type: "custom"
+					title: "{{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_nightmare_zz4}"
+			x: 6.0d
+			y: 18.0d
+			dependencies: ["76BEF5458305229A"]
+			id: "22A6A42D7F8E42B5"
+			tasks: [{
+				id: "38F8F994E5CFC49A"
+				type: "item"
+				item: "divinerpg:shiny_pearls"
+			}]
+			rewards: [
+				{
+					id: "667C0B6BDE09ECC9"
+					type: "choice"
+					table_id: 8888689245277596639L
+				}
+				{
+					id: "1F6D1EE1E3849C75"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
+	]
+}

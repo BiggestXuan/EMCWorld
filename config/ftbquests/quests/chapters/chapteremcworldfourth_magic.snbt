@@ -564,8 +564,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_observatory}"
-			x: 10.5d
-			y: 18.0d
+			x: 6.5d
+			y: 15.0d
 			description: ["{quest.emcworld.fourth_magic_observatory_desc}"]
 			dependencies: ["64162D6185D1A516"]
 			id: "2DB6CBE2A3DC64DD"
@@ -725,71 +725,8 @@
 			]
 		}
 		{
-			x: 18.0d
-			y: 3.0d
-			dependencies: ["64162D6185D1A516"]
-			id: "3CBD98CE48A9B3B5"
-			tasks: [{
-				id: "4F0501016A4E33CD"
-				type: "item"
-				title: "{quest.emcworld.fourth_magic_god_weapon_item}"
-				item: {
-					id: "itemfilters:tag"
-					Count: 1b
-					tag: {
-						value: "emcworld:god_weapon"
-					}
-				}
-			}]
-			rewards: [
-				{
-					id: "673B9B346E476BA9"
-					type: "item"
-					item: "emcworld:scroll_white"
-					count: 16
-				}
-				{
-					id: "4CACA78600713056"
-					type: "custom"
-					title: "{reward.emcworld.hard}"
-					icon: "emcworld:biggest_emc_gem"
-					tags: ["hard"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
-			title: "{quest.emcworld.fourth_magic_weapon_upgrade}"
-			x: 4.5d
-			y: 17.0d
-			dependencies: ["64162D6185D1A516"]
-			hide: true
-			id: "789B42F0948AC1EC"
-			tasks: [{
-				id: "437207ADDF8763DC"
-				type: "item"
-				item: "emcworld:weapon_upgrade_core"
-			}]
-			rewards: [
-				{
-					id: "1D23CDB655DC3307"
-					type: "item"
-					item: "emcworld:scroll_green"
-					count: 8
-				}
-				{
-					id: "7DCEDCCF4E962F6A"
-					type: "custom"
-					title: "{reward.emcworld.normal}"
-					icon: "emcworld:big_emc_gem"
-					tags: ["normal"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
-			x: 16.0d
-			y: 17.0d
+			x: 13.0d
+			y: 15.5d
 			dependencies: ["64162D6185D1A516"]
 			id: "5E35FF13428A4AE7"
 			tasks: [

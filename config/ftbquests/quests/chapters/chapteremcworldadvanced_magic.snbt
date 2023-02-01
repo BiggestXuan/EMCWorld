@@ -587,6 +587,7 @@
 			title: "{quest.emcworld.update_core}"
 			x: 15.0d
 			y: 4.5d
+			subtitle: "{quest.emcworld.update_core_desc}"
 			dependencies: ["7441F58A861B916B"]
 			dependency_requirement: "one_completed"
 			size: 2.0d

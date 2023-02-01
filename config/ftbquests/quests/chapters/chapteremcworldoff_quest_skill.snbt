@@ -1,7 +1,7 @@
 {
 	id: "17481E5576B066EF"
 	group: "082C00FA3A553D98"
-	order_index: 0
+	order_index: 1
 	filename: "chapteremcworldoff_quest_skill"
 	title: "{chapter.emcworld.off_quest_skill}"
 	icon: "emcworld:red_matter_crystal"
@@ -9,14 +9,14 @@
 	default_hide_dependency_lines: false
 	quests: [
 		{
-			title: "{chapter.emcworld.off_quest_skill_set}"
+			title: "{quest.emcworld.off_quest_skill_set}"
 			x: 0.0d
 			y: 0.0d
 			id: "5B27B47C64B79EBA"
 			tasks: [{
 				id: "5A49179E32B9C731"
 				type: "item"
-				title: "{chapter.emcworld.off_quest_skill_set_item}"
+				title: "{quest.emcworld.off_quest_skill_set_item}"
 				item: {
 					id: "itemfilters:tag"
 					Count: 1b
@@ -104,7 +104,7 @@
 			}]
 		}
 		{
-			title: "{chapter.emcworld.off_quest_skill_modify}"
+			title: "{quest.emcworld.off_quest_skill_modify}"
 			x: 24.0d
 			y: 0.0d
 			dependencies: ["353962D1EBF12910"]
@@ -112,7 +112,7 @@
 			tasks: [{
 				id: "7FAD6687225FC98F"
 				type: "item"
-				title: "{chapter.emcworld.off_quest_skill_modi_item}"
+				title: "{quest.emcworld.off_quest_skill_modi_item}"
 				item: {
 					id: "itemfilters:tag"
 					Count: 1b

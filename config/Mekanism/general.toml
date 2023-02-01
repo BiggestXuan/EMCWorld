@@ -14,7 +14,7 @@
 	heatPerFuelTick = 400.0
 	#Displayed temperature unit in Mekanism GUIs.
 	#Allowed Values: K, C, R, F, STP
-	temperatureUnit = "K"
+	temperatureUnit = "C"
 	#Log Mekanism packet names. Debug setting.
 	logPackets = false
 	#Number of ticks to burn an item at in a Fuelwood Heater. Use this config option to effectively make Fuelwood Heater's burn faster but produce the same amount of heat per item.

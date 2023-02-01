@@ -17,7 +17,7 @@
 		steelChestplateArmor = 8
 		#Base attack damage of Steel items.
 		#Range: 0.0 ~ 3.4028234663852886E38
-		steelAttackDamage = 3.0
+		steelAttackDamage = 4.25
 		#Attack speed of Steel swords.
 		steelSwordAtkSpeed = -2.4000000953674316
 		#Maximum durability of Steel paxels.
@@ -375,7 +375,7 @@
 		#Range: > 0
 		bronzeEnchantability = 10
 		#Attack damage modifier of Bronze swords.
-		bronzeSwordDamage = 3.0
+		bronzeSwordDamage = 3.75
 		#Attack speed of Bronze shovels.
 		bronzeShovelAtkSpeed = -3.0
 		#Maximum durability of Bronze chestplates.
@@ -508,7 +508,7 @@
 		#Attack speed of Refined Glowstone pickaxes.
 		refined_glowstonePickaxeAtkSpeed = -2.799999952316284
 		#Attack damage modifier of Refined Glowstone swords.
-		refined_glowstoneSwordDamage = 3.0
+		refined_glowstoneSwordDamage = 4.5
 		#Base armor knockback resistance value of Refined Glowstone armor.
 		#Range: 0.0 ~ 3.4028234663852886E38
 		refined_glowstoneKnockbackResistance = 0.0
@@ -580,7 +580,7 @@
 		#Attack damage modifier of Lapis Lazuli shovels.
 		lapis_lazuliShovelDamage = 1.5
 		#Attack damage modifier of Lapis Lazuli swords.
-		lapis_lazuliSwordDamage = 3.0
+		lapis_lazuliSwordDamage = 3.25
 		#Base armor toughness value of Lapis Lazuli armor.
 		#Range: 0.0 ~ 3.4028234663852886E38
 		lapis_lazuliToughness = 0.0
@@ -684,7 +684,7 @@
 		#Range: > 0
 		refined_obsidianPaxelEnchantability = 18
 		#Attack damage modifier of Refined Obsidian swords.
-		refined_obsidianSwordDamage = 3.0
+		refined_obsidianSwordDamage = 6.25
 		#Attack damage modifier of Refined Obsidian shovels.
 		refined_obsidianShovelDamage = 1.5
 		#Attack damage modifier of Refined Obsidian hoes.
