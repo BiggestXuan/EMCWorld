@@ -1,6 +1,6 @@
 ---
 name: '[CN]BUG反馈'
-about: 创建一个反馈来帮助EMC World更好!
+about: 创建一个反馈来帮助EMCWorld更好!
 title: '[BUG反馈][危害等级][问题]'
 labels: bug
 assignees: ''
@@ -26,11 +26,9 @@ BUG 危险等级参考表：
 
 ### 复现方法:
 
-<!-- 可以复现该bug的具体操作 -->
-
 ### 操作环境:
 
-- JAVA版本(jdk-11.0.15.1, jdk1.8.0_311):
-- EMC World 版本(0.1.0, 0.2.0):
+- JAVA版本:
+- EMCWorld 版本:
 
 ### 任何你觉得有必要补充的:

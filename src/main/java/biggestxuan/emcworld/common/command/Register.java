@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.command;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.command.run.DumpPlayerInfo;
+import biggestxuan.emcworld.common.command.run.Hand;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
@@ -25,6 +26,7 @@ public class Register {
                 Commands.literal(EMCWorld.MODID)
                 .requires((permission) -> permission.hasPermission(4))
                 .then(Commands.literal("dump").then(Commands.argument("target", EntityArgument.player()).executes(new DumpPlayerInfo())))
+                        .then(Commands.literal("hand").executes(new Hand()))
         );
     }
 }

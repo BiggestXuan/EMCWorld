@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
+import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
@@ -28,7 +29,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IEMCGodWeaponLevel,IUpgradeableItem {
+public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IEMCGodWeaponLevel,IUpgradeableItem, IUpgradeableMaterial {
     public BaseEMCGodDagger() {
         super(EMCWorldAPI.getInstance().getDaggerTier("god"));
     }
@@ -44,10 +45,14 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         return false;
     }
 
+    @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
+        return (long) ((Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -62,7 +67,12 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/550);
         }
-        return (float) b;
+        return (float) b * getPrefixCommonRate(stack);
+    }
+
+    @Override
+    protected double getPrefixCommonRate(ItemStack stack) {
+        return super.getPrefixCommonRate(stack) * 1.1;
     }
 
     protected abstract double AttackSpeed(ItemStack stack);
@@ -75,12 +85,12 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return EMCCost(stack);
+        return EMCCost(stack) / getPrefixCommonRate(stack);
     }
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return EMCModify(stack);
+        return (long) (EMCModify(stack) * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -95,7 +105,7 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/115);
         }
-        return (float) b;
+        return (float) ((float) b * getPrefixCommonRate(stack));
     }
 
     @Nonnull

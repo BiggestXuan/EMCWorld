@@ -24,6 +24,7 @@ import wayoftime.bloodmagic.common.item.BloodMagicItems;
 public class EMCWorldHUD extends AbstractGui {
     private final Minecraft mc;
     private final MatrixStack matrixStack;
+    private static long cache = 0;
 
     public EMCWorldHUD(MatrixStack matrixStack){
         this.mc = Minecraft.getInstance();
@@ -41,6 +42,9 @@ public class EMCWorldHUD extends AbstractGui {
         int color = 0xFFFFFF;
         int line = 11;
         if(Minecraft.getInstance().options.renderDebug) return;
+        if(EMCWorld.isBackingUp){
+            y += line;
+        }
         if(player.getMainHandItem().getItem().equals(BloodMagicItems.SEER_SIGIL.get()) || player.getMainHandItem().getItem().equals(BloodMagicItems.DIVINATION_SIGIL.get())){
             y += 100;
         }

@@ -6,8 +6,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger;
  *  2022/12/09
  */
 
-import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
@@ -24,14 +23,18 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TieredItem;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpgradeableWeapon,IAttackSpeedItem {
+public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttackSpeedItem, IPrefixItem {
     protected final IDaggerTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
+
+    @Override
+    public double getEMCCostRate() {
+        return 1d;
+    }
 
     public DaggerItem(IDaggerTier tier) {
         super(tier,new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB));
@@ -48,14 +51,6 @@ public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpg
         return p_111205_1_ == EquipmentSlotType.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(p_111205_1_);
     }
 
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
-    }
-
     @Override
     public boolean canAttackBlock(BlockState p_195938_1_, World p_195938_2_, BlockPos p_195938_3_, PlayerEntity p_195938_4_) {
         return false;
@@ -63,12 +58,12 @@ public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpg
 
     @Override
     public double getAttackSpeed(ItemStack stack) {
-        return tier.getAttackSpeed(stack);
+        return tier.getAttackSpeed(stack) * getPrefixCommonRate(stack);
     }
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return 1;
+        return 1 / getPrefixCommonRate(stack);
     }
 
     @Override
@@ -93,7 +88,7 @@ public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpg
 
     @Override
     public float getAdditionsDamage(ItemStack stack) {
-        return (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack));
+        return (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -103,5 +98,17 @@ public class DaggerItem extends TieredItem implements IUpgradeableMaterial, IUpg
 
     protected int lv(ItemStack stack){
         return IUpgradeableWeapon.super.getWeightRequired(stack);
+    }
+
+    protected double getPrefixCommonRate(ItemStack stack){
+        double b = 1;
+        Prefix prefix = getPrefix(stack);
+        if(prefix == Prefix.NULL) return b;
+        if(prefix.getLevel() <= 3){
+            b *= 1 - 0.1 * (4 - prefix.getLevel());
+        }else{
+            b *= 0.015 * (prefix.getLevel()-4) + 1;
+        }
+        return b;
     }
 }

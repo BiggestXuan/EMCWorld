@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "emcworld.refmap.json",
   "mixins": [
+    "AlfSwordMixin",
     "ArcanaMixin",
     "ArcanaRenderMixin",
     "ArmorItemMixin",
@@ -14,26 +15,31 @@
     "DisableBonus",
     "GaiaMixin",
     "GNSBedMixin",
+    "GobberTierMixin",
     "ItemMixin",
     "ItemStageMixin",
+    "ItemTierMixin",
     "LootrMixin",
     "MagispellerMixin",
+    "MazePickaxeMixin",
+    "OrbOfAtlantisMixin",
     "PickaxeItemMixin",
     "QuarkHandlerMixin",
     "QuarkInventoryHandlerMixin",
     "RaidMixin",
     "RatMixin",
-    "RestrictionManagerMixin",
     "SwordItemMixin",
     "ToolItemMixin",
+    "TWLightTierMixin",
+    "UGTierMixin",
     "WebHelperDisableMixin",
     "WorldMixin"
   ],
   "client": [
+    "GaiaClientMixin",
     "MinecraftMixin",
     "MinecraftWindowMixin",
-    "RatsPlagueMixin",
-    "GaiaClientMixin"
+    "RatsPlagueMixin"
   ],
   "server": [],
   "injectors": {

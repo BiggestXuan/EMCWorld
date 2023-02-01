@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 
 public class NatureSword extends BaseEMCGodWeapon {
     public NatureSword() {
-        super(5f,0x2a8000);
+        super(6.25f,0x2a8000);
     }
 
     @Override
     public float getBaseDamage(ItemStack stack) {
         int level = this.getLevel(stack);
-        return (float) ((Math.pow(1.13f,level)*baseDamage)-baseDamage);
+        return (float) ((Math.pow(1.14f,level)*baseDamage)-baseDamage);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class NatureSword extends BaseEMCGodWeapon {
     @Override
     public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = this.getLevel(stack);
-        return Math.pow(0.9f,level);
+        return Math.pow(0.91f,level);
     }
 
     @Override

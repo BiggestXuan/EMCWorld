@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -18,7 +19,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import javax.annotation.Nonnull;
 
 @Mixin(SwordItem.class)
-public abstract class SwordItemMixin extends TieredItem implements IUpgradeableWeapon, IUpgradeableMaterial {
+public abstract class SwordItemMixin extends TieredItem implements IUpgradeableWeapon, IPrefixItem {
     private final IItemTier tier = ((SwordItem) (Object) this).getTier();
 
     private final float damage = tier.getAttackDamageBonus();
@@ -27,16 +28,9 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
         super(p_i48459_1_, p_i48459_2_);
     }
 
-    @Nonnull
     @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        ResourceLocation rl = getRegistryName();
-        if(rl == null || getMaxLevel() == 0){
-            return super.getName(p_200295_1_);
-        }
-        return EMCWorld.tc("item."+rl.getNamespace()+"."+name).append(" (+"+level+")");
+    public double getEMCCostRate() {
+        return 1d;
     }
 
     @Override
@@ -51,7 +45,8 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return 1;
+        int prefix_level = getPrefix(stack).getLevel();
+        return prefix_level >= 7 ? 1 - (prefix_level - 6) * 0.1 : 1;
     }
 
     @Override
@@ -71,11 +66,19 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
 
     @Override
     public float getAdditionsDamage(ItemStack stack) {
-        return getLevel(stack) == 0 ? 0 : (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack));
+        return getLevel(stack) == 0 ? 0 + getPrefixDamage(getPrefix(stack)) : (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) + getPrefixDamage(getPrefix(stack)));
     }
 
     @Override
     public double getAttackRange(ItemStack stack) {
-        return getLevel(stack) == 0 ? 0 : 0.1 * tier.getLevel() + (damage/45) * getLevel(stack);
+        return Math.max(0,getLevel(stack) == 0 ? 0 + getPrefixRange(getPrefix(stack)) : (0.1 * tier.getLevel() + (damage/45) * getLevel(stack))) + getPrefixRange(getPrefix(stack));
+    }
+
+    private float getPrefixDamage(Prefix prefix){
+        return prefix.getLevel() <= 3 ? prefix.getLevel() == 0 ? 0 : -0.1f * (4 - prefix.getLevel()) * damage : 0.1f * (prefix.getLevel()-4) * damage;
+    }
+
+    private double getPrefixRange(Prefix prefix){
+        return prefix.getLevel() <= 3 ? prefix.getLevel() == 0 ? 0 : -0.1f * (4 - prefix.getLevel()) * tier.getLevel() : 0.1f * (prefix.getLevel()-4) * tier.getLevel();
     }
 }

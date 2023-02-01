@@ -16,9 +16,9 @@ public enum WarHammerTier implements IWarHammerTier {
     STONE(8.5,256,1,4,1.5,1.35,1.2,0.7),
     IRON(10.5,512,2,8,1.9,1.45,1.3,0.63),
     GOLDEN(5,50,0,30,0.4,1.05,1.9,1),
-    DIAMOND(12,1024,3,13,2.7,1.5,1.35,0.5),
+    DIAMOND(15.5,1024,3,13,2.7,1.5,1.35,0.5),
     NETHERITE(28,2048,4,18,6,1.75,1.5,0.4),
-    GOD(11.25,4096,4,20,2.25,2,1.25,0.5),
+    GOD(11.25,4096,4,20,2.25,1.5,1.25,0.5),
     GAIA(19.5,1600,4,15,4,1.6,1.4,0.45)
     ;
 
@@ -49,7 +49,7 @@ public enum WarHammerTier implements IWarHammerTier {
 
     @Override
     public double getCriticalChance() {
-        return cc;
+        return cc-1;
     }
 
     @Override

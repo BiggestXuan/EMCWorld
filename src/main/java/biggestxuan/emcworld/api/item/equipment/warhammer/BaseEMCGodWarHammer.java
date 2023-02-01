@@ -8,15 +8,18 @@ package biggestxuan.emcworld.api.item.equipment.warhammer;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
-import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.IEMCInfuserItem;
+import biggestxuan.emcworld.api.item.IEMCRepairableItem;
+import biggestxuan.emcworld.api.item.ISecondEMCItem;
+import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
-import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -27,10 +30,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, ICriticalWeapon, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel,IUpgradeableMaterial {
     public BaseEMCGodWarHammer(){
         super(EMCWorldAPI.getInstance().getWarHammerTier("god"));
     }
+
     protected abstract double getAttackCostRate(ItemStack stack);
 
     protected abstract long modifyEMCSecond(ItemStack stack);
@@ -44,6 +48,16 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
     protected abstract double attackRange(ItemStack stack);
 
     @Override
+    protected double getPrefixCommonRate(ItemStack stack) {
+        return super.getPrefixCommonRate(stack) * 1.15;
+    }
+
+    @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
+
+    @Override
     public abstract double getAttackSpeed(ItemStack stack);
 
     @Override
@@ -53,7 +67,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public double getAttackRange(ItemStack stack) {
-        double b = attackRange(stack);
+        double b = attackRange(stack) * getPrefixCommonRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
@@ -63,7 +77,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public double getCriticalChance(ItemStack stack) {
-        double b = criticalChance(stack);
+        double b = criticalChance(stack) * getPrefixCommonRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC) / 100 * 1.02;
@@ -73,7 +87,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public double getCriticalRate(ItemStack stack) {
-        double b = criticalRate(stack);
+        double b = criticalRate(stack) * getPrefixCommonRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC) / 100 * 1.03;
@@ -83,12 +97,12 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return getAttackCostRate(stack);
+        return getAttackCostRate(stack) / getPrefixCommonRate(stack);
     }
 
     @Override
     public long getMaxInfuser(ItemStack stack) {
-        return (long) (Math.pow(1.4,getLevel(stack)) * 500000);
+        return (long) ((Math.pow(1.4,getLevel(stack)) * 500000) * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -108,7 +122,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public float getAdditionsDamage(ItemStack stack){
-        double b = damage(stack);
+        double b = damage(stack) * getPrefixCommonRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);

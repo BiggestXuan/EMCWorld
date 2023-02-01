@@ -30,18 +30,10 @@ Please fill in the bug level according to the corresponding bug phenomenon
 
 <!-- A clear and concise description of what you expected to happen. -->
 
-### To Reproduce:
-
-<!-- how to reproduce -->
-
-1. 
-2. 
-3. 
-
 ### Environment:
 
-- JAVA version(jdk-11.0.15.1, jdk1.8.0_311):
-- EMC World version(0.1.0, 0.2.0):
+- JAVA version:
+- EMCWorld version:
 
 ### Additional context:
 <!-- Add any other context about the problem here. -->

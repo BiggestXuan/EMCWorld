@@ -35,9 +35,4 @@ public interface IUpgradeableItem extends ICostEMCItem, ISecondEMCItem, IEMCRepa
         }
         return weight;
     }
-
-    @Override
-    default double getEMCCostRate() {
-        return 0d;
-    }
 }

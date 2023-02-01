@@ -1,3 +1,5 @@
+import biggestxuan.emcworld.common.utils.MathUtils;
+
 import java.util.UUID;
 
 import static biggestxuan.emcworld.common.utils.MathUtils.getRangeRandom;
@@ -21,12 +23,8 @@ public class main {
             System.out.println(weight);
         }*/
         //System.out.println(UUID.randomUUID());
-        for (int i = 0; i < 10; i++) {
-            int weight = 10;
-            for (int j = 0; j < i; j++) {
-                weight = (int) (1.7f * weight);
-            }
-            System.out.println("level"+i+"->"+weight*2);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(MathUtils.getRangeRandom(1,10));
         }
     }
 }

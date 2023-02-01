@@ -25,8 +25,13 @@ public class UnobtainiumSword extends BaseWeaponItem implements IUpgradeableWeap
     }
 
     @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
+
+    @Override
     public long EMCModifySecond(ItemStack stack) {
-        return 3000;
+        return 3000000;
     }
 
     @Override

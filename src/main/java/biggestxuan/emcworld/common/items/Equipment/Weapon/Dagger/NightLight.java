@@ -27,6 +27,6 @@ public class NightLight extends BaseEMCGodDagger {
 
     @Override
     protected float AddonDamage(ItemStack stack) {
-        return (float) (Math.pow(1.15,getLevel(stack)) * 6);
+        return getLevel(stack) == 0 ? 0 : (float) (Math.pow(1.14,getLevel(stack)) * 6);
     }
 }

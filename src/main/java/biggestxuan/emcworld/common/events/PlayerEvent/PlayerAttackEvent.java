@@ -66,6 +66,7 @@ public class PlayerAttackEvent {
             if(stack.getItem() instanceof IAdditionsDamageWeapon){
                 damage += ((IAdditionsDamageWeapon) stack.getItem()).getAdditionsDamage(stack);
             }
+            damage = damage > 0 ? damage : 0;
             if(stack.getItem() instanceof ICriticalWeapon){
                 ICriticalWeapon weapon = (ICriticalWeapon) stack.getItem();
                 if(MathUtils.isRandom(weapon.getActCriticalChance(stack))){
@@ -255,9 +256,11 @@ public class PlayerAttackEvent {
                     return;
                 }
                 livingEntity.hurtTime -= 8;
+                livingEntity.invulnerableTime -= 3;
                 if(daggerItem instanceof BaseEMCGodDagger){
                     BaseEMCGodDagger emcGodDagger = (BaseEMCGodDagger) daggerItem;
                     livingEntity.hurtTime -= Math.round(0.5 * emcGodDagger.getLevel(entity.getMainHandItem()));
+                    livingEntity.invulnerableTime -= Math.round(0.5 * emcGodDagger.getLevel(entity.getMainHandItem()));
                 }
             }
         }

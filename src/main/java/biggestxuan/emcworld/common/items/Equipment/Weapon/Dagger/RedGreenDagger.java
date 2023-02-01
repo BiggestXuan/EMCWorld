@@ -27,6 +27,6 @@ public class RedGreenDagger extends BaseEMCGodDagger {
 
     @Override
     protected float AddonDamage(ItemStack stack) {
-        return (float) (Math.pow(1.16,getLevel(stack)) * 7);
+        return getLevel(stack) == 0 ? 0 : (float) (Math.pow(1.15,getLevel(stack)) * 7);
     }
 }

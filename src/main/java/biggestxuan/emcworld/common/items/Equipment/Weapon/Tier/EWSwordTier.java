@@ -12,9 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum EWSwordTier implements IItemTier {
-    ATM(10000,20,150,6),
-    VIBRANIUM(50000,30,300,7),
-    UNOBTAINIUM(100000,60,700,10),
+    ATM(10000,20,59,6),
+    VIBRANIUM(50000,30,79,7),
+    UNOBTAINIUM(100000,60,99,10),
     GAIA(2048,6,17.5f,4)
     ;
 

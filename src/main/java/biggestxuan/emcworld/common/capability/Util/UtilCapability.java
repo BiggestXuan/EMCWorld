@@ -62,7 +62,7 @@ public class UtilCapability implements IUtilCapability {
         this.speed = 0f;
         this.arcana = 0f;
         this.maxArcana = 200f;
-        this.showArcana = true;
+        this.showArcana = false;
         this.SHDifficulty = 0;
         this.maxShield = 0f;
         this.shield = 0f;

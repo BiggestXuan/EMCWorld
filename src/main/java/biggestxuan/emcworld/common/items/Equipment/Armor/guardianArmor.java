@@ -18,7 +18,7 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.417,getLevel(stack)+12) * 500000);
+        return (long) (Math.pow(1.417,getLevel(stack)+12) * 500000 * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -39,17 +39,17 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
 
     @Override
     public float getSpeed(ItemStack stack) {
-        return 0.14f + getLevel(stack) * 0.07f;
+        return (float) (0.14f * getPrefixCommonRate(stack) + getLevel(stack) * 0.07f);
     }
 
     @Override
     public float extraHealth(ItemStack stack) {
-        return 3.6f + 0.85f * getLevel(stack);
+        return (float) (3.6f * getPrefixCommonRate(stack) + 0.85f * getLevel(stack));
     }
 
     @Override
     public double hurtRate(ItemStack stack) {
-        return 0.9 * Math.pow(0.976f,getLevel(stack));
+        return 0.9 * Math.pow(0.976f,getLevel(stack) / getPrefixCommonRate(stack));
     }
 
     @Override
@@ -69,11 +69,11 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
 
     @Override
     public float maxShield(ItemStack stack) {
-        return 80 + 12f * getLevel(stack) * getShieldRate();
+        return (float) (80 * getPrefixCommonRate(stack) + 12f * getLevel(stack) * getShieldRate());
     }
 
     @Override
     public float shieldSpeed(ItemStack stack) {
-        return 6.5f + 0.75f * getLevel(stack) * getShieldRate();
+        return (float) (6.5f * getPrefixCommonRate(stack) + 0.75f * getLevel(stack) * getShieldRate());
     }
 }

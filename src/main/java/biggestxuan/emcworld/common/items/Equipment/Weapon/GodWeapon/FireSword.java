@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 
 public class FireSword extends BaseEMCGodWeapon {
     public FireSword() {
-        super(7f,0xc90c0c);
+        super(8.75f,0xc90c0c);
     }
 
     @Override
     public float getBaseDamage(ItemStack stack) {
         int level = this.getLevel(stack);
-        return (float) ((Math.pow(1.19f,level)*baseDamage)-baseDamage);
+        return (float) ((Math.pow(1.18f,level)*baseDamage)-baseDamage);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class FireSword extends BaseEMCGodWeapon {
     @Override
     public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = this.getLevel(stack);
-        return Math.pow(1.05f,level);
+        return Math.pow(1.065f,level);
     }
 
     @Override

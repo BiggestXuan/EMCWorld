@@ -20,13 +20,18 @@ public class AtmSword extends BaseWeaponItem implements IUpgradeableWeapon,IRang
     }
 
     @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
+
+    @Override
     public int getUseLevel(ItemStack stack) {
         return 80;
     }
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return 300;
+        return 30000;
     }
 
     @Override

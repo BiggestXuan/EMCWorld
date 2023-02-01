@@ -1,0 +1,26 @@
+{
+  "display": {
+    "background": "the_afterlight:textures/moonlitlogside.png",
+    "icon": {
+      "item": "the_afterlight:tome"
+    },
+    "title": {
+      "translate": "advancements.book_grant.title"
+    },
+    "description": {
+      "translate": "advancements.book_grant.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "book_grant": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "experience": 0
+  }
+}

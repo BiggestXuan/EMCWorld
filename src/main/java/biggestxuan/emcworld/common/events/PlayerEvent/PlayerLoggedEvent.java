@@ -48,9 +48,6 @@ public class PlayerLoggedEvent {
         String name = player.getName().getString();
         UUID uuid = player.getUUID();
         LazyOptional<IUtilCapability> sponsorCap = player.getCapability(EMCWorldCapability.UTIL);
-        if(!GameStageManager.hasStage(player,"Start")){
-            GameStageManager.addStage(player,"Start");
-        }
         ResearchManager.setTomeReceived(player);
         IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
         ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
@@ -73,7 +70,7 @@ public class PlayerLoggedEvent {
             player.inventory.clearContent();
             ItemStack book = new ItemStack(PatchouliItems.book);
             book.getOrCreateTag().putString("patchouli:book","emcworld:guide");
-            player.addItem(book);
+            //player.addItem(book);
             int emc = 150000;
             EMCHelper.modifyPlayerEMC(player,(int) (emc / MathUtils.difficultyLoss()),false);
         }

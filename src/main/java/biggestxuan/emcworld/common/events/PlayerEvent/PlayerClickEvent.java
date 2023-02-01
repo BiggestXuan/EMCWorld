@@ -111,16 +111,16 @@ public class PlayerClickEvent {
             for(DifficultySetting obj:DifficultySetting.values()){
                 if(GameStageManager.hasStage(player, obj.getGameStage())){
                     Message.sendMessage(player, EMCWorld.tc("message.check.stage",obj.getGameStage()));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.attack",MathUtils.format((obj.getAttackBase() * dl))));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.death",MathUtils.format((obj.getDeathBase() * dl))));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.hurt",MathUtils.format(obj.getHurtBase() * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.pickupitem",MathUtils.format(MathUtils.getPickUpItemBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.wakeup",MathUtils.format(MathUtils.getWakeUpBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.container",MathUtils.format(obj.getChestBase() * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.hoe",MathUtils.format(MathUtils.getUseHoeBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.fill",MathUtils.format(MathUtils.getFillBucketBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.craft",MathUtils.format(MathUtils.getCraftBaseCost(player) * dl)));
-                    Message.sendMessage(player, EMCWorld.tc("message.check.break_block",MathUtils.format(obj.getBlockBase()* 0.2 * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.attack",MathUtils.doubleFormat((obj.getAttackBase() * dl))));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.death",MathUtils.doubleFormat((obj.getDeathBase() * dl))));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.hurt",MathUtils.doubleFormat(obj.getHurtBase() * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.pickupitem",MathUtils.doubleFormat(MathUtils.getPickUpItemBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.wakeup",MathUtils.doubleFormat(MathUtils.getWakeUpBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.container",MathUtils.doubleFormat(obj.getChestBase() * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.hoe",MathUtils.doubleFormat(MathUtils.getUseHoeBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.fill",MathUtils.doubleFormat(MathUtils.getFillBucketBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.craft",MathUtils.doubleFormat(MathUtils.getCraftBaseCost(player) * dl)));
+                    Message.sendMessage(player, EMCWorld.tc("message.check.break_block",MathUtils.doubleFormat(MathUtils.getBreakBlockCost(player) * dl)));
                     Message.sendMessage(player, EMCWorld.tc("message.check.tip"));
                     Message.sendMessage(player, EMCWorld.tc("message.check.line"));
                     break;

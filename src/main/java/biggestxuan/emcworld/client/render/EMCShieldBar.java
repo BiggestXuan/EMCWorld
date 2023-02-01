@@ -67,7 +67,7 @@ public class EMCShieldBar implements BarOverlay {
         if(player == null) return;
         int color = EMCWorldAPI.getInstance().getUtilCapability(playerEntity).isLastShield() ? 0xE1B90E : 0xC1EEFF;
         player.getCapability(EMCWorldCapability.UTIL).ifPresent((ar)->{
-            int a = i / 2 - 12 - 20 - 81;
+            int a = i / 2 - 12 - 20 - 81 - 1;
             int b = i1 - this.getSidedOffset();
             if(ar.getShield() < 10) a += 3;
             if(ar.getShield() >= 100) a -= 3;

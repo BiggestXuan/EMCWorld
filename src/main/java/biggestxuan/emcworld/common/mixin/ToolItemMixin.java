@@ -7,18 +7,19 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.api.item.IUpgradeableItem;
-import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableTool;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TieredItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.ToolType;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -31,7 +32,7 @@ import javax.annotation.Nonnull;
 import java.util.Set;
 
 @Mixin(value = ToolItem.class,priority = 1001)
-public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTool, IUpgradeableMaterial {
+public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTool, IPrefixItem {
     private final IItemTier tier = this.getTier();
 
     @Shadow
@@ -39,38 +40,46 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
     @Final
     private final Set<Block> blocks;
 
+    @Shadow @Final protected float speed;
+
     public ToolItemMixin(IItemTier p_i48459_1_, Properties p_i48459_2_, Set<Block> blocks) {
         super(p_i48459_1_, p_i48459_2_);
         this.blocks = blocks;
     }
 
-    @Inject(method = "getDestroySpeed",at = @At("HEAD"),cancellable = true)
-    public void speed(ItemStack p_150893_1_, BlockState p_150893_2_, CallbackInfoReturnable<Float> cir){
-        float speed = getLevel(p_150893_1_) > 0 ? (float) (tier.getSpeed() * getAdditionSpeed(p_150893_1_)) : tier.getSpeed();
-        if (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(p_150893_2_.getHarvestTool()) || this.blocks.contains(p_150893_2_.getBlock())){
-            cir.setReturnValue(speed);
-            cir.cancel();
-            return;
+    private double getPrefixCommonRate(ItemStack stack){
+        double b = 1;
+        Prefix prefix = getPrefix(stack);
+        if(prefix == Prefix.NULL) return b;
+        if(prefix.getLevel() <= 3){
+            b = 1 - (4 - prefix.getLevel()) * 0.1;
+        }else{
+            b = (prefix.getLevel()-4) * 0.07 + 1;
         }
-        cir.setReturnValue(1.0F);
-        cir.cancel();
+        return b;
     }
 
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        ResourceLocation rl = getRegistryName();
-        if(rl == null || getMaxLevel() == 0){
-            return super.getName(p_200295_1_);
+    @Inject(method = "getDestroySpeed",at = @At("HEAD"),cancellable = true)
+    public void speed(ItemStack p_150893_1_, BlockState p_150893_2_, CallbackInfoReturnable<Float> cir){
+        Material material = p_150893_2_.getMaterial();
+        float speed = (float) (tier.getSpeed() * getAdditionSpeed(p_150893_1_));
+        if (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(p_150893_2_.getHarvestTool()) || this.blocks.contains(p_150893_2_.getBlock()) || (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(ToolType.PICKAXE)) && material == Material.METAL || material == Material.HEAVY_METAL || material == Material.STONE){
+            cir.setReturnValue(speed);
+            cir.cancel();
+        }else{
+            cir.setReturnValue(1.0F);
+            cir.cancel();
         }
-        return EMCWorld.tc("item."+rl.getNamespace()+"."+name).append(" (+"+level+")");
+    }
+
+    @Override
+    public double getEMCCostRate() {
+        return 1d;
     }
 
     @Override
     public double getAdditionSpeed(ItemStack stack){
-        return getLevel(stack) > 0 ? 1 + (float) (tier.getSpeed() * 0.05 * getLevel(stack)) : 0;
+        return (getLevel(stack) > 0 ? 1 + (float) (tier.getSpeed() * 0.05 * getLevel(stack)) : 1) * getPrefixCommonRate(stack);
     }
 
     @Override
@@ -98,22 +107,8 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
         int l = getLevel(stack);
         int weight = 10;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.65f * weight);
+            weight = (int) (1.8f * weight);
         }
         return (int) (weight * 1.25);
-    }
-
-    @Override
-    public int getWeight(ItemStack stack) {
-        if(stack.getItem() instanceof IUpgradeableItem) {
-            IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
-            int l = item.getLevel(stack);
-            int weight = 10;
-            for (int i = 0; i < l; i++) {
-                weight = (int) (1.33f * weight);
-            }
-            return (int) (weight * 1.15);
-        }
-        return 0;
     }
 }

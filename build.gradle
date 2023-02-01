@@ -137,6 +137,7 @@ dependencies {
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:10.3.29")
     implementation fg.deobf("curse.maven:curios-309927:3725386")
     implementation fg.deobf("curse.maven:nature-306626:3472977")
+    implementation fg.deobf("curse.maven:ftbbackup-314904:3482306")
     implementation fg.deobf("curse.maven:ftbq-316833:3333962")
     implementation fg.deobf("curse.maven:gobber-301700:4005586")
     implementation fg.deobf("curse.maven:atm-364466:3529763")

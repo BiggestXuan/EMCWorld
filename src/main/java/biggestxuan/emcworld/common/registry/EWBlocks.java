@@ -13,6 +13,7 @@ import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneBlock;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlock;
 import biggestxuan.emcworld.common.blocks.Ores.EWDirtOre;
 import biggestxuan.emcworld.common.blocks.Ores.EWStoneOre;
+import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixBlock;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceCore;
 import biggestxuan.emcworld.common.blocks.VisConversionBlock.VisConversionBlock;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlock;
@@ -44,7 +45,7 @@ import static vazkii.botania.common.block.ModBlocks.register;
 public class EWBlocks {
         public static final BlockDeferredRegister B = new BlockDeferredRegister(EMCWorld.MODID);
         public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EMCWorld.MODID);
-        public static final RegistryObject<Block> HARDCORE_STONE = BLOCKS.register("hardcore_stone",() -> new EWStoneOre(3,100.0F));
+        public static final RegistryObject<Block> HARDCORE_STONE = BLOCKS.register("hardcore_stone",() -> new EWStoneOre(3,133.0F));
         public static final RegistryObject<Block> CONTROL_UPDATE_CORE = BLOCKS.register("control_update_core",UpdateBlock::new);
         public static final RegistryObject<Block> INFUSER_BLOCK_CORE = BLOCKS.register("infuser_core", InfuserBlock::new);
         public static final RegistryObject<Block> STEEL_FURNACE_BRICK = BLOCKS.register("steel_furnace_brick",() -> new EWBlock(5.5F));
@@ -53,6 +54,7 @@ public class EWBlocks {
         public static final RegistryObject<Block> ADVANCED_UPDATE_CORE = BLOCKS.register("advanced_update_core", AdvancedUpdateBlock::new);
         public static final RegistryObject<Block> PROFESSION_CORE = BLOCKS.register("profession_core", ProfessionalBlock::new);
         public static final RegistryObject<Block> GEMSTONE_CORE = BLOCKS.register("gemstone_core", GemstoneBlock::new);
+        public static final RegistryObject<Block> PREFIX_CORE = BLOCKS.register("prefix_core", PrefixBlock::new);
         public static final RegistryObject<Block> EMC_ORE = BLOCKS.register("emc_ore",() -> new EWStoneOre(2,3F));
         public static final RegistryObject<Block> RICH_EMC_ORE = BLOCKS.register("rich_emc_ore",() -> new EWStoneOre(3,7F));
         public static final RegistryObject<Block> NETHER_EMC_ORE = BLOCKS.register("nether_emc_ore", () -> new EWStoneOre(2,5F));

@@ -18,7 +18,7 @@ import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem {
+public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem,IPrefixItem {
     public InfinitySword() {
         super(new IItemTier() {
             @Override
@@ -112,5 +112,10 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
     @Override
     public float getAdditionsDamage(ItemStack stack) {
         return 0;
+    }
+
+    @Override
+    public void setPrefix(ItemStack stack,Prefix prefix){
+        stack.getOrCreateTag().putInt("prefix",getHighestPrefix().getLevel());
     }
 }

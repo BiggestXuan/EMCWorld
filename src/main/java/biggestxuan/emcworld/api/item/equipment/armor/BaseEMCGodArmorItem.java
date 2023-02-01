@@ -7,6 +7,7 @@ package biggestxuan.emcworld.api.item.equipment.armor;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -24,11 +25,28 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor {
+public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem {
     protected final int index;
     public BaseEMCGodArmorItem(IArmorMaterial p_i48534_1_, int p_i48534_2_) {
         super(p_i48534_1_, getType(p_i48534_2_));
         index = p_i48534_2_;
+    }
+
+    protected double getPrefixCommonRate(ItemStack stack){
+        double b;
+        Prefix prefix = getPrefix(stack);
+        if(prefix == Prefix.NULL) return 1;
+        if(prefix.getLevel() <= 3){
+            b = 1 - (4 - prefix.getLevel()) * 0.1;
+        }else{
+            b = (prefix.getLevel()-4) * 0.07 + 1;
+        }
+        return b;
+    }
+
+    @Override
+    public double getEMCCostRate() {
+        return 0d;
     }
 
     @Override
@@ -66,14 +84,6 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
         p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
-    }
-
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
     }
 
     @Override

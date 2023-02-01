@@ -11,6 +11,7 @@ import biggestxuan.emcworld.client.key.*;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
+import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixGUI;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -23,6 +24,9 @@ import biggestxuan.emcworld.common.utils.RaidUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.resources.FilePack;
 import net.minecraft.resources.IPackNameDecorator;
 import net.minecraft.resources.ResourcePackInfo;
@@ -42,22 +46,28 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nullable;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Mod(EMCWorld.MODID)
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 4;
-    public static final String PackVersion = "0.4.0 - Pre3";
+    public static final String PackVersion = "0.4.0 - Pre4";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
     public static boolean isOffline = false;
-    public static int HOMO = 114514;
+    public static final int HOMO = 114514;
+    public static boolean isBackingUp = false;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
 
     public EMCWorld(){
@@ -114,6 +124,7 @@ public class EMCWorld {
             ScreenManager.register(EWContainerTypes.weaponUpgradeContainer.get(), WeaponUpgradeGUI::new);
             ScreenManager.register(EWContainerTypes.gemstoneContainer.get(), GemstoneGUI::new);
             ScreenManager.register(EWContainerTypes.steelFurnaceContainer.get(), SteelFurnaceGUI::new);
+            ScreenManager.register(EWContainerTypes.prefixContainer.get(), PrefixGUI::new);
             ClientRegistry.registerKeyBinding(Admin.ADMIN_KEY);
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
             ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
@@ -121,6 +132,12 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
+    }
+
+    @Nullable
+    public static ItemStack getItem(String id){
+        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+        return item == null ? null : new ItemStack(item,1);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -141,5 +158,17 @@ public class EMCWorld {
 
     public static TranslationTextComponent tc(String id,Object... name){
         return new TranslationTextComponent(id,name);
+    }
+
+    public static List<Ingredient> itemstack2ingredient(List<ItemStack> stacks){
+        List<Ingredient> list = new ArrayList<>();
+        stacks.forEach((i)->{
+            list.add(Ingredient.of(i));
+        });
+        return list;
+    }
+
+    public static List<Ingredient> itemstack2ingredient(ItemStack[] stacks){
+        return itemstack2ingredient(new ArrayList<>(Arrays.asList(stacks)));
     }
 }

@@ -22,7 +22,7 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     protected double criticalChance(ItemStack stack) {
-        return Math.pow(1.023,getLevel(stack)) - 1;
+        return Math.pow(1.023,getLevel(stack)) - 0.9;
     }
 
     @Override

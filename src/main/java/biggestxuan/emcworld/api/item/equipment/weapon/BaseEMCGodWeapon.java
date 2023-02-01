@@ -8,6 +8,7 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
@@ -46,10 +47,15 @@ import java.util.List;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.GodWeapon")
-public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem, IEMCGodWeaponLevel, IPrefixItem {
 
     protected final float baseDamage;
     private final int color;
+
+    @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
 
     public BaseEMCGodWeapon(float baseDamage,int color){
         super(EWGodWeaponTier.INSTANCE,(int) baseDamage,-2.4F);
@@ -144,7 +150,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
         }
-        return b;
+        return b * getPrefixCommonRate(stack) * 0.8;
     }
 
     @Override
@@ -154,7 +160,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
         }
-        return b;
+        return b * getPrefixCommonRate(stack) * 0.8;
     }
 
     @Override
@@ -169,7 +175,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(getGemType(stack) == 3){
             b *= 1.1;
         }
-        return b;
+        return b / getPrefixCommonRate(stack);
     }
 
     @Override
@@ -178,7 +184,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(getGemType(stack) == 4){
             b *= 1.15f;
         }
-        return b;
+        return (long) (b * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -197,12 +203,12 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(getGemType(stack) == 4){
             b *= 0.95f;
         }
-        return b;
+        return (float) (b * getPrefixCommonRate(stack));
     }
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
+        return (long) ((long) (Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -211,7 +217,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(getGemType(stack) == 3){
             b += 0.5;
         }
-        return b;
+        return b * getPrefixCommonRate(stack);
     }
 
     @Override
@@ -220,12 +226,16 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
     }
 
-    @Nonnull
-    @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
+    protected double getPrefixCommonRate(ItemStack stack){
+        double b;
+        Prefix prefix = getPrefix(stack);
+        if(prefix == Prefix.NULL) return 1d;
+        if(prefix.getLevel() <= 3){
+            b = 1 - 0.1 * (4 - prefix.getLevel());
+        }else{
+            b = 0.02 * (prefix.getLevel()-4) + 1;
+        }
+        return b;
     }
 
     private double getManaBurstSpeed(ItemStack stack){
@@ -320,7 +330,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
                     && !((PlayerEntity) thrower).canHarmPlayer(((PlayerEntity) living))) {
                 continue;
             }
-            if (living.hurtTime == 0) {
+            if (living.hurtTime == 0 && !living.isInvisible()) {
                 int cost = 100 / 3;
                 int mana = burst.getMana();
                 if (mana >= cost) {

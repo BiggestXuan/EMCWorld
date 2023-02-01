@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Other;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.INeedLevelItem;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.items.EWItem;
@@ -43,7 +44,7 @@ public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevel
 
     @Override
     public int getUseLevel(ItemStack stack) {
-        return 25;
+        return 30;
     }
 
     @Override

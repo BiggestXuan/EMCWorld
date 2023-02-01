@@ -25,8 +25,13 @@ public class VibraniumSword extends BaseWeaponItem implements IUpgradeableWeapon
     }
 
     @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
+
+    @Override
     public long EMCModifySecond(ItemStack stack) {
-        return 1000;
+        return 100000;
     }
 
     @Override

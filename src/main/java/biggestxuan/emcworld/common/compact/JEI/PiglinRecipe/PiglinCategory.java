@@ -66,9 +66,9 @@ public class PiglinCategory implements IRecipeCategory<JEIPiglinRecipe> {
     public IDrawable getIcon() {
         return this.icon;
     }
-
     @Override
-    public void setIngredients(JEIPiglinRecipe recipe, IIngredients ingredients) {
+
+    public void setIngredients(JEIPiglinRecipe recipe, IIngredients ingredients){
         ingredients.setInput(VanillaTypes.ITEM,recipe.getInput());
         ingredients.setOutput(VanillaTypes.ITEM,recipe.getOutput());
     }

@@ -22,7 +22,7 @@ public class Creation extends BaseEMCGodWarHammer {
 
     @Override
     protected double criticalChance(ItemStack stack) {
-        return Math.pow(1.0245,getLevel(stack)) - 1;
+        return Math.pow(1.0245,getLevel(stack)) - 0.8;
     }
 
     @Override

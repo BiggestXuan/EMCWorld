@@ -32,12 +32,12 @@ public class RainbowStaff extends StaffItem implements IEMCInfuserItem, INeedLev
 
     @Override
     public double getCriticalChance(ItemStack stack) {
-        return tier.getCriticalChance() + (getInfuser(stack) >= Math.E ? Math.log(getInfuser(stack))/35d : 0);
+        return tier.getCriticalChance() * getPrefixCommonRate(stack) + (getInfuser(stack) >= Math.E ? Math.log(getInfuser(stack))/35d : 0);
     }
 
     @Override
     public double getCriticalRate(ItemStack stack) {
-        return tier.getCriticalRate() + (getInfuser(stack) >= Math.E ? Math.log(getInfuser(stack))/30d : 0);
+        return tier.getCriticalRate() * getPrefixCommonRate(stack) + (getInfuser(stack) >= Math.E ? Math.log(getInfuser(stack))/30d : 0);
     }
 
     @Override
@@ -48,7 +48,8 @@ public class RainbowStaff extends StaffItem implements IEMCInfuserItem, INeedLev
 
     @Override
     public float getBaseDamage(ItemStack stack){
-        float damage =  getInfuser(stack) >= Math.E ? 27.5F + (float) (Math.log(getInfuser(stack)*0.65)) : 27.5F;
+        float baseDamage = (float) (27.5F * getPrefixCommonRate(stack));
+        float damage =  getInfuser(stack) >= Math.E ? baseDamage + (float) (Math.log(getInfuser(stack)*0.65)) : baseDamage;
         return damage + getLevel(stack) * 0.06f * damage;
     }
 

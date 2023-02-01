@@ -134,6 +134,10 @@ public class MathUtils {
         return format(String.valueOf(value));
     }
 
+    public static String doubleFormat(double v){
+        return v < 1000d ? String.format("%.1f",v) : format(v);
+    }
+
     public static long doubleToLong(double value){
         return Long.parseLong(String.valueOf(Math.round(value)));
     }

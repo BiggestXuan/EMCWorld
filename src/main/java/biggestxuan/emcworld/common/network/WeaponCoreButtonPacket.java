@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.network;
  *  2022/10/05
  */
 
+import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixTileEntity;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlockTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
@@ -39,6 +40,10 @@ public class WeaponCoreButtonPacket {
                 if(tile instanceof WeaponUpgradeBlockTileEntity){
                     WeaponUpgradeBlockTileEntity entity = (WeaponUpgradeBlockTileEntity) tile;
                     entity.setStates(WeaponUpgradeBlockTileEntity.States.STARTING);
+                }
+                if(tile instanceof PrefixTileEntity){
+                    PrefixTileEntity tileEntity = (PrefixTileEntity) tile;
+                    tileEntity.state = PrefixTileEntity.State.START;
                 }
             }
         });

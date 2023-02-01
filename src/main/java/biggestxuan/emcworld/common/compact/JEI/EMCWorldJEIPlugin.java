@@ -9,6 +9,12 @@ package biggestxuan.emcworld.common.compact.JEI;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.compact.JEI.AdvanceUpdate.AdvancedUpdateCategory;
 import biggestxuan.emcworld.common.compact.JEI.AdvanceUpdate.JEIAdvancedUpdateRecipe;
+import biggestxuan.emcworld.common.compact.JEI.Afterlight.Ancient.AncientCategory;
+import biggestxuan.emcworld.common.compact.JEI.Afterlight.Ancient.AncientRecipe;
+import biggestxuan.emcworld.common.compact.JEI.Afterlight.Glyph.GlyphCategory;
+import biggestxuan.emcworld.common.compact.JEI.Afterlight.Glyph.GlyphRecipe;
+import biggestxuan.emcworld.common.compact.JEI.Afterlight.Ritual.RitualCategory;
+import biggestxuan.emcworld.common.compact.JEI.Afterlight.Ritual.RitualRecipe;
 import biggestxuan.emcworld.common.compact.JEI.Infuser.InfuserCategory;
 import biggestxuan.emcworld.common.compact.JEI.PiglinRecipe.JEIPiglinRecipe;
 import biggestxuan.emcworld.common.compact.JEI.PiglinRecipe.PiglinCategory;
@@ -53,6 +59,9 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new InfuserCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new SteelFurnaceCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new PiglinCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new GlyphCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new AncientCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -75,6 +84,9 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(EWItems.INFUSER_CORE.get()),InfuserCategory.getRL());
         registration.addRecipeCatalyst(new ItemStack(EWItems.STEEL_FURNACE_CORE.get()),SteelFurnaceCategory.rl());
         registration.addRecipeCatalyst(new ItemStack(EWItems.STEEL_FURNACE_BRICK.get()),SteelFurnaceCategory.rl());
+        registration.addRecipeCatalyst(GlyphCategory.item,GlyphCategory.rl());
+        registration.addRecipeCatalyst(RitualCategory.item,RitualCategory.rl());
+        registration.addRecipeCatalyst(AncientCategory.item,AncientCategory.rl());
     }
 
     @Override
@@ -94,12 +106,21 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         List<JEIPiglinRecipe> piglin_recipes = new ArrayList<>(Arrays.asList(JEIPiglinRecipe.values()));
         registry.addRecipes(piglin_recipes, PiglinCategory.rl());
 
+        List<GlyphRecipe> glyphRecipes = new ArrayList<>(Arrays.asList(GlyphRecipe.values()));
+        registry.addRecipes(glyphRecipes,GlyphCategory.rl());
+
+        List<RitualRecipe> ritualRecipes = new ArrayList<>(Arrays.asList(RitualRecipe.values()));
+        registry.addRecipes(ritualRecipes,RitualCategory.rl());
+
+        List<AncientRecipe> ancientRecipes = new ArrayList<>(Arrays.asList(AncientRecipe.values()));
+        registry.addRecipes(ancientRecipes,AncientCategory.rl());
+
         RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
         registry.addRecipes(recipeManager.getAllRecipesFor(InfuserRecipe.Type.INSTANCE),InfuserCategory.getRL());
         registry.addRecipes(recipeManager.getAllRecipesFor(SteelFurnaceRecipe.Type.INSTANCE),SteelFurnaceCategory.rl());
     }
 
     private static ItemStack getIS(Item item){
-        return new ItemStack(item);
+        return new ItemStack(item,1);
     }
 }

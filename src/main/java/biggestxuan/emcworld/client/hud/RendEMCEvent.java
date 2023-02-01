@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class RendEMCEvent {
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void onOverlayRender(RenderGameOverlayEvent event){
         ClientPlayerEntity player = Minecraft.getInstance().player;
         if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {

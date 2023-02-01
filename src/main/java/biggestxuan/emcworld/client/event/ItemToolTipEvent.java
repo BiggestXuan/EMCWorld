@@ -134,6 +134,8 @@ public class ItemToolTipEvent {
             double damage = item.getAdditionsDamage(stack);
             if(damage > 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",damage)));
+            }else if (damage < 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage_loss",String.format("%.2f",Math.abs(damage))));
             }
         }
         if(stack.getItem() instanceof IRangeAttackWeapon){
@@ -145,11 +147,15 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IUpgradeableArmor){
             IUpgradeableArmor item_1_1 = (IUpgradeableArmor) stack.getItem();
-            if(item_1_1.hurtRate(stack) != 1){
+            if(item_1_1.hurtRate(stack) < 1){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
+            } else if (item_1_1.hurtRate(stack) > 1) {
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt_add",String.format("%.2f",(item_1_1.hurtRate(stack)-1)*100)).append("%"));
             }
             if(item_1_1.extraHealth(stack) > 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
+            } else if(item_1_1.extraHealth(stack) < 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health_loss",String.format("%.2f",Math.abs(item_1_1.extraHealth(stack)))));
             }
         }
         if(stack.getItem() instanceof ICostEMCItem){
@@ -164,7 +170,12 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof ISpeedArmor){
             ISpeedArmor item_2_5 = (ISpeedArmor) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed",String.format("%.2f",item_2_5.getSpeed(stack))));
+            double speed = item_2_5.getSpeed(stack);
+            if(speed > 0) {
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed",String.format("%.2f",speed)));
+            }else if(speed < 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed_loss",String.format("%.2f",speed)));
+            }
         }
         if(stack.getItem() instanceof IReachArmor){
             IReachArmor item_2_6 = (IReachArmor) stack.getItem();
@@ -177,8 +188,10 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof ICriticalWeapon){
             ICriticalWeapon ww = (ICriticalWeapon) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",String.format("%.2f",ww.getActCriticalChance(stack)*100)).append("%"));
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_rate",String.format("%.2f",ww.getActCriticalRate(stack)*100)).append("%"));
+            if(ww.getActCriticalChance(stack) > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",String.format("%.2f",ww.getActCriticalChance(stack)*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_rate",String.format("%.2f",ww.getActCriticalRate(stack)*100)).append("%"));
+            }
         }
         if(stack.getItem() instanceof IAttackSpeedItem){
             IAttackSpeedItem si = (IAttackSpeedItem) stack.getItem();
@@ -192,8 +205,10 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IUpgradeableTool){
             IUpgradeableTool tool = (IUpgradeableTool) stack.getItem();
-            if(tool.getAdditionSpeed(stack) > 0){
+            if(tool.getAdditionSpeed(stack) > 1){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed",String.format("%.2f",(tool.getAdditionSpeed(stack)-1)*100)+"%"));
+            }else if(tool.getAdditionSpeed(stack) < 1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed_loss",String.format("%.2f",(1-tool.getAdditionSpeed(stack))*100)+"%"));
             }
         }
         if(stack.getItem() instanceof ISecondEMCItem){
@@ -215,8 +230,18 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IEMCInfuserItem){
             IEMCInfuserItem ii_i = (IEMCInfuserItem) stack.getItem();
-            double v = ii_i.getInfuserRate(stack) >= 0 ? ii_i.getInfuserRate(stack) * 100 : 0;
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",String.format("%.1f",v)).append("%"));
+            if(Screen.hasShiftDown()){
+                if(Screen.hasControlDown()){
+                    String per = MathUtils.thousandSign(ii_i.getInfuser(stack)) +" / " + MathUtils.thousandSign(ii_i.getMaxInfuser(stack));
+                    event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",per));
+                }else{
+                    String per = ""+MathUtils.doubleFormat(ii_i.getInfuser(stack))+" / "+MathUtils.doubleFormat(ii_i.getMaxInfuser(stack));
+                    event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",per));
+                }
+            }else{
+                double v = ii_i.getInfuserRate(stack) >= 0 ? ii_i.getInfuserRate(stack) * 100 : 0;
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",String.format("%.1f",v)).append("%"));
+            }
         }
         for(Item item: radiationItem){
             if(stack.getItem().getItem().equals(item)){

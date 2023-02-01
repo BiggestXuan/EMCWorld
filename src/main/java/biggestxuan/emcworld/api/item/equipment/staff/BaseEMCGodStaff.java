@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel {
+public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel,IUpgradeableMaterial {
     public BaseEMCGodStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("god"));
     }
@@ -38,6 +38,16 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     }
 
     @Override
+    protected double getPrefixCommonRate(ItemStack stack){
+        return super.getPrefixCommonRate(stack) * 1.3;
+    }
+
+    @Override
+    public double getEMCCostRate() {
+        return 0d;
+    }
+
+    @Override
     public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
         return false;
     }
@@ -45,7 +55,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
+        return (long) ((Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack));
     }
 
     protected abstract long getBaseEMCModify(ItemStack stack);
@@ -70,7 +80,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
         }
-        return tier.getCriticalChance() + b;
+        return tier.getCriticalChance() * getPrefixCommonRate(stack) * 0.8+ b;
     }
 
     @Override
@@ -80,12 +90,12 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
         }
-        return tier.getCriticalRate() + b;
+        return tier.getCriticalRate() * getPrefixCommonRate(stack) * 0.6 + b;
     }
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return getBaseCostRate(stack);
+        return getBaseCostRate(stack) / getPrefixCommonRate(stack) * 1.25f;
     }
 
     @Override
@@ -95,7 +105,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return getBaseEMCModify(stack);
+        return (long) (getBaseEMCModify(stack) * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -105,7 +115,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public float getBaseDamage(ItemStack stack){
-        double d = getBaseBurstDamage(stack);
+        double d = getBaseBurstDamage(stack) * getPrefixCommonRate(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             d *= (1 + Math.log(costEMC)/85);

@@ -10,10 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.api.item.IEMCRepairableItem;
-import biggestxuan.emcworld.api.item.INeedLevelItem;
-import biggestxuan.emcworld.api.item.IPlayerDifficultyItem;
-import biggestxuan.emcworld.api.item.ISecondEMCItem;
+import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
@@ -60,6 +57,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import vazkii.botania.common.entity.EntityDoppleganger;
+import vazkii.patchouli.common.item.PatchouliItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,7 +196,11 @@ public class PlayerTickEvent {
                 IUpgradeableArmor armor = (IUpgradeableArmor) stack.getItem();
                 health += armor.extraHealth(stack);
             }
-
+        }
+        health = Math.max(health, -19.5f);
+        if(!GameStageManager.hasStage(player,"Start") && player.inventory.getItem(1).getItem().equals(PatchouliItems.book)){
+            player.inventory.getItem(1).shrink(1);
+            GameStageManager.addStage(player,"Start");
         }
         ModifiableAttributeInstance health_instance = player.getAttribute(Attributes.MAX_HEALTH);
         if(health_instance != null){
@@ -339,10 +341,16 @@ public class PlayerTickEvent {
                     stack.setCount(0);
                 }
             }
-            if(stack.hasTag()){
-                if(stack.getOrCreateTag().getString("patchouli:book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
-                    stack.shrink(1);
+            if(stack.getItem() instanceof IPrefixItem){
+                IPrefixItem item = (IPrefixItem) stack.getItem();
+                if(item.getPrefix(stack) == IPrefixItem.Prefix.NULL){
+                    item.init(stack);
                 }
+            }
+            if(stack.hasTag()){
+                //if(stack.getOrCreateTag().getString("patchouli:book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
+                    //stack.shrink(1);
+                //}
             }
             if(stack.getItem() instanceof IEMCShieldArmor){
                 IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();

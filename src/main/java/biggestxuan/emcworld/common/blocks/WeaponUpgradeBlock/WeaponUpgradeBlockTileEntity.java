@@ -28,6 +28,8 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.particles.ParticleType;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.math.BlockPos;
@@ -42,6 +44,7 @@ import javax.annotation.Nullable;
 public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implements ITickableTileEntity, INamedContainerProvider{
     private int chance;
     private States states;
+    private final BlockPos pos = this.getBlockPos();
     private final Inventory inventory = new Inventory(6);
     public IIntArray data;
     public PlayerEntity lastClick = null;
@@ -203,6 +206,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         if(isSendMessage(weapon)){
             sendMessage();
         }
+        //tileEntity.level.addParticle(ParticleTypes.HAPPY_VILLAGER,pos.getX(),pos.getY()+1,pos.getZ(),10,10,10);
     }
 
     private void costMaterial(WeaponUpgradeBlockTileEntity tileEntity){
@@ -273,6 +277,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         this.states = states;
     }
 
+    @Nonnull
     @Override
     public ITextComponent getDisplayName() {
         return EMCWorld.tc("gui.emcworld.weapon_upgrade_core");
@@ -280,7 +285,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
 
     @Nullable
     @Override
-    public Container createMenu(int p_createMenu_1_, PlayerInventory p_createMenu_2_, PlayerEntity p_createMenu_3_) {
+    public Container createMenu(int p_createMenu_1_, @Nonnull PlayerInventory p_createMenu_2_, @Nonnull PlayerEntity p_createMenu_3_) {
         return new WeaponUpgradeContainer(p_createMenu_1_, p_createMenu_2_, this, this.data);
     }
 

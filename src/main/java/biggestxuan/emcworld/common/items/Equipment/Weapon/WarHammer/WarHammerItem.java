@@ -6,9 +6,9 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer;
  *  2022/12/04
  */
 
-import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
+import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -24,14 +24,18 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TieredItem;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class WarHammerItem extends TieredItem implements IUpgradeableWeapon, IUpgradeableMaterial,IRangeAttackWeapon {
+public class WarHammerItem extends TieredItem implements IUpgradeableWeapon,IRangeAttackWeapon, IPrefixItem, ICriticalWeapon {
     protected final IWarHammerTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
+
+    @Override
+    public double getEMCCostRate() {
+        return 1d;
+    }
 
     public WarHammerItem(IWarHammerTier tier) {
         super(tier,new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB));
@@ -44,21 +48,25 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon, IUp
 
     @Nonnull
     @Override
-    public ITextComponent getName(@Nonnull ItemStack p_200295_1_) {
-        int level = getLevel(p_200295_1_);
-        String name = this.toString();
-        return EMCWorld.tc("item.emcworld."+name).append(" (+"+level+")");
-    }
-
-    @Nonnull
-    @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType p_111205_1_) {
         return p_111205_1_ == EquipmentSlotType.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(p_111205_1_);
     }
 
+    protected double getPrefixCommonRate(ItemStack stack){
+        double b = 1;
+        Prefix prefix = getPrefix(stack);
+        if(prefix == Prefix.NULL) return b;
+        if(prefix.getLevel() <= 3){
+            b = 1 - 0.13 * (4 - prefix.getLevel());
+        }else{
+            b = 0.02 * (prefix.getLevel()-4) + 1;
+        }
+        return b;
+    }
+
     @Override
     public double getAttackRange(ItemStack stack) {
-        return tier.getAttackRange() + tier.getAttackRange() * 0.15 * getLevel(stack);
+        return tier.getAttackRange() * getPrefixCommonRate(stack) + tier.getAttackRange() * 0.15 * getLevel(stack);
     }
 
     @Override
@@ -68,7 +76,7 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon, IUp
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return 1;
+        return 1 / getPrefixCommonRate(stack);
     }
 
     @Override
@@ -93,10 +101,20 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon, IUp
 
     @Override
     public float getAdditionsDamage(ItemStack stack) {
-        return (float) (tier.getAttackDamageBonus() * 0.13 * getLevel(stack));
+        return (float) ((tier.getAttackDamageBonus() * 0.13 * getLevel(stack)) + tier.getAttackDamageBonus() * getPrefixCommonRate(stack)-1);
     }
 
     protected int lv(ItemStack stack){
         return IUpgradeableWeapon.super.getWeightRequired(stack);
+    }
+
+    @Override
+    public double getCriticalChance(ItemStack stack) {
+        return tier.getCriticalChance() * getPrefixCommonRate(stack) + 0.01 * tier.getLevel() * getLevel(stack);
+    }
+
+    @Override
+    public double getCriticalRate(ItemStack stack) {
+        return tier.getCriticalRate() * getPrefixCommonRate(stack) + 0.025 * tier.getLevel() * getLevel(stack);
     }
 }

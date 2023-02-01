@@ -16,6 +16,7 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.DifficultyItem")
+@SuppressWarnings("unused")
 public class CrTDifficultyItem {
     @ZenCodeType.Method
     public static double getItemDifficulty(IItemStack stack){
@@ -31,6 +32,7 @@ public class CrTDifficultyItem {
         }
         return 0;
     }
+
     @ZenCodeType.Method
     public static boolean isReachDifficulty(IItemStack stack){
         return CrTConfig.getWorldDifficulty() >= getItemDifficulty(stack);

@@ -17,7 +17,7 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) (Math.pow(1.417,getLevel(stack)) * 500000);
+        return (long) (Math.pow(1.417,getLevel(stack)) * 500000 * getPrefixCommonRate(stack));
     }
 
     @Override
@@ -39,17 +39,17 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public float getSpeed(ItemStack stack) {
-        return 0.01f * getLevel(stack);
+        return (float) (0.01f * getLevel(stack) * getPrefixCommonRate(stack));
     }
 
     @Override
     public float extraHealth(ItemStack stack) {
-        return 0.3f * getLevel(stack);
+        return (float) (0.3f * getLevel(stack) * getPrefixCommonRate(stack));
     }
 
     @Override
     public double hurtRate(ItemStack stack) {
-        return Math.pow(0.993,getLevel(stack));
+        return Math.pow(0.993,getLevel(stack)) / getPrefixCommonRate(stack);
     }
 
     @Override
@@ -59,11 +59,11 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public float maxShield(ItemStack stack) {
-        return 8f * getLevel(stack) * getShieldRate();
+        return (float) (8f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 
     @Override
     public float shieldSpeed(ItemStack stack) {
-        return 0.45f * getLevel(stack) * getShieldRate();
+        return (float) (0.45f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 }
