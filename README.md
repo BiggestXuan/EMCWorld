@@ -33,7 +33,7 @@
 - [ ] 职业系统未完全测试；  
 - [ ] 还有更多。  
   
-![banner](https://biggestxuan.top/emcworld/banner.png)
+[宣传图](https://biggestxuan.top/emcworld/banner.png)
 ---
 ## 特别鸣谢  
 ### 以下是未直接参与整合包开发，但是间接给整合包提供帮助的用户。（以下排名不分先后）  
