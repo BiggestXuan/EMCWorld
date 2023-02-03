@@ -63,7 +63,7 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
     public void speed(ItemStack p_150893_1_, BlockState p_150893_2_, CallbackInfoReturnable<Float> cir){
         Material material = p_150893_2_.getMaterial();
         float speed = (float) (tier.getSpeed() * getAdditionSpeed(p_150893_1_));
-        if (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(p_150893_2_.getHarvestTool()) || this.blocks.contains(p_150893_2_.getBlock()) || (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(ToolType.PICKAXE)) && material == Material.METAL || material == Material.HEAVY_METAL || material == Material.STONE){
+        if (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(p_150893_2_.getHarvestTool()) || this.blocks.contains(p_150893_2_.getBlock()) || (p_150893_1_.getItem().getToolTypes(p_150893_1_).contains(ToolType.PICKAXE)) && (material == Material.METAL || material == Material.HEAVY_METAL || material == Material.STONE)){
             cir.setReturnValue(speed);
             cir.cancel();
         }else{

@@ -7,6 +7,8 @@ package biggestxuan.emcworld.common.blocks.PrefixBlock;
  */
 
 import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.common.items.Equipment.PrefixScroll;
+import biggestxuan.emcworld.common.items.Equipment.Scroll.ScrollItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -20,7 +22,7 @@ public class PrefixSlot {
 
         @Override
         public boolean mayPlace(ItemStack p_75214_1_) {
-            return true;
+            return p_75214_1_.getItem() instanceof ScrollItem || p_75214_1_.getItem() instanceof PrefixScroll;
         }
     }
 
@@ -32,7 +34,7 @@ public class PrefixSlot {
 
         @Override
         public boolean mayPlace(ItemStack p_75214_1_) {
-            return p_75214_1_.getItem() instanceof IPrefixItem;
+            return p_75214_1_.getItem() instanceof IPrefixItem || p_75214_1_.getItem() instanceof PrefixScroll;
         }
     }
 }

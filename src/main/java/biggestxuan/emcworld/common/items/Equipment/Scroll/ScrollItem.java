@@ -29,5 +29,10 @@ public class ScrollItem extends BaseDifficultyItem implements IUpgradeableMateri
     public double getEMCCostRate(){
         return 0d;
     }
+
+    @Override
+    public double breakWeaponRate(){
+        return IUpgradeableMaterial.super.breakWeaponRate();
+    }
 }
 

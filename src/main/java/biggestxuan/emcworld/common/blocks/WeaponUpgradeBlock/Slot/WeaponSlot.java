@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.Slot;
  */
 
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
+import biggestxuan.emcworld.common.items.Equipment.PrefixScroll;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;

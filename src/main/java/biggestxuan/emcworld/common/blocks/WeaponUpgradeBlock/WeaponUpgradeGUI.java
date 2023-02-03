@@ -69,10 +69,10 @@ public class WeaponUpgradeGUI extends ContainerScreen<WeaponUpgradeContainer> {
         }
     }
 
-    static class ButtonPress implements Button.IPressable{
+    public static class ButtonPress implements Button.IPressable{
         private final BlockPos pos;
 
-        ButtonPress(BlockPos pos){
+        public ButtonPress(BlockPos pos){
             this.pos = pos;
         }
 

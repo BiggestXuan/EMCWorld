@@ -22,7 +22,7 @@ public interface IPrefixItem {
         return Prefix.NULL;
     }
 
-    default Prefix getHighestPrefix(){
+    static Prefix getHighestPrefix(){
         double diff = ConfigManager.DIFFICULTY.get();
         if(diff == 0.5) return Prefix.NORMAL;
         if(diff <= 1) return Prefix.FINE;
@@ -42,11 +42,11 @@ public interface IPrefixItem {
             setPrefix(stack,Prefix.MYTH);
         }else if(MathUtils.isRandom(0.0005)) {
             setPrefix(stack,Prefix.LEGEND);
-        } else if(MathUtils.isRandom(0.003)) {
+        } else if(MathUtils.isRandom(0.002)) {
             setPrefix(stack,Prefix.EPIC);
-        } else if(MathUtils.isRandom(0.01)) {
+        } else if(MathUtils.isRandom(0.007)) {
             setPrefix(stack,Prefix.ULTIMATE);
-        } else if(MathUtils.isRandom(0.05)) {
+        } else if(MathUtils.isRandom(0.03)) {
             setPrefix(stack,Prefix.EXCELLENT);
         } else if(MathUtils.isRandom(0.2)) {
             setPrefix(stack,Prefix.FINE);

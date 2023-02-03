@@ -841,6 +841,7 @@
   "tooltip.emcworld.prefix.legend": "传奇 ",
   "tooltip.emcworld.prefix.myth": "神话 ",
   "tooltip.emcworld.prefix.scroll_main": "重铸会产生的前缀：",
+  "tooltip.emcworld.prefix.scroll_weight": "§9总权重 %d §9/ %d",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

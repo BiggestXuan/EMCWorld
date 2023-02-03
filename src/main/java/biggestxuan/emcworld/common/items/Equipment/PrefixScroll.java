@@ -8,10 +8,10 @@ package biggestxuan.emcworld.common.items.Equipment;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.EWItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import biggestxuan.emcworld.common.utils.MathUtils;
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +19,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.text.*;
+import net.minecraft.util.text.Color;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -29,20 +32,10 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class PrefixScroll extends EWItem {
-    public static final int MAX = 50000;
+    public static final int MAX = 60000;
 
     public PrefixScroll(){
-        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).stacksTo(1));
-    }
-
-    @Override
-    public ActionResult<ItemStack> use(World p_77659_1_, PlayerEntity p_77659_2_, Hand p_77659_3_){
-        super.use(p_77659_1_,p_77659_2_,p_77659_3_);
-        ItemStack stack = p_77659_2_.getMainHandItem();
-        if(p_77659_2_.isShiftKeyDown()){
-            update(stack,50000);
-        }else update(stack,10000);
-        return ActionResult.success(stack);
+        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).durability(2));
     }
 
     private void init(ItemStack stack){
@@ -53,6 +46,12 @@ public class PrefixScroll extends EWItem {
             nbt.putInt(prefix.toString(),0);
         }
         nbt.putBoolean("dirty",true);
+        nbt.putInt("weight",0);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack p_77616_1_) {
+        return false;
     }
 
     @Override
@@ -63,21 +62,22 @@ public class PrefixScroll extends EWItem {
         }
     }
 
+    public int getWeight(ItemStack stack){
+        return stack.getOrCreateTag().getInt("weight");
+    }
+
     public void update(ItemStack stack,int total){
+        double diff = ConfigManager.DIFFICULTY.get();
         CompoundNBT nbt = stack.getOrCreateTag();
+        int w = nbt.getInt("weight");
         init(stack);
-        int m = 1;
-        if(total >= 10) m++;
-        if(total >= 20) m++;
-        if(total >= 50) m++;
-        if(total >= 300) m++;
-        if(total >= 1000) m++;
-        if(total >= 4000) m++;
-        if(total >= 10000) m++;
-        if(total >= 20000) m++;
-        if(total >= 35000) m++;
-        for (int i = 0; i < total; i++) {
-            int c = MathUtils.getRangeRandom(1,m+1);
+        nbt.putInt("weight",Math.min(w+total,MAX));
+        int t = nbt.getInt("weight");
+        int m = getMaxReachPrefix(t);
+        m = Math.min(m,IPrefixItem.getHighestPrefix().getLevel());
+        for (int i = 0; i < t; i++) {
+            int p = Math.min(m,getMaxReachPrefix(i));
+            int c = MathUtils.getRangeRandom(Math.max(1,p-2),p+1);
             IPrefixItem.Prefix prefix = IPrefixItem.getPrefix(c);
             nbt.putInt(prefix.toString(),nbt.getInt(prefix.toString())+c);
         }
@@ -100,6 +100,26 @@ public class PrefixScroll extends EWItem {
                 }
             }
         }
+        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.prefix.scroll_weight",getWeight(p_77624_1_),MAX));
+    }
+
+    @Override
+    public ITextComponent getName(ItemStack p_200295_1_) {
+        return super.getName(p_200295_1_).copy().setStyle(Style.EMPTY.withColor(Color.fromRgb(IPrefixItem.getPrefix(getMaxReachPrefix(getWeight(p_200295_1_))).getColor())));
+    }
+
+    public static int getMaxReachPrefix(int t){
+        int m = 1;
+        if(t >= 10) m++;
+        if(t >= 20) m++;
+        if(t >= 30) m++;
+        if(t >= 50) m++;
+        if(t >= 100) m++;
+        if(t >= 3000) m++;
+        if(t >= 10000) m++;
+        if(t >= 20000) m++;
+        if(t >= 35000) m++;
+        return m;
     }
 
     public static int getTotal(ItemStack stack){

@@ -52,6 +52,7 @@ public class EMCVillagerProfession extends VillagerProfession {
             trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),12),new ItemStack(EWItems.ICE_SWORD.get(),1),1).get());
             trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),12),new ItemStack(EWItems.NATURE_SWORD.get(),1),1).get());
             trades.get(5).add(new VillagerTradeBuilder(new ItemStack(PEItems.RED_MATTER,1),new ItemStack(Items.EMERALD,64),12).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.MAGENTA_MATTER.get(),1),new ItemStack(EWItems.PREFIX_SCROLL.get(),1),1).get());
         }
     }
 }

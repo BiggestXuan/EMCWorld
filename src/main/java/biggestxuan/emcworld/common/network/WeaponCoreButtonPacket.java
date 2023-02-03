@@ -43,7 +43,8 @@ public class WeaponCoreButtonPacket {
                 }
                 if(tile instanceof PrefixTileEntity){
                     PrefixTileEntity tileEntity = (PrefixTileEntity) tile;
-                    tileEntity.state = PrefixTileEntity.State.START;
+                    tileEntity.setPlayer(player);
+                    tileEntity.start();
                 }
             }
         });

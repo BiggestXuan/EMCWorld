@@ -13,6 +13,7 @@
     "ClassicBarMixin",
     "ConjurerMixin",
     "DisableBonus",
+    "EMCHelperMixin",
     "GaiaMixin",
     "GNSBedMixin",
     "GobberTierMixin",

@@ -116,6 +116,6 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
 
     @Override
     public void setPrefix(ItemStack stack,Prefix prefix){
-        stack.getOrCreateTag().putInt("prefix",getHighestPrefix().getLevel());
+        stack.getOrCreateTag().putInt("prefix",IPrefixItem.getHighestPrefix().getLevel());
     }
 }
