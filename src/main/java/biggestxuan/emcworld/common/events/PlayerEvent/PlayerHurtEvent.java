@@ -154,7 +154,8 @@ public class PlayerHurtEvent {
                         EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
                     }
                     else{
-                        event.setAmount(player.getMaxHealth()*1000.0f);
+                        player.die(source);
+                        player.setHealth(0f);
                         Message.sendMessage(player, EMCWorld.tc("message.evt.hurtcancel",MathUtils.format(String.valueOf(costEMC))));
                         return;
                     }

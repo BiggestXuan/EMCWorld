@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class RedGreenDagger extends BaseEMCGodDagger {
     @Override
     protected double AttackSpeed(ItemStack stack) {
-        return Math.pow(1.015,getLevel(stack));
+        return Math.pow(1.015,getLevel(stack)*0.98f);
     }
 
     @Override
@@ -27,6 +27,6 @@ public class RedGreenDagger extends BaseEMCGodDagger {
 
     @Override
     protected float AddonDamage(ItemStack stack) {
-        return getLevel(stack) == 0 ? 0 : (float) (Math.pow(1.15,getLevel(stack)) * 7);
+        return getLevel(stack) == 0 ? 0 + 1.5f : (float) (Math.pow(1.15,getLevel(stack)) * 7);
     }
 }

@@ -85,7 +85,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
 
     @Override
     public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 2.7);
+        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 5.5);
     }
 
     private double getCostRate(PlayerEntity player){
@@ -119,7 +119,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
     }
 
     public double costEMCWhenAttack(ItemStack stack) {
-        return 1 / getPrefixCommonRate(stack);
+        return 1.5 / getPrefixCommonRate(stack);
     }
 
     public float getBaseDamage(ItemStack stack){
@@ -227,7 +227,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
                     float damage = getManaBurstDamage(stack,thrower);
                     if(thrower instanceof PlayerEntity){
                         PlayerEntity player = (PlayerEntity) thrower;
-                        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getCostRate(player) * getManaBurstDamage(stack,player) * costEMCWhenAttack(stack) * 1.5);
+                        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getCostRate(player) * getManaBurstDamage(stack,player));
                         if(living.getType().equals(Registry.TARGET_DUMMY.get())){
                             cost = 0;
                         }

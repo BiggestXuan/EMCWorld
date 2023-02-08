@@ -43,6 +43,11 @@ public class StoredTotem extends BaseCuriosItem {
     }
 
     @Override
+    public boolean isValidRepairItem(ItemStack p_82789_1_, ItemStack p_82789_2_) {
+        return false;
+    }
+
+    @Override
     public boolean isEnchantable(@Nonnull ItemStack p_77616_1_){
         return false;
     }

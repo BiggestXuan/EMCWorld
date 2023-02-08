@@ -34,7 +34,7 @@ public class DataProvider implements IComponentProvider {
         Block block = accessor.getBlock();
         if(Minecraft.getInstance().player == null) return;
         ClientPlayerEntity player = Minecraft.getInstance().player;
-        if(block instanceof AdvancedUpdateBlock || block instanceof EWUpdateBlock){
+        if(block instanceof AdvancedUpdateBlock || block.equals(EWBlocks.CONTROL_UPDATE_CORE.get())){
             IUtilCapability cap = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
             tooltip.add(EMCWorld.tc("hwyla.tip.cd", MathUtils.format(cap.getCoolDown()/20)));
         }

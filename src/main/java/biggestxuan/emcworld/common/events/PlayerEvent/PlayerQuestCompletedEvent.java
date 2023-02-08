@@ -20,8 +20,12 @@ import dev.ftb.mods.ftbquests.events.CustomRewardEvent;
 import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import dev.ftb.mods.ftbquests.quest.reward.Reward;
+import dev.ftb.mods.ftbteams.FTBTeams;
+import dev.ftb.mods.ftbteams.FTBTeamsAPI;
+import dev.ftb.mods.ftbteams.data.Team;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,8 +36,8 @@ import javax.annotation.Nullable;
 public class PlayerQuestCompletedEvent {
     @SubscribeEvent
     public static void playerCompletedQuestEvent(CustomRewardEvent event){
-        PlayerEntity player = event.getPlayer();
-        if(player.getCommandSenderWorld().isClientSide) return;
+        if(event.getPlayer().level.isClientSide) return;
+        ServerPlayerEntity player = event.getPlayer();
         if(event.getReward().hasTag("sea_lantern")){
             KnowledgeHelper.addPlayerKnowledge(player, new ItemStack(Blocks.SEA_LANTERN.asItem()));
         }
@@ -77,6 +81,9 @@ public class PlayerQuestCompletedEvent {
             baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(getQuestStage(event.getReward()),event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
         }
         if(baseGet == 0) return;
+        Team team = FTBTeamsAPI.getPlayerTeam(player);
+        int amt = team.getMembers().size();
+        baseGet = baseGet / (amt <= 0 ? 1 : amt);
         EMCHelper.modifyPlayerEMC(player,baseGet,true);
         for(QuestReward obj : QuestReward.values()){
             CustomReward reward = event.getReward();
@@ -116,11 +123,8 @@ public class PlayerQuestCompletedEvent {
                 "one","two","three","four","five","six","seven","eight"
         };
         int index = 0;
-        for(String s : ids){
-            System.out.println(id);
-            System.out.println(Long.parseLong(s,16));
+        for(String s : ids){;
             if(id == Long.parseLong(s,16)){
-                System.out.println("output:"+stages[index]);
                 return stages[index];
             }
             index++;

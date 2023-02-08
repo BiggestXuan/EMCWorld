@@ -8,6 +8,8 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
+import biggestxuan.emcworld.api.item.equipment.armor.BaseEMCGodArmorItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -16,7 +18,9 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -86,7 +90,7 @@ public class PlayerDeathEvent {
                 EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
             }
             else{
-                player.inventory.dropAll();
+                deathDrop(player);
             }
         }
     }
@@ -108,6 +112,18 @@ public class PlayerDeathEvent {
         }
         return players;
     }
+
+    private static void deathDrop(PlayerEntity player){
+        List<ItemStack> items = PlayerTickEvent.getPlayerAllItem(player);
+        for (int i = 0; i < player.inventory.getContainerSize(); i++) {
+            Item item = items.get(i).getItem();
+            if(!(item instanceof IEMCGodWeaponLevel) && !(item instanceof BaseEMCGodArmorItem)){
+                player.drop(items.get(i),false);
+                player.inventory.setItem(i,ItemStack.EMPTY);
+            }
+        }
+    }
+
     public static List<? extends PlayerEntity> getNearPlayer(Raid raid,ServerWorld world){
         List<PlayerEntity> players = new ArrayList<>();
         List<? extends PlayerEntity> allPlayer = world.players();

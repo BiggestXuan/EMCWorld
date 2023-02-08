@@ -39,7 +39,7 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
         if(prefix.getLevel() <= 3){
             b = 1 - (4 - prefix.getLevel()) * 0.1;
         }else{
-            b = (prefix.getLevel()-4) * 0.07 + 1;
+            b = (prefix.getLevel()-4) * 0.03 + 1;
         }
         return b;
     }

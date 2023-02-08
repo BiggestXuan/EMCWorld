@@ -12,7 +12,7 @@ import net.minecraft.item.Item;
 
 public abstract class BaseCuriosItem extends EWItem {
     public BaseCuriosItem(int durability){
-        super(new Item.Properties().durability(durability).tab(EWCreativeTabs.EW_EQUIPMENT_TAB));
+        super(new Item.Properties().durability(durability).tab(EWCreativeTabs.EW_EQUIPMENT_TAB).setNoRepair());
     }
 
     @Override

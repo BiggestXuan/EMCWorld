@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.mixin;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
+import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -61,6 +62,11 @@ public abstract class ItemMixin {
                 IPrefixItem.Prefix prefix = prefixItem.getPrefix(p_200295_1_);
                 text = (TranslationTextComponent) prefix.getName().setStyle(Style.EMPTY.withColor(Color.fromRgb(prefix.getColor()))).append(text);
             }
+        }
+        if(item instanceof IStarItem){
+            IStarItem item1 = (IStarItem) item;
+            String star = " "+"\u2605".repeat(Math.max(0, item1.getStar(p_200295_1_)));
+            text.append(star);
         }
         return text;
     }

@@ -17,7 +17,7 @@ public class NightLight extends BaseEMCGodDagger {
 
     @Override
     protected double EMCCost(ItemStack stack) {
-        return Math.pow(1.039f,getLevel(stack));
+        return Math.pow(1.039f,getLevel(stack)*0.975f);
     }
 
     @Override

@@ -64,7 +64,7 @@ public enum DifficultySetting{
     }
 
     public double getFtbBase(){
-        return ftbBase;
+        return ftbBase * 1.5;
     }
 
     public double getDifficulty() {

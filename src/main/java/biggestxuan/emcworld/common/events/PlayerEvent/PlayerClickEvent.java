@@ -36,12 +36,14 @@ import biggestxuan.emcworld.common.skill.PlayerSkillModify;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import mekanism.common.item.ItemQIODrive;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.item.SwordItem;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.Hand;
@@ -276,6 +278,9 @@ public class PlayerClickEvent {
         ItemStack output = recipe.getOutput();
         if(PlayerPickUpItemEvent.full(player,output)){
             return;
+        }
+        if(itemStack.getItem() instanceof ItemQIODrive && output.getItem() instanceof ItemQIODrive){
+            output.setTag(itemStack.getTag());
         }
         long costEMC = MathUtils.doubleToLong(recipe.costEMC() * MathUtils.difficultyLoss() * info.getCost());
         long playerEMC = EMCHelper.getPlayerEMC(player);

@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
@@ -18,6 +19,7 @@ import biggestxuan.emcworld.api.item.equipment.weapon.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.Curios.StoredTotem;
 import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
@@ -114,6 +116,22 @@ public class ItemToolTipEvent {
             event.getToolTip().add(normal);
             if(stack.getCount() > 1){
                 event.getToolTip().add(stack_tip);
+            }
+        }
+        if(Screen.hasShiftDown()){
+            if(stack.getItem() instanceof IUpgradeableItem){
+                IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_level",item.getLevel(stack),item.getMaxLevel()));
+            }
+            if(stack.getItem() instanceof IPrefixItem){
+                IPrefixItem item = (IPrefixItem) stack.getItem();
+                IPrefixItem.Prefix prefix = item.getPrefix(stack);
+                IFormattableTextComponent text = prefix.getName().setStyle(Style.EMPTY.withColor(Color.fromRgb(prefix.getColor())));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.prefix").append(text));
+            }
+            if(stack.getItem() instanceof IStarItem){
+                IStarItem item = (IStarItem) stack.getItem();
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.star",item.getStar(stack),item.getMaxStar(stack)));
             }
         }
         if(stack.getItem() instanceof StaffItem){
@@ -275,6 +293,9 @@ public class ItemToolTipEvent {
         }
         if(!(isTrans || free) && !stage.equals("")){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
+        }
+        if(stack.isDamageableItem() && !(stack.getItem() instanceof StoredTotem)){
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.durability",stack.getMaxDamage()-stack.getDamageValue(),stack.getMaxDamage()));
         }
     }
 

@@ -35,7 +35,7 @@ public class PrefixScroll extends EWItem {
     public static final int MAX = 60000;
 
     public PrefixScroll(){
-        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).durability(2));
+        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).stacksTo(1));
     }
 
     private void init(ItemStack stack){

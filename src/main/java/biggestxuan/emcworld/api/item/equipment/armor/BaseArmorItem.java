@@ -33,4 +33,9 @@ public abstract class BaseArmorItem extends ArmorItem {
     public Rarity getRarity(@Nonnull ItemStack stack){
         return Rarity.UNCOMMON;
     }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack p_82789_1_, ItemStack p_82789_2_) {
+        return false;
+    }
 }

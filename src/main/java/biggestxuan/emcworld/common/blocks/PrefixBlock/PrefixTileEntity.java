@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.blocks.PrefixBlock;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
 import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.PrefixScroll;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.ScrollItem;
@@ -92,7 +93,7 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
                 PrefixScroll right_scroll = (PrefixScroll) right.getItem();
                 if(right_scroll.getWeight(right) < PrefixScroll.MAX){
                     costLeft();
-                    right_scroll.update(right, (int) (left_scroll.getWeight(left) * (1-left_scroll.breakWeaponRate())));
+                    right_scroll.update(right, (int) (left_scroll.getWeight(left)* ConfigManager.DIFFICULTY.get() * (1-left_scroll.breakWeaponRate())));
                 }
                 stop();
             }
@@ -146,11 +147,11 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
             chance.add(k+c);
             k += c;
         }
-        /*System.out.println("random"+random);
+        System.out.println("random"+random);
         System.out.println("weight");
         weight.forEach(System.out::println);
         System.out.println("chance");
-        chance.forEach(System.out::println);*/
+        chance.forEach(System.out::println);
         for (int i = 0; i < chance.size(); i++) {
             if(i == 0){
                 if(random < chance.get(0)){
@@ -159,7 +160,7 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
                 continue;
             }
             if(random >= chance.get(i-1) && random <= chance.get(Math.min(i,chance.size()-1))){
-                IPrefixItem.Prefix prefix = IPrefixItem.getPrefix(i+2);
+                IPrefixItem.Prefix prefix = IPrefixItem.getPrefix(i+1);
                 return prefix.getLevel() > PrefixScroll.getMaxReachPrefix(nbt.getInt("weight")) ? IPrefixItem.getPrefix(prefix.getLevel()-1) : prefix;
             }
         }
@@ -172,16 +173,7 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
 
     private void costLeft(){
         ItemStack stack = inventory.getItem(0);
-        if(stack.getItem() instanceof ScrollItem){
-            stack.shrink(1);
-        }
-        if(stack.getItem() instanceof PrefixScroll){
-            if(stack.getDamageValue() >=2){
-                stack.shrink(1);
-            }else{
-                stack.setDamageValue(stack.getDamageValue()+1);
-            }
-        }
+        stack.shrink(1);
     }
     private boolean canStart(){
         return state == State.START;

@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.compact.JEI;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalRecipe;
 import biggestxuan.emcworld.common.compact.JEI.AdvanceUpdate.AdvancedUpdateCategory;
 import biggestxuan.emcworld.common.compact.JEI.AdvanceUpdate.JEIAdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.compact.JEI.Afterlight.Ancient.AncientCategory;
@@ -18,6 +19,7 @@ import biggestxuan.emcworld.common.compact.JEI.Afterlight.Ritual.RitualRecipe;
 import biggestxuan.emcworld.common.compact.JEI.Infuser.InfuserCategory;
 import biggestxuan.emcworld.common.compact.JEI.PiglinRecipe.JEIPiglinRecipe;
 import biggestxuan.emcworld.common.compact.JEI.PiglinRecipe.PiglinCategory;
+import biggestxuan.emcworld.common.compact.JEI.Star.StarCategory;
 import biggestxuan.emcworld.common.compact.JEI.SteelFurnace.SteelFurnaceCategory;
 import biggestxuan.emcworld.common.compact.JEI.Update.JEIUpdateRecipe;
 import biggestxuan.emcworld.common.compact.JEI.Update.UpdateCategory;
@@ -62,6 +64,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new GlyphCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new AncientCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new StarCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -87,6 +90,9 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(GlyphCategory.item,GlyphCategory.rl());
         registration.addRecipeCatalyst(RitualCategory.item,RitualCategory.rl());
         registration.addRecipeCatalyst(AncientCategory.item,AncientCategory.rl());
+        for(ItemStack s : new ItemStack[]{EMCWorld.getItem("emcworld:star_pedestal"),EMCWorld.getItem("astralsorcery:rock_collector_crystal"),EMCWorld.getItem("naturesaura:wood_stand"),EMCWorld.getItem("astralsorcery:starmetal"),EMCWorld.getItem("extendedcrafting:pedestal"),EMCWorld.getItem("minecraft:netherite_block"),EMCWorld.getItem("undergarden:cloggrum_block"),EMCWorld.getItem("projecte:dm_pedestal"),EMCWorld.getItem("projecte:red_matter_block"),EMCWorld.getItem("astralsorcery:infuser")}){
+            registration.addRecipeCatalyst(s,StarCategory.rl());
+        }
     }
 
     @Override
@@ -114,6 +120,9 @@ public class EMCWorldJEIPlugin implements IModPlugin {
 
         List<AncientRecipe> ancientRecipes = new ArrayList<>(Arrays.asList(AncientRecipe.values()));
         registry.addRecipes(ancientRecipes,AncientCategory.rl());
+
+        List<StarPedestalRecipe> starPedestalRecipe = new ArrayList<>(Arrays.asList(StarPedestalRecipe.values()));
+        registry.addRecipes(starPedestalRecipe,StarCategory.rl());
 
         RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
         registry.addRecipes(recipeManager.getAllRecipesFor(InfuserRecipe.Type.INSTANCE),InfuserCategory.getRL());

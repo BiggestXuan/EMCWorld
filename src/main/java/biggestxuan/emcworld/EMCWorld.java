@@ -8,6 +8,7 @@ package biggestxuan.emcworld;
 
 import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.*;
+import biggestxuan.emcworld.client.render.StarPedestalRender;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
@@ -26,6 +27,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.resources.FilePack;
 import net.minecraft.resources.IPackNameDecorator;
@@ -50,6 +52,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.util.ArrayList;
@@ -130,18 +133,19 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
             ClientRegistry.registerKeyBinding(LastShield.Last_Shield);
             ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
+            ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
     }
 
-    @Nullable
+    @Nonnull
     public static ItemStack getItem(String id){
         Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
-        return item == null ? null : new ItemStack(item,1);
+        return item == null ? new ItemStack(Items.AIR) : new ItemStack(item,1);
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event) {
-    }
+    private void enqueueIMC(final InterModEnqueueEvent event) {}
+
     private void processIMC(final InterModProcessEvent event) {}
 
     public static ResourceLocation rl(String id){

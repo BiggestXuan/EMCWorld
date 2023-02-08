@@ -6,7 +6,6 @@ package biggestxuan.emcworld.common.mixin;
  *  2023/01/19
  */
 
-import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableTool;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -17,8 +16,6 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TieredItem;
 import net.minecraft.item.ToolItem;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.ToolType;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import javax.annotation.Nonnull;
 import java.util.Set;
 
 @Mixin(value = ToolItem.class,priority = 1001)
@@ -40,11 +36,15 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
     @Final
     private final Set<Block> blocks;
 
-    @Shadow @Final protected float speed;
+    @Mutable
+    @Shadow
+    @Final
+    protected final float speed;
 
-    public ToolItemMixin(IItemTier p_i48459_1_, Properties p_i48459_2_, Set<Block> blocks) {
+    public ToolItemMixin(IItemTier p_i48459_1_, Properties p_i48459_2_, Set<Block> blocks, float speed) {
         super(p_i48459_1_, p_i48459_2_);
         this.blocks = blocks;
+        this.speed = speed;
     }
 
     private double getPrefixCommonRate(ItemStack stack){
@@ -54,7 +54,7 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
         if(prefix.getLevel() <= 3){
             b = 1 - (4 - prefix.getLevel()) * 0.1;
         }else{
-            b = (prefix.getLevel()-4) * 0.07 + 1;
+            b = (prefix.getLevel()-4) * 0.025 + 1;
         }
         return b;
     }
@@ -107,7 +107,7 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
         int l = getLevel(stack);
         int weight = 10;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.8f * weight);
+            weight = (int) (1.9f * weight);
         }
         return (int) (weight * 1.25);
     }

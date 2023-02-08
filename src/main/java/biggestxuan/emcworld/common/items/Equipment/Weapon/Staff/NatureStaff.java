@@ -17,22 +17,22 @@ public class NatureStaff extends BaseEMCGodStaff {
 
     @Override
     protected double getBaseCostRate(ItemStack stack) {
-        return Math.pow(1.059,getLevel(stack));
+        return Math.pow(1.059,getLevel(stack)*0.98f);
     }
 
     @Override
     protected float getBaseBurstDamage(ItemStack stack) {
-        return (float) Math.pow(1.22f,getLevel(stack));
+        return (float) Math.pow(1.22f,getLevel(stack)-1.5f);
     }
 
     @Override
     protected double getBaseCriticalChance(ItemStack stack) {
-        return 0.03 * getLevel(stack);
+        return 0.03 * getLevel(stack)*0.99f;
     }
 
     @Override
     protected double getBaseCriticalRate(ItemStack stack) {
-        return 0.02 * getLevel(stack);
+        return 0.02 * getLevel(stack)*0.99f;
     }
 
     @Override

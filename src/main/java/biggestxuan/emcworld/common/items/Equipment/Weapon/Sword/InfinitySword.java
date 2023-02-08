@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
  */
 
 import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
@@ -18,7 +19,7 @@ import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem,IPrefixItem {
+public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem, IPrefixItem, IStarItem {
     public InfinitySword() {
         super(new IItemTier() {
             @Override

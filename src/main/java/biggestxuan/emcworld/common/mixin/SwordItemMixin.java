@@ -38,7 +38,7 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
         int l = getLevel(stack);
         int weight = 10;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.65f * weight);
+            weight = (int) (1.83f * weight);
         }
         return weight * 2;
     }

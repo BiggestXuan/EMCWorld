@@ -197,7 +197,7 @@ public class PlayerTickEvent {
                 health += armor.extraHealth(stack);
             }
         }
-        health = Math.max(health, -19.5f);
+        health = Math.min(health, player.getMaxHealth()-0.5f);
         if(!GameStageManager.hasStage(player,"Start") && player.inventory.getItem(1).getItem().equals(PatchouliItems.book)){
             player.inventory.getItem(1).shrink(1);
             GameStageManager.addStage(player,"Start");
@@ -335,6 +335,10 @@ public class PlayerTickEvent {
                     stack.setDamageValue(stack.getDamageValue()-1);
                 }
             }
+            if(stack.getItem() instanceof IOwnerItem){
+                IOwnerItem item = (IOwnerItem) stack.getItem();
+                item.setOwner(stack,player);
+            }
             if(stack.getItem() instanceof IPlayerDifficultyItem){
                 IPlayerDifficultyItem item1 = (IPlayerDifficultyItem) stack.getItem();
                 if(util.getDifficulty() < item1.requireDifficulty()){
@@ -428,6 +432,8 @@ public class PlayerTickEvent {
         List<ItemStack> list = new ArrayList<>();
         list.addAll(player.inventory.items);
         list.addAll(player.inventory.armor);
+        list.add(player.getMainHandItem());
+        list.add(player.getOffhandItem());
         return list;
     }
 

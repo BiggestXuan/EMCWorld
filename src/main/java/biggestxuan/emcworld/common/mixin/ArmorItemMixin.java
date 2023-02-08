@@ -35,7 +35,7 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
         int l = getLevel(stack);
         int weight = 15;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.58f * weight);
+            weight = (int) (1.8f * weight);
         }
         return (int) (weight * 1.75);
     }
@@ -80,18 +80,19 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
 
     @Override
     public float extraHealth(ItemStack stack) {
-        return getLevel(stack) < 2 ? (float)getPrefixCommonRate(stack) : (float) (defense * 0.5f * getPrefixCommonRate(stack) * getLevel(stack));
-    }
-
-    private double getPrefixCommonRate(ItemStack stack){
-        double b = 0;
         Prefix prefix = getPrefix(stack);
-        if(prefix == Prefix.NULL) return b;
+        float health = 0f;
         if(prefix.getLevel() <= 3){
-            b =  - (4 - prefix.getLevel()) * 0.2 * defense;
+            for (int i = 0; i < 4-prefix.getLevel(); i++) {
+                health -= 0.2f * defense;
+            }
         }else{
-            b = (prefix.getLevel()-4) * 0.1 * defense;
+            for (int i = 0; i < prefix.getLevel()-4; i++) {
+                health += 0.05f * defense;
+            }
         }
-        return b;
+        int level = getLevel(stack);
+        health = health >= 1 ? (float) ((1 + 0.0125 * level) * health) : 0.05f * defense * level;
+        return health;
     }
 }

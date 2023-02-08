@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class SuperStar extends BaseEMCGodWarHammer {
     @Override
     protected double getAttackCostRate(ItemStack stack) {
-        return Math.pow(1.04f,getLevel(stack));
+        return Math.pow(1.04f,getLevel(stack)*0.97f);
     }
 
     @Override

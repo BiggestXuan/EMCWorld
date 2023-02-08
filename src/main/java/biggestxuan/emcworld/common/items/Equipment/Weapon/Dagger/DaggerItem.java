@@ -78,7 +78,7 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
 
     @Override
     public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 2.5);
+        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 4.75);
     }
 
     @Override
