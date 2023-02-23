@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.items.Curios;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IDisableAnvilItem;
 import biggestxuan.emcworld.api.item.base.BaseCuriosItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.client.util.ITooltipFlag;
@@ -20,7 +21,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class StoredTotem extends BaseCuriosItem {
+public class StoredTotem extends BaseCuriosItem implements IDisableAnvilItem {
     private final int MAX_EMC;
 
     public StoredTotem(int emc){

@@ -119,15 +119,15 @@ public class ItemToolTipEvent {
             }
         }
         if(Screen.hasShiftDown()){
-            if(stack.getItem() instanceof IUpgradeableItem){
-                IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_level",item.getLevel(stack),item.getMaxLevel()));
-            }
             if(stack.getItem() instanceof IPrefixItem){
                 IPrefixItem item = (IPrefixItem) stack.getItem();
                 IPrefixItem.Prefix prefix = item.getPrefix(stack);
                 IFormattableTextComponent text = prefix.getName().setStyle(Style.EMPTY.withColor(Color.fromRgb(prefix.getColor())));
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.prefix").append(text));
+            }
+            if(stack.getItem() instanceof IUpgradeableItem){
+                IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_level",item.getLevel(stack),item.getMaxLevel()));
             }
             if(stack.getItem() instanceof IStarItem){
                 IStarItem item = (IStarItem) stack.getItem();

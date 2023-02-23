@@ -145,7 +145,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public double getCriticalChance(ItemStack stack){
-        double b = getBaseCriticalChance(stack);
+        double b = getBaseCriticalChance(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
@@ -155,7 +155,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public double getCriticalRate(ItemStack stack){
-        double b = getBaseCriticalRate(stack);
+        double b = getBaseCriticalRate(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
@@ -165,7 +165,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public double costEMCWhenAttack(ItemStack stack){
-        double b = getBaseEMCWhenAttack(stack);
+        double b = getBaseEMCWhenAttack(stack) / getBuffer(stack);
         if(getGemType(stack) == 1){
             b *= 1.2;
         }
@@ -180,7 +180,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public long EMCModifySecond(ItemStack stack){
-        long b = getBaseModifySecond(stack);
+        long b = (long) (getBaseModifySecond(stack) * getBuffer(stack));
         if(getGemType(stack) == 4){
             b *= 1.15f;
         }
@@ -189,7 +189,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public float getAdditionsDamage(ItemStack stack){
-        float b = getBaseDamage(stack) * 0.75f;
+        float b = (float) (getBaseDamage(stack) * getBuffer(stack) * 0.75f);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
@@ -213,7 +213,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
 
     @Override
     public double getAttackRange(ItemStack stack){
-        double b = getBaseRange(stack);
+        double b = getBaseRange(stack) * getBuffer(stack);
         if(getGemType(stack) == 3){
             b += 0.5;
         }

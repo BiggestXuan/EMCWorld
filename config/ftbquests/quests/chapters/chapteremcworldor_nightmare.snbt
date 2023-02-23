@@ -383,7 +383,7 @@
 				{
 					id: "12DC7EC332804BD8"
 					type: "custom"
-					title: "{{reward.emcworld.easy}"
+					title: "{reward.emcworld.easy}"
 					icon: "emcworld:small_emc_gem"
 					tags: ["easy"]
 				}
@@ -409,7 +409,7 @@
 				{
 					id: "3699D70FC535441E"
 					type: "custom"
-					title: "{{reward.emcworld.easy}"
+					title: "{reward.emcworld.easy}"
 					icon: "emcworld:small_emc_gem"
 					tags: ["easy"]
 				}

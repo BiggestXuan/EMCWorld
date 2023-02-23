@@ -16,5 +16,8 @@ public class commandEvent {
         if(name.contains("setemc")){
             event.setCanceled(true);
         }
+        if(name.contains("tp") || name.contains("teleport")){
+            //event.setCanceled(true);
+        }
     }
 }

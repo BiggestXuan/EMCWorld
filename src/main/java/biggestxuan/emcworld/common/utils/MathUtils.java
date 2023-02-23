@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
+import net.blay09.mods.waystones.api.IWaystone;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -33,7 +34,6 @@ import org.openzen.zencode.java.ZenCodeType;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 @ZenRegister
@@ -69,6 +69,7 @@ public class MathUtils {
         return (int) (m2 - Random() * range);
     }
 
+    @ZenCodeType.Method
     public static long getEMCWhenUseGem(long baseEMC){
         double diff = CrTConfig.getWorldDifficulty();
         double rate;
@@ -349,6 +350,29 @@ public class MathUtils {
             sponsor = new Sponsors(player.getScoreboardName(),player.getUUID(),cap.getLevel());
         }
         return sponsor;
+    }
+
+    public static int getTPEMCCost(PlayerEntity player, IWaystone start,IWaystone end){
+        if(end == null){
+            return 0;
+        }
+        BlockPos pos1 = start.getPos();
+        BlockPos pos2 = end.getPos();
+        long distance = (long) Math.sqrt(Math.pow(pos1.getX()-pos2.getX(),2)+Math.pow(pos1.getY()-pos2.getY(),2)+Math.pow(pos1.getZ()-pos2.getZ(),2));
+        long emc = 0;
+        distance = Math.abs(distance);
+        emc += distance;
+        if(!start.getDimension().location().equals(end.getDimension().location())){
+            emc *= 3;
+        }
+        emc *= ConfigManager.DIFFICULTY.get();
+        for(DifficultySetting diff : DifficultySetting.values()){
+            if(GameStageManager.hasStage(player,diff.getGameStage())){
+                emc *= diff.getBlockBase();
+                break;
+            }
+        }
+        return Math.abs((int)emc);
     }
 
     private static String getFlag(String value){

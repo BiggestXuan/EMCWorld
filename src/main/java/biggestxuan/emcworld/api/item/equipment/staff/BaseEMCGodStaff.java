@@ -52,10 +52,9 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         return false;
     }
 
-
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) ((Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack));
+        return (long) ((Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     protected abstract long getBaseEMCModify(ItemStack stack);
@@ -75,7 +74,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public double getCriticalChance(ItemStack stack) {
-        double b = getBaseCriticalChance(stack);
+        double b = getBaseCriticalChance(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
@@ -85,7 +84,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public double getCriticalRate(ItemStack stack) {
-        double b = getBaseCriticalRate(stack);
+        double b = getBaseCriticalRate(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
@@ -95,7 +94,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return getBaseCostRate(stack) / getPrefixCommonRate(stack) * 1.25f;
+        return getBaseCostRate(stack) / getPrefixCommonRate(stack) * 1.25f / getBuffer(stack);
     }
 
     @Override
@@ -105,7 +104,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return (long) (getBaseEMCModify(stack) * getPrefixCommonRate(stack));
+        return (long) (getBaseEMCModify(stack) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Override
@@ -115,7 +114,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public float getBaseDamage(ItemStack stack){
-        double d = getBaseBurstDamage(stack) * getPrefixCommonRate(stack);
+        double d = getBaseBurstDamage(stack) * getPrefixCommonRate(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             d *= (1 + Math.log(costEMC)/85);

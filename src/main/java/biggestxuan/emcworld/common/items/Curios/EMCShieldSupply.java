@@ -7,19 +7,20 @@ package biggestxuan.emcworld.common.items.Curios;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IDisableAnvilItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
+import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.items.EWItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
-import net.minecraft.util.text.ITextComponent;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import javax.annotation.Nonnull;
 
-public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShieldArmor, ICurioItem, IPrefixItem {
+public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShieldArmor, ICurioItem, IPrefixItem, IDisableAnvilItem, IStarItem {
     public EMCShieldSupply(){
         super(new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB).stacksTo(1));
     }
@@ -50,7 +51,7 @@ public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShi
             case 7:
                 return 30000;
         }
-        return 114514;
+        return EMCWorld.HOMO;
     }
 
     @Override
@@ -70,17 +71,17 @@ public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShi
 
     @Override
     public long getMaxInfuser(ItemStack stack) {
-        return (long) (1000000 * Math.pow(3,getLevel(stack)) * getPrefixCommonRate(stack));
+        return (long) (1000000 * Math.pow(3,getLevel(stack)) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Override
     public float maxShield(ItemStack stack) {
-        return 30f * (float) (Math.pow(1.5,getLevel(stack)) * getPrefixCommonRate(stack));
+        return 30f * (float) (Math.pow(1.5,getLevel(stack)) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Override
     public float shieldSpeed(ItemStack stack) {
-        return 4f * (float) (Math.pow(1.45,getLevel(stack)) * getPrefixCommonRate(stack));
+        return 4f * (float) (Math.pow(1.45,getLevel(stack)) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Nonnull

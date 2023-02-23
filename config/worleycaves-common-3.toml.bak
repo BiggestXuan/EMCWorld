@@ -7,11 +7,11 @@
 	#Controls size of caves. Smaller values = larger caves. 
 	#Default: -0.18
 	#Range: -1.0 ~ 1.0
-	noiseCutoffValue = -0.25
+	noiseCutoffValue = -0.18
 	#
 	#Controls how much to warp caves. Lower values = straighter caves 
 	#Default: 8.0
-	warpAmplifier = 6.0
+	warpAmplifier = 8.0
 	#
 	#Block to use when generating large lava lakes below lavaDepth (usually y=10) 
 	#Default: minecraft:lava
@@ -29,7 +29,7 @@
 	#Caves will not attempt to generate above this y level. 
 	#Default: 128
 	#Range: 1 ~ 256
-	maxCaveHeight = 64
+	maxCaveHeight = 128
 	#
 	#Caves will not attempt to generate below this y level. 
 	#Default: 1
@@ -38,12 +38,12 @@
 	#
 	#Reduces number of caves at surface level, becoming more common until caves generate normally X number of blocks below the surface 
 	#Default: 15
-	easeInDepth = 8
+	easeInDepth = 15
 	#
 	#Controls size of caves at the surface. Smaller values = more caves break through the surface. 
 	#Default: -0.081 (45% of noiseCutoffValue)
 	#Range: -1.0 ~ 1.0
-	surfaceCutoffValue = 0.25
+	surfaceCutoffValue = -0.081
 	#
 	#Streches (when < 1.0) or compresses (when > 1.0) cave generation along X and Z axis 
 	#Default: 1.0

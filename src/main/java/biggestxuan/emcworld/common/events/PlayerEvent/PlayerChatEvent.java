@@ -41,6 +41,8 @@ public class PlayerChatEvent {
                 case 5:
                     event.setComponent(EMCWorld.tc("message.chat.base3",name,saying));
                     break;
+                case 6:
+                    event.setComponent(EMCWorld.tc("message.chat.tulye",name,saying));
                 default:
                     event.setComponent(EMCWorld.tc("message.chat.base",name,saying));
                     break;

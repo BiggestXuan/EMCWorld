@@ -126,8 +126,8 @@
 		modifierMode = "MULTI_HALF"
 
 		[mob.health.multiplier]
-			hostile = 0.4
-			passive = 0.4
+			hostile = 0.5
+			passive = 0.5
 
 	[mob.blight]
 		#Chance that the mob has of becoming a blight - 0 will effectively deactivate blight

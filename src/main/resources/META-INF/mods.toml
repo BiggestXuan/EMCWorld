@@ -4,7 +4,7 @@ license="CC BY-NC-ND 4.0"
 issueTrackerURL="https://github.com/BiggestXuan/EMCworld/issues"
 [[mods]]
 modId="emcworld"
-version="0.4.0"
+version="0.5.0"
 displayName="EMCWorld"
 logoFile=""
 credits=""

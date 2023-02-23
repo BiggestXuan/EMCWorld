@@ -43,12 +43,12 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
     }
 
     @Override
-    public float extraHealth(ItemStack stack) {
+    public float health(ItemStack stack) {
         return (float) (0.3f * getLevel(stack) * getPrefixCommonRate(stack));
     }
 
     @Override
-    public double hurtRate(ItemStack stack) {
+    public double hurt(ItemStack stack) {
         return Math.pow(0.993,getLevel(stack)) / getPrefixCommonRate(stack);
     }
 
@@ -58,12 +58,12 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
     }
 
     @Override
-    public float maxShield(ItemStack stack) {
+    public float shield(ItemStack stack) {
         return (float) (8f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 
     @Override
-    public float shieldSpeed(ItemStack stack) {
+    public float shield_speed(ItemStack stack) {
         return (float) (0.45f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 }

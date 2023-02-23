@@ -42,7 +42,7 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     public double getAttackSpeed(ItemStack stack) {
-        return Math.pow(0.973,getLevel(stack));
+        return Math.pow(0.965,getLevel(stack));
     }
 
 }

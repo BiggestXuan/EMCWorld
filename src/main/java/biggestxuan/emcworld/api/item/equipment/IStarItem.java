@@ -20,6 +20,11 @@ public interface IStarItem {
         if(diff <3) return 6;
         else return 8;
     }
+    default void initStar(ItemStack stack){
+        stack.getOrCreateTag().putBoolean("star_init",true);
+        stack.getOrCreateTag().putInt("max_star",0);
+        stack.getOrCreateTag().putInt("star",0);
+    }
 
     default int getMaxStar(ItemStack stack){
         return stack.getOrCreateTag().getInt("max_star");
@@ -37,7 +42,7 @@ public interface IStarItem {
         stack.getOrCreateTag().putInt("star",Math.min(getDifficultyMaxStar(),getStar(stack)+1));
     }
 
-    static double getBuffer(ItemStack stack){
+    default double getBuffer(ItemStack stack){
         double buffer = 1;
         if(stack.getItem() instanceof IStarItem){
             IStarItem item = (IStarItem) stack.getItem();

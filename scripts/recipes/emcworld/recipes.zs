@@ -12,10 +12,12 @@ import mods.emcworld.EWItem;
 public function emcworldRecipe() as void{
     var al = <item:mythicbotany:alfheim_rune>;
     var a = <item:minecraft:air>;
+    var beg = <item:emcworld:big_emc_gem>;
     var sg = <item:emcworld:scroll_green>;
     var em = <item:minecraft:emerald>;
     var sp = <item:emcworld:scroll_purple>;
     var sw = <item:emcworld:scroll_white>;
+    var tun = <item:extendedcrafting:the_ultimate_nugget>;
     var alt = <item:bloodmagic:altarcapacityrune>;
     var ucc = <item:mekanism:ultimate_control_circuit>;
     var sr = <item:emcworld:scroll_red>;
@@ -621,8 +623,17 @@ public function emcworldRecipe() as void{
     ],<item:emcworld:emc_shield_supply>.withTag({emc_shield_speed: 4.0 as float, emc_shield: 0.0 as float, emc_maxShield: 30.0 as float}));
     pink(<item:projectex:magenta_collector>,<item:projectex:pink_collector>);
     pink(<item:projectex:magenta_relay>,<item:projectex:pink_relay>);
-    infuserRecipe([sp,sp,sp,sp,sp],sr,6000,1500000,3);
     infuserRecipe([sb,sb,sb,sb,sb],sp,2500,300000,2);
+    addCraftShapedRecipeNoName([
+        [sp,<item:mekanism:pellet_polonium>,sp],
+        [<item:mekanism:pellet_plutonium>,sp,<item:mekanism:pellet_plutonium>],
+        [sp,<item:mekanism:pellet_polonium>,sp]
+    ],sr*2);
+    addCraftShapedRecipeNoName([
+        [tun,tun,tun],
+        [tun,sr,tun],
+        [tun,tun,tun]
+    ],<item:emcworld:scroll_gold>);
     setEMCStage(<item:dead_guys_untitled_deep_dark_:sculk>,1024,8);
     addCraftShapelessRecipe([<item:minecraft:diamond_sword>,dm,dm],<item:emcworld:profession_sword>);
     addCraftShapelessRecipe([<item:minecraft:diamond_chestplate>,dm,dm],<item:emcworld:profession_tank>);
@@ -658,6 +669,7 @@ public function emcworldRecipe() as void{
     setEMCStage(<item:twilightforest:knightmetal_ingot>,16384,6);
     setEMCStage(<item:twilightforest:carminite>,8192,6);
     setEMCStage(<item:emcworld:unreal_metal>,(8192*2.5) as int,6);
+    addNuggetAndIngotRecipe(<item:cataclysm:ignitium_ingot>,<item:cataclysm:ignitium_block>);
     modifyShapedRecipe([
         [<item:minecraft:lapis_lazuli>,<item:mekanism:alloy_reinforced>,<item:minecraft:lapis_lazuli>],
         [<item:minecraft:gold_ingot>,<item:minecraft:diamond>,<item:minecraft:gold_ingot>],
@@ -678,6 +690,10 @@ public function emcworldRecipe() as void{
         <item:quark:rainbow_rune>
     ],<item:emcworld:nature_staff>,30000,1000000,2);
     smithingRecipe(sword[2],unqd*3,sword[3]);
+    smithingRecipe(<item:mythicbotany:mjoellnir>,<item:minecraft:netherite_ingot>,<item:emcworld:creation>);
+    smithingRecipe(<item:mythicbotany:mjoellnir>,<item:allthemodium:vibranium_allthemodium_alloy_ingot>,<item:emcworld:super_star>);
+    smithingRecipe(<item:emcworld:diamond_dagger>,<item:minecraft:netherite_ingot>,<item:emcworld:night_light>);
+    smithingRecipe(<item:emcworld:diamond_dagger>,<item:allthemodium:vibranium_allthemodium_alloy_ingot>,<item:emcworld:red_green_dagger>);
     crockPotRecipe(new CTRequirement().addCategoryMin(new CrTFoodValue().put("meat",1.5).put("sweetener",1.5)).addMustItem(<item:farmersdelight:smoked_ham>,1),<item:farmersdelight:honey_glazed_ham_block>,30);
     for i in 20 .. 24{
         removeSmithingRecipe(armor[i]);
@@ -987,6 +1003,7 @@ public function emcworldRecipe() as void{
         [a,a,a,a,a]
     ],con[0][5]*camt,1);
     addEMCStage(<item:emcworld:voucher>,114514);
+    addCraftShapelessRecipe([<item:bloodmagic:strong_tau>,<item:bloodmagic:strong_tau>],<item:bloodmagic:weakbloodshard>);
     cyan(<item:projectex:blue_collector>,<item:projectex:cyan_collector>);
     cyan(<item:projectex:blue_relay>,<item:projectex:cyan_relay>);
     natureAltarRecipe(con[0][5]*camt,con[0][6]*camt,2,100000);
@@ -1040,6 +1057,11 @@ public function emcworldRecipe() as void{
     infuserRecipe([
         baseqd,baseqd,baseqd,baseqd,con[0][7]
     ],con[2][7],5000,10000000,4);
+    addCraftShapedRecipeNoName([
+        [sg,sg,sg],
+        [sg,<item:emcworld:hardcore_stone>,sg],
+        [sg,sg,sg]
+    ],<item:emcworld:prefix_core>);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
         [con[0][0],<item:botania:hourglass>,con[0][0]],
@@ -1141,11 +1163,24 @@ public function emcworldRecipe() as void{
         [ws,<item:emcworld:hardcore_stone>,ws],
         [bge,ws,bge]
     ],<item:emcworld:weapon_upgrade_core>);
+    removeCraftRecipe([
+        <item:waystones:return_scroll>,
+        <item:waystones:bound_scroll>,
+        <item:waystones:warp_scroll>,
+        <item:waystones:attuned_shard>,
+        <item:waystones:warp_plate>,
+        <item:waystones:warp_dust>
+    ]);
     infuserRecipe([sa,sa,sa,sa,sa],<item:emcworld:raid_light>,15000,100000,1);
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
     infuserRecipe([ali,alv,a,a,a],vaai*32,10000,10000000,3);
     infuserRecipe([eoi,sn[5],ci,di,esi],rai,3000,800000,1);
+    modifyShapedRecipe([
+        [beg,beg,beg],
+        [beg,<item:minecraft:ender_pearl>,beg],
+        [beg,beg,beg]
+    ],<item:waystones:warp_stone>);
     steelFurnaceRecipe([<item:gobber2:gobber2_ingot>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,300);
     steelFurnaceRecipe([<item:emcworld:enriched_gobber>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,600);
     infuserRecipe([ss,rai,ki,zi,asi],hs,5000,15000000,2);

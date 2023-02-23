@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -25,7 +26,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem {
+public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem, IStarItem {
     protected final int index;
     public BaseEMCGodArmorItem(IArmorMaterial p_i48534_1_, int p_i48534_2_) {
         super(p_i48534_1_, getType(p_i48534_2_));
@@ -53,7 +54,6 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
     public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
         return false;
     }
-
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
@@ -106,10 +106,32 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
     }
 
     @Override
-    public abstract float extraHealth(ItemStack stack);
+    public float extraHealth(ItemStack stack){
+        return (float) (health(stack) * getBuffer(stack));
+    }
 
     @Override
-    public abstract double hurtRate(ItemStack stack);
+    public double hurtRate(ItemStack stack){
+        return hurt(stack) / getBuffer(stack);
+    }
+
+    @Override
+    public float maxShield(ItemStack stack) {
+        return (float) (shield(stack) * getBuffer(stack));
+    }
+
+    @Override
+    public float shieldSpeed(ItemStack stack) {
+        return (float) (shield_speed(stack) * getBuffer(stack));
+    }
+
+    public abstract float shield(ItemStack stack);
+
+    public abstract float shield_speed(ItemStack stack);
+
+    public abstract float health(ItemStack stack);
+
+    public abstract double hurt(ItemStack stack);
 
     public static EquipmentSlotType getType(int index){
         switch (index){

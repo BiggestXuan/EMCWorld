@@ -8,6 +8,8 @@ package biggestxuan.emcworld.common.blocks.StarPedestal;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.registry.EWStarlight;
+import hellfirepvp.astralsorcery.common.constellation.IConstellation;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -69,12 +71,22 @@ public enum StarPedestalRecipe {
     private final MODE mode;
     private final int requireStar;
     private final int level;
+    private final IConstellation star;
 
-    StarPedestalRecipe(List<List<ItemStack>> inputs,MODE mode,int requireStar,int level){
+    StarPedestalRecipe(List<List<ItemStack>> inputs,MODE mode,int requireStar,int level,IConstellation star){
         this.inputs = inputs;
         this.mode = mode;
         this.requireStar = requireStar;
         this.level = level;
+        this.star = star;
+    }
+
+    StarPedestalRecipe(List<List<ItemStack>> inputs,MODE mode,int requireStar,int level){
+        this(inputs,mode,requireStar,level, EWStarlight.EMC_STAR.get());
+    }
+
+    public IConstellation getStar() {
+        return star;
     }
 
     public int getRequireStar() {

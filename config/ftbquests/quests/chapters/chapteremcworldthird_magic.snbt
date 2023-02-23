@@ -993,5 +993,45 @@
 				}
 			]
 		}
+		{
+			x: 3.0d
+			y: -5.0d
+			dependencies: [
+				"284F8A69E7322F8A"
+				"3548FDBE816D964B"
+			]
+			id: "17FEF3658E5F73BC"
+			tasks: [{
+				id: "43ABCF65DE0816F9"
+				type: "item"
+				item: "emcworld:god_steel_ingot"
+			}]
+		}
+		{
+			x: 6.0d
+			y: -5.0d
+			dependencies: ["17FEF3658E5F73BC"]
+			id: "17CBAAA846953D76"
+			tasks: [{
+				id: "56DBC48D30F98FB9"
+				type: "item"
+				item: "emcworld:infuser_core"
+			}]
+		}
+		{
+			x: 0.0d
+			y: -5.0d
+			dependencies: ["17FEF3658E5F73BC"]
+			id: "0019DFF35BEAEF30"
+			tasks: [{
+				id: "3BD66E85BFF2BA20"
+				type: "item"
+				item: {
+					id: "emcworld:emc_shield_supply"
+					Count: 1b
+					tag: { }
+				}
+			}]
+		}
 	]
 }

@@ -6,7 +6,13 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
  *  2022/10/20
  */
 
-import biggestxuan.emcworld.api.item.*;
+import biggestxuan.emcworld.api.item.IEMCRepairableItem;
+import biggestxuan.emcworld.api.item.INeedLevelItem;
+import biggestxuan.emcworld.api.item.ISecondEMCItem;
+import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.api.item.IPlayerDifficultyItem;
+import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
@@ -19,7 +25,7 @@ import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem, IPrefixItem, IStarItem {
+public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, IEMCRepairableItem, ICostEMCItem, IPlayerDifficultyItem, INeedLevelItem, IPrefixItem, IStarItem, IAttackSpeedItem {
     public InfinitySword() {
         super(new IItemTier() {
             @Override
@@ -118,5 +124,17 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
     @Override
     public void setPrefix(ItemStack stack,Prefix prefix){
         stack.getOrCreateTag().putInt("prefix",IPrefixItem.getHighestPrefix().getLevel());
+    }
+
+    @Override
+    public void initStar(ItemStack stack){
+        IStarItem.super.initStar(stack);
+        stack.getOrCreateTag().putInt("max_star",8);
+        stack.getOrCreateTag().putInt("star",8);
+    }
+
+    @Override
+    public double getAttackSpeed(ItemStack stack) {
+        return 1;
     }
 }

@@ -11,6 +11,7 @@ import biggestxuan.emcworld.common.registry.EWStarlight;
 import com.blakebr0.extendedcrafting.tileentity.PedestalTileEntity;
 import de.ellpeck.naturesaura.blocks.ModBlocks;
 import de.ellpeck.naturesaura.blocks.tiles.TileEntityWoodStand;
+import hellfirepvp.astralsorcery.common.constellation.IConstellation;
 import hellfirepvp.astralsorcery.common.lib.BlocksAS;
 import hellfirepvp.astralsorcery.common.tile.TileCollectorCrystal;
 import hellfirepvp.astralsorcery.common.tile.TileInfuser;
@@ -24,6 +25,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGBlocks;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -120,14 +122,17 @@ public class StarPedestalMultiBlock{
                 flag = false;
             }
         }
+        return flag;
+    }
+
+    @Nullable
+    public IConstellation getStar(){
         TileEntity entity = world.getBlockEntity(new BlockPos(this.pos.getX(),this.pos.getY()+2,this.pos.getZ()));
         if(entity instanceof TileCollectorCrystal){
             TileCollectorCrystal c = (TileCollectorCrystal) entity;
-            if(!Objects.equals(c.getAttunedConstellation().getSimpleName(), EWStarlight.EMC_STAR.get().getSimpleName())){
-                flag = false;
-            }
-        }else flag = false;
-        return flag;
+            return c.getAttunedConstellation();
+        }
+        return null;
     }
 
     private static List<BlockPos> add(List<BlockPos> list, int d){

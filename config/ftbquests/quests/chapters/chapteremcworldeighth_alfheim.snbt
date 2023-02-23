@@ -68,6 +68,7 @@
 						]
 					}
 				}
+				consume_items: true
 			}]
 			rewards: [{
 				id: "7F1D002DFECC3FB2"

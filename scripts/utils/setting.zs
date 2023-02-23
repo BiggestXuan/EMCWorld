@@ -27,8 +27,8 @@ public function getVoucherEMC() as int{
 }
 
 public function setEMC() as void{
-    var emcValue as long[]=[16384,1024,2048,2048,0,128,1024,2048,256,256,64,2048,32767,128,getVoucherEMC(),24652,34206,146384,12068,5622,3780
-    ,126204,2048,2048,4682,6026,768205,512
+    var emcValue as long[]=[16384,0,512,2048,0,128,1024,2048,256,256,64,2048,32767,128,getVoucherEMC(),24652,34206,176254,12068,5622,3780
+    ,148306,2048,2048,4682,6026,920816,512
     ];
     var item as ItemStack[]=[
         <item:byg:pendorite_scraps>,

@@ -52,7 +52,7 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
 
     @Override
     public long getMaxInfuser(ItemStack stack){
-        return (long) ((Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack));
+        return (long) ((Math.pow(1.417,getLevel(stack)) * 500000) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Override
@@ -67,7 +67,7 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/550);
         }
-        return (float) b * getPrefixCommonRate(stack);
+        return (float) b * getPrefixCommonRate(stack) * getBuffer(stack);
     }
 
     @Override
@@ -85,12 +85,12 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return EMCCost(stack) / getPrefixCommonRate(stack);
+        return EMCCost(stack) / getPrefixCommonRate(stack) / getBuffer(stack);
     }
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return (long) (EMCModify(stack) * getPrefixCommonRate(stack));
+        return (long) (EMCModify(stack) * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Override
@@ -105,7 +105,7 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/115);
         }
-        return (float) ((float) b * getPrefixCommonRate(stack));
+        return (float) ((float) b * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Nonnull

@@ -145,6 +145,11 @@
 					item: "botania:manasteel_ingot"
 					count: 8
 				}
+				{
+					id: "5D5DCE40390AA83F"
+					type: "item"
+					item: "minecraft:slime_ball"
+				}
 			]
 		}
 		{

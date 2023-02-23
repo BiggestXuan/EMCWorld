@@ -43,12 +43,12 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     }
 
     @Override
-    public float extraHealth(ItemStack stack) {
+    public float health(ItemStack stack) {
         return (float) (3.6f * getPrefixCommonRate(stack) + 0.85f * getLevel(stack));
     }
 
     @Override
-    public double hurtRate(ItemStack stack) {
+    public double hurt(ItemStack stack) {
         return 0.9 * Math.pow(0.976f,getLevel(stack) / getPrefixCommonRate(stack));
     }
 
@@ -68,12 +68,12 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     }
 
     @Override
-    public float maxShield(ItemStack stack) {
+    public float shield(ItemStack stack) {
         return (float) (80 * getPrefixCommonRate(stack) + 12f * getLevel(stack) * getShieldRate());
     }
 
     @Override
-    public float shieldSpeed(ItemStack stack) {
+    public float shield_speed(ItemStack stack) {
         return (float) (6.5f * getPrefixCommonRate(stack) + 0.75f * getLevel(stack) * getShieldRate());
     }
 }

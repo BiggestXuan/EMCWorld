@@ -157,6 +157,8 @@ public class PlayerLoggedEvent {
                 case 5:
                     Message.sendMessageToAllPlayer(player, tc("message.welcome.dev",name));
                     break;
+                case 6:
+                    Message.sendMessageToAllPlayer(player,tc("message.welcome.tulye",name));
                 default:
                     Message.sendMessage(player, tc("message.welcome.default",name));
             }

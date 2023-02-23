@@ -163,7 +163,8 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
     }
 
     private void breakWeapon(){
-        this.inventory.setItem(0,ItemStack.EMPTY);
+        IUpgradeableItem item = (IUpgradeableItem) this.inventory.getItem(0).getItem();
+        item.setLevel(this.inventory.getItem(0),0);
     }
 
     private void sendMessage(){

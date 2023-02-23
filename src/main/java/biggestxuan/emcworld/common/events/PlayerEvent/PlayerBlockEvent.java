@@ -68,6 +68,7 @@ public class PlayerBlockEvent {
         if(costEMC == 0) return;
         EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
     }
+
     @SubscribeEvent
     public static void playerFillBucketEvent(FillBucketEvent event){
         PlayerEntity player = event.getPlayer();

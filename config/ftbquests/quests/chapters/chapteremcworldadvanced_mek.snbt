@@ -278,7 +278,11 @@
 			title: "{quest.emcworld.qio_io}"
 			x: 15.0d
 			y: 0.0d
-			dependencies: ["1EEF1DDC1FB45C02"]
+			dependencies: [
+				"1EEF1DDC1FB45C02"
+				"1EF469E69656F68B"
+			]
+			hide: true
 			id: "304083BDB654B7FF"
 			tasks: [
 				{
@@ -341,7 +345,11 @@
 			title: "{quest.emcworld.taking_qio_dashboard}"
 			x: 15.0d
 			y: -3.0d
-			dependencies: ["1366CC37954750ED"]
+			dependencies: [
+				"1366CC37954750ED"
+				"1EF469E69656F68B"
+			]
+			hide: true
 			id: "6239393B2764C4A9"
 			tasks: [{
 				id: "62C3C1BC395CCD05"

@@ -8,6 +8,7 @@ package biggestxuan.emcworld;
 
 import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.*;
+import biggestxuan.emcworld.client.render.ContainerDenyRender;
 import biggestxuan.emcworld.client.render.StarPedestalRender;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
@@ -49,11 +50,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
+import noobanidus.mods.lootr.init.ModTiles;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,8 +64,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 4;
-    public static final String PackVersion = "0.4.0 - Pre4";
+    public static final int ModPackVersion = 5;
+    public static final String PackVersion = "0.5.0 - Pre1";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -134,6 +135,8 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(LastShield.Last_Shield);
             ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
             ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
+            //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
+            ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
     }

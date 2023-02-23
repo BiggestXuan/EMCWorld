@@ -9,6 +9,9 @@ package biggestxuan.emcworld.common.compact.JEI.Star;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalRecipe;
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
+import hellfirepvp.astralsorcery.client.util.Blending;
+import hellfirepvp.astralsorcery.client.util.RenderingConstellationUtils;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
@@ -18,9 +21,11 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -137,11 +142,20 @@ public class StarCategory implements IRecipeCategory<StarPedestalRecipe> {
         }
         fontRenderer.draw(matrix,I18n.get("jei.emcworld.star_level",recipe.getLevel()),4,161,0x808080);
         fontRenderer.draw(matrix,I18n.get("jei.emcworld.star_star",recipe.getRequireStar(),recipe.getRequireStar()+1),4,171,0x808080);
-
+        if (recipe.getStar() != null) {
+            RenderSystem.enableBlend();
+            Blending.DEFAULT.apply();
+            RenderingConstellationUtils.renderConstellationIntoGUI(recipe.getStar().getConstellationColor(), recipe.getStar(), matrix, 0, 0, 0, 50, 50, 1.2, () -> 0.9f, true, false);
+            RenderSystem.disableBlend();
+        }
     }
 
     @Deprecated//HashSet<ItemStack> -> List<ItemStack>
     private static List<ItemStack> trans(List<ItemStack> set){
         return set;
+    }
+
+    private static <T extends Item> Ingredient a(RegistryObject<T> c){
+        return Ingredient.of(c.get());
     }
 }

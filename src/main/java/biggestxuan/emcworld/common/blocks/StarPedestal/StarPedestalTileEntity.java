@@ -74,15 +74,17 @@ public class StarPedestalTileEntity extends BaseContainerTileEntity implements I
     }
 
     private boolean canStart(StarPedestalRecipe recipe){
+        StarPedestalMultiBlock mb = new StarPedestalMultiBlock(this);
         ItemStack s = inventory.getItem(0);
         if(!(s.getItem() instanceof IStarItem) || recipe == null){
             return false;
         }
         IStarItem item = (IStarItem) s.getItem();
+        final boolean base = craftLevel >= recipe.getLevel() && mb.getStar() != null && mb.getStar().getSimpleName().equals(recipe.getStar().getSimpleName());
         if(recipe.getMode() == StarPedestalRecipe.MODE.MAX_STAR){
-            return craftLevel >= recipe.getLevel() && item.getMaxStar(s) == recipe.getRequireStar() && item.getMaxStar(s) < IStarItem.getDifficultyMaxStar();
+            return base && item.getMaxStar(s) == recipe.getRequireStar() && item.getMaxStar(s) < IStarItem.getDifficultyMaxStar();
         }else{
-            return craftLevel >= recipe.getLevel() && item.getStar(s) == recipe.getRequireStar() && item.getStar(s) < item.getMaxStar(s);
+            return base && item.getStar(s) == recipe.getRequireStar() && item.getStar(s) < item.getMaxStar(s);
         }
     }
 

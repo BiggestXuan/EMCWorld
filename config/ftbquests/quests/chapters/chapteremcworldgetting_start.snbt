@@ -436,5 +436,38 @@
 				item: "divinerpg:shadow_bar"
 			}]
 		}
+		{
+			x: 3.0d
+			y: -4.5d
+			description: ["{quest.emcworld.waystone.desc}"]
+			dependencies: ["6DF5A3CCCA8269CC"]
+			id: "1752B7D0131708C6"
+			tasks: [{
+				id: "1DA902C329B17F3C"
+				type: "item"
+				item: {
+					id: "waystones:warp_stone"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "00CF8C3DF5ECF303"
+					type: "item"
+					item: "waystones:waystone"
+					count: 16
+				}
+				{
+					id: "600934C76003A8E5"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
 	]
 }

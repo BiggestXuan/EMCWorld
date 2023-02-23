@@ -13,6 +13,7 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
@@ -343,6 +344,12 @@ public class PlayerTickEvent {
                 IPlayerDifficultyItem item1 = (IPlayerDifficultyItem) stack.getItem();
                 if(util.getDifficulty() < item1.requireDifficulty()){
                     stack.setCount(0);
+                }
+            }
+            if(stack.getItem() instanceof IStarItem){
+                IStarItem item = (IStarItem) stack.getItem();
+                if(!stack.getOrCreateTag().getBoolean("star_init")){
+                    item.initStar(stack);
                 }
             }
             if(stack.getItem() instanceof IPrefixItem){
