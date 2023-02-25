@@ -69,7 +69,7 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
 
     @Override
     public double getAttackRange(ItemStack stack) {
-        return Math.max(0,getLevel(stack) == 0 ? 0 + getPrefixRange(getPrefix(stack)) : (0.1 * tier.getLevel() + (damage/45) * getLevel(stack))) + getPrefixRange(getPrefix(stack));
+        return Math.max(0,getLevel(stack) == 0 ? 0 + getPrefixRange(getPrefix(stack)) : (0.1 * tier.getLevel() + (damage/50) * getLevel(stack))) + getPrefixRange(getPrefix(stack));
     }
 
     @Override

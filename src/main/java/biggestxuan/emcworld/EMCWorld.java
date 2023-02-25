@@ -23,6 +23,7 @@ import biggestxuan.emcworld.common.network.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
 import biggestxuan.emcworld.common.utils.RaidUtils;
+import dev.latvian.mods.projectex.Matter;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -111,6 +112,8 @@ public class EMCWorld {
             });
             Minecraft.getInstance().getResourcePackRepository().reload();
         }
+        //Matter.BASIC.collectorOutput = 100;
+        //Matter.DARK.collectorOutput = 300;
     }
 
     private void doStuff(FMLCommonSetupEvent event){

@@ -9,14 +9,14 @@ import crafttweaker.api.util.MCResourceLocation;
 import crafttweaker.api.item.IItemStack;
 
 public function getLootTableName(item as IItemStack,namepath as MCResourceLocation) as string{
-    return "emcworld_loot_tables_"+item.registryName.getPath()+namepath.getPath()+item.amount;
+    return "emcworld_loot_tables_"+item.registryName.getPath()+"_"+namepath.getPath()+"_"+item.amount;
 }
 
 public function modifyLootTable(input as IItemStack,base as float,rl as MCResourceLocation) as void{
-    var name as string = getLootTableName(input,rl);
     var chance as float = getLootTableAddition(base);
+    var name as string = getLootTableName(input,rl);
     loot.modifiers.register(
-        name,
+        name+"_"+chance,
         LootConditionBuilder.create()
             .add<LootTableId>(condition => {
                 condition.withTableId(rl);

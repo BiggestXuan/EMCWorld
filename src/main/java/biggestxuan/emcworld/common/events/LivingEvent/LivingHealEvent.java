@@ -7,11 +7,13 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.equipment.armor.IHealBoostArmor;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -42,6 +44,12 @@ public class LivingHealEvent {
                 if(cap1.getProfession() == 2 && cap1.getSkills()[36] !=0 && cap1.getModify() == 2 && MathUtils.isTwoLivingDistance(player,player1,5.0d)){
                     amount *= 1+(cap1.getSkills()[36]/10000f * cap1.getSkills()[24]/10000f);
                     break;
+                }
+            }
+            for(ItemStack s : player.inventory.armor){
+                if(s.getItem() instanceof IHealBoostArmor){
+                    IHealBoostArmor armor = (IHealBoostArmor) s.getItem();
+                    amount *= armor.getHealBoostRate(s);
                 }
             }
         }

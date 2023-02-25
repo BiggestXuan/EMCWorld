@@ -17,6 +17,11 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
     }
 
     @Override
+    public double healBoostRate(ItemStack stack) {
+        return 1.65 + 0.08 * getLevel(stack) * getShieldRate();
+    }
+
+    @Override
     public long getMaxInfuser(ItemStack stack){
         return (long) (Math.pow(1.417,getLevel(stack)+12) * 500000 * getPrefixCommonRate(stack));
     }

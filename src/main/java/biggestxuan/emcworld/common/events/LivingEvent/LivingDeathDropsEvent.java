@@ -53,6 +53,9 @@ public class LivingDeathDropsEvent {
                 }
             }
         }
+        if(rl.equals(new ResourceLocation("divinerpg","entities/desert_crawler"))){
+            event.setCanceled(true);
+        }
         if(rl.equals(new ResourceLocation("cataclysm","entities/ignis"))){
             int base = 6;
             if(MathUtils.isRandom(0.5)) base++;

@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
@@ -88,7 +89,7 @@ public class PlayerClickEvent {
         if(itemStack.isEmpty()) return;
         for(EMCGemsMapping obj:EMCGemsMapping.values()){
             if(itemStack.getItem().equals(obj.getItem())){
-                if(!GameStageManager.hasStage(player,obj.getGameStage())) {
+                if(!GameStageManager.hasStage(player,obj.getGameStage()) && !ConfigManager.FREE_MODE.get()) {
                     Message.MessageDisplay(player, EMCWorld.tc("message.evt.gemcancel",obj.getGameStage()));
                     return;
                 }

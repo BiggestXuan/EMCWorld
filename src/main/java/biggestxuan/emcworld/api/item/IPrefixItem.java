@@ -48,11 +48,11 @@ public interface IPrefixItem {
             setPrefix(stack,Prefix.ULTIMATE);
         } else if(MathUtils.isRandom(0.03)) {
             setPrefix(stack,Prefix.EXCELLENT);
-        } else if(MathUtils.isRandom(0.2)) {
+        } else if(MathUtils.isRandom(0.25)) {
             setPrefix(stack,Prefix.FINE);
-        } else if(MathUtils.isRandom(0.6)) {
+        } else if(MathUtils.isRandom(0.75)) {
             setPrefix(stack,Prefix.NORMAL);
-        } else if(MathUtils.isRandom(0.8)) {
+        } else if(MathUtils.isRandom(0.85)) {
             setPrefix(stack,Prefix.OLD);
         } else if(MathUtils.isRandom(0.9)) {
             setPrefix(stack,Prefix.LITTER);

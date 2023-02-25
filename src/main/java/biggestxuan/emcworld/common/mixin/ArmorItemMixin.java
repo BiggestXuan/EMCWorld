@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.api.item.equipment.armor.IHealBoostArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.item.ArmorItem;
@@ -18,7 +19,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(ArmorItem.class)
-public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, IPrefixItem {
+public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, IHealBoostArmor,IPrefixItem {
 
     @Shadow
     @Final
@@ -28,6 +29,11 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
     public ArmorItemMixin(Properties p_i48487_1_, int defense) {
         super(p_i48487_1_);
         this.defense = defense;
+    }
+
+    @Override
+    public double getHealBoostRate(ItemStack stack) {
+        return 1 + 0.0125 * getLevel(stack) * defense;
     }
 
     @Override

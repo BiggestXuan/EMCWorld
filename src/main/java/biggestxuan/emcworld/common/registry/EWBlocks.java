@@ -30,13 +30,19 @@ import mekanism.common.registration.impl.BlockRegistryObject;
 import mekanism.common.registries.MekanismBlockTypes;
 import mekanism.common.tile.multiblock.TileEntityInductionCell;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.SoundType;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItem;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorldReader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import javax.annotation.Nullable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -65,7 +71,12 @@ public class EWBlocks {
         public static final RegistryObject<Block> CHLOROPHYTE_ORE = BLOCKS.register("chlorophyte_ore",() -> new EWDirtOre(3,3.5F));
         public static final RegistryObject<Block> VIS_CONVERSION_CORE = BLOCKS.register("vis_conversion_core",VisConversionBlock::new);
         public static final RegistryObject<Block> ORICHALCOS_ORE = BLOCKS.register("orichalcos_ore",() -> new EWStoneOre(4,16.0F));
-        public static final RegistryObject<Block> COLD_ORE = BLOCKS.register("cold_ore", () -> new EWStoneOre(1,2.5F));
+        public static final RegistryObject<Block> COLD_ORE = BLOCKS.register("cold_ore", () -> new EWStoneOre(1,2.5F){
+                @Override
+                public SoundType getSoundType(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity) {
+                        return SoundType.GLASS;
+                }
+        });
         public static final RegistryObject<Block> NICKEL_ORE = BLOCKS.register("nickel_ore",() -> new EWStoneOre(1,6.0F));
         public static final RegistryObject<Block> ALUMINUM_ORE = BLOCKS.register("aluminum_ore",() -> new EWStoneOre(1,6.0F));
         public static final RegistryObject<Block> SILVER_ORE = BLOCKS.register("silver_ore",() -> new EWStoneOre(1,6.0F));

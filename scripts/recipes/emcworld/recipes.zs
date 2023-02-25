@@ -418,7 +418,6 @@ public function emcworldRecipe() as void{
             <item:mekanism:ingot_refined_glowstone>,
             <item:minecraft:gold_ingot>,
             <item:minecraft:diamond>,
-            <item:minecraft:emerald>,
             <item:mekanism:block_uranium>,
             <item:mekanism:block_refined_glowstone>,
             <item:minecraft:gold_block>,
@@ -1158,6 +1157,19 @@ public function emcworldRecipe() as void{
         torchRecipe(<item:emcworld:orange_matter>,<item:emcworld:dragon_steel>,ub);
         torchRecipe1(15,25);
     }
+    addEMCStage(<item:minecraft:emerald>,9);
+    setEMCStage(<item:emcworld:illager_gem>,16384,9);
+    addCraftShapelessRecipe([
+        <item:emcworld:illager_gem>
+    ],<item:minecraft:emerald>*8);
+    removeRecipe([
+        <item:bountifulbaubles:spectral_silt>,
+        <item:allthemodium:alloy_sword>,
+        <item:allthemodium:alloy_pick>,
+        <item:allthemodium:alloy_axe>,
+        <item:allthemodium:alloy_shovel>,
+        <item:allthemodium:alloy_paxel>
+    ]);
     addCraftShapedRecipeNoName([
         [bge,ws,bge],
         [ws,<item:emcworld:hardcore_stone>,ws],

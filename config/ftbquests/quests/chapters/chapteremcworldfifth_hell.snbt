@@ -13,7 +13,7 @@
 		width: 16.0d
 		height: 9.0d
 		rotation: 0.0d
-		image: "ftbquests:textures/chuansongmeng.png"
+		image: "ftbquests:textures/hem.png"
 		hover: [ ]
 		click: ""
 		dev: false

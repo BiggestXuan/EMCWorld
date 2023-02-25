@@ -1,5 +1,6 @@
 #priority 53
 import mods.emcworld.EMCHelper;
+import mods.emcworld.math;
 
 import crafttweaker.api.item.ItemStack;
 import crafttweaker.api.item.IItemStack;
@@ -27,8 +28,8 @@ public function getVoucherEMC() as int{
 }
 
 public function setEMC() as void{
-    var emcValue as long[]=[16384,0,512,2048,0,128,1024,2048,256,256,64,2048,32767,128,getVoucherEMC(),24652,34206,176254,12068,5622,3780
-    ,148306,2048,2048,4682,6026,920816,512
+    var emcValue as long[]=[16384,0,2048,2048,0,128,1024,2048,256,256,64,2048,32767,128,getVoucherEMC(),24652,34206,176254,12068,5622,3780
+    ,148306,2048,2048,4682,6026,920816,512,math.getEMCWhenUseGem(1000)+1024 as long
     ];
     var item as ItemStack[]=[
         <item:byg:pendorite_scraps>,
@@ -58,7 +59,8 @@ public function setEMC() as void{
         <item:emcworld:drystone_ingot>,
         <item:emcworld:sunlit_ingot>,
         <item:allthemodium:unobtainium_ingot>,
-        <item:emcworld:aluminum_ingot>
+        <item:emcworld:aluminum_ingot>,
+        <item:waystones:warp_stone>
     ];
     clearEMC(Ice.INSTANCE.getIce());
     for i in 0 .. item.length{

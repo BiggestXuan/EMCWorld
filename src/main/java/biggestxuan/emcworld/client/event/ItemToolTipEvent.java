@@ -9,12 +9,8 @@ package biggestxuan.emcworld.client.event;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
-import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
-import biggestxuan.emcworld.api.item.equipment.IStarItem;
-import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
-import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
-import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
-import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
+import biggestxuan.emcworld.api.item.equipment.*;
+import biggestxuan.emcworld.api.item.equipment.armor.*;
 import biggestxuan.emcworld.api.item.equipment.weapon.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
@@ -174,6 +170,14 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
             } else if(item_1_1.extraHealth(stack) < 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health_loss",String.format("%.2f",Math.abs(item_1_1.extraHealth(stack)))));
+            }
+        }
+        if(stack.getItem() instanceof IHealBoostArmor){
+            IHealBoostArmor item1_2 = (IHealBoostArmor) stack.getItem();
+            if(item1_2.getHealBoostRate(stack) >1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.heal_boost",String.format("%.2f",(item1_2.getHealBoostRate(stack)-1)*100)+"%"));
+            } else if(item1_2.getHealBoostRate(stack) <1){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.heal_boost_lost",String.format("%.2f",(1-item1_2.getHealBoostRate(stack))*100)+"%"));
             }
         }
         if(stack.getItem() instanceof ICostEMCItem){

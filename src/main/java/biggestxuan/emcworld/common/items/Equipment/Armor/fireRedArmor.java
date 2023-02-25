@@ -16,6 +16,11 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
     }
 
     @Override
+    public double healBoostRate(ItemStack stack) {
+        return 1 + 0.05 * getLevel(stack) * getShieldRate();
+    }
+
+    @Override
     public long getMaxInfuser(ItemStack stack){
         return (long) (Math.pow(1.417,getLevel(stack)) * 500000 * getPrefixCommonRate(stack));
     }

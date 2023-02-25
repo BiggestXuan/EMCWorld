@@ -107,13 +107,13 @@ public abstract class GaiaMixin extends LivingEntity {
 
     @Inject(method = "hurt",at = @At(value = "RETURN",ordinal = 0), cancellable = true)
     public void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        cir.setReturnValue(super.hurt(source,amount));
+        cir.setReturnValue(super.hurt(source,Math.min(amount,MAX_HP * 0.15f)));
     }
 
     @Inject(method = "hurt",at = @At("HEAD"), cancellable = true)
     public void staffAttack(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
         if(source instanceof EWDamageSource){
-            cir.setReturnValue(super.hurt(source,amount));
+            cir.setReturnValue(super.hurt(source,Math.min(amount,MAX_HP * 0.15f)));
         }
     }
 

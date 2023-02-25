@@ -43,6 +43,7 @@ public class PlayerChatEvent {
                     break;
                 case 6:
                     event.setComponent(EMCWorld.tc("message.chat.tulye",name,saying));
+                    break;
                 default:
                     event.setComponent(EMCWorld.tc("message.chat.base",name,saying));
                     break;

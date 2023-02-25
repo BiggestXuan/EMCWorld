@@ -349,6 +349,7 @@
   "item.emcworld.gaia_dagger": "Gaia Dagger",
   "item.emcworld.xiangshushumiao_pillow": "Xiangshushumiao Pillow",
   "item.emcworld.prefix_scroll": "Reforged Scroll",
+  "item.emcworld.illager_gem": "Illager Gem",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -837,7 +838,7 @@
   "tooltip.emcworld.illager_shard_desc": "§2The current drop rate is: %d",
   "tooltip.emcworld.armor_emc_max_shield": "§9Max Shield: %d",
   "tooltip.emcworld.armor_emc_speed": "§9Shield Heal Speed: %d",
-  "tooltip.emcworld.tool_speed": "§9+ %d §9Destroy Speed:",
+  "tooltip.emcworld.tool_speed": "§9+ %d §9Destroy Speed",
   "tooltip.emcworld.tool_speed_loss": "§9- %d §9Destroy Speed",
   "tooltip.emcworld.xiangshushumiao_pillow": "Don't use emc when you wake up, enter good dream on Strange Bed",
   "tooltip.emcworld.prefix.ragged": "Ragged ",
@@ -857,6 +858,8 @@
   "tooltip.emcworld.prefix": "§9Prefix: ",
   "tooltip.emcworld.durability": "§9Durability: %d §9/ %d",
   "tooltip.emcworld.star": "§9Star: %d §9/ %d",
+  "tooltip.emcworld.heal_boost": "§9+ %d §9Heal Boost",
+  "tooltip.emcworld.heal_boost_lost": "§9- %d §9Heal Boost",
 
   "attack_range_none": "Off",
   "attack_range_all": "All",

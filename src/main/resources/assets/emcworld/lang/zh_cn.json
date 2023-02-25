@@ -349,6 +349,7 @@
   "item.emcworld.gaia_dagger": "盖亚匕首",
   "item.emcworld.xiangshushumiao_pillow": "橡树树苗抱枕",
   "item.emcworld.prefix_scroll": "重铸卷轴",
+  "item.emcworld.illager_gem": "灾厄宝石",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -857,6 +858,8 @@
   "tooltip.emcworld.prefix": "§9前缀： ",
   "tooltip.emcworld.durability": "§9耐久度： %d §9/ %d",
   "tooltip.emcworld.star": "§9星数： %d §9/ %d",
+  "tooltip.emcworld.heal_boost": "§9+ %d §9治疗效能",
+  "tooltip.emcworld.heal_boost_lost": "§9- %d §9治疗效能",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

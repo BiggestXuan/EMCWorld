@@ -1,6 +1,7 @@
 # priority 27
 import crafttweaker.api.item.IItemStack;
 import mods.emcworld.math;
+import mods.emcworld.configHelper;
 
 public function tweakerBotania() as void{
     var ei = <item:extendedcrafting:ender_ingot>;
@@ -17,7 +18,8 @@ public function tweakerBotania() as void{
         <item:mythicbotany:muspelheim_rune>,
         <item:mythicbotany:niflheim_rune>,
         <item:mythicbotany:nidavellir_rune>,
-        <item:mythicbotany:helheim_rune>
+        <item:mythicbotany:helheim_rune>,
+        <item:emcworld:scroll_green>
     ];
     for i in [ei,eei]{
         modifyLootTable(i*8,1f,getRL(name));
@@ -29,8 +31,14 @@ public function tweakerBotania() as void{
         modifyLootTable(i,0.04f,getRL(name));
     }
     for i in ii{
-        modifyLootTable(i*2,0.2f,getRL(name));
-        modifyLootTable(i*1,0.15f,getRL(name));
+        modifyLootTable(i*3,0.1f,getRL(name));
+        modifyLootTable(i*2,0.15f,getRL(name));
+        modifyLootTable(i*1,0.2f,getRL(name));
+    }
+    for n in [name,bn] as string[]{
+        for a in 1 .. 6{
+            modifyLootTable(<item:emcworld:scroll_white>*a,0.2f-0.03f*a,getRL(n));
+        }
     }
     modifyLootTable(iss,0.45f,getRL(bn));
     modifyLootTable(iss*2,0.4f,getRL(bn));
@@ -51,6 +59,7 @@ public function gns() as void{
         "good_nights_sleep:entities/tormenter"
     ];
     var bi = <item:extendedcrafting:black_iron_ingot>;
+    if(configHelper.isFreeMode()) return;
     for i in names{
         modifyLootTable(<item:bloodmagic:ingot_hellforged>,0.1f,getRL(i));
         modifyLootTable(<item:bloodmagic:ingot_hellforged>*2,0.07f,getRL(i));
@@ -62,6 +71,7 @@ public function gns() as void{
 
 public function ip() as void{
     var ri = <item:mekanism:ingot_refined_obsidian>;
+    var ig = <item:emcworld:illager_gem>;
     var names as string[] = [
         "illagers_plus:structure/fort_common",
         "illagers_plus:structure/fort_rare",
@@ -76,25 +86,35 @@ public function ip() as void{
         "illagers_plus:structure/illager_tower_dendrology",
         "illagers_plus:structure/illager_tower_enchanting",
         "illagers_plus:structure/illager_tower_rare",
-        "illagers_plus:structure/illager_tower_uncommon"
+        "illagers_plus:structure/illager_tower_uncommon",
+        "minecraft:chests/pillager_outpost"
     ];
     for i in [0,1]{
         var a as string = names[i];
-        modifyLootTable(ri,0.03f,getRL(a));
-        modifyLootTable(ri*2,0.02f,getRL(a));
-        modifyLootTable(<item:emcworld:biggest_emc_gem>*4,0.1f,getRL(a));
-        modifyLootTable(<item:emcworld:biggest_emc_gem>*7,0.05f,getRL(a));
-        modifyLootTable(<item:emcworld:biggest_emc_gem>*9,0.03f,getRL(a));
-        modifyLootTable(<item:emcworld:biggest_emc_gem>*12,0.015f,getRL(a));
+        if(!configHelper.isFreeMode()){
+            modifyLootTable(ri,0.03f,getRL(a));
+            modifyLootTable(ri*2,0.02f,getRL(a));
+            modifyLootTable(ig*3,0.06f,getRL(a));
+            modifyLootTable(ig*4,0.04f,getRL(a));
+            modifyLootTable(ig*5,0.02f,getRL(a));
+            modifyLootTable(<item:emcworld:biggest_emc_gem>*4,0.1f,getRL(a));
+            modifyLootTable(<item:emcworld:biggest_emc_gem>*7,0.05f,getRL(a));
+            modifyLootTable(<item:emcworld:advanced_emc_stored_totem>.withDamage(math.getRangeRandom(7000000,9500000)),0.01f,getRL(a));
+            modifyLootTable(<item:emcworld:biggest_emc_gem>*10,0.02f,getRL(a));
+        }
+        modifyLootTable(ig,0.1f,getRL(a));
+        modifyLootTable(ig*2,0.08f,getRL(a));
     }
     modifyLootTable(ri*3,0.04f,getRL(names[1]));
-    modifyLootTable(<item:emcworld:advanced_emc_stored_totem>.withDamage(math.getRangeRandom(7000000,9500000)),0.03f,getRL(names[1]));
     for i in names{
         modifyLootTable(<item:emcworld:big_emc_gem>,0.1f,getRL(i));
         modifyLootTable(<item:emcworld:big_emc_gem>*3,0.07f,getRL(i));
         modifyLootTable(<item:emcworld:big_emc_gem>*5,0.05f,getRL(i));
         modifyLootTable(<item:emcworld:biggest_emc_gem>*3,0.1f,getRL(i));
         modifyLootTable(<item:emcworld:biggest_emc_gem>*6,0.1f,getRL(i));
+        modifyLootTable(ig,0.09f,getRL(i));
+        modifyLootTable(ig*2,0.06f,getRL(i));
+        modifyLootTable(ig*3,0.04f,getRL(i));
     }
 }
 

@@ -12,6 +12,7 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.configHelper")
+@SuppressWarnings("unused")
 public class CrTConfig {
 
     @ZenCodeType.Method
