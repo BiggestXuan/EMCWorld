@@ -46,12 +46,14 @@ public class LivingHealEvent {
                     break;
                 }
             }
+            double rate = 1;
             for(ItemStack s : player.inventory.armor){
                 if(s.getItem() instanceof IHealBoostArmor){
                     IHealBoostArmor armor = (IHealBoostArmor) s.getItem();
-                    amount *= armor.getHealBoostRate(s);
+                    rate += armor.getHealBoostRate(s)-1;
                 }
             }
+            amount *= Math.max(0,rate);
         }
         else{
             amount *= 1.33f;

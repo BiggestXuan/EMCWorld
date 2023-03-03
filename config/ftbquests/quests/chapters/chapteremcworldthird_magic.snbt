@@ -10,11 +10,11 @@
 	quests: [
 		{
 			title: "{quest.emcworld.third_magic_manainfuser}"
-			x: 0.0d
-			y: 9.0d
+			x: -6.0d
+			y: -6.5d
 			description: ["{quest.emcworld.third_magic_manainfuser_desc}"]
 			dependencies: ["61FF0CDE31A9E16B"]
-			hide: true
+			hide: false
 			id: "207EBDC4A0190E88"
 			tasks: [{
 				id: "7C617AE5E7FA7F7F"
@@ -40,7 +40,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_runes}"
-			x: -21.0d
+			x: -20.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_magic_runes_desc}"]
 			dependencies: ["429D581AECE68C56"]
@@ -102,8 +102,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_prepar}"
-			x: 0.0d
-			y: 3.0d
+			x: -8.5d
+			y: -6.5d
 			description: ["{quest.emcworld.third_magic_prepar_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -151,15 +151,14 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_alfsteel}"
-			x: 3.0d
-			y: 6.0d
+			x: -6.0d
+			y: -4.0d
 			shape: "diamond"
 			description: ["{quest.emcworld.third_magic_alfsteel_desc}"]
 			dependencies: [
 				"207EBDC4A0190E88"
 				"36450B91226EDBE4"
 			]
-			hide: true
 			size: 2.0d
 			id: "3548FDBE816D964B"
 			tasks: [{
@@ -185,7 +184,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_alchemicalreactionchamber}"
-			x: 0.0d
+			x: -6.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_magic_alchemicalreactionchamber_desc}"]
 			dependencies: ["284F8A69E7322F8A"]
@@ -206,8 +205,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_alchemytable}"
-			x: -21.0d
-			y: -3.0d
+			x: -20.0d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_alchemytable_desc}"]
 			dependencies: ["4DE0FAC73AC6B76A"]
 			id: "645D03CC1CD893AC"
@@ -239,18 +238,31 @@
 				type: "item"
 				item: "bloodmagic:soulforge"
 			}]
-			rewards: [{
-				id: "5F2481CB98B9B336"
-				type: "custom"
-				title: "{reward.emcworld.easy}"
-				icon: "emcworld:small_emc_gem"
-				tags: ["easy"]
-				auto: "no_toast"
-			}]
+			rewards: [
+				{
+					id: "5F2481CB98B9B336"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+				{
+					id: "775B209047A0E884"
+					type: "item"
+					item: {
+						id: "bloodmagic:soulgemgreater"
+						Count: 1b
+						tag: {
+							souls: 4096.0d
+						}
+					}
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_reagentbinding}"
-			x: -3.0d
+			x: -11.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_magic_reagentbinding_desc}"]
 			dependencies: ["0421347EF0499BC3"]
@@ -281,7 +293,7 @@
 		{
 			title: "{quest.emcworld.third_magic_luminessence}"
 			x: -18.0d
-			y: 3.0d
+			y: 2.0d
 			description: ["{quest.emcworld.third_magic_luminessence_desc}"]
 			dependencies: ["07A8B71D42826058"]
 			id: "421AC8A7B73C1F6B"
@@ -295,7 +307,8 @@
 					id: "50761CD9C86973FA"
 					type: "item"
 					item: "extendedcrafting:luminessence"
-					count: 16
+					count: 32
+					random_bonus: 32
 				}
 				{
 					id: "6F6B48BDF68E5A60"
@@ -309,10 +322,11 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_enderingot}"
-			x: 3.0d
+			x: -3.5d
 			y: 0.0d
 			description: ["{quest.emcworld.third_magic_enderingot_desc}"]
 			dependencies: ["37E61647625FF2AE"]
+			dependency_requirement: "all_started"
 			id: "6E2EFD9898DF555B"
 			tasks: [{
 				id: "3B38CA8BAB58B300"
@@ -338,8 +352,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_demoncrucible}"
-			x: -9.0d
-			y: -3.0d
+			x: -13.5d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_demoncrucible_desc}"]
 			dependencies: ["707D7E57D0FB5443"]
 			id: "024877BE872D6245"
@@ -359,8 +373,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_hellforgedingot}"
-			x: -15.0d
-			y: -3.0d
+			x: -16.0d
+			y: -2.0d
 			shape: "diamond"
 			description: ["{quest.emcworld.third_magic_hellforgedingot_desc}"]
 			dependencies: [
@@ -392,8 +406,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_hellforgeddust}"
-			x: -15.0d
-			y: -6.0d
+			x: -16.0d
+			y: -4.0d
 			description: ["{quest.emcworld.third_magic_hellforgeddust_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -414,15 +428,11 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_demoncrystals}"
-			x: -6.0d
+			x: -13.5d
 			y: 0.0d
 			shape: "hexagon"
 			description: ["{quest.emcworld.third_magic_demoncrystals_desc}"]
-			dependencies: [
-				"15A5C062A4774E5C"
-				"024877BE872D6245"
-			]
-			size: 1.5d
+			dependencies: ["251587A30F571C8A"]
 			id: "0421347EF0499BC3"
 			tasks: [{
 				id: "2410000C254635D2"
@@ -440,8 +450,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_demoncrystallizer}"
-			x: -9.0d
-			y: 3.0d
+			x: -11.0d
+			y: 2.0d
 			description: ["{quest.emcworld.third_magic_demoncrystallizer_desc}"]
 			dependencies: ["251587A30F571C8A"]
 			id: "15A5C062A4774E5C"
@@ -461,8 +471,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_hypogealimperium}"
-			x: -12.0d
-			y: 3.0d
+			x: -13.5d
+			y: 2.0d
 			description: ["{quest.emcworld.third_magic_hypogealimperium_desc}"]
 			dependencies: ["5EA5E662A1CE8AA3"]
 			id: "251587A30F571C8A"
@@ -471,19 +481,28 @@
 				type: "item"
 				item: "byg:hypogeal_imperium"
 			}]
-			rewards: [{
-				id: "537B5DBE741AD30D"
-				type: "custom"
-				title: "{reward.emcworld.easy}"
-				icon: "emcworld:small_emc_gem"
-				tags: ["easy"]
-				auto: "no_toast"
-			}]
+			rewards: [
+				{
+					id: "537B5DBE741AD30D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+				{
+					id: "4FCA1C124D2B508D"
+					type: "item"
+					item: "bloodmagic:defaultcrystal"
+					count: 16
+					random_bonus: 16
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.third_magic_shardcrystal}"
-			x: -15.0d
-			y: 3.0d
+			x: -15.5d
+			y: 2.0d
 			description: ["{quest.emcworld.third_magic_shardcrystal_desc}"]
 			dependencies: ["07A8B71D42826058"]
 			id: "5EA5E662A1CE8AA3"
@@ -503,8 +522,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_yygdrasilbranch}"
-			x: 6.0d
-			y: 3.0d
+			x: -1.5d
+			y: -4.0d
 			description: ["{quest.emcworld.third_magic_yygdrasilbranch_desc}"]
 			dependencies: ["3548FDBE816D964B"]
 			id: "35C6845569592B42"
@@ -532,8 +551,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_gjallarhornempty}"
-			x: 6.0d
-			y: 9.0d
+			x: -1.5d
+			y: 0.0d
 			description: ["{quest.emcworld.third_magic_gjallarhornempty_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -562,8 +581,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_gjallarhornfull}"
-			x: 9.0d
-			y: 6.0d
+			x: -1.5d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_gjallarhornfull_desc}"]
 			dependencies: [
 				"730913B90D0F0FF8"
@@ -595,8 +614,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_runeholder}"
-			x: 12.0d
-			y: 6.0d
+			x: 1.0d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_runeholder_desc}"]
 			dependencies: ["55C421CFBC7E7E73"]
 			id: "11F73F9933742CE9"
@@ -631,8 +650,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_kvasirblood}"
-			x: 15.0d
-			y: 6.0d
+			x: 6.0d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_kvasirblood_desc}"]
 			dependencies: [
 				"0C0FA1CE702F3CD2"
@@ -663,8 +682,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_enderdagger}"
-			x: 12.0d
-			y: 3.0d
+			x: 3.5d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_enderdagger_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -698,8 +717,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_daggerofsacrifice}"
-			x: -12.0d
-			y: 12.0d
+			x: -8.5d
+			y: 2.0d
 			shape: "circle"
 			description: ["{quest.emcworld.third_magic_daggerofsacrifice_desc}"]
 			dependencies: ["429D581AECE68C56"]
@@ -721,8 +740,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_soulsword}"
-			x: -3.0d
-			y: 12.0d
+			x: -3.5d
+			y: 2.0d
 			description: ["{quest.emcworld.third_magic_soulsword_desc}"]
 			dependencies: ["36A5C808F6AF0F32"]
 			id: "00DA3EEC58EA59FA"
@@ -748,8 +767,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_alfetellarmorupgrade}"
-			x: 3.0d
-			y: 12.0d
+			x: -3.5d
+			y: -6.5d
 			description: ["{quest.emcworld.third_magic_alfetellarmorupgrade_desc}"]
 			dependencies: ["3548FDBE816D964B"]
 			id: "4EB36AE5E1F130D8"
@@ -776,10 +795,10 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteel_helmet}"
-			x: -1.5d
-			y: 15.0d
+			x: -8.5d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_terrasteel_helmet_desc}"]
-			dependencies: ["4EB36AE5E1F130D8"]
+			dependencies: ["3548FDBE816D964B"]
 			id: "08C07B9F562325C8"
 			tasks: [{
 				id: "0C0F02F4FB2473D0"
@@ -803,10 +822,10 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteel_chestplate}"
-			x: 1.5d
-			y: 15.0d
+			x: -7.0d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_terrasteel_chestplate_desc}"]
-			dependencies: ["4EB36AE5E1F130D8"]
+			dependencies: ["3548FDBE816D964B"]
 			id: "53218C0B21B5435A"
 			tasks: [{
 				id: "398D9E1E3FD96784"
@@ -830,10 +849,10 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteel_leggings}"
-			x: 4.5d
-			y: 15.0d
+			x: -5.0d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_terrasteel_leggings_desc}"]
-			dependencies: ["4EB36AE5E1F130D8"]
+			dependencies: ["3548FDBE816D964B"]
 			id: "56C2B6D9FEC9BEEC"
 			tasks: [{
 				id: "573B0C30A2A600EA"
@@ -857,10 +876,10 @@
 		}
 		{
 			title: "{quest.emcworld.third_magic_terrasteelboots}"
-			x: 7.5d
-			y: 15.0d
+			x: -3.5d
+			y: -2.0d
 			description: ["{quest.emcworld.third_magic_terrasteelboots_desc}"]
-			dependencies: ["4EB36AE5E1F130D8"]
+			dependencies: ["3548FDBE816D964B"]
 			id: "1F5DDE63AE9DDFD6"
 			tasks: [{
 				id: "35177104BCD15F45"
@@ -895,8 +914,8 @@
 					}
 				}
 			}
-			x: -3.0d
-			y: 6.0d
+			x: -8.5d
+			y: 0.0d
 			description: ["{quest.emcworld.third_magic_livingarmor_desc}"]
 			dependencies: ["284F8A69E7322F8A"]
 			id: "47DB524D99B3EA9A"
@@ -960,8 +979,8 @@
 			}]
 		}
 		{
-			x: 15.0d
-			y: 9.0d
+			x: 1.0d
+			y: 0.0d
 			dependencies: ["11F73F9933742CE9"]
 			id: "2656E0BE28DB55BD"
 			tasks: [{
@@ -994,8 +1013,8 @@
 			]
 		}
 		{
-			x: 3.0d
-			y: -5.0d
+			x: -11.0d
+			y: -4.0d
 			dependencies: [
 				"284F8A69E7322F8A"
 				"3548FDBE816D964B"
@@ -1006,10 +1025,17 @@
 				type: "item"
 				item: "emcworld:god_steel_ingot"
 			}]
+			rewards: [{
+				id: "59796BE7C863A8A7"
+				type: "item"
+				team_reward: true
+				item: "emcworld:god_steel_ingot"
+				count: 6
+			}]
 		}
 		{
-			x: 6.0d
-			y: -5.0d
+			x: -11.0d
+			y: -6.5d
 			dependencies: ["17FEF3658E5F73BC"]
 			id: "17CBAAA846953D76"
 			tasks: [{
@@ -1019,8 +1045,8 @@
 			}]
 		}
 		{
-			x: 0.0d
-			y: -5.0d
+			x: -13.5d
+			y: -6.5d
 			dependencies: ["17FEF3658E5F73BC"]
 			id: "0019DFF35BEAEF30"
 			tasks: [{
@@ -1032,6 +1058,38 @@
 					tag: { }
 				}
 			}]
+		}
+		{
+			x: -13.5d
+			y: -4.0d
+			dependencies: [
+				"7DA5D3B697EA65C6"
+				"13561ACB454E37AD"
+				"68DF23C0087E2DD0"
+				"17FEF3658E5F73BC"
+			]
+			id: "5DB49387DD103AB2"
+			tasks: [{
+				id: "6A5EBD0DB3699125"
+				type: "item"
+				item: "emcworld:advanced_update_core"
+			}]
+			rewards: [
+				{
+					id: "1AB9903CA58885E1"
+					type: "item"
+					team_reward: true
+					item: "projecte:dark_matter"
+					count: 8
+				}
+				{
+					id: "4A4960F3D74C06FF"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
 		}
 	]
 }

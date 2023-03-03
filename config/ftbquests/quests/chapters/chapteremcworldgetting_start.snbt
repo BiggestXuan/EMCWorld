@@ -250,6 +250,17 @@
 					tags: ["stage_one"]
 					auto: "enabled"
 				}
+				{
+					id: "5F0E56622DF1D51F"
+					type: "item"
+					item: {
+						id: "emcworld:base_emc_stored_totem"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
 			]
 		}
 		{
@@ -466,6 +477,11 @@
 					title: "{reward.emcworld.easy}"
 					icon: "emcworld:small_emc_gem"
 					tags: ["easy"]
+				}
+				{
+					id: "4E01CE40C8A49932"
+					type: "item"
+					item: "bountifulbaubles:wormhole_mirror"
 				}
 			]
 		}

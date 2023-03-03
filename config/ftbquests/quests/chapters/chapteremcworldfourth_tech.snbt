@@ -11,7 +11,7 @@
 		{
 			title: "{quest.emcworld.fourth_tech_fusionreactormaterials}"
 			icon: "mekanismgenerators:fusion_reactor_frame"
-			x: -3.0d
+			x: 1.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_tech_fusionreactormaterials_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
@@ -80,8 +80,8 @@
 					}
 				}
 			}
-			x: 0.0d
-			y: -4.5d
+			x: 1.5d
+			y: -3.0d
 			description: ["{quest.emcworld.fourth_tech_preparhohlraum_desc}"]
 			dependencies: ["3C940A3BB92F0315"]
 			id: "1718879B8AFA6C10"
@@ -99,8 +99,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_tech_hohlraum}"
-			x: 0.0d
-			y: -9.0d
+			x: 1.5d
+			y: -1.5d
 			description: ["{quest.emcworld.fourth_tech_hohlraum_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -115,7 +115,7 @@
 			title: "{quest.emcworld.fourth_tech_preparlaser}"
 			icon: "mekanism:laser"
 			x: 4.5d
-			y: -7.5d
+			y: -3.0d
 			description: ["{quest.emcworld.fourth_tech_preparlaser_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -135,8 +135,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_tech_prepartritium}"
-			x: 0.0d
-			y: 4.5d
+			x: 1.5d
+			y: 2.0d
 			description: ["{quest.emcworld.fourth_tech_prepartritium_desc}"]
 			dependencies: ["0BFCBC26DF165C6C"]
 			id: "33C795C83BF78BF5"
@@ -149,8 +149,8 @@
 		{
 			title: "{quest.emcworld.fourth_tech_preparlithium}"
 			icon: { id: "mekanism:thermal_evaporation_controller", Count: 2b }
-			x: 0.0d
-			y: 10.5d
+			x: 1.5d
+			y: 4.0d
 			description: [
 				"{quest.emcworld.fourth_tech_preparlithium_desc}"
 				""
@@ -187,7 +187,7 @@
 		{
 			title: "{quest.emcworld.fourth_tech_prepardeuterium}"
 			x: 4.5d
-			y: 7.5d
+			y: 4.0d
 			description: ["{quest.emcworld.fourth_tech_prepardeuterium_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -212,7 +212,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_tech_test}"
-			x: 11.5d
+			x: 8.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_tech_test_desc}"]
 			dependencies: ["3CB37FCC7A09D63F"]

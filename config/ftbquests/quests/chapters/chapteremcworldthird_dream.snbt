@@ -122,79 +122,6 @@
 			}]
 		}
 		{
-			title: "{quest.emcworld.third_dream_gooddreammineral}"
-			x: 4.5d
-			y: -1.5d
-			description: ["{quest.emcworld.third_dream_gooddreammineral_desc}"]
-			dependencies: ["2C0AFC7F844451F7"]
-			id: "13561ACB454E37AD"
-			tasks: [
-				{
-					id: "5E31E4A876DAD3FB"
-					type: "item"
-					item: "good_nights_sleep:candy"
-				}
-				{
-					id: "2BF5417A5E2B463F"
-					type: "item"
-					item: "good_nights_sleep:rainbow_ingot"
-				}
-			]
-			rewards: [
-				{
-					id: "633FB979479EEE2C"
-					type: "item"
-					item: "good_nights_sleep:rainbow_ingot"
-					count: 8
-				}
-				{
-					id: "223247A765B5DF54"
-					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
-			title: "{quest.emcworld.third_dream_baddreammineral}"
-			x: 4.5d
-			y: 1.5d
-			description: ["{quest.emcworld.third_dream_baddreammineral_desc}"]
-			dependencies: ["449CD2585008B6E9"]
-			dependency_requirement: "all_started"
-			id: "68DF23C0087E2DD0"
-			tasks: [
-				{
-					id: "445EE0BE08F18063"
-					type: "item"
-					item: "good_nights_sleep:necrum"
-				}
-				{
-					id: "5621C345D296B4CE"
-					type: "item"
-					item: "good_nights_sleep:zitrite_ingot"
-				}
-			]
-			rewards: [
-				{
-					id: "0D960E265552A893"
-					type: "item"
-					item: "good_nights_sleep:zitrite_ingot"
-					count: 8
-				}
-				{
-					id: "72F1EC5DE1A3E465"
-					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
 			title: "{quest.emcworld.third_dream_gem}"
 			x: 6.0d
 			y: 0.0d
@@ -266,6 +193,79 @@
 				tags: ["easy"]
 				auto: "no_toast"
 			}]
+		}
+		{
+			title: "{quest.emcworld.third_dream_gooddreammineral}"
+			x: 4.0d
+			y: -1.5d
+			description: ["{quest.emcworld.third_dream_gooddreammineral_desc}"]
+			dependencies: ["2C0AFC7F844451F7"]
+			id: "13561ACB454E37AD"
+			tasks: [
+				{
+					id: "5E31E4A876DAD3FB"
+					type: "item"
+					item: "good_nights_sleep:candy"
+				}
+				{
+					id: "2BF5417A5E2B463F"
+					type: "item"
+					item: "good_nights_sleep:rainbow_ingot"
+				}
+			]
+			rewards: [
+				{
+					id: "633FB979479EEE2C"
+					type: "item"
+					item: "good_nights_sleep:rainbow_ingot"
+					count: 8
+				}
+				{
+					id: "223247A765B5DF54"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.third_dream_baddreammineral}"
+			x: 4.0d
+			y: 1.5d
+			description: ["{quest.emcworld.third_dream_baddreammineral_desc}"]
+			dependencies: ["449CD2585008B6E9"]
+			dependency_requirement: "all_started"
+			id: "68DF23C0087E2DD0"
+			tasks: [
+				{
+					id: "445EE0BE08F18063"
+					type: "item"
+					item: "good_nights_sleep:necrum"
+				}
+				{
+					id: "5621C345D296B4CE"
+					type: "item"
+					item: "good_nights_sleep:zitrite_ingot"
+				}
+			]
+			rewards: [
+				{
+					id: "0D960E265552A893"
+					type: "item"
+					item: "good_nights_sleep:zitrite_ingot"
+					count: 8
+				}
+				{
+					id: "72F1EC5DE1A3E465"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+					auto: "no_toast"
+				}
+			]
 		}
 	]
 }

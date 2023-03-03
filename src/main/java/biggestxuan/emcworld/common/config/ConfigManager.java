@@ -25,6 +25,7 @@ public class ConfigManager {
     public static ForgeConfigSpec.BooleanValue FREE_MODE;
     //public static ForgeConfigSpec.BooleanValue SHARE_EMC;
     //public static ForgeConfigSpec.BooleanValue PREVENT_TOSS_WEAPON;
+    public static ForgeConfigSpec.BooleanValue RSAutomation;
     public static ForgeConfigSpec.BooleanValue SpringFestival;
     public static ForgeConfigSpec.BooleanValue LanternFestival;
     public static ForgeConfigSpec.BooleanValue FoolsDay;
@@ -44,6 +45,7 @@ public class ConfigManager {
         BUILDER.pop();
         BUILDER.push("Game Setting");
         //PREVENT_TOSS_WEAPON = BUILDER.define("Prevent toss all weapons",true);
+        RSAutomation = BUILDER.comment("Enable Refined Storage Automation,such as Pattern,Crafter").define("Enable Refined Storage Automation",false);
         BUILDER.pop();
         BUILDER.push("Festival");
         SpringFestival = BUILDER.comment("Get gifts on certain festivals,only configurable festivals that give gifts").define("SpringFestival",true);

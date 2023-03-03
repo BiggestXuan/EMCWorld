@@ -73,6 +73,7 @@ public function modifyBotaniaRecipe() as void{
         <tag:items:botania:petals/blue>,<tag:items:botania:petals/blue>,<tag:items:botania:petals/cyan>,<tag:items:botania:petals/cyan>,
         <item:botania:mana_powder>
     ],<item:botania:hydroangeas>);
+    removeApothecaryRecipe(<item:botania:entropinnyum>);
     enderCraftingRecipe([
         [eb,t,eb],
         [eb,<item:botania:terrasteel_block>,eb],
@@ -134,4 +135,5 @@ public function modifyBotaniaRecipe() as void{
         <item:botania:rainbow_rod>,
         <item:gobber2:gobber2_ingot_nether>
     ],ar,16000);
+    setEMCStage(<item:botania:mana_powder>,66,2);
 }

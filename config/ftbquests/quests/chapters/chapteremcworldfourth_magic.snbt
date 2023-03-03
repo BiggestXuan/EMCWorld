@@ -47,8 +47,8 @@
 	quests: [
 		{
 			title: "{quest.emcworld.fourth_magic_wand}"
-			x: -21.0d
-			y: -6.0d
+			x: -17.5d
+			y: -9.0d
 			description: ["{quest.emcworld.fourth_magic_wand_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -79,7 +79,7 @@
 			title: "{quest.emcworld.fourth_magic_rockcrystalore}"
 			icon: "astralsorcery:rock_crystal_ore"
 			x: -15.0d
-			y: -6.0d
+			y: -9.0d
 			shape: "diamond"
 			description: ["{quest.emcworld.fourth_magic_rockcrystalore_desc}"]
 			dependencies: ["351671E807E63130"]
@@ -111,8 +111,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_well}"
-			x: -21.0d
-			y: -12.0d
+			x: -17.5d
+			y: -11.5d
 			description: ["{quest.emcworld.fourth_magic_well_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -142,7 +142,7 @@
 		{
 			title: "{quest.emcworld.fourth_magic_starlightliquid}"
 			x: -15.0d
-			y: -12.0d
+			y: -11.5d
 			description: ["{quest.emcworld.fourth_magic_starlightliquid_desc}"]
 			dependencies: ["5F477A7041CAC318"]
 			id: "4D329CF66A354908"
@@ -170,8 +170,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altardiscovery}"
-			x: -9.0d
-			y: -6.0d
+			x: -12.0d
+			y: -9.0d
 			description: ["{quest.emcworld.fourth_magic_altardiscovery_desc}"]
 			dependencies: ["44821BCC51AF752B"]
 			id: "7C62ACA7CC60E62F"
@@ -200,7 +200,7 @@
 		{
 			title: "{quest.emcworld.fourth_magic_starmetalore}"
 			x: -15.0d
-			y: -18.0d
+			y: -15.5d
 			description: ["{quest.emcworld.fourth_magic_starmetalore_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -229,8 +229,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_stardust}"
-			x: -12.0d
-			y: -15.0d
+			x: -13.5d
+			y: -13.5d
 			description: ["{quest.emcworld.fourth_magic_stardust_desc}"]
 			dependencies: [
 				"05CC7A9408F5A198"
@@ -261,8 +261,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_starmetal}"
-			x: -9.0d
-			y: -18.0d
+			x: -12.0d
+			y: -15.5d
 			description: ["{quest.emcworld.fourth_magic_starmetal_desc}"]
 			dependencies: ["72798DD5387CA48F"]
 			id: "6BB89E2A29395F59"
@@ -290,8 +290,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_infusedwoodcolumn}"
-			x: -9.0d
-			y: -12.0d
+			x: -12.0d
+			y: -11.5d
 			description: ["{quest.emcworld.fourth_magic_infusedwoodcolumn_desc}"]
 			dependencies: ["72798DD5387CA48F"]
 			id: "5E51D84F8885A932"
@@ -319,8 +319,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altarattunement}"
-			x: -3.0d
-			y: -6.0d
+			x: -9.5d
+			y: -10.5d
 			shape: "gear"
 			description: ["{quest.emcworld.fourth_magic_altarattunement_desc}"]
 			dependencies: [
@@ -357,8 +357,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altarconstellation}"
-			x: 3.0d
-			y: 0.0d
+			x: -7.5d
+			y: -9.0d
 			description: ["{quest.emcworld.fourth_magic_altarconstellation_desc}"]
 			dependencies: [
 				"542BDB03D2F49E98"
@@ -384,8 +384,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_handtelescope}"
-			x: -3.0d
-			y: -18.0d
+			x: -9.5d
+			y: -15.5d
 			description: ["{quest.emcworld.fourth_magic_handtelescope_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -414,8 +414,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_telescope}"
-			x: -3.0d
-			y: -12.0d
+			x: -9.5d
+			y: -13.5d
 			description: ["{quest.emcworld.fourth_magic_telescope_desc}"]
 			dependencies: ["6B625809953A4B19"]
 			id: "4BB8C80DE4D8E5F4"
@@ -443,8 +443,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_attunementaltar}"
-			x: 4.0d
-			y: 7.5d
+			x: -7.5d
+			y: -7.0d
 			description: ["{quest.emcworld.fourth_magic_attunementaltar_desc}"]
 			dependencies: ["3D1D442B2A503BCB"]
 			id: "257E4A6919536F4C"
@@ -472,8 +472,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_infuser}"
-			x: 10.5d
-			y: 1.5d
+			x: -5.0d
+			y: -9.0d
 			description: ["{quest.emcworld.fourth_magic_infuser_desc}"]
 			dependencies: ["3D1D442B2A503BCB"]
 			id: "38706A29C98E007F"
@@ -501,8 +501,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_altarradiance}"
-			x: 12.0d
-			y: 9.0d
+			x: -5.0d
+			y: -7.0d
 			description: ["{quest.emcworld.fourth_magic_altarradiance_desc}"]
 			dependencies: [
 				"38706A29C98E007F"
@@ -543,8 +543,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_refractiontable}"
-			x: 3.0d
-			y: -12.0d
+			x: -7.5d
+			y: -11.5d
 			description: ["{quest.emcworld.fourth_magic_refractiontable_desc}"]
 			dependencies: ["3D1D442B2A503BCB"]
 			id: "421E6CF18C05DEC1"
@@ -564,8 +564,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_observatory}"
-			x: 6.5d
-			y: 15.0d
+			x: -2.5d
+			y: -6.5d
 			description: ["{quest.emcworld.fourth_magic_observatory_desc}"]
 			dependencies: ["64162D6185D1A516"]
 			id: "2DB6CBE2A3DC64DD"
@@ -593,8 +593,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_chalice}"
-			x: 24.0d
-			y: 9.0d
+			x: -2.5d
+			y: -8.0d
 			description: ["{quest.emcworld.fourth_magic_chalice_desc}"]
 			dependencies: ["64162D6185D1A516"]
 			id: "71771D03D7913498"
@@ -622,8 +622,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_magentacollector}"
-			x: 18.5d
-			y: 12.5d
+			x: -6.5d
+			y: -5.0d
 			description: ["{quest.emcworld.fourth_magic_magentacollector_desc}"]
 			dependencies: ["64162D6185D1A516"]
 			id: "10A9F07DBBB0E10D"
@@ -651,8 +651,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_pinkcollector}"
-			x: 7.5d
-			y: 4.5d
+			x: -4.5d
+			y: -13.5d
 			description: ["{quest.emcworld.fourth_magic_pinkcollector_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -696,8 +696,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_magic_marbleruned}"
-			x: -9.0d
-			y: 0.0d
+			x: -9.5d
+			y: -9.0d
 			description: ["{quest.emcworld.fourth_magic_marbleruned_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -725,8 +725,8 @@
 			]
 		}
 		{
-			x: 13.0d
-			y: 15.5d
+			x: -4.0d
+			y: -5.0d
 			dependencies: ["64162D6185D1A516"]
 			id: "5E35FF13428A4AE7"
 			tasks: [

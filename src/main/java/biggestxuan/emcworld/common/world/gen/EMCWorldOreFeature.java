@@ -44,7 +44,7 @@ public class EMCWorldOreFeature {
     }
 
     static{
-        COLD_ORE = get("cold_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.PACKED_ICE), EWBlocks.COLD_ORE.get().defaultBlockState(),6)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,128))).squared().count(160));
+        COLD_ORE = get("cold_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.PACKED_ICE), EWBlocks.COLD_ORE.get().defaultBlockState(),6)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,128))).squared().count(120));
         DRYSTONE_ORE = get("drystone_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.TERRACOTTA), EWBlocks.DRYSTONE_ORE.get().defaultBlockState(),6)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,128))).squared().count(50));
         AQUA_ORE = get("aqua_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.SAND), EWBlocks.AQUAMARINE_ORE.get().defaultBlockState(),6)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,128))).squared().count(75));
         CHLOROPHYTE_ORE = get("chlorophyte_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.DIRT), EWBlocks.CHLOROPHYTE_ORE.get().defaultBlockState(),6)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,128))).squared().count(95));

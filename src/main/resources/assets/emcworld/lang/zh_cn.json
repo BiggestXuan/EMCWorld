@@ -350,6 +350,8 @@
   "item.emcworld.xiangshushumiao_pillow": "橡树树苗抱枕",
   "item.emcworld.prefix_scroll": "重铸卷轴",
   "item.emcworld.illager_gem": "灾厄宝石",
+  "item.emcworld.emc_healing_bag": "质能医疗包",
+  "item.emcworld.scroll_bx": "大轩卷轴",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -667,6 +669,7 @@
   "message.shield.on": "最后防线已开启",
   "message.shield.off": "最后防线已关闭",
   "message.shield.deny": "你没有足够的EMC开启最后防线",
+  "message.hurt.pet": "§4你的宠物 %d§4，因为你没有 %d §4EMC，因此它会直接死亡。",
 
   "gui.emcworld.update_core": "进阶升级核心架构",
   "gui.emcworld.gemstone_core": "宝石核心",
@@ -860,6 +863,8 @@
   "tooltip.emcworld.star": "§9星数： %d §9/ %d",
   "tooltip.emcworld.heal_boost": "§9+ %d §9治疗效能",
   "tooltip.emcworld.heal_boost_lost": "§9- %d §9治疗效能",
+  "tooltip.emcworld.bx_scroll": "§2强化一定成功，但有 %d §2概率直接报废升级物品",
+  "tooltip.emcworld.gloves_dexterity": "§2重置攻击冷却对于所有的剑类，斧类、战锤类、匕首类武器无效",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",
@@ -1208,6 +1213,8 @@
   "quest.emcworld.third_tech_alloyatomic": "最好的合金",
   "quest.emcworld.third_tech_alloyatomic_desc": "高级机器的构材",
   "quest.emcworld.third_tech_ultimatecontrolcircuit": "终极电路",
+  "quest.emcworld.third_tech_uranium": "铀饼",
+  "quest.emcworld.third_tech_uranium_desc": "食不食铀饼？",
   "quest.emcworld.third_tech_ultimatecontrolcircuit_desc": "高级机器的核心",
   "quest.emcworld.third_tech_chemicaldissolutionchamber": "化学溶解室",
   "quest.emcworld.third_tech_chemicaldissolutionchamber_desc": "高级产线的必备要组件",

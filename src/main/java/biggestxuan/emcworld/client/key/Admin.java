@@ -24,7 +24,7 @@ public class Admin {
     public static final KeyBinding ADMIN_KEY = new KeyBinding("key.emcworld.admin",
             KeyConflictContext.IN_GAME,
             InputMappings.Type.KEYSYM,
-            GLFW.GLFW_KEY_KP_EQUAL,
+            336,
             "key.category." + EMCWorld.MODID);
 
     @SubscribeEvent

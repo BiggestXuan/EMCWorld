@@ -11,7 +11,7 @@
 		{
 			title: "{quest.emcworld.fifth_hell_gointohell}"
 			x: 0.0d
-			y: 0.0d
+			y: -2.0d
 			description: ["{quest.emcworld.fifth_hell_gointohell_desc}"]
 			dependencies: ["6E9E29BB46ABEEF3"]
 			id: "45950F380D6786BA"
@@ -38,8 +38,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_bastionremnant}"
-			x: 9.0d
-			y: -2.5d
+			x: 5.5d
+			y: -2.0d
 			dependencies: ["45950F380D6786BA"]
 			id: "1F3FF582ADB44DE1"
 			tasks: [{
@@ -67,8 +67,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_fortress}"
-			x: -9.0d
-			y: -2.5d
+			x: -6.0d
+			y: -2.0d
 			dependencies: ["45950F380D6786BA"]
 			id: "31D0B5703388CC36"
 			tasks: [{
@@ -95,8 +95,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_witherskeleton}"
-			x: -9.0d
-			y: -12.0d
+			x: -6.0d
+			y: -7.0d
 			dependencies: ["31D0B5703388CC36"]
 			id: "2BAF6757117A56F8"
 			tasks: [{
@@ -115,8 +115,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_piglinbrute}"
-			x: 9.0d
-			y: -12.0d
+			x: 5.5d
+			y: -7.0d
 			dependencies: ["1F3FF582ADB44DE1"]
 			id: "21A754A072746CE7"
 			tasks: [{
@@ -150,8 +150,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_wither}"
-			x: -4.5d
-			y: -9.0d
+			x: -3.0d
+			y: -7.0d
 			dependencies: ["2BAF6757117A56F8"]
 			id: "00DF69C05A1753D2"
 			tasks: [{
@@ -179,7 +179,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netheritemonstrosity}"
-			x: 4.5d
+			x: 0.0d
 			y: -9.0d
 			hide_dependency_lines: true
 			dependencies: ["45950F380D6786BA"]
@@ -213,8 +213,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_lgnis}"
-			x: 0.0d
-			y: -15.0d
+			x: -3.0d
+			y: -9.0d
 			dependencies: [
 				"00DF69C05A1753D2"
 				"2E25A0CA957C6576"
@@ -247,7 +247,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_nethergobber}"
-			x: -4.5d
+			x: -2.5d
 			y: -4.5d
 			description: ["{quest.emcworld.fifth_hell_nethergobber_desc}"]
 			dependencies: ["45950F380D6786BA"]
@@ -276,7 +276,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netherite}"
-			x: 4.5d
+			x: 2.5d
 			y: -4.5d
 			description: ["{quest.emcworld.fifth_hell_netherite_desc}"]
 			dependencies: ["45950F380D6786BA"]
@@ -307,7 +307,7 @@
 		{
 			title: "{quest.emcworld.fifth_hell_asgardrune}"
 			x: 0.0d
-			y: -9.0d
+			y: -7.0d
 			description: ["{quest.emcworld.fifth_hell_asgardrune_desc}"]
 			dependencies: [
 				"497214ECFFFA9746"
@@ -338,8 +338,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_keepingcastle}"
-			x: -6.0d
-			y: 3.0d
+			x: -2.5d
+			y: 0.0d
 			description: ["{quest.emcworld.fifth_hell_keepingcastle_desc}"]
 			dependencies: ["45950F380D6786BA"]
 			id: "1EC2B9451DA98807"
@@ -370,8 +370,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_awfuldungeon}"
-			x: 6.0d
-			y: 3.0d
+			x: 2.5d
+			y: 0.0d
 			description: ["{quest.emcworld.fifth_hell_awfuldungeon_desc}"]
 			dependencies: ["45950F380D6786BA"]
 			id: "6B3BDA430A0C58D3"
@@ -395,7 +395,7 @@
 		{
 			title: "{quest.emcworld.fifth_hell_tungsten}"
 			x: 0.0d
-			y: 4.5d
+			y: 1.5d
 			description: ["{quest.emcworld.fifth_hell_tungsten_desc}"]
 			dependencies: [
 				"6B3BDA430A0C58D3"
@@ -433,7 +433,7 @@
 					Damage: 0
 				}
 			}
-			x: -12.0d
+			x: -6.0d
 			y: 0.0d
 			dependencies: ["1EC2B9451DA98807"]
 			id: "5B8C92A0364F57D7"
@@ -469,7 +469,7 @@
 					Damage: 0
 				}
 			}
-			x: 12.0d
+			x: 5.5d
 			y: 0.0d
 			dependencies: ["6B3BDA430A0C58D3"]
 			id: "4BEFE5EA8CEBADDA"
@@ -498,8 +498,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_awfulghast}"
-			x: 12.0d
-			y: -9.0d
+			x: 5.5d
+			y: -4.5d
 			dependencies: ["4BEFE5EA8CEBADDA"]
 			id: "67649A1A32FE22BD"
 			tasks: [{
@@ -534,8 +534,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hell_netherkeeper}"
-			x: -12.0d
-			y: -9.0d
+			x: -6.0d
+			y: -4.5d
 			dependencies: ["5B8C92A0364F57D7"]
 			id: "3378F188662F54C3"
 			tasks: [{
@@ -595,7 +595,7 @@
 		{
 			title: "{quest.emcworld.fifth_hell_purpleblaze}"
 			x: 0.0d
-			y: 3.0d
+			y: 0.0d
 			dependencies: ["45950F380D6786BA"]
 			id: "79D8462D6F56E2ED"
 			tasks: [{

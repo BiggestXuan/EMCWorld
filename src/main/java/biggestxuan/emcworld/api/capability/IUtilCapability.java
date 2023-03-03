@@ -127,4 +127,12 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     int gaiaPlayer();
 
     void setGaiaPlayer(int amt);
+
+    float getHealPreTick();
+
+    void setHealPreTick(float amt);
+
+    int getHealTick();
+
+    void setHealTick(int amt);
 }

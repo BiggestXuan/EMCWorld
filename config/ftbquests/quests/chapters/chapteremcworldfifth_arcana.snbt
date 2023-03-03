@@ -31,7 +31,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_kingofscorchers}"
-			x: -3.0d
+			x: -2.5d
 			y: 0.0d
 			dependencies: ["79D8462D6F56E2ED"]
 			id: "5D7398CCF1CD4EE4"
@@ -72,8 +72,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_rawarcanium}"
-			x: 3.0d
-			y: 3.0d
+			x: 2.0d
+			y: 1.0d
 			description: ["{quest.emcworld.fifth_arcana_rawarcanium_desc}"]
 			dependencies: ["5D375F4F1E4FEBB6"]
 			id: "61F92A6E07464190"
@@ -114,8 +114,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_arcaniumextractor}"
-			x: 3.0d
-			y: -3.0d
+			x: 2.0d
+			y: -1.0d
 			description: ["{quest.emcworld.fifth_arcana_arcaniumextractor_desc}"]
 			dependencies: ["5D375F4F1E4FEBB6"]
 			id: "55F7AD7E0BB1E998"
@@ -134,7 +134,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_arcanium}"
-			x: 6.0d
+			x: 4.0d
 			y: 0.0d
 			dependencies: [
 				"61F92A6E07464190"
@@ -165,7 +165,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_lordvatticus}"
-			x: 9.0d
+			x: 6.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fifth_arcana_lordvatticus_desc}"]
 			dependencies: ["5D375F4F1E4FEBB6"]
@@ -188,7 +188,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_wizardsbook}"
-			x: 12.0d
+			x: 9.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fifth_arcana_wizardsbook_desc}"]
 			dependencies: [
@@ -211,8 +211,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_parasectaaltar}"
-			x: 15.0d
-			y: 3.0d
+			x: 11.5d
+			y: 1.5d
 			dependencies: ["23740273B5C0A8E9"]
 			id: "6C746AA9138D4227"
 			tasks: [{
@@ -233,8 +233,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_dramixaltar}"
-			x: 15.0d
-			y: -3.0d
+			x: 11.5d
+			y: -2.0d
 			dependencies: ["23740273B5C0A8E9"]
 			id: "2EF6B6C0B2D5883E"
 			tasks: [{
@@ -255,8 +255,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_dramix}"
-			x: 21.0d
-			y: -3.0d
+			x: 14.0d
+			y: -2.0d
 			description: ["{quest.emcworld.fifth_arcana_dramix_desc}"]
 			dependencies: ["2EF6B6C0B2D5883E"]
 			id: "33A3CC2C222EEE56"
@@ -292,8 +292,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_arcana_parasecta}"
-			x: 21.0d
-			y: 3.0d
+			x: 14.0d
+			y: 1.5d
 			dependencies: ["6C746AA9138D4227"]
 			id: "249E4F35A2AB982D"
 			tasks: [{

@@ -12,12 +12,13 @@ import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
-import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
+import biggestxuan.emcworld.common.items.Equipment.Scroll.BiggestXuanScroll;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.ILuckyItem;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,8 +29,6 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ParticleType;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.math.BlockPos;
@@ -199,12 +198,25 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         }
     }
 
+    private boolean hasBXScroll(){
+        Inventory inventory = this.inventory;
+        for (int i = 1; i < 6; i++) {
+            if(inventory.getItem(i).getItem().equals(EWItems.SCROLL_BX.get())){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void success(WeaponUpgradeBlockTileEntity tileEntity){
         costMaterial(tileEntity);
         ItemStack weapon = tileEntity.getInventory().getItem(0);
         IUpgradeableItem weapon1 = (IUpgradeableItem) weapon.getItem();
         weapon1.addLevel(weapon,1);
-        if(isSendMessage(weapon)){
+        if(hasBXScroll() && MathUtils.isRandom(BiggestXuanScroll.chance)){
+            weapon.shrink(1);
+        }
+        else if(isSendMessage(weapon)){
             sendMessage();
         }
         //tileEntity.level.addParticle(ParticleTypes.HAPPY_VILLAGER,pos.getX(),pos.getY()+1,pos.getZ(),10,10,10);

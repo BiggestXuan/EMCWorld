@@ -38,8 +38,8 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerWakeUpEvent(PlayerWakeUpEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.getCommandSenderWorld().isClientSide) return;
-        long baseEMC = MathUtils.doubleToLong(MathUtils.getWakeUpBaseCost(player) * MathUtils.difficultyLoss() * 5);
+        if(player.level.isClientSide) return;
+        long baseEMC = MathUtils.doubleToLong(MathUtils.getWakeUpBaseCost(player) * MathUtils.difficultyLoss());
         if(baseEMC == 0) return;
         long costEMC = player.getMainHandItem().getItem().equals(EWItems.XIANGSHUSHUMIAO_PILLOW.get()) ? 0 : Math.min(baseEMC, EMCHelper.getPlayerEMC(player));
         EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
@@ -48,7 +48,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerUseHoeEvent(UseHoeEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.getCommandSenderWorld().isClientSide) return;
+        if(player.level.isClientSide) return;
         long costEMC = MathUtils.doubleToLong(MathUtils.difficultyLoss() * MathUtils.getUseHoeBaseCost(player));
         if(costEMC == 0) return;
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
@@ -63,7 +63,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerOpenChestEvent(PlayerContainerEvent.Open event){
         PlayerEntity player = event.getPlayer();
-        if(player.getCommandSenderWorld().isClientSide) return;
+        if(player.level.isClientSide) return;
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getChestBaseCost(player,event.getContainer()) * MathUtils.difficultyLoss()),EMCHelper.getPlayerEMC(player));
         if(costEMC == 0) return;
         EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
@@ -72,7 +72,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerFillBucketEvent(FillBucketEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.getCommandSenderWorld().isClientSide) return;
+        if(player.level.isClientSide) return;
         long costEMC = MathUtils.doubleToLong(MathUtils.getFillBucketBaseCost(player) * MathUtils.difficultyLoss());
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
             EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
@@ -107,11 +107,8 @@ public class PlayerBlockEvent {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void spawn(BlockEvent.PortalSpawnEvent event){
-        if(ConfigManager.FREE_MODE.get()){
-            return;
-        }
         IWorld world = event.getWorld();
-        if(world.isClientSide()){
+        if(ConfigManager.FREE_MODE.get() || world.isClientSide()){
             return;
         }
         boolean cancel = true;

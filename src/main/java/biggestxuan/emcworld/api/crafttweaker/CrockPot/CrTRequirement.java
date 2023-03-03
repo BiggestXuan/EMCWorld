@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ZenRegister
-@ZenCodeType.Name("mods.emcworld.CTRequirement")
+@ZenCodeType.Name("mods.emcworld.CrTRequirement")
 @SuppressWarnings("unused")
 public class CrTRequirement {
     private List<IRequirement> requirementList = new ArrayList<>();

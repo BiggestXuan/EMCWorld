@@ -11,7 +11,7 @@
 		{
 			title: "{quest.emcworld.sixth_undergarden_catalyst}"
 			x: 3.0d
-			y: -3.5d
+			y: -2.0d
 			dependencies: ["131D06E6858EA93F"]
 			hide: true
 			id: "0EE509727333D7DC"
@@ -51,8 +51,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_yiyifudi}"
-			x: 0.0d
-			y: 3.0d
+			x: 1.5d
+			y: 1.5d
 			dependencies: ["5B441ABDE7C28F3A"]
 			id: "5B5D3F339A6DF240"
 			tasks: [{
@@ -72,8 +72,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_ingots}"
-			x: 6.0d
-			y: 3.0d
+			x: 4.5d
+			y: 1.5d
 			dependencies: ["5B441ABDE7C28F3A"]
 			id: "2C681435C1D25523"
 			tasks: [
@@ -124,8 +124,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_forgottenguardian}"
-			x: -3.0d
-			y: 6.0d
+			x: 0.0d
+			y: 3.0d
 			dependencies: ["5B5D3F339A6DF240"]
 			id: "393E6E1B18C93E44"
 			tasks: [{
@@ -156,8 +156,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_forgotteningot}"
-			x: 0.0d
-			y: 9.0d
+			x: 1.5d
+			y: 3.5d
 			dependencies: ["5B5D3F339A6DF240"]
 			id: "692861252431F06B"
 			tasks: [{
@@ -185,7 +185,7 @@
 		{
 			title: "{quest.emcworld.sixth_undergarden_kill}"
 			x: 3.0d
-			y: 4.5d
+			y: 1.5d
 			dependencies: ["5B441ABDE7C28F3A"]
 			id: "5C4B2357DA0B607B"
 			tasks: [{
@@ -205,8 +205,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_stonborn}"
-			x: 6.0d
-			y: 6.0d
+			x: 4.5d
+			y: 3.5d
 			dependencies: ["2C681435C1D25523"]
 			id: "05AB39C7D5E63194"
 			tasks: [{
@@ -228,8 +228,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_cloggrumbattleaxe}"
-			x: 9.0d
-			y: 9.0d
+			x: 6.5d
+			y: 3.5d
 			dependencies: ["05AB39C7D5E63194"]
 			id: "7EA7F547ECDC5147"
 			tasks: [{
@@ -259,7 +259,7 @@
 		{
 			title: "{quest.emcworld.sixth_undergarden_masticator}"
 			x: 3.0d
-			y: 12.0d
+			y: 3.5d
 			dependencies: ["5C4B2357DA0B607B"]
 			id: "404D80762A0B1752"
 			tasks: [{
@@ -286,8 +286,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_undergarden_kuaweidushiwu}"
-			x: 6.0d
-			y: 11.5d
+			x: 4.5d
+			y: 5.5d
 			dependencies: ["05AB39C7D5E63194"]
 			id: "227CAD22FBB04AD8"
 			tasks: [{

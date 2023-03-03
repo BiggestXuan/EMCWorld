@@ -45,6 +45,7 @@ import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -148,6 +149,14 @@ public class PlayerTickEvent {
         }
         util.setSHDifficulty(DifficultyHelper.getPlayerDifficulty(player));
         float extraSpeed = Math.min(util.getSpeed(),getPlayerMaxSpeed(player));
+        if(util.getHealTick() > 0){
+            util.setHealTick(util.getHealTick()-1);
+            if(player.level.getDayTime() %20 == 0){
+                player.heal(util.getHealPreTick()*20);
+            }
+        }else if(util.getHealTick() == 0){
+            util.setHealPreTick(0);
+        }
         ModifiableAttributeInstance speed_instance = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if(speed_instance != null){
             AttributeModifier modifier = speed_instance.getModifier(EMCWORLD_MODIFY_SPEED_ID);

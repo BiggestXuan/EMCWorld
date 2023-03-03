@@ -24,7 +24,7 @@ public class RangeAttack {
     public static final KeyBinding Range_Attack = new KeyBinding("key.emcworld.range_attack",
             KeyConflictContext.IN_GAME,
             InputMappings.Type.KEYSYM,
-            GLFW.GLFW_KEY_KP_EQUAL,
+            336,
             "key.category." + EMCWorld.MODID);
 
     @SubscribeEvent

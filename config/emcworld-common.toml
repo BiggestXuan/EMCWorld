@@ -42,3 +42,7 @@
 						#Set this to false to disable this mantle effect
 						enabled = true
 
+["Game Setting"]
+	#Enable Refined Storage Automation,such as Pattern,Crafter
+	"Enable Refined Storage Automation" = false
+

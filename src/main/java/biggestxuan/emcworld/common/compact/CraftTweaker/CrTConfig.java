@@ -24,4 +24,9 @@ public class CrTConfig {
     public static boolean isFreeMode(){
         return ConfigManager.FREE_MODE.get();
     }
+
+    @ZenCodeType.Method
+    public static boolean enableRS(){
+        return ConfigManager.RSAutomation.get();
+    }
 }

@@ -8,17 +8,15 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.armor.BaseEMCGodArmorItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
-import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
-import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
-import net.minecraft.entity.Entity;
+import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,7 +29,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -72,6 +69,7 @@ public class PlayerDeathEvent {
             ServerWorld world = server.overworld();
             BlockPos deathPos = new BlockPos(livingEntity.position());
             Raid raid = world.getRaidAt(deathPos);
+            player.getCapability(EMCWorldCapability.UTIL).ifPresent(c -> c.setHealTick(0));
             if(raid != null){
                 for(PlayerEntity p: getNearPlayer(raid)){
                     Message.sendMessage(p, EMCWorld.tc("message.raid.loss"));

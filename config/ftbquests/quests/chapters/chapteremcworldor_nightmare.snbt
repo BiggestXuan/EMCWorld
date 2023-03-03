@@ -13,6 +13,8 @@
 			x: 0.0d
 			y: 0.0d
 			description: ["{quest.emcworld.or_nightmare_bed_desc}"]
+			dependencies: ["228B67A447B915FF"]
+			hide: true
 			id: "5F2896CD2A8F85C0"
 			tasks: [{
 				id: "487466CA8F54A5AA"

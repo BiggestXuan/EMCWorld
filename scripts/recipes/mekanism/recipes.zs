@@ -229,5 +229,14 @@ public function modifyMEKRecipe() as void{
         <item:botania:orechid>,
         <item:botania:orechid_ignem>
     ],<item:byg:ether_sapling>,dm);
+    removeRecipe([
+        <item:mekanism:qio_drive_array>,
+        <item:mekanism:qio_dashboard>,
+        <item:mekanism:qio_importer>,
+        <item:mekanism:qio_importer>,
+        <item:mekanism:qio_drive_base>,
+        <item:mekanism:qio_redstone_adapter>,
+        <item:mekanism:portable_qio_dashboard>
+    ]);
 }
  

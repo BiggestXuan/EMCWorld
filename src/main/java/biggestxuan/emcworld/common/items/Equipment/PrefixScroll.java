@@ -32,7 +32,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class PrefixScroll extends EWItem {
-    public static final int MAX = 60000;
+    public static final int MAX = 70000;
 
     public PrefixScroll(){
         super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).stacksTo(1));

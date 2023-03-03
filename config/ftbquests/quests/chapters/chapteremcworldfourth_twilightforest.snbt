@@ -10,7 +10,7 @@
 	quests: [
 		{
 			title: "{quest.emcworld.fourth_twilightforest_key1}"
-			x: -6.0d
+			x: -2.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_key1_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
@@ -67,7 +67,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_naga}"
-			x: 12.0d
+			x: 5.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_naga_desc}"]
 			dependencies: ["6784D851DBAA1595"]
@@ -96,7 +96,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_lich}"
-			x: 18.0d
+			x: 7.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_lich_desc}"]
 			dependencies: [
@@ -129,8 +129,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_magicmapempty}"
-			x: 15.0d
-			y: -3.0d
+			x: 5.0d
+			y: -2.0d
 			description: ["{quest.emcworld.fourth_twilightforest_magicmapempty_desc}"]
 			dependencies: ["495523D76EA320A6"]
 			id: "2EB32A3ABD2D9DCC"
@@ -157,8 +157,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_magicmapfocus}"
-			x: 9.0d
-			y: -3.0d
+			x: 2.5d
+			y: -2.0d
 			description: ["{quest.emcworld.fourth_twilightforest_magicmapfocus_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -179,8 +179,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_minoshroom}"
-			x: 24.0d
-			y: -6.0d
+			x: 10.5d
+			y: -2.0d
 			description: ["{quest.emcworld.fourth_twilightforest_minoshroom_desc}"]
 			dependencies: ["7B82543C3818F5FF"]
 			id: "53D1EFD6638DFA1F"
@@ -208,7 +208,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_phantom}"
-			x: 24.0d
+			x: 10.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_phantom_desc}"]
 			dependencies: ["7B82543C3818F5FF"]
@@ -237,8 +237,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_yeti}"
-			x: 24.0d
-			y: 6.0d
+			x: 10.5d
+			y: 2.0d
 			description: ["{quest.emcworld.fourth_twilightforest_yeti_desc}"]
 			dependencies: ["7B82543C3818F5FF"]
 			id: "37C6F0D50EF78E83"
@@ -266,8 +266,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_hydra}"
-			x: 30.0d
-			y: -6.0d
+			x: 13.0d
+			y: -2.0d
 			description: ["{quest.emcworld.fourth_twilightforest_hydra_desc}"]
 			dependencies: ["53D1EFD6638DFA1F"]
 			id: "0FC9D8E26DD49A0B"
@@ -295,7 +295,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_ghast}"
-			x: 30.0d
+			x: 13.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_ghast_desc}"]
 			dependencies: ["2157A5B3FD95F8F1"]
@@ -324,8 +324,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_snowqueen}"
-			x: 30.0d
-			y: 6.0d
+			x: 13.0d
+			y: 2.0d
 			description: ["{quest.emcworld.fourth_twilightforest_snowqueen_desc}"]
 			dependencies: ["37C6F0D50EF78E83"]
 			id: "7E097CD29CED9AC7"
@@ -353,7 +353,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_lampofcinders}"
-			x: 42.0d
+			x: 18.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_lampofcinders_desc}"]
 			dependencies: ["537AC76A5A458F59"]
@@ -388,8 +388,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_mazemapempty}"
-			x: 24.0d
-			y: -18.0d
+			x: 13.0d
+			y: -4.5d
 			description: ["{quest.emcworld.fourth_twilightforest_mazemapempty_desc}"]
 			dependencies: ["1B429E85A2469FF5"]
 			id: "1249ED71ACE78628"
@@ -409,8 +409,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_mazemapfocus}"
-			x: 18.0d
-			y: -12.0d
+			x: 10.5d
+			y: -4.5d
 			description: ["{quest.emcworld.fourth_twilightforest_mazemapfocus_desc}"]
 			dependencies: ["53D1EFD6638DFA1F"]
 			id: "1B429E85A2469FF5"
@@ -438,8 +438,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_mazebreakerpickaxe}"
-			x: 30.0d
-			y: -12.0d
+			x: 15.5d
+			y: -4.5d
 			description: ["{quest.emcworld.fourth_twilightforest_mazebreakerpickaxe_desc}"]
 			dependencies: ["1249ED71ACE78628"]
 			optional: true
@@ -494,7 +494,7 @@
 		{
 			title: "{quest.emcworld.fourth_twilightforest_gointotheforest}"
 			icon: "twilightforest:twilight_portal_miniature_structure"
-			x: 6.0d
+			x: 2.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_gointotheforest_desc}"]
 			dependencies: ["25A84D7F7D91A76B"]
@@ -523,8 +523,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_questramtrophy}"
-			x: 9.0d
-			y: 6.0d
+			x: 5.0d
+			y: 3.0d
 			description: ["{quest.emcworld.fourth_twilightforest_questramtrophy_desc}"]
 			dependencies: ["3F59DBBA19DFB418"]
 			hide: true
@@ -555,8 +555,8 @@
 		{
 			title: "{quest.emcworld.fourth_twilightforest_questram}"
 			icon: "twilightforest:quest_ram_spawn_egg"
-			x: 3.0d
-			y: 6.0d
+			x: 0.0d
+			y: 3.0d
 			description: ["{quest.emcworld.fourth_twilightforest_questram_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -580,7 +580,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_magicbeans}"
-			x: 36.0d
+			x: 15.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_magicbeans_desc}"]
 			dependencies: [
@@ -612,7 +612,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_twilightforest_castle}"
-			x: 48.0d
+			x: 20.5d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_twilightforest_castle_desc}"]
 			dependencies: ["35DD5E0CA8A4FE86"]

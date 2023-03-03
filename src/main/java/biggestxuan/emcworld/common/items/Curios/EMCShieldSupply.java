@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.EWItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -27,7 +28,7 @@ public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShi
 
     @Override
     public int getMaxLevel() {
-        return 8;
+        return (int) (8 * ConfigManager.DIFFICULTY.get() / 3);
     }
 
     @Override
@@ -45,27 +46,17 @@ public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShi
             case 4:
                 return 8500;
             case 5:
-                return 12000;
+                return 15000;
             case 6:
-                return 20000;
+                return 25000;
             case 7:
-                return 30000;
+                return 40000;
         }
         return EMCWorld.HOMO;
     }
 
     @Override
     public double getEMCCostRate(){
-        return 0;
-    }
-
-    @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
-    public long EMCModifySecond(ItemStack stack) {
         return 0;
     }
 

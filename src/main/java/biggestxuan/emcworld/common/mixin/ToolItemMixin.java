@@ -52,9 +52,9 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
         Prefix prefix = getPrefix(stack);
         if(prefix == Prefix.NULL) return b;
         if(prefix.getLevel() <= 3){
-            b = 1 - (4 - prefix.getLevel()) * 0.1;
+            b = 1 - (4 - prefix.getLevel()) * 0.125;
         }else{
-            b = (prefix.getLevel()-4) * 0.025 + 1;
+            b = (prefix.getLevel()-4) * 0.02 + 1;
         }
         return b;
     }
@@ -73,28 +73,8 @@ public abstract class ToolItemMixin extends TieredItem implements IUpgradeableTo
     }
 
     @Override
-    public double getEMCCostRate() {
-        return 1d;
-    }
-
-    @Override
     public double getAdditionSpeed(ItemStack stack){
-        return (getLevel(stack) > 0 ? 1 + (float) (tier.getSpeed() * 0.05 * getLevel(stack)) : 1) * getPrefixCommonRate(stack);
-    }
-
-    @Override
-    public double costEMCWhenAttack(ItemStack stack) {
-        return 1;
-    }
-
-    @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
-    public long EMCModifySecond(ItemStack stack) {
-        return 0;
+        return (getLevel(stack) > 0 ? 1 + (float) (tier.getSpeed() * 0.03 * getLevel(stack)) : 1) * getPrefixCommonRate(stack);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class ArcanaDisplay {
     public static final KeyBinding ArcanaKey = new KeyBinding("key.emcworld.arcana",
             KeyConflictContext.IN_GAME,
             InputMappings.Type.KEYSYM,
-            GLFW.GLFW_KEY_KP_EQUAL,
+            336,
             "key.category." + EMCWorld.MODID);
 
     @SubscribeEvent

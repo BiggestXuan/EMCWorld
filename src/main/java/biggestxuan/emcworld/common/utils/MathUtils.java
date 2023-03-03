@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.utils;
  *  2022/07/26
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
@@ -222,7 +223,7 @@ public class MathUtils {
         return getBlockBaseCost(player) * 4.0d;
     }
     public static double getWakeUpBaseCost(PlayerEntity player){
-        return getBlockBaseCost(player) * 30.0d;
+        return getBlockBaseCost(player) * 30.0d * 5;
     }
     public static double getCraftBaseCost(PlayerEntity player){
         return getBlockBaseCost(player) * 0.75d;
@@ -358,9 +359,12 @@ public class MathUtils {
         }
         BlockPos pos1 = start.getPos();
         BlockPos pos2 = end.getPos();
+        if(Math.abs(pos1.getX()-pos2.getX()) >= EMCWorld.HOMO || Math.abs(pos1.getZ()-pos2.getZ()) >= EMCWorld.HOMO){
+            return Integer.MAX_VALUE;
+        }
         long distance = (long) Math.sqrt(Math.pow(pos1.getX()-pos2.getX(),2)+Math.pow(pos1.getY()-pos2.getY(),2)+Math.pow(pos1.getZ()-pos2.getZ(),2));
         long emc = 0;
-        distance = Math.abs(distance);
+        distance = Math.max(0L,distance-128L);
         emc += distance;
         if(!start.getDimension().location().equals(end.getDimension().location())){
             emc *= 3;
@@ -372,7 +376,7 @@ public class MathUtils {
                 break;
             }
         }
-        return Math.abs((int)emc);
+        return emc >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) emc / 10;
     }
 
     private static String getFlag(String value){

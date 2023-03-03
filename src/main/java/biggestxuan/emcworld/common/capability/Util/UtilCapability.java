@@ -39,6 +39,8 @@ public class UtilCapability implements IUtilCapability {
     private float shield;
     private boolean lastShield;
     private int gaiaPlayer;
+    private float healPreTick;
+    private int healTick;
 
     public UtilCapability(){
         this.SponsorLevel = 0;
@@ -68,6 +70,8 @@ public class UtilCapability implements IUtilCapability {
         this.shield = 0f;
         this.lastShield = false;
         this.gaiaPlayer = 0;
+        this.healPreTick = 0f;
+        this.healTick = 0;
     }
 
     @Override
@@ -366,6 +370,26 @@ public class UtilCapability implements IUtilCapability {
     }
 
     @Override
+    public float getHealPreTick() {
+        return healPreTick;
+    }
+
+    @Override
+    public void setHealPreTick(float amt) {
+        healPreTick = amt;
+    }
+
+    @Override
+    public int getHealTick() {
+        return healTick;
+    }
+
+    @Override
+    public void setHealTick(int amt) {
+        healTick = amt;
+    }
+
+    @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT tag = new CompoundNBT();
         tag.putInt("sponsorLevel",this.SponsorLevel);
@@ -397,6 +421,8 @@ public class UtilCapability implements IUtilCapability {
         tag.putFloat("maxShield",maxShield);
         tag.putBoolean("last_shield",lastShield);
         tag.putInt("gaia_player",gaiaPlayer);
+        tag.putFloat("healPreTick",healPreTick);
+        tag.putInt("healTick",healTick);
         return tag;
     }
 
@@ -431,5 +457,7 @@ public class UtilCapability implements IUtilCapability {
         this.maxShield = nbt.getFloat("maxShield");
         this.lastShield = nbt.getBoolean("last_shield");
         this.gaiaPlayer = nbt.getInt("gaia_player");
+        this.healPreTick = nbt.getFloat("healPreTick");
+        this.healTick = nbt.getInt("healTick");
     }
 }

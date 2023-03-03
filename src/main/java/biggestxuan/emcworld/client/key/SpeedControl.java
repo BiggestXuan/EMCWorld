@@ -23,7 +23,7 @@ public class SpeedControl {
     public static final KeyBinding SPEED_KEY = new KeyBinding("key.emcworld.speed",
             KeyConflictContext.IN_GAME,
             InputMappings.Type.KEYSYM,
-            GLFW.GLFW_KEY_DELETE,
+            336,
             "key.category." + EMCWorld.MODID);
 
     @SubscribeEvent

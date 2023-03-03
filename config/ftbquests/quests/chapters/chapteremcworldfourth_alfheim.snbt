@@ -10,7 +10,7 @@
 	quests: [
 		{
 			title: "{quest.emcworld.fourth_alfheim_kvasirmead}"
-			x: 0.0d
+			x: 3.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_alfheim_kvasirmead_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
@@ -67,7 +67,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_alfheim_killer}"
-			x: 12.0d
+			x: 9.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_alfheim_killer_desc}"]
 			dependencies: ["317E3B9819B7A577"]
@@ -96,7 +96,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_alfheim_curesdandwariring}"
-			x: 18.0d
+			x: 12.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_alfheim_curesdandwariring_desc}"]
 			dependencies: ["78D207C037A69E07"]
@@ -128,7 +128,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_alfheim_andwariring}"
-			x: 24.0d
+			x: 15.0d
 			y: 0.0d
 			description: ["{quest.emcworld.fourth_alfheim_andwariring_desc}"]
 			dependencies: ["0F6170DE39819E0F"]

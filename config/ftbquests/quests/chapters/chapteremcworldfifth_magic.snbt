@@ -11,7 +11,7 @@
 		{
 			title: "{quest.emcworld.fifth_magic_goldfiber}"
 			x: 6.0d
-			y: -12.0d
+			y: -8.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
 			dependency_requirement: "all_started"
@@ -40,8 +40,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_goldleaf}"
-			x: 10.5d
-			y: -7.5d
+			x: 6.0d
+			y: -6.0d
 			description: ["{quest.emcworld.fifth_magic_goldleaf_desc}"]
 			dependencies: ["2DD0F1D8047CE3D1"]
 			id: "49EF7A2F65F54001"
@@ -70,7 +70,7 @@
 		{
 			title: "{quest.emcworld.fifth_magic_goldpower}"
 			x: 6.0d
-			y: -3.0d
+			y: -4.0d
 			dependencies: ["49EF7A2F65F54001"]
 			id: "3E5F829D1784F290"
 			tasks: [{
@@ -97,8 +97,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_woodstand}"
-			x: 1.5d
-			y: 0.0d
+			x: 3.0d
+			y: -3.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
 			id: "6A651214583225B4"
@@ -126,8 +126,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_tokens}"
-			x: 10.5d
-			y: 0.0d
+			x: 9.0d
+			y: -3.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
 			id: "7BC1D034B93D21D2"
@@ -174,7 +174,7 @@
 			title: "{quest.emcworld.fifth_magic_naturealtar}"
 			icon: "naturesaura:nature_altar"
 			x: 6.0d
-			y: 3.0d
+			y: -2.0d
 			dependencies: [
 				"3E5F829D1784F290"
 				"7BC1D034B93D21D2"
@@ -213,8 +213,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_infusediron}"
-			x: 1.5d
-			y: 3.0d
+			x: 3.0d
+			y: -1.0d
 			dependencies: ["39C52A7500BF9D69"]
 			id: "42C73CC65F5FA1AE"
 			tasks: [{
@@ -242,8 +242,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_taintedgold}"
-			x: 10.5d
-			y: 3.0d
+			x: 9.0d
+			y: -1.0d
 			dependencies: ["39C52A7500BF9D69"]
 			id: "56323A92BAF0D77E"
 			tasks: [{
@@ -271,8 +271,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_skyingot}"
-			x: 1.5d
-			y: 9.0d
+			x: 3.0d
+			y: 1.0d
 			dependencies: ["020EAE4DED58CAD6"]
 			id: "2ED66118DCDE2663"
 			tasks: [{
@@ -299,7 +299,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_offeringtable}"
-			x: -3.0d
+			x: 3.0d
 			y: 3.0d
 			description: ["{quest.emcworld.fifth_magic_offeringtable_desc}"]
 			dependencies: ["29ED613D22684793"]
@@ -322,7 +322,7 @@
 		{
 			title: "{quest.emcworld.fifth_magic_animalspawner}"
 			x: 6.0d
-			y: 9.0d
+			y: 2.25d
 			shape: "gear"
 			dependencies: [
 				"42C73CC65F5FA1AE"
@@ -355,8 +355,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_aure}"
-			x: 10.5d
-			y: 9.0d
+			x: 9.0d
+			y: 1.0d
 			description: ["{quest.emcworld.fifth_magic_aure_desc}"]
 			dependencies: ["78B42D8A1A8D2E7B"]
 			id: "1AA6FFD24A09B407"
@@ -383,7 +383,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_eyeimproved}"
-			x: 15.0d
+			x: 9.0d
 			y: 3.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
@@ -405,7 +405,7 @@
 		{
 			title: "{quest.emcworld.fifth_magic_ancientsapling}"
 			x: 3.0d
-			y: -7.5d
+			y: -6.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
 			size: 2.0d
@@ -434,7 +434,7 @@
 		{
 			title: "{quest.emcworld.fifth_magic_purplecollector}"
 			x: 6.0d
-			y: 6.0d
+			y: 0.0d
 			dependencies: [
 				"42C73CC65F5FA1AE"
 				"56323A92BAF0D77E"
@@ -465,8 +465,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_magic_violetcollector}"
-			x: 6.0d
-			y: 12.0d
+			x: 9.0d
+			y: -6.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
 			size: 2.0d

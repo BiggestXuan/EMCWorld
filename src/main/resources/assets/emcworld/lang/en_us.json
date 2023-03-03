@@ -350,6 +350,8 @@
   "item.emcworld.xiangshushumiao_pillow": "Xiangshushumiao Pillow",
   "item.emcworld.prefix_scroll": "Reforged Scroll",
   "item.emcworld.illager_gem": "Illager Gem",
+  "item.emcworld.emc_healing_bag": "EMC Medkit",
+  "item.emcworld.scroll_bx": "Biggest Xuan Scroll",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -667,6 +669,7 @@
   "message.shield.on": "Last Shield has been turn on.",
   "message.shield.off": "Last Shield has been turn off.",
   "message.shield.deny": "You don't have enough EMC to turn on Last Shield",
+  "message.hurt.pet": "§4Your pet: %d§4, because you don't have %d §4EMC, it dies directly",
 
   "gui.emcworld.update_core": "进阶升级核心架构",
   "gui.emcworld.gemstone_core": "宝石核心",
@@ -860,6 +863,8 @@
   "tooltip.emcworld.star": "§9Star: %d §9/ %d",
   "tooltip.emcworld.heal_boost": "§9+ %d §9Heal Boost",
   "tooltip.emcworld.heal_boost_lost": "§9- %d §9Heal Boost",
+  "tooltip.emcworld.bx_scroll": "§2强化一定成功，但有 %d §2概率直接报废升级物品",
+  "tooltip.emcworld.gloves_dexterity": "",
 
   "attack_range_none": "Off",
   "attack_range_all": "All",
@@ -1208,6 +1213,8 @@
   "quest.emcworld.third_tech_alloyatomic":"最好的合金",
   "quest.emcworld.third_tech_alloyatomic_desc":"高级机器的构材",
   "quest.emcworld.third_tech_ultimatecontrolcircuit":"终极电路",
+  "quest.emcworld.third_tech_uranium":"Yellow Cake?",
+  "quest.emcworld.third_tech_uranium_desc":"So tasty...",
   "quest.emcworld.third_tech_ultimatecontrolcircuit_desc":"高级机器的核心",
   "quest.emcworld.third_tech_chemicaldissolutionchamber":"化学溶解室",
   "quest.emcworld.third_tech_chemicaldissolutionchamber_desc":"高级产线的必备要组件",

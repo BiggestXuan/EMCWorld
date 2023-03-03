@@ -43,6 +43,9 @@ public function modifyQuarkRecipe() as void{
             [c,c,c]
         ],rune[i]);
     }
+    runeAltarRecipe([
+        <tag:items:forge:stone>,<item:emcworld:cold_ingot>
+    ],<item:quark:permafrost>,5000);
 }
 
 public function fixQuarkRuneRecipe() as void{

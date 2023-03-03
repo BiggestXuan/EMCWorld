@@ -8,7 +8,7 @@ package biggestxuan.emcworld.api.item;
 
 import net.minecraft.item.ItemStack;
 
-public interface IUpgradeableItem extends ICostEMCItem, ISecondEMCItem, IEMCRepairableItem {
+public interface IUpgradeableItem {
     int getMaxLevel();
 
     default int getLevel(ItemStack stack){

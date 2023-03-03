@@ -10,8 +10,8 @@
 	quests: [
 		{
 			title: "{quest.emcworld.fourth_ratlantis_filth}"
-			x: 0.0d
-			y: -9.0d
+			x: 3.5d
+			y: 3.0d
 			description: ["{quest.emcworld.fourth_ratlantis_filth_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -40,8 +40,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_filthcorruption}"
-			x: 0.0d
-			y: -6.0d
+			x: 3.5d
+			y: 1.0d
 			description: ["{quest.emcworld.fourth_ratlantis_filthcorruption_desc}"]
 			dependencies: ["4B4EF0A7DA2F82DC"]
 			id: "4C0A4C8B7462046F"
@@ -69,8 +69,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_tangledrattails}"
-			x: 3.0d
-			y: 0.0d
+			x: 7.5d
+			y: 1.0d
 			description: ["{quest.emcworld.fourth_ratlantis_tangledrattails_desc}"]
 			dependencies: ["5A5BFB274C8A2061"]
 			id: "538E2968ECD3114C"
@@ -90,8 +90,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_ratking}"
-			x: 0.0d
-			y: -3.0d
+			x: 5.5d
+			y: 1.0d
 			description: ["{quest.emcworld.fourth_ratlantis_ratking_desc}"]
 			dependencies: ["4C0A4C8B7462046F"]
 			id: "5A5BFB274C8A2061"
@@ -120,7 +120,7 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_chunkycheesetoken}"
-			x: 6.0d
+			x: 9.0d
 			y: 3.0d
 			description: ["{quest.emcworld.fourth_ratlantis_chunkycheesetoken_desc}"]
 			dependencies: [
@@ -183,8 +183,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_plaguetome}"
-			x: 0.0d
-			y: 9.0d
+			x: 5.5d
+			y: 4.5d
 			description: ["{quest.emcworld.fourth_ratlantis_plaguetome_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true
@@ -219,8 +219,8 @@
 					Damage: 0
 				}
 			}
-			x: 3.0d
-			y: 6.0d
+			x: 7.5d
+			y: 4.5d
 			description: ["{quest.emcworld.fourth_ratlantis_plaguescythe_desc}"]
 			dependencies: ["7D685BFE1182D3A8"]
 			id: "7F09D9B9DB472BCC"
@@ -482,8 +482,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_ratupgradearcheologist}"
-			x: 21.0d
-			y: 9.0d
+			x: 12.0d
+			y: 6.0d
 			description: ["{quest.emcworld.fourth_ratlantis_ratupgradearcheologist_desc}"]
 			dependencies: ["70B7429EE6073C82"]
 			id: "546FDA386D37EB0C"
@@ -503,8 +503,8 @@
 		}
 		{
 			title: "{quest.emcworld.fourth_ratlantis_archeologisthat}"
-			x: 15.0d
-			y: 9.0d
+			x: 9.0d
+			y: 6.0d
 			description: ["{quest.emcworld.fourth_ratlantis_archeologisthat_desc}"]
 			dependencies: ["3AED6FB5DAA015C5"]
 			hide: true

@@ -21,6 +21,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
+import cursedflames.bountifulbaubles.common.item.items.ItemGlovesDexterity;
 import mekanism.common.item.gear.ItemHazmatSuitArmor;
 import mekanism.common.registries.MekanismItems;
 import moze_intel.projecte.utils.EMCHelper;
@@ -55,6 +56,9 @@ public class ItemToolTipEvent {
                 MekanismItems.PLUTONIUM_PELLET.getItem(),MekanismItems.ANTIMATTER_PELLET.getItem(),MekanismItems.POLONIUM_PELLET.getItem()
         };
         if(stack.equals(ItemStack.EMPTY)) return;
+        if(stack.getItem() instanceof ItemGlovesDexterity){
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gloves_dexterity"));
+        }
         if(stack.getItem() instanceof IPlayerDifficultyItem){
             IPlayerDifficultyItem item_3 = (IPlayerDifficultyItem) stack.getItem();
             double diff = item_3.requireDifficulty();
@@ -291,11 +295,11 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
             }
         }
-        if(!(isTrans || free) && stage.equals("disabled")){
+        if(!(isTrans || free) && stage.equals("disabled") && EMCHelper.getEmcValue(stack) > 0){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_disable"));
             return;
         }
-        if(!(isTrans || free) && !stage.equals("")){
+        if(!(isTrans || free) && !stage.equals("") && EMCHelper.getEmcValue(stack) > 0){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
         }
         if(stack.isDamageableItem() && !(stack.getItem() instanceof StoredTotem)){

@@ -16,6 +16,7 @@ import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
 import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixGUI;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
+import biggestxuan.emcworld.common.compact.Projecte.ModifyCollector;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.events.commandEvent;
 import biggestxuan.emcworld.common.network.PacketHandler;
@@ -23,7 +24,6 @@ import biggestxuan.emcworld.common.network.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
 import biggestxuan.emcworld.common.utils.RaidUtils;
-import dev.latvian.mods.projectex.Matter;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -66,7 +66,7 @@ public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 5;
-    public static final String PackVersion = "0.5.0 - Pre1";
+    public static final String PackVersion = "0.5.0 - Pre2";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -112,8 +112,6 @@ public class EMCWorld {
             });
             Minecraft.getInstance().getResourcePackRepository().reload();
         }
-        //Matter.BASIC.collectorOutput = 100;
-        //Matter.DARK.collectorOutput = 300;
     }
 
     private void doStuff(FMLCommonSetupEvent event){
@@ -122,6 +120,7 @@ public class EMCWorld {
         event.enqueueWork(RaidUtils::init);
         event.enqueueWork(PacketHandler::init);
         MinecraftForge.EVENT_BUS.register(new commandEvent());
+        ModifyCollector.init();
     }
 
     private void doClientStuff(FMLClientSetupEvent event) {

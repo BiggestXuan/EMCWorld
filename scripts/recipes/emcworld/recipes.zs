@@ -6,7 +6,8 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.recipe.Replacer;
 
 import mods.emcworld.CrTFoodValue;
-import mods.emcworld.CTRequirement;
+import mods.emcworld.CrTRequirement;
+import mods.emcworld.CrTWeightItem;
 import mods.emcworld.EWItem;
 
 public function emcworldRecipe() as void{
@@ -200,15 +201,15 @@ public function emcworldRecipe() as void{
     var amo as int[]=[
         1500,2000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,1500
     ];
-    var red_armor as ItemStack[]=[
+    var red_armor as IItemStack[]=[
         <item:emcworld:guardian_helmet>,
         <item:emcworld:guardian_chestplate>,
         <item:emcworld:guardian_leggings>,
         <item:emcworld:guardian_boots>,
-        <item:emcworld:fire_red_helmet>.withTag({level: 12 as int}),
-        <item:emcworld:fire_red_chestplate>.withTag({level: 12 as int}),
-        <item:emcworld:fire_red_leggings>.withTag({level: 12 as int}),
-        <item:emcworld:fire_red_boots>.withTag({level: 12 as int})
+        <item:emcworld:fire_red_helmet>,
+        <item:emcworld:fire_red_chestplate>,
+        <item:emcworld:fire_red_leggings>,
+        <item:emcworld:fire_red_boots>
     ];
     var ender as IItemStack[]=[
         <item:gobber2:gobber2_helmet_end>,
@@ -383,28 +384,30 @@ public function emcworldRecipe() as void{
     var sn as IItemStack[] = Ice.INSTANCE.getIce();
     var emc_stage as IItemStack[][] = [
         [
-            <item:mekanism:ingot_tin>,
-            <item:minecraft:iron_ingot>,
-            <item:mekanism:ingot_bronze>,
             <item:mekanism:ingot_osmium>,
+            <item:mekanism:block_osmium>,
+            <item:mekanism:nugget_osmium>,
+            <item:mekanism:dust_osmium>,
+            <item:minecraft:iron_ingot>,
+            <item:minecraft:iron_block>,
+            <item:minecraft:iron_nugget>,
+            <item:mekanism:dust_iron>
+        ],
+        [
+            <item:mekanism:ingot_tin>,
+            <item:mekanism:ingot_bronze>,
             <item:mekanism:ingot_copper>,
             <item:mekanism:ingot_lead>,
             <item:mekanism:block_tin>,
-            <item:minecraft:iron_block>,
             <item:mekanism:block_bronze>,
-            <item:mekanism:block_osmium>,
             <item:mekanism:block_copper>,
             <item:mekanism:block_lead>,
             <item:mekanism:nugget_tin>,
-            <item:minecraft:iron_nugget>,
             <item:mekanism:nugget_bronze>,
-            <item:mekanism:nugget_osmium>,
             <item:mekanism:nugget_copper>,
             <item:mekanism:nugget_lead>,
             <item:mekanism:dust_tin>,
-            <item:mekanism:dust_iron>,
             <item:mekanism:dust_bronze>,
-            <item:mekanism:dust_osmium>,
             <item:mekanism:dust_copper>,
             <item:mekanism:dust_lead>,
             <item:emcworld:silver_ingot>,
@@ -449,7 +452,6 @@ public function emcworldRecipe() as void{
             <item:emcworld:cold_ingot>,
             <item:emcworld:chlorophyte_ingot>,
             <item:emcworld:orichalcos_ingot>,
-            <item:emcworld:sunlit_ingot>,
             <item:mekanism:dust_fluorite>,
             <item:mekanism:block_fluorite>
         ],
@@ -459,6 +461,7 @@ public function emcworldRecipe() as void{
             <item:allthemodium:vibranium_nugget>,
             <item:allthemodium:vibranium_dust>,
             <item:emcworld:niobium_ingot>,
+            <item:emcworld:sunlit_ingot>,
             <item:minecraft:netherite_scrap>
         ],
         [
@@ -594,19 +597,20 @@ public function emcworldRecipe() as void{
     removeCraftRecipe(abag);
     smithingRecipe(staff_item[1][4],<item:cataclysm:ignitium_ingot>,<item:emcworld:netherite_staff>);
     smithingRecipe(staff_item[2][4],<item:cataclysm:ignitium_ingot>,<item:emcworld:netherite_warhammer>);
-    add_emc_stage(emc_stage[0],3);
-    add_emc_stage(emc_stage[1],4);
-    add_emc_stage(emc_stage[2],5);
-    add_emc_stage(emc_stage[3],6);
-    add_emc_stage(emc_stage[4],7);
-    add_emc_stage(emc_stage[5],8);
+    add_emc_stage(emc_stage[0],2);
+    add_emc_stage(emc_stage[1],3);
+    add_emc_stage(emc_stage[2],4);
+    add_emc_stage(emc_stage[3],5);
+    add_emc_stage(emc_stage[4],6);
+    add_emc_stage(emc_stage[5],7);
+    add_emc_stage(emc_stage[6],8);
     setEMCStage(<item:mekanism:fluorite_gem>,1024,5);
     setEMCStage(<item:mekanism:dust_sulfur>,32,4);
     setEMCStage(<item:mekanism:pellet_antimatter>,46080000,114514);
     setEMCStage(<item:the_afterlight:moon_crystal>,19200,6);
     setEMCStage(<item:emcworld:universal_ball>,320000,8);
-    removeRecipe([mt]);
-    crockPotRecipe(new CTRequirement().addCategoryMin(new CrTFoodValue().put("meat",3.5)).addMustItem(<item:farmersdelight:ham>,1),<item:emcworld:ham_bat>,100);
+    removeRecipe([mt,<item:quark:pickarang>]);
+    crockPotRecipe(new CrTRequirement().addCategoryMin(new CrTFoodValue().put("meat",3.5)).addMustItem(<item:farmersdelight:ham>,1),<item:emcworld:ham_bat>,100);
     violet(<item:projectex:purple_collector>,<item:projectex:violet_collector>);
     violet(<item:projectex:purple_relay>,<item:projectex:violet_relay>);
     blue(<item:projectex:violet_collector>,<item:projectex:blue_collector>);
@@ -693,7 +697,7 @@ public function emcworldRecipe() as void{
     smithingRecipe(<item:mythicbotany:mjoellnir>,<item:allthemodium:vibranium_allthemodium_alloy_ingot>,<item:emcworld:super_star>);
     smithingRecipe(<item:emcworld:diamond_dagger>,<item:minecraft:netherite_ingot>,<item:emcworld:night_light>);
     smithingRecipe(<item:emcworld:diamond_dagger>,<item:allthemodium:vibranium_allthemodium_alloy_ingot>,<item:emcworld:red_green_dagger>);
-    crockPotRecipe(new CTRequirement().addCategoryMin(new CrTFoodValue().put("meat",1.5).put("sweetener",1.5)).addMustItem(<item:farmersdelight:smoked_ham>,1),<item:farmersdelight:honey_glazed_ham_block>,30);
+    crockPotRecipe(new CrTRequirement().addCategoryMin(new CrTFoodValue().put("meat",1.5).put("sweetener",1.5)).addMustItem(<item:farmersdelight:smoked_ham>,1),<item:farmersdelight:honey_glazed_ham_block>,30);
     for i in 20 .. 24{
         removeSmithingRecipe(armor[i]);
     }
@@ -722,10 +726,32 @@ public function emcworldRecipe() as void{
         yellow(<item:projectex:lime_collector>,<item:projectex:yellow_collector>);
         yellow(<item:projectex:lime_relay>,<item:projectex:yellow_relay>);
     }
+    setEMCStage(<item:botania:manasteel_ingot>,864,3);
+    setEMCStage(<item:botania:mana_pearl>,1146,3);
+    setEMCStage(<item:botania:mana_diamond>,8246,3);
+    setEMCStage(<item:botania:elementium_ingot>,1768,3);
+    setEMCStage(<item:botania:pixie_dust>,1182,3);
+    setEMCStage(<item:botania:dragonstone>,8262,3);
+    setEMCStage(<item:botania:terrasteel_ingot>,32132,4);
+    setEMCStage(<item:mythicbotany:alfsteel_ingot>,143420,6);
+    for i in red_armor{
+        <tag:items:emcworld:god_weapon>.add(i);
+        <tag:items:emcworld:god_weapon_armor>.add(i);
+    }
+    combiningRecipe(<item:scalinghealth:medkit>,<item:emcworld:biggest_emc_gem>,<item:emcworld:emc_healing_bag>);
     if(getGameDifficulty() == 3){
         for i in 0 .. 4{
-            combiningRecipe(red_armor[i+4],<item:emcworld:dragon_steel>,red_armor[i]);
+            combiningRecipe(red_armor[i+4].withArmorLevelMax(),<item:emcworld:dragon_steel>,red_armor[i]);
         }
+        combiningRecipe(<item:projecte:transmutation_table>,<item:emcworld:magenta_matter>,<item:projecte:transmutation_tablet>);
+        piglinTrade(<item:emcworld:advanced_emc_gem>,[
+            new CrTWeightItem(red_armor[4],1,1,1),
+            new CrTWeightItem(red_armor[5],1,1,1),
+            new CrTWeightItem(red_armor[6],1,1,1),
+            new CrTWeightItem(red_armor[7],1,1,1),
+            new CrTWeightItem(<item:emcworld:biggest_emc_gem>,1,16,6)
+        ] as CrTWeightItem[]);
+        addCraftShapelessRecipe([<item:emcworld:biggest_emc_gem>],<item:emcworld:big_emc_gem>*32);
         extendedCraftingShapelessRecipe([
             tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,eus,eus,eus,eus,eus,eus,eus
         ],ifc,4);
@@ -896,7 +922,7 @@ public function emcworldRecipe() as void{
     addCraftShapedRecipeNoName([
         [al,csi,al],
         [ra,<item:emcworld:control_update_core>,zi],
-        [frc,<item:extendedcrafting:advanced_catalyst>,frc]
+        [frc,<item:emcworld:biggest_emc_gem>,frc]
     ],<item:emcworld:advanced_update_core>);
     terraPlateRecipe([
         <item:atum:anput_godshard>,

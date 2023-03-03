@@ -259,7 +259,7 @@
 		{
 			title: "{quest.emcworld.combine}"
 			x: 15.0d
-			y: 3.0d
+			y: 0.0d
 			dependencies: ["1EEF1DDC1FB45C02"]
 			id: "0F693D5D04525378"
 			tasks: [{
@@ -277,7 +277,7 @@
 		{
 			title: "{quest.emcworld.qio_io}"
 			x: 15.0d
-			y: 0.0d
+			y: -3.0d
 			dependencies: [
 				"1EEF1DDC1FB45C02"
 				"1EF469E69656F68B"
@@ -288,12 +288,12 @@
 				{
 					id: "5763C5A40D1B8DE9"
 					type: "item"
-					item: "mekanism:qio_importer"
+					item: "refinedstorage:importer"
 				}
 				{
 					id: "55935E68C3D63668"
 					type: "item"
-					item: "mekanism:qio_exporter"
+					item: "refinedstorage:exporter"
 				}
 			]
 			rewards: [
@@ -322,56 +322,16 @@
 			tasks: [{
 				id: "21D71A2FC28C49F7"
 				type: "item"
-				item: "mekanism:qio_dashboard"
+				item: "refinedstorage:grid"
 			}]
-			rewards: [
-				{
-					id: "7623F3F7052BE424"
-					type: "item"
-					team_reward: true
-					item: "mekanism:qio_drive_base"
-				}
-				{
-					id: "5D848055077028CA"
-					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
-					auto: "no_toast"
-				}
-			]
-		}
-		{
-			title: "{quest.emcworld.taking_qio_dashboard}"
-			x: 15.0d
-			y: -3.0d
-			dependencies: [
-				"1366CC37954750ED"
-				"1EF469E69656F68B"
-			]
-			hide: true
-			id: "6239393B2764C4A9"
-			tasks: [{
-				id: "62C3C1BC395CCD05"
-				type: "item"
-				item: "mekanism:portable_qio_dashboard"
+			rewards: [{
+				id: "5D848055077028CA"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+				auto: "no_toast"
 			}]
-			rewards: [
-				{
-					id: "728B3ADE72EC2F27"
-					type: "item"
-					team_reward: true
-					item: "mekanism:qio_drive_base"
-				}
-				{
-					id: "497CA7A02538A28B"
-					type: "custom"
-					title: "{reward.emcworld.easy}"
-					icon: "emcworld:small_emc_gem"
-					tags: ["easy"]
-					auto: "no_toast"
-				}
-			]
 		}
 		{
 			x: 9.0d
@@ -381,7 +341,7 @@
 			tasks: [{
 				id: "7EDA5E32990B0DA9"
 				type: "item"
-				item: "mekanism:qio_drive_array"
+				item: "refinedstorage:controller"
 			}]
 			rewards: [
 				{
@@ -408,14 +368,14 @@
 			tasks: [{
 				id: "34FC7C20E3E3471B"
 				type: "item"
-				item: "mekanism:qio_drive_base"
+				item: "refinedstorage:1k_storage_part"
 			}]
 			rewards: [
 				{
 					id: "1A4C7DF67522319F"
 					type: "item"
 					team_reward: true
-					item: "mekanism:qio_drive_base"
+					item: "refinedstorage:64k_storage_disk"
 				}
 				{
 					id: "127691DE08A801B9"
@@ -623,6 +583,34 @@
 					icon: "emcworld:small_emc_gem"
 					tags: ["easy"]
 					auto: "no_toast"
+				}
+			]
+		}
+		{
+			x: 15.0d
+			y: 3.0d
+			dependencies: ["0F693D5D04525378"]
+			id: "0456C71EBD5911BD"
+			tasks: [{
+				id: "731988CBDE652FD6"
+				type: "item"
+				item: "emcworld:biggest_emc_gem"
+			}]
+			rewards: [
+				{
+					id: "7183F804EDD6AD27"
+					type: "item"
+					team_reward: true
+					item: "emcworld:biggest_emc_gem"
+					count: 8
+					random_bonus: 8
+				}
+				{
+					id: "468758520FB5DC11"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
 				}
 			]
 		}

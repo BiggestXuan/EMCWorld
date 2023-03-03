@@ -10,8 +10,8 @@
 	quests: [
 		{
 			title: "{quest.emcworld.sixth_afterlight_ritualaltar}"
-			x: 6.0d
-			y: -7.5d
+			x: 4.0d
+			y: -4.0d
 			dependencies: ["131D06E6858EA93F"]
 			hide: true
 			id: "0FD7E48ECE8B7202"
@@ -34,8 +34,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_themooncrystal}"
-			x: 0.0d
-			y: -4.5d
+			x: 1.5d
+			y: -1.5d
 			dependencies: ["131D06E6858EA93F"]
 			hide: true
 			id: "255A00DA2821EC79"
@@ -70,8 +70,8 @@
 					Damage: 0
 				}
 			}
-			x: 3.0d
-			y: -4.5d
+			x: 4.0d
+			y: -1.5d
 			dependencies: [
 				"255A00DA2821EC79"
 				"0FD7E48ECE8B7202"
@@ -108,7 +108,7 @@
 		{
 			title: "{quest.emcworld.sixth_afterlight_gointoafterlight}"
 			x: 6.0d
-			y: -1.5d
+			y: 0.5d
 			dependencies: ["1BE1998B205D502C"]
 			id: "3E451FE636F3E052"
 			tasks: [{
@@ -134,8 +134,8 @@
 					Damage: 0
 				}
 			}
-			x: 9.0d
-			y: -4.5d
+			x: 8.0d
+			y: -1.5d
 			dependencies: ["3E451FE636F3E052"]
 			id: "0818E601615F031F"
 			tasks: [
@@ -162,8 +162,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_licingessenceingot}"
-			x: 7.5d
-			y: 4.5d
+			x: 8.0d
+			y: 3.0d
 			dependencies: ["6BC8A723B2B3D585"]
 			id: "0B32407EDC9A5727"
 			tasks: [{
@@ -190,8 +190,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_ingots}"
-			x: 9.0d
-			y: 1.5d
+			x: 8.0d
+			y: 0.5d
 			dependencies: ["3E451FE636F3E052"]
 			id: "6BC8A723B2B3D585"
 			tasks: [
@@ -243,7 +243,7 @@
 		{
 			title: "{quest.emcworld.sixth_afterlight_ecliptic}"
 			x: 6.0d
-			y: -4.5d
+			y: -1.5d
 			dependencies: ["3E451FE636F3E052"]
 			id: "4C380611AB476CC8"
 			tasks: [{
@@ -263,7 +263,7 @@
 		{
 			title: "{quest.emcworld.sixth_afterlight_glyphaltar}"
 			x: 6.0d
-			y: 4.5d
+			y: 3.0d
 			dependencies: [
 				"77436FB0468109B4"
 				"6BC8A723B2B3D585"
@@ -285,8 +285,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_shards}"
-			x: 3.0d
-			y: 1.5d
+			x: 4.0d
+			y: 0.5d
 			dependencies: ["3E451FE636F3E052"]
 			id: "77436FB0468109B4"
 			tasks: [
@@ -351,8 +351,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_goldenshardsofradiance}"
-			x: 4.5d
-			y: 4.5d
+			x: 4.0d
+			y: 3.0d
 			dependencies: ["77436FB0468109B4"]
 			id: "1BDE9D4BA575B6F2"
 			tasks: [{
@@ -380,7 +380,7 @@
 		{
 			title: "{quest.emcworld.sixth_afterlight_glyphs}"
 			x: 6.0d
-			y: 7.5d
+			y: 5.5d
 			dependencies: [
 				"7A11AF3AA149A7F7"
 				"1BDE9D4BA575B6F2"
@@ -434,7 +434,7 @@
 		{
 			title: "{quest.emcworld.sixth_afterlight_workbenchofancients}"
 			x: 6.0d
-			y: 9.0d
+			y: 7.0d
 			dependencies: ["73151C720989CE4F"]
 			id: "0DB07ECECD11D662"
 			tasks: [{
@@ -453,8 +453,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_geodeblade}"
-			x: 3.0d
-			y: 12.5d
+			x: 4.0d
+			y: 7.0d
 			dependencies: ["0DB07ECECD11D662"]
 			id: "7329AA5044B638F7"
 			tasks: [{
@@ -480,7 +480,7 @@
 		{
 			title: "{quest.emcworld.sixth_afterlight_elementalamulet}"
 			x: 6.0d
-			y: 14.0d
+			y: 9.0d
 			dependencies: ["0DB07ECECD11D662"]
 			id: "77223274D4B07ADA"
 			tasks: [{
@@ -505,8 +505,8 @@
 		}
 		{
 			title: "{quest.emcworld.sixth_afterlight_moonblade}"
-			x: 9.0d
-			y: 12.5d
+			x: 8.0d
+			y: 7.0d
 			dependencies: ["0DB07ECECD11D662"]
 			id: "5D25987D49980E76"
 			tasks: [{

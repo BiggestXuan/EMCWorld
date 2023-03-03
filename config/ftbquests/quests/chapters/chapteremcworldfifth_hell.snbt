@@ -8,8 +8,8 @@
 	default_quest_shape: ""
 	default_hide_dependency_lines: false
 	images: [{
-		x: -16.0d
-		y: -3.0d
+		x: -14.5d
+		y: -4.0d
 		width: 16.0d
 		height: 9.0d
 		rotation: 0.0d
@@ -24,7 +24,7 @@
 		{
 			title: "{quest.emcworld.fifth_hals_gointoblueleaf}"
 			icon: "hem:blueleaf_grass_block"
-			x: 0.0d
+			x: -2.5d
 			y: -4.5d
 			description: ["{quest.emcworld.fifth_hals_gointoblueleaf_desc}"]
 			dependencies: ["3DB9D7C131CB7DDC"]
@@ -54,8 +54,8 @@
 		{
 			title: "{quest.emcworld.fifth_hals_transporter}"
 			icon: "hem:teir_one_computer"
-			x: -3.0d
-			y: -1.5d
+			x: -4.5d
+			y: -2.5d
 			description: ["{quest.emcworld.fifth_hals_transporter_desc}"]
 			dependencies: ["038E97744F7C955D"]
 			id: "3DB9D7C131CB7DDC"
@@ -105,8 +105,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_copparite}"
-			x: -6.0d
-			y: 1.5d
+			x: -6.5d
+			y: -0.5d
 			description: ["{quest.emcworld.fifth_hals_copparite_desc}"]
 			dependencies: ["0498862A07B4D116"]
 			id: "038E97744F7C955D"
@@ -134,8 +134,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_copper}"
-			x: 0.0d
-			y: 1.5d
+			x: -2.5d
+			y: -0.5d
 			description: ["{quest.emcworld.fifth_hals_copper_desc}"]
 			dependencies: ["29ED613D22684793"]
 			hide: true
@@ -165,7 +165,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_buleleafleaves}"
-			x: 0.0d
+			x: -2.5d
 			y: -7.5d
 			description: ["{quest.emcworld.fifth_hals_buleleafleaves_desc}"]
 			dependencies: ["52720BB94D721E6A"]
@@ -194,7 +194,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_killmilitarybot}"
-			x: -6.0d
+			x: -6.5d
 			y: -7.5d
 			description: ["{quest.emcworld.fifth_hals_killmilitarybot_desc}"]
 			dependencies: ["09E079AB471A0028"]
@@ -231,7 +231,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_hals_killancient}"
-			x: -6.0d
+			x: -6.5d
 			y: -4.5d
 			description: [
 				"{quest.emcworld.fifth_hals_killancient_desc}"

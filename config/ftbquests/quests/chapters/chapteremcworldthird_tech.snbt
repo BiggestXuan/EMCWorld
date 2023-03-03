@@ -40,13 +40,10 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_endercatalyst}"
-			x: 9.0d
+			x: 6.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_tech_endercatalyst_desc}"]
-			dependencies: [
-				"378D4B865E94EE13"
-				"033AA2B95A3E73AD"
-			]
+			dependencies: ["033AA2B95A3E73AD"]
 			id: "4ED30AAFA2EF131A"
 			tasks: [{
 				id: "0FAF09ECCA503D66"
@@ -147,7 +144,7 @@
 		{
 			title: "{quest.emcworld.third_tech_endercomponent}"
 			x: 6.0d
-			y: 3.0d
+			y: 2.5d
 			description: ["{quest.emcworld.third_tech_endercomponent_desc}"]
 			dependencies: [
 				"4F423EAF268C54EE"
@@ -178,7 +175,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_enderalternator}"
-			x: 12.0d
+			x: 9.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_tech_enderalternator_desc}"]
 			dependencies: [
@@ -232,7 +229,7 @@
 		{
 			title: "{quest.emcworld.third_tech_advancedcomponent}"
 			x: 12.0d
-			y: -6.0d
+			y: -3.0d
 			description: ["{quest.emcworld.third_tech_advancedcomponent_desc}"]
 			dependencies: ["3518CB30AEB1D6E0"]
 			id: "19B3994FB8EA088F"
@@ -252,8 +249,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_advancetable}"
-			x: 21.0d
-			y: -3.0d
+			x: 14.5d
+			y: 0.0d
 			description: ["{quest.emcworld.third_tech_advancetable_desc}"]
 			dependencies: [
 				"06538CDB7FCB932A"
@@ -284,12 +281,12 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_redcollector}"
-			x: 27.0d
-			y: -3.0d
+			x: 10.535714285714285d
+			y: 3.25d
 			description: ["{quest.emcworld.third_tech_redcollector_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
-			size: 2.0d
+			size: 2.5d
 			id: "3AED6FB5DAA015C5"
 			tasks: [{
 				id: "283ED5F92D371994"
@@ -324,7 +321,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_refinedobsidiandust}"
-			x: -3.0d
+			x: -2.5d
 			y: 9.0d
 			description: ["{quest.emcworld.third_tech_refinedobsidiandust_desc}"]
 			dependencies: ["429D581AECE68C56"]
@@ -347,7 +344,7 @@
 		{
 			title: "{quest.emcworld.third_tech_refinedobsidianingot}"
 			x: 0.0d
-			y: 6.0d
+			y: 6.5d
 			description: ["{quest.emcworld.third_tech_refinedobsidianingot_desc}"]
 			dependencies: ["70E754D788C1D063"]
 			id: "5BB28A873CA8A9BD"
@@ -376,7 +373,7 @@
 		{
 			title: "{quest.emcworld.third_tech_alloyatomic}"
 			x: 0.0d
-			y: 12.0d
+			y: 11.5d
 			description: ["{quest.emcworld.third_tech_alloyatomic_desc}"]
 			dependencies: ["70E754D788C1D063"]
 			id: "22B9C130A7A28B71"
@@ -440,7 +437,7 @@
 		{
 			title: "{quest.emcworld.third_tech_fivetimes}"
 			x: 3.0d
-			y: 6.0d
+			y: 6.5d
 			description: ["{quest.emcworld.third_tech_fivetimes_desc}"]
 			dependencies: ["343F5F004BDDD1DF"]
 			id: "11488A8017B59E68"
@@ -467,8 +464,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_auxiliarymaterials}"
-			x: 0.0d
-			y: 15.0d
+			x: 12.0d
+			y: 9.0d
 			description: ["{quest.emcworld.third_tech_auxiliarymaterials_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -510,8 +507,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_chemicalporductionline}"
-			x: 3.0d
-			y: 15.0d
+			x: 9.0d
+			y: 11.5d
 			description: ["{quest.emcworld.third_tech_chemicalporductionline_desc}"]
 			dependencies: [
 				"3D9B918FD30D5281"
@@ -551,8 +548,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_isotopiccentrifuge}"
-			x: 9.0d
-			y: 15.0d
+			x: 6.0d
+			y: 11.5d
 			description: ["{quest.emcworld.third_tech_isotopiccentrifuge_desc}"]
 			dependencies: ["7FCF70F98B0C1555"]
 			id: "23D586DA83C5401B"
@@ -581,7 +578,7 @@
 		{
 			title: "{quest.emcworld.third_tech_fissionreactor}"
 			icon: "mekanismgenerators:fission_reactor_casing"
-			x: 9.0d
+			x: 6.0d
 			y: 9.0d
 			description: ["{quest.emcworld.third_tech_fissionreactor_desc}"]
 			dependencies: [
@@ -612,47 +609,10 @@
 			]
 		}
 		{
-			title: "{quest.emcworld.third_tech_reactorstructure}"
-			x: 9.0d
-			y: 6.0d
-			description: ["{quest.emcworld.third_tech_reactorstructure_desc}"]
-			dependencies: ["429D581AECE68C56"]
-			hide: true
-			id: "7DA5D3B697EA65C6"
-			tasks: [
-				{
-					id: "7F5A907D22537C02"
-					type: "item"
-					item: "mekanismgenerators:fission_reactor_casing"
-					count: 16L
-				}
-				{
-					id: "7C53E3E104052411"
-					type: "item"
-					item: "mekanismgenerators:fission_reactor_port"
-					count: 4L
-				}
-				{
-					id: "00F27761EF555ECA"
-					type: "item"
-					item: "mekanismgenerators:fission_fuel_assembly"
-					count: 4L
-				}
-			]
-			rewards: [{
-				id: "65097D5A470E8BD2"
-				type: "custom"
-				title: "{reward.emcworld.easy}"
-				icon: "emcworld:small_emc_gem"
-				tags: ["easy"]
-				auto: "no_toast"
-			}]
-		}
-		{
-			title: "{quest.emcworld.third_tech_corematerials}"
-			x: 3.0d
-			y: 18.0d
-			description: ["{quest.emcworld.third_tech_corematerials_desc}"]
+			title: "{quest.emcworld.third_tech_uranium}"
+			x: 12.0d
+			y: 11.5d
+			description: ["{quest.emcworld.third_tech_uranium_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
 			id: "228429DD323C870D"
@@ -680,7 +640,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_inductionmatrix}"
-			x: 15.0d
+			x: 9.0d
 			y: 9.0d
 			description: ["{quest.emcworld.third_tech_inductionmatrix_desc}"]
 			dependencies: [
@@ -723,8 +683,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_dustlithium}"
-			x: 15.0d
-			y: 6.0d
+			x: 9.0d
+			y: 6.5d
 			description: ["{quest.emcworld.third_tech_dustlithium_desc}"]
 			dependencies: ["429D581AECE68C56"]
 			hide: true
@@ -753,8 +713,8 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_advancedcatalyst}"
-			x: 18.0d
-			y: -6.0d
+			x: 14.5d
+			y: -3.0d
 			description: ["{quest.emcworld.third_tech_advancedcatalyst_desc}"]
 			dependencies: ["19B3994FB8EA088F"]
 			id: "70C52137B2CCEAA7"
@@ -774,7 +734,7 @@
 		}
 		{
 			title: "{quest.emcworld.third_tech_endercrafter}"
-			x: 18.0d
+			x: 12.0d
 			y: 0.0d
 			description: ["{quest.emcworld.third_tech_endercrafter_desc}"]
 			dependencies: ["61FF0CDE31A9E16B"]
@@ -822,6 +782,43 @@
 				title: "{reward.emcworld.hard}"
 				icon: "emcworld:biggest_emc_gem"
 				tags: ["hard"]
+				auto: "no_toast"
+			}]
+		}
+		{
+			title: "{quest.emcworld.third_tech_reactorstructure}"
+			x: 6.0d
+			y: 6.5d
+			description: ["{quest.emcworld.third_tech_reactorstructure_desc}"]
+			dependencies: ["429D581AECE68C56"]
+			hide: true
+			id: "7DA5D3B697EA65C6"
+			tasks: [
+				{
+					id: "7F5A907D22537C02"
+					type: "item"
+					item: "mekanismgenerators:fission_reactor_casing"
+					count: 16L
+				}
+				{
+					id: "7C53E3E104052411"
+					type: "item"
+					item: "mekanismgenerators:fission_reactor_port"
+					count: 4L
+				}
+				{
+					id: "00F27761EF555ECA"
+					type: "item"
+					item: "mekanismgenerators:fission_fuel_assembly"
+					count: 4L
+				}
+			]
+			rewards: [{
+				id: "65097D5A470E8BD2"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 				auto: "no_toast"
 			}]
 		}

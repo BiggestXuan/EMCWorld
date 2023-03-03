@@ -26,7 +26,7 @@ public class LastShield {
     public static final KeyBinding Last_Shield = new KeyBinding("key.emcworld.last_shield",
             KeyConflictContext.IN_GAME,
             InputMappings.Type.KEYSYM,
-            GLFW.GLFW_KEY_KP_EQUAL,
+            336,
             "key.category." + EMCWorld.MODID);
 
     @SubscribeEvent

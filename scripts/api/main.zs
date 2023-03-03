@@ -11,6 +11,7 @@ public function main() as void{
     extraOresProcessing();
     modifyProjecteRecipe();
     removeGobberRecipe();
+    modifyRSRecipe();
     addGobberOresProceRecipe();
     modifyGobberRecipe();
     modifyManaSteelRecipe();

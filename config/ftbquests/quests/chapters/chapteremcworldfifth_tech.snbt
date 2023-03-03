@@ -10,7 +10,7 @@
 	quests: [
 		{
 			title: "{quest.emcworld.fifth_tech_emcleaf}"
-			x: 3.0d
+			x: 0.0d
 			y: 0.0d
 			dependencies: ["29ED613D22684793"]
 			hide: true
@@ -71,7 +71,7 @@
 		{
 			title: "{quest.emcworld.fifth_tech_antiprotonivnucleosynthesizer}"
 			x: -4.5d
-			y: -7.5d
+			y: -2.0d
 			dependencies: ["18C4D3B4602CEF87"]
 			id: "26705C1078492BCF"
 			tasks: [{
@@ -92,7 +92,7 @@
 			title: "{quest.emcworld.fifth_tech_spscasing}"
 			icon: "mekanism:sps_port"
 			x: 0.0d
-			y: -4.5d
+			y: -2.0d
 			description: ["{quest.emcworld.fifth_tech_spscasing_desc}"]
 			dependencies: ["18C4D3B4602CEF87"]
 			id: "3347E859A73F193D"
@@ -126,8 +126,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_pelletantimatter}"
-			x: 0.0d
-			y: -9.0d
+			x: -2.5d
+			y: -2.0d
 			dependencies: ["3347E859A73F193D"]
 			id: "53CF388661F71ADF"
 			tasks: [{
@@ -154,7 +154,7 @@
 		{
 			title: "{quest.emcworld.fifth_tech_flamethrower}"
 			x: -4.5d
-			y: 7.5d
+			y: 2.5d
 			description: ["{quest.emcworld.fifth_tech_flamethrower_desc}"]
 			dependencies: ["18C4D3B4602CEF87"]
 			id: "2145ADC04ADFA9D8"
@@ -174,8 +174,8 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_elitecomponent}"
-			x: 0.0d
-			y: 4.5d
+			x: -2.5d
+			y: 1.0d
 			dependencies: ["18C4D3B4602CEF87"]
 			id: "764BD91C252E8327"
 			tasks: [{
@@ -195,7 +195,7 @@
 		{
 			title: "{quest.emcworld.fifth_tech_elitecatalyst}"
 			x: 0.0d
-			y: 9.0d
+			y: 2.5d
 			dependencies: ["764BD91C252E8327"]
 			id: "4010472411CE1C64"
 			tasks: [{
@@ -214,7 +214,7 @@
 		}
 		{
 			title: "{quest.emcworld.fifth_tech_elitetable}"
-			x: -12.0d
+			x: -7.0d
 			y: 0.0d
 			dependencies: ["18C4D3B4602CEF87"]
 			id: "237BA8B84B7655F2"
@@ -234,8 +234,8 @@
 		}
 		{
 			title: "{quest.emcworld.eighth_first_case}"
-			x: 3.0d
-			y: -4.5d
+			x: 2.5d
+			y: 0.0d
 			dependencies: ["0D57223269D4C86B"]
 			id: "12AB89655F52148B"
 			tasks: [{
@@ -253,8 +253,8 @@
 		}
 		{
 			title: "{quest.emcworld.eighth_first_compressor}"
-			x: 6.5d
-			y: -4.5d
+			x: 2.5d
+			y: -2.0d
 			dependencies: ["12AB89655F52148B"]
 			id: "07ADB7D2F7B66D5E"
 			tasks: [{

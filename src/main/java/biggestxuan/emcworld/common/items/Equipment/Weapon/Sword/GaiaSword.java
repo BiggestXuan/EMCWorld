@@ -8,7 +8,6 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWSwordTier;
-import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 

@@ -16,7 +16,7 @@
 	quests: [
 		{
 			title: "{quest.emcworld.seven_divine_divineshards}"
-			x: 0.0d
+			x: -1.5d
 			y: 0.0d
 			dependencies: [
 				"740A9CD9D5CA5F4C"
@@ -49,8 +49,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_watcher}"
-			x: -3.0d
-			y: -3.0d
+			x: -4.5d
+			y: -2.0d
 			dependencies: ["3CE380AC36DF2A9C"]
 			id: "740A9CD9D5CA5F4C"
 			tasks: [{
@@ -92,8 +92,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_horde}"
 			icon: "divinerpg:green_divine_sword"
-			x: -3.0d
-			y: 3.0d
+			x: -4.5d
+			y: 2.0d
 			dependencies: ["49A239BBDF897201"]
 			id: "739E906F979FBA1F"
 			tasks: [
@@ -138,8 +138,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_callofthewatcher}"
-			x: -7.5d
-			y: -3.0d
+			x: -6.5d
+			y: -2.0d
 			hide_dependency_lines: true
 			dependencies: [
 				"19FEE6859A400A57"
@@ -189,8 +189,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_hordehorn}"
 			icon: "divinerpg:horde_horn"
-			x: -7.5d
-			y: 3.0d
+			x: -6.5d
+			y: 2.0d
 			hide_dependency_lines: true
 			dependencies: [
 				"19FEE6859A400A57"
@@ -214,8 +214,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_twilightclock}"
-			x: 9.0d
-			y: -3.0d
+			x: 3.5d
+			y: -2.0d
 			dependencies: ["19FEE6859A400A57"]
 			hide: true
 			id: "3FA3B16C9C45B543"
@@ -234,7 +234,7 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_divinerock}"
-			x: 4.5d
+			x: 1.0d
 			y: 0.0d
 			dependencies: ["0D987089C5822B23"]
 			id: "15708E351C0B8371"
@@ -254,8 +254,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_eden}"
 			icon: "divinerpg:eden_block"
-			x: 9.0d
-			y: 3.0d
+			x: 3.5d
+			y: 0.0d
 			dependencies: [
 				"3FA3B16C9C45B543"
 				"15708E351C0B8371"
@@ -276,8 +276,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_edenchunk}"
-			x: 9.0d
-			y: 9.0d
+			x: 3.5d
+			y: 2.0d
 			dependencies: ["725F0E4BB0910040"]
 			id: "5FE2AC6134D76E1B"
 			tasks: [{
@@ -304,8 +304,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_sunstorm}"
-			x: 9.0d
-			y: 15.0d
+			x: 6.0d
+			y: 2.0d
 			hide_dependency_lines: true
 			dependencies: [
 				"5FE2AC6134D76E1B"
@@ -344,8 +344,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_wildwood}"
 			icon: "divinerpg:wildwood_block"
-			x: 12.0d
-			y: 12.0d
+			x: 6.0d
+			y: 0.0d
 			dependencies: [
 				"012390F967B398C6"
 				"5FE2AC6134D76E1B"
@@ -366,8 +366,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_wildwoodchunk}"
-			x: 15.0d
-			y: 9.0d
+			x: 8.5d
+			y: 0.0d
 			dependencies: ["17E38C910E65BBF1"]
 			id: "3660F03A803693D8"
 			tasks: [{
@@ -394,8 +394,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_termasect}"
-			x: 21.0d
-			y: 15.0d
+			x: 8.5d
+			y: 4.0d
 			hide_dependency_lines: true
 			dependencies: [
 				"17E38C910E65BBF1"
@@ -434,8 +434,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_aplachia}"
 			icon: "divinerpg:apalachia_block"
-			x: 18.0d
-			y: 12.0d
+			x: 8.5d
+			y: 2.0d
 			dependencies: [
 				"3660F03A803693D8"
 				"17610FAEEAE63B34"
@@ -456,8 +456,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_apalachiachunk}"
-			x: 21.0d
-			y: 9.0d
+			x: 11.0d
+			y: 2.0d
 			dependencies: ["1B69F55F00DCC53B"]
 			id: "5CBD4B6ED73EB457"
 			tasks: [{
@@ -484,8 +484,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_eternalarcher}"
-			x: 21.0d
-			y: -3.0d
+			x: 13.5d
+			y: 0.0d
 			hide_dependency_lines: true
 			dependencies: [
 				"1B69F55F00DCC53B"
@@ -518,8 +518,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_skythem}"
 			icon: "divinerpg:skythern_block"
-			x: 21.0d
-			y: 3.0d
+			x: 13.5d
+			y: 2.0d
 			dependencies: [
 				"5CBD4B6ED73EB457"
 				"29651D235320DF90"
@@ -540,8 +540,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_skythemchunk}"
-			x: 27.0d
-			y: 9.0d
+			x: 13.5d
+			y: 4.0d
 			dependencies: ["6E1591103B3830C9"]
 			id: "0626EDD94A927434"
 			tasks: [{
@@ -568,8 +568,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_experiencedcori}"
-			x: 27.0d
-			y: -3.0d
+			x: 16.0d
+			y: 2.0d
 			dependencies: ["6E1591103B3830C9"]
 			id: "6195A677821DA121"
 			tasks: [{
@@ -597,8 +597,8 @@
 		{
 			title: "{quest.emcworld.seven_divine_mortum}"
 			icon: "divinerpg:mortum_block"
-			x: 33.0d
-			y: 3.0d
+			x: 16.0d
+			y: 4.0d
 			dependencies: [
 				"0626EDD94A927434"
 				"6195A677821DA121"
@@ -635,8 +635,8 @@
 					"patchouli:book": "divinerpg:divine"
 				}
 			}
-			x: 0.0d
-			y: -12.0d
+			x: -1.5d
+			y: -4.5d
 			description: ["{quest.emcworld.seven_divine_book_desc}"]
 			dependencies: ["19FEE6859A400A57"]
 			hide: true
@@ -660,8 +660,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_tips}"
-			x: 41.5d
-			y: 3.0d
+			x: 18.0d
+			y: 4.0d
 			description: ["{quest.emcworld.seven_divine_tips_desc}"]
 			dependencies: ["228B67A447B915FF"]
 			id: "4EF149E30C1D6D7B"
@@ -686,8 +686,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_karot}"
-			x: 41.5d
-			y: -1.5d
+			x: 18.0d
+			y: 2.0d
 			dependencies: ["4EF149E30C1D6D7B"]
 			id: "718FBD3B99A52FC4"
 			tasks: [{
@@ -714,8 +714,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_twilightdemon}"
-			x: 41.5d
-			y: 7.5d
+			x: 18.0d
+			y: 6.0d
 			dependencies: ["4EF149E30C1D6D7B"]
 			id: "6328D740B215B3F5"
 			tasks: [{
@@ -742,8 +742,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_fiend}"
-			x: 48.0d
-			y: -1.5d
+			x: 20.0d
+			y: 2.0d
 			dependencies: ["4EF149E30C1D6D7B"]
 			id: "0B31E915F81C5CCC"
 			tasks: [{
@@ -770,8 +770,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_vamacheron}"
-			x: 48.0d
-			y: 7.5d
+			x: 20.0d
+			y: 6.0d
 			dependencies: ["4EF149E30C1D6D7B"]
 			id: "19E0753B0926C9D6"
 			tasks: [{
@@ -798,8 +798,8 @@
 		}
 		{
 			title: "{quest.emcworld.seven_divine_reyvor}"
-			x: 48.0d
-			y: 3.0d
+			x: 20.0d
+			y: 4.0d
 			description: ["{quest.emcworld.seven_divine_reyvor_desc}"]
 			dependencies: ["4EF149E30C1D6D7B"]
 			id: "209CAB2EDF95069E"
@@ -836,8 +836,8 @@
 		}
 		{
 			title: "{quest.emcworld.seventh_final}"
-			x: 36.5d
-			y: 7.5d
+			x: 16.0d
+			y: 6.0d
 			dependencies: ["4EF149E30C1D6D7B"]
 			id: "5AB9DC515457786D"
 			tasks: [{
