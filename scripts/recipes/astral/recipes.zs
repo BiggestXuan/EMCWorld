@@ -45,7 +45,7 @@ public function modifyAstralRecipe() as void{
 	    [a, a, a, a, a, a, a]
     ],rp,3);
     runeAltarRecipe([
-        <item:botania:twig_wand>,<item:botania:dreamwood_twig>,aq,<item:gobber2:gobber2_ingot>,<item:rats:marbled_cheese>
+        <item:botania:dreamwood_twig>,aq,<item:gobber2:gobber2_ingot>,<item:rats:marbled_cheese>
     ],wand,10000);
     removeAstralTransmutationRecipe(<blockstate:astralsorcery:starmetal_ore>);
     removeFurnaceRecipe([si]);

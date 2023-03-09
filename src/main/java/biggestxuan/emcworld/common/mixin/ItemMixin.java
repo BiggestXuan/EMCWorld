@@ -32,11 +32,19 @@ public abstract class ItemMixin {
     @Inject(method = "getOrCreateDescriptionId",at = @At("TAIL"),cancellable = true)
     //I18n translated non-Chinese items into English, resulting in having to modify their local keys.
     public void name(CallbackInfoReturnable<String> cir){
-        if(descriptionId.equals("item.bloodmagic.ingot_hellforged")){
-            cir.setReturnValue("item.emcworld.ingot_hellforged");
-        }
-        if(descriptionId.equals("item.bloodmagic.sand_hellforged")){
-            cir.setReturnValue("item.emcworld.sand_hellforged");
+        switch (descriptionId){
+            case "item.bloodmagic.ingot_hellforged":
+                cir.setReturnValue("item.emcworld.ingot_hellforged");
+                break;
+            case "item.bloodmagic.sand_hellforged":
+                cir.setReturnValue("item.emcworld.sand_hellforged");
+                break;
+            case "item.projecte.black_alchemical_bag":
+                cir.setReturnValue("item.emcworld.blacklist_bag");
+                break;
+            case "item.projecte.white_alchemical_bag":
+                cir.setReturnValue("item.emcworld.whitelist_bag");
+                break;
         }
     }
 

@@ -68,7 +68,6 @@ public class EMCHealingItem extends EWItem implements IUpgradeableItem, IPrefixI
         ItemStack stack = player.getItemInHand(hand);
         if (player.getHealth() < player.getMaxHealth() && !player.hasEffect(ModPotions.BANDAGED.get()) && stack.getDamageValue() < stack.getMaxDamage()) {
             player.startUsingItem(hand);
-            player.getCooldowns().addCooldown(stack.getItem(), (int) (healSpeed * 1.05));
             return ActionResult.success(stack);
         } else {
             return ActionResult.fail(stack);
@@ -86,6 +85,7 @@ public class EMCHealingItem extends EWItem implements IUpgradeableItem, IPrefixI
                     cap.setHealTick(healSpeed);
                     cap.setHealPreTick(getTickHeal(player,stack));
                 });
+                player.getCooldowns().addCooldown(stack.getItem(), (int) (healSpeed * 1.05));
             }
         }
 

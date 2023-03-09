@@ -24,7 +24,7 @@ import wayoftime.bloodmagic.common.item.BloodMagicItems;
 public class EMCWorldHUD extends AbstractGui {
     private final Minecraft mc;
     private final MatrixStack matrixStack;
-    private static long cache = 0;
+    private static final long cache = 0;
 
     public EMCWorldHUD(MatrixStack matrixStack){
         this.mc = Minecraft.getInstance();

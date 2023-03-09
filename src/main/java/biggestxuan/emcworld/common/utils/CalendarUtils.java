@@ -14,12 +14,10 @@ public class CalendarUtils {
 
     public static final CalendarUtils INSTANCE = new CalendarUtils();
 
-    CalendarUtils() {}
-
     Calendar calendar = Calendar.getInstance();
-    int year = calendar.get(Calendar.YEAR);
-    int month = calendar.get(Calendar.MONTH)+1;
-    int day = calendar.get(Calendar.DAY_OF_MONTH);
+    protected int year = calendar.get(Calendar.YEAR);
+    protected int month = calendar.get(Calendar.MONTH)+1;
+    protected int day = calendar.get(Calendar.DAY_OF_MONTH);
 
     public boolean isNewYear(){
         return month == 1 && day == 1;

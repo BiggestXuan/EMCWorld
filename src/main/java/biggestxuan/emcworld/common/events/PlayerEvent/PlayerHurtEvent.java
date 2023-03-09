@@ -24,6 +24,7 @@ import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -58,6 +59,9 @@ public class PlayerHurtEvent {
             float amount = event.getAmount();
             if(MathUtils.isMaxDifficulty()){
                 amount *= 1.167f;
+            }
+            if(source.getDirectEntity() instanceof ProjectileEntity){
+                amount += MathUtils.getAdditionDamage(source.getDirectEntity(),player,amount);
             }
             IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
             IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
@@ -97,6 +101,7 @@ public class PlayerHurtEvent {
                     amount = 0f;
                 }
             }
+            amount *= (1-getPlayerHurtRate(player));
             if(cap.getProfession() == 3){
                 if(cap.getSkills()[8] != 0){
                     double chance = cap.getSkills()[8]/10000f;
@@ -111,15 +116,6 @@ public class PlayerHurtEvent {
                     }
                 }
             }
-            float armorRate = 0f;
-            for(ItemStack stack :player.inventory.armor){
-                if(stack.getItem() instanceof IUpgradeableArmor){
-                    IUpgradeableArmor armor = (IUpgradeableArmor) stack.getItem();
-                    armorRate += 1-armor.hurtRate(stack);
-                }
-            }
-            armorRate /= 4f;
-            amount *= (1-armorRate);
             List<? extends PlayerEntity> allPlayer = player.getCommandSenderWorld().players();
             for(PlayerEntity player1 : allPlayer){
                 IPlayerSkillCapability cap1 = player1.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
@@ -165,5 +161,17 @@ public class PlayerHurtEvent {
             event.setAmount(amount);
             //EMCWorld.LOGGER.info("Source"+source.toString()+",Amount"+amount);
         }
+    }
+
+    public static double getPlayerHurtRate(PlayerEntity player){
+        float armorRate = 0f;
+        for(ItemStack stack :player.inventory.armor){
+            if(stack.getItem() instanceof IUpgradeableArmor){
+                IUpgradeableArmor armor = (IUpgradeableArmor) stack.getItem();
+                armorRate += 1-armor.hurtRate(stack);
+            }
+        }
+        armorRate /= 4f;
+        return armorRate;
     }
 }

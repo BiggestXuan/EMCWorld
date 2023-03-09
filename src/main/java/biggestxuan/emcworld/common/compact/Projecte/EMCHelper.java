@@ -30,6 +30,7 @@ import java.util.Set;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.EMCHelper")
+@SuppressWarnings("unused")
 public class EMCHelper {
     public static IKnowledgeProvider getPlayerIKP(PlayerEntity player){
         return ProjectEAPI.getTransmutationProxy().getKnowledgeProviderFor(player.getUUID());

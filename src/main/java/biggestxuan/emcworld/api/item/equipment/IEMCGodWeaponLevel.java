@@ -16,13 +16,13 @@ public interface IEMCGodWeaponLevel extends INeedLevelItem,IStarItem {
         if(stack.getItem() instanceof IUpgradeableItem){
             IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
             int weaponLevel = item.getLevel(stack);
-            if(weaponLevel >= 24) return 100;
-            if(weaponLevel >= 22) return 90;
-            if(weaponLevel >= 20) return 80;
-            if(weaponLevel >= 18) return 70;
-            if(weaponLevel >= 16) return 60;
-            if(weaponLevel >= 14) return 45;
-            if(weaponLevel >= 12) return 30;
+            if(weaponLevel >= 30) return 100;
+            if(weaponLevel >= 28) return 90;
+            if(weaponLevel >= 27) return 80;
+            if(weaponLevel >= 26) return 70;
+            if(weaponLevel >= 24) return 60;
+            if(weaponLevel >= 22) return 50;
+            if(weaponLevel >= 20) return 40;
             return 20;
         }
         return 0;

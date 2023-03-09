@@ -8,8 +8,6 @@ package biggestxuan.emcworld.common.blocks.PrefixBlock;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
-import biggestxuan.emcworld.common.network.PacketHandler;
-import biggestxuan.emcworld.common.network.WeaponCoreButtonPacket;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -32,7 +30,8 @@ public class PrefixGUI extends ContainerScreen<PrefixContainer> {
         super.init();
         int x = (width - getXSize())/2;
         int y = (height - getYSize()) /2;
-        this.addButton(new Button(x+70, y+60, 40, 20, EMCWorld.tc("gui.prefix.button"), new WeaponUpgradeGUI.ButtonPress(pos)));
+        this.addButton(new Button(x+35, y+60, 40, 20, EMCWorld.tc("gui.prefix.button"), new WeaponUpgradeGUI.ButtonPress(pos,0)));
+        this.addButton(new Button(x+105, y+60, 40, 20, EMCWorld.tc("gui.prefix.button_all"), new WeaponUpgradeGUI.ButtonPress(pos,1)));
     }
 
     @Override

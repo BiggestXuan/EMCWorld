@@ -78,6 +78,20 @@ public class PacketHandler {
                 RangeAttackKeyPacket::decode,
                 RangeAttackKeyPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                PickModeChangePacket.class,
+                PickModeChangePacket::encode,
+                PickModeChangePacket::decode,
+                PickModeChangePacket::handle
+        );
+        HANDLER.registerMessage(
+                id++,
+                CostEMCPacket.class,
+                CostEMCPacket::encode,
+                CostEMCPacket::decode,
+                CostEMCPacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

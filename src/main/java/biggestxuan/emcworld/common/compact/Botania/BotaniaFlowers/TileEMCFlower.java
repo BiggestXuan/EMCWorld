@@ -43,20 +43,26 @@ public class TileEMCFlower extends TileEntityGeneratingFlower {
         for(ItemEntity i :items){
             ItemStack item = i.getItem();
             if(item.getItem().equals(EWItems.SMALL_EMC_GEM.get())){
-                item.shrink(1);
-                addMana(VALUE[0]);
+                if(canAddMana(VALUE[0])){
+                    item.shrink(1);
+                    addMana(VALUE[0]);
+                }
                 sync();
                 return;
             }
             if(item.getItem().equals(EWItems.BIG_EMC_GEM.get())){
-                item.shrink(1);
-                addMana(VALUE[1]);
+                if(canAddMana(VALUE[1])){
+                    item.shrink(1);
+                    addMana(VALUE[1]);
+                }
                 sync();
                 return;
             }
             if(item.getItem().equals(EWItems.BIGGEST_EMC_GEM.get())){
-                item.shrink(1);
-                addMana(VALUE[2]);
+                if(canAddMana(VALUE[2])){
+                    item.shrink(1);
+                    addMana(VALUE[2]);
+                }
                 sync();
                 return;
             }
@@ -76,5 +82,9 @@ public class TileEMCFlower extends TileEntityGeneratingFlower {
     @Override
     public int getColor(){
         return 0xc3c17c;
+    }
+
+    private boolean canAddMana(int mana){
+        return getMana() + mana < getMaxMana();
     }
 }

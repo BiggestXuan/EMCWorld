@@ -9,6 +9,7 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
@@ -63,16 +64,6 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         this.color = color;
     }
 
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        int l = getLevel(stack);
-        int weight = 10;
-        for (int i = 0; i < l; i++) {
-            weight = (int) (1.42f * weight);
-        }
-        return weight;
-    }
-
     @ZenCodeType.Method
     public static int getWeaponMaxLevel(){
         IUpgradeableWeapon item = (IUpgradeableWeapon) EWItems.FIRE_SWORD.get();
@@ -85,7 +76,7 @@ public abstract class BaseEMCGodWeapon extends BaseWeaponItem implements IUpgrad
         if(diff < 1) return 8;
         if(diff < 2) return 14;
         if(diff < 3) return 20;
-        else return 24;
+        else return 30;
     }
 
     @Override

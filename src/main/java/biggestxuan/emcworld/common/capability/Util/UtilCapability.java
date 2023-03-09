@@ -41,6 +41,9 @@ public class UtilCapability implements IUtilCapability {
     private int gaiaPlayer;
     private float healPreTick;
     private int healTick;
+    private int pickMode;
+    private int netherTick;
+    private int displayIndex;
 
     public UtilCapability(){
         this.SponsorLevel = 0;
@@ -72,6 +75,9 @@ public class UtilCapability implements IUtilCapability {
         this.gaiaPlayer = 0;
         this.healPreTick = 0f;
         this.healTick = 0;
+        this.pickMode = 0;
+        this.netherTick = 0;
+        this.displayIndex = 0;
     }
 
     @Override
@@ -160,6 +166,16 @@ public class UtilCapability implements IUtilCapability {
     }
 
     @Override
+    public int getPickMode() {
+        return pickMode;
+    }
+
+    @Override
+    public void setPickMode(int mode) {
+        pickMode = mode;
+    }
+
+    @Override
     public void setPillager(int amount) {
         this.pillagerAmount = amount;
     }
@@ -222,6 +238,26 @@ public class UtilCapability implements IUtilCapability {
     @Override
     public boolean hasBeenDisplayDamage() {
         return this.displayDamage;
+    }
+
+    @Override
+    public int getNetherTick() {
+        return netherTick;
+    }
+
+    @Override
+    public int getDisplayIndex() {
+        return displayIndex;
+    }
+
+    @Override
+    public void setDisplayIndex(int index) {
+        displayIndex = index;
+    }
+
+    @Override
+    public void setNetherTick(int tick) {
+        netherTick = tick;
     }
 
     @Override
@@ -423,6 +459,9 @@ public class UtilCapability implements IUtilCapability {
         tag.putInt("gaia_player",gaiaPlayer);
         tag.putFloat("healPreTick",healPreTick);
         tag.putInt("healTick",healTick);
+        tag.putInt("pickMode",pickMode);
+        tag.putInt("netherTick",netherTick);
+        tag.putInt("displayIndex",displayIndex);
         return tag;
     }
 
@@ -459,5 +498,8 @@ public class UtilCapability implements IUtilCapability {
         this.gaiaPlayer = nbt.getInt("gaia_player");
         this.healPreTick = nbt.getFloat("healPreTick");
         this.healTick = nbt.getInt("healTick");
+        this.pickMode = nbt.getInt("pickMode");
+        this.netherTick = nbt.getInt("netherTick");
+        this.displayIndex = nbt.getInt("displayIndex");
     }
 }

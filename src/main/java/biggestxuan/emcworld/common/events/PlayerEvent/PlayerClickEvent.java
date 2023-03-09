@@ -20,6 +20,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.EMCGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
@@ -28,14 +29,14 @@ import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.StaffAttackPacket;
 import biggestxuan.emcworld.common.recipes.AdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.recipes.UpdateRecipe;
-import biggestxuan.emcworld.common.registry.EWBlocks;
-import biggestxuan.emcworld.common.registry.EWDamageSource;
-import biggestxuan.emcworld.common.registry.EWEffects;
-import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.registry.*;
 import biggestxuan.emcworld.common.skill.PlayerSkillModify;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
+import hellfirepvp.astralsorcery.common.data.research.ResearchHelper;
+import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import mekanism.common.item.ItemQIODrive;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
@@ -54,6 +55,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
@@ -87,6 +89,10 @@ public class PlayerClickEvent {
         int count = itemStack.getCount();
         PlayerEntity player = evt.getPlayer();
         if(itemStack.isEmpty()) return;
+        PlayerProgress progress = ResearchHelper.getProgress(player, LogicalSide.SERVER);
+        if(itemStack.getItem() instanceof EMCGemItem && progress.isValid() && !progress.hasConstellationDiscovered(EMCWorld.rl("emc"))){
+            ResearchManager.discoverConstellation(EWStarlight.EMC_STAR.get(),player);
+        }
         for(EMCGemsMapping obj:EMCGemsMapping.values()){
             if(itemStack.getItem().equals(obj.getItem())){
                 if(!GameStageManager.hasStage(player,obj.getGameStage()) && !ConfigManager.FREE_MODE.get()) {

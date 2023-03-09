@@ -135,4 +135,16 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     int getHealTick();
 
     void setHealTick(int amt);
+
+    int getPickMode();
+
+    void setPickMode(int mode);
+
+    int getNetherTick();
+
+    void setNetherTick(int tick);
+
+    int getDisplayIndex();
+
+    void setDisplayIndex(int index);
 }

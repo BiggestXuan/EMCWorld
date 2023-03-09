@@ -692,6 +692,23 @@
 					tags: ["hard"]
 					auto: "no_toast"
 				}
+				{
+					id: "51D9487D8DDE656E"
+					type: "item"
+					team_reward: true
+					item: {
+						id: "refinedstorage:creative_storage_disk"
+						Count: 1b
+						tag: {
+							Id: [I;
+								1780356306
+								-2132195973
+								-1255943488
+								-1280299542
+							]
+						}
+					}
+				}
 			]
 		}
 		{

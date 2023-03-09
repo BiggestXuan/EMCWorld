@@ -22,10 +22,6 @@ public abstract class DivineToolMaterialsMixin implements IItemTier {
 
     @Shadow(remap = false)
     @Final
-    private float efficiency;
-
-    @Shadow(remap = false)
-    @Final
     private float attackDamage;
 
     @Shadow(remap = false)

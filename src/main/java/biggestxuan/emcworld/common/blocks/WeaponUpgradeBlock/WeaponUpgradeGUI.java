@@ -34,7 +34,7 @@ public class WeaponUpgradeGUI extends ContainerScreen<WeaponUpgradeContainer> {
     @Override
     protected void init(){
         super.init();
-        this.button = new Button(28*width/48, 8*height/24, 40, 20,EMCWorld.tc("gui.button.upgrade"),new ButtonPress(this.pos));
+        this.button = new Button(28*width/48, 8*height/24, 40, 20,EMCWorld.tc("gui.button.upgrade"),new ButtonPress(this.pos,1));
         //this.addButton(button);
     }
 
@@ -71,14 +71,20 @@ public class WeaponUpgradeGUI extends ContainerScreen<WeaponUpgradeContainer> {
 
     public static class ButtonPress implements Button.IPressable{
         private final BlockPos pos;
+        private final int index;
 
-        public ButtonPress(BlockPos pos){
+        public ButtonPress(BlockPos pos,int index){
             this.pos = pos;
+            this.index = index;
         }
 
         @Override
         public void onPress(Button button){
-            PacketHandler.sendToServer(new WeaponCoreButtonPacket(this.pos));
+            PacketHandler.sendToServer(new WeaponCoreButtonPacket(this.pos,this.index));
+        }
+
+        public int getIndex() {
+            return index;
         }
     }
 }

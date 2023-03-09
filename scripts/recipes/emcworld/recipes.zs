@@ -385,90 +385,43 @@ public function emcworldRecipe() as void{
     var emc_stage as IItemStack[][] = [
         [
             <item:mekanism:ingot_osmium>,
-            <item:mekanism:block_osmium>,
-            <item:mekanism:nugget_osmium>,
-            <item:mekanism:dust_osmium>,
-            <item:minecraft:iron_ingot>,
-            <item:minecraft:iron_block>,
-            <item:minecraft:iron_nugget>,
-            <item:mekanism:dust_iron>
+            <item:minecraft:iron_ingot>
         ],
         [
             <item:mekanism:ingot_tin>,
             <item:mekanism:ingot_bronze>,
             <item:mekanism:ingot_copper>,
             <item:mekanism:ingot_lead>,
-            <item:mekanism:block_tin>,
-            <item:mekanism:block_bronze>,
-            <item:mekanism:block_copper>,
-            <item:mekanism:block_lead>,
-            <item:mekanism:nugget_tin>,
-            <item:mekanism:nugget_bronze>,
-            <item:mekanism:nugget_copper>,
-            <item:mekanism:nugget_lead>,
-            <item:mekanism:dust_tin>,
-            <item:mekanism:dust_bronze>,
-            <item:mekanism:dust_copper>,
-            <item:mekanism:dust_lead>,
             <item:emcworld:silver_ingot>,
             <item:emcworld:magnesium_ingot>,
-            <item:mekanism:dust_lapis_lazuli>,
-            <item:minecraft:lapis_lazuli>,
-            <item:minecraft:lapis_block>
+            <item:minecraft:lapis_lazuli>
         ],
         [
             <item:mekanism:ingot_uranium>,
             <item:mekanism:ingot_refined_glowstone>,
             <item:minecraft:gold_ingot>,
             <item:minecraft:diamond>,
-            <item:mekanism:block_uranium>,
-            <item:mekanism:block_refined_glowstone>,
-            <item:minecraft:gold_block>,
-            <item:minecraft:diamond_block>,
-            <item:minecraft:emerald_block>,
-            <item:mekanism:nugget_uranium>,
-            <item:mekanism:nugget_refined_glowstone>,
-            <item:minecraft:gold_nugget>,
-            <item:mekanism:dust_diamond>,
-            <item:mekanism:dust_emerald>,
-            <item:mekanism:dust_uranium>,
-            <item:mekanism:dust_gold>,
             <item:emcworld:aluminum_ingot>,
             <item:emcworld:nickel_ingot>,
             <item:emcworld:drystone_ingot>,
             <item:mekanism:enriched_iron>,
-            <item:mekanism:dust_steel>,
-            <item:mekanism:ingot_steel>,
-            <item:mekanism:block_steel>,
-            <item:mekanism:nugget_steel>
+            <item:mekanism:ingot_steel>
         ],
         [
             <item:allthemodium:allthemodium_ingot>,
             <item:byg:pendorite_ingot>,
-            <item:allthemodium:allthemodium_block>,
-            <item:byg:pendorite_block>,
-            <item:allthemodium:allthemodium_nugget>,
-            <item:allthemodium:allthemodium_dust>,
             <item:emcworld:cold_ingot>,
             <item:emcworld:chlorophyte_ingot>,
-            <item:emcworld:orichalcos_ingot>,
-            <item:mekanism:dust_fluorite>,
-            <item:mekanism:block_fluorite>
+            <item:emcworld:orichalcos_ingot>
         ],
         [
             <item:allthemodium:vibranium_ingot>,
-            <item:allthemodium:vibranium_block>,
-            <item:allthemodium:vibranium_nugget>,
-            <item:allthemodium:vibranium_dust>,
             <item:emcworld:niobium_ingot>,
             <item:emcworld:sunlit_ingot>,
             <item:minecraft:netherite_scrap>
         ],
         [
-            <item:allthemodium:unobtainium_ingot>,
-            <item:allthemodium:unobtainium_block>,
-            <item:allthemodium:unobtainium_nugget>,
-            <item:allthemodium:unobtainium_dust>
+            <item:allthemodium:unobtainium_ingot>
         ],
         [
             <item:emcworld:titanium_ingot>
@@ -605,7 +558,6 @@ public function emcworldRecipe() as void{
     add_emc_stage(emc_stage[5],7);
     add_emc_stage(emc_stage[6],8);
     setEMCStage(<item:mekanism:fluorite_gem>,1024,5);
-    setEMCStage(<item:mekanism:dust_sulfur>,32,4);
     setEMCStage(<item:mekanism:pellet_antimatter>,46080000,114514);
     setEMCStage(<item:the_afterlight:moon_crystal>,19200,6);
     setEMCStage(<item:emcworld:universal_ball>,320000,8);
@@ -648,7 +600,6 @@ public function emcworldRecipe() as void{
     for i in 0 .. 4{
         nucleosyRecipe(ne_armor[i+4],<gas:mekanism:antimatter>*(10 * getDifficultyLoss()) as int,ne_armor[i],2000);
     }
-    setEMCStage(<item:emcworld:niobium_nugget>,2048,5);
     addCraftShapedRecipeNoName([
         [iss,iss,iss],
         [iss,<item:minecraft:gold_block>,iss],
@@ -730,7 +681,6 @@ public function emcworldRecipe() as void{
     setEMCStage(<item:botania:mana_pearl>,1146,3);
     setEMCStage(<item:botania:mana_diamond>,8246,3);
     setEMCStage(<item:botania:elementium_ingot>,1768,3);
-    setEMCStage(<item:botania:pixie_dust>,1182,3);
     setEMCStage(<item:botania:dragonstone>,8262,3);
     setEMCStage(<item:botania:terrasteel_ingot>,32132,4);
     setEMCStage(<item:mythicbotany:alfsteel_ingot>,143420,6);
@@ -905,6 +855,13 @@ public function emcworldRecipe() as void{
             <item:pouchofunknown:pouch>,c
         ],b.asIItemStack());
     }
+    removeCraftRecipe([abag[13]]);
+    addCraftShapelessRecipe([
+        <tag:items:forge:dyes/white>,<item:pouchofunknown:pouch>
+    ],abag[13]);
+    addCraftShapelessRecipe([
+        <tag:items:forge:dyes/black>,<item:pouchofunknown:pouch>
+    ],<item:projecte:black_alchemical_bag>);
     combiningRecipe(<item:minecraft:stone>,<item:minecraft:obsidian>,<item:minecraft:blackstone>);
     removeFurnaceRecipe([<item:minecraft:nether_brick>]);
     runeAltarRecipe([<item:emcworld:drystone_ingot>,<item:botania:rune_fire>],<item:minecraft:nether_brick>*2,5000);
@@ -1019,7 +976,7 @@ public function emcworldRecipe() as void{
     runeAltarRecipe([
         con[0][2],con[0][2],con[0][2],con[0][2],con[0][2],<item:bloodmagic:defaultcrystal>
     ],con[0][3]*camt,10000);
-    alchemalArrayRecipe(con[0][3]*camt,<item:rats:ghost_pirat_ectoplasm>,con[0][4]*camt);
+    alchemalArrayRecipe(con[0][3],<item:rats:ghost_pirat_ectoplasm>,con[0][4]*camt);
     astralAltarRecipe([
         [a,a,a,a,a],
         [a,con[0][4],ip,con[0][4],a],
@@ -1107,15 +1064,12 @@ public function emcworldRecipe() as void{
     setEMCStage(<item:gobber2:gobber2_globette>,2048,4);
     setEMCStage(<item:gobber2:gobber2_glob>,18432,4);
     setEMCStage(<item:gobber2:gobber2_ingot>,18514,4);
-    setEMCStage(<item:gobber2:gobber2_block>,166626,4);
     setEMCStage(<item:gobber2:gobber2_globette_nether>,16384,6);
     setEMCStage(<item:gobber2:gobber2_glob_nether>,147456,6);
     setEMCStage(<item:gobber2:gobber2_ingot_nether>,148105,6);
-    setEMCStage(<item:gobber2:gobber2_block_nether>,1332945,6);
     setEMCStage(<item:gobber2:gobber2_globette_end>,131072,8);
     setEMCStage(<item:gobber2:gobber2_glob_end>,1179648,8);
     setEMCStage(<item:gobber2:gobber2_ingot_end>,1327753,8);
-    setEMCStage(<item:gobber2:gobber2_block_end>,11949777,8);
     infuserRecipe([
         <item:naturesaura:time_changer>,
         <item:stalwart_dungeons:awful_crystal>,
@@ -1127,6 +1081,11 @@ public function emcworldRecipe() as void{
         <item:cataclysm:ignitium_ingot>,
         <item:mythicbotany:vanaheim_rune>
     ],<item:byg:nightshade_sapling>,con[3][5]*2);
+    addCraftShapedRecipeNoName([
+        [a,bge,a],
+        [bge,<item:astralsorcery:parchment>,bge],
+        [a,bge,a]
+    ],<item:astralsorcery:constellation_paper>.withTag({astralsorcery: {constellationName: "emcworld:emc" as string}}));
     infuserRecipe([
         <item:undergarden:forgotten_ingot>,
         <item:the_afterlight:spectral_glyph>,
@@ -1270,6 +1229,11 @@ public function emcworldRecipe() as void{
     combiningRecipe(<item:stalwart_dungeons:tungsten_ingot>,<item:minecraft:netherite_scrap>*2,nei);
     metallurgicInfusingRecipe(<item:mekanism:ingot_steel>*2,<infuse_type:emcworld:ice>*1000,<item:emcworld:stainless_steel>);
     <recipetype:mekanism:painting>.addRecipe("bx",<item:emcworld:update_base_purple>*camt,<pigment:emcworld:bx>*128,<item:emcworld:update_base_bx_purple>*camt);
+    for i in game.items{
+        if(!EWItem.cantTrans(i)){
+            addEMCStage(i,10);
+        }
+    }
     if(getGameDifficulty() >=2){
         extendedCraftingShapelessRecipe([
             <item:minecraft:iron_ingot>,

@@ -238,8 +238,8 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
                             Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
                         }
                     }
-                    living.hurtTime += 5;
-                    living.invulnerableTime += 5;
+                    /*living.hurtTime += 5;
+                    living.invulnerableTime += 5;*/
                     if(damage == 0){
                         continue;
                     }

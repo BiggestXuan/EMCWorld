@@ -17,7 +17,7 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public double healBoostRate(ItemStack stack) {
-        return 1 + 0.05 * getLevel(stack) * getShieldRate();
+        return 1 + 0.02 * getLevel(stack) * getShieldRate();
     }
 
     @Override
@@ -54,7 +54,7 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public double hurt(ItemStack stack) {
-        return Math.pow(0.993,getLevel(stack)) / getPrefixCommonRate(stack);
+        return Math.pow(0.9975,getLevel(stack)) / getPrefixCommonRate(stack);
     }
 
     @Override
@@ -64,11 +64,11 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public float shield(ItemStack stack) {
-        return (float) (8f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
+        return (float) (5f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 
     @Override
     public float shield_speed(ItemStack stack) {
-        return (float) (0.45f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
+        return (float) (0.2f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 }

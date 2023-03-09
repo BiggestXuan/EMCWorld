@@ -136,4 +136,9 @@ public function modifyBotaniaRecipe() as void{
         <item:gobber2:gobber2_ingot_nether>
     ],ar,16000);
     setEMCStage(<item:botania:mana_powder>,66,2);
+    for i in [
+        <item:mythicbotany:alfsteel_armor_upgrade>,
+    ] as IItemStack[]{
+        addEMCStage(i,10);
+    }
 }

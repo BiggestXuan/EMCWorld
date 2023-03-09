@@ -28,7 +28,7 @@ public class PlayerChatEvent {
         sponsorCap.ifPresent((cap) -> {
             String name = event.getUsername();
             String saying = event.getMessage();
-            int level = cap.getLevel();
+            int level = cap.getDisplayIndex();
             switch (level){
                 case 1:
                     event.setComponent(EMCWorld.tc("message.chat.base1",name,saying));

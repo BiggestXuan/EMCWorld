@@ -62,6 +62,11 @@
 				id: "27FCD63ACF76DEBA"
 				type: "checkmark"
 			}]
+			rewards: [{
+				id: "1275E8039A2D09B7"
+				type: "item"
+				item: "rsinfinitybooster:infinity_card"
+			}]
 		}
 		{
 			title: "{quest.emcworld.fourth_tech_preparhohlraum}"

@@ -66,7 +66,7 @@ public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 5;
-    public static final String PackVersion = "0.5.0 - Pre2";
+    public static final String PackVersion = "0.5.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -136,6 +136,7 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
             ClientRegistry.registerKeyBinding(LastShield.Last_Shield);
             ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
+            ClientRegistry.registerKeyBinding(PickModeKey.pickMode);
             ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
             ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);

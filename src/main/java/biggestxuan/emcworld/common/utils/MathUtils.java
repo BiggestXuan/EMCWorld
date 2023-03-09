@@ -11,21 +11,28 @@ import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
+import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import net.blay09.mods.waystones.api.IWaystone;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.item.BowItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
@@ -109,6 +116,11 @@ public class MathUtils {
         return buffer.toString();
     }
 
+    public static float getAdditionDamage(Entity attacker, LivingEntity target, float damage){
+        double difficulty = DifficultyHelper.getLivingDifficulty(target);
+        return (float) (damage * (difficulty / 10f * ConfigManager.DIFFICULTY.get()));
+    }
+
     @ZenCodeType.Method
     public static String format(String text){
         if(text.length() <= 6 || !ConfigManager.FORMAT.get()){
@@ -126,6 +138,17 @@ public class MathUtils {
         }
         String flag = getFlag(text);
         return formatAfter(text)+flag;
+    }
+
+
+    public static float getBowAdditionDamage(ItemStack stack){
+        Item item = stack.getItem();
+        if(item instanceof IUpgradeBow && item instanceof IPrefixItem && item instanceof BowItem){
+            IUpgradeBow i1 = (IUpgradeBow) item;
+            IPrefixItem i2 = (IPrefixItem) item;
+            return i1.getLevel(stack) * 1.25F + i2.getPrefix(stack).getLevel() * 0.5F;
+        }
+        return 0f;
     }
 
     public static String format(double value){
@@ -168,6 +191,7 @@ public class MathUtils {
         }
         return costEMC;
     }
+
     public static double getBlockBaseCost(PlayerEntity player){
         for(DifficultySetting obj : DifficultySetting.values()){
             if(GameStageManager.hasStage(player,obj.getGameStage())){
@@ -272,7 +296,7 @@ public class MathUtils {
         return CrTConfig.getWorldDifficulty() == 3.0d;
     }
     public static String modulus(double input) {
-        return String.valueOf(Math.round(input*100)) + "%";
+        return Math.round(input * 100) + "%";
     }
     public static int getMaxAmount(long input1,long input2){
         int amt = 0;
@@ -291,6 +315,7 @@ public class MathUtils {
         }
         return out;
     }
+
     public static int getAdditionAmount(double chance){
         int amt = 1;
         amt += (int) chance -1;
@@ -353,12 +378,12 @@ public class MathUtils {
         return sponsor;
     }
 
-    public static int getTPEMCCost(PlayerEntity player, IWaystone start,IWaystone end){
+    public static int getTPEMCCost(PlayerEntity player,Position start,Position end){
         if(end == null){
             return 0;
         }
-        BlockPos pos1 = start.getPos();
-        BlockPos pos2 = end.getPos();
+        BlockPos pos1 = start.pos;
+        BlockPos pos2 = end.pos;
         if(Math.abs(pos1.getX()-pos2.getX()) >= EMCWorld.HOMO || Math.abs(pos1.getZ()-pos2.getZ()) >= EMCWorld.HOMO){
             return Integer.MAX_VALUE;
         }
@@ -366,7 +391,7 @@ public class MathUtils {
         long emc = 0;
         distance = Math.max(0L,distance-128L);
         emc += distance;
-        if(!start.getDimension().location().equals(end.getDimension().location())){
+        if(!start.world.equals(end.world)){
             emc *= 3;
         }
         emc *= ConfigManager.DIFFICULTY.get();
@@ -376,7 +401,14 @@ public class MathUtils {
                 break;
             }
         }
-        return emc >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) emc / 10;
+        return emc >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) emc / 30;
+    }
+
+    public static int getTPEMCCost(PlayerEntity player, IWaystone start,IWaystone end){
+        if(end == null){
+            return 0;
+        }
+        return getTPEMCCost(player,new Position(start.getPos(),start.getDimension().location()),new Position(end.getPos(),end.getDimension().location()));
     }
 
     private static String getFlag(String value){
@@ -404,6 +436,16 @@ public class MathUtils {
             return value.substring(0,2)+"."+value.substring(2,4);
         }
         return value.substring(0,3)+"."+value.substring(3,5);
+    }
+
+    public static class Position{
+        private final BlockPos pos;
+        private final ResourceLocation world;
+
+        public Position(BlockPos pos,ResourceLocation world){
+            this.pos = pos;
+            this.world = world;
+        }
     }
 
     @Deprecated

@@ -1,12 +1,12 @@
 {
   "general": {
-    "displayTooltip": true,
+    "displayTooltip": false,
     "shiftForDetails": false,
-    "displayMode": "TOGGLE",
+    "displayMode": "HOLD_KEY",
     "hideFromPlayerList": true,
     "hideFromDebug": true,
     "showItem": true,
-    "enableTextToSpeech": false,
+    "enableTextToSpeech": true,
     "maxHealthForRender": 40,
     "maxHeartsPerLine": 10,
     "displayFluids": true

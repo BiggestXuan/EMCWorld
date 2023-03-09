@@ -18,17 +18,24 @@ import java.util.function.Supplier;
 
 public class WeaponCoreButtonPacket {
     private final BlockPos pos;
+    private final int mode;
 
-    public WeaponCoreButtonPacket(BlockPos pos){
+    public WeaponCoreButtonPacket(BlockPos pos,int mode){
         this.pos = pos;
+        this.mode = mode;
     }
 
     public static void encode(WeaponCoreButtonPacket msg, PacketBuffer buf) {
         buf.writeBlockPos(msg.pos);
+        buf.writeInt(msg.mode);
     }
 
     public static WeaponCoreButtonPacket decode(PacketBuffer buf) {
-        return new WeaponCoreButtonPacket(buf.readBlockPos());
+        return new WeaponCoreButtonPacket(buf.readBlockPos(),buf.readInt());
+    }
+
+    public int getMode(){
+        return mode;
     }
 
     public static void handle(WeaponCoreButtonPacket msg, Supplier<NetworkEvent.Context> context){
@@ -43,6 +50,9 @@ public class WeaponCoreButtonPacket {
                 }
                 if(tile instanceof PrefixTileEntity){
                     PrefixTileEntity tileEntity = (PrefixTileEntity) tile;
+                    if(msg.mode == 1){
+                        tileEntity.setAllIn();
+                    }
                     tileEntity.setPlayer(player);
                     tileEntity.start();
                 }

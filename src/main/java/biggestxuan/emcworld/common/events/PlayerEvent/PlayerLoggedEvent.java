@@ -8,9 +8,9 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.common.utils.BirthdayUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
-import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWItems;
@@ -25,7 +25,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Difficulty;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -33,6 +35,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import vazkii.patchouli.common.item.PatchouliItems;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static biggestxuan.emcworld.EMCWorld.tc;
@@ -52,15 +56,19 @@ public class PlayerLoggedEvent {
         IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
         ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
         int level = 0;
+        sendHappyBirthday(server,player);
         for(Sponsors sp:info.getSponsors()){
             if(name.equals(sp.getPlayerName()) && uuid.equals(sp.getPlayerUUID())){
-                level = sp.getSponsorLevel();
+                level = sp.getIndex();
                 c.setLevel(level);
                 break;
             }
             sponsorCap.ifPresent((cap)-> cap.setLevel(0));
         }
-        if(level < 2 && player instanceof ServerPlayerEntity && !server.usesAuthentication()){
+        if(c.getDisplayIndex() == 0 && c.getLevel() != 0){
+            c.setDisplayIndex(c.getLevel());
+        }
+        if(level < 2 || !server.usesAuthentication()){
             ServerPlayerEntity player1 = (ServerPlayerEntity) player;
             player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
         }
@@ -136,7 +144,7 @@ public class PlayerLoggedEvent {
         }
         if(EMCWorld.isOffline || !server.usesAuthentication()) return;
         sponsorCap.ifPresent((cap) -> {
-            int sponsorLevel = cap.getLevel();
+            int sponsorLevel = cap.getDisplayIndex();
             if(instance.isAprilFoolsDay()){
                 Message.sendMessage(player, tc("message.welcome.dev",name));
                 return;
@@ -163,5 +171,21 @@ public class PlayerLoggedEvent {
                     Message.sendMessage(player, tc("message.welcome.default",name));
             }
         });
+    }
+
+    private static void sendHappyBirthday(MinecraftServer server,PlayerEntity player){
+        if(EMCWorld.isOffline || !server.usesAuthentication()){
+            return;
+        }
+        BirthdayUtils utils = new BirthdayUtils(player);
+        List<TranslationTextComponent> list = new ArrayList<>();
+        for (int i = 1; i <= 4; i++) {
+            list.add(EMCWorld.tc("message.birthday.a"+i));
+        }
+        if(utils.HappyBirthday()){
+            for(TranslationTextComponent text:list){
+                Message.sendMessage(player,text);
+            }
+        }
     }
 }

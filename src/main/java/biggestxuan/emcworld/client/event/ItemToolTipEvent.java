@@ -285,7 +285,7 @@ public class ItemToolTipEvent {
             if(sp == null){
                 name = "";
             }else{
-                level = sp.getSponsorLevel();
+                level = sp.getIndex();
                 name = sp.getPlayerName();
             }
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoritem",name).setStyle(Style.EMPTY.withItalic(true).withColor(getColor(level))));

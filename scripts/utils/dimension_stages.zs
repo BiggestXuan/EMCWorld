@@ -8,7 +8,7 @@ public function addDIMStage() as void{
         return;
     }
     var dim as string[][]=[
-        ["good_nights_sleep:good_dream","good_nights_sleep:nightmare","bloodmagic:dungeon","atlantis:altantis","aether:the_aether"],
+        ["good_nights_sleep:good_dream","good_nights_sleep:nightmare","atlantis:altantis","aether:the_aether"],
         ["rats:ratlantis","mythicbotany:alfheim"],
         ["hem:blueleaf"],
         ["the_afterlight:the_afterlight","undergarden:undergarden"],

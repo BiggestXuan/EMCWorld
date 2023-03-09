@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.PrefixScroll;
+import biggestxuan.emcworld.common.items.Equipment.Scroll.BiggestXuanScroll;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.ScrollItem;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -24,6 +25,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -42,9 +44,16 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
     private final Inventory inventory = new Inventory(2);
     private State state;
     private PlayerEntity lastClick = null;
+    private boolean allIn;
+
     public PrefixTileEntity() {
         super(EWTileEntityTypes.PrefixCoreTileEntity.get());
         state = State.STOP;
+        allIn = false;
+    }
+
+    public void setAllIn(){
+        allIn = true;
     }
 
     @Override
@@ -88,12 +97,18 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
             if(left.equals(ItemStack.EMPTY) || right.equals(ItemStack.EMPTY)){
                 stop();
             }
-            if(left.getItem() instanceof ScrollItem && right.getItem() instanceof PrefixScroll){
+            if(left.getItem() instanceof ScrollItem && (!(left.getItem() instanceof BiggestXuanScroll)) && right.getItem() instanceof PrefixScroll){
                 ScrollItem left_scroll = (ScrollItem) left.getItem();
                 PrefixScroll right_scroll = (PrefixScroll) right.getItem();
-                if(right_scroll.getWeight(right) < PrefixScroll.MAX){
+                while (right_scroll.getWeight(right) < PrefixScroll.MAX){
+                    if(inventory.getItem(0).getItem().equals(Items.AIR) || inventory.getItem(0).equals(ItemStack.EMPTY)){
+                        break;
+                    }
                     costLeft();
                     right_scroll.update(right, (int) (left_scroll.getWeight(left)* ConfigManager.DIFFICULTY.get() * (1-left_scroll.breakWeaponRate())));
+                    if(!allIn){
+                        break;
+                    }
                 }
                 stop();
             }
@@ -147,11 +162,13 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
             chance.add(k+c);
             k += c;
         }
+        /*
         System.out.println("random"+random);
         System.out.println("weight");
         weight.forEach(System.out::println);
         System.out.println("chance");
         chance.forEach(System.out::println);
+        */
         for (int i = 0; i < chance.size(); i++) {
             if(i == 0){
                 if(random < chance.get(0)){
@@ -175,12 +192,14 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
         ItemStack stack = inventory.getItem(0);
         stack.shrink(1);
     }
+
     private boolean canStart(){
         return state == State.START;
     }
 
     private void stop(){
         state = State.STOP;
+        allIn = false;
     }
 
     public enum State{

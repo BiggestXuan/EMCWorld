@@ -101,6 +101,9 @@ public function setEMCStage(item as ItemStack,emc as long,stage as int) as void{
 
 public function addEMCStage(item as IItemStack,num as int) as void{
     var stage as string = getStageName(num);
+    if("petal_block" in stage){
+        return;
+    }
     <recipetype:emcworld:emc_stage_limit>.addRecipe(getRecipeName(item)+"_emc_stage",item,stage);
 }
 

@@ -7,6 +7,9 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -21,6 +24,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static biggestxuan.emcworld.common.events.PlayerEvent.PlayerHurtEvent.getPlayerHurtRate;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID)
 public class PlayerWillHurtEvent {
@@ -39,6 +44,14 @@ public class PlayerWillHurtEvent {
             return false;
         }
         if(MathUtils.isMaxDifficulty()) amount *= 1.167f;
+        try{
+            IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+            if(cap.getProfession() == 2){
+                amount *= (1-getPlayerHurtRate(player));
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         float shield = 0f;
         float maxShield = 0f;
         List<ItemStack> armors = new ArrayList<>();

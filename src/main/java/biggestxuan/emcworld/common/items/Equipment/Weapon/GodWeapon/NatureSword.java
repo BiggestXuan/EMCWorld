@@ -17,7 +17,7 @@ public class NatureSword extends BaseEMCGodWeapon {
     @Override
     public float getBaseDamage(ItemStack stack) {
         int level = this.getLevel(stack);
-        return (float) ((Math.pow(1.14f,level)*baseDamage)-baseDamage);
+        return (float) ((Math.pow(1.135f,level)*baseDamage)-baseDamage);
     }
 
     @Override

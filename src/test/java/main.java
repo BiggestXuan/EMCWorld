@@ -23,8 +23,13 @@ public class main {
             System.out.println(weight);
         }*/
         //System.out.println(UUID.randomUUID());
-        for (int i = 0; i < 100; i++) {
+        /*for (int i = 0; i < 100; i++) {
             System.out.println(MathUtils.getRangeRandom(1,10));
+        }*/
+        int weight = 10;
+        for (int i = 0; i < 30; i++) {
+            weight = (int) (1.344f * weight);
+            System.out.println(weight);
         }
     }
 }

@@ -12,10 +12,11 @@ import java.util.*;
 
 public class ModPackHelper {
     protected static List<String> getInfo(){
-        if(Network.getNetwork() == null){
+        StringBuilder builder = Network.getNetwork();
+        if(builder == null){
             return new ArrayList<>();
         }
-        String info = Objects.requireNonNull(Network.getNetwork().toString().trim());
+        String info = Objects.requireNonNull(builder.toString().trim());
         return new ArrayList<>(Arrays.asList(info.split(";")));
     }
 

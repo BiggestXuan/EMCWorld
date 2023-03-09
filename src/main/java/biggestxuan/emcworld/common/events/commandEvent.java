@@ -21,7 +21,7 @@ public class commandEvent {
         }
         if(source.getEntity() instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) source.getEntity();
-            if(!player.isCreative() && name.contains("tp") || name.contains("teleport") || name.contains("execute")){
+            if(!player.isCreative() && (name.contains("tp") || name.contains("teleport") || name.contains("execute"))){
                 event.setCanceled(true);
             }
         }

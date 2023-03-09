@@ -8,21 +8,28 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
+import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
+import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.darkhax.itemstages.Restriction;
 import net.darkhax.itemstages.RestrictionManager;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerPickUpItemEvent {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerPickUpItemEvent(EntityItemPickupEvent event) {
         PlayerEntity player = event.getPlayer();
         ItemStack item = event.getItem().getItem();
@@ -30,6 +37,22 @@ public class PlayerPickUpItemEvent {
         int amt = item.getCount() * (64 / item.getMaxStackSize());
         if(item.getMaxStackSize() >= 65) amt *= 1145141919;
         double rate = 1d;
+        IUtilCapability c = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(EMCWorldCommonException::new);
+        if(c.getPickMode() == 1 && item.getMaxStackSize() <= 64){
+            if(!KnowledgeHelper.itemInAlchemyBag(item,player,DyeColor.WHITE,false)){
+                event.setCanceled(true);
+                return;
+            }
+        }
+        if(c.getPickMode() == 2 && item.getMaxStackSize() <= 64){
+            if(KnowledgeHelper.itemInAlchemyBag(item,player,DyeColor.BLACK,false)){
+                event.setCanceled(true);
+                if(!(item.getItem() instanceof IEMCGodWeaponLevel)){
+                    event.getItem().remove();
+                }
+                return;
+            }
+        }
         if (item.getItem() instanceof ICostEMCItem) {
             rate = ((ICostEMCItem) item.getItem()).getEMCCostRate();
         }

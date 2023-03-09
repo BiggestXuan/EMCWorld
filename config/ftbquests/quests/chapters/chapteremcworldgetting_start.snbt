@@ -100,6 +100,23 @@
 					tags: ["easy"]
 					auto: "no_toast"
 				}
+				{
+					id: "723EE2898D90B138"
+					type: "item"
+					item: {
+						id: "explorerscompass:explorerscompass"
+						Count: 1b
+						tag: {
+							FoundX: -1008
+							DisplayCoordinates: 1b
+							StructureKey: "castle_dungeons:castle"
+							State: 2
+							Samples: 0
+							SearchRadius: 0
+							FoundZ: -336
+						}
+					}
+				}
 			]
 		}
 		{
@@ -260,6 +277,16 @@
 							Damage: 0
 						}
 					}
+				}
+				{
+					id: "4F6B06193021AD1D"
+					type: "item"
+					item: "projecte:white_alchemical_bag"
+				}
+				{
+					id: "1A31BF548B1C60A8"
+					type: "item"
+					item: "projecte:black_alchemical_bag"
 				}
 			]
 		}

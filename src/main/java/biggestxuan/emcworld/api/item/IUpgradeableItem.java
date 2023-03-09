@@ -31,7 +31,7 @@ public interface IUpgradeableItem {
         int l = getLevel(stack);
         int weight = 10;
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.42f * weight);
+            weight = (int) (1.344f * weight);
         }
         return weight;
     }

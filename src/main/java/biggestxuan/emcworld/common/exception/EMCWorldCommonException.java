@@ -6,7 +6,7 @@ package biggestxuan.emcworld.common.exception;
  *  2022/10/21
  */
 
-public class EMCWorldCommonException extends Exception{
+public class EMCWorldCommonException extends RuntimeException{
     public EMCWorldCommonException(){
         super("EMCWorld has been cause a exception! Please read console to get more information.");
     }

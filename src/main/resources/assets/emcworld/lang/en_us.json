@@ -352,6 +352,8 @@
   "item.emcworld.illager_gem": "Illager Gem",
   "item.emcworld.emc_healing_bag": "EMC Medkit",
   "item.emcworld.scroll_bx": "Biggest Xuan Scroll",
+  "item.emcworld.whitelist_bag": "Whitelist Bag",
+  "item.emcworld.blacklist_bag": "Blacklist Bag",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -670,6 +672,27 @@
   "message.shield.off": "Last Shield has been turn off.",
   "message.shield.deny": "You don't have enough EMC to turn on Last Shield",
   "message.hurt.pet": "§4Your pet: %d§4, because you don't have %d §4EMC, it dies directly",
+  "message.pickmode.setting": "§9Your pick mode have been set: ",
+  "message.pickmode.all": "Pick all items",
+  "message.pickmode.whitelist": "Only pick whitelist items",
+  "message.pickmode.blacklist": "Destroyed blacklist items",
+  "message.dim.nether_deny": "§4You have not use nether key, you will die in %d seconds!",
+  "message.dim.nether_kill": "§4You have not use nether key, you will kill by EMC!",
+  "message.sponsor.change_deny": "§4This command only used by EMCWorld's sponsors!",
+  "message.sponsor.change_offline": "§4Sponsors change prefix only in online server!",
+  "message.sponsor.change_success": "§2Your prefix has been set: %d",
+  "message.sponsor.sponsor": "Sponsor",
+  "message.sponsor.senior_sponsor": "Senior Sponsor",
+  "message.sponsor.top_sponsor": "Top Sponsor",
+  "message.sponsor.mascot": "Mascot",
+  "message.sponsor.dev": "Dev",
+  "message.sponsor.only": "Exclusive",
+  "message.sponsor.none": "None",
+  "message.tp.deny": "§4You should use waystone to teleport!",
+  "message.birthday.a1": "§2---Happy Birthday---",
+  "message.birthday.a2": "· §9Today is your birthday, thank you very much for logging into EMCWorld!",
+  "message.birthday.a3": "· §9Thank you for your support of EMCWorld!",
+  "message.birthday.a4": "· §9I wish you a happy birthday and at the same time hope that you will be more and more comfortable in all aspects!",
 
   "gui.emcworld.update_core": "进阶升级核心架构",
   "gui.emcworld.gemstone_core": "宝石核心",
@@ -700,6 +723,7 @@
   "gui.admin.button_title": "Admin Panel",
   "gui.prefix.title": "Reforge Core",
   "gui.prefix.button": "Reforge",
+  "gui.prefix.button_all": "All Infuser",
   "gui.waystone.emc": "Teleport will cost %d EMC",
 
   "hud.emcworld.raid_info": "袭击信息",
@@ -727,6 +751,7 @@
   "key.emcworld.arcana": "显示魔力条",
   "key.emcworld.last_shield": "Switch Last Shield Mode",
   "key.emcworld.range_attack": "Switch Range Attack Mode",
+  "key.emcworld.pick_mode": "Switch Pick Mode",
 
   "iris.shaders.disabled": "光影已禁用",
 
@@ -737,6 +762,10 @@
   "screen.pcl.line3": "但是经过作者多次测试，实际上并不是这样。",
   "screen.pcl.line4": "这就意味着PCL导出的日志压缩包无效，如果你需要反馈问题，请提交latest.log文件到作者团队。",
   "screen.pcl.line5": "只要你使用PCL启动器，这个窗口会在你每次启动游戏时弹出。",
+  "screen.emc.title": "EMC Cost Confirm",
+  "screen.emc.desc": "It costs you %d EMC to perform this operation",
+  "screen.emc.confirm": "Confirm",
+  "screen.emc.cancel": "Cancel",
 
   "crystal.property.astralsorcery.constellation.emc.name": "聚焦：质能座",
 
@@ -865,6 +894,8 @@
   "tooltip.emcworld.heal_boost_lost": "§9- %d §9Heal Boost",
   "tooltip.emcworld.bx_scroll": "§2强化一定成功，但有 %d §2概率直接报废升级物品",
   "tooltip.emcworld.gloves_dexterity": "",
+  "tooltip.emcworld.alch_bag": "§2Use EMCWorld key control to modify pick mode",
+  "tooltip.emcworld.find_star": "§2You will get some star knowledge when using",
 
   "attack_range_none": "Off",
   "attack_range_all": "All",

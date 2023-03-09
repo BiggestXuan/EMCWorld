@@ -28,12 +28,16 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.DifficultyData;
 import biggestxuan.emcworld.common.items.Curios.EMCShieldSupply;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import dev.latvian.mods.projectex.Matter;
 import divinerpg.capability.Arcana;
 import divinerpg.capability.ArcanaCapability;
+import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
+import hellfirepvp.astralsorcery.common.data.research.ResearchHelper;
+import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
 import mekanism.common.registries.MekanismDamageSource;
@@ -45,7 +49,6 @@ import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -57,16 +60,17 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import vazkii.botania.common.entity.EntityDoppleganger;
 import vazkii.patchouli.common.item.PatchouliItems;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-
-import static biggestxuan.emcworld.common.utils.RaidUtils.getRaidAllPlayers;
 
 @Mod.EventBusSubscriber(
         modid = EMCWorld.MODID,
@@ -147,7 +151,7 @@ public class PlayerTickEvent {
                 }
             }
         }
-        util.setSHDifficulty(DifficultyHelper.getPlayerDifficulty(player));
+        util.setSHDifficulty(DifficultyHelper.getLivingDifficulty(player));
         float extraSpeed = Math.min(util.getSpeed(),getPlayerMaxSpeed(player));
         if(util.getHealTick() > 0){
             util.setHealTick(util.getHealTick()-1);
@@ -156,6 +160,32 @@ public class PlayerTickEvent {
             }
         }else if(util.getHealTick() == 0){
             util.setHealPreTick(0);
+        }
+        if(util.getNetherTick() < 1200 && preventPlayerGoNether(player)){
+            util.setNetherTick(util.getNetherTick()+1);
+            if(player.level.getDayTime() % 20 == 0){
+                Message.sendMessage(player,EMCWorld.tc("message.dim.nether_deny",(1200 - util.getNetherTick()) / 20));
+            }
+        }
+        if(util.getNetherTick() >= 1200 && preventPlayerGoNether(player)){
+            if(!player.isDeadOrDying()){
+                Message.sendMessage(player,EMCWorld.tc("message.dim.nether_kill"));
+            }
+            player.hurt(EWDamageSource.REALLY,player.getMaxHealth());
+        }
+        PlayerProgress progress = ResearchHelper.getProgress(player, LogicalSide.SERVER);
+        if(progress.isValid() && progress.isAttuned()){
+            ResearchManager.setExp(player,0);
+            try{
+                Class<ResearchManager> cc = (Class<ResearchManager>) Class.forName("hellfirepvp.astralsorcery.common.data.research.ResearchManager");
+                Constructor<ResearchManager> c2 = cc.getConstructor();
+                ResearchManager instance = c2.newInstance();
+                Method privateMethod = cc.getDeclaredMethod("removeAllAllocatedPerks",PlayerProgress.class,PlayerEntity.class);
+                privateMethod.setAccessible(true);
+                privateMethod.invoke(instance,progress,player);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
         ModifiableAttributeInstance speed_instance = player.getAttribute(Attributes.MOVEMENT_SPEED);
         if(speed_instance != null){
@@ -257,7 +287,7 @@ public class PlayerTickEvent {
                 }else if(raid.isVictory()){
                     util.setState(2);
                     if(!util.hasBeenDisplayDamage()){
-                        List<? extends RaidInfo> players = getRaidAllPlayers(raid);
+                        List<? extends RaidInfo> players = RaidUtils.getRaidAllPlayers(raid);
                         int count = players.size();
                         float allDamage = 0f;
                         for(RaidInfo r : players){
@@ -468,6 +498,9 @@ public class PlayerTickEvent {
         }
         return size;
     }
+    private static boolean preventPlayerGoNether(PlayerEntity player){
+        return player.level.dimension().equals(World.NETHER) && !ConfigManager.FREE_MODE.get() && !GameStageManager.hasStage(player,"nether");
+    }
 
     public static float getPlayerMaxSpeed(PlayerEntity player){
         float max = 0f;
@@ -479,7 +512,6 @@ public class PlayerTickEvent {
         }
         return max;
     }
-
     enum MAP{
         ONE(Matter.BASIC,"one"),
         TWO(Matter.DARK, "two"),
