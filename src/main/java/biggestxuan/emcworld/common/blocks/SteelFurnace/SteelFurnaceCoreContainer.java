@@ -6,7 +6,7 @@ package biggestxuan.emcworld.common.blocks.SteelFurnace;
  *  2022/12/06
  */
 
-import biggestxuan.emcworld.api.block.BaseContainer;
+import biggestxuan.emcworld.api.block.EMCWorldBaseContainer;
 import biggestxuan.emcworld.common.registry.EWContainerTypes;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Slot;
@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.IntArray;
 
-public class SteelFurnaceCoreContainer extends BaseContainer {
+public class SteelFurnaceCoreContainer extends EMCWorldBaseContainer {
     private final IIntArray data;
     public SteelFurnaceCoreContainer(int pContainerId, PlayerInventory inv, PacketBuffer extraData) {
         this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()),new IntArray(3));

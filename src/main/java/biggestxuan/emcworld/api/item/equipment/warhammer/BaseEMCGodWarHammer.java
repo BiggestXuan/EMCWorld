@@ -14,7 +14,8 @@ import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import net.minecraft.client.util.ITooltipFlag;
@@ -30,7 +31,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel,IUpgradeableMaterial {
+public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, IGemInlaidItem, ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel,IUpgradeableMaterial {
     public BaseEMCGodWarHammer(){
         super(EMCWorldAPI.getInstance().getWarHammerTier("god"));
     }
@@ -49,7 +50,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     protected double getPrefixCommonRate(ItemStack stack) {
-        return super.getPrefixCommonRate(stack) * 1.15;
+        return super.getPrefixCommonRate(stack) * 1.025;
     }
 
     @Override
@@ -72,6 +73,20 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
         }
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.07;
+                break;
+            case 2:
+                b *= 0.9;
+                break;
+            case 3:
+                b *= 0.98;
+                break;
+            case 4:
+                b *= 1.02;
+                break;
+        }
         return (float) b;
     }
 
@@ -81,6 +96,20 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b += Math.log(costEMC) / 100 * 1.02;
+        }
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.03;
+                break;
+            case 2:
+                b *= 0.9;
+                break;
+            case 3:
+                b *= 0.98;
+                break;
+            case 4:
+                b *= 1.005;
+                break;
         }
         return (float) b;
     }
@@ -92,12 +121,41 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
         if(costEMC >= 1){
             b += Math.log(costEMC) / 100 * 1.03;
         }
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.03;
+                break;
+            case 2:
+                b *= 0.9;
+                break;
+            case 3:
+                b *= 0.98;
+                break;
+            case 4:
+                b *= 1.01;
+                break;
+        }
         return (float) b;
     }
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return getAttackCostRate(stack) / getPrefixCommonRate(stack) / getBuffer(stack);
+        double b = getAttackCostRate(stack);
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.25;
+                break;
+            case 2:
+                b *= 0.68;
+                break;
+            case 3:
+                b *= 1.04;
+                break;
+            case 4:
+                b *= 1.16;
+                break;
+        }
+        return b / getPrefixCommonRate(stack) / getBuffer(stack);
     }
 
     @Override
@@ -117,7 +175,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public int getMaxLevel() {
-        return BaseEMCGodWeapon.getWeaponMaxLevel();
+        return BaseEMCGodSword.getWeaponMaxLevel();
     }
 
     @Override
@@ -126,6 +184,20 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
+        }
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.1;
+                break;
+            case 2:
+                b *= 0.7;
+                break;
+            case 3:
+                b *= 0.8;
+                break;
+            case 4:
+                b *= 0.9;
+                break;
         }
         return (float) b;
     }

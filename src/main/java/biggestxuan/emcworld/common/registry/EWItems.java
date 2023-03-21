@@ -76,7 +76,8 @@ public class EWItems {
     public static final RegistryObject<Item> LUCKY_GEM_BLUE = ITEMS.register("lucky_gem_blue",() -> new LuckyItem(1.25f,1.0f));
     public static final RegistryObject<Item> LUCKY_GEM_RED = ITEMS.register("lucky_gem_red",() -> new LuckyItem(1.5f,1.5f));
     public static final RegistryObject<Item> LUCKY_GEM_PURPLE = ITEMS.register("lucky_gem_purple",() -> new LuckyItem(1.75f,2.0f));
-    public static final RegistryObject<Item> LUCKY_GEM_GOLD = ITEMS.register("lucky_gem_gold",() -> new LuckyItem(2.1f,2.75f));
+    public static final RegistryObject<Item> LUCKY_GEM_GOLD = ITEMS.register("lucky_gem_gold",() -> new LuckyItem(2.1f,2.5f));
+    public static final RegistryObject<Item> LUCKY_GEM_EMERALD = ITEMS.register("lucky_gem_emerald",() -> new LuckyItem(3f,3f));
     public static final RegistryObject<Item> MOONCAKE = ITEMS.register("mooncake", MoonCake::new);
     public static final RegistryObject<Item> TANGYUAN = ITEMS.register("tangyuan", TangYuan::new);
     public static final RegistryObject<Item> YEARCAKE = ITEMS.register("year_cake", YearCake::new);
@@ -179,6 +180,7 @@ public class EWItems {
     public static final RegistryObject<Item> NOPOWER_STAFF = ITEMS.register("nopower_staff", () -> new ProfessionalItem(3,"profession.emcworld.wizard"));
     public static final RegistryObject<Item> ILLAGER_GEM = ITEMS.register("illager_gem", EWItem::new);
     public static final RegistryObject<Item> EMC_HEALING_BAG = ITEMS.register("emc_healing_bag",EMCHealingItem::new);
+    public static final RegistryObject<Item> EMC_CHARGE_GEM = ITEMS.register("emc_charge_gem",EMCChargeItem::new);
 
     public static final RegistryObject<Item> FIRE_RED_HELMET = ITEMS.register("fire_red_helmet",()->new fireRedArmor(1));
     public static final RegistryObject<Item> FIRE_RED_CHESTPLATE = ITEMS.register("fire_red_chestplate",()->new fireRedArmor(2));
@@ -481,6 +483,7 @@ public class EWItems {
     public static final RegistryObject<Item> INDIUM_ORE = registryBlock("indium_ore",EWBlocks.INDIUM_ORE);
     public static final RegistryObject<Item> MAGNESIUM_ORE = registryBlock("magnesium_ore",EWBlocks.MAGNESIUM_ORE);
     public static final RegistryObject<Item> TITANIUM_ORE = registryBlock("titanium_ore",EWBlocks.TITANIUM_ORE);
+    public static final RegistryObject<Item> TUNGSTEN_ORE = registryBlock("tungsten_ore",EWBlocks.TUNGSTEN_ORE);
 
     public static final RegistryObject<Item> BASE_EMC_STORED_TOTEM = ITEMS.register("base_emc_stored_totem",()-> new StoredTotem(500000));
     public static final RegistryObject<Item> ADVANCED_EMC_STORED_TOTEM = ITEMS.register("advanced_emc_stored_totem",()-> new StoredTotem(10000000));

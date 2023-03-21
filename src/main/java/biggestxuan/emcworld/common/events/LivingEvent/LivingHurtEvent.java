@@ -33,7 +33,7 @@ public class LivingHurtEvent {
         LivingEntity entity = event.getEntityLiving();
         if(entity.level.isClientSide || event.getSource() instanceof EWDamageSource) return;
         float damage = event.getAmount();
-        if(entity.getMobType().equals(CreatureAttribute.UNDEAD) && event.getSource().equals(DamageSource.ON_FIRE) && isSky(entity) && entity.level.getDayTime() < 10000){
+        if(entity.getMobType().equals(CreatureAttribute.UNDEAD) && event.getSource().equals(DamageSource.ON_FIRE) && isSky(entity) && entity.level.dayTime() < 10000){
             damage += entity.getMaxHealth() * 0.05f;
         }
         if(entity instanceof TameableEntity){

@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger;
  */
 
 import biggestxuan.emcworld.api.item.equipment.dagger.BaseEMCGodDagger;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ItemStack;
 
 public class NightLight extends BaseEMCGodDagger {
@@ -22,11 +23,12 @@ public class NightLight extends BaseEMCGodDagger {
 
     @Override
     protected long EMCModify(ItemStack stack) {
-        return Math.round(Math.pow(1.7,getLevel(stack)));
+        return Math.round(Math.pow(1.4,getLevel(stack)));
     }
 
     @Override
     protected float AddonDamage(ItemStack stack) {
-        return getLevel(stack) == 0 ? 0 : (float) (Math.pow(1.14,getLevel(stack)) * 6);
+        float base = getLevel(stack) == 0 ? 0 : (float) (Math.pow(1.14,Math.min(22,getLevel(stack))) * 6);
+        return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack,base) : base;
     }
 }

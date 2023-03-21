@@ -6,7 +6,6 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
  *  2022/09/26
  */
 
-import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;

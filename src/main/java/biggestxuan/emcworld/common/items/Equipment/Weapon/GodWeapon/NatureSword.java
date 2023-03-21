@@ -6,10 +6,10 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon;
  *  2022/09/28
  */
 
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import net.minecraft.item.ItemStack;
 
-public class NatureSword extends BaseEMCGodWeapon {
+public class NatureSword extends BaseEMCGodSword {
     public NatureSword() {
         super(6.25f,0x2a8000);
     }
@@ -45,7 +45,7 @@ public class NatureSword extends BaseEMCGodWeapon {
     public long getBaseModifySecond(ItemStack stack) {
         int level = this.getLevel(stack);
         if(level <= 5) return 0;
-        return Math.round(Math.pow(1.65,level-5)*8);
+        return Math.round(Math.pow(1.2,level-5)*8);
     }
 
     @Override

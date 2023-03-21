@@ -9,6 +9,7 @@ import mods.emcworld.CrTFoodValue;
 import mods.emcworld.CrTRequirement;
 import mods.emcworld.CrTWeightItem;
 import mods.emcworld.EWItem;
+import mods.emcworld.EMCHelper;
 
 public function emcworldRecipe() as void{
     var al = <item:mythicbotany:alfheim_rune>;
@@ -52,6 +53,8 @@ public function emcworldRecipe() as void{
     var eus = <item:extendedcrafting:ultimate_singularity>;
     var ieg = <item:emcworld:infinity_emc_gem>;
     var mt = <item:mekanism:meka_tool>;
+    var mr = <item:astralsorcery:marble_runed>;
+    var st = <item:astralsorcery:starmetal>;
     var pfm = <item:emcworld:fading_matter>;
     var bx = <item:emcworld:biggest_xuan_ingot>;
     var hs = <item:emcworld:hard_steel>;
@@ -268,7 +271,12 @@ public function emcworldRecipe() as void{
         <item:gobber2:gobber2_helmet>,
         <item:gobber2:gobber2_chestplate>,
         <item:gobber2:gobber2_leggings>,
-        <item:gobber2:gobber2_boots>
+        <item:gobber2:gobber2_boots>,
+        <item:gobber2:gobber2_sword>,
+        <item:gobber2:gobber2_axe>,
+        <item:gobber2:gobber2_pickaxe>,
+        <item:gobber2:gobber2_shovel>,
+        <item:gobber2:gobber2_hoe>
     ];
     var ne_armor as IItemStack[]=[
         <item:emcworld:fire_red_helmet>,
@@ -624,6 +632,7 @@ public function emcworldRecipe() as void{
     setEMCStage(<item:twilightforest:carminite>,8192,6);
     setEMCStage(<item:emcworld:unreal_metal>,(8192*2.5) as int,6);
     addNuggetAndIngotRecipe(<item:cataclysm:ignitium_ingot>,<item:cataclysm:ignitium_block>);
+    gemTrade();
     modifyShapedRecipe([
         [<item:minecraft:lapis_lazuli>,<item:mekanism:alloy_reinforced>,<item:minecraft:lapis_lazuli>],
         [<item:minecraft:gold_ingot>,<item:minecraft:diamond>,<item:minecraft:gold_ingot>],
@@ -661,9 +670,6 @@ public function emcworldRecipe() as void{
         [a,em,a]
     ],<item:emcworld:profession_core>);
     setEMCStage(emcc,112000000,114514);
-    addCraftShapelessRecipe([
-        <item:minecraft:gold_nugget>
-    ],<item:pouchofunknown:pouch>);
     removeCompressionRecipe(unqd);
     for i in 0 .. amo.length{
         extendedCompressionRecipe(sing[1][i],sing[0][i],amo[i],i as int);
@@ -693,13 +699,20 @@ public function emcworldRecipe() as void{
         for i in 0 .. 4{
             combiningRecipe(red_armor[i+4].withArmorLevelMax(),<item:emcworld:dragon_steel>,red_armor[i]);
         }
+        addCraftShapedRecipeNoName([
+            [lg[3],lg[3],lg[3]],
+            [lg[3],<item:emcworld:illager_shard>,lg[3]],
+            [lg[3],lg[3],lg[3]]
+        ],<item:emcworld:lucky_gem_emerald>*8);
         combiningRecipe(<item:projecte:transmutation_table>,<item:emcworld:magenta_matter>,<item:projecte:transmutation_tablet>);
         piglinTrade(<item:emcworld:advanced_emc_gem>,[
-            new CrTWeightItem(red_armor[4],1,1,1),
-            new CrTWeightItem(red_armor[5],1,1,1),
-            new CrTWeightItem(red_armor[6],1,1,1),
-            new CrTWeightItem(red_armor[7],1,1,1),
-            new CrTWeightItem(<item:emcworld:biggest_emc_gem>,1,16,6)
+            new CrTWeightItem(red_armor[4],1,1,3),
+            new CrTWeightItem(red_armor[5],1,1,3),
+            new CrTWeightItem(red_armor[6],1,1,3),
+            new CrTWeightItem(red_armor[7],1,1,3),
+            new CrTWeightItem(<item:mekanism:pellet_polonium>,1,3,1),
+            new CrTWeightItem(<item:mekanism:pellet_plutonium>,1,3,1),
+            new CrTWeightItem(<item:emcworld:biggest_emc_gem>,1,16,18)
         ] as CrTWeightItem[]);
         addCraftShapelessRecipe([<item:emcworld:biggest_emc_gem>],<item:emcworld:big_emc_gem>*32);
         extendedCraftingShapelessRecipe([
@@ -852,13 +865,17 @@ public function emcworldRecipe() as void{
         var c as ItemStack = new Getter().getCollector()[i];
         var b as ItemStack = abag[i];
         addCraftShapelessRecipe([
-            <item:pouchofunknown:pouch>,c
+            abag[11],c
         ],b.asIItemStack());
     }
     removeCraftRecipe([abag[13]]);
+    removeCraftRecipe([abag[11]]);
     addCraftShapelessRecipe([
         <tag:items:forge:dyes/white>,<item:pouchofunknown:pouch>
     ],abag[13]);
+    addCraftShapelessRecipe([
+        <tag:items:forge:nuggets/gold>
+    ],abag[11]);
     addCraftShapelessRecipe([
         <tag:items:forge:dyes/black>,<item:pouchofunknown:pouch>
     ],<item:projecte:black_alchemical_bag>);
@@ -908,7 +925,7 @@ public function emcworldRecipe() as void{
     );
     addCraftShapelessRecipe([
         <item:minecraft:book>,<item:emcworld:small_emc_gem>
-    ],<item:patchouli:guide_book>.withTag({"patchouli:book": "emcworld:guide" as string}));
+    ],getBook());
     addCraftShapelessRecipe([
         <tag:items:forge:stone>,<item:emcworld:small_emc_gem>
     ],<item:emcworld:emc_check>);
@@ -1044,6 +1061,9 @@ public function emcworldRecipe() as void{
         [sg,<item:emcworld:hardcore_stone>,sg],
         [sg,sg,sg]
     ],<item:emcworld:prefix_core>);
+    treeRitualRecipe([
+        <item:emcworld:chlorophyte_ingot>,<item:emcworld:hardcore_stone>
+    ],a,<item:emcworld:vis_conversion_core>);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
         [con[0][0],<item:botania:hourglass>,con[0][0]],
@@ -1142,6 +1162,11 @@ public function emcworldRecipe() as void{
         torchRecipe(<item:emcworld:orange_matter>,<item:emcworld:dragon_steel>,ub);
         torchRecipe1(15,25);
     }
+    EMCHelper.setItemEMC(<item:emcworld:dust_aquamarine>,256);
+    setEMCStage(<item:bloodmagic:ingot_hellforged>,1024,4);
+    EMCHelper.setItemEMC(<item:mekanism:dust_refined_obsidian>,4112);
+    setEMCStage(<item:mekanism:ingot_refined_obsidian>,4112+756,5);
+    crushingRecipe(<item:atlantis:aquamarine_gem>,<item:emcworld:dust_aquamarine>,1);
     addEMCStage(<item:minecraft:emerald>,9);
     setEMCStage(<item:emcworld:illager_gem>,16384,9);
     addCraftShapelessRecipe([
@@ -1172,7 +1197,15 @@ public function emcworldRecipe() as void{
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
     infuserRecipe([ali,alv,a,a,a],vaai*32,10000,10000000,3);
+    crushingRecipe(<item:minecraft:diamond>,<item:minecraft:coal>*64,1);
     infuserRecipe([eoi,sn[5],ci,di,esi],rai,3000,800000,1);
+    astralAltarRecipe([
+        [mr,a,a,a,mr],
+        [mr,st,st,st,mr],
+        [mr,st,st,st,mr],
+        [mr,st,st,st,mr],
+        [mr,mr,mr,mr,mr]
+    ],<item:emcworld:star_pedestal>,4);
     modifyShapedRecipe([
         [beg,beg,beg],
         [beg,<item:minecraft:ender_pearl>,beg],
@@ -1230,7 +1263,7 @@ public function emcworldRecipe() as void{
     metallurgicInfusingRecipe(<item:mekanism:ingot_steel>*2,<infuse_type:emcworld:ice>*1000,<item:emcworld:stainless_steel>);
     <recipetype:mekanism:painting>.addRecipe("bx",<item:emcworld:update_base_purple>*camt,<pigment:emcworld:bx>*128,<item:emcworld:update_base_bx_purple>*camt);
     for i in game.items{
-        if(!EWItem.cantTrans(i)){
+        if(EWItem.cantTrans(i)){
             addEMCStage(i,10);
         }
     }
@@ -1658,6 +1691,37 @@ public function p(a as IItemStack,b as IItemStack,c as IItemStack,d as IItemStac
 public function kt(a as IItemStack,b as IItemStack,c as IItemStack[][]) as void{
     for i in c{
         p(a,b,i[0],i[1]);
+    }
+}
+
+public function gemTrade() as void{
+    var matters = [
+        <item:emcworld:violet_matter>,
+        <item:emcworld:blue_matter>,
+        <item:emcworld:cyan_matter>,
+        <item:emcworld:green_matter>,
+        <item:emcworld:lime_matter>
+    ] as IItemStack[];
+    var rate = [1,2,16,64,256] as int[];
+    var core = <item:emcworld:gemstone_core>;
+    var gems = [
+        <item:emcworld:blood_gemstone>,
+        <item:emcworld:nature_gemstone>,
+        <item:emcworld:lake_gemstone>,
+        <item:emcworld:abyss_gemstone>
+    ] as IItemStack[];
+    for i in 0 .. matters.length{
+        var outputs = [
+            new CrTWeightItem(core,1,1,1*rate[i]),
+            new CrTWeightItem(gems[0],1,1,3*rate[i]),
+            new CrTWeightItem(gems[1],1,1,3*rate[i]),
+            new CrTWeightItem(gems[2],1,1,3*rate[i]),
+            new CrTWeightItem(gems[3],1,1,3*rate[i]),
+            new CrTWeightItem(<item:emcworld:scroll_green>,1,4,1000),
+            new CrTWeightItem(<item:emcworld:scroll_blue>,1,2,750),
+            new CrTWeightItem(<item:emcworld:scroll_purple>,0,1,500)
+        ] as CrTWeightItem[];
+        piglinTrade(matters[i],outputs);
     }
 }
 

@@ -72,7 +72,7 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return 1000000000000L;
+        return 1000000000000000L;
     }
 
     @Override

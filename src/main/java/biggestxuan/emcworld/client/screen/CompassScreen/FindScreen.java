@@ -11,7 +11,7 @@ import biggestxuan.emcworld.client.screen.BaseEMCConfirmScreen;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
-import biggestxuan.emcworld.common.network.CostEMCPacket;
+import biggestxuan.emcworld.common.network.toServer.CostEMCPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import com.chaosthedude.explorerscompass.gui.StructureSearchList;
@@ -36,7 +36,7 @@ public class FindScreen extends BaseEMCConfirmScreen {
         ClientPlayerEntity player = Minecraft.getInstance().player;
         for(DifficultySetting setting : DifficultySetting.values()){
             if(GameStageManager.hasStage(player,setting.getGameStage())){
-                return (long) (setting.getBlockBase() * 255L * ConfigManager.DIFFICULTY.get());
+                return (long) (setting.getCommonBase() * 255L * ConfigManager.DIFFICULTY.get());
             }
         }
         return 0L;

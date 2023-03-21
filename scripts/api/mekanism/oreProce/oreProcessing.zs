@@ -96,10 +96,10 @@ public function addNormalOreProceRecipe(i_117525_0 as ItemStack,dirty_slurry as 
     purifyingRecipe(shard.asIItemStack(),clump.asIItemStack(),1);
     crushingRecipe(clump.asIItemStack(),dirty_dust.asIItemStack(),1);
     enrichingRecipe(dirty_dust.asIItemStack(),dust.asIItemStack(),1);
-    removeFurnaceRecipe([ingot]);
+    //removeFurnaceRecipe([ingot]);
     furnaceRecipe(getRecipeName(i_117525_0)+"_processing_furnace",ingot.asIItemStack(),dust.asIItemStack(), 0.2, 200);
     furnaceRecipe(getRecipeName(i_117525_0)+"_inst_furnace",ingot.asIItemStack(),i_117525_0.asIItemStack(),0.2, 200);
-    blastRecipe(ingot.asIItemStack(),i_117525_0.asIItemStack());
+    //blastRecipe(ingot.asIItemStack(),i_117525_0.asIItemStack());
     blastRecipe(ingot.asIItemStack(),dust.asIItemStack());
     injectingRecipe(i_117525_0.asIItemStack(),shard.asIItemStack(),4);
     purifyingRecipe(i_117525_0.asIItemStack(),clump.asIItemStack(),3);

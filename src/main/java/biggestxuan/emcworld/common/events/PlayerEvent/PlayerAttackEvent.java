@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
+import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.api.item.equipment.dagger.BaseEMCGodDagger;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
@@ -52,9 +53,9 @@ public class PlayerAttackEvent {
         if(event.getEntityLiving().getCommandSenderWorld().isClientSide) return;
         DamageSource source = event.getSource();
         LivingEntity livingEntity = event.getEntityLiving();
+        float damage = event.getAmount();
         if(source.getDirectEntity() instanceof PlayerEntity && !source.equals(EWDamageSource.REALLY)){
             PlayerEntity player = (PlayerEntity) source.getDirectEntity();
-            float damage = event.getAmount();
             IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
             IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
             ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
@@ -141,7 +142,7 @@ public class PlayerAttackEvent {
                     if(canRangeAttack.size() != 0){
                         for(LivingEntity entity:canRangeAttack){
                             if(costEMC > EMCHelper.getPlayerEMC(player)) break;
-                            entity.hurt(new EWDamageSource.ReallyDamage(player),damage);
+                            entity.hurt(new EWDamageSource(player).REALLY_PLAYER,damage);
                             if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
                                 continue;
                             }
@@ -152,7 +153,6 @@ public class PlayerAttackEvent {
             }
             costEMC =(long) (costEMC * rate);
             CostPlayer(player,costEMC,event);
-            event.setAmount(damage);
         }
         if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
             return;
@@ -163,7 +163,6 @@ public class PlayerAttackEvent {
             if(owner == null) return;
             if(owner instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) owner;
-                float damage = event.getAmount();
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
                 CostPlayer(player,cost,event);
             }
@@ -173,11 +172,19 @@ public class PlayerAttackEvent {
             Entity entity = proEntity.getOwner();
             if(entity instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) entity;
-                float damage = event.getAmount();
+                if(player.getMainHandItem().getItem() instanceof IUpgradeBow){
+                    ItemStack stack = player.getMainHandItem();
+                    damage += ((IUpgradeBow) stack.getItem()).getAdditionDamage(stack);
+                }
+                if(player.getOffhandItem().getItem() instanceof IUpgradeBow && !(player.getMainHandItem().getItem() instanceof IUpgradeBow)){
+                    ItemStack stack = player.getOffhandItem();
+                    damage += ((IUpgradeBow) stack.getItem()).getAdditionDamage(stack);
+                }
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
                 CostPlayer(player,cost,event);
             }
         }
+        event.setAmount(damage);
     }
 
     private static void CostPlayer(PlayerEntity player,long emc,LivingHurtEvent event){

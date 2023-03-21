@@ -11,7 +11,7 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.event.PlayerAddMaxLevelEvent;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.api.recipe.IUpdateRecipe;
 import biggestxuan.emcworld.common.blocks.MultiBlock;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -24,9 +24,9 @@ import biggestxuan.emcworld.common.items.EMCGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
-import biggestxuan.emcworld.common.network.LeftClickPacket;
+import biggestxuan.emcworld.common.network.toServer.LeftClickPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
-import biggestxuan.emcworld.common.network.StaffAttackPacket;
+import biggestxuan.emcworld.common.network.toServer.StaffAttackPacket;
 import biggestxuan.emcworld.common.recipes.AdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.recipes.UpdateRecipe;
 import biggestxuan.emcworld.common.registry.*;
@@ -67,8 +67,8 @@ public class PlayerClickEvent {
     @SubscribeEvent
     public static void LeftClickItemEvent(PlayerInteractEvent.LeftClickEmpty event){
         ItemStack stack = event.getItemStack();
-        if(stack.getItem() instanceof BaseEMCGodWeapon){
-            BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) stack.getItem();
+        if(stack.getItem() instanceof BaseEMCGodSword){
+            BaseEMCGodSword weapon = (BaseEMCGodSword) stack.getItem();
             if(weapon.getLevel(stack) >= 12){
                 //PacketHandler.sendToServer(new LeftClickPacket());
             }
@@ -216,7 +216,7 @@ public class PlayerClickEvent {
                             if(entity instanceof PlayerEntity){
                                 continue;
                             }
-                            entity.hurt(new EWDamageSource.ReallyDamage(player),entity.getMaxHealth() * cap.getSkills()[33]/10000f);
+                            entity.hurt(new EWDamageSource(player).REALLY_PLAYER,entity.getMaxHealth() * cap.getSkills()[33]/10000f);
                         }
                     } else if(cap.getModify() == 2){
                         for(LivingEntity entity:world.getLoadedEntitiesOfClass(LivingEntity.class,MathUtils.expandAABB(player.position(),cap.getSkills()[32]/10000))){

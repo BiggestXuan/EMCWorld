@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer;
  */
 
 import biggestxuan.emcworld.api.item.equipment.warhammer.BaseEMCGodWarHammer;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ItemStack;
 
 public class SuperStar extends BaseEMCGodWarHammer {
@@ -17,22 +18,23 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     protected long modifyEMCSecond(ItemStack stack) {
-        return Math.round(Math.pow(1.7,getLevel(stack)-5)*8.5);
+        return Math.round(Math.pow(1.39,getLevel(stack)-5)*8.5);
     }
 
     @Override
     protected double criticalChance(ItemStack stack) {
-        return Math.pow(1.023,getLevel(stack)) - 0.9;
+        return Math.pow(1.021,getLevel(stack)) - 0.9;
     }
 
     @Override
     protected double criticalRate(ItemStack stack) {
-        return Math.pow(1.024,getLevel(stack));
+        return Math.pow(1.022,getLevel(stack));
     }
 
     @Override
     protected float damage(ItemStack stack) {
-        return (float) (Math.pow(1.16,getLevel(stack)) * 6.5);
+        float base = (float) (Math.pow(1.142,Math.min(22,getLevel(stack))) * 5);
+        return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack, base) : base;
     }
 
     @Override

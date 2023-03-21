@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.client.util.ITooltipFlag;
@@ -26,7 +27,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem, IStarItem,IHealBoostArmor {
+public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem, IStarItem,IHealBoostArmor, IGemInlaidItem {
     protected final int index;
     public BaseEMCGodArmorItem(IArmorMaterial p_i48534_1_, int p_i48534_2_) {
         super(p_i48534_1_, getType(p_i48534_2_));
@@ -49,7 +50,22 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
 
     @Override
     public double getHealBoostRate(ItemStack stack) {
-        return healBoostRate(stack) * getBuffer(stack);
+        double d = healBoostRate(stack);
+        switch (getGemType(stack)){
+            case 1:
+                d *= 0.85;
+                break;
+            case 2:
+                d *= 1.15;
+                break;
+            case 3:
+                d *= 1.025;
+                break;
+            case 4:
+                d *= 0.975;
+                break;
+        }
+        return d * getBuffer(stack);
     }
 
     @Override
@@ -69,7 +85,22 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
 
     @Override
     public long getTickCost(ItemStack stack) {
-        return (long) Math.pow(2,getLevel(stack));
+        double d = (long) Math.pow(2,getLevel(stack));
+        switch (getGemType(stack)){
+            case 1:
+                d *= 1.15;
+                break;
+            case 2:
+                d *= 0.75;
+                break;
+            case 3:
+                d *= 1.025;
+                break;
+            case 4:
+                d *= 1.075;
+                break;
+        }
+        return (long) d;
     }
 
     @Override
@@ -114,22 +145,82 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
 
     @Override
     public float extraHealth(ItemStack stack){
-        return (float) (health(stack) * getBuffer(stack));
+        double d = health(stack);
+        switch (getGemType(stack)){
+            case 1:
+                d *= 1.1;
+                break;
+            case 2:
+                d *= 0.95;
+                break;
+            case 3:
+                d *= 1.025;
+                break;
+            case 4:
+                d *= 1.03;
+                break;
+        }
+        return (float) (d * getBuffer(stack));
     }
 
     @Override
     public double hurtRate(ItemStack stack){
-        return hurt(stack) / getBuffer(stack);
+        double d = hurt(stack);
+        switch (getGemType(stack)){
+            case 1:
+                d *= 0.95;
+                break;
+            case 2:
+                d *= 1.025;
+                break;
+            case 3:
+                d *= 0.975;
+                break;
+            case 4:
+                d *= 0.985;
+                break;
+        }
+        return d / getBuffer(stack);
     }
 
     @Override
     public float maxShield(ItemStack stack) {
-        return (float) (shield(stack) * getBuffer(stack));
+        double d = shield(stack);
+        switch (getGemType(stack)){
+            case 1:
+                d *= 1.25;
+                break;
+            case 2:
+                d *= 0.65;
+                break;
+            case 3:
+                d *= 1.05;
+                break;
+            case 4:
+                d *= 1.125;
+                break;
+        }
+        return (float) (d * getBuffer(stack));
     }
 
     @Override
     public float shieldSpeed(ItemStack stack) {
-        return (float) (shield_speed(stack) * getBuffer(stack));
+        double d = shield_speed(stack);
+        switch (getGemType(stack)){
+            case 1:
+                d *= 1.125;
+                break;
+            case 2:
+                d *= 0.875;
+                break;
+            case 3:
+                d *= 0.95;
+                break;
+            case 4:
+                d *= 1.075;
+                break;
+        }
+        return (float) (d * getBuffer(stack));
     }
 
     public abstract float shield(ItemStack stack);

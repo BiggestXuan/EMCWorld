@@ -6,18 +6,19 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon;
  *  2022/09/28
  */
 
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ItemStack;
 
-public class IceSword extends BaseEMCGodWeapon {
+public class IceSword extends BaseEMCGodSword {
     public IceSword() {
         super(8f,0x244bb9);
     }
 
     @Override
     public float getBaseDamage(ItemStack stack) {
-        int level = this.getLevel(stack);
-        return (float) ((Math.pow(1.155f,level)*baseDamage)-baseDamage);
+        float base = (float) ((Math.pow(1.155f,Math.min(22,getLevel(stack)))*baseDamage)-baseDamage);
+        return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack, base) : base;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class IceSword extends BaseEMCGodWeapon {
     public long getBaseModifySecond(ItemStack stack) {
         int level = this.getLevel(stack);
         if(level <= 5) return 0;
-        return Math.round(Math.pow(1.7,level-5)*8);
+        return Math.round(Math.pow(1.3,level-5)*8);
     }
 
     @Override

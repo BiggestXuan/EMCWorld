@@ -14,7 +14,6 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.IntArray;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -51,7 +50,43 @@ public class AdvancedUpdateContainer extends Container {
     @Nonnull
     @Override
     public ItemStack quickMoveStack(@Nonnull PlayerEntity playerIn, int index) {
-        return ItemStack.EMPTY;
+        ItemStack s = ItemStack.EMPTY;
+        Slot slot = slots.get(index);
+        if(slot != null && slot.hasItem()){
+            ItemStack stack = slot.getItem();
+            s = stack.copy();
+            Slot slot1 = slots.get(0);
+            if (index == 0){
+                if (!moveItemStackTo(stack, 1, 37, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onQuickCraft(stack, s);
+            }
+            if(slot1 != null){
+                if(slot1.hasItem()){
+                    if(index < 27){
+                        if (!moveItemStackTo(stack, 28, 37, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (index < 37){
+                        if (!moveItemStackTo(stack, 1, 37, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                }else{
+                    if (!moveItemStackTo(stack, 0, 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            }
+            if (stack.isEmpty()) {
+                slot.set(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+            slot.onTake(playerIn,stack);
+        }
+        return s;
     }
 
     private int addSlotBox(IInventory inventory, int index, int y) {

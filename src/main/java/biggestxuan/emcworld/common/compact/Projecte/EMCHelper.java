@@ -35,12 +35,14 @@ public class EMCHelper {
     public static IKnowledgeProvider getPlayerIKP(PlayerEntity player){
         return ProjectEAPI.getTransmutationProxy().getKnowledgeProviderFor(player.getUUID());
     }
+
     public static void flushPlayer(PlayerEntity player){
         if(player instanceof ServerPlayerEntity){
             getPlayerIKP(player).sync((ServerPlayerEntity) player);
             getPlayerIKP(player).syncEmc((ServerPlayerEntity) player);
         }
     }
+
     @ZenCodeType.Method
     public static long getPlayerEMC(PlayerEntity player){
         BigInteger emc = getPlayerIKP(player).getEmc();
@@ -50,6 +52,7 @@ public class EMCHelper {
         }
         return emc.longValue()+ PlayerCurios.getPlayerAdditionEMC(player);
     }
+
     public static long getPlayerActEMC(PlayerEntity player){
         BigInteger emc = getPlayerIKP(player).getEmc();
         if(emc.longValue() >= EMCWorld.MAX_EMC){
@@ -58,12 +61,17 @@ public class EMCHelper {
         }
         return emc.longValue();
     }
+
     @ZenCodeType.Method
     public static void modifyPlayerEMC(PlayerEntity player,long emc,boolean showMessage){
         long modify = emc;
         if(player.hasEffect(EWEffects.EMC_PROTECT.get()) && modify < 0){
             modify *= 0.9d;
             modify = Math.round(modify);
+        }
+        if(player.hasEffect(EWEffects.EMC_BROKEN.get()) && modify < 0){
+            int level = player.getEffect(EWEffects.EMC_BROKEN.get()).getAmplifier() + 1;
+            modify *= level;
         }
         if(showMessage){
             if(modify < 0){
@@ -73,27 +81,31 @@ public class EMCHelper {
                 Message.addEMCMessage(player,modify);
             }
         }
-        if(emc<0){
-            MinecraftForge.EVENT_BUS.post(new PlayerCostEMCEvent(player,emc));
-            modify = Math.negateExact(PlayerCurios.costTotem(player,Math.negateExact(emc)));
+        if(modify<0){
+            MinecraftForge.EVENT_BUS.post(new PlayerCostEMCEvent(player,modify));
+            modify = Math.negateExact(PlayerCurios.costTotem(player,Math.negateExact(modify)));
         }
         long afterEMC = getPlayerActEMC(player)+modify;
         getPlayerIKP(player).setEmc(BigInteger.valueOf(Math.max(0,afterEMC)));
         flushPlayer(player);
     }
+
     @ZenCodeType.Method
     public static void clearPlayerEMC(PlayerEntity player){
         getPlayerIKP(player).setEmc(BigInteger.valueOf(0));
         flushPlayer(player);
     }
+
     @ZenCodeType.Method
     public static void setItemEMC(ItemStack item, long emc){
         CraftTweakerAPI.apply(new CustomEMCAction(NSSItem.createItem(item),emc));
     }
+
     @ZenCodeType.Method
     public static void setPlayerEMC(PlayerEntity player,long emc){
         getPlayerIKP(player).setEmc(BigInteger.valueOf(emc));
     }
+
     @ZenCodeType.Method
     public static void clearItemEMC(IItemStack item){
         setItemEMC(item.getInternal(),0);

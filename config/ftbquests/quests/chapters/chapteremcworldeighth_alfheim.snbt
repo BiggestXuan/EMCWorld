@@ -91,6 +91,7 @@
 			dependencies: [
 				"17D68A0A7B847998"
 				"3A9A7586DDD12C77"
+				"4EECF91FCB966FEE"
 			]
 			hide: true
 			size: 2.0d
@@ -115,6 +116,25 @@
 					tags: ["epic"]
 				}
 			]
+		}
+		{
+			title: "{quest.emcworld.diamondlattice}"
+			x: -0.5d
+			y: -6.0d
+			size: 1.5d
+			id: "4EECF91FCB966FEE"
+			tasks: [{
+				id: "2D7CB85945696DA2"
+				type: "item"
+				item: { id: "minecraft:name_tag", Count: 38b }
+			}]
+			rewards: [{
+				id: "6B30D8160C6ACA31"
+				type: "custom"
+				title: "{reward.emcworld.epic}"
+				icon: "emcworld:advanced_emc_gem"
+				tags: ["epic"]
+			}]
 		}
 	]
 }

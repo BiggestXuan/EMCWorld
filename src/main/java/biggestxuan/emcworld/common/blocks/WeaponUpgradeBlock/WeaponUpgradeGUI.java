@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.network.PacketHandler;
-import biggestxuan.emcworld.common.network.WeaponCoreButtonPacket;
+import biggestxuan.emcworld.common.network.toServer.WeaponCoreButtonPacket;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;

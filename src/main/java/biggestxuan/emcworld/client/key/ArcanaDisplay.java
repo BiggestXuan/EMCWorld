@@ -7,7 +7,7 @@ package biggestxuan.emcworld.client.key;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.network.ArcanaDisplayPacket;
+import biggestxuan.emcworld.common.network.toServer.ArcanaDisplayPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
@@ -16,7 +16,6 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class ArcanaDisplay {

@@ -32,7 +32,8 @@ public abstract class ItemTierMixin {
     @Inject(method = "getAttackDamageBonus",at = @At("RETURN"),cancellable = true)
     public void damage(CallbackInfoReturnable<Float> cir){
         if(ConfigManager.FREE_MODE.get()) return;
-        cir.setReturnValue(damage + damage * level * enchantmentValue / 30);
+        float base = level == 4 ? 2.25F : 1;
+        cir.setReturnValue(damage + damage * level * base * enchantmentValue / 30);
         cir.cancel();
     }
 }

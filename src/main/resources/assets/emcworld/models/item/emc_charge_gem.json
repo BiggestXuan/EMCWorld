@@ -1,0 +1,32 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "emcworld:item/emc_charge_gem_1"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "emcworld:level": 15
+      },
+      "model": "emcworld:item/emc_charge_gem_2"
+    },
+    {
+      "predicate": {
+        "emcworld:level": 35
+      },
+      "model": "emcworld:item/emc_charge_gem_3"
+    },
+    {
+      "predicate": {
+        "emcworld:level": 65
+      },
+      "model": "emcworld:item/emc_charge_gem_4"
+    },
+    {
+      "predicate": {
+        "emcworld:level": 85
+      },
+      "model": "emcworld:item/emc_charge_gem_5"
+    }
+  ]
+}

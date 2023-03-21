@@ -44,13 +44,13 @@ public class EMCShieldSupply extends EWItem implements IUpgradeableItem, IEMCShi
             case 3:
                 return 4500;
             case 4:
-                return 8500;
+                return 10000;
             case 5:
-                return 15000;
-            case 6:
                 return 25000;
-            case 7:
+            case 6:
                 return 40000;
+            case 7:
+                return 60000;
         }
         return EMCWorld.HOMO;
     }

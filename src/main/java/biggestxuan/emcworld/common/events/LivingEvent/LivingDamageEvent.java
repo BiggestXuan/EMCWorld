@@ -58,9 +58,8 @@ public class LivingDamageEvent {
                 damage = (float) Math.max(damage * (1 - level * 0.1),0);
             }
         }
-        if(source instanceof EWDamageSource.ReallyDamage){
-            EWDamageSource.ReallyDamage really = (EWDamageSource.ReallyDamage) source;
-            PlayerEntity player = really.getPlayer();
+        if(source instanceof EWDamageSource){
+            PlayerEntity player = EWDamageSource.REALLY.getPlayer();
             if(player != null){
                 addPlayerRaidDamage(player,damage,entity);
             }

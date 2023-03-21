@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EMCHealingItem extends EWItem implements IUpgradeableItem, IPrefixItem {
-    int healSpeed = 700;
+    final int healSpeed = 700;
 
     public EMCHealingItem() {
         super(new Properties().stacksTo(1).defaultDurability(8).tab(EWCreativeTabs.EW_EQUIPMENT_TAB).fireResistant());

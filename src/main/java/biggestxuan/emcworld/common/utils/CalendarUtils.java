@@ -67,6 +67,10 @@ public class CalendarUtils {
         return false;
     }
 
+    public int getHour(){
+        return calendar.get(Calendar.HOUR_OF_DAY);
+    }
+
     public NationalUtils isNationalDay(){
         return new NationalUtils(month == 10 && day == 1,year-1949);
     }
@@ -114,5 +118,20 @@ public class CalendarUtils {
         public boolean isNationalDay() {
             return isNationalDay;
         }
+    }
+
+    public String getNowTimeWelcome(){
+        String s;
+        int hour = getHour();
+        if(hour >= 6 && hour < 12){
+            s = "Good Morning";
+        }else if(hour >= 12 && hour < 18){
+            s = "Good Afternoon";
+        } else if(hour >= 18 && hour <= 23){
+            s = "Good Evening";
+        }else{
+            s = "Have A Good Dream";
+        }
+        return s;
     }
 }

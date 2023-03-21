@@ -6,10 +6,10 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon;
  *  2022/10/01
  */
 
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import net.minecraft.item.ItemStack;
 
-public class NullSword extends BaseEMCGodWeapon {
+public class NullSword extends BaseEMCGodSword {
     public NullSword() {
         super(5f,0x323531);
     }
@@ -37,7 +37,7 @@ public class NullSword extends BaseEMCGodWeapon {
     public float getBaseDamage(ItemStack stack) {
         int level = getLevel(stack);
         double d = (level*Math.PI/180);
-        return (float) ((Math.pow(1.2,level)-Math.tan(d))*baseDamage);
+        return (float) ((Math.pow(1.13,level)-Math.tan(d))*baseDamage);
     }
 
     @Override

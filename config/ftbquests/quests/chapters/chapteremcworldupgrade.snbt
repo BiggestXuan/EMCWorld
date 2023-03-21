@@ -106,6 +106,13 @@
 				type: "item"
 				item: "emcworld:scroll_blue"
 			}]
+			rewards: [{
+				id: "40FBB779F2CDCF29"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_blue"
+				count: 4
+			}]
 		}
 		{
 			x: 13.0d
@@ -139,7 +146,7 @@
 				id: "6DBBA0282BCA6ECB"
 				type: "item"
 				team_reward: true
-				item: "emcworld:scroll_blue"
+				item: "emcworld:scroll_purple"
 				count: 3
 			}]
 		}
@@ -173,6 +180,28 @@
 				type: "item"
 				item: "emcworld:weapon_upgrade_core"
 			}]
+			rewards: [
+				{
+					id: "296AECC1E1E76046"
+					type: "item"
+					item: "emcworld:scroll_green"
+					count: 4
+					random_bonus: 4
+				}
+				{
+					id: "58EBEC6B5A57BE39"
+					type: "item"
+					item: "emcworld:scroll_blue"
+					count: 2
+					random_bonus: 1
+				}
+				{
+					id: "64745BB50F208147"
+					type: "item"
+					team_reward: true
+					item: "emcworld:scroll_bx"
+				}
+			]
 		}
 		{
 			x: 3.0d
@@ -295,12 +324,18 @@
 					tags: ["hard"]
 					auto: "no_toast"
 				}
+				{
+					id: "7C611159759E70D7"
+					type: "item"
+					team_reward: true
+					item: "emcworld:scroll_bx"
+					count: 2
+				}
 			]
 		}
 		{
 			x: 0.5d
 			y: 4.5d
-			subtitle: "WIP"
 			dependencies: ["53CF388661F71ADF"]
 			id: "31C5C07F9F759B4C"
 			tasks: [{
@@ -312,7 +347,6 @@
 		{
 			x: 3.0d
 			y: 4.5d
-			subtitle: "WIP"
 			dependencies: ["53CF388661F71ADF"]
 			id: "4BF8F12846C81FFE"
 			tasks: [{
@@ -324,7 +358,6 @@
 		{
 			x: 5.5d
 			y: 4.5d
-			subtitle: "WIP"
 			dependencies: ["53CF388661F71ADF"]
 			id: "69984CC318151F71"
 			tasks: [{
@@ -336,7 +369,6 @@
 		{
 			x: 8.0d
 			y: 4.5d
-			subtitle: "WIP"
 			dependencies: ["53CF388661F71ADF"]
 			id: "049B481BC4952FEE"
 			tasks: [{
@@ -348,7 +380,6 @@
 		{
 			x: 10.5d
 			y: 4.5d
-			subtitle: "WIP"
 			dependencies: ["53CF388661F71ADF"]
 			id: "23CC3900ECC6CB62"
 			tasks: [{
@@ -397,6 +428,49 @@
 				item: "emcworld:scroll_tulye"
 				count: 2
 			}]
+		}
+		{
+			x: 0.5d
+			y: -5.5d
+			dependencies: ["64162D6185D1A516"]
+			hide: true
+			id: "11E8FB518EFC4614"
+			tasks: [{
+				id: "322E821574915A0C"
+				type: "item"
+				item: "emcworld:star_pedestal"
+			}]
+			rewards: [
+				{
+					id: "2CAA57188ADCD79B"
+					type: "item"
+					item: "astralsorcery:starmetal"
+					count: 4
+				}
+				{
+					id: "72EE011D209CEF8C"
+					type: "item"
+					item: {
+						id: "emcworld:prefix_scroll"
+						Count: 1b
+						tag: {
+							dirty: 1b
+							ragged: 16
+							normal: 3980
+							litter: 32
+							excellent: 39738
+							old: 93
+							ultimate: 75397
+							legend: 47853
+							weight: 35971
+							epic: 69080
+							total: 255539
+							myth: 3030
+							fine: 16320
+						}
+					}
+				}
+			]
 		}
 	]
 }

@@ -11,4 +11,6 @@ import net.minecraft.item.ItemStack;
 
 public interface IUpgradeBow extends IUpgradeableItem {
     float getAdditionDamage(ItemStack stack);
+
+    float lossBowTime(ItemStack stack);
 }

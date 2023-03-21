@@ -49,10 +49,9 @@ public abstract class BaseEMCConfirmScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks){
-        renderBg(matrixStack,mouseX,mouseX,partialTicks);
+        this.renderBackground(matrixStack);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         drawCenteredString(matrixStack, font, title, width / 2, 30, 16777215);
         drawCenteredString(matrixStack, font, EMCWorld.tc("screen.emc.desc", MathUtils.format(emc)), width / 2, 75, 16777215);
-        renderBackground(matrixStack);
     }
 }

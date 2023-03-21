@@ -7,6 +7,7 @@ package biggestxuan.emcworld.api.item;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ItemStack;
@@ -68,7 +69,7 @@ public interface IPrefixItem {
         }
         if(stack.getItem() instanceof IUpgradeableItem){
             IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
-            if(item.getLevel(stack) >= 22 && getPrefix(stack).getLevel() < Prefix.EPIC.getLevel()){
+            if(item.getLevel(stack) >= 22 && getPrefix(stack).getLevel() < Prefix.EPIC.getLevel() && item instanceof IEMCGodWeaponLevel){
                 setPrefix(stack,Prefix.EPIC);
             }
         }

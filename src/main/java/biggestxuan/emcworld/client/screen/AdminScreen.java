@@ -7,7 +7,7 @@ package biggestxuan.emcworld.client.screen;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.network.AdminPacket;
+import biggestxuan.emcworld.common.network.toServer.AdminPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;

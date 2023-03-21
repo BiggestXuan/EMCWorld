@@ -17,8 +17,85 @@
       "text": "需要注意的是，不同的配方可能有对应的星座，这个时候你就要调整上面的聚能水晶对应的星座了。$(br2)对于$(6)质能圣器$()而言，每一颗星会使其全能面板提升1%，第二颗星会提升2%，第三颗是3%，以此类推。$(br2)$(c)目前$()每次合成只需要3秒，且100%成功。$(br2)当你搭建好多方块结构后，上面的聚能水晶会发出其他颜色的光芒，多方块结构参见下一页。"
     },
     {
-      "type": "text",
-      "text": "多方块结构已经可用，本书相关多方块结构预览将在后续更新。"
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["       ","       ","       ","   A   ","       ","       ","       "],
+          ["       ","       ","       ","   0   ","       ","       ","       "],
+          ["   B   ","       ","       ","B  C  B","       ","       ","   B   "],
+          ["   D   ","       ","       ","D     D","       ","       ","   D   "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["             ","             ","             ","             ","             ","             ","      A      ","             ","             ","             ","             ","             ","             "],
+          ["      E      ","             ","             ","   E     E   ","             ","             ","E     0     E","             ","             ","   E     E   ","             ","             ","      E      "],
+          ["      F      ","             ","             ","   F  B  F   ","             ","             ","F  B  C  B  F","             ","             ","   F  B  F   ","             ","             ","      F      "],
+          ["             ","             ","             ","      D      ","             ","             ","   D     D   ","             ","             ","      D      ","             ","             ","             "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal",
+          "E": "extendedcrafting:pedestal",
+          "F": "minecraft:netherite_block"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["   G     G   ","             ","             ","G           G","             ","             ","      A      ","             ","             ","G           G","             ","             ","   G     G   "],
+          ["   H  E  H   ","             ","             ","H  E     E  H","             ","             ","E     0     E","             ","             ","H  E     E  H","             ","             ","   H  E  H   "],
+          ["   H  F  H   ","             ","             ","H  F  B  F  H","             ","             ","F  B  C  B  F","             ","             ","H  F  B  F  H","             ","             ","   H  F  H   "],
+          ["             ","             ","             ","      D      ","             ","             ","   D     D   ","             ","             ","      D      ","             ","             ","             "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal",
+          "E": "extendedcrafting:pedestal",
+          "F": "minecraft:netherite_block",
+          "G": "projecte:dm_pedestal",
+          "H": "undergarden:cloggrum_block"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["         I         ","                   ","                   ","                   ","                   ","                   ","                   ","                   ","                   ","I                 I","                   ","                   ","                   ","                   ","                   ","                   ","                   ","                   ","         I         "],
+          ["         J         ","                   ","                   ","      G     G      ","                   ","                   ","   G           G   ","                   ","                   ","J        A        J","                   ","                   ","   G           G   ","                   ","                   ","      G     G      ","                   ","                   ","         J         "],
+          ["         J         ","                   ","                   ","      H  E  H      ","                   ","                   ","   H  E     E  H   ","                   ","                   ","J  E     0     E  J","                   ","                   ","   H  E     E  H   ","                   ","                   ","      H  E  H      ","                   ","                   ","         J         "],
+          ["         J         ","                   ","                   ","      H  F  H      ","                   ","                   ","   H  F  B  F  H   ","                   ","                   ","J  F  B  C  B  F  J","                   ","                   ","   H  F  B  F  H   ","                   ","                   ","      H  F  H      ","                   ","                   ","         J         "],
+          ["                   ","                   ","                   ","                   ","                   ","                   ","         D         ","                   ","                   ","      D     D      ","                   ","                   ","         D         ","                   ","                   ","                   ","                   ","                   ","                   "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal",
+          "E": "extendedcrafting:pedestal",
+          "F": "minecraft:netherite_block",
+          "G": "projecte:dm_pedestal",
+          "H": "undergarden:cloggrum_block",
+          "I": "astralsorcery:infuser",
+          "J": "projecte:red_matter_block"
+        }
+      }
     }
   ]
 }

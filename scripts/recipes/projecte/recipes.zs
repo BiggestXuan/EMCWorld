@@ -39,13 +39,13 @@ public function modifyProjecteRecipe() as void{
 
     addCraftShapedRecipeNoName([
         [b,d,b],
-        [d,<item:botania:elementium_ingot>,d],
+        [d,<item:botania:dragonstone>,d],
         [b,d,b]
     ],collector[0]);
 
     addCraftShapedRecipeNoName([
         [b,d,b],
-        [d,<item:minecraft:furnace>,d],
+        [d,<item:botania:elementium_ingot>,d],
         [b,d,b]
     ],relay[0]);
 

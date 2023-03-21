@@ -9,7 +9,9 @@ package biggestxuan.emcworld.api.item;
 import net.minecraft.item.ItemStack;
 
 public interface ICostEMCItem {
-    double getEMCCostRate();
+    default double getEMCCostRate(){
+        return 1D;
+    }
 
     double costEMCWhenAttack(ItemStack stack);
 }

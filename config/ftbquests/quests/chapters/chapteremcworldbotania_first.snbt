@@ -156,10 +156,7 @@
 			title: "{quest.emcworld.mana_steel}"
 			x: 6.0d
 			y: 3.0d
-			dependencies: [
-				"5FB9B9EB82C25DDF"
-				"00CDB0F91998DB06"
-			]
+			dependencies: ["00CDB0F91998DB06"]
 			id: "28EB515D75946D57"
 			tasks: [{
 				id: "4850DD99412AD6E1"

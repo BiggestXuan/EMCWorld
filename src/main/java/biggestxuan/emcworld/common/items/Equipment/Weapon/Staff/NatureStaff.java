@@ -7,12 +7,13 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Staff;
  */
 
 import biggestxuan.emcworld.api.item.equipment.staff.BaseEMCGodStaff;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ItemStack;
 
 public class NatureStaff extends BaseEMCGodStaff {
     @Override
     protected long getBaseEMCModify(ItemStack stack) {
-        return Math.round(Math.pow(1.6,getLevel(stack)-5)*8);
+        return Math.round(Math.pow(1.4,getLevel(stack)-5)*8);
     }
 
     @Override
@@ -22,17 +23,18 @@ public class NatureStaff extends BaseEMCGodStaff {
 
     @Override
     protected float getBaseBurstDamage(ItemStack stack) {
-        return (float) Math.pow(1.22f,getLevel(stack)-1.5f);
+        float base = (float) Math.pow(1.22f,Math.min(22,getLevel(stack))-1);
+        return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack,base) : base;
     }
 
     @Override
     protected double getBaseCriticalChance(ItemStack stack) {
-        return 0.03 * getLevel(stack)*0.99f;
+        return 0.02 * getLevel(stack)*0.99f;
     }
 
     @Override
     protected double getBaseCriticalRate(ItemStack stack) {
-        return 0.02 * getLevel(stack)*0.99f;
+        return 0.015 * getLevel(stack)*0.99f;
     }
 
     @Override

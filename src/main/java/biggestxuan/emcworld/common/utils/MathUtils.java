@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
+import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
@@ -30,8 +31,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.BowItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -96,6 +99,27 @@ public class MathUtils {
         return Integer.parseInt(String.valueOf(Math.round(multi*base)));
     }
 
+    public static double getRangePlayerAverageIndex(Entity entity,int range){
+        BlockPos pos = entity.blockPosition();
+        MinecraftServer server = entity.getServer();
+        if(server != null){
+            List<? extends PlayerEntity> players = server.getPlayerList().getPlayers();
+            double playerAmount = server.getPlayerCount();
+            if(playerAmount == 0) return 0;
+            double indexAmount = 0;
+            for(PlayerEntity player : players){
+                for(DifficultySetting setting : DifficultySetting.values()){
+                    if(GameStageManager.hasStage(player, setting.getGameStage())){
+                        indexAmount += setting.getIndex();
+                        break;
+                    }
+                }
+            }
+            return indexAmount / playerAmount;
+        }
+        return 0;
+    }
+
     public static String thousandSign(long text){
         return thousandSign(String.valueOf(text));
     }
@@ -118,7 +142,7 @@ public class MathUtils {
 
     public static float getAdditionDamage(Entity attacker, LivingEntity target, float damage){
         double difficulty = DifficultyHelper.getLivingDifficulty(target);
-        return (float) (damage * (difficulty / 10f * ConfigManager.DIFFICULTY.get()));
+        return (float) (damage * (difficulty / 120f * ConfigManager.DIFFICULTY.get()));
     }
 
     @ZenCodeType.Method
@@ -140,13 +164,34 @@ public class MathUtils {
         return formatAfter(text)+flag;
     }
 
+    public static int getInfinityCardCost(){
+        return (int) (4000 * ConfigManager.DIFFICULTY.get() / 3);
+    }
 
     public static float getBowAdditionDamage(ItemStack stack){
         Item item = stack.getItem();
         if(item instanceof IUpgradeBow && item instanceof IPrefixItem && item instanceof BowItem){
             IUpgradeBow i1 = (IUpgradeBow) item;
             IPrefixItem i2 = (IPrefixItem) item;
-            return i1.getLevel(stack) * 1.25F + i2.getPrefix(stack).getLevel() * 0.5F;
+            return i1.getLevel(stack) * 1.25F + (i2.getPrefix(stack).getLevel() - 4) * 0.5F;
+        }
+        return 0f;
+    }
+
+    public static long min(long a,long b,long c){
+        if(a == b && b == c) return a;
+        a = Math.min(a,b);
+        a = Math.min(a,c);
+        return a;
+    }
+
+    public static float getBowLossTime(ItemStack stack){
+        Item item = stack.getItem();
+        if(item instanceof IUpgradeBow && item instanceof IPrefixItem && item instanceof BowItem){
+            IUpgradeBow i1 = (IUpgradeBow) item;
+            IPrefixItem i2 = (IPrefixItem) item;
+            int prefixLevel = i2.getPrefix(stack).getLevel();
+            return (float) (Math.pow(0.98d,i1.getLevel(stack)) * (prefixLevel >= 4 ? 1 - (0.01f * prefixLevel) : 1 + (0.025f * (4 - prefixLevel))));
         }
         return 0f;
     }
@@ -192,11 +237,21 @@ public class MathUtils {
         return costEMC;
     }
 
-    public static double getBlockBaseCost(PlayerEntity player){
+    public static double getCommonBaseCost(PlayerEntity player){
         for(DifficultySetting obj : DifficultySetting.values()){
             if(GameStageManager.hasStage(player,obj.getGameStage())){
-                return obj.getBlockBase();
+                return obj.getCommonBase();
             }
+        }
+        return 0d;
+    }
+
+    public static double getGodWeaponAddition(ItemStack stack,double base){
+        if(stack.getItem() instanceof IUpgradeableItem){
+            IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
+            int level = item.getLevel(stack);
+            int c = level - 22;
+            return base * (1 + (c << 3) / 95d);
         }
         return 0d;
     }
@@ -238,26 +293,26 @@ public class MathUtils {
         return Math.max(baseCost,0);
     }
     public static double getUseHoeBaseCost(PlayerEntity player){
-        return getBlockBaseCost(player) * 3.5d;
+        return getCommonBaseCost(player) * 3.5d;
     }
     public static double getPickUpItemBaseCost(PlayerEntity player){
-        return getBlockBaseCost(player) * 0.5d;
+        return getCommonBaseCost(player) * 0.5d;
     }
     public static double getFillBucketBaseCost(PlayerEntity player){
-        return getBlockBaseCost(player) * 4.0d;
+        return getCommonBaseCost(player) * 4.0d;
     }
     public static double getWakeUpBaseCost(PlayerEntity player){
-        return getBlockBaseCost(player) * 30.0d * 5;
+        return getCommonBaseCost(player) * 30.0d * 5;
     }
     public static double getCraftBaseCost(PlayerEntity player){
-        return getBlockBaseCost(player) * 0.75d;
+        return getCommonBaseCost(player) * 0.75d;
     }
 
     public static double getBreakBlockCost(PlayerEntity player){
         if(!GameStageManager.hasStage(player,"two")){
             return 0;
         }
-        return getBlockBaseCost(player) * 0.2d;
+        return getCommonBaseCost(player) * 0.2d;
     }
     public static double getQuestCompletedRewardBase(String stage, CustomReward customReward){
         double base = 0d;
@@ -274,6 +329,16 @@ public class MathUtils {
             }
         }
         return base;
+    }
+
+    public static long getEatFoodBase(PlayerEntity player, Food food){
+        for(DifficultySetting setting : DifficultySetting.values()){
+            if(GameStageManager.hasStage(player,setting.getGameStage())){
+                double c = food.getNutrition() + food.getSaturationModifier() * 10;
+                return (long) (getCommonBaseCost(player) * c * 0.05);
+            }
+        }
+        return 0L;
     }
 
     public static double getQuestCompletedRewardBase(PlayerEntity player, CustomReward customReward){
@@ -378,6 +443,10 @@ public class MathUtils {
         return sponsor;
     }
 
+    public static double log(double base,double value){
+        return Math.log(value) / Math.log(base);
+    }
+
     public static int getTPEMCCost(PlayerEntity player,Position start,Position end){
         if(end == null){
             return 0;
@@ -388,16 +457,17 @@ public class MathUtils {
             return Integer.MAX_VALUE;
         }
         long distance = (long) Math.sqrt(Math.pow(pos1.getX()-pos2.getX(),2)+Math.pow(pos1.getY()-pos2.getY(),2)+Math.pow(pos1.getZ()-pos2.getZ(),2));
-        long emc = 0;
+        double emc = 0;
         distance = Math.max(0L,distance-128L);
         emc += distance;
         if(!start.world.equals(end.world)){
             emc *= 3;
         }
         emc *= ConfigManager.DIFFICULTY.get();
+        emc = emc >= 1.04 ? log(1.02,emc) : emc;
         for(DifficultySetting diff : DifficultySetting.values()){
             if(GameStageManager.hasStage(player,diff.getGameStage())){
-                emc *= diff.getBlockBase();
+                emc *= diff.getCommonBase();
                 break;
             }
         }

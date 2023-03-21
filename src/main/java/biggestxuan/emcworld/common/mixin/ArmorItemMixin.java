@@ -68,7 +68,7 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
 
     @Override
     public int getMaxLevel() {
-        return (int) (defense * ConfigManager.DIFFICULTY.get() / 4d);
+        return Math.min((int) (defense * ConfigManager.DIFFICULTY.get() / 4d),12);
     }
 
     @Override

@@ -539,6 +539,21 @@
 					tags: ["hard"]
 					auto: "no_toast"
 				}
+				{
+					id: "13A8098386DBE630"
+					type: "item"
+					item: {
+						id: "emcworld:emc_charge_gem"
+						Count: 1b
+						tag: {
+							mode: 0b
+							star_init: 1b
+							star: 0
+							prefix: 4
+							max_star: 0
+						}
+					}
+				}
 			]
 		}
 		{

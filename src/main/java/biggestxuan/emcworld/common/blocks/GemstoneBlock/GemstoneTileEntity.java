@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.blocks.GemstoneBlock;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
 import net.minecraft.block.BlockState;
@@ -59,10 +59,10 @@ public class GemstoneTileEntity extends BaseContainerTileEntity implements ITick
     @Override
     public void tick() {
         mode = MODE.NONE;
-        if(inventory.getItem(0).getItem() instanceof BaseEMCGodWeapon && inventory.getItem(1).getItem() instanceof BaseWeaponGemItem){
+        if(inventory.getItem(0).getItem() instanceof IGemInlaidItem && inventory.getItem(1).getItem() instanceof BaseWeaponGemItem){
             mode = MODE.FUSION;
         }
-        if(inventory.getItem(0).getItem() instanceof BaseEMCGodWeapon && inventory.getItem(1).getItem().equals(Items.AIR)){
+        if(inventory.getItem(0).getItem() instanceof IGemInlaidItem && inventory.getItem(1).getItem().equals(Items.AIR)){
             mode = MODE.SPLIT;
         }
         if(state == STATE.START){
@@ -87,12 +87,12 @@ public class GemstoneTileEntity extends BaseContainerTileEntity implements ITick
 
     private void addTag(){
         BaseWeaponGemItem gem = (BaseWeaponGemItem) inventory.getItem(1).getItem();
-        BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) inventory.getItem(0).getItem();
+        IGemInlaidItem weapon = (IGemInlaidItem) inventory.getItem(0).getItem();
         weapon.setGemIndex(inventory.getItem(0),gem.getIndex());
     }
 
     private void clearTag(){
-        BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) inventory.getItem(0).getItem();
+        IGemInlaidItem weapon = (IGemInlaidItem) inventory.getItem(0).getItem();
         weapon.setGemIndex(inventory.getItem(0),0);
     }
 

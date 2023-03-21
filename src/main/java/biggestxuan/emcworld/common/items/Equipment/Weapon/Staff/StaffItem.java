@@ -223,7 +223,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         for (LivingEntity living : getCanAttackEntity(burst,stack)) {
             if (living.hurtTime == 0 && !living.isInvisible()) {
                 if (!burst.isFake() && !entity.level.isClientSide) {
-                    DamageSource source = thrower instanceof PlayerEntity ? new EWDamageSource.ReallyDamage((PlayerEntity) thrower) : EWDamageSource.REALLY;
+                    DamageSource source = thrower instanceof PlayerEntity ? new EWDamageSource((PlayerEntity) thrower).REALLY_PLAYER : EWDamageSource.REALLY;
                     float damage = getManaBurstDamage(stack,thrower);
                     if(thrower instanceof PlayerEntity){
                         PlayerEntity player = (PlayerEntity) thrower;

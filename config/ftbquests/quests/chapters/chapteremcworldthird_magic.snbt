@@ -180,6 +180,11 @@
 					tags: ["normal"]
 					auto: "no_toast"
 				}
+				{
+					id: "60E196A3934425E4"
+					type: "item"
+					item: "minecraft:wandering_trader_spawn_egg"
+				}
 			]
 		}
 		{

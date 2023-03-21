@@ -27,11 +27,6 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
     }
 
     @Override
-    public double getEMCCostRate() {
-        return 1d;
-    }
-
-    @Override
     public int getWeightRequired(ItemStack stack){
         int l = getLevel(stack);
         int weight = 10;

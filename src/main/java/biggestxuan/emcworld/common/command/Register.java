@@ -29,7 +29,7 @@ public class Register {
                 .requires((permission) -> permission.hasPermission(4))
                 .then(Commands.literal("dump").then(Commands.argument("target", EntityArgument.player()).executes(new DumpPlayerInfo())))
                 .then(Commands.literal("hand").executes(new Hand()))
-                .requires((premission) -> premission.hasPermission(0))
+                .requires((permission) -> permission.hasPermission(0))
                 .then(Commands.literal("prefix").executes(new ChangeSponsor()))
         );
     }

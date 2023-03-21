@@ -1,3 +1,4 @@
+import biggestxuan.emcworld.common.utils.CalendarUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 
 import java.util.UUID;
@@ -26,11 +27,12 @@ public class main {
         /*for (int i = 0; i < 100; i++) {
             System.out.println(MathUtils.getRangeRandom(1,10));
         }*/
-        int weight = 10;
-        for (int i = 0; i < 30; i++) {
-            weight = (int) (1.344f * weight);
-            System.out.println(weight);
-        }
+        /*double i = 1;
+        while (i < 1.1){
+            System.out.println(i+":"+(MathUtils.format((long)(MathUtils.log(i,3000)*1800000.0))));
+            i += 0.01;
+        }*/
+        System.out.println(CalendarUtils.INSTANCE.getHour());
     }
 }
 

@@ -190,8 +190,8 @@ public class RaidUtils {
         IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
         float all = 0f;
         if(!cap.isRaid()) return all;
-        all += Math.pow(1.29,cap.getWave());
-        all -= cap.getVillager() >= 5 ? 1.25f * cap.getVillager() : 0;
+        all += Math.pow(1.33,cap.getWave());
+        all -= cap.getVillager() >= 5 ? 1.28f * cap.getVillager() : 0;
         World world1 = entity == null ? player.level : entity.level;
         BlockPos pos = player.level instanceof ClientWorld ? player.blockPosition() : entity.blockPosition();
         double diff = player.level instanceof ClientWorld ? cap.getSHDifficulty() : DifficultyHelper.getAreaDifficulty(world1,pos);

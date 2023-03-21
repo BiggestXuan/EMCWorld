@@ -7,18 +7,18 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon;
  */
 
 import biggestxuan.emcworld.api.item.ISponsorItem;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.item.ItemStack;
 
-public class CharaSword extends BaseEMCGodWeapon implements ISponsorItem {
+public class CharaSword extends BaseEMCGodSword implements ISponsorItem {
     public CharaSword() {
         super(8,0x44ccaa);
     }
 
     @Override
     public long getBaseModifySecond(ItemStack stack) {
-        return (long) (555.5 * Math.pow(1.14514 * getLevel(stack), Math.pow(1.14514, 1.14514)));
+        return (long) (555.5 * Math.pow(1.14514 * Math.min(22,getLevel(stack)), Math.pow(1.14514, 1.14514)));
     }
 
     @Override

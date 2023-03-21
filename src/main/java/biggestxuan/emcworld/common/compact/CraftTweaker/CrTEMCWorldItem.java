@@ -28,8 +28,25 @@ public class CrTEMCWorldItem {
         ResourceLocation rl = item.getRegistryName();
         if(rl != null){
             String name = rl.getPath();
-            return !name.contains("dust") && !name.contains("block") && !name.contains("nugget") && !name.contains("storage_disk");
+            for(String s:whiteList()){
+                if(name.contains(s)){
+                    return false;
+                }
+            }
+            for(String s:blackList()){
+                if(name.contains(s)){
+                    return true;
+                }
+            }
         }
         return false;
+    }
+
+    private static String[] blackList(){
+        return new String[]{"dust","block","nugget","storage_disk"};
+    }
+
+    private static String[] whiteList(){
+        return new String[]{"sulfur"};
     }
 }

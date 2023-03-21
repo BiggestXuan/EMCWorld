@@ -28,6 +28,10 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.DifficultyData;
 import biggestxuan.emcworld.common.items.Curios.EMCShieldSupply;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
+import biggestxuan.emcworld.common.network.toClient.SkillPacket.DataPack;
+import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
+import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
+import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -47,6 +51,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -62,6 +67,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.network.PacketDistributor;
 import vazkii.botania.common.entity.EntityDoppleganger;
 import vazkii.patchouli.common.item.PatchouliItems;
 
@@ -99,6 +105,15 @@ public class PlayerTickEvent {
         }
         if(player.level.isClientSide() || event.side.isClient()) return;
         if(event.phase == TickEvent.Phase.END) return;
+        if(!player.getCommandSenderWorld().isClientSide){
+            if(player.isDeadOrDying()) return;
+            player.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(cap -> SkillNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new DataPack(
+                    cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
+            )));
+            player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
+                    cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer()
+            )));
+        }
         LazyOptional<IUtilCapability> cap = player.getCapability(EMCWorldCapability.UTIL);
         cap.ifPresent((c)->{
                 long l = c.getCoolDown();

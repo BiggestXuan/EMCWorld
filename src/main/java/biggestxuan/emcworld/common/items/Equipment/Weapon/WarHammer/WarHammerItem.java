@@ -32,11 +32,6 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon,IRan
     protected final IWarHammerTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
 
-    @Override
-    public double getEMCCostRate() {
-        return 1d;
-    }
-
     public WarHammerItem(IWarHammerTier tier) {
         super(tier,new Properties().tab(EWCreativeTabs.EW_EQUIPMENT_TAB));
         this.tier = tier;

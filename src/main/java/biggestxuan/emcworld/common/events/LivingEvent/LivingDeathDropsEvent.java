@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 
 import L_Ender.cataclysm.init.ModItems;
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.events.PlayerEvent.PlayerTickEvent;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWItems;
@@ -27,7 +28,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import top.theillusivec4.champions.common.capability.ChampionCapability;
 
 import java.util.List;
 
@@ -89,7 +92,49 @@ public class LivingDeathDropsEvent {
                 addDrops(entity,ModItems.ENDERITE_INGOT.get());
             }
         }
-        if(rl.equals(new ResourceLocation("dungeomsmod","entites/voidmaster"))){
+        ChampionCapability.getCapability(entity).ifPresent(iChampion -> iChampion.getServer().getRank().ifPresent(rank -> {
+            int tier = rank.getTier();
+            switch (tier){
+                case 1:
+                    addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                    break;
+                case 2:
+                    addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,32));
+                    break;
+                case 3:
+                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                    break;
+                case 4:
+                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,48));
+                    break;
+                case 5:
+                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(5 * ConfigManager.DIFFICULTY.get())));
+                    break;
+                case 6:
+                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(12 * ConfigManager.DIFFICULTY.get())));
+                    if(MathUtils.isMaxDifficulty()){
+                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,6));
+                    }
+                    break;
+                case 7:
+                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                    if(MathUtils.isMaxDifficulty()){
+                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,3));
+                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,2));
+                    }
+                    break;
+                case 8:
+                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,16));
+                    if(MathUtils.isMaxDifficulty()){
+                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,9));
+                        if(MathUtils.isRandom(0.15)){
+                            addDrops(entity,EWItems.INFINITY_EMC_GEM,MathUtils.getRangeRandom(0,1));
+                        }
+                    }
+                    break;
+            }
+        }));
+        if(rl.equals(new ResourceLocation("dungeonsmod","entites/voidmaster"))){
             addDrops(entity,ModItems.VOID_CORE.get());
             event.setCanceled(true);
         }
@@ -97,6 +142,10 @@ public class LivingDeathDropsEvent {
 
     private static void addDrops(LivingEntity entity,Item item){
         addDrops(entity,item,1);
+    }
+
+    private static void addDrops(LivingEntity entity, RegistryObject<Item> item, int count){
+        addDrops(entity,item.get(),count);
     }
 
     private static void addDrops(LivingEntity entity,Item item,int count){

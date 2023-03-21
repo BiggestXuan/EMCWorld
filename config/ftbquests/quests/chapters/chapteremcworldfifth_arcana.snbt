@@ -120,9 +120,12 @@
 			dependencies: ["5D375F4F1E4FEBB6"]
 			id: "55F7AD7E0BB1E998"
 			tasks: [{
-				id: "4A7AA1FFC309E770"
-				type: "item"
-				item: "divinerpg:arcanium_extractor"
+				id: "7583F3A0018F9634"
+				type: "observation"
+				icon: "divinerpg:arcanium_extractor"
+				timer: 0L
+				observe_type: 0
+				to_observe: "divinerpg:arcanium_extractor"
 			}]
 			rewards: [{
 				id: "41E4A3F88AD64675"

@@ -20,7 +20,17 @@ public interface IEMCInfuserItem {
     }
 
     default void setInfuser(ItemStack stack,long value){
-        stack.getOrCreateTag().putLong("infuser",Math.min(getMaxInfuser(stack),value));
+        if(value > getMaxInfuser(stack)){
+            value = getMaxInfuser(stack);
+        }
+        if(value < 0){
+            value = 0;
+        }
+        stack.getOrCreateTag().putLong("infuser",value);
+    }
+
+    default long getUse(ItemStack stack){
+        return getMaxInfuser(stack) - getInfuser(stack);
     }
 
     default void addInfuser(ItemStack stack,long value){

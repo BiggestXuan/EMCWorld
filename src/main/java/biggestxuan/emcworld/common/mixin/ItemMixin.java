@@ -45,6 +45,9 @@ public abstract class ItemMixin {
             case "item.projecte.white_alchemical_bag":
                 cir.setReturnValue("item.emcworld.whitelist_bag");
                 break;
+            case "item.projecte.yellow_alchemical_bag":
+                cir.setReturnValue("item.emcworld.unknown_bag");
+                break;
         }
     }
 

@@ -174,7 +174,7 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
             }
             if(stack.getItem() instanceof IEMCInfuserItem){
                 IEMCInfuserItem item = (IEMCInfuserItem) stack.getItem();
-                long baseEMC = (long) (maxEMC * 0.003);
+                long baseEMC = (long) (maxEMC * 0.03);
                 if(emc >= baseEMC && item.getMaxInfuser(stack) != item.getInfuser(stack)){
                     emc -= baseEMC;
                     item.addInfuser(stack, baseEMC);

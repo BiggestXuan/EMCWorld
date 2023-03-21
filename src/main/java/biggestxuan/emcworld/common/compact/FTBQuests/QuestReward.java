@@ -1,5 +1,7 @@
 package biggestxuan.emcworld.common.compact.FTBQuests;
 
+import biggestxuan.emcworld.common.config.ConfigManager;
+
 /**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
@@ -7,14 +9,14 @@ package biggestxuan.emcworld.common.compact.FTBQuests;
  */
 
 public enum QuestReward {
-    EASY("easy", 500.0),
-    NORMAL("normal", 3000.0),
-    HARD("hard", 15000.0),
-    EPIC("epic", 100000.0);
+    EASY("easy", 750.0),
+    NORMAL("normal", 3750.0),
+    HARD("hard", 22500.0),
+    EPIC("epic", 150000.0);
 
     private final String tag;
     private final double baseEMC;
-    private QuestReward(String tag, double baseEMC){
+    QuestReward(String tag, double baseEMC){
         this.tag = tag;
         this.baseEMC = baseEMC;
     }
@@ -22,7 +24,7 @@ public enum QuestReward {
         return tag;
     }
     public double getBaseEMC(){
-            return baseEMC;
+            return baseEMC * ConfigManager.DIFFICULTY.get() / 3d;
         }
 }
 

@@ -18,4 +18,6 @@ public class EWEffects {
 
     public static final RegistryObject<Effect> EMC_PROTECT = EFFECTS.register("emc_protect", EMCProtectionEffect::new);
     public static final RegistryObject<Effect> MAGIC_PROTECT = EFFECTS.register("magic_protect", MagicProtectEffect::new);
+    public static final RegistryObject<Effect> EMC_BROKEN = EFFECTS.register("emc_broken", EMCBrokenEffect::new);
+    public static final RegistryObject<Effect> EMC_FLAMING = EFFECTS.register("emc_flaming", EMCFlamingEffect::new);
 }

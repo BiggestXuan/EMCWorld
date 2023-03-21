@@ -6,7 +6,7 @@ package biggestxuan.emcworld.common.blocks.GemstoneBlock.Slot;
  *  2022/11/16
  */
 
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -18,6 +18,6 @@ public class WeaponSlot extends Slot {
 
     @Override
     public boolean mayPlace(ItemStack p_75214_1_) {
-        return p_75214_1_.getItem() instanceof BaseEMCGodWeapon;
+        return p_75214_1_.getItem() instanceof IGemInlaidItem;
     }
 }

@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.*;
 import biggestxuan.emcworld.api.item.equipment.armor.*;
+import biggestxuan.emcworld.api.item.equipment.bow.*;
 import biggestxuan.emcworld.api.item.equipment.weapon.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
@@ -76,6 +77,14 @@ public class ItemToolTipEvent {
                 return;
             }
         }
+        if(stack.getItem() instanceof IGemInlaidItem){
+            IGemInlaidItem i_q = (IGemInlaidItem) stack.getItem();
+            if(i_q.getGemType(stack) == 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gem_null"));
+            }else{
+                event.getToolTip().add(getGemName(i_q.getGemType(stack)));
+            }
+        }
         if(stack.getItem() instanceof INeedLevelItem){
             INeedLevelItem item_1 = (INeedLevelItem) stack.getItem();
             if(Minecraft.getInstance().player == null) return;
@@ -134,18 +143,27 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.star",item.getStar(stack),item.getMaxStar(stack)));
             }
         }
+        if(stack.getItem() instanceof IUpgradeBow){
+            IUpgradeBow bow = (IUpgradeBow) stack.getItem();
+            float damage = bow.getAdditionDamage(stack);
+            float speed = bow.lossBowTime(stack);
+            if(damage > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_damage_add",String.format("%.2f",damage)));
+            }
+            if(damage < 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_damage_loss",String.format("%.2f",neg(damage))));
+            }
+            if(speed > 1){
+                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_add",String.format("%.2f",(speed-1)*100)+"%"));
+            }
+            if(speed < 1){
+                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_loss",String.format("%.2f",(1-speed)*100)+"%"));
+            }
+        }
         if(stack.getItem() instanceof StaffItem){
             StaffItem i_s = (StaffItem) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",String.format("%.2f",i_s.getBaseDamage(stack))));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(StaffItem.getMode(stack).getName())));
-        }
-        if(stack.getItem() instanceof BaseEMCGodWeapon){
-            BaseEMCGodWeapon i_q = (BaseEMCGodWeapon) stack.getItem();
-            if(i_q.getGemType(stack) == 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gem_null"));
-            }else{
-                event.getToolTip().add(getGemName(i_q.getGemType(stack)));
-            }
         }
         if(stack.getItem() instanceof IAdditionsDamageWeapon){
             IAdditionsDamageWeapon item = (IAdditionsDamageWeapon) stack.getItem();
@@ -244,10 +262,6 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_second", MathUtils.format(emc)));
             }
         }
-        if(stack.getItem() instanceof BaseEMCGodWeapon){
-            BaseEMCGodWeapon w = (BaseEMCGodWeapon) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.killCount",MathUtils.format(w.getKillCount(stack))));
-        }
         if(stack.getItem() instanceof IRangeAttackWeapon){
             IRangeAttackWeapon a_w = (IRangeAttackWeapon) stack.getItem();
             if(a_w.getAttackRange(stack) > 0){
@@ -271,7 +285,7 @@ public class ItemToolTipEvent {
         }
         for(Item item: radiationItem){
             if(stack.getItem().getItem().equals(item)){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.radiation_item"));
+                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.radiation_item"));
             }
         }
         if(stack.getItem() instanceof ItemHazmatSuitArmor || stack.getItem().equals(MekanismItems.MODULE_RADIATION_SHIELDING.getItem().getItem())){
@@ -295,6 +309,10 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
             }
         }
+        if(stack.getItem() instanceof IKillCountItem){
+            IKillCountItem w = (IKillCountItem) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.killCount",MathUtils.format(w.getKillCount(stack))));
+        }
         if(!(isTrans || free) && stage.equals("disabled") && EMCHelper.getEmcValue(stack) > 0){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_disable"));
             return;
@@ -303,6 +321,13 @@ public class ItemToolTipEvent {
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
         }
         if(stack.isDamageableItem() && !(stack.getItem() instanceof StoredTotem)){
+            if(stack.getItem() instanceof IEMCRepairableItem){
+                IEMCRepairableItem item = (IEMCRepairableItem) stack.getItem();
+                if(item.getTickCost(stack) > 0){
+                    event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_repair",MathUtils.format(item.getTickCost(stack))));
+                    return;
+                }
+            }
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.durability",stack.getMaxDamage()-stack.getDamageValue(),stack.getMaxDamage()));
         }
     }
@@ -317,6 +342,10 @@ public class ItemToolTipEvent {
             default:
                 return Color.fromRgb(0x00aa00);
         }
+    }
+
+    private static double neg(double a){
+        return 0 - a;
     }
 
     @Nonnull

@@ -326,8 +326,8 @@ public function emcworldOresProcessing() as void{
         <item:emcworld:dust_bloodgem>,
         <item:divinerpg:bloodgem>
     );
-    /*addNormalOreProceRecipe(
-        <item:stalwart_dungeons:tungsten_ore>,
+    addNormalOreProceRecipe(
+        <item:emcworld:tungsten_ore>,
         <slurry:emcworld:dirty_tungsten>,
         <slurry:emcworld:clean_tungsten>,
         <item:emcworld:crystal_tungsten>,
@@ -336,5 +336,5 @@ public function emcworldOresProcessing() as void{
         <item:emcworld:dirty_dust_tungsten>,
         <item:emcworld:dust_tungsten>,
         <item:stalwart_dungeons:tungsten_ingot>
-    );*/
+    );
 }

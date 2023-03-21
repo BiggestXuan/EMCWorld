@@ -9,7 +9,7 @@ package biggestxuan.emcworld.client.screen.CompassScreen;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.client.screen.BaseEMCConfirmScreen;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
-import biggestxuan.emcworld.common.network.CostEMCPacket;
+import biggestxuan.emcworld.common.network.toServer.CostEMCPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.chaosthedude.explorerscompass.ExplorersCompass;

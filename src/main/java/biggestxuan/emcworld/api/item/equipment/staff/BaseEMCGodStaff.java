@@ -10,7 +10,8 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.client.util.ITooltipFlag;
@@ -26,7 +27,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel,IUpgradeableMaterial {
+public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel,IUpgradeableMaterial, IGemInlaidItem {
     public BaseEMCGodStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("god"));
     }
@@ -39,7 +40,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     protected double getPrefixCommonRate(ItemStack stack){
-        return super.getPrefixCommonRate(stack) * 1.3;
+        return super.getPrefixCommonRate(stack) * 1.05;
     }
 
     @Override
@@ -79,7 +80,21 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
         }
-        return tier.getCriticalChance() * getPrefixCommonRate(stack) * 0.8+ b;
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.07;
+                break;
+            case 2:
+                b *= 0.9;
+                break;
+            case 3:
+                b *= 0.98;
+                break;
+            case 4:
+                b *= 1.02;
+                break;
+        }
+        return tier.getCriticalChance() * getPrefixCommonRate(stack) * 0.4+ b;
     }
 
     @Override
@@ -89,12 +104,41 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         if(costEMC >= 1){
             b += Math.log(costEMC)/85;
         }
-        return tier.getCriticalRate() * getPrefixCommonRate(stack) * 0.6 + b;
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.04;
+                break;
+            case 2:
+                b *= 0.95;
+                break;
+            case 3:
+                b *= 0.985;
+                break;
+            case 4:
+                b *= 1.01;
+                break;
+        }
+        return tier.getCriticalRate() + getPrefixCommonRate(stack) * 0.2 + b;
     }
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return getBaseCostRate(stack) / getPrefixCommonRate(stack) * 1.25f / getBuffer(stack);
+        double b = getBaseCostRate(stack);
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.2;
+                break;
+            case 2:
+                b *= 0.85;
+                break;
+            case 3:
+                b *= 1.02;
+                break;
+            case 4:
+                b *= 1.1;
+                break;
+        }
+        return b / getPrefixCommonRate(stack) * 1.25f / getBuffer(stack);
     }
 
     @Override
@@ -104,12 +148,27 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return (long) (getBaseEMCModify(stack) * getPrefixCommonRate(stack) * getBuffer(stack));
+        double b = getBaseEMCModify(stack);
+        switch (getGemType(stack)){
+            case 1:
+                b *= 1.07;
+                break;
+            case 2:
+                b *= 0.9;
+                break;
+            case 3:
+                b *= 0.98;
+                break;
+            case 4:
+                b *= 1.02;
+                break;
+        }
+        return (long) (b * getPrefixCommonRate(stack) * getBuffer(stack));
     }
 
     @Override
     public int getMaxLevel() {
-        return BaseEMCGodWeapon.getWeaponMaxLevel();
+        return BaseEMCGodSword.getWeaponMaxLevel();
     }
 
     @Override
@@ -118,6 +177,20 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             d *= (1 + Math.log(costEMC)/85);
+        }
+        switch (getGemType(stack)){
+            case 1:
+                d *= 1.07;
+                break;
+            case 2:
+                d *= 0.9;
+                break;
+            case 3:
+                d *= 0.92;
+                break;
+            case 4:
+                d *= 1.02;
+                break;
         }
         return (float) (tier.getAttackDamageBonus() + d);
     }

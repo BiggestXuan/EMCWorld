@@ -7,7 +7,8 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodWeapon;
+import biggestxuan.emcworld.api.item.IKillCountItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -31,8 +32,8 @@ public class LivingDeathEvent {
             }
             addPlayerCount(player);
         }
-        if(source instanceof EWDamageSource.ReallyDamage){
-            EWDamageSource.ReallyDamage d = (EWDamageSource.ReallyDamage) source;
+        if(source instanceof EWDamageSource){
+            EWDamageSource d = (EWDamageSource) source;
             if(d.getPlayer() != null){
                 addPlayerCount(d.getPlayer());
             }
@@ -40,8 +41,8 @@ public class LivingDeathEvent {
     }
 
     private static void addPlayerCount(PlayerEntity player){
-        if(player.getMainHandItem().getItem() instanceof BaseEMCGodWeapon){
-            BaseEMCGodWeapon weapon = (BaseEMCGodWeapon) player.getMainHandItem().getItem();
+        if(player.getMainHandItem().getItem() instanceof IKillCountItem){
+            IKillCountItem weapon = (IKillCountItem) player.getMainHandItem().getItem();
             weapon.addKillCount(player.getMainHandItem());
         }
     }

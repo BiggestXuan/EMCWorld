@@ -1,15 +1,15 @@
 {
   "general": {
-    "displayTooltip": false,
+    "displayTooltip": true,
     "shiftForDetails": false,
-    "displayMode": "HOLD_KEY",
+    "displayMode": "TOGGLE",
     "hideFromPlayerList": true,
     "hideFromDebug": true,
     "showItem": true,
-    "enableTextToSpeech": true,
+    "enableTextToSpeech": false,
     "maxHealthForRender": 40,
     "maxHeartsPerLine": 10,
-    "displayFluids": true
+    "displayFluids": false
   },
   "overlay": {
     "overlayPosX": 0.5,

@@ -82,6 +82,12 @@ public class oreGen {
         event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
                 Feature.ORE.configured(
                                 new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHER_ORE_REPLACEABLES,
+                                        EWBlocks.TUNGSTEN_ORE.get().defaultBlockState(),8)
+                        ).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,6,128)))
+                        .squared().count(6));
+        event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
+                Feature.ORE.configured(
+                                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHER_ORE_REPLACEABLES,
                                         EWBlocks.INDIUM_ORE.get().defaultBlockState(),4)
                         ).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,6,128)))
                         .squared().count(4));

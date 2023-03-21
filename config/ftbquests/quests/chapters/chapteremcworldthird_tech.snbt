@@ -146,10 +146,7 @@
 			x: 6.0d
 			y: 2.5d
 			description: ["{quest.emcworld.third_tech_endercomponent_desc}"]
-			dependencies: [
-				"4F423EAF268C54EE"
-				"6E2EFD9898DF555B"
-			]
+			dependencies: ["4F423EAF268C54EE"]
 			id: "033AA2B95A3E73AD"
 			tasks: [{
 				id: "101AEF5A7BBD6D58"
