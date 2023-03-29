@@ -14,6 +14,7 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.WeaponUtils")
+@SuppressWarnings("unused")
 public class WeaponUtils {
     @ZenCodeType.Method
     public static int getWeaponMaxLevel(IItemStack stack){

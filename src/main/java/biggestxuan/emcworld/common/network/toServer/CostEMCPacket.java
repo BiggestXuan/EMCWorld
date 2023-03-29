@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.exception.IllegalPacketException;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -29,10 +30,19 @@ public class CostEMCPacket {
     }
 
     public static void handle(CostEMCPacket msg, Supplier<NetworkEvent.Context> context) {
-        context.get().enqueueWork(() ->{
+        context.get().enqueueWork(() -> {
             ServerPlayerEntity player = context.get().getSender();
             if(player != null){
-                EMCHelper.modifyPlayerEMC(player,Math.negateExact(msg.getEmc()),true);
+                try{
+                    long emc = msg.getEmc();
+                    if(emc < 0){
+                        throw new IllegalPacketException(player.getScoreboardName());
+                    }else{
+                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(emc),true);
+                    }
+                }catch (IllegalPacketException e){
+                    e.printStackTrace();
+                }
             }
         });
         context.get().setPacketHandled(true);

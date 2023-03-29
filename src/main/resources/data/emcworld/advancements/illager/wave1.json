@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:golden_axe"
+    },
+    "title": {
+      "translate": "advancement.emcworld.wave1"
+    },
+    "description": {
+      "translate": "advancement.emcworld.wave1.desc"
+    }
+  },
+  "parent": "emcworld:illager/start",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -6,7 +6,6 @@ package biggestxuan.emcworld.common.registry;
  *  2022/09/07
  */
 
-import biggestxuan.emcworld.EMCWorld;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
@@ -49,5 +48,9 @@ public class EWDamageSource extends DamageSource {
     public EWDamageSource bypassMagic() {
         super.bypassMagic();
         return this;
+    }
+
+    public static boolean isReallyDamage(DamageSource source){
+        return source.equals(REALLY) || source instanceof EWDamageSource;
     }
 }

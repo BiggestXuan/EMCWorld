@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.GameRules;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -49,6 +50,12 @@ public class PlayerLoggedEvent {
         if(player.level.isClientSide) return;
         MinecraftServer server = player.getServer();
         if(server == null) return;
+        if(!server.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)){
+            server.getCommands().performCommand(server.createCommandSourceStack(),"gamerule keepInventory true");
+        }
+        if(server.getGameRules().getBoolean(GameRules.RULE_SENDCOMMANDFEEDBACK)){
+            server.getCommands().performCommand(server.createCommandSourceStack(),"gamerule sendCommandFeedback false");
+        }
         String name = player.getName().getString();
         UUID uuid = player.getUUID();
         LazyOptional<IUtilCapability> sponsorCap = player.getCapability(EMCWorldCapability.UTIL);
@@ -70,7 +77,7 @@ public class PlayerLoggedEvent {
         }
         if(level < 2 || !server.usesAuthentication()){
             ServerPlayerEntity player1 = (ServerPlayerEntity) player;
-            player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
+            //player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
         }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
@@ -167,8 +174,13 @@ public class PlayerLoggedEvent {
                     break;
                 case 6:
                     Message.sendMessageToAllPlayer(player,tc("message.welcome.tulye",name));
+                    break;
+                case 7:
+                    Message.sendMessageToAllPlayer(player,tc("message.welcome.cmzx",name));
+                    break;
                 default:
                     Message.sendMessage(player, tc("message.welcome.default",name));
+                    break;
             }
         });
     }

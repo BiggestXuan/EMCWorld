@@ -30,7 +30,7 @@ public class ModifyCollector {
     }
 
     private static long g(int b){
-        long y = 1L << b;
+        long y = 3L << b;
         if(ConfigManager.DIFFICULTY.get() >= 1){
             y *= ConfigManager.DIFFICULTY.get() / 3;
         }else{

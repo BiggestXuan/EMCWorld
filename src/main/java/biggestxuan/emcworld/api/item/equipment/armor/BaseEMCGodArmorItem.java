@@ -6,28 +6,21 @@ package biggestxuan.emcworld.api.item.equipment.armor;
  *  2022/10/24
  */
 
-import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IEMCGod;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
 
-public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem, IStarItem,IHealBoostArmor, IGemInlaidItem {
+public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableMaterial,IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor, IPrefixItem, IStarItem,IHealBoostArmor, IGemInlaidItem, IEMCGod {
     protected final int index;
     public BaseEMCGodArmorItem(IArmorMaterial p_i48534_1_, int p_i48534_2_) {
         super(p_i48534_1_, getType(p_i48534_2_));
@@ -117,12 +110,6 @@ public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgr
 
     @Override
     public abstract float getSpeed(ItemStack stack);
-
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
-    }
 
     @Override
     public int getWeight(ItemStack stack){

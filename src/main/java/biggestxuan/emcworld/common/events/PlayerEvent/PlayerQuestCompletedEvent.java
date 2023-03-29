@@ -81,6 +81,7 @@ public class PlayerQuestCompletedEvent {
             baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(getQuestStage(event.getReward()),event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
         }
         if(baseGet == 0) return;
+        baseGet <<= 1;
         Team team = FTBTeamsAPI.getPlayerTeam(player);
         int amt = team.getMembers().size();
         baseGet = baseGet / (amt <= 0 ? 1 : amt);

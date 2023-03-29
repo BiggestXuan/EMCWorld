@@ -36,12 +36,6 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
-    }
-
-    @Override
     public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
         return false;
     }

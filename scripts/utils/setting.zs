@@ -28,7 +28,7 @@ public function getVoucherEMC() as int{
 }
 
 public function setEMC() as void{
-    var emcValue as long[]=[16384,0,2048,2048,0,128,1024,2048,256,256,64,2048,32767,128,getVoucherEMC(),24652,34206,176254,12068,5622,3780
+    var emcValue as long[]=[16384,0,2048,2048,0,128,1024,2048,32767,128,getVoucherEMC(),24652,34206,176254,12068,5622,3780
     ,148306,2048,2048,4682,6026,920816,512,math.getEMCWhenUseGem(1000)+1024 as long
     ];
     var item as ItemStack[]=[
@@ -39,10 +39,6 @@ public function setEMC() as void{
         <item:botania:ender_air_bottle>,
         <item:minecraft:prismarine_shard>,
         <item:minecraft:sea_lantern>,
-        <item:aether:golden_amber>,
-        <item:aether:zanite_gemstone>,
-        <item:aether:ambrosium_shard>,
-        <item:aether:hellfire_stone>,
         <item:emcworld:stone_shard>,
         <item:bloodmagic:reagentbinding>,
         <item:byg:subzero_crystal_shard>,
@@ -66,12 +62,6 @@ public function setEMC() as void{
     for i in 0 .. item.length{
         setItemEMC(item[i],emcValue[i]);
     }
-    setItemsEMC([
-        <item:aether:cold_aercloud>,
-        <item:aether:blue_aercloud>,
-        <item:aether:golden_aercloud>,
-        <item:aether:pink_aercloud>
-    ],64);
     clearEMC(emcItem.INSTANCE.getStack());
     for i in <tag:items:minecraft:flowers>.elements{
         setItemEMC(i.getDefaultInstance(),0);

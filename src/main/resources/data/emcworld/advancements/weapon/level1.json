@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:lucky_gem_blue"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_level1"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_level1.desc"
+    }
+  },
+  "parent": "emcworld:weapon/first",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

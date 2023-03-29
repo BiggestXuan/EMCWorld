@@ -15,11 +15,13 @@ import biggestxuan.emcworld.common.utils.Message;
 import hellfirepvp.astralsorcery.common.block.tile.BlockAltar;
 import hellfirepvp.astralsorcery.common.block.tile.BlockRitualPedestal;
 import mythicbotany.alfheim.Alfheim;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.entity.monster.AbstractIllagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
@@ -40,15 +42,17 @@ public class PlayerRightClickBlockEvent {
     @SubscribeEvent
     public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event){
         BlockState state = event.getWorld().getBlockState(event.getPos());
-        if(event.getWorld().isClientSide) return;
-        if(state.getBlock() instanceof BlockAltar || state.getBlock() instanceof BlockRitualPedestal){
+        Block block = state.getBlock();
+        ResourceLocation rl = block.getRegistryName();
+        if(event.getWorld().isClientSide || rl == null) return;
+        if(block instanceof BlockAltar || block instanceof BlockRitualPedestal){
             if(!event.getWorld().dimension().equals(Alfheim.DIMENSION)){
                 event.setResult(Event.Result.DENY);
                 Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.altar.cancel"));
                 event.setCanceled(true);
             }
         }
-        if(state.getBlock() instanceof ShulkerBoxBlock){
+        if(block instanceof ShulkerBoxBlock || (rl.getNamespace().equals("refinedstorage") && (rl.getPath().equals("destructor") || rl.getPath().equals("constructor")))){
             event.setCanceled(true);
             Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.disable.deny"));
         }

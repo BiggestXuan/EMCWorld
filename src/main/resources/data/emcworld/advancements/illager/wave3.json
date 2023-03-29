@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_axe"
+    },
+    "title": {
+      "translate": "advancement.emcworld.wave3"
+    },
+    "description": {
+      "translate": "advancement.emcworld.wave3.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "emcworld:illager/wave2",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

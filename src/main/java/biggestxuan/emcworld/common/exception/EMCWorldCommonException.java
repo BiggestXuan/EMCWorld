@@ -8,6 +8,10 @@ package biggestxuan.emcworld.common.exception;
 
 public class EMCWorldCommonException extends RuntimeException{
     public EMCWorldCommonException(){
-        super("EMCWorld has been cause a exception! Please read console to get more information.");
+        super("EMCWorld has been caused a exception! Please read console to get more information.");
+    }
+
+    public EMCWorldCommonException(String info){
+        super(info);
     }
 }

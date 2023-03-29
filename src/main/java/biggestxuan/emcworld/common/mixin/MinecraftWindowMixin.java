@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.utils.CalendarUtils;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MinecraftWindowMixin {
     @Inject(method = "createTitle", at = @At("HEAD"), cancellable = true)
     public void setTitle(CallbackInfoReturnable<String> cir){
-        String title = EMCWorld.TITLE;
+        String title = EMCWorld.TITLE+" - "+ CalendarUtils.INSTANCE.getNowTimeWelcome()+"!";
         cir.setReturnValue(title);
         cir.cancel();
     }

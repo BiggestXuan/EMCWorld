@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:biggest_emc_gem"
+    },
+    "title": {
+      "translate": "advancement.emcworld.cost3.title"
+    },
+    "description": {
+      "translate": "advancement.emcworld.cost3.desc"
+    }
+  },
+  "parent": "emcworld:cost/2",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

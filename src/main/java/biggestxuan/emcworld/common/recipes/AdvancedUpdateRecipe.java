@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.recipes;
  */
 
 import biggestxuan.emcworld.api.recipe.IUpdateRecipe;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWItems;
 import com.github.alexthe666.rats.server.blocks.RatlantisBlockRegistry;
 import com.github.alexthe666.rats.server.items.RatsItemRegistry;
@@ -47,8 +48,8 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     AS_INFUSER(EWItems.INFUSE_CORE.get(),BlocksAS.INFUSER.asItem(),3500000,4),
     MAGENTA_MATTER(PEItems.RED_MATTER.get(),EWItems.MAGENTA_MATTER.get(),350000,3),
     FANTASY_GEM(Items.DIAMOND.getItem(),EWItems.FANTASY_GEM.get(), 1000000,3),
-    BRIGHT_STONE(MekanismItems.POLONIUM_PELLET.getItem(), EWItems.BRIGHT_STONE.get(), 3000000000L,8),
-    DARK_STONE(MekanismItems.PLUTONIUM_PELLET.getItem(), EWItems.DARK_STONE.get(), 3000000000L,8),
+    BRIGHT_STONE(MekanismItems.POLONIUM_PELLET.getItem(), EWItems.BRIGHT_STONE.get(), 3000000000L,7),
+    DARK_STONE(MekanismItems.PLUTONIUM_PELLET.getItem(), EWItems.DARK_STONE.get(), 3000000000L,7),
     EVIL_BOOK(RatsItemRegistry.PLAGUE_TOME.getItem(),EWItems.EVIL_BOOK.get(), 7000000000L,8),
     INFINITY(EWItems.INFINITY_CATALYST.get(), EWItems.ULTIMATE_SINGULARITY.get(),100000000000L,8),
     BROKEN_DIAMOND_SWORD(UGItems.CLOGGRUM_SWORD.get(),EWItems.BROKEN_DIAMOND_SWORD.get(),100000000,7),
@@ -102,7 +103,7 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     }
     @Override
     public long costEMC(){
-        return cost;
+        return level >= 6 && ConfigManager.DIFFICULTY.get() == 3.0D ? cost << (level - 4)  : cost;
     }
 
     @Override

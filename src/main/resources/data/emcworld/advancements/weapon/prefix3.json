@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:god_fire_sword"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_prefix3"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_prefix3.desc"
+    },
+    "frame":"goal"
+  },
+  "parent": "emcworld:weapon/prefix2",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

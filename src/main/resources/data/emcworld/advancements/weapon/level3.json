@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:lucky_gem_emerald"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_level3"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_level3.desc"
+    },
+    "frame":"challenge"
+  },
+  "parent": "emcworld:weapon/level2",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

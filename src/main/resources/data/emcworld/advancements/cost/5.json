@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:super_emc_gem"
+    },
+    "title": {
+      "translate": "advancement.emcworld.cost5.title"
+    },
+    "description": {
+      "translate": "advancement.emcworld.cost5.desc"
+    }
+  },
+  "parent": "emcworld:cost/4",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

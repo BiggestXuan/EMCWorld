@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:lucky_gem_purple"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_level2"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_level2.desc"
+    },
+    "frame":"goal"
+  },
+  "parent": "emcworld:weapon/level1",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

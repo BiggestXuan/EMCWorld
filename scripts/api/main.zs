@@ -33,7 +33,7 @@ public function main() as void{
     modifyMEKRecipe();
     modifyFood();
     modifyBloodMagicRecipe();
-    tweakerAetherLootTable();
+    //tweakerAetherLootTable();
     tweakerMinecraftLootTable();
     tweakerAtumLootTable();
     tweakerTwilightLootTable();
@@ -44,7 +44,7 @@ public function main() as void{
     addDIMStage();
     setItemStage();
     modifyAtumRecipe();
-    modifyAfterNightRecipe();
+    //modifyAfterNightRecipe();
     modifyUnderGradenRecipe();
     modifyAtlantisRecipe();
     modifyExtendedCraftingRecipe();

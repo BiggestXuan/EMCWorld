@@ -106,39 +106,7 @@ public function emcworldOresProcessing() as void{
         <item:emcworld:dust_oratchalcum>,
         <item:rats:oratchalcum_ingot>
     );
-    addNormalOreProceRecipe(
-        <item:the_afterlight:moonsteel_ore>,
-        <slurry:emcworld:dirty_moonsteel>,
-        <slurry:emcworld:clean_moonsteel>,
-        <item:emcworld:crystal_moonsteel>,
-        <item:emcworld:shard_moonsteel>,
-        <item:emcworld:clump_moonsteel>,
-        <item:emcworld:dirty_dust_moonsteel>,
-        <item:emcworld:dust_moonsteel>,
-        <item:the_afterlight:moonsteel_ingot>
-    );
-    addNormalOreProceRecipe(
-        <item:the_afterlight:crystillium_ore>,
-        <slurry:emcworld:dirty_crystillium>,
-        <slurry:emcworld:clean_crystillium>,
-        <item:emcworld:crystal_crystillium>,
-        <item:emcworld:shard_crystillium>,
-        <item:emcworld:clump_crystillium>,
-        <item:emcworld:dirty_dust_crystillium>,
-        <item:emcworld:dust_crystillium>,
-        <item:the_afterlight:crystillium_ingot>
-    );
-    addNormalOreProceRecipe(
-        <item:the_afterlight:lunarite_scrap_block>,
-        <slurry:emcworld:dirty_lunarite_scrap>,
-        <slurry:emcworld:clean_lunarite_scrap>,
-        <item:emcworld:crystal_lunarite_scrap>,
-        <item:emcworld:shard_lunarite_scrap>,
-        <item:emcworld:clump_lunarite_scrap>,
-        <item:emcworld:dirty_dust_lunarite_scrap>,
-        <item:emcworld:dust_lunarite_scrap>,
-        <item:the_afterlight:lunarite_scrap>
-    );
+
     addNormalOreProceRecipe(
         <item:undergarden:cloggrum_ore>,
         <slurry:emcworld:dirty_cloggrum>,
@@ -193,17 +161,6 @@ public function emcworldOresProcessing() as void{
         <item:emcworld:dirty_dust_sunlit>,
         <item:emcworld:dust_sunlit>,
         <item:emcworld:sunlit_ingot>
-    );
-    addNormalOreProceRecipe(
-        <item:aether:gravitite_ore>,
-        <slurry:emcworld:dirty_gravitite>,
-        <slurry:emcworld:clean_gravitite>,
-        <item:emcworld:crystal_gravitite>,
-        <item:emcworld:shard_gravitite>,
-        <item:emcworld:clump_gravitite>,
-        <item:emcworld:dirty_dust_gravitite>,
-        <item:emcworld:dust_gravitite>,
-        <item:aether:enchanted_gravitite>
     );
     addNormalOreProceRecipe(
         <item:good_nights_sleep:rainbow_ore>,

@@ -14,6 +14,7 @@ public function modifyExtendedCraftingRecipe() as void{
     var c2 = <item:extendedcrafting:ender_component>;
     var c3 = <item:extendedcrafting:advanced_component>;
     var c4 = <item:extendedcrafting:elite_component>;
+    var test = <item:emcworld:test_block>;
     var cc1 = <item:extendedcrafting:basic_catalyst>;
     var cc2 = <item:extendedcrafting:ender_catalyst>;
     var cc3 = <item:extendedcrafting:advanced_catalyst>;
@@ -66,7 +67,7 @@ public function modifyExtendedCraftingRecipe() as void{
         at
     ]);
     tartaricForgeRecipe([
-        <item:aether:golden_amber>,
+        test,
         <item:minecraft:glowstone_dust>,
         <item:botania:mana_powder>,
         <item:mekanism:dust_gold>

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:illager_shard"
+    },
+    "title": {
+      "translate": "advancement.emcworld.shard"
+    },
+    "description": {
+      "translate": "advancement.emcworld.shard.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "emcworld:illager/start",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "emcworld:illager_shard"
+          }
+        ]
+      }
+    }
+  }
+}

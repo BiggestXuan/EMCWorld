@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 
 import java.util.UUID;
 
+@Deprecated
 public interface IOwnerItem {
     String name = "emcworld_owner";
 

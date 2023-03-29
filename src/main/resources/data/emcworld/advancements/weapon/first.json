@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond_sword"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_first"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_first.desc"
+    }
+  },
+  "parent": "emcworld:welcome",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

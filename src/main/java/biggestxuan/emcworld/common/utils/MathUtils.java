@@ -185,6 +185,14 @@ public class MathUtils {
         return a;
     }
 
+    public static long max(long a,long b,long c){
+        if(a == b && b == c) return a;
+        a = Math.max(a,b);
+        a = Math.max(a,c);
+        return a;
+    }
+
+
     public static float getBowLossTime(ItemStack stack){
         Item item = stack.getItem();
         if(item instanceof IUpgradeBow && item instanceof IPrefixItem && item instanceof BowItem){

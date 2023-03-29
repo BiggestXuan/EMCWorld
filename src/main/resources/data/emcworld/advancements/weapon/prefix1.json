@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:god_nature_sword"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_prefix1"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_prefix1.desc"
+    }
+  },
+  "parent": "emcworld:weapon/first",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

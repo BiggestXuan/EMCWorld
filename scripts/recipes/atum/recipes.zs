@@ -7,6 +7,7 @@ public function modifyAtumRecipe() as void{
     var n = <item:atum:nebu_ore>;
     var gb = <item:atum:godforged_block>;
     var d = <item:atum:nebu_drop>;
+    var test = <item:emcworld:test_block>;
     var godBlock as IIngredient[]=[
         <item:atum:anput_godforged_block>,
         <item:atum:anubis_godforged_block>,
@@ -27,7 +28,7 @@ public function modifyAtumRecipe() as void{
     removeCraftRecipe([gb]);
     modifyShapedRecipe([
         [a,g,a],
-        [g,<item:aether:victory_medal>,g],
+        [g,test,g],
         [a,g,a]
     ],<item:atum:scarab>);
     enrichingRecipe(n,d,5);

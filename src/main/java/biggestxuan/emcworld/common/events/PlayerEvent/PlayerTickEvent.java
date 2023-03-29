@@ -54,6 +54,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -77,6 +78,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
+import static biggestxuan.emcworld.common.compact.Projecte.EMCHelper.awardAdvancement;
 
 @Mod.EventBusSubscriber(
         modid = EMCWorld.MODID,
@@ -114,6 +117,7 @@ public class PlayerTickEvent {
                     cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer()
             )));
         }
+        ServerPlayerEntity SP = (ServerPlayerEntity) player;
         LazyOptional<IUtilCapability> cap = player.getCapability(EMCWorldCapability.UTIL);
         cap.ifPresent((c)->{
                 long l = c.getCoolDown();
@@ -295,43 +299,55 @@ public class PlayerTickEvent {
         }
         if(world.isRaided(playerPos)){
             Raid raid = world.getRaidAt(new BlockPos(player.position()));
-            if(raid != null){
-                util.setRaid(true);
-                if(raid.isLoss()){
-                    util.setState(3);
-                }else if(raid.isVictory()){
-                    util.setState(2);
-                    if(!util.hasBeenDisplayDamage()){
-                        List<? extends RaidInfo> players = RaidUtils.getRaidAllPlayers(raid);
-                        int count = players.size();
-                        float allDamage = 0f;
-                        for(RaidInfo r : players){
-                            allDamage += r.damage;
-                        }
-                        Message.sendMessage(player,EMCWorld.tc("message.raid.successful_title"));
-                        for (int i = 0; i < count; i++) {
-                            RaidInfo info = players.get(i);
-                            Message.sendMessage(player,EMCWorld.tc("message.raid.successful_info",i+1,info.getPlayer().getScoreboardName(),String.format("%.2f",info.damage),String.format("%.2f",(info.damage/allDamage)*100)+"%"));
-                        }
+            assert raid != null;
+            util.setRaid(true);
+            if(raid.isLoss()){
+                util.setState(3);
+            }else if(raid.isVictory()){
+                util.setState(2);
+                if(!util.hasBeenDisplayDamage()){
+                    List<? extends RaidInfo> players = RaidUtils.getRaidAllPlayers(raid);
+                    int count = players.size();
+                    float allDamage = 0f;
+                    for(RaidInfo r : players){
+                        allDamage += r.damage;
                     }
-                    util.setDisplayDamage(true);
-                }else if(raid.isBetweenWaves()){
-                    util.setState(4);
-                }else util.setState(1);
-                float rate = 1f;
-                if(getVillagerAmount(raid) <= 10){
-                    rate = (float) (1f + ((-0.2 * getVillagerAmount(raid) + 2) / (float) MathUtils.difficultyLoss()));
+                    Message.sendMessage(player,EMCWorld.tc("message.raid.successful_title"));
+                    for (int i = 0; i < count; i++) {
+                        RaidInfo info = players.get(i);
+                        Message.sendMessage(player,EMCWorld.tc("message.raid.successful_info",i+1,info.getPlayer().getScoreboardName(),String.format("%.2f",info.damage),String.format("%.2f",(info.damage/allDamage)*100)+"%"));
+                    }
                 }
-                util.setPillager(raid.getTotalRaidersAlive());
-                util.setVillager(getVillagerAmount(raid));
-                util.setWave(raid.getGroupsSpawned());
-                util.setRaidRate(rate);
-                util.setMaxWave(RaidUtils.getRaidWave());
-                if(c.getModify() == 0 || c.getLevel() < 80){
-                    for(PlayerEntity player1 : PlayerDeathEvent.getNearPlayer(raid)){
-                        Message.sendMessage(player1, EMCWorld.tc("message.raid.cancel"));
-                    }
-                    raid.stop();
+                util.setDisplayDamage(true);
+            }else if(raid.isBetweenWaves()){
+                util.setState(4);
+            }else util.setState(1);
+            float rate = 1f;
+            if(getVillagerAmount(raid) <= 10){
+                rate = (float) (1f + ((-0.2 * getVillagerAmount(raid) + 2) / (float) MathUtils.difficultyLoss()));
+            }
+            util.setPillager(raid.getTotalRaidersAlive());
+            util.setVillager(getVillagerAmount(raid));
+            util.setWave(raid.getGroupsSpawned());
+            util.setRaidRate(rate);
+            util.setMaxWave(RaidUtils.getRaidWave());
+            if(c.getModify() == 0 || c.getLevel() < 80){
+                for(PlayerEntity player1 : PlayerDeathEvent.getNearPlayer(raid)){
+                    Message.sendMessage(player1, EMCWorld.tc("message.raid.cancel"));
+                }
+                raid.stop();
+            }
+            if(c.getLevel() >= 80 && c.getModify() != 0){
+                awardAdvancement(SP,EMCWorld.rl("illager/start"));
+                int wave = raid.getGroupsSpawned();
+                if(wave >= 6){
+                    awardAdvancement(SP,EMCWorld.rl("illager/wave1"));
+                }
+                if(wave >= 15){
+                    awardAdvancement(SP,EMCWorld.rl("illager/wave2"));
+                }
+                if(wave == 20 && raid.isVictory()){
+                    awardAdvancement(SP,EMCWorld.rl("illager/wave3"));
                 }
             }
         }
@@ -405,17 +421,51 @@ public class PlayerTickEvent {
                 if(!stack.getOrCreateTag().getBoolean("star_init")){
                     item.initStar(stack);
                 }
+                int count = item.getStar(stack);
+                if(count >= 1){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/star1"));
+                }
+                if(count >= 4){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/star2"));
+                }
+                if(count >= 8){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/star3"));
+                }
             }
             if(stack.getItem() instanceof IPrefixItem){
                 IPrefixItem item = (IPrefixItem) stack.getItem();
                 if(item.getPrefix(stack) == IPrefixItem.Prefix.NULL){
                     item.init(stack);
                 }
+                int level = item.getPrefix(stack).getLevel();
+                if(level >= 7){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/prefix1"));
+                }
+                if(level >= 9){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/prefix2"));
+                }
+                if(level >= 10){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/prefix3"));
+                }
             }
-            if(stack.hasTag()){
-                //if(stack.getOrCreateTag().getString("patchouli:book").equals("the_afterlight:afterlight_tome") && !GameStageManager.hasStage(player,"four")){
-                    //stack.shrink(1);
-                //}
+            if(stack.getItem() instanceof IUpgradeableItem){
+                CompoundNBT nbt = stack.getOrCreateTag();
+                if(!nbt.contains("level")){
+                    nbt.putInt("level",0);
+                    stack.setTag(nbt);
+                }
+                IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
+                int level = item.getLevel(stack);
+                awardAdvancement(SP,EMCWorld.rl("weapon/first"));
+                if(level >= 8){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/level1"));
+                }
+                if(level >= 18){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/level2"));
+                }
+                if(level >= 30){
+                    awardAdvancement(SP,EMCWorld.rl("weapon/level3"));
+                }
             }
             if(stack.getItem() instanceof IEMCShieldArmor){
                 IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();

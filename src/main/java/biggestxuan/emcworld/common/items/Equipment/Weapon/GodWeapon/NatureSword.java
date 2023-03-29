@@ -51,11 +51,6 @@ public class NatureSword extends BaseEMCGodSword {
     @Override
     public double getBaseRange(ItemStack stack){
         int level = getLevel(stack);
-        if(level <= 12) return 0d;
-        if(level <= 15) return (level-10) * 0.2d;
-        if(level <= 18) return (level-15) * 0.25d + 0.6d;
-        if(level <= 20) return (level-18) * 0.3d + 1.35d;
-        if(level <= 23) return (level-20) * 0.35d + 1.95d;
-        else return 1.95d + 0.5d;
+        return Math.pow(1.07,level);
     }
 }

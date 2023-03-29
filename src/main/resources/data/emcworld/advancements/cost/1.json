@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:small_emc_gem"
+    },
+    "title": {
+      "translate": "advancement.emcworld.cost1.title"
+    },
+    "description": {
+      "translate": "advancement.emcworld.cost1.desc"
+    }
+  },
+  "parent": "emcworld:welcome",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

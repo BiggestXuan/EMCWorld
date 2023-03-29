@@ -19,7 +19,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.5.0'
+version = '0.5.1'
 group = 'biggestxuan.emcworld'
 archivesBaseName = 'EMCWorld'
 
@@ -155,6 +155,7 @@ dependencies {
     implementation fg.deobf("curse.maven:sh-248027:3240365")
     implementation fg.deobf("curse.maven:hem-408466:3836676")
     implementation fg.deobf("curse.maven:good_night-61461:3226536")
+    implementation fg.deobf("curse.maven:AerialHell-674630:4388467")
     implementation fg.deobf("curse.maven:DivineRPG-363543:4022627")
     implementation fg.deobf("curse.maven:Explorers_Compass-491794:3412474")
     implementation fg.deobf("curse.maven:JourneyMap-32274:4012858")
@@ -166,7 +167,9 @@ dependencies {
     implementation fg.deobf("curse.maven:farmersdelight-398521:3503844")
     implementation fg.deobf("curse.maven:block_swap-468893:3296675")
     implementation fg.deobf("curse.maven:lootr-361276:4110873")
-    implementation fg.deobf("curse.maven:Champions-307152:4297614")
+    implementation fg.deobf("curse.maven:RSInfinityBooster-446870:3613350")
+    implementation fg.deobf("curse.maven:RS-243076:3807951")
+    implementation fg.deobf("curse.maven:Champions-307152:3243441")
     implementation fg.deobf("curse.maven:waystone-245755:3515707")
     implementation fg.deobf("com.blakebr0.cucumber:Cucumber:1.16.5-4.1.12")
     implementation fg.deobf("com.blakebr0.extendedcrafting:ExtendedCrafting:1.16.5-3.1.12")

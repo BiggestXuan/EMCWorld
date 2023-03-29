@@ -1,10 +1,10 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-license="CC BY-NC-ND 4.0"
+license="https://biggestxuan.top/emcworld/l"
 issueTrackerURL="https://github.com/BiggestXuan/EMCworld/issues"
 [[mods]]
 modId="emcworld"
-version="0.5.0"
+version="0.5.1"
 displayName="EMCWorld"
 logoFile=""
 credits=""

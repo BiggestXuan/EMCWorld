@@ -97,6 +97,7 @@ public class EWItems {
     public static final RegistryObject<Item> BASE_KEY = ITEMS.register("base_key",EWItem::new);
     public static final RegistryObject<Item> INFUSE_CORE = ITEMS.register("infuse_core",EWItem::new);
     public static final RegistryObject<Item> PREFIX_CORE = registryBlock("prefix_core", EWBlocks.PREFIX_CORE);
+    public static final RegistryObject<Item> EMC_SUPER = registryBlock("emc_super", EWBlocks.EMC_SUPER);
     public static final RegistryObject<Item> STAR_PEDESTAL = registryBlock("star_pedestal", EWBlocks.STAR_PEDESTAL);
     public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1,"profession.emcworld.sword"));
     public static final RegistryObject<Item> PROFESSION_TANK = ITEMS.register("profession_tank",() -> new ProfessionalItem(2,"profession.emcworld.tank"));

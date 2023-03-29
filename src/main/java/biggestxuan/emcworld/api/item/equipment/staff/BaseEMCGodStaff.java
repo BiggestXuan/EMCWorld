@@ -33,12 +33,6 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
-    }
-
-    @Override
     protected double getPrefixCommonRate(ItemStack stack){
         return super.getPrefixCommonRate(stack) * 1.05;
     }

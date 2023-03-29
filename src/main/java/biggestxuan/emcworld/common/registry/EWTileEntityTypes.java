@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateTileEntity;
 import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixTileEntity;
 import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalTileEntity;
+import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCTileEntity;
 import biggestxuan.emcworld.common.compact.Botania.BotaniaFlowers.TileEMCFlower;
 import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneTileEntity;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
@@ -49,6 +50,9 @@ public class EWTileEntityTypes {
     public static RegistryObject<TileEntityType<StarPedestalTileEntity>> starPedestalTileEntity = TILE_ENTITIES.register
             ("star_pedestal_tileentity", () -> TileEntityType.Builder.of(StarPedestalTileEntity::new,
                     EWBlocks.STAR_PEDESTAL.get()).build(null));
+    public static RegistryObject<TileEntityType<SuperEMCTileEntity>> superEMCTileEntity = TILE_ENTITIES.register
+            ("super_emc_tileentity", () -> TileEntityType.Builder.of(SuperEMCTileEntity::new,
+                    EWBlocks.EMC_SUPER.get()).build(null));
 
     // Botania
     public static RegistryObject<TileEntityType<TileEMCFlower>> EMC_FLOWER = TILE_ENTITIES.register

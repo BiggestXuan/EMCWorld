@@ -4,7 +4,7 @@ import crafttweaker.api.item.ItemStack;
 import crafttweaker.api.item.IIngredient;
 
 public function modifyAfterNightRecipe() as void{
-    var mc = <item:the_afterlight:moon_crystal>;
+    /*var mc = <item:the_afterlight:moon_crystal>;
     var vr = <item:the_afterlight:void_rock>;
     var wa = <item:the_afterlight:workbench_of_ancients>;
     var ga = <item:the_afterlight:glyph_altar>;
@@ -31,5 +31,5 @@ public function modifyAfterNightRecipe() as void{
         <item:the_afterlight:glyph_of_sickness>,
         <item:the_afterlight:spectral_glyph>,
         <item:the_afterlight:glyph_of_knowledge>
-    ],wa,3500,10000000,3);
+    ],wa,3500,10000000,3);*/
 }

@@ -59,6 +59,6 @@ public class AbunanaLoot extends EWItem implements ISponsorItem {
 
     @Override
     public Sponsors getSponsor(){
-        return Sponsors.ABunana;
+        return Sponsors.all.ABunana.getSponsors();
     }
 }

@@ -22,7 +22,7 @@ public class EMCProtectAffix extends BasicAffix {
         if(source.isMagic()){
             return 0;
         }
-        if(source instanceof EWDamageSource){
+        if(EWDamageSource.isReallyDamage(source)){
             return 0.25F * newAmount;
         }
         return newAmount;

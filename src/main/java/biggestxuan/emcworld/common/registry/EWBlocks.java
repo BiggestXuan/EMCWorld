@@ -16,6 +16,7 @@ import biggestxuan.emcworld.common.blocks.Ores.EWStoneOre;
 import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixBlock;
 import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalBlock;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceCore;
+import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCBlock;
 import biggestxuan.emcworld.common.blocks.VisConversionBlock.VisConversionBlock;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlock;
 import biggestxuan.emcworld.common.compact.Botania.BotaniaFlowers.TileEMCFlower;
@@ -63,6 +64,7 @@ public class EWBlocks {
         public static final RegistryObject<Block> GEMSTONE_CORE = BLOCKS.register("gemstone_core", GemstoneBlock::new);
         public static final RegistryObject<Block> PREFIX_CORE = BLOCKS.register("prefix_core", PrefixBlock::new);
         public static final RegistryObject<Block> STAR_PEDESTAL = BLOCKS.register("star_pedestal", StarPedestalBlock::new);
+        public static final RegistryObject<Block> EMC_SUPER = BLOCKS.register("emc_super", SuperEMCBlock::new);
         public static final RegistryObject<Block> EMC_ORE = BLOCKS.register("emc_ore",() -> new EWStoneOre(2,3F));
         public static final RegistryObject<Block> RICH_EMC_ORE = BLOCKS.register("rich_emc_ore",() -> new EWStoneOre(3,7F));
         public static final RegistryObject<Block> NETHER_EMC_ORE = BLOCKS.register("nether_emc_ore", () -> new EWStoneOre(2,5F));

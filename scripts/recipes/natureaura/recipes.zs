@@ -64,6 +64,11 @@ public function modifyNatureAuraRecipe() as void{
     treeRitualRecipe([
         eye,<item:bloodmagic:seersigil>,<item:astralsorcery:glass_lens>
     ],<item:good_nights_sleep:dream_sapling>,ei);
+    natureSpawnerRecipe([
+        <item:undergarden:regalium_block>,
+        <item:undergarden:cloggrum_block>,
+        <item:hem:copparite>,
+    ],50000,<entitytype:undergarden:forgotten_guardian>,"zs");
     Replacer.forTypes(craftingTable)
     .forMods("naturesaura")
     .suppressWarnings()

@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
-public class EMCChargeModel implements IItemPropertyGetter {
+public class EMCLevelModel implements IItemPropertyGetter {
     @Override
     public float call(ItemStack p_call_1_, @Nullable ClientWorld p_call_2_, @Nullable LivingEntity p_call_3_) {
         if(p_call_1_.hasTag()){

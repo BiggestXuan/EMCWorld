@@ -7,6 +7,7 @@ public function modifyBloodMagicRecipe() as void{
     var ei = <item:botania:elementium_ingot>;
     var a = <item:minecraft:air>;
     var ob = <item:minecraft:obsidian>;
+    var test = <item:emcworld:test_block>;
     var g = <tag:items:forge:glass>;
     var rb = <item:bloodmagic:reagentbinding>;
     var he = <item:bloodmagic:ingot_hellforged>;
@@ -75,7 +76,7 @@ public function modifyBloodMagicRecipe() as void{
     ],<item:bloodmagic:soulforge>);
     modifyShapedRecipe([
         [he,a,he],
-        [a,<item:aether:altar>,a],
+        [a,test,a],
         [br,<item:emcworld:hardcore_stone>,br]
     ],<item:bloodmagic:demoncrucible>);
     removeTartaricForgeRecipe([ds]);

@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "astralsorcery:starmetal"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_star3"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_star3.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "emcworld:weapon/star2",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

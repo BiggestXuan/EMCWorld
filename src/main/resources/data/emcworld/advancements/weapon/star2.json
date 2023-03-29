@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "astralsorcery:starmetal_ingot"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_star2"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_star2.desc"
+    },
+    "frame": "goal"
+  },
+  "parent": "emcworld:weapon/star1",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

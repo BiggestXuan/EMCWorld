@@ -52,11 +52,6 @@ public class IceSword extends BaseEMCGodSword {
     @Override
     public double getBaseRange(ItemStack stack){
         int level = getLevel(stack);
-        if(level <= 11) return 0d;
-        if(level <= 15) return (level-10) * 0.25d;
-        if(level <= 18) return (level-15) * 0.3d + 1.0d;
-        if(level <= 20) return (level-18) * 0.35d + 1.6d;
-        if(level <= 23) return (level-20) * 0.4d + 2.8d;
-        else return 4.0d + 0.5d;
+        return Math.pow(1.085,level);
     }
 }

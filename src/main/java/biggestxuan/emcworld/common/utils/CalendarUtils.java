@@ -7,6 +7,10 @@ package biggestxuan.emcworld.common.utils;
  */
 
 import biggestxuan.emcworld.common.config.ConfigManager;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Calendar;
 
@@ -120,8 +124,13 @@ public class CalendarUtils {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     public String getNowTimeWelcome(){
         String s;
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+        if(player != null && new BirthdayUtils(player).HappyBirthday()){
+            return "Happy Birthday";
+        }
         int hour = getHour();
         if(hour >= 6 && hour < 12){
             s = "Good Morning";

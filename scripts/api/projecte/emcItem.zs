@@ -32,8 +32,7 @@ public class emcItem{
         <item:minecraft:water_bucket>,
         <item:minecraft:lava_bucket>,
         <item:minecraft:milk_bucket>,
-        <item:mekanism:salt>,
-        <item:pouchofunknown:pouch>
+        <item:mekanism:salt>
     ];
 
     public getStack() as IItemStack[]{

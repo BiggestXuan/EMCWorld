@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:god_ice_sword"
+    },
+    "title": {
+      "translate": "advancement.emcworld.weapon_prefix2"
+    },
+    "description": {
+      "translate": "advancement.emcworld.weapon_prefix2.desc"
+    }
+  },
+  "parent": "emcworld:weapon/prefix1",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

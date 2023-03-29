@@ -12,6 +12,7 @@ import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneContainer;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserContainer;
 import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixContainer;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceCoreContainer;
+import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCContainer;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
@@ -42,6 +43,9 @@ public class EWContainerTypes {
 
     public static final RegistryObject<ContainerType<PrefixContainer>> prefixContainer =
             registerMenuType(PrefixContainer::new, "prefix_container");
+
+    public static final RegistryObject<ContainerType<SuperEMCContainer>> superEMCContainer =
+            registerMenuType(SuperEMCContainer::new, "super_emc_container");
 
     private static <T extends Container> RegistryObject<ContainerType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return CONTAINERS.register(name, () -> IForgeContainerType.create(factory));

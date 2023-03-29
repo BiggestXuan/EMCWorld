@@ -1,7 +1,8 @@
 #priority 20
 
 public function modifyAetherRecipe() as void{
-    addCraftShapelessRecipe([
+    var test = <item:emcworld:test_block>;
+    /*addCraftShapelessRecipe([
         <item:aether:ambrosium_shard>,
         <item:aether:zanite_gemstone>,
         <item:aether:cold_parachute>,
@@ -9,10 +10,8 @@ public function modifyAetherRecipe() as void{
         <item:emcworld:stone_shard>,
         <item:emcworld:sunlit_ingot>,
         <item:minecraft:glowstone>
-    ],<item:aether:victory_medal>);
+    ],<item:aether:victory_medal>);*/
     terraPlateRecipe([
-        <item:aether:golden_amber>,
-        <item:aether:hellfire_stone>,
-        <item:aether:holystone>
+        test,test,test
     ],<item:emcworld:sunlit_ore>,50000);
 }

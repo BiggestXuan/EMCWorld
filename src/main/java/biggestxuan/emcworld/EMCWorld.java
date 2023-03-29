@@ -8,7 +8,7 @@ package biggestxuan.emcworld;
 
 import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.*;
-import biggestxuan.emcworld.client.models.EMCChargeModel;
+import biggestxuan.emcworld.client.models.EMCLevelModel;
 import biggestxuan.emcworld.client.render.ContainerDenyRender;
 import biggestxuan.emcworld.client.render.StarPedestalRender;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
@@ -16,6 +16,7 @@ import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneGUI;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
 import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixGUI;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceGUI;
+import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import biggestxuan.emcworld.common.compact.Champions.ChampionsInit;
 import biggestxuan.emcworld.common.compact.Projecte.ModifyCollector;
@@ -25,8 +26,8 @@ import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
-import biggestxuan.emcworld.common.utils.CalendarUtils;
 import biggestxuan.emcworld.common.utils.RaidUtils;
+import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -71,7 +72,7 @@ public class EMCWorld {
     public static final String MODID = "emcworld";
     public static final int ModPackVersion = 5;
     public static final String PackVersion = "0.5.0";
-    public static final String TITLE = "EMCWorld " + PackVersion+" - "+ CalendarUtils.INSTANCE.getNowTimeWelcome()+"!";
+    public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
     public static boolean isOffline = false;
@@ -126,6 +127,7 @@ public class EMCWorld {
         MinecraftForge.EVENT_BUS.register(new commandEvent());
         ModifyCollector.init();
         ChampionsInit.init();
+        welcome();
     }
 
     private void doClientStuff(FMLClientSetupEvent event) {
@@ -136,6 +138,7 @@ public class EMCWorld {
             ScreenManager.register(EWContainerTypes.gemstoneContainer.get(), GemstoneGUI::new);
             ScreenManager.register(EWContainerTypes.steelFurnaceContainer.get(), SteelFurnaceGUI::new);
             ScreenManager.register(EWContainerTypes.prefixContainer.get(), PrefixGUI::new);
+            ScreenManager.register(EWContainerTypes.superEMCContainer.get(), SuperEMCGUI::new);
             ClientRegistry.registerKeyBinding(Admin.ADMIN_KEY);
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
             ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
@@ -146,7 +149,7 @@ public class EMCWorld {
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
             ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
-            ItemModelsProperties.register(EWItems.EMC_CHARGE_GEM.get(),rl("level"),new EMCChargeModel());
+            ItemModelsProperties.register(EWItems.EMC_CHARGE_GEM.get(),rl("level"),new EMCLevelModel());
         });
     }
 
@@ -186,5 +189,13 @@ public class EMCWorld {
 
     public static List<Ingredient> itemstack2ingredient(ItemStack[] stacks){
         return itemstack2ingredient(new ArrayList<>(Arrays.asList(stacks)));
+    }
+
+    private static void welcome(){
+        Arrays.stream(Sponsors.all.values()).forEach(s -> {
+            if(s.getSponsors().getIndex() == 3 || s.getSponsors().getIndex() >= 6){
+                LOGGER.info("Thanks for: "+s.getSponsors().getPlayerName());
+            }
+        });
     }
 }

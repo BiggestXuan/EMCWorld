@@ -17,6 +17,7 @@ public function emcworldRecipe() as void{
     var beg = <item:emcworld:big_emc_gem>;
     var sg = <item:emcworld:scroll_green>;
     var em = <item:minecraft:emerald>;
+    var test = <item:emcworld:test_block>;
     var sp = <item:emcworld:scroll_purple>;
     var sw = <item:emcworld:scroll_white>;
     var tun = <item:extendedcrafting:the_ultimate_nugget>;
@@ -443,10 +444,10 @@ public function emcworldRecipe() as void{
             <item:emcworld:abyss_gemstone>
         ],
         [
-            <item:the_afterlight:glyph_of_power>,
-            <item:the_afterlight:glyph_of_sickness>,
-            <item:the_afterlight:spectral_glyph>,
-            <item:the_afterlight:glyph_of_knowledge>
+            <item:emcworld:test_block>,
+            <item:emcworld:test_block>,
+            <item:emcworld:test_block>,
+            <item:emcworld:test_block>
         ]
     ];
     var sing as IItemStack[][] = [
@@ -567,9 +568,8 @@ public function emcworldRecipe() as void{
     add_emc_stage(emc_stage[6],8);
     setEMCStage(<item:mekanism:fluorite_gem>,1024,5);
     setEMCStage(<item:mekanism:pellet_antimatter>,46080000,114514);
-    setEMCStage(<item:the_afterlight:moon_crystal>,19200,6);
     setEMCStage(<item:emcworld:universal_ball>,320000,8);
-    removeRecipe([mt,<item:quark:pickarang>]);
+    removeRecipe([mt,<item:quark:pickarang>,<item:gobber2:block_looter>,<item:gobber2:block_protector>,<item:gobber2:block_defender>]);
     crockPotRecipe(new CrTRequirement().addCategoryMin(new CrTFoodValue().put("meat",3.5)).addMustItem(<item:farmersdelight:ham>,1),<item:emcworld:ham_bat>,100);
     violet(<item:projectex:purple_collector>,<item:projectex:violet_collector>);
     violet(<item:projectex:purple_relay>,<item:projectex:violet_relay>);
@@ -871,13 +871,13 @@ public function emcworldRecipe() as void{
     removeCraftRecipe([abag[13]]);
     removeCraftRecipe([abag[11]]);
     addCraftShapelessRecipe([
-        <tag:items:forge:dyes/white>,<item:pouchofunknown:pouch>
+        <tag:items:forge:dyes/white>,abag[11]
     ],abag[13]);
     addCraftShapelessRecipe([
         <tag:items:forge:nuggets/gold>
     ],abag[11]);
     addCraftShapelessRecipe([
-        <tag:items:forge:dyes/black>,<item:pouchofunknown:pouch>
+        <tag:items:forge:dyes/black>,abag[11]
     ],<item:projecte:black_alchemical_bag>);
     combiningRecipe(<item:minecraft:stone>,<item:minecraft:obsidian>,<item:minecraft:blackstone>);
     removeFurnaceRecipe([<item:minecraft:nether_brick>]);
@@ -961,7 +961,7 @@ public function emcworldRecipe() as void{
         <item:botania:brew_flask>.withTag({brewKey: "botania:overload" as string}),
         wp,
         <item:bloodmagic:tauoil>,
-        <item:the_afterlight:spectral_glyph>,
+        test,
         <item:undergarden:regalium_block>
     ],we,100000,4);
     oxidizingRecipe(<item:stalwart_dungeons:void_crystal>,<gas:emcworld:no_shape_void>*1000);
@@ -1006,7 +1006,6 @@ public function emcworldRecipe() as void{
     cyan(<item:projectex:blue_collector>,<item:projectex:cyan_collector>);
     cyan(<item:projectex:blue_relay>,<item:projectex:cyan_relay>);
     natureAltarRecipe(con[0][5]*camt,con[0][6]*camt,2,100000);
-    removeRecipe([<item:the_afterlight:golden_shards_of_radiance>]);
     nucleosyRecipe(con[0][6]*camt,<gas:mekanism:antimatter>*3,con[0][7]*camt,100);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
@@ -1046,11 +1045,11 @@ public function emcworldRecipe() as void{
         <item:naturesaura:token_rage>,
         <item:naturesaura:token_terror>,
         <item:naturesaura:token_grief>
-    ],<item:aether:golden_oak_sapling>,con[2][5]*2);
+    ],test,con[2][5]*2);
     infuserRecipe([
-        con[0][6],<item:the_afterlight:livingessenceingot>,
+        con[0][6],test,
         <item:undergarden:regalium_ingot>,
-        <item:the_afterlight:glyph_of_power>,
+        test,
         <item:astralsorcery:ritual_link>
     ],con[2][6],3000,1000000,3);
     infuserRecipe([
@@ -1108,9 +1107,9 @@ public function emcworldRecipe() as void{
     ],<item:astralsorcery:constellation_paper>.withTag({astralsorcery: {constellationName: "emcworld:emc" as string}}));
     infuserRecipe([
         <item:undergarden:forgotten_ingot>,
-        <item:the_afterlight:spectral_glyph>,
+        test,
         <item:astralsorcery:ritual_link>,
-        <item:the_afterlight:lunariteingot>,con[0][6]
+        test,con[0][6]
     ],con[3][6],4000,300000,3);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
@@ -1119,7 +1118,7 @@ public function emcworldRecipe() as void{
     ],con[1][0]*4);
     addCraftShapedRecipeNoName([
         [alt,con[0][1],alt],
-        [con[0][1],<item:aether:golden_amber>,con[0][1]],
+        [con[0][1],test,con[0][1]],
         [<tag:items:atum:godshards>,con[0][1],<tag:items:atum:godshards>]
     ],con[1][1]*4);
     mythicInfuserRecipe([
@@ -1164,6 +1163,10 @@ public function emcworldRecipe() as void{
     }
     EMCHelper.setItemEMC(<item:emcworld:dust_aquamarine>,256);
     setEMCStage(<item:bloodmagic:ingot_hellforged>,1024,4);
+    for i in [pp,pp2]{
+        setEMCStage(i,(134560*getDifficultyLoss()) as int,6);
+    }
+    setEMCStage(<item:mekanism:reprocessed_fissile_fragment>,92160,5);
     EMCHelper.setItemEMC(<item:mekanism:dust_refined_obsidian>,4112);
     setEMCStage(<item:mekanism:ingot_refined_obsidian>,4112+756,5);
     crushingRecipe(<item:atlantis:aquamarine_gem>,<item:emcworld:dust_aquamarine>,1);
@@ -1197,7 +1200,7 @@ public function emcworldRecipe() as void{
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
     infuserRecipe([ali,alv,a,a,a],vaai*32,10000,10000000,3);
-    crushingRecipe(<item:minecraft:diamond>,<item:minecraft:coal>*64,1);
+    crushingRecipe(<item:mekanism:enriched_diamond>,<item:minecraft:coal>,64);
     infuserRecipe([eoi,sn[5],ci,di,esi],rai,3000,800000,1);
     astralAltarRecipe([
         [mr,a,a,a,mr],
@@ -1214,6 +1217,8 @@ public function emcworldRecipe() as void{
     steelFurnaceRecipe([<item:gobber2:gobber2_ingot>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,300);
     steelFurnaceRecipe([<item:emcworld:enriched_gobber>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,600);
     infuserRecipe([ss,rai,ki,zi,asi],hs,5000,15000000,2);
+    addNuggetAndIngotRecipe(<item:projecte:dark_matter>,<item:projecte:dark_matter_block>);
+    addNuggetAndIngotRecipe(<item:projecte:red_matter>,<item:projecte:red_matter_block>);
     mythicInfuserRecipe([
         <item:atum:godforged_block>,<item:emcworld:god_steel_ingot>,<item:emcworld:orichalcos_ingot>
     ],<item:emcworld:infuser_core>,1500000,0xfaebd7,0xeec900);
@@ -1302,10 +1307,7 @@ public function emcworldRecipe() as void{
             <item:good_nights_sleep:rainbow_ingot>,
             <item:good_nights_sleep:zitrite_ingot>,
             <item:rats:oratchalcum_ingot>,
-            <item:the_afterlight:livingessenceingot>,
-            <item:the_afterlight:moonsteel_ingot>,
-            <item:the_afterlight:crystillium_ingot>,
-            <item:the_afterlight:lunariteingot>,
+            test,test,test,test,
             <item:twilightforest:ironwood_ingot>,
             <item:twilightforest:fiery_ingot>,
             <item:twilightforest:knightmetal_ingot>,
@@ -1392,10 +1394,8 @@ public function emcworldRecipe() as void{
             <item:good_nights_sleep:dead_log>,
             <item:good_nights_sleep:blood_log>,
             <item:rats:pirat_log>,
-            <item:aether:skyroot_log>,
-            <item:aether:golden_oak_log>,
-            <item:the_afterlight:moonlight_log>,
-            <item:the_afterlight:gloom_wood>,
+            test,test,
+            test,test,
             <item:twilightforest:twilight_oak_log>,
             <item:twilightforest:canopy_log>,
             <item:twilightforest:mangrove_log>,
@@ -1474,9 +1474,8 @@ public function emcworldRecipe() as void{
             <item:good_nights_sleep:delusion_stone>,
             <item:rats:marbled_cheese_raw>,
             <item:rats:marbled_cheese_tile>,
-            <item:aether:holystone>,
-            <item:the_afterlight:strange_obsidian>,
-            <item:the_afterlight:void_rock>,
+            test,
+            test,test,
             <item:undergarden:depthrock>,
             <item:undergarden:shiverstone>,
             <item:astralsorcery:marble_raw>,
@@ -1603,10 +1602,7 @@ public function emcworldRecipe() as void{
             <item:byg:white_anemone>,
             <item:good_nights_sleep:orange_flower>,
             <item:good_nights_sleep:cyan_flower>,
-            <item:the_afterlight:moonflower>,
-            <item:the_afterlight:mournblossom>,
-            <item:the_afterlight:moontail>,
-            <item:the_afterlight:sparkling_flower>,
+            test,test,test,test,
             <item:undergarden:deepturf>,
             <item:undergarden:ashen_deepturf>,
             <item:undergarden:frozen_deepturf>,
@@ -1645,13 +1641,14 @@ public function violet(c as IItemStack,r as IItemStack) as void{
 }
 
 public function blue(c as IItemStack,r as IItemStack) as void{
+    var test = <item:emcworld:test_block>;
     treeRitualRecipe([
         c,
         <item:undergarden:forgotten_block>,
         <item:undergarden:masticator_scales>,
-        <item:the_afterlight:lunarite_block>,
+        test,
         <item:extendedcrafting:elite_component>,
-        <item:the_afterlight:block_of_radiance_shards>,
+        test,
         <item:undergarden:regalium_block>,
         <item:emcworld:blue_matter>
     ],<item:undergarden:smogstem_sapling>,r);

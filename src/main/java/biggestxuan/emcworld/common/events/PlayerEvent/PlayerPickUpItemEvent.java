@@ -17,8 +17,10 @@ import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.UnknownPouchUtils;
 import net.darkhax.itemstages.Restriction;
 import net.darkhax.itemstages.RestrictionManager;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
@@ -35,7 +37,7 @@ public class PlayerPickUpItemEvent {
         ItemStack item = event.getItem().getItem();
         if (player.getCommandSenderWorld().isClientSide) return;
         int amt = item.getCount() * (64 / item.getMaxStackSize());
-        if(item.getMaxStackSize() >= 65) amt *= 1145141919;
+        if(item.getMaxStackSize() >= 65) amt *= (EMCWorld.HOMO << 18);
         double rate = 1d;
         IUtilCapability c = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(EMCWorldCommonException::new);
         if(c.getPickMode() == 1 && item.getMaxStackSize() <= 64){
@@ -58,6 +60,15 @@ public class PlayerPickUpItemEvent {
         }
         final Restriction restriction = RestrictionManager.INSTANCE.getRestriction(player, item);
         if (restriction != null && restriction.shouldPreventPickup()) {
+            ItemEntity entity = event.getItem();
+            ItemStack ret = UnknownPouchUtils.putItem(player,entity.getItem());
+            if(ret.equals(ItemStack.EMPTY)){
+                entity.remove();
+                Message.sendMessage(player,EMCWorld.tc("message.unknown_pouch.success",entity.getItem().toString()));
+            }else{
+                entity.setItem(ret);
+                Message.sendMessage(player,EMCWorld.tc("message.unknown_pouch.fail"));
+            }
             return;
         }
         if(full(player,item)) return;

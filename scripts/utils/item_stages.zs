@@ -23,11 +23,11 @@ public function setItemStage() as void{
     ];
 
     val mod_name as string[][] = [
-        ["aether","bloodmagic","atum"],
+        ["bloodmagic","atum"],
         ["good_nights_sleep","atlantis","mythicbotany","extendedcrafting"],
         ["twilightforest","ratlantis","astralsorcery"],
         ["hem","naturesaura"],
-        ["the_afterlight","undergarden"],
+        ["undergarden","aerialhell"],
         [""],
         [""],
         [""]

@@ -25,7 +25,7 @@ public class NoNameCatFood extends EWItem implements ISponsorItem {
 
     @Override
     public Sponsors getSponsor(){
-        return Sponsors.HIEHEIHEICAT;
+        return Sponsors.all.HIEHEIHEICAT.getSponsors();
     }
 
     @OnlyIn(Dist.CLIENT)

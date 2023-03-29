@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "projecte:transmutation_table"
+    },
+    "title": {
+      "translate": "advancement.emcworld.welcome"
+    },
+    "description": {
+      "translate": ""
+    },
+    "background": "minecraft:textures/block/white_concrete.png",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond_axe"
+    },
+    "title": {
+      "translate": "advancement.emcworld.wave2"
+    },
+    "description": {
+      "translate": "advancement.emcworld.wave2.desc"
+    },
+    "frame": "goal"
+  },
+  "parent": "emcworld:illager/wave1",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

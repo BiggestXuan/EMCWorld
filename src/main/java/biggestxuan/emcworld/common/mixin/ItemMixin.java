@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
@@ -60,11 +61,16 @@ public abstract class ItemMixin {
         Item item = (Item) (Object) this;
         ResourceLocation rl = item.getRegistryName();
         TranslationTextComponent text = rl == null ? EMCWorld.tc("") : new TranslationTextComponent(item.getDescriptionId(p_200295_1_));
-        if(item instanceof IUpgradeableItem){
-            IUpgradeableItem upgradeableItem = (IUpgradeableItem) item;
-            int level = upgradeableItem.getLevel(p_200295_1_);
-            if(upgradeableItem.getMaxLevel() >0){
-                text.append(" (+"+level+")");
+        if(p_200295_1_.hasTag()){
+            CompoundNBT nbt = p_200295_1_.getTag();
+            if(nbt != null && nbt.contains("level")){
+                if(item instanceof IUpgradeableItem){
+                    IUpgradeableItem upgradeableItem = (IUpgradeableItem) item;
+                    int level = upgradeableItem.getLevel(p_200295_1_);
+                    if(upgradeableItem.getMaxLevel() >0){
+                        text.append(" (+"+level+")");
+                    }
+                }
             }
         }
         if(item instanceof IPrefixItem){

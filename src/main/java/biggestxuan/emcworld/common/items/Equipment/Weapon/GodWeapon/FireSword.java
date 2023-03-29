@@ -52,11 +52,6 @@ public class FireSword extends BaseEMCGodSword {
     @Override
     public double getBaseRange(ItemStack stack){
         int level = getLevel(stack);
-        if(level <= 10) return 0d;
-        if(level <= 15) return (level-10) * 0.3d;
-        if(level <= 18) return (level-15) * 0.35d + 1.5d;
-        if(level <= 20) return (level-18) * 0.4d + 2.55d;
-        if(level <= 23) return (level-20) * 0.45d + 3.35d;
-        else return 4.7d + 0.95d;
+        return Math.pow(1.1,level);
     }
 }

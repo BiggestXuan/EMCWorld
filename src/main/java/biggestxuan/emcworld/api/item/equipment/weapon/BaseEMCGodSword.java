@@ -187,12 +187,6 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgrade
         return b * getPrefixCommonRate(stack);
     }
 
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.weapon_god"));
-    }
-
     protected double getPrefixCommonRate(ItemStack stack){
         double b;
         Prefix prefix = getPrefix(stack);

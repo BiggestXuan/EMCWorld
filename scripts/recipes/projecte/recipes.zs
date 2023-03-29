@@ -30,25 +30,21 @@ public function modifyProjecteRecipe() as void{
     removeAllRecipe(flowers);
     removeAllRecipe([table,condenser_mk1,red,<item:projectex:personal_link>]);
     addNuggetAndIngotRecipe(g[0],g[1]);
-
     addCraftShapedRecipeNoName([
         [a,b,a],
         [b,d,b],
         [a,b,a]
     ],table);
-
     addCraftShapedRecipeNoName([
         [b,d,b],
         [d,<item:botania:dragonstone>,d],
         [b,d,b]
     ],collector[0]);
-
     addCraftShapedRecipeNoName([
         [b,d,b],
         [d,<item:botania:elementium_ingot>,d],
         [b,d,b]
     ],relay[0]);
-
     addCraftShapedRecipeNoName([
         [d,b,d],
         [b,<tag:items:forge:chests>,b],
@@ -72,13 +68,11 @@ public function modifyProjecteRecipe() as void{
         [si,collector[0],si],
         [g[1],<item:botania:gaia_ingot>,g[1]]
     ],collector[1]);
-
     addCraftShapedRecipeNoName([
         [ecc,s[2],ecc],
         [si,relay[0],si],
         [g[1],<item:botania:gaia_ingot>,g[1]]
     ],relay[1]);
-
     extendedCraftingShapedRecipe([
         [ru,ucc,coals[4],ucc,ru],
         [ro,ra,g[1],ra,ro],
@@ -86,7 +80,6 @@ public function modifyProjecteRecipe() as void{
         [ro,ra,g[1],ra,ro],
         [ru,ucc,coals[4],ucc,ru],
     ],collector[2],2);
-
     extendedCraftingShapedRecipe([
         [ru,ucc,coals[4],ucc,ru],
         [ro,ra,g[1],ra,ro],
@@ -94,8 +87,6 @@ public function modifyProjecteRecipe() as void{
         [ro,ra,g[1],ra,ro],
         [ru,ucc,coals[4],ucc,ru],
     ],relay[2],2);
-
     craftingTable.removeByName("projecte:conversions/emerald_to_diamond");
-
     removeCraftRecipe(new Getter().getPEItem());
 }

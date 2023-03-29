@@ -36,7 +36,7 @@ public class EMCWorldOreFeature {
     public static ConfiguredFeature<?, ?> SUNLIT;
 
     public static Block marble = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("quark","marble"));
-    public static Block holystone = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("aether","holystone"));
+    public static Block honey = Blocks.HONEYCOMB_BLOCK;
 
     private static ConfiguredFeature<?, ?> get(String name,ConfiguredFeature<?, ?> config){
         Registry.register(WorldGenRegistries.CONFIGURED_FEATURE,EMCWorld.rl(name),config);
@@ -53,6 +53,6 @@ public class EMCWorldOreFeature {
         TITAN_ORE = get("titan_end_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.END_STONE), EWBlocks.TITANIUM_ORE.get().defaultBlockState(),3)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(3));
         STAR_ORE = get("star_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(ModBlocks.livingrock), BlocksAS.STARMETAL_ORE.defaultBlockState(),3)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(4));
         MARBLE = get("marble", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.STONE), marble.defaultBlockState(),30)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(15));
-        SUNLIT = get("sunlit_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(holystone), EWBlocks.SUNLIT_ORE.get().defaultBlockState(),7)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,8,64))).squared().count(30));
+        SUNLIT = get("sunlit_ore", Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(honey), EWBlocks.SUNLIT_ORE.get().defaultBlockState(),7)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(128,16,256)).squared().count(24)));
     }
 }

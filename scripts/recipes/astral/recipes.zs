@@ -3,6 +3,7 @@
 public function modifyAstralRecipe() as void{
     var well = <item:astralsorcery:well>;
     var a = <item:minecraft:air>;
+    var test = <item:emcworld:test_block>;
     var wand = <item:astralsorcery:wand>;
     var aq = <item:astralsorcery:aquamarine>;
     var bmr = <item:astralsorcery:black_marble_raw>;
@@ -37,9 +38,9 @@ public function modifyAstralRecipe() as void{
     ],lt);
     extendedCraftingShapedRecipe([
 	    [a, a, a, a, a, a, a], 
-	    [a, <item:the_afterlight:glyph_of_power>, <item:astralsorcery:marble_runed>, <item:mekanismgenerators:laser_focus_matrix>, <item:astralsorcery:marble_runed>, <item:the_afterlight:glyph_of_power>, a], 
+	    [a, test, <item:astralsorcery:marble_runed>, <item:mekanismgenerators:laser_focus_matrix>, <item:astralsorcery:marble_runed>, test, a], 
 	    [a, <item:astralsorcery:marble_pillar>, <item:undergarden:cloggrum_block>, <item:naturesaura:field_creator>, <item:undergarden:cloggrum_block>, <item:astralsorcery:marble_pillar>, a], 
-	    [a, <item:the_afterlight:crystillium_block>, <item:the_afterlight:moon_shard>, <item:botania:lens_flare>, <item:the_afterlight:moon_shard>, <item:the_afterlight:crystillium_block>, a], 
+	    [a, test, test, <item:botania:lens_flare>,test, test, a], 
 	    [a, <item:bloodmagic:ritualstone>, <item:astralsorcery:ritual_link>, <item:astralsorcery:perk_gem_night>, <item:astralsorcery:ritual_link>, <item:bloodmagic:ritualstone>, a], 
 	    [a, <item:bloodmagic:ritualstone>, <item:mythicbotany:vanaheim_rune>, <item:bloodmagic:masterritualstone>, <item:mythicbotany:asgard_rune>, <item:bloodmagic:ritualstone>, a], 
 	    [a, a, a, a, a, a, a]

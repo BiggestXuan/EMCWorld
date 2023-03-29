@@ -75,34 +75,35 @@ public class RaidUtils {
 
     public BlockPos getRandomPos(BlockPos i){
         update();
+        BlockPos center = raid.center;
         int a = getAverageYPos();
-        int amin = Math.max(1,a-raidEntities.size());
-        int amax = Math.min(255,a+raidEntities.size());
+        int amin = (int) MathUtils.max(1,a-raidEntities.size(),center.getY()-96);
+        int amax = (int) MathUtils.min(255,a+raidEntities.size(),center.getY()+96);
         PosRange range = new PosRange(i.getX(),2*center.getX()-i.getX(),i.getY(),2*center.getY()-i.getY(),i.getZ(),2*center.getZ()-i.getZ());
         PosRange range1 = new PosRange(0.5f*(i.getX()+center.getX()),1.5f*i.getX()-0.5f*center.getX(),0.5f*(i.getY()+center.getY()),1.5f*i.getY()-0.5f*center.getY(),0.5f*(i.getZ()+center.getZ()),1.5f*i.getZ()-0.5f*center.getZ());
         BlockPos rand = range.getRandPos();
         BlockPos rand1 = range1.getRandPos();
         if(a >= 1){
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 5; j++) {
                 BlockPos pos1 = getHighestBlock(rand,amin,amax);
                 if(pos1 != null){
                     return pos1;
                 }
             }
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 5; j++) {
                 BlockPos pos2 = getHighestBlock(rand1,amin,amax);
                 if(pos2 != null){
                     return pos2;
                 }
             }
         }
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 5; j++) {
             BlockPos pos1 = getHighestBlock(rand);
             if(pos1 != null){
                 return pos1;
             }
         }
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 5; j++) {
             BlockPos pos2 = getHighestBlock(rand1);
             if(pos2 != null){
                 return pos2;

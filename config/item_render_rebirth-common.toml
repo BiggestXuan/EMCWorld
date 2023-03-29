@@ -1,0 +1,11 @@
+
+#General settings
+[general]
+	#Vanilla Export
+	vanilla_export = false
+	#Debug Mode
+	debug_mode = false
+	#Render Scale
+	#Range: 0.0 ~ 10.0
+	render_scale = 1.0
+

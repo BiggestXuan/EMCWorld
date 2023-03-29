@@ -19,10 +19,18 @@ import moze_intel.projecte.api.ProjectEAPI;
 import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import moze_intel.projecte.api.nss.NSSItem;
 import moze_intel.projecte.integration.crafttweaker.actions.CustomEMCAction;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeAdvancementBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.math.BigInteger;
@@ -83,6 +91,7 @@ public class EMCHelper {
         }
         if(modify<0){
             MinecraftForge.EVENT_BUS.post(new PlayerCostEMCEvent(player,modify));
+            triggerAdvancement(player,modify);
             modify = Math.negateExact(PlayerCurios.costTotem(player,Math.negateExact(modify)));
         }
         long afterEMC = getPlayerActEMC(player)+modify;
@@ -117,5 +126,44 @@ public class EMCHelper {
 
     public static Set<ItemInfo> getPlayerAllKnowledge(PlayerEntity player){
         return getPlayerIKP(player).getKnowledge();
+    }
+
+    private static void triggerAdvancement(PlayerEntity p,long emc){
+        if(p instanceof ServerPlayerEntity){
+            ServerPlayerEntity player = (ServerPlayerEntity) p;
+            emc = - emc;
+            if(emc >= 1){
+                awardAdvancement(player,EMCWorld.rl("cost/1"));
+            }
+            if(emc >= 1000){
+                awardAdvancement(player,EMCWorld.rl("cost/2"));
+            }
+            if(emc >= 1000000){
+                awardAdvancement(player,EMCWorld.rl("cost/3"));
+            }
+            if(emc >= 1000000000){
+                awardAdvancement(player,EMCWorld.rl("cost/4"));
+            }
+            if(emc >= 1000000000000L){
+                awardAdvancement(player,EMCWorld.rl("cost/5"));
+            }
+            if(emc >= EMCWorld.MAX_EMC - 1L){
+                awardAdvancement(player,EMCWorld.rl("cost/6"));
+            }
+        }
+    }
+
+    public static void awardAdvancement(ServerPlayerEntity player,Advancement adv){
+        AdvancementProgress advancementprogress = player.getAdvancements().getOrStartProgress(adv);
+        if(advancementprogress.isDone()){
+            return;
+        }
+        MinecraftServer server = player.server;
+        server.getCommands().performCommand(server.createCommandSourceStack(),"advancement grant "+player.getName().getString()+" only "+adv.getId().toString());
+        //todo
+    }
+
+    public static void awardAdvancement(ServerPlayerEntity player, ResourceLocation adv){
+        awardAdvancement(player,Advancement.Builder.advancement().build(adv));
     }
 }

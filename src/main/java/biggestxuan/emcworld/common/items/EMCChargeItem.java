@@ -13,6 +13,7 @@ import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
+import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -24,10 +25,13 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotResult;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 public class EMCChargeItem extends EWItem implements IEMCInfuserItem, IUpgradeableItem, IStarItem, IPrefixItem {
     public EMCChargeItem(){
@@ -106,6 +110,8 @@ public class EMCChargeItem extends EWItem implements IEMCInfuserItem, IUpgradeab
         stacks.addAll(player.inventory.armor);
         stacks.addAll(player.inventory.items);
         stacks.addAll(player.inventory.offhand);
+        Optional<SlotResult> result = CuriosApi.getCuriosHelper().findFirstCurio(player, EWItems.EMC_SHIELD_SUPPLY.get());
+        result.ifPresent(s -> stacks.add(s.getStack()));
         return stacks;
     }
 }

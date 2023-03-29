@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_axe"
+    },
+    "title": {
+      "translate": "advancement.emcworld.raid1"
+    },
+    "description": {
+      "translate": "advancement.emcworld.raid1.desc"
+    }
+  },
+  "parent": "emcworld:welcome",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
