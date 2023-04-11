@@ -7,8 +7,13 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.common.network.PacketHandler;
+import biggestxuan.emcworld.common.network.toServer.LiveModePacket;
 import biggestxuan.emcworld.common.utils.BirthdayUtils;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
@@ -47,7 +52,11 @@ public class PlayerLoggedEvent {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide) return;
+        if(player.level.isClientSide){
+            if(EMCWorld.isOffline){
+                PacketHandler.sendToServer(new LiveModePacket());
+            }
+        }
         MinecraftServer server = player.getServer();
         if(server == null) return;
         if(!server.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)){
@@ -59,6 +68,7 @@ public class PlayerLoggedEvent {
         String name = player.getName().getString();
         UUID uuid = player.getUUID();
         LazyOptional<IUtilCapability> sponsorCap = player.getCapability(EMCWorldCapability.UTIL);
+        sponsorCap.ifPresent(cp -> cp.setOnline(server.usesAuthentication()));
         ResearchManager.setTomeReceived(player);
         IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
         ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
@@ -75,10 +85,6 @@ public class PlayerLoggedEvent {
         if(c.getDisplayIndex() == 0 && c.getLevel() != 0){
             c.setDisplayIndex(c.getLevel());
         }
-        if(level < 2 || !server.usesAuthentication()){
-            ServerPlayerEntity player1 = (ServerPlayerEntity) player;
-            //player1.connection.disconnect(EMCWorld.tc("emcworld.not_final"));
-        }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
         if(log + 1 == 1){
@@ -86,8 +92,8 @@ public class PlayerLoggedEvent {
             ItemStack book = new ItemStack(PatchouliItems.book);
             book.getOrCreateTag().putString("patchouli:book","emcworld:guide");
             //player.addItem(book);
-            int emc = 150000;
-            EMCHelper.modifyPlayerEMC(player,(int) (emc / MathUtils.difficultyLoss()),false);
+            int emc = (int) (150000 / MathUtils.difficultyLoss());
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.QuestCompletedEMCSource(emc,player,null,0,"start","start"),false);
         }
         if(ConfigManager.FREE_MODE.get()){
             TeamData data = ServerQuestFile.INSTANCE.getData(player);
@@ -149,11 +155,13 @@ public class PlayerLoggedEvent {
         if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel() == 0){
             Message.sendMessage(player,EMCWorld.tc("message.log.sponsor",log+1));
         }
-        if(EMCWorld.isOffline || !server.usesAuthentication()) return;
         sponsorCap.ifPresent((cap) -> {
             int sponsorLevel = cap.getDisplayIndex();
             if(instance.isAprilFoolsDay()){
                 Message.sendMessage(player, tc("message.welcome.dev",name));
+                return;
+            }
+            if(!cap.getOnline()){
                 return;
             }
             switch (sponsorLevel){
@@ -185,19 +193,39 @@ public class PlayerLoggedEvent {
         });
     }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void playerLoggedInLowEvent(PlayerEvent.PlayerLoggedInEvent event){
+        PlayerEntity player = event.getPlayer();
+        if(player.level.isClientSide) return;
+        giveOfflineWarn(player);
+    }
+
     private static void sendHappyBirthday(MinecraftServer server,PlayerEntity player){
-        if(EMCWorld.isOffline || !server.usesAuthentication()){
-            return;
-        }
-        BirthdayUtils utils = new BirthdayUtils(player);
-        List<TranslationTextComponent> list = new ArrayList<>();
-        for (int i = 1; i <= 4; i++) {
-            list.add(EMCWorld.tc("message.birthday.a"+i));
-        }
-        if(utils.HappyBirthday()){
-            for(TranslationTextComponent text:list){
-                Message.sendMessage(player,text);
+        try{
+            IUtilCapability utilCapability = EMCWorldAPI.getInstance().getUtilCapability(player);
+            if(!utilCapability.getOnline()) return;
+            BirthdayUtils utils = new BirthdayUtils(player);
+            List<TranslationTextComponent> list = new ArrayList<>();
+            for (int i = 1; i <= 4; i++) {
+                list.add(EMCWorld.tc("message.birthday.a"+i));
             }
+            if(utils.HappyBirthday()){
+                for(TranslationTextComponent text:list){
+                    Message.sendMessage(player,text);
+                }
+            }
+        }catch (NullPointerException e){
+            EMCWorld.LOGGER.error("Can not get player's capability!");
         }
+    }
+
+    private static void giveOfflineWarn(PlayerEntity player){
+        player.getCapability(EMCWorldCapability.UTIL).ifPresent(c -> {
+            if(!c.getOnline() && ConfigManager.OFFLINE_WARN.get()){
+                for (int i = 1; i < 5; i++) {
+                    Message.sendMessage(player,EMCWorld.tc("message.offline."+i));
+                }
+            }
+        });
     }
 }

@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import com.google.common.collect.ImmutableMultimap;
@@ -232,7 +233,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
                             cost = 0;
                         }
                         if(EMCHelper.getPlayerEMC(player) >= cost){
-                            EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
+                            EMCHelper.modifyPlayerEMC(player,new EMCSource.AttackEMCSource(Math.negateExact(cost),player,living,damage,null),true);
                         }else{
                             damage = 0;
                             Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));

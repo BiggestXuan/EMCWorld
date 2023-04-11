@@ -14,6 +14,7 @@ import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -78,7 +79,7 @@ public class PlayerPickUpItemEvent {
             event.setCanceled(true);
             Message.MessageDisplay(player, EMCWorld.tc("message.evt.pickupcancel", MathUtils.format(costEMC)));
         } else {
-            EMCHelper.modifyPlayerEMC(player, Math.negateExact(costEMC), true);
+            EMCHelper.modifyPlayerEMC(player, new EMCSource.PickItemEMCSource(Math.negateExact(costEMC),player,event.getItem(),0), true);
         }
     }
 

@@ -34,7 +34,7 @@ public class TeleportScreen extends BaseEMCConfirmScreen {
     @Override
     protected Button addConfirmButton() {
         Button button =  new Button((width / 2) - 125,height * 3 / 4,buttonLength,buttonHeight, EMCWorld.tc("screen.emc.confirm"), c->{
-            PacketHandler.sendToServer(new CostEMCPacket(getTeleportCost()));
+            PacketHandler.sendToServer(new CostEMCPacket(getTeleportCost(),2));
             Minecraft.getInstance().setScreen(null);
             ExplorersCompass.network.sendToServer(new TeleportPacket());
         });

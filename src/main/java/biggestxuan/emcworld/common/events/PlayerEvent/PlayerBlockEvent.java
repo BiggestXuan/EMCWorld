@@ -14,6 +14,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.player.PlayerEntity;
@@ -42,7 +43,7 @@ public class PlayerBlockEvent {
         long baseEMC = MathUtils.doubleToLong(MathUtils.getWakeUpBaseCost(player) * MathUtils.difficultyLoss());
         if(baseEMC == 0) return;
         long costEMC = player.getMainHandItem().getItem().equals(EWItems.XIANGSHUSHUMIAO_PILLOW.get()) ? 0 : Math.min(baseEMC, EMCHelper.getPlayerEMC(player));
-        EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+        EMCHelper.modifyPlayerEMC(player,new EMCSource.WakeUpEMCSource(Math.negateExact(costEMC),player,null,0),true);
     }
 
     @SubscribeEvent
@@ -52,7 +53,7 @@ public class PlayerBlockEvent {
         long costEMC = MathUtils.doubleToLong(MathUtils.difficultyLoss() * MathUtils.getUseHoeBaseCost(player));
         if(costEMC == 0) return;
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
-            EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.UseHoeEMCSource(Math.negateExact(costEMC),player,event.getContext().getItemInHand(),0),true);
         }
         else{
             event.setCanceled(true);
@@ -66,7 +67,7 @@ public class PlayerBlockEvent {
         if(player.level.isClientSide) return;
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getChestBaseCost(player,event.getContainer()) * MathUtils.difficultyLoss()),EMCHelper.getPlayerEMC(player));
         if(costEMC == 0) return;
-        EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+        EMCHelper.modifyPlayerEMC(player,new EMCSource.OpenContainerEMCSource(Math.negateExact(costEMC),player,event.getContainer(),0),true);
     }
 
     @SubscribeEvent
@@ -75,7 +76,7 @@ public class PlayerBlockEvent {
         if(player.level.isClientSide) return;
         long costEMC = MathUtils.doubleToLong(MathUtils.getFillBucketBaseCost(player) * MathUtils.difficultyLoss());
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
-            EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.FillBucketEMCSource(Math.negateExact(costEMC),player,event.getFilledBucket(),0),true);
         }
         else{
             event.setCanceled(true);
@@ -90,7 +91,7 @@ public class PlayerBlockEvent {
         long playerEMC = EMCHelper.getPlayerEMC(player);
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getCraftBaseCost(player) * MathUtils.difficultyLoss() * event.getCrafting().getCount() * (1.0 * 64 / event.getCrafting().getMaxStackSize())),playerEMC);
         if(costEMC == 0) return;
-        EMCHelper.modifyPlayerEMC(player, Math.negateExact(costEMC),true);
+        EMCHelper.modifyPlayerEMC(player,new EMCSource.CraftItemEMCSource(Math.negateExact(costEMC),player,event.getCrafting(),0),true);
     }
 
     @SubscribeEvent
@@ -101,7 +102,7 @@ public class PlayerBlockEvent {
         PlayerEntity player = event.getPlayer();
         long playerEMC = EMCHelper.getPlayerEMC(player);
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getBreakBlockCost(player) * level * MathUtils.difficultyLoss()),playerEMC);
-        EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+        EMCHelper.modifyPlayerEMC(player,new EMCSource.BreakBlockEMCSource(Math.negateExact(costEMC),player,event.getState(),0),true);
         //Message.sendMessage(event.getPlayer(),EMCWorld.tc("111"));
     }
 

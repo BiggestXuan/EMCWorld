@@ -123,6 +123,7 @@ dependencies {
     implementation fg.deobf("curse.maven:item_filters-309674:3376819")
     implementation fg.deobf("curse.maven:Architectury-419699:3857643")
     implementation fg.deobf("curse.maven:Citadel-331936:3441028")
+    implementation fg.deobf("curse.maven:CCL-242818:3681973")
     implementation fg.deobf("curse.maven:Library-404465:3553840")
     implementation fg.deobf("curse.maven:Teams-404468:3535953")
     implementation fg.deobf("curse.maven:crock_pot-404523:3568413")

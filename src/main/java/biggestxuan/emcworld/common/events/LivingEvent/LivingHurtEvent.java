@@ -11,6 +11,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.block.Blocks;
@@ -45,7 +46,7 @@ public class LivingHurtEvent {
                     if(GameStageManager.hasStage(player, obj.getGameStage())){
                         long costEMC = MathUtils.doubleToLong(obj.getHurtBase() * event.getAmount() * MathUtils.difficultyLoss());
                         if(EMCHelper.getPlayerEMC(player) >= costEMC){
-                            EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+                            EMCHelper.modifyPlayerEMC(player,new EMCSource.HurtEMCSource(Math.negateExact(costEMC),player, event.getSource().getEntity(), damage,tame),true);
                         }else{
                             tame.die(EWDamageSource.REALLY);
                             tame.setHealth(0);

@@ -14,13 +14,13 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import dev.ftb.mods.ftbquests.events.CustomRewardEvent;
 import dev.ftb.mods.ftbquests.quest.Quest;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import dev.ftb.mods.ftbquests.quest.reward.Reward;
-import dev.ftb.mods.ftbteams.FTBTeams;
 import dev.ftb.mods.ftbteams.FTBTeamsAPI;
 import dev.ftb.mods.ftbteams.data.Team;
 import net.minecraft.block.Blocks;
@@ -75,17 +75,22 @@ public class PlayerQuestCompletedEvent {
             }
         }
         long baseGet;
+        MathUtils.QuestInfo info = MathUtils.getQuestCompletedRewardBase(player,event.getReward());
+        String stage,difficulty;
         if(getQuestStage(event.getReward()) == null){
-            baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(player,event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
+            baseGet = MathUtils.doubleToLong(info.getEmc() * (1.0 / MathUtils.difficultyLoss()));
+            stage = "null";
         }else{
             baseGet = MathUtils.doubleToLong(MathUtils.getQuestCompletedRewardBase(getQuestStage(event.getReward()),event.getReward()) * (1.0 / MathUtils.difficultyLoss()));
+            stage = getQuestStage(event.getReward());
         }
+        difficulty = info.getDifficulty();
         if(baseGet == 0) return;
         baseGet <<= 1;
         Team team = FTBTeamsAPI.getPlayerTeam(player);
         int amt = team.getMembers().size();
         baseGet = baseGet / (amt <= 0 ? 1 : amt);
-        EMCHelper.modifyPlayerEMC(player,baseGet,true);
+        EMCHelper.modifyPlayerEMC(player,new EMCSource.QuestCompletedEMCSource(baseGet,player,null,0,stage,difficulty),true);
         for(QuestReward obj : QuestReward.values()){
             CustomReward reward = event.getReward();
             if(reward.hasTag(obj.getTag())){

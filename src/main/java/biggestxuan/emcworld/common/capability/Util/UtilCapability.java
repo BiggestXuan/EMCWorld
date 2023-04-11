@@ -44,6 +44,8 @@ public class UtilCapability implements IUtilCapability {
     private int pickMode;
     private int netherTick;
     private int displayIndex;
+    private boolean liveMode;
+    private boolean online;
 
     public UtilCapability(){
         this.SponsorLevel = 0;
@@ -78,6 +80,28 @@ public class UtilCapability implements IUtilCapability {
         this.pickMode = 0;
         this.netherTick = 0;
         this.displayIndex = 0;
+        this.liveMode = false;
+        this.online = true;
+    }
+
+    @Override
+    public boolean getOnline() {
+        return online;
+    }
+
+    @Override
+    public void setOnline(boolean value) {
+        online = value;
+    }
+
+    @Override
+    public boolean getLiveMode() {
+        return liveMode;
+    }
+
+    @Override
+    public void setLiveMode(boolean value) {
+        liveMode = value;
     }
 
     @Override
@@ -462,6 +486,8 @@ public class UtilCapability implements IUtilCapability {
         tag.putInt("pickMode",pickMode);
         tag.putInt("netherTick",netherTick);
         tag.putInt("displayIndex",displayIndex);
+        tag.putBoolean("liveMode",liveMode);
+        tag.putBoolean("online",online);
         return tag;
     }
 
@@ -501,5 +527,7 @@ public class UtilCapability implements IUtilCapability {
         this.pickMode = nbt.getInt("pickMode");
         this.netherTick = nbt.getInt("netherTick");
         this.displayIndex = nbt.getInt("displayIndex");
+        this.liveMode = nbt.getBoolean("liveMode");
+        this.online = nbt.getBoolean("online");
     }
 }

@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.blay09.mods.waystones.api.IWaystone;
 import net.blay09.mods.waystones.core.PlayerWaystoneManager;
@@ -49,7 +50,8 @@ public abstract class PlayerWaystoneManagerMixin {
     private static void costEMC(Entity entity, IWaystone waystone, WarpMode warpMode, IWaystone fromWaystone, CallbackInfoReturnable<Boolean> cir){
         if(entity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entity;
-            EMCHelper.modifyPlayerEMC(player,Math.negateExact(MathUtils.getTPEMCCost(player,waystone,fromWaystone)),true);
+            long emc = Math.negateExact(MathUtils.getTPEMCCost(player,waystone,fromWaystone));
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.TeleportEMCSource(emc,player,fromWaystone.getPos(), 0, (long) MathUtils.getDistance(waystone.getPos(),fromWaystone.getPos())),true);
         }
     }
 }

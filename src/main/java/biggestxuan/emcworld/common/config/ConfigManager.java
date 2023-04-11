@@ -23,6 +23,7 @@ public class ConfigManager {
     public static ForgeConfigSpec.BooleanValue SPONSOR_INFO;
     public static ForgeConfigSpec.BooleanValue ADMIN_MENU;
     public static ForgeConfigSpec.BooleanValue FREE_MODE;
+    public static ForgeConfigSpec.BooleanValue OFFLINE_WARN;
     //public static ForgeConfigSpec.BooleanValue SHARE_EMC;
     //public static ForgeConfigSpec.BooleanValue PREVENT_TOSS_WEAPON;
     public static ForgeConfigSpec.BooleanValue RSAutomation;
@@ -40,6 +41,7 @@ public class ConfigManager {
         ADMIN_MENU = BUILDER.comment("Whether unable EMCWorld Admin Menu").define("Able Admin Menu",false);
         FREE_MODE = BUILDER.comment("Enable free mode to delete all gamestage").define("Able Free Mode",false);
         FORMAT = BUILDER.comment("Let the values of the modpack be displayed in K, M, G instead of the full value").define("Format Text",true);
+        OFFLINE_WARN = BUILDER.comment("Give a warn when logging server to offline mode player").define("Warn player",true);
         SPONSOR_INFO = BUILDER.comment("Enable sponsorship messages that players send every 100 times they enter the game.").define("Enable Info",true);
         //SHARE_EMC = BUILDER.comment("").define("Share EMC",false);
         BUILDER.pop();

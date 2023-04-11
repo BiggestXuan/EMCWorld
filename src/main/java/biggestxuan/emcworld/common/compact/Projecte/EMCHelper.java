@@ -7,6 +7,9 @@ package biggestxuan.emcworld.common.compact.Projecte;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.utils.CommandUtils;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
@@ -70,9 +73,8 @@ public class EMCHelper {
         return emc.longValue();
     }
 
-    @ZenCodeType.Method
-    public static void modifyPlayerEMC(PlayerEntity player,long emc,boolean showMessage){
-        long modify = emc;
+    public static void modifyPlayerEMC(PlayerEntity player, EMCSource<?> source, boolean showMessage){
+        long modify = source.emc();
         if(player.hasEffect(EWEffects.EMC_PROTECT.get()) && modify < 0){
             modify *= 0.9d;
             modify = Math.round(modify);
@@ -81,6 +83,7 @@ public class EMCHelper {
             int level = player.getEffect(EWEffects.EMC_BROKEN.get()).getAmplifier() + 1;
             modify *= level;
         }
+        EMCWriter.WriteEMCLog(player,source);
         if(showMessage){
             if(modify < 0){
                 Message.LossEMCMessage(player,Math.negateExact(modify));
@@ -154,13 +157,7 @@ public class EMCHelper {
     }
 
     public static void awardAdvancement(ServerPlayerEntity player,Advancement adv){
-        AdvancementProgress advancementprogress = player.getAdvancements().getOrStartProgress(adv);
-        if(advancementprogress.isDone()){
-            return;
-        }
-        MinecraftServer server = player.server;
-        server.getCommands().performCommand(server.createCommandSourceStack(),"advancement grant "+player.getName().getString()+" only "+adv.getId().toString());
-        //todo
+        new CommandUtils(player).awardAdvancement(adv);
     }
 
     public static void awardAdvancement(ServerPlayerEntity player, ResourceLocation adv){

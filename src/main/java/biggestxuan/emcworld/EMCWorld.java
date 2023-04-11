@@ -20,12 +20,14 @@ import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import biggestxuan.emcworld.common.compact.Champions.ChampionsInit;
 import biggestxuan.emcworld.common.compact.Projecte.ModifyCollector;
+import biggestxuan.emcworld.common.config.ClientConfigManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.events.commandEvent;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.block.Block;
@@ -42,6 +44,7 @@ import net.minecraft.resources.ResourcePackInfo;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -52,6 +55,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -70,15 +74,16 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 5;
-    public static final String PackVersion = "0.5.0";
+    public static final int ModPackVersion = 6;
+    public static final String PackVersion = "0.5.1";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
-    public static boolean isOffline = false;
     public static final int HOMO = 114514;
     public static boolean isBackingUp = false;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
+    @OnlyIn(Dist.CLIENT)
+    public static boolean isOffline = false;
 
     public EMCWorld(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -108,6 +113,7 @@ public class EMCWorld {
         MinecraftForge.EVENT_BUS.register(this);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigManager.COMMON_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfigManager.CLIENT_CONFIG);
         if(FMLEnvironment.dist == Dist.CLIENT){
             Minecraft.getInstance().getResourcePackRepository().addPackFinder((consumer, factory) -> {
                 ResourcePackInfo info = ResourcePackInfo.create(MODID,true,() -> new FilePack(RP),factory, ResourcePackInfo.Priority.TOP, IPackNameDecorator.BUILT_IN);
@@ -145,6 +151,7 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(LastShield.Last_Shield);
             ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
             ClientRegistry.registerKeyBinding(PickModeKey.pickMode);
+            ClientRegistry.registerKeyBinding(LiveMode.LiveMode);
             ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
             ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);

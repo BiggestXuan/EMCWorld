@@ -106,6 +106,14 @@ public class CalendarUtils {
         return year;
     }
 
+    public int getMinute() {
+        return calendar.get(Calendar.MINUTE);
+    }
+
+    public int getSecond() {
+        return calendar.get(Calendar.SECOND);
+    }
+
     public static class NationalUtils{
         private final boolean isNationalDay;
         private final int year;

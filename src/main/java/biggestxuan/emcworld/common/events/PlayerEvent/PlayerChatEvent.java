@@ -24,11 +24,11 @@ public class PlayerChatEvent {
         LazyOptional<IUtilCapability> sponsorCap = event.getPlayer().getCapability(EMCWorldCapability.UTIL);
         MinecraftServer server = event.getPlayer().server;
         assert server != null;
-        if(EMCWorld.isOffline || !server.usesAuthentication()) return;
         sponsorCap.ifPresent((cap) -> {
             String name = event.getUsername();
             String saying = event.getMessage();
             int level = cap.getDisplayIndex();
+            if(!cap.getOnline()) return;
             switch (level){
                 case 1:
                     event.setComponent(EMCWorld.tc("message.chat.base1",name,saying));

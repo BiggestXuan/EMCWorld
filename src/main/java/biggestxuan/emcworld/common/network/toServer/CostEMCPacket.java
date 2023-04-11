@@ -6,8 +6,10 @@ package biggestxuan.emcworld.common.network.toServer;
  *  2023/03/05
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.exception.IllegalPacketException;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -15,18 +17,20 @@ import net.minecraftforge.fml.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class CostEMCPacket {
-    private final long emc;
+    private int index;
+    private long emc;
 
-    public CostEMCPacket(long emc){
-        this.emc = emc;
+    public CostEMCPacket(long emc,int index){
+        this.index = index;
     }
 
-    public static void encode(CostEMCPacket message, PacketBuffer bf){
-        bf.writeLong(message.emc);
+    public static void encode(CostEMCPacket msg, PacketBuffer buf) {
+        buf.writeLong(msg.emc);
+        buf.writeInt(msg.index);
     }
 
-    public static CostEMCPacket decode(PacketBuffer bf){
-        return new CostEMCPacket(bf.readLong());
+    public static CostEMCPacket decode(PacketBuffer buf) {
+        return new CostEMCPacket(buf.readLong(),buf.readInt());
     }
 
     public static void handle(CostEMCPacket msg, Supplier<NetworkEvent.Context> context) {
@@ -35,12 +39,19 @@ public class CostEMCPacket {
             if(player != null){
                 try{
                     long emc = msg.getEmc();
+                    EMCSource<?> source;
+                    if(msg.index == 1){
+                        source = new EMCSource.LocateEMCSource(emc,player,null,0);
+                    }else{
+                        source = new EMCSource.TeleportEMCSource(emc,player);
+                    }
                     if(emc < 0){
                         throw new IllegalPacketException(player.getScoreboardName());
                     }else{
-                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(emc),true);
+                        EMCHelper.modifyPlayerEMC(player, source, true);
                     }
                 }catch (IllegalPacketException e){
+                    EMCWorld.LOGGER.fatal("EMCWorld received a illegal packet!");
                     e.printStackTrace();
                 }
             }

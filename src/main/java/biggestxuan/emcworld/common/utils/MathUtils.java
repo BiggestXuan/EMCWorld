@@ -145,6 +145,13 @@ public class MathUtils {
         return (float) (damage * (difficulty / 120f * ConfigManager.DIFFICULTY.get()));
     }
 
+    public static String longSign(long value){
+        if(value < 0){
+            return "-" + thousandSign(Math.negateExact(value));
+        }
+        return "+" + thousandSign(value);
+    }
+
     @ZenCodeType.Method
     public static String format(String text){
         if(text.length() <= 6 || !ConfigManager.FORMAT.get()){
@@ -349,11 +356,13 @@ public class MathUtils {
         return 0L;
     }
 
-    public static double getQuestCompletedRewardBase(PlayerEntity player, CustomReward customReward){
+    public static QuestInfo getQuestCompletedRewardBase(PlayerEntity player, CustomReward customReward){
         double base = 0d;
+        String diff = "";
         for(DifficultySetting obj:DifficultySetting.values()){
             if(GameStageManager.hasStage(player,obj.getGameStage())){
                 for(QuestReward reward: QuestReward.values()){
+                    diff = reward.getTag();
                     if(customReward.hasTag(reward.getTag())){
                         base += reward.getBaseEMC();
                         break;
@@ -363,7 +372,7 @@ public class MathUtils {
                 break;
             }
         }
-        return base;
+        return new QuestInfo((long) base,diff);
     }
     public static boolean isMaxDifficulty(){
         return CrTConfig.getWorldDifficulty() == 3.0d;
@@ -455,6 +464,10 @@ public class MathUtils {
         return Math.log(value) / Math.log(base);
     }
 
+    public static double getDistance(BlockPos pos1,BlockPos pos2){
+        return (long) Math.sqrt(Math.pow(pos1.getX()-pos2.getX(),2)+Math.pow(pos1.getY()-pos2.getY(),2)+Math.pow(pos1.getZ()-pos2.getZ(),2));
+    }
+
     public static int getTPEMCCost(PlayerEntity player,Position start,Position end){
         if(end == null){
             return 0;
@@ -464,7 +477,7 @@ public class MathUtils {
         if(Math.abs(pos1.getX()-pos2.getX()) >= EMCWorld.HOMO || Math.abs(pos1.getZ()-pos2.getZ()) >= EMCWorld.HOMO){
             return Integer.MAX_VALUE;
         }
-        long distance = (long) Math.sqrt(Math.pow(pos1.getX()-pos2.getX(),2)+Math.pow(pos1.getY()-pos2.getY(),2)+Math.pow(pos1.getZ()-pos2.getZ(),2));
+        long distance = (long) getDistance(pos1,pos2);
         double emc = 0;
         distance = Math.max(0L,distance-128L);
         emc += distance;
@@ -523,6 +536,24 @@ public class MathUtils {
         public Position(BlockPos pos,ResourceLocation world){
             this.pos = pos;
             this.world = world;
+        }
+    }
+
+    public static class QuestInfo{
+        private final long emc;
+        private final String difficulty;
+
+        public QuestInfo(long emc,String difficulty){
+            this.emc = emc;
+            this.difficulty = difficulty;
+        }
+
+        public long getEmc() {
+            return emc;
+        }
+
+        public String getDifficulty() {
+            return difficulty;
         }
     }
 

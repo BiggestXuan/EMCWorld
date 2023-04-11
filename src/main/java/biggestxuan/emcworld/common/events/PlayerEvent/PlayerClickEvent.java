@@ -32,6 +32,7 @@ import biggestxuan.emcworld.common.recipes.UpdateRecipe;
 import biggestxuan.emcworld.common.registry.*;
 import biggestxuan.emcworld.common.skill.PlayerSkillModify;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
@@ -100,14 +101,14 @@ public class PlayerClickEvent {
                     return;
                 }
                 if(player.isShiftKeyDown()){
-                    itemStack.setCount(0);
                     long getEMC = MathUtils.getEMCWhenUseGem(obj.getBaseEMC()) * count;
-                    EMCHelper.modifyPlayerEMC(player,getEMC,true);
+                    EMCHelper.modifyPlayerEMC(player,new EMCSource.UseEMCGemEMCSource(getEMC,player,itemStack,0),true);
+                    itemStack.setCount(0);
                     return;
                 }
-                itemStack.shrink(1);
                 long actEMC = MathUtils.getEMCWhenUseGem(obj.getBaseEMC());
-                EMCHelper.modifyPlayerEMC(player, actEMC,true);
+                EMCHelper.modifyPlayerEMC(player, new EMCSource.UseEMCGemEMCSource(actEMC,player,itemStack,0),true);
+                itemStack.shrink(1);
             }
         }
         if(itemStack.getItem().equals(EWItems.EMC_CHECK.get())){
@@ -304,7 +305,7 @@ public class PlayerClickEvent {
             output.setCount(MathUtils.getAdditionAmount(info.getAddon()) * actAmount);
             player.addItem(output);
             itemStack.setCount(itemStack.getCount()-actAmount);
-            EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.CraftItemEMCSource(Math.negateExact(costEMC),player,output,0),true);
             time = recipe.recipeLevel() == 0 ? 0 : time;
             c.setCoolDown(time);
         }

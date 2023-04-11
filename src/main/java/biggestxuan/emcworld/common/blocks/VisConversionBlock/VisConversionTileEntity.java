@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.blocks.VisConversionBlock;
 
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import de.ellpeck.naturesaura.api.aura.chunk.IAuraChunk;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,7 +35,7 @@ public class VisConversionTileEntity extends TileEntity implements ITickableTile
         }
         int baseConversion = (int) (5000 * 1.0d / MathUtils.difficultyLoss());
         for(PlayerEntity p:actPlayers){
-            EMCHelper.modifyPlayerEMC(p,-100,false);
+            EMCHelper.modifyPlayerEMC(p,new EMCSource.VisCoreEMCSource(-1000,p,getBlockPos(),0),false);
             IAuraChunk.getAuraChunk(this.level,this.worldPosition).storeAura(this.worldPosition,baseConversion);
         }
     }

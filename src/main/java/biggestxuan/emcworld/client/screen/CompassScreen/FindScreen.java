@@ -47,7 +47,7 @@ public class FindScreen extends BaseEMCConfirmScreen {
         Button button =  new Button((width / 2) - 125,height * 3 / 4,buttonLength,buttonHeight, EMCWorld.tc("screen.emc.confirm"),c->{
             if(list.hasSelection()){
                 Objects.requireNonNull(list.getSelected()).searchForBiome();
-                PacketHandler.sendToServer(new CostEMCPacket(getEMCCost()));
+                PacketHandler.sendToServer(new CostEMCPacket(getEMCCost(),1));
             }
             Minecraft.getInstance().setScreen(null);
         });

@@ -147,4 +147,12 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     int getDisplayIndex();
 
     void setDisplayIndex(int index);
+
+    boolean getLiveMode();
+
+    void setLiveMode(boolean value);
+
+    boolean getOnline();
+
+    void setOnline(boolean value);
 }

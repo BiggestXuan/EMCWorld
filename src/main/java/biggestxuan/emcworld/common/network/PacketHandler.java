@@ -93,6 +93,13 @@ public class PacketHandler {
                 CostEMCPacket::decode,
                 CostEMCPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                LiveModePacket.class,
+                LiveModePacket::encode,
+                LiveModePacket::decode,
+                LiveModePacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

@@ -14,6 +14,7 @@ import biggestxuan.emcworld.api.item.equipment.armor.BaseEMCGodArmorItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.LivingEntity;
@@ -85,7 +86,7 @@ public class PlayerDeathEvent {
             if(costEMC == 0) return;
             if(EMCHelper.getPlayerEMC(player) >= costEMC){
                 Message.sendMessage(player, EMCWorld.tc("message.evt.playerdeath",MathUtils.format(String.valueOf(Math.min(EMCHelper.getPlayerEMC(player),costEMC)))));
-                EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.DeathEMCSource(Math.negateExact(costEMC),player,null,0),true);
             }
             else{
                 deathDrop(player);

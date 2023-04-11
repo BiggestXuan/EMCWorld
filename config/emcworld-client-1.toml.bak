@@ -1,0 +1,5 @@
+
+[General]
+	#Disable all client message
+	"Enable Live Mode" = false
+

@@ -121,7 +121,7 @@
 			title: "{quest.emcworld.diamondlattice}"
 			x: -0.5d
 			y: -6.0d
-			dependencies: ["17D68A0A7B847998"]
+			dependencies: ["3A9A7586DDD12C77"]
 			hide: true
 			size: 1.5d
 			id: "4EECF91FCB966FEE"

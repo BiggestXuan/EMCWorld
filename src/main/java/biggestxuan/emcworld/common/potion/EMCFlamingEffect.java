@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.potion;
  */
 
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particles.ParticleTypes;
@@ -37,7 +38,7 @@ public class EMCFlamingEffect extends Effect {
                 PlayerEntity player = (PlayerEntity) p_76394_1_;
                 int level = p_76394_2_ + 1;
                 long cost = (long) (EMCHelper.getPlayerEMC(player) * 0.001 * level);
-                EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.EffectEMCSource(Math.negateExact(cost),player,player.getEffect(this),0),true);
             }
             BlockPos pos = p_76394_1_.blockPosition();
             for (int i = 0; i < 15; i++) {

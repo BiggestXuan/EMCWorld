@@ -1,0 +1,42 @@
+
+#Dimension settings
+[Dimension]
+	#Setting this to true will prevent players from teleporting to the dimension
+	disableTeleporter = false
+
+#Biome settings
+[Biome]
+	#Overworld chocolate forest biome weight. 0 to prevent generation in overworld
+	#Range: > 0
+	weightChocolateForest = 1
+	#Overworld gummy swamp biome weight. 0 to prevent generation in overworld
+	#Range: > 0
+	weightGummySwamp = 1
+	#Overworld cotton candy plains biome weight. 0 to prevent generation in overworld
+	#Range: > 0
+	weightCottonCandyPlains = 1
+
+#Mob settings
+[Mobs]
+	#Gummy mice weight. 0 to prevent spawning
+	#Range: > 1
+	weightGummyMouse = 140
+	#Setting this to true should prevent any non-Candy World mobs from spawning in candy world biomes
+	preventModdedMobSpawn = false
+	#Cotton candy sheep weight. 0 to prevent spawning
+	#Range: > 1
+	weightCottonCandySheep = 140
+	#Easter chicken weight. 0 to prevent spawning
+	#Range: > 1
+	weightEasterChicken = 140
+	#Gummy bear weight. 0 to prevent spawning
+	#Range: > 1
+	weightGummyBear = 110
+
+#General settings
+[General]
+	#Setting this to true will make tree trunks take longer to mine the higher they are
+	recursiveTreeTrunks = false
+	#Setting this to false will make tree trunk blocks behave like normal blocks
+	stackableTreeTrunks = true
+

@@ -21,6 +21,7 @@ import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.player.PlayerEntity;
@@ -147,7 +148,7 @@ public class PlayerHurtEvent {
                         break;
                     }
                     if(EMCHelper.getPlayerEMC(player)>costEMC){
-                        EMCHelper.modifyPlayerEMC(player,Math.negateExact(costEMC),true);
+                        EMCHelper.modifyPlayerEMC(player,new EMCSource.HurtEMCSource(Math.negateExact(costEMC),player,source.getEntity(),amount,null),true);
                     }
                     else{
                         player.die(source);

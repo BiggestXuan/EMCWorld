@@ -225,7 +225,7 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgrade
         burst.setSourceLens(stack.copy());
         burst.setBurstMotion(burst.getDeltaMovement().x*s,burst.getDeltaMovement().y*s,burst.getDeltaMovement().z*s);
         if(EMCHelper.getPlayerEMC(player) >= cost){
-            EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
+            //EMCHelper.modifyPlayerEMC(player,Math.negateExact(cost),true);
             player.level.addFreshEntity(burst);
         }
     }

@@ -7,6 +7,8 @@
 	"Able Free Mode" = false
 	#Let the values of the modpack be displayed in K, M, G instead of the full value
 	"Format Text" = true
+	#Give a warn when logging server to offline mode player
+	"Warn player" = true
 	#Whether unable EMCWorld Admin Menu
 	"Able Admin Menu" = true
 	#Enable sponsorship messages that players send every 100 times they enter the game.

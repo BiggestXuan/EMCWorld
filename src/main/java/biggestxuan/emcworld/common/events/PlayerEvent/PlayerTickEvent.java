@@ -33,6 +33,7 @@ import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.RaidUtils;
@@ -114,7 +115,7 @@ public class PlayerTickEvent {
                     cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
             )));
             player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
-                    cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer()
+                    cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode()
             )));
         }
         ServerPlayerEntity SP = (ServerPlayerEntity) player;
@@ -382,6 +383,7 @@ public class PlayerTickEvent {
         }
         if(world.getGameTime() % 20 == 0){
             long amount = 0;
+            List<ItemStack> list = new ArrayList<>();
             for(ItemStack stack:getPlayerAllItem(player)){
                 if(stack.getItem() instanceof ISecondEMCItem){
                     ISecondEMCItem item = (ISecondEMCItem) stack.getItem();
@@ -392,9 +394,14 @@ public class PlayerTickEvent {
                         }
                     }
                     amount += item.EMCModifySecond(stack);
+                    if(item.EMCModifySecond(stack) > 0){
+                        list.add(stack);
+                    }
                 }
             }
-            EMCHelper.modifyPlayerEMC(player,amount,false);
+            if(amount > 0){
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.ProduceItemEMCSource(amount,player,list,0),false);
+            }
         }
         float max_total = 0f;
         float total = 0f;
@@ -402,7 +409,7 @@ public class PlayerTickEvent {
             if(stack.getItem() instanceof IEMCRepairableItem){
                 IEMCRepairableItem item = (IEMCRepairableItem) stack.getItem();
                 if(EMCHelper.getPlayerEMC(player) >= item.getTickCost(stack) && stack.getDamageValue() != 0 && item.getTickCost(stack) > 0){
-                    EMCHelper.modifyPlayerEMC(player,Math.negateExact(item.getTickCost(stack)),false);
+                    EMCHelper.modifyPlayerEMC(player,new EMCSource.RepairItemEMCSource(Math.negateExact(item.getTickCost(stack)),player,stack,0),false);
                     stack.setDamageValue(stack.getDamageValue()-1);
                 }
             }

@@ -69,7 +69,7 @@ public interface IPrefixItem {
         }
         if(stack.getItem() instanceof IUpgradeableItem){
             IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
-            if(item.getLevel(stack) >= 22 && getPrefix(stack).getLevel() < Prefix.EPIC.getLevel() && item instanceof IEMCGodWeaponLevel){
+            if(item.getLevel(stack) >= 22 && getPrefix(stack).getLevel() < Prefix.EPIC.getLevel() && item instanceof IEMCGod){
                 setPrefix(stack,Prefix.EPIC);
             }
         }

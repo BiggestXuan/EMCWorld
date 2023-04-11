@@ -43,6 +43,7 @@ public class EWEntities {
     //public static final EntityType<Cxk> cxk = register("cxk",Cxk::new);
     public static final EntityType<dytlj7788> dytlj7788 = register("dytlj7788",dytlj7788::new);
     public static final EntityType<LAMB_Kisara> lamb_kisara = register("lamb_kisara",LAMB_Kisara::new);
+    public static final EntityType<cmzxymzx> cmzxymzx = register("cmzxymzx",cmzxymzx::new);
 
     @SubscribeEvent
     public static void bind(EntityAttributeCreationEvent event){
@@ -65,6 +66,7 @@ public class EWEntities {
         //event.put(cxk,Cxk.create().build());
         event.put(dytlj7788,biggestxuan.emcworld.common.entity.Player.dytlj7788.create().build());
         event.put(lamb_kisara,LAMB_Kisara.create().build());
+        event.put(cmzxymzx, biggestxuan.emcworld.common.entity.Player.cmzxymzx.create().build());
     }
 
     public static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {

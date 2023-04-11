@@ -21,6 +21,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
@@ -152,7 +153,7 @@ public class PlayerAttackEvent {
                 }
             }
             costEMC =(long) (costEMC * rate);
-            CostPlayer(player,costEMC,event);
+            CostPlayer(player,costEMC,event,damage,null);
         }
         if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
             return;
@@ -164,7 +165,7 @@ public class PlayerAttackEvent {
             if(owner instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) owner;
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
-                CostPlayer(player,cost,event);
+                CostPlayer(player,cost,event,damage,entity);
             }
         }
         if(source.getDirectEntity() instanceof ProjectileEntity){
@@ -181,16 +182,16 @@ public class PlayerAttackEvent {
                     damage += ((IUpgradeBow) stack.getItem()).getAdditionDamage(stack);
                 }
                 long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
-                CostPlayer(player,cost,event);
+                CostPlayer(player,cost,event,damage,null);
             }
         }
         event.setAmount(damage);
     }
 
-    private static void CostPlayer(PlayerEntity player,long emc,LivingHurtEvent event){
+    private static void CostPlayer(PlayerEntity player,long emc,LivingHurtEvent event,double damage,LivingEntity pet){
         if (emc != 0){
             if(EMCHelper.getPlayerEMC(player)>emc){
-                EMCHelper.modifyPlayerEMC(player,Math.negateExact(emc),true);
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.AttackEMCSource(Math.negateExact(emc),player,event.getEntityLiving(),damage,pet),true);
             }
             else{
                 event.setCanceled(true);
