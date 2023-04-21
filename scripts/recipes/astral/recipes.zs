@@ -38,11 +38,11 @@ public function modifyAstralRecipe() as void{
     ],lt);
     extendedCraftingShapedRecipe([
 	    [a, a, a, a, a, a, a], 
-	    [a, test, <item:astralsorcery:marble_runed>, <item:mekanismgenerators:laser_focus_matrix>, <item:astralsorcery:marble_runed>, test, a], 
+	    [a, <item:aerialhell:magmatic_gel>, <item:astralsorcery:marble_runed>, <item:mekanismgenerators:laser_focus_matrix>, <item:astralsorcery:marble_runed>, <item:aerialhell:magmatic_gel>, a], 
 	    [a, <item:astralsorcery:marble_pillar>, <item:undergarden:cloggrum_block>, <item:naturesaura:field_creator>, <item:undergarden:cloggrum_block>, <item:astralsorcery:marble_pillar>, a], 
-	    [a, test, test, <item:botania:lens_flare>,test, test, a], 
-	    [a, <item:bloodmagic:ritualstone>, <item:astralsorcery:ritual_link>, <item:astralsorcery:perk_gem_night>, <item:astralsorcery:ritual_link>, <item:bloodmagic:ritualstone>, a], 
-	    [a, <item:bloodmagic:ritualstone>, <item:mythicbotany:vanaheim_rune>, <item:bloodmagic:masterritualstone>, <item:mythicbotany:asgard_rune>, <item:bloodmagic:ritualstone>, a], 
+	    [a, <item:aerialhell:volucite_vibrant>, <item:aerialhell:ruby>, <item:botania:lens_flare>, <item:aerialhell:ruby>, <item:aerialhell:volucite_vibrant>, a], 
+	    [a, <item:aerialhell:azurite_crystal>, <item:astralsorcery:ritual_link>, <item:astralsorcery:perk_gem_night>.withTag({astralsorcery: {attribute_modifiers: [{mode: 1 as int, id: [1642756995, -1857991528, -1839450137, 902235687], baseValue: 0.07535912 as float, type: "astralsorcery:critchance" as string}, {mode: 1 as int, id: [-105698525, -861059254, -1114447022, 95776161], baseValue: 0.06219476 as float, type: "astralsorcery:meleeattackdamage" as string}]}}), <item:astralsorcery:ritual_link>, <item:aerialhell:azurite_crystal>, a], 
+	    [a, <item:aerialhell:fluorite_block>, <item:mythicbotany:vanaheim_rune>, <item:bloodmagic:masterritualstone>, <item:mythicbotany:asgard_rune>, <item:aerialhell:fluorite_block>, a], 
 	    [a, a, a, a, a, a, a]
     ],rp,3);
     runeAltarRecipe([

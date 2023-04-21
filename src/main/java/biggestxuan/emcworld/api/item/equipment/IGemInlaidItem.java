@@ -18,6 +18,7 @@ public interface IGemInlaidItem {
         stack.getOrCreateTag().putInt("weapon_gem",index);
     }
 
+    // Upgradeable gem ?
     default int getGemType(ItemStack stack){
         return (getGemIndex(stack) / 10);
     }

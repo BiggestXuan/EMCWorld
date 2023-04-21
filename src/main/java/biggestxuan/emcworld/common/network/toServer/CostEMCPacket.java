@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.network.toServer;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
-import biggestxuan.emcworld.common.exception.IllegalPacketException;
+import biggestxuan.emcworld.common.exception.EMCWorldIllegalPacketException;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
@@ -46,11 +46,11 @@ public class CostEMCPacket {
                         source = new EMCSource.TeleportEMCSource(emc,player);
                     }
                     if(emc < 0){
-                        throw new IllegalPacketException(player.getScoreboardName());
+                        throw new EMCWorldIllegalPacketException(player.getScoreboardName());
                     }else{
                         EMCHelper.modifyPlayerEMC(player, source, true);
                     }
-                }catch (IllegalPacketException e){
+                }catch (EMCWorldIllegalPacketException e){
                     EMCWorld.LOGGER.fatal("EMCWorld received a illegal packet!");
                     e.printStackTrace();
                 }

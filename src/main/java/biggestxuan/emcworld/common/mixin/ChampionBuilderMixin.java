@@ -30,7 +30,8 @@ public abstract class ChampionBuilderMixin {
         }
         while (true){
             Rank rank = ChampionBuilder.createRank(living);
-            if(canReachRank(MathUtils.getRangePlayerAverageIndex(living,64),rank)){
+            double index = MathUtils.getRangePlayerAverageIndex(living,64);
+            if(canReachRank(index,rank)){
                 return rank;
             }
         }

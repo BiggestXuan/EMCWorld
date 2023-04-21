@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.CharaSword;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
@@ -38,8 +39,11 @@ public class LivingDamageEvent {
         float damage = event.getAmount();
         DamageSource source = event.getSource();
         if(entity.level.isClientSide) return;
-        if(!(event.getEntityLiving() instanceof PlayerEntity) && MathUtils.isMaxDifficulty()) {
+        double diff = ConfigManager.DIFFICULTY.get();
+        if(!(event.getEntityLiving() instanceof PlayerEntity) && diff == 3D) {
             damage *= 0.67f;
+        }else{
+            damage *= 1 + (3 - diff) / 3;
         }
         if(entity instanceof AbstractRaiderEntity){
             MinecraftServer server = entity.getServer();

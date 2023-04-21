@@ -27,7 +27,7 @@ public class EMCWriter {
 
     public static void WriteEMCLog(PlayerEntity player,EMCSource<?> source) {
         try{
-            if(player == null || source.emc == 0){
+            if(player == null || source.emc == 0 || source.amt == -1){
                 return;
             }
             File file = getPlayerFile(player);

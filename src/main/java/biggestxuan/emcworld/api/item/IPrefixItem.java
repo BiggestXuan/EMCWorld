@@ -8,8 +8,11 @@ package biggestxuan.emcworld.api.item;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
+import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import mekanism.common.item.gear.ItemMekaSuitArmor;
+import mekanism.common.item.gear.ItemMekaTool;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TranslationTextComponent;
 
@@ -35,6 +38,9 @@ public interface IPrefixItem {
     }
 
     default Prefix getPrefix(ItemStack stack){
+        if(MekUtils.isInfinityMekaTool(stack)){
+            return Prefix.MYTH;
+        }
         return getPrefix(stack.getOrCreateTag().getInt("prefix"));
     }
 
@@ -71,6 +77,11 @@ public interface IPrefixItem {
             IUpgradeableItem item = (IUpgradeableItem) stack.getItem();
             if(item.getLevel(stack) >= 22 && getPrefix(stack).getLevel() < Prefix.EPIC.getLevel() && item instanceof IEMCGod){
                 setPrefix(stack,Prefix.EPIC);
+            }
+        }
+        if(stack.getItem() instanceof ItemMekaSuitArmor | stack.getItem() instanceof ItemMekaTool){
+            if(getPrefix(stack).getLevel() != getHighestPrefix().getLevel()){
+                setPrefix(stack,getHighestPrefix());
             }
         }
     }

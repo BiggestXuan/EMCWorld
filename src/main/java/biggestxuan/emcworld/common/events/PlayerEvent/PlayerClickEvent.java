@@ -17,6 +17,7 @@ import biggestxuan.emcworld.common.blocks.MultiBlock;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
+import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -74,7 +75,7 @@ public class PlayerClickEvent {
                 //PacketHandler.sendToServer(new LeftClickPacket());
             }
         }
-        if(stack.getItem() instanceof InfinitySword){
+        if(stack.getItem() instanceof InfinitySword || MekUtils.isInfinityMekaTool(stack)){
             PacketHandler.sendToServer(new LeftClickPacket());
         }
         if(stack.getItem() instanceof StaffItem){

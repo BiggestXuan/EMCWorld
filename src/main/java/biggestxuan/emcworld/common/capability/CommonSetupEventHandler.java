@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.capability;
  *  2022/08/18
  */
 
+import biggestxuan.emcworld.api.capability.IEntityUtilCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import net.minecraft.nbt.INBT;
@@ -44,6 +45,20 @@ public class CommonSetupEventHandler {
 
                     @Override
                     public void readNBT(Capability<IPlayerSkillCapability> capability, IPlayerSkillCapability instance, Direction side, INBT nbt) {
+                    }
+                },
+                () -> null
+        ));
+        event.enqueueWork(() -> CapabilityManager.INSTANCE.register(
+                IEntityUtilCapability.class,
+                new Capability.IStorage<>() {
+                    @Override
+                    public INBT writeNBT(Capability<IEntityUtilCapability> capability, IEntityUtilCapability instance, Direction side) {
+                        return null;
+                    }
+
+                    @Override
+                    public void readNBT(Capability<IEntityUtilCapability> capability, IEntityUtilCapability instance, Direction side, INBT nbt) {
                     }
                 },
                 () -> null

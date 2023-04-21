@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/14
  */
 
+import biggestxuan.emcworld.common.utils.LocaleUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,6 +17,8 @@ import vazkii.quark.base.handler.ContributorRewardHandler;
 public abstract class QuarkHandlerMixin {
     @Inject(method = "init",at = @At("HEAD"),remap = false,cancellable = true)
     private static void networkHandler(CallbackInfo ci){
-        ci.cancel();
+        if(LocaleUtils.isChina()){
+            ci.cancel();
+        }
     }
 }

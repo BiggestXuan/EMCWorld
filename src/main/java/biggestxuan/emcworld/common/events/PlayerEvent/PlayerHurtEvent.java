@@ -16,6 +16,7 @@ import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Dctor_0415;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -60,6 +61,9 @@ public class PlayerHurtEvent {
             float amount = event.getAmount();
             if(MathUtils.isMaxDifficulty()){
                 amount *= 1.167f;
+            }else{
+                double diff = ConfigManager.DIFFICULTY.get();
+                amount *= 1 - (3 - diff) / 3 ;
             }
             if(source.getDirectEntity() instanceof ProjectileEntity){
                 amount += MathUtils.getAdditionDamage(source.getDirectEntity(),player,amount);

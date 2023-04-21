@@ -9,6 +9,8 @@ package biggestxuan.emcworld.common.registry;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.base.BaseGetStageItem;
+import biggestxuan.emcworld.common.compact.Mekanism.Module.EMCProtect.EnergyProtectModuleItem;
+import biggestxuan.emcworld.common.compact.Mekanism.Module.Infinity.InfinityModuleItem;
 import biggestxuan.emcworld.common.items.Curios.EMCShieldSupply;
 import biggestxuan.emcworld.common.items.Curios.NuclearBall;
 import biggestxuan.emcworld.common.items.Curios.StoredTotem;
@@ -24,6 +26,8 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.NightLight;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.RedGreenDagger;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.*;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.RainbowGunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.LuckyItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Other.HamBat;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.NatureStaff;
@@ -182,6 +186,8 @@ public class EWItems {
     public static final RegistryObject<Item> ILLAGER_GEM = ITEMS.register("illager_gem", EWItem::new);
     public static final RegistryObject<Item> EMC_HEALING_BAG = ITEMS.register("emc_healing_bag",EMCHealingItem::new);
     public static final RegistryObject<Item> EMC_CHARGE_GEM = ITEMS.register("emc_charge_gem",EMCChargeItem::new);
+    public static final RegistryObject<Item> ENERGY_PROTECT_MODULE = ITEMS.register("energy_protect_module", () -> new EnergyProtectModuleItem(EWModules.ENERGY_PROTECT_MODULE));
+    public static final RegistryObject<Item> INFINITY_MODULE = ITEMS.register("infinity_module", () -> new InfinityModuleItem(EWModules.INFINITY_MODULE_UNIT_MODULE));
 
     public static final RegistryObject<Item> FIRE_RED_HELMET = ITEMS.register("fire_red_helmet",()->new fireRedArmor(1));
     public static final RegistryObject<Item> FIRE_RED_CHESTPLATE = ITEMS.register("fire_red_chestplate",()->new fireRedArmor(2));
@@ -208,6 +214,15 @@ public class EWItems {
     public static final RegistryObject<Item> GAIA_DAGGER = ITEMS.register("gaia_dagger",() -> new DaggerItem(api.getDaggerTier("gaia")));
     public static final RegistryObject<Item> NETHERITE_DAGGER = ITEMS.register("netherite_dagger",() -> new DaggerItem(api.getDaggerTier("netherite")));
 
+    public static final RegistryObject<Item> WOODEN_GUN = ITEMS.register("wooden_gun",() -> new GunItem(api.getGunTier("wooden")));
+    public static final RegistryObject<Item> STONE_GUN = ITEMS.register("stone_gun",() -> new GunItem(api.getGunTier("stone")));
+    public static final RegistryObject<Item> IRON_GUN = ITEMS.register("iron_gun",() -> new GunItem(api.getGunTier("iron")));
+    public static final RegistryObject<Item> GOLDEN_GUN = ITEMS.register("golden_gun",() -> new GunItem(api.getGunTier("golden")));
+    public static final RegistryObject<Item> DIAMOND_GUN = ITEMS.register("diamond_gun",() -> new GunItem(api.getGunTier("diamond")));
+    public static final RegistryObject<Item> GAIA_GUN = ITEMS.register("gaia_gun",() -> new GunItem(api.getGunTier("gaia")));
+    public static final RegistryObject<Item> RAINBOW_GUN = ITEMS.register("rainbow_gun", RainbowGunItem::new);
+    public static final RegistryObject<Item> NETHERITE_GUN = ITEMS.register("netherite_gun",() -> new GunItem(api.getGunTier("netherite")));
+    
     public static final RegistryObject<Item> EMC_FLOWER = registryBlock("emc_flower",EWBlocks.EMC_FLOWER);
 
     public static final RegistryObject<Item> WOODEN_STAFF = ITEMS.register("wooden_staff",() -> new StaffItem(api.getStaffTier("wooden")));

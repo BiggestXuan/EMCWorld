@@ -12,6 +12,9 @@ public function modifyAetherRecipe() as void{
         <item:minecraft:glowstone>
     ],<item:aether:victory_medal>);*/
     terraPlateRecipe([
-        test,test,test
+        <item:minecraft:honeycomb_block>,
+        <item:the_bumblezone:pollen_puff>,
+        <item:candyworld:yellow_gummy>,
+        <item:candyworld:yellow_gummy_worm>
     ],<item:emcworld:sunlit_ore>,50000);
 }

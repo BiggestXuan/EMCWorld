@@ -18,6 +18,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Curios.StoredTotem;
 import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -53,6 +54,7 @@ public class ItemToolTipEvent {
     public static void tooltipEvent(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
         if(event.getPlayer() == null) return;
+        ClientPlayerEntity player = Minecraft.getInstance().player;
         final Item[] radiationItem = new Item[]{
                 MekanismItems.PLUTONIUM_PELLET.getItem(),MekanismItems.ANTIMATTER_PELLET.getItem(),MekanismItems.POLONIUM_PELLET.getItem()
         };
@@ -87,8 +89,6 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof INeedLevelItem){
             INeedLevelItem item_1 = (INeedLevelItem) stack.getItem();
-            if(Minecraft.getInstance().player == null) return;
-            ClientPlayerEntity player = Minecraft.getInstance().player;
             int playerLevel = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new).getLevel();
             int itemLevel = item_1.getUseLevel(stack);
             if(playerLevel < itemLevel && !player.isCreative() && itemLevel >= 1){
@@ -212,6 +212,18 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",String.format("%.2f",(1-cost)*100)+"%"));
             }
         }
+        if(stack.getItem() instanceof GunItem){
+            GunItem gun = (GunItem) stack.getItem();
+            float damage = gun.damage(stack);
+            if(damage > 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",damage)));
+            }
+            if(damage < 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage_loss",String.format("%.2f",-damage)));
+            }
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_cd",String.format("%.2f",gun.cd(stack) / 20f)));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_acc",String.format("%.2f",gun.accuracy(stack,player)*100)+"%"));
+        }
         if(stack.getItem() instanceof ISpeedArmor){
             ISpeedArmor item_2_5 = (ISpeedArmor) stack.getItem();
             double speed = item_2_5.getSpeed(stack);
@@ -291,24 +303,6 @@ public class ItemToolTipEvent {
         if(stack.getItem() instanceof ItemHazmatSuitArmor || stack.getItem().equals(MekanismItems.MODULE_RADIATION_SHIELDING.getItem().getItem())){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.unclear_limit"));
         }
-        if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){
-            ISponsorItem item4 = (ISponsorItem) stack.getItem();
-            Sponsors sp = item4.getSponsor();
-            int level = 0;
-            String name;
-            if(sp == null){
-                name = "";
-            }else{
-                level = sp.getIndex();
-                name = sp.getPlayerName();
-            }
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoritem",name).setStyle(Style.EMPTY.withItalic(true).withColor(getColor(level))));
-            ClientPlayerEntity player = Minecraft.getInstance().player;
-            if(player == null) return;
-            if(new Sponsors(player.getScoreboardName(),player.getUUID(), EMCWorldAPI.getInstance().getUtilCapability(player).getLevel()).equals(sp)){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
-            }
-        }
         if(stack.getItem() instanceof IKillCountItem){
             IKillCountItem w = (IKillCountItem) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.killCount",MathUtils.format(w.getKillCount(stack))));
@@ -328,7 +322,25 @@ public class ItemToolTipEvent {
                     return;
                 }
             }
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.durability",stack.getMaxDamage()-stack.getDamageValue(),stack.getMaxDamage()));
+            if(stack.getMaxDamage() >= 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.durability",stack.getMaxDamage()-stack.getDamageValue(),stack.getMaxDamage()));
+            }
+        }
+        if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){
+            ISponsorItem item4 = (ISponsorItem) stack.getItem();
+            Sponsors sp = item4.getSponsor();
+            int level = 0;
+            String name;
+            if(sp == null){
+                name = "";
+            }else{
+                level = sp.getIndex();
+                name = sp.getPlayerName();
+            }
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoritem",name).setStyle(Style.EMPTY.withItalic(true).withColor(getColor(level))));
+            if(new Sponsors(player.getScoreboardName(),player.getUUID(), EMCWorldAPI.getInstance().getUtilCapability(player).getLevel()).equals(sp)){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
+            }
         }
     }
 

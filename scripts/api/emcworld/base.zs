@@ -153,6 +153,12 @@ public function piglinTrade(input as IIngredient,output as CrTWeightItem[]) as v
     <recipetype:crockpot:piglin_bartering>.addRecipe(name,input,output);
 }
 
+public function explosionRecipe(input as IIngredient,output as IItemStack,rate as float,onlyBlock as bool) as void{
+    var name as string = getRecipeName(output);
+    <recipetype:crockpot:explosion_crafting>.addRecipe(name,input,output,rate,onlyBlock);
+}
+
+
 public function getColorBlockCount() as int{
     var d = getGameDifficulty();
     if(d == 0.5) return 64;

@@ -6,12 +6,16 @@ package biggestxuan.emcworld.api.item;
  *  2022/10/24
  */
 
+import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
 import net.minecraft.item.ItemStack;
 
 public interface IUpgradeableItem {
     int getMaxLevel();
 
     default int getLevel(ItemStack stack){
+        if(MekUtils.isInfinityMekaTool(stack)){
+            return 32;
+        }
         return stack.getOrCreateTag().getInt("level");
     };
 

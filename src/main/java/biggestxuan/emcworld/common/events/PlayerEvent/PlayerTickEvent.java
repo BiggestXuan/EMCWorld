@@ -400,7 +400,8 @@ public class PlayerTickEvent {
                 }
             }
             if(amount > 0){
-                EMCHelper.modifyPlayerEMC(player,new EMCSource.ProduceItemEMCSource(amount,player,list,0),false);
+                //Disable EMC log, because too many!
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.ProduceItemEMCSource(amount,player,list,-1),false);
             }
         }
         float max_total = 0f;

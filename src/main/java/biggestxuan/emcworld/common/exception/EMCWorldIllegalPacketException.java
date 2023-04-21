@@ -6,8 +6,8 @@ package biggestxuan.emcworld.common.exception;
  *  2023/03/23
  */
 
-public class IllegalPacketException extends Exception {
-    public IllegalPacketException(Object message){
+public class EMCWorldIllegalPacketException extends RuntimeException {
+    public EMCWorldIllegalPacketException(Object message){
         super("Server receive a illegal packet from: "+message.toString());
     }
 }

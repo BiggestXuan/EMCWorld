@@ -21,9 +21,13 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.registry.EWModules;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
+import mekanism.common.content.gear.Module;
+import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.blay09.mods.waystones.api.IWaystone;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -35,6 +39,8 @@ import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -555,6 +561,35 @@ public class MathUtils {
         public String getDifficulty() {
             return difficulty;
         }
+    }
+
+    public static boolean canAbsorbHurt(PlayerEntity player, DamageSource source){
+        boolean flag = true;
+        if(EWDamageSource.isReallyDamage(source) || source.equals(DamageSource.OUT_OF_WORLD)){
+            return false;
+        }
+        NonNullList<ItemStack> armors = player.inventory.armor;
+        for(ItemStack stack : armors){
+            if(stack.getItem() instanceof ItemMekaSuitArmor && !stack.isEmpty()){
+                ItemMekaSuitArmor armor = (ItemMekaSuitArmor) stack.getItem();
+                if(armor.getModules(stack).size() == 0){
+                    return false;
+                }
+                for(Module<?> module : armor.getModules(stack)){
+                    if(module.getData().getRegistryName() != null){
+                        if(module.getData().getRegistryName().equals(EMCWorld.rl("energy_protect_module"))){
+                            break;
+                        }else{
+                            flag = false;
+                        }
+                    }
+                }
+            }else{
+                flag = false;
+            }
+        }
+        //EMCWorld.LOGGER.info(flag);
+        return flag;
     }
 
     @Deprecated

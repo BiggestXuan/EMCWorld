@@ -151,7 +151,7 @@ public abstract class EMCSource<T> {
 
         @Override
         public String getInfo() {
-            return super.getInfo()+EMCWorld.tc("emcsource.bucket",stack.toString(),getEMC()).getString();
+            return super.getInfo()+EMCWorld.tc("emcsource.bucket",getEMC()).getString();
         }
     }
 
@@ -226,7 +226,8 @@ public abstract class EMCSource<T> {
 
         @Override
         public String getInfo() {
-            return super.getInfo()+EMCWorld.tc("emcsource.pick",entity.getItem().toString(),getEMC()).getString();
+            ResourceLocation rl = entity.getItem().getItem().getRegistryName();
+            return super.getInfo()+EMCWorld.tc("emcsource.pick",rl == null ? "null" : rl.toString()+"x"+getTarget().getItem().getCount(),getEMC()).getString();
         }
     }
 

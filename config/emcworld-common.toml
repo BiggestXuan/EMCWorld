@@ -9,6 +9,8 @@
 	"Format Text" = true
 	#Give a warn when logging server to offline mode player
 	"Warn player" = true
+	#Enable some funny things?
+	geng = true
 	#Whether unable EMCWorld Admin Menu
 	"Able Admin Menu" = true
 	#Enable sponsorship messages that players send every 100 times they enter the game.

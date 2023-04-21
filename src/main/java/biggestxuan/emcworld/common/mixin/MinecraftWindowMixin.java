@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MinecraftWindowMixin {
     @Inject(method = "createTitle", at = @At("HEAD"), cancellable = true)
     public void setTitle(CallbackInfoReturnable<String> cir){
-        String title = EMCWorld.TITLE+" - "+ CalendarUtils.INSTANCE.getNowTimeWelcome()+"!";
+        String title = EMCWorld.TITLE+" - "+ new CalendarUtils().getNowTimeWelcome()+"!";  //Dynamic change, INSTANCE -> static change
         cir.setReturnValue(title);
         cir.cancel();
     }

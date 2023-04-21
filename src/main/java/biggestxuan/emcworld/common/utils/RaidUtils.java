@@ -97,13 +97,13 @@ public class RaidUtils {
                 }
             }
         }
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 2; j++) {
             BlockPos pos1 = getHighestBlock(rand);
             if(pos1 != null){
                 return pos1;
             }
         }
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 2; j++) {
             BlockPos pos2 = getHighestBlock(rand1);
             if(pos2 != null){
                 return pos2;
@@ -190,13 +190,14 @@ public class RaidUtils {
         if(player == null || ConfigManager.DIFFICULTY.get() != 3) return 0d;
         IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
         float all = 0f;
-        if(!cap.isRaid()) return all;
+        if(!cap.isRaid() || cap.getState() == 3) return all;
         all += Math.pow(1.33,cap.getWave());
-        all -= cap.getVillager() >= 5 ? 1.28f * cap.getVillager() : 0;
+        all -= cap.getVillager() >= 5 ? 1.5f * cap.getVillager() : 0;
         World world1 = entity == null ? player.level : entity.level;
         BlockPos pos = player.level instanceof ClientWorld ? player.blockPosition() : entity.blockPosition();
         double diff = player.level instanceof ClientWorld ? cap.getSHDifficulty() : DifficultyHelper.getAreaDifficulty(world1,pos);
         all += 0.05 * (diff - 1000);
+        //all *= 1000; //Test
         return Math.max(all / 10000d,0f);
     }
 

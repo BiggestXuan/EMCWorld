@@ -6,7 +6,7 @@ package biggestxuan.emcworld.common.exception;
  *  2022/09/16
  */
 
-public class EMCWorldNotFinalException extends Exception{
+public class EMCWorldNotFinalException extends RuntimeException{
     public EMCWorldNotFinalException(){
         super("EMCWorld is not completed, only sponsors above level 2 can join world.");
     }

@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
+import biggestxuan.emcworld.api.item.equipment.gun.IGunTier;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
 import net.minecraft.entity.player.PlayerEntity;
@@ -67,57 +68,11 @@ public interface EMCWorldAPI{
     }
 
     default IWarHammerTier getWarHammerTier(String name){
-        return new IWarHammerTier() {
-            @Override
-            public double getCriticalRate() {
-                return 0;
-            }
+        return null;
+    }
 
-            @Override
-            public double getCriticalChance() {
-                return 0;
-            }
-
-            @Override
-            public double getAttackRange() {
-                return 0;
-            }
-
-            @Override
-            public double lossSpeed() {
-                return 0;
-            }
-
-            @Override
-            public int getUses() {
-                return 0;
-            }
-
-            @Override
-            public float getSpeed() {
-                return 0;
-            }
-
-            @Override
-            public float getAttackDamageBonus() {
-                return 0;
-            }
-
-            @Override
-            public int getLevel() {
-                return 0;
-            }
-
-            @Override
-            public int getEnchantmentValue() {
-                return 0;
-            }
-
-            @Override
-            public Ingredient getRepairIngredient() {
-                return null;
-            }
-        };
+    default IGunTier getGunTier(String name){
+        return null;
     }
 
     IStaffTier DUMMY_TIER = new IStaffTier() {

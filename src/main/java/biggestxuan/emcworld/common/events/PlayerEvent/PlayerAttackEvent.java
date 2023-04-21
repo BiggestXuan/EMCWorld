@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.capability.IEntityUtilCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
@@ -18,6 +19,7 @@ import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -181,7 +183,12 @@ public class PlayerAttackEvent {
                     ItemStack stack = player.getOffhandItem();
                     damage += ((IUpgradeBow) stack.getItem()).getAdditionDamage(stack);
                 }
-                long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
+                double rate = 1d;
+                if(proEntity.getCapability(EMCWorldCapability.ENTITY_UTIL).isPresent()){
+                    IEntityUtilCapability cap = proEntity.getCapability(EMCWorldCapability.ENTITY_UTIL).orElseThrow(EMCWorldCommonException::new);
+                    rate = cap.getProjectileCostRate();
+                }
+                long cost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss() * rate);
                 CostPlayer(player,cost,event,damage,null);
             }
         }

@@ -7,10 +7,13 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
+import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
+import biggestxuan.emcworld.common.exception.EMCWorldIllegalPacketException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWItems;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -26,20 +29,26 @@ public class LeftClickPacket {
         return new LeftClickPacket();
     }
 
-    public static void handle(LeftClickPacket msg, Supplier<NetworkEvent.Context> ctx) {
+    public static void handle(LeftClickPacket msg, Supplier<NetworkEvent.Context> ctx){
         if (ctx.get().getDirection().getReceptionSide().isServer()) {
             if(ctx.get().getSender().getAttackStrengthScale(0) == 1){
                 ctx.get().enqueueWork(() -> (
                         (BaseEMCGodSword) EWItems.ICE_SWORD.get()).spawnManaBurst(ctx.get().getSender()));
             }
-            if(ctx.get().getSender().getMainHandItem().getItem() instanceof InfinitySword){
-                ctx.get().enqueueWork(()-> {
-                    List<? extends LivingEntity> canRangeAttack = getNearEntity(ctx.get().getSender(),ctx.get().getSender(),64);
-                    for(LivingEntity entity:canRangeAttack){
-                        entity.hurt(new EWDamageSource(ctx.get().getSender()).REALLY_PLAYER,114514);
-                    }
-                });
+            try{
+                ItemStack stack = ctx.get().getSender().getMainHandItem();
+                if(stack.getItem() instanceof InfinitySword || MekUtils.isInfinityMekaTool(stack)){
+                    ctx.get().enqueueWork(()-> {
+                        List<? extends LivingEntity> canRangeAttack = getNearEntity(ctx.get().getSender(),ctx.get().getSender(),64);
+                        for(LivingEntity entity:canRangeAttack){
+                            entity.hurt(new EWDamageSource(ctx.get().getSender()).REALLY_PLAYER,114514);
+                        }
+                    });
+                }
+            }catch (NullPointerException e){
+                throw new EMCWorldIllegalPacketException(msg);
             }
+
         }
         ctx.get().setPacketHandled(true);
     }

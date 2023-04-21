@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ModifierHandler.class)
-public abstract class DisableBonus {
+public abstract class ModifierHandlerMixin {
     @Inject(method = "addAttackDamage",
             at = @At(value = "INVOKE",
                     target = "Lnet/silentchaos512/scalinghealth/utils/ModifierHandler;setModifier(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/ai/attributes/Attribute;Ljava/util/UUID;Ljava/lang/String;DLnet/minecraft/entity/ai/attributes/AttributeModifier$Operation;)V"),

@@ -47,11 +47,6 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
     }
 
     @Override
-    public double getEMCCostRate() {
-        return 1;
-    }
-
-    @Override
     public double costEMCWhenAttack(ItemStack stack) {
         return 1;
     }

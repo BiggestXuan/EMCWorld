@@ -28,7 +28,7 @@ public function modifyAtumRecipe() as void{
     removeCraftRecipe([gb]);
     modifyShapedRecipe([
         [a,g,a],
-        [g,test,g],
+        [g,<item:minecraft:diamond>,g],
         [a,g,a]
     ],<item:atum:scarab>);
     enrichingRecipe(n,d,5);

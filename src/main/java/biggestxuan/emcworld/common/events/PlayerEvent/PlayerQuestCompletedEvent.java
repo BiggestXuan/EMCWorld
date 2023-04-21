@@ -29,8 +29,10 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerQuestCompletedEvent {
@@ -73,6 +75,20 @@ public class PlayerQuestCompletedEvent {
             if(getActDiff(player) == 3){
                 final_pack(player,"message.final_diff4");
             }
+        }
+        Set<String> tags = event.getReward().getTags();
+        try{
+            if(tags.contains("emc")){
+                long emc = 0;
+                for(String t : tags){
+                    if(!t.equals("emc") && StringUtils.isNumeric(t)){
+                        emc += Long.parseLong(t);
+                    }
+                }
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.QuestCompletedEMCSource(emc,player,null,0,"Getting Stage","N/A"),true);
+            }
+        }catch (NumberFormatException e){
+            EMCWorld.LOGGER.error("FTBQuest or EMCWorld caused a exception: "+e.getMessage());
         }
         long baseGet;
         MathUtils.QuestInfo info = MathUtils.getQuestCompletedRewardBase(player,event.getReward());

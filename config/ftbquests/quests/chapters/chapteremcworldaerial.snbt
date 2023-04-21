@@ -1,0 +1,232 @@
+{
+	id: "1F9D024CAA5BAB57"
+	group: "7E8ECD616F8A4334"
+	order_index: 0
+	filename: "chapteremcworldaerial"
+	title: "{chapter.emcworld.aerial}"
+	icon: "aerialhell:stellar_grass_block"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.aerial_lighter}"
+			x: 3.0d
+			y: 3.0d
+			id: "4EE4DE2C96ACCFDD"
+			tasks: [{
+				id: "19C94678AD0D2E7A"
+				type: "item"
+				item: {
+					id: "aerialhell:stellar_lighter"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [
+				{
+					id: "2F74339A2C062D2D"
+					type: "item"
+					item: "aerialhell:stellar_portal_frame_block"
+					count: 12
+				}
+				{
+					id: "6960C676EB71255D"
+					type: "custom"
+					title: "{reward.emcworld.easy}"
+					icon: "emcworld:small_emc_gem"
+					tags: ["easy"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.aerial_goin}"
+			x: 3.0d
+			y: 6.0d
+			dependencies: ["4EE4DE2C96ACCFDD"]
+			id: "38EB7DF963BF7CAA"
+			tasks: [{
+				id: "63E8C74DA6D307E5"
+				type: "dimension"
+				dimension: "aerialhell:aerial_hell"
+			}]
+			rewards: [{
+				id: "41BC7C13F06A496E"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.aerial_fluorite}"
+			x: 6.0d
+			y: 9.0d
+			dependencies: ["38EB7DF963BF7CAA"]
+			id: "2A4AF44026985EFF"
+			tasks: [{
+				id: "00A1718FA1D63615"
+				type: "item"
+				item: "aerialhell:fluorite"
+			}]
+			rewards: [
+				{
+					id: "2864E8CF1B690F55"
+					type: "item"
+					item: "aerialhell:fluorite"
+					random_bonus: 15
+				}
+				{
+					id: "1B031AF5A8EED022"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.aerial_oscillator}"
+			x: 0.0d
+			y: 9.0d
+			dependencies: ["2A4AF44026985EFF"]
+			id: "1F55F2607482BF04"
+			tasks: [{
+				id: "459C0D0784A01018"
+				type: "item"
+				item: "aerialhell:oscillator"
+			}]
+			rewards: [{
+				id: "5B3DA9B3F72E48AE"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.aerial_ore}"
+			x: 3.0d
+			y: 12.5d
+			dependencies: ["1F55F2607482BF04"]
+			id: "3E6CAB3B53CC9421"
+			tasks: [
+				{
+					id: "2A7398AB587DECFF"
+					type: "item"
+					item: "aerialhell:ruby_ore"
+				}
+				{
+					id: "5CB7C2D73FD42612"
+					type: "item"
+					item: "aerialhell:magmatic_gel_ore"
+				}
+				{
+					id: "3ED86DB838A4F2A0"
+					type: "item"
+					item: "aerialhell:volucite_ore"
+				}
+				{
+					id: "6906AA6D57D93BA0"
+					type: "item"
+					item: "aerialhell:azurite_ore"
+				}
+			]
+			rewards: [{
+				id: "33A3D467E33BCA5F"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.aerial_chainedgod}"
+			x: 3.0d
+			y: 18.0d
+			dependencies: ["3E6CAB3B53CC9421"]
+			id: "46743D707BC7D501"
+			tasks: [{
+				id: "1E164EB78258622E"
+				type: "kill"
+				icon: "aerialhell:chained_god_spawn_egg"
+				entity: "aerialhell:chained_god"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "738A285B10A2D898"
+					type: "item"
+					item: "aerialhell:arsonist_ingot"
+					random_bonus: 7
+				}
+				{
+					id: "19BF786B789B1365"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.aerial_lunaticpriest}"
+			x: 0.0d
+			y: 15.0d
+			dependencies: ["3E6CAB3B53CC9421"]
+			id: "62F57E59F0285A37"
+			tasks: [{
+				id: "3CD8110B789265DF"
+				type: "kill"
+				icon: "aerialhell:lunatic_priest_spawn_egg"
+				entity: "aerialhell:lunatic_priest"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "53C976E99FDF645C"
+					type: "item"
+					item: "aerialhell:lunatic_crystal"
+					random_bonus: 7
+				}
+				{
+					id: "7CE5A106E1E39769"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.aeria_mudcyclemage}"
+			x: 6.0d
+			y: 15.0d
+			dependencies: ["3E6CAB3B53CC9421"]
+			id: "414F3B481BE48D2F"
+			tasks: [{
+				id: "7EF7CFC2BD929402"
+				type: "kill"
+				icon: "aerialhell:mud_cycle_mage_spawn_egg"
+				entity: "aerialhell:mud_cycle_mage"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "3D0C6B74F1BD2796"
+					type: "item"
+					item: "aerialhell:obsidian_shard"
+					random_bonus: 7
+				}
+				{
+					id: "2A972F9B5523AD9E"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
+		}
+	]
+}

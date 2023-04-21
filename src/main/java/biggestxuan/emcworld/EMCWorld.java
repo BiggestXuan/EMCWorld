@@ -28,6 +28,7 @@ import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
+import biggestxuan.emcworld.common.utils.ModUtils;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.block.Block;
@@ -69,6 +70,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 @Mod(EMCWorld.MODID)
 public class EMCWorld {
@@ -79,7 +81,7 @@ public class EMCWorld {
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
-    public static final int HOMO = 114514;
+    public static final int HOMO = ConfigManager.GENG.get() ? 114514 : 115000;
     public static boolean isBackingUp = false;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
     @OnlyIn(Dist.CLIENT)
@@ -107,6 +109,7 @@ public class EMCWorld {
         EWSounds.SOUND.register(bus);
         EWVillagers.POI.register(bus);
         EWVillagers.PROFESSION.register(bus);
+        EWModules.MODULES.register(bus);
 
         bus.addGenericListener(Block.class,EWBlocks::botaniaInit);
 
@@ -134,6 +137,8 @@ public class EMCWorld {
         ModifyCollector.init();
         ChampionsInit.init();
         welcome();
+        //ModUtils.modList();
+        LOGGER.info(ModUtils.addMod());
     }
 
     private void doClientStuff(FMLClientSetupEvent event) {

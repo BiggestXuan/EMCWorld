@@ -54,6 +54,7 @@ public function emcworldRecipe() as void{
     var eus = <item:extendedcrafting:ultimate_singularity>;
     var ieg = <item:emcworld:infinity_emc_gem>;
     var mt = <item:mekanism:meka_tool>;
+    var anti = <item:mekanism:pellet_antimatter>;
     var mr = <item:astralsorcery:marble_runed>;
     var st = <item:astralsorcery:starmetal>;
     var pfm = <item:emcworld:fading_matter>;
@@ -82,6 +83,8 @@ public function emcworldRecipe() as void{
     var mhs = <item:mekanism:hdpe_sheet>;
     var cmi = <item:emcworld:crystal_matrix_ingot>;
     var pcm = <item:emcworld:clay_matter>;
+    var bp = <item:minecraft:blaze_powder>;
+    var cho = <tag:items:candyworld:chocolate_bars>;
     var ip = <item:astralsorcery:illumination_powder>;
     var sar = <item:bloodmagic:sacrificerune>;
     var sel = <item:bloodmagic:selfsacrificerune>;
@@ -444,10 +447,10 @@ public function emcworldRecipe() as void{
             <item:emcworld:abyss_gemstone>
         ],
         [
-            <item:emcworld:test_block>,
-            <item:emcworld:test_block>,
-            <item:emcworld:test_block>,
-            <item:emcworld:test_block>
+            <item:aerialhell:ruby>,
+            <item:aerialhell:azurite_crystal>,
+            <item:aerialhell:fluorite>,
+            <item:aerialhell:volucite_vibrant>
         ]
     ];
     var sing as IItemStack[][] = [
@@ -567,7 +570,7 @@ public function emcworldRecipe() as void{
     add_emc_stage(emc_stage[5],7);
     add_emc_stage(emc_stage[6],8);
     setEMCStage(<item:mekanism:fluorite_gem>,1024,5);
-    setEMCStage(<item:mekanism:pellet_antimatter>,46080000,114514);
+    setEMCStage(anti,46080000,114514);
     setEMCStage(<item:emcworld:universal_ball>,320000,8);
     removeRecipe([mt,<item:quark:pickarang>,<item:gobber2:block_looter>,<item:gobber2:block_protector>,<item:gobber2:block_defender>]);
     crockPotRecipe(new CrTRequirement().addCategoryMin(new CrTFoodValue().put("meat",3.5)).addMustItem(<item:farmersdelight:ham>,1),<item:emcworld:ham_bat>,100);
@@ -597,6 +600,16 @@ public function emcworldRecipe() as void{
         [tun,sr,tun],
         [tun,tun,tun]
     ],<item:emcworld:scroll_gold>);
+    explosionRecipe(<item:candyworld:crystallized_sugar>,<item:emcworld:stone_shard>,0.97,true);
+    natureSpawnerRecipe([
+        <item:aerialhell:arsonist_ingot>,<item:aerialhell:overheated_ruby>
+    ],20000,<entitytype:aerialhell:chained_god>,"emcworld");
+    natureSpawnerRecipe([
+        <item:aerialhell:lunatic_crystal>,<item:aerialhell:magmatic_gel>
+    ],20000,<entitytype:aerialhell:lunatic_priest>,"emcworld");
+    natureSpawnerRecipe([
+        <item:aerialhell:obsidian_shard>,<item:aerialhell:mud_bone_block>
+    ],20000,<entitytype:aerialhell:mud_cycle_mage>,"emcworld");
     setEMCStage(<item:dead_guys_untitled_deep_dark_:sculk>,1024,8);
     addCraftShapelessRecipe([<item:minecraft:diamond_sword>,dm,dm],<item:emcworld:profession_sword>);
     addCraftShapelessRecipe([<item:minecraft:diamond_chestplate>,dm,dm],<item:emcworld:profession_tank>);
@@ -624,6 +637,11 @@ public function emcworldRecipe() as void{
     tartaricForgeRecipe([<item:emcworld:base_key>,<item:twilightforest:lamp_of_cinders>,<item:astralsorcery:rock_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:vicio" as string}}),<item:rats:dutchrat_wheel>],<item:emcworld:nether_key>,4096,1000);
     smithingRecipe(sword[0],atmqd*3,sword[1]);
     smithingRecipe(sword[1],viqd*3,sword[2]);
+    modifyShapedRecipe([
+        [bp,cho,bp],
+        [cho,<item:minecraft:glowstone_dust>,cho],
+        [bp,cho,bp]
+    ],<item:candyworld:teleporter>);
     terraPlateRecipe([<item:atum:ptah_godshard>],<item:good_nights_sleep:hope_mushroom>,125000);
     terraPlateRecipe([<item:atum:anput_godshard>],<item:good_nights_sleep:despair_mushroom>,125000);
     setEMCStage(<item:twilightforest:fiery_blood>,32768*2,6);
@@ -700,6 +718,17 @@ public function emcworldRecipe() as void{
             combiningRecipe(red_armor[i+4].withArmorLevelMax(),<item:emcworld:dragon_steel>,red_armor[i]);
         }
         addCraftShapedRecipeNoName([
+            [eis,eis,eis],
+            [eis,<tag:items:forge:feathers>,eis],
+            [eis,eis,eis]
+        ],<item:emcworld:flying_gem>);
+        craftTogether([<item:emcworld:infinity_sword>,<item:emcworld:infinity_module>]);
+        addCraftShapedRecipeNoName([
+            [tui,anti,tui],
+            [anti,eis,anti],
+            [tui,anti,tui]
+        ],<item:emcworld:energy_protect_module>);
+        addCraftShapedRecipeNoName([
             [lg[3],lg[3],lg[3]],
             [lg[3],<item:emcworld:illager_shard>,lg[3]],
             [lg[3],lg[3],lg[3]]
@@ -723,7 +752,7 @@ public function emcworldRecipe() as void{
             [eis,eis,eis],
             [eis,eis,eis]
         ],tui);
-        for i in [tui,<item:mekanism:pellet_antimatter>]{
+        for i in [tui,anti]{
             addCraftShapelessRecipe([
                 eis,i
             ],i*8);
@@ -943,7 +972,7 @@ public function emcworldRecipe() as void{
     ],10000,<entitytype:dungeonsmod:voidmaster>,"_void_master");
     combiningRecipe(<item:emcworld:big_emc_gem>*40,<item:minecraft:diamond>,<item:emcworld:biggest_emc_gem>);
     treeRitualRecipe([
-        aeg,aeg,aeg,aeg,aeg,<item:cataclysm:ignitium_ingot>,<item:mekanism:pellet_antimatter>,<item:cataclysm:ignitium_ingot>
+        aeg,aeg,aeg,aeg,aeg,<item:cataclysm:ignitium_ingot>,anti,<item:cataclysm:ignitium_ingot>
     ],<item:twilightforest:rainboak_sapling>,seg*2);
     infuserRecipe([
         seg,seg,seg,<item:cataclysm:void_core>,<item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string})
@@ -961,7 +990,7 @@ public function emcworldRecipe() as void{
         <item:botania:brew_flask>.withTag({brewKey: "botania:overload" as string}),
         wp,
         <item:bloodmagic:tauoil>,
-        test,
+        <item:aerialhell:lunatic_crystal>,
         <item:undergarden:regalium_block>
     ],we,100000,4);
     oxidizingRecipe(<item:stalwart_dungeons:void_crystal>,<gas:emcworld:no_shape_void>*1000);
@@ -1039,17 +1068,17 @@ public function emcworldRecipe() as void{
     ],con[2][4]*2,300,100000,1);
     treeRitualRecipe([
         con[0][5],con[0][5],
-        <item:mekanism:pellet_antimatter>,
+        anti,
         <item:cataclysm:ignitium_ingot>,
         <item:naturesaura:token_euphoria>,
         <item:naturesaura:token_rage>,
         <item:naturesaura:token_terror>,
         <item:naturesaura:token_grief>
-    ],test,con[2][5]*2);
+    ],<item:emcworld:super_emc_gem>,con[2][5]*2);
     infuserRecipe([
-        con[0][6],test,
+        con[0][6],<item:aerialhell:obsidian_shard>,
         <item:undergarden:regalium_ingot>,
-        test,
+        <item:aerialhell:obsidian_shard>,
         <item:astralsorcery:ritual_link>
     ],con[2][6],3000,1000000,3);
     infuserRecipe([
@@ -1095,7 +1124,7 @@ public function emcworldRecipe() as void{
         <item:minecraft:netherite_ingot>,con[0][4],con[0][4]
     ],con[3][4]*2,500,300000,2);
     treeRitualRecipe([
-        con[0][5],con[0][5],<item:mekanism:pellet_antimatter>,
+        con[0][5],con[0][5],anti,
         <item:twilightforest:time_sapling>,
         <item:cataclysm:ignitium_ingot>,
         <item:mythicbotany:vanaheim_rune>
@@ -1107,9 +1136,9 @@ public function emcworldRecipe() as void{
     ],<item:astralsorcery:constellation_paper>.withTag({astralsorcery: {constellationName: "emcworld:emc" as string}}));
     infuserRecipe([
         <item:undergarden:forgotten_ingot>,
-        test,
+        <item:aerialhell:arsonist_ingot>,
         <item:astralsorcery:ritual_link>,
-        test,con[0][6]
+        <item:aerialhell:arsonist_ingot>,con[0][6]
     ],con[3][6],4000,300000,3);
     addCraftShapedRecipeNoName([
         [a,con[0][0],a],
@@ -1118,7 +1147,7 @@ public function emcworldRecipe() as void{
     ],con[1][0]*4);
     addCraftShapedRecipeNoName([
         [alt,con[0][1],alt],
-        [con[0][1],test,con[0][1]],
+        [con[0][1],<item:candyworld:teleporter>,con[0][1]],
         [<tag:items:atum:godshards>,con[0][1],<tag:items:atum:godshards>]
     ],con[1][1]*4);
     mythicInfuserRecipe([
@@ -1307,7 +1336,11 @@ public function emcworldRecipe() as void{
             <item:good_nights_sleep:rainbow_ingot>,
             <item:good_nights_sleep:zitrite_ingot>,
             <item:rats:oratchalcum_ingot>,
-            test,test,test,test,
+            <item:candyworld:milk_chocolate_bar>,
+            <item:candyworld:white_chocolate_bar>,
+            <item:candyworld:dark_chocolate_bar>,
+            <item:aerialhell:stellar_portal_frame_brick>,
+            <item:aerialhell:arsonist_ingot>,
             <item:twilightforest:ironwood_ingot>,
             <item:twilightforest:fiery_ingot>,
             <item:twilightforest:knightmetal_ingot>,
@@ -1394,8 +1427,13 @@ public function emcworldRecipe() as void{
             <item:good_nights_sleep:dead_log>,
             <item:good_nights_sleep:blood_log>,
             <item:rats:pirat_log>,
-            test,test,
-            test,test,
+            <item:candyworld:wafer_stick_block>,
+            <item:aerialhell:aerial_tree_log>,
+            <item:aerialhell:golden_beech_log>,
+            <item:aerialhell:copper_pine_log>,
+            <item:aerialhell:lapis_robinia_log>,
+            <item:aerialhell:enchanted_lapis_robinia_log>,
+            <item:aerialhell:shadow_pine_log>,
             <item:twilightforest:twilight_oak_log>,
             <item:twilightforest:canopy_log>,
             <item:twilightforest:mangrove_log>,
@@ -1474,8 +1512,8 @@ public function emcworldRecipe() as void{
             <item:good_nights_sleep:delusion_stone>,
             <item:rats:marbled_cheese_raw>,
             <item:rats:marbled_cheese_tile>,
-            test,
-            test,test,
+            <item:the_bumblezone:sugar_infused_stone>,
+            <item:aerialhell:stellar_stone>,
             <item:undergarden:depthrock>,
             <item:undergarden:shiverstone>,
             <item:astralsorcery:marble_raw>,
@@ -1602,7 +1640,13 @@ public function emcworldRecipe() as void{
             <item:byg:white_anemone>,
             <item:good_nights_sleep:orange_flower>,
             <item:good_nights_sleep:cyan_flower>,
-            test,test,test,test,
+            <item:aerialhell:stellar_grass>,
+            <item:aerialhell:stellar_grass_ball>,
+            <item:aerialhell:stellar_fern>,
+            <item:aerialhell:stellar_tall_grass>,
+            <item:aerialhell:stellar_tall_fern>,
+            <item:aerialhell:stellar_dead_bush>,
+            <item:aerialhell:shadow_brambles>,
             <item:undergarden:deepturf>,
             <item:undergarden:ashen_deepturf>,
             <item:undergarden:frozen_deepturf>,
@@ -1641,14 +1685,13 @@ public function violet(c as IItemStack,r as IItemStack) as void{
 }
 
 public function blue(c as IItemStack,r as IItemStack) as void{
-    var test = <item:emcworld:test_block>;
     treeRitualRecipe([
         c,
         <item:undergarden:forgotten_block>,
         <item:undergarden:masticator_scales>,
-        test,
+        <item:aerialhell:obsidian_shard>,
         <item:extendedcrafting:elite_component>,
-        test,
+        <item:aerialhell:arsonist_ingot>,
         <item:undergarden:regalium_block>,
         <item:emcworld:blue_matter>
     ],<item:undergarden:smogstem_sapling>,r);

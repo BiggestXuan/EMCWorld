@@ -73,9 +73,9 @@ public class SuperEMCCategory implements IRecipeCategory<SuperEMCRecipe> {
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, SuperEMCRecipe recipe, IIngredients ingredients) {
         IGuiItemStackGroup slot = recipeLayout.getItemStacks();
-        slot.init(0,true,30,15);
-        slot.init(1,true,30,59);
-        slot.init(2,true,114,36);
+        slot.init(0,true,29,14);
+        slot.init(1,true,29,58);
+        slot.init(2,true,114,35);
         slot.set(0,recipe.getInput());
         slot.set(1,recipe.getInput1());
         slot.set(2,recipe.getOutput());

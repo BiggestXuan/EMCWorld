@@ -13,6 +13,7 @@ import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import com.google.common.util.concurrent.AtomicDouble;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -37,6 +38,10 @@ public class PlayerWillHurtEvent {
         LivingEntity entity = event.getEntityLiving();
         if(entity.level.isClientSide || !(entity instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) entity;
+        if(MathUtils.canAbsorbHurt(player,event.getSource())){
+            event.setCanceled(true);
+            return;
+        }
         if(costEMCShield(player,event.getAmount(),event.getSource())){
             event.setCanceled(true);
         }
@@ -75,13 +80,13 @@ public class PlayerWillHurtEvent {
             shield += shieldArmor.getShield(stack1);
             maxShield += shieldArmor.getMaxShield(stack1);
         }
-        AtomicInteger rate = new AtomicInteger(1);
+        AtomicDouble rate = new AtomicDouble(1);
         if(shield < amount) return false;
         if(source.getDirectEntity() instanceof LivingEntity && !(source.getDirectEntity() instanceof PlayerEntity)){
             LivingEntity living = (LivingEntity) source.getDirectEntity();
             ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getServer().getAffixes().forEach(affix -> {
                 if(affix.getIdentifier().equals("shield_flaming")){
-                    iChampion.getServer().getRank().ifPresent(rank -> rate.set(Math.round(rank.getTier() / 3f)));
+                    iChampion.getServer().getRank().ifPresent(rank -> rate.set(1 + rank.getTier() / 3f));
                 }
             }));
         }

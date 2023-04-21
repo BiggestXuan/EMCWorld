@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 
 import L_Ender.cataclysm.init.ModItems;
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.events.PlayerEvent.PlayerTickEvent;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -23,8 +24,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,14 +45,20 @@ public class LivingDeathDropsEvent {
             AbstractRaiderEntity entity1 = (AbstractRaiderEntity) entity;
             Raid raid = RaidUtils.getRaid(entity1);
             if(raid != null && (source.getDirectEntity() instanceof PlayerEntity || source instanceof EWDamageSource) && !raid.isLoss()){
-                List<PlayerTickEvent.RaidInfo> info = RaidUtils.getRaidAllPlayers(raid);
-                if(info.size() >= 1){
-                    PlayerEntity player = info.get(0).getPlayer();
-                    double chance = RaidUtils.getIllagerShardDropRate(entity1,player);
-                    if(MathUtils.isRandom(chance)){
-                        addDrops(entity1,EWItems.ILLAGER_SHARD.get(),1);
+                entity1.getCapability(EMCWorldCapability.ENTITY_UTIL).ifPresent(cap -> {
+                    //EMCWorld.LOGGER.info("test2 successful!");
+                    if(cap.isRaidEntity()){
+                        //EMCWorld.LOGGER.info("test3 successful!");
+                        List<PlayerTickEvent.RaidInfo> info = RaidUtils.getRaidAllPlayers(raid);
+                        if(info.size() >= 1){
+                            PlayerEntity player = info.get(0).getPlayer();
+                            double chance = RaidUtils.getIllagerShardDropRate(entity1,player);
+                            if(MathUtils.isRandom(chance)){
+                                addDrops(entity1,EWItems.ILLAGER_SHARD.get(),1);
+                            }
+                        }
                     }
-                }
+                });
             }
         }
         if(rl.equals(new ResourceLocation("divinerpg","entities/desert_crawler"))){

@@ -7,10 +7,11 @@ package biggestxuan.emcworld.common.capability;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.capability.Util.UtilCapabilityProvider;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.common.capability.EntityUtil.EntityUtilCapabilityProvider;
 import biggestxuan.emcworld.common.capability.PlayerLevel.PlayerLevelCapabilityProvider;
+import biggestxuan.emcworld.common.capability.Util.UtilCapabilityProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.util.LazyOptional;
@@ -28,6 +29,9 @@ public class CommonEventHandler {
         if (entity instanceof PlayerEntity) {
             event.addCapability(EMCWorld.rl("player_level"), new PlayerLevelCapabilityProvider());
             event.addCapability(EMCWorld.rl("utils"),new UtilCapabilityProvider());
+        }
+        else{
+            event.addCapability(EMCWorld.rl("entity_util"),new EntityUtilCapabilityProvider());
         }
     }
 

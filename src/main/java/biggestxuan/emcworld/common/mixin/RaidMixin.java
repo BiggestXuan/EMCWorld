@@ -6,6 +6,8 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/23
  */
 
+import biggestxuan.emcworld.api.capability.IEntityUtilCapability;
+import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.ILivingEntityData;
@@ -133,6 +135,8 @@ public abstract class RaidMixin {
         p_221317_2_.applyRaidBuffs(p_221317_1_, false);
         p_221317_2_.setOnGround(true);
         this.level.addFreshEntity(p_221317_2_);
+        //EMCWorld.LOGGER.info("test1 successful!");
+        p_221317_2_.getCapability(EMCWorldCapability.ENTITY_UTIL).ifPresent(IEntityUtilCapability::setRaidEntity);
         ci.cancel();
     }
 

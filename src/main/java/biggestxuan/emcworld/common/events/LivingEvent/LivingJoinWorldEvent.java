@@ -14,17 +14,19 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.item.SkullItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import top.theillusivec4.champions.Champions;
+import top.theillusivec4.champions.api.IChampionsApi;
+import top.theillusivec4.champions.common.capability.ChampionCapability;
+import top.theillusivec4.champions.common.rank.Rank;
 import twilightforest.entity.boss.LichEntity;
 
 import java.util.List;
@@ -53,6 +55,16 @@ public class LivingJoinWorldEvent {
             ItemStack headItem = livingEntity.getItemBySlot(EquipmentSlotType.HEAD);
             if(headItem.getItem() instanceof SkullItem){
                 livingEntity.setItemSlot(EquipmentSlotType.HEAD,ItemStack.EMPTY);
+            }
+            try{
+                ChampionCapability.getCapability(livingEntity).ifPresent(cap -> {
+                    double level = MathUtils.getRangePlayerAverageIndex(livingEntity,64);
+                    if(level <= 1.25){
+                        cap.getServer().setRank(new Rank());
+                    }
+                });
+            }catch (RuntimeException e){
+                EMCWorld.LOGGER.fatal("Oh...This is all Biggest_Xuan's fault");
             }
         }
     }

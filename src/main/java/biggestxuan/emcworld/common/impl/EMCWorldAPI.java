@@ -9,9 +9,11 @@ package biggestxuan.emcworld.common.impl;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
+import biggestxuan.emcworld.api.item.equipment.gun.IGunTier;
 import biggestxuan.emcworld.api.item.equipment.staff.IStaffTier;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerTier;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWSwordTier;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWGodWeaponTier;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -49,6 +51,11 @@ public class EMCWorldAPI implements biggestxuan.emcworld.api.EMCWorldAPI {
     @Override
     public IItemTier getUnobtainiumTier(){
         return EWSwordTier.UNOBTAINIUM;
+    }
+
+    @Override
+    public IGunTier getGunTier(String name) {
+        return GunTier.valueOf(name.toUpperCase());
     }
 
     @Override

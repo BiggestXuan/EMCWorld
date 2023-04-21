@@ -76,7 +76,7 @@ public function modifyBloodMagicRecipe() as void{
     ],<item:bloodmagic:soulforge>);
     modifyShapedRecipe([
         [he,a,he],
-        [a,test,a],
+        [a,<item:the_bumblezone:porous_honeycomb_block>,a],
         [br,<item:emcworld:hardcore_stone>,br]
     ],<item:bloodmagic:demoncrucible>);
     removeTartaricForgeRecipe([ds]);

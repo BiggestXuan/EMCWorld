@@ -6,6 +6,7 @@ package biggestxuan.emcworld.api.item.equipment;
  *  2023/02/05
  */
 
+import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.item.ItemStack;
 
@@ -31,6 +32,9 @@ public interface IStarItem {
     }
 
     default int getStar(ItemStack stack){
+        if(MekUtils.isInfinityMekaTool(stack)){
+            return 8;
+        }
         return stack.getOrCreateTag().getInt("star");
     }
 

@@ -7,6 +7,10 @@ package biggestxuan.emcworld.api.item.equipment.gun;
  */
 
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.ItemStack;
 
 public interface IGunTier extends IItemTier {
+    int cd(ItemStack stack);
+
+    double accuracy(ItemStack stack);
 }

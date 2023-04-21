@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.armor.BaseEMCGodArmorItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
@@ -116,7 +117,9 @@ public class PlayerDeathEvent {
         List<ItemStack> items = PlayerTickEvent.getPlayerAllItem(player);
         for (int i = 0; i < player.inventory.getContainerSize(); i++) {
             Item item = items.get(i).getItem();
-            if(!(item instanceof IEMCGodWeaponLevel) && !(item instanceof BaseEMCGodArmorItem)){
+            if(item instanceof ICostEMCItem){
+                ICostEMCItem cost = (ICostEMCItem) item;
+                if(cost.getEMCCostRate() == 0) continue;
                 player.drop(items.get(i),false);
                 player.inventory.setItem(i,ItemStack.EMPTY);
             }
