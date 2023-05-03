@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.LivingEvent;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/02
@@ -52,6 +52,7 @@ public class LivingHurtEvent {
                             tame.setHealth(0);
                             Message.sendMessage(player, EMCWorld.tc("message.hurt.pet",tame.getName().getString(),MathUtils.thousandSign(costEMC)));
                         }
+                        break;
                     }
                 }
             }

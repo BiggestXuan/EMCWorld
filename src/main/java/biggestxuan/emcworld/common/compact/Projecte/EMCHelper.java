@@ -1,19 +1,19 @@
 package biggestxuan.emcworld.common.compact.Projecte;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/25
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.CommandUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
 import biggestxuan.emcworld.common.utils.Message;
-import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
-import biggestxuan.emcworld.common.registry.EWEffects;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IItemStack;
@@ -23,17 +23,11 @@ import moze_intel.projecte.api.capabilities.IKnowledgeProvider;
 import moze_intel.projecte.api.nss.NSSItem;
 import moze_intel.projecte.integration.crafttweaker.actions.CustomEMCAction;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.extensions.IForgeAdvancementBuilder;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.openzen.zencode.java.ZenCodeType;
 
 import java.math.BigInteger;
@@ -135,22 +129,22 @@ public class EMCHelper {
         if(p instanceof ServerPlayerEntity){
             ServerPlayerEntity player = (ServerPlayerEntity) p;
             emc = - emc;
-            if(emc >= 1){
+            if(emc >= 1 && getPlayerEMC(player) >= 1){
                 awardAdvancement(player,EMCWorld.rl("cost/1"));
             }
-            if(emc >= 1000){
+            if(emc >= 1000 && getPlayerEMC(player) >= 1000){
                 awardAdvancement(player,EMCWorld.rl("cost/2"));
             }
-            if(emc >= 1000000){
+            if(emc >= 1000000 && getPlayerEMC(player) >= 1000000){
                 awardAdvancement(player,EMCWorld.rl("cost/3"));
             }
-            if(emc >= 1000000000){
+            if(emc >= 1000000000 && getPlayerEMC(player) >= 1000000000){
                 awardAdvancement(player,EMCWorld.rl("cost/4"));
             }
-            if(emc >= 1000000000000L){
+            if(emc >= 1000000000000L && getPlayerEMC(player) >= 1000000000000L){
                 awardAdvancement(player,EMCWorld.rl("cost/5"));
             }
-            if(emc >= EMCWorld.MAX_EMC - 1L){
+            if(emc >= EMCWorld.MAX_EMC - 1L && getPlayerEMC(player) >= EMCWorld.MAX_EMC - 1L){
                 awardAdvancement(player,EMCWorld.rl("cost/6"));
             }
         }

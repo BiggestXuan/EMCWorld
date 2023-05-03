@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client.event;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/20
@@ -34,13 +34,17 @@ public class RenderEvent {
     @SubscribeEvent
     public static void renderEvent(WailaRenderEvent.Pre event){
         ICommonAccessor accessor = event.getAccessor();
-        if(accessor.getEntity() instanceof LivingEntity){
-            LivingEntity living = (LivingEntity) accessor.getEntity();
-            ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getClient().getRank().ifPresent(rank -> {
-                if(rank.getA() >= 1){
-                    event.setCanceled(true);
-                }
-            }));
+        if(accessor.getEntity() != null){
+            if(accessor.getEntity() instanceof LivingEntity){
+                LivingEntity living = (LivingEntity) accessor.getEntity();
+                ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getClient().getRank().ifPresent(rank -> {
+                    if(rank.getA() >= 1){
+                        event.setCanceled(true);
+                    }
+                }));
+                return;
+            }
+            event.setCanceled(true);
         }
     }
 }

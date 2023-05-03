@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Staff;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/11/22

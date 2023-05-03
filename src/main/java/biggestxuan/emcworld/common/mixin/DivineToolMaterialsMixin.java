@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/28
@@ -32,7 +32,7 @@ public abstract class DivineToolMaterialsMixin implements IItemTier {
     @Final
     private int enchantability;
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Shut up your f**king errors!
      */
@@ -42,7 +42,7 @@ public abstract class DivineToolMaterialsMixin implements IItemTier {
         return this.maxUses / 3;
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Shut up your f**king errors!
      */
@@ -52,7 +52,7 @@ public abstract class DivineToolMaterialsMixin implements IItemTier {
         return this.attackDamage / 3f;
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Shut up your f**king errors!
      */
@@ -62,7 +62,7 @@ public abstract class DivineToolMaterialsMixin implements IItemTier {
         return Math.max(0,harvestLevel-1);
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Shut up your f**king errors!
      */

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/25
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(Matter.class)
 public abstract class MatterMixin {
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Disable Power Flower
      */

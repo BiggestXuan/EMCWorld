@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.Slot;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/27

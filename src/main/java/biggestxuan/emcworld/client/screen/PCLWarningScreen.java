@@ -1,12 +1,13 @@
 package biggestxuan.emcworld.client.screen;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/15
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.event.WarningEvent;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -22,7 +23,10 @@ public class PCLWarningScreen extends Screen {
 
     protected void init() {
         super.init();
-        this.addButton(new Button(this.width / 2 - 75, this.height * 3 / 4, 150, 20,EMCWorld.tc("screen.pcl.ik"), (p_i232255_5) -> Minecraft.getInstance().setScreen(finalScreen)));
+        this.addButton(new Button(this.width / 2 - 75, this.height * 3 / 4, 150, 20,EMCWorld.tc("screen.pcl.ik"), (p_i232255_5) -> {
+            Minecraft.getInstance().setScreen(finalScreen);
+            WarningEvent.isShowPCL = true;
+        }));
     }
 
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {

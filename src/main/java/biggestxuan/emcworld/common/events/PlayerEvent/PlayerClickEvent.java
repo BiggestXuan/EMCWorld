@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/26
@@ -265,7 +265,12 @@ public class PlayerClickEvent {
                     Message.sendMessage(player, EMCWorld.tc("message.raid.raid_light"));
                     return;
                 }
-                itemStack.setDamageValue(itemStack.getDamageValue()+1);
+                if(!player.isCreative()){
+                    itemStack.setDamageValue(itemStack.getDamageValue()+1);
+                }
+                if(itemStack.getDamageValue() >= itemStack.getMaxDamage()){
+                    itemStack.shrink(1);
+                }
                 if(!player.isCreative()){
                     player.getCooldowns().addCooldown(item,1200);
                 }

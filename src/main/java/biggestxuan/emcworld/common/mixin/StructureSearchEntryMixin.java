@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/05
@@ -26,7 +26,7 @@ public abstract class StructureSearchEntryMixin extends ExtendedList.AbstractLis
     @Shadow (remap = false)
     private long lastClickTime;
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason .
      */

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.blocks.StarPedestal;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/05

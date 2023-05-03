@@ -1,15 +1,17 @@
 package biggestxuan.emcworld.common.network;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/11/03
  */
 
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.network.toClient.ChangeRotPacket;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.DataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.fml.network.NetworkEvent;
 
@@ -53,6 +55,21 @@ public class ClientPacketHandler {
                 cap.setModify(pack.getModify());
                 cap.setSkill(pack.getSkill());
             });
+        }
+    }
+
+    public static <T> void handlePacket(T packet, Supplier<NetworkEvent.Context> ctx){
+        if(packet instanceof ChangeRotPacket){
+            ClientPlayerEntity player = Minecraft.getInstance().player;
+            ChangeRotPacket p = (ChangeRotPacket) packet;
+            if(player != null && !player.isDeadOrDying()){
+                if(p.getX() != -100){
+                    player.xRot = p.getX();
+                }
+                if(p.getY() != -100){
+                    player.yRot = p.getY();
+                }
+            }
         }
     }
 }

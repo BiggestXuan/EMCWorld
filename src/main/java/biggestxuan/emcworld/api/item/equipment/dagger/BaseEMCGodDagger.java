@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.item.equipment.dagger;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/09
@@ -17,7 +17,9 @@ import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.DamageSource;
@@ -123,7 +125,7 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
         double b = AddonDamage(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
@@ -143,7 +145,7 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
                 b *= 1.02;
                 break;
         }
-        return (float) ((float) b * getPrefixCommonRate(stack) * getBuffer(stack));
+        return DamageUtils.of((float) ((float) b * getPrefixCommonRate(stack) * getBuffer(stack)));
     }
 
     @Nonnull

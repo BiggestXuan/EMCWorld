@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.utils;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/26
@@ -533,6 +533,12 @@ public class MathUtils {
             return value.substring(0,2)+"."+value.substring(2,4);
         }
         return value.substring(0,3)+"."+value.substring(3,5);
+    }
+
+    public static long getMirrorTPCost(PlayerEntity player, World origin, World target, double x, double y, double z){
+        MathUtils.Position pos1 = new MathUtils.Position(new BlockPos(player.position()),origin.dimension().location());
+        MathUtils.Position pos2 = new MathUtils.Position(new BlockPos(x,y,z),target.dimension().location());
+        return getTPEMCCost(player,pos1,pos2);
     }
 
     public static class Position{

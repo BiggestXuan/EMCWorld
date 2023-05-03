@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/04
@@ -12,12 +12,8 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
-import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
-import biggestxuan.emcworld.api.item.equipment.IStarItem;
-import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
-import biggestxuan.emcworld.api.item.equipment.armor.IReachArmor;
-import biggestxuan.emcworld.api.item.equipment.armor.ISpeedArmor;
-import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
+import biggestxuan.emcworld.api.item.equipment.*;
+import biggestxuan.emcworld.api.item.equipment.armor.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
@@ -109,15 +105,13 @@ public class PlayerTickEvent {
         }
         if(player.level.isClientSide() || event.side.isClient()) return;
         if(event.phase == TickEvent.Phase.END) return;
-        if(!player.getCommandSenderWorld().isClientSide){
-            if(player.isDeadOrDying()) return;
-            player.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(cap -> SkillNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new DataPack(
-                    cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
-            )));
-            player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
-                    cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode()
-            )));
-        }
+        if(player.isDeadOrDying()) return;
+        player.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(cap -> SkillNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new DataPack(
+                cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
+        )));
+        player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
+                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode()
+        )));
         ServerPlayerEntity SP = (ServerPlayerEntity) player;
         LazyOptional<IUtilCapability> cap = player.getCapability(EMCWorldCapability.UTIL);
         cap.ifPresent((c)->{
@@ -131,7 +125,7 @@ public class PlayerTickEvent {
         });
         IPlayerSkillCapability c = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
         IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
-        /*World world1 = server.overworld();
+        /**World world1 = server.overworld();
         ShareEMCData emcData = ShareEMCData.getInstance(world1);
         if(ConfigManager.SHARE_EMC.get()){
             if(!util.share()){
@@ -204,7 +198,7 @@ public class PlayerTickEvent {
                 privateMethod.setAccessible(true);
                 privateMethod.invoke(instance,progress,player);
             }catch (Exception e){
-                e.printStackTrace();
+                EMCWorld.LOGGER.error(e.getMessage());
             }
         }
         ModifiableAttributeInstance speed_instance = player.getAttribute(Attributes.MOVEMENT_SPEED);

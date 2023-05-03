@@ -1,12 +1,13 @@
 package biggestxuan.emcworld.common.registry;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/01
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.entity.AmmoEntity;
 import biggestxuan.emcworld.common.entity.Player.*;
 import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;
@@ -44,6 +45,8 @@ public class EWEntities {
     public static final EntityType<dytlj7788> dytlj7788 = register("dytlj7788",dytlj7788::new);
     public static final EntityType<LAMB_Kisara> lamb_kisara = register("lamb_kisara",LAMB_Kisara::new);
     public static final EntityType<cmzxymzx> cmzxymzx = register("cmzxymzx",cmzxymzx::new);
+    public static final EntityType<sdxhop> sdxhop = register("sdxhop",sdxhop::new);
+    public static final EntityType<AmmoEntity> ammo = registerAmmo("ammo",AmmoEntity::new);
 
     @SubscribeEvent
     public static void bind(EntityAttributeCreationEvent event){
@@ -66,6 +69,7 @@ public class EWEntities {
         //event.put(cxk,Cxk.create().build());
         event.put(dytlj7788,biggestxuan.emcworld.common.entity.Player.dytlj7788.create().build());
         event.put(lamb_kisara,LAMB_Kisara.create().build());
+        event.put(sdxhop,LAMB_Kisara.create().build());
         event.put(cmzxymzx, biggestxuan.emcworld.common.entity.Player.cmzxymzx.create().build());
     }
 
@@ -73,9 +77,18 @@ public class EWEntities {
         ResourceLocation location = EMCWorld.rl(name);
         return builder.build(location.toString());
     }
+
     public static <T extends Entity> EntityType<T> register(String name, EntityType.IFactory<T> type){
         ResourceLocation location = EMCWorld.rl(name);
         EntityType<T> entityType = register(name,EntityType.Builder.of(type,EntityClassification.MONSTER).sized(0.6F, 1.8F).setTrackingRange(32));
+        entityType.setRegistryName(location);
+        ENTITIES.add(entityType);
+        return entityType;
+    }
+
+    public static <T extends Entity> EntityType<T> registerAmmo(String name, EntityType.IFactory<T> type){
+        ResourceLocation location = EMCWorld.rl(name);
+        EntityType<T> entityType = register(name,EntityType.Builder.of(type,EntityClassification.MISC).sized(0.2F, 0.2F).setTrackingRange(16).clientTrackingRange(4).updateInterval(10));
         entityType.setRegistryName(location);
         ENTITIES.add(entityType);
         return entityType;

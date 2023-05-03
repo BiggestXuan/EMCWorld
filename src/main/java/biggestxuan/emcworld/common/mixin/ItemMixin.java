@@ -1,12 +1,14 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/23
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.IWIP;
+import biggestxuan.emcworld.api.item.INameItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
@@ -14,10 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
-public abstract class ItemMixin {
+public abstract class ItemMixin implements INameItem {
     @Shadow
     private String descriptionId;
 
@@ -52,7 +51,12 @@ public abstract class ItemMixin {
         }
     }
 
-    /**
+    @Override
+    public IFormattableTextComponent getKey(ItemStack stack) {
+        return null;
+    }
+
+    /***
      * @author Biggest_Xuan
      * @reason Item's level and prefix.
      */
@@ -61,6 +65,13 @@ public abstract class ItemMixin {
         Item item = (Item) (Object) this;
         ResourceLocation rl = item.getRegistryName();
         TranslationTextComponent text = rl == null ? EMCWorld.tc("") : new TranslationTextComponent(item.getDescriptionId(p_200295_1_));
+        IFormattableTextComponent f = getKey(p_200295_1_);
+        if(item instanceof IWIP){
+            return EMCWorld.tc("WIP").withStyle(Style.EMPTY.withColor(Color.fromRgb(0xff0000)));
+        }
+        if(f != null){
+            text = (TranslationTextComponent) f;
+        }
         if(p_200295_1_.hasTag()){
             CompoundNBT nbt = p_200295_1_.getTag();
             if(nbt != null && nbt.contains("level")){

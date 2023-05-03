@@ -1,6 +1,6 @@
 package biggestxuan.emcworld;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/24
@@ -76,8 +76,8 @@ import java.util.Locale;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 6;
-    public static final String PackVersion = "0.5.1";
+    public static final int ModPackVersion = 7;
+    public static final String PackVersion = "0.5.2";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;

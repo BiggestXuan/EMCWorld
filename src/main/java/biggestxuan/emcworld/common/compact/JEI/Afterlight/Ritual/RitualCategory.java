@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.compact.JEI.Afterlight.Ritual;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/01/31

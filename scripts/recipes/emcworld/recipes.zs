@@ -10,10 +10,12 @@ import mods.emcworld.CrTRequirement;
 import mods.emcworld.CrTWeightItem;
 import mods.emcworld.EWItem;
 import mods.emcworld.EMCHelper;
+import mods.emcworld.ItemUtils;
 
 public function emcworldRecipe() as void{
     var al = <item:mythicbotany:alfheim_rune>;
     var a = <item:minecraft:air>;
+    var dim = <item:minecraft:diamond>;
     var beg = <item:emcworld:big_emc_gem>;
     var sg = <item:emcworld:scroll_green>;
     var em = <item:minecraft:emerald>;
@@ -127,30 +129,8 @@ public function emcworldRecipe() as void{
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:aluminum" as string})|
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:silver" as string})
     ;
-    var bases as IIngredient =
-        <item:emcworld:god_ice_sword>.withLevel(14)|
-        <item:emcworld:god_fire_sword>.withLevel(14)|
-        <item:emcworld:god_nature_sword>.withLevel(14)|
-        <item:emcworld:god_null_sword>.withLevel(14)|
-        <item:emcworld:purple_staff>.withLevel(14)|
-        <item:emcworld:nature_staff>.withLevel(14)|
-        <item:emcworld:creation>.withLevel(14)|
-        <item:emcworld:super_star>.withLevel(14)|
-        <item:emcworld:night_light>.withLevel(14)|
-        <item:emcworld:red_green_dagger>.withLevel(14)
-    ;
-    var adss as IIngredient = 
-        <item:emcworld:god_ice_sword>.withLevel(20)|
-        <item:emcworld:god_fire_sword>.withLevel(20)|
-        <item:emcworld:god_nature_sword>.withLevel(20)|
-        <item:emcworld:god_null_sword>.withLevel(20)|
-        <item:emcworld:purple_staff>.withLevel(20)|
-        <item:emcworld:nature_staff>.withLevel(20)|
-        <item:emcworld:creation>.withLevel(20)|
-        <item:emcworld:super_star>.withLevel(20)|
-        <item:emcworld:night_light>.withLevel(20)|
-        <item:emcworld:red_green_dagger>.withLevel(20)
-    ;
+    var bases as IIngredient = ItemUtils.getEMCGodItemWithLevel(14);
+    var adss as IIngredient = ItemUtils.getEMCGodItemWithLevel(20);
     var con as IItemStack[][] = [
         [
             <item:emcworld:update_base_purple>,
@@ -193,18 +173,7 @@ public function emcworldRecipe() as void{
             <item:emcworld:update_time_red>
         ]
     ];
-    var epss as IIngredient = 
-        <item:emcworld:god_ice_sword>.withMax()|
-        <item:emcworld:god_fire_sword>.withMax()|
-        <item:emcworld:god_nature_sword>.withMax()|
-        <item:emcworld:god_null_sword>.withMax()|
-        <item:emcworld:purple_staff>.withMax()|
-        <item:emcworld:nature_staff>.withMax()|
-        <item:emcworld:creation>.withMax()|
-        <item:emcworld:super_star>.withMax()|
-        <item:emcworld:night_light>.withMax()|
-        <item:emcworld:red_green_dagger>.withMax()
-    ;
+    var epss as IIngredient = ItemUtils.getEMCGodItemWithMaxLevel();
     var amo as int[]=[
         1500,2000,10000,15000,5000,100,10000,6000,10000,6500,5000,5000,10000,10000,10000,8000,8000,8000,15000,6500,7000,800,400,10000,3000,1500
     ];
@@ -744,9 +713,11 @@ public function emcworldRecipe() as void{
             new CrTWeightItem(<item:emcworld:biggest_emc_gem>,1,16,18)
         ] as CrTWeightItem[]);
         addCraftShapelessRecipe([<item:emcworld:biggest_emc_gem>],<item:emcworld:big_emc_gem>*32);
-        extendedCraftingShapelessRecipe([
-            tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,tui,eus,eus,eus,eus,eus,eus,eus
-        ],ifc,4);
+        addCraftShapedRecipeNoName([
+            [tui,tui,tui],
+            [tui,eus,tui],
+            [tui,tui,tui]
+        ],ifc);
         addCraftShapedRecipeNoName([
             [eis,eis,eis],
             [eis,eis,eis],
@@ -763,6 +734,11 @@ public function emcworldRecipe() as void{
                 eis,i
             ],i*64);
         }
+        addCraftShapedRecipeNoName([
+            [dim,dim,dim],
+            [dim,<item:emcworld:infinity_emc_gem>,dim],
+            [dim,dim,dim]
+        ],<item:emcworld:crystal_matrix_ingot>);
         extendedCraftingShapedRecipe([
             [a,a,a,a,a,a,cmi,cmi,cmi],
             [a,a,a,a,a,cmi,ifc,ifc,cmi],
@@ -1278,6 +1254,7 @@ public function emcworldRecipe() as void{
         smithingRecipe(nether[i],<item:stalwart_dungeons:blaze_armor_scrap>,tung[i]);
     }
     for i in 0 .. ignis.length{
+        removeSmithingRecipe(ignis[i]);
         smithingRecipe(tung[i],<item:cataclysm:ignitium_ingot>,ignis[i]);
     }
     for i in 0 .. 4{

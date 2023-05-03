@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client.screen;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/27
@@ -47,6 +47,12 @@ public class ProfessionGUI extends Screen {
                 return I18n.get("profession.emcworld.tank");
             case 3:
                 return I18n.get("profession.emcworld.wizard");
+            case 4:
+                return I18n.get("profession.emcworld.assassin");
+            case 5:
+                return I18n.get("profession.emcworld.barbarian");
+            case 6:
+                return I18n.get("profession.emcworld.marksman");
         }
         return I18n.get("profession.emcworld.null");
     }
@@ -138,30 +144,18 @@ public class ProfessionGUI extends Screen {
             level += 10;
         }
         if(isRenderSkill(level)){
-            renderSkills(matrixStack, EMCWorld.tc(text+level,skillInfo[28]),yPos);
+            if(getProfession() == 6){
+                renderSkills(matrixStack, EMCWorld.tc(text+level,skillInfo[28],skillInfo[28],skillInfo[28],skillInfo[28]),yPos);
+            }
+            else{
+                renderSkills(matrixStack, EMCWorld.tc(text+level,skillInfo[28]),yPos);
+            }
             yPos += line;
             level += 10;
         }
 
-        if(cap.getLevel() >= 80){
-            if(cap.getModify() == 1 && cap.getProfession() == 1){
-                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_kill"),xPos,yPos,0xff0000);
-            }
-            if(cap.getModify() == 2 && cap.getProfession() == 1){
-                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_blood"),xPos,yPos,0xff0000);
-            }
-            if(cap.getModify() == 1 && cap.getProfession() == 2){
-                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_shied"),xPos,yPos,0xff0000);
-            }
-            if(cap.getModify() == 2 && cap.getProfession() == 2){
-                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_addon"),xPos,yPos,0xff0000);
-            }
-            if(cap.getModify() == 1 && cap.getProfession() == 3){
-                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_big_wizard"),xPos,yPos,0xff0000);
-            }
-            if(cap.getModify() == 2 && cap.getProfession() == 3){
-                renderString(matrixStack, EMCWorld.tc("profession.emcworld.modify_protect_wizard"),xPos,yPos,0xff0000);
-            }
+        if(cap.getLevel() >= 80 && cap.getModify() > 0){
+            renderString(matrixStack,EMCWorld.tc("profession.emcworld.modify_"+cap.getProfession()+cap.getModify()),xPos,yPos,0xff0000);
         }
         yPos += line;
         if(isRenderSkill(level)){

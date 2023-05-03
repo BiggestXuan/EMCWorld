@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.compact.JEI.SteelFurnace;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/18

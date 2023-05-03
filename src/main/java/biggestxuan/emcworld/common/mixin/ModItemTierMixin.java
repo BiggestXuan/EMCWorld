@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/24
@@ -20,7 +20,7 @@ public abstract class ModItemTierMixin implements IItemTier {
     @Final
     private float attackDamage;
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Add 100% damage
      */

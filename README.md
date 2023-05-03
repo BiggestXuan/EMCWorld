@@ -1,9 +1,13 @@
 # EMCWorld
 
-## 整合包已开始内部测试！  
+## 整合包已开始半公开测试！  
+  
+### 公开测试条件：
+- 会玩 Minecraft。
+- 对一些不会的内容会首先自己查阅公告，整合包 Wiki，MC 百科寻找。
+- 公开测试群获取整合包版本会比内测群晚 7 天。
   
 ### 内测条件： 
-#### 必须要有 Java 版正版账号。
 - 在 2021/3/1 之前认识 Biggest_Xuan 并且对 Minecraft 的模组有一定了解。  
 - 会 Java 和 CraftTweaker，能够帮我们优化代码和增加新功能（详情见上方的 Wiki）  
 - 是大轩主导开发任意整合包的高级赞助者。  
@@ -11,7 +15,9 @@
   
 自 `0.3.0-pre10` 起，整合包完全弃用kubejs。
   
-如果满足上方任一条件，请加入开发 QQ 群：772115049 （请备注 ID ）  
+满足对应条件即可加群：
+公开测试群：573239523；  
+内测群：772115049。
   
 [更新日志](https://www.kdocs.cn/l/cmWg2YY8ecuW)
 
@@ -26,13 +32,6 @@
 - LAMB_Kisara（吉祥物）
 - xiangshushumiao（吉祥物）
   
-### 未完成内容
-- [ ] FTBQ 第三章起无任务奖励；  
-- [ ] 平衡性处于第一阶段调试；  
-- [ ] 保底抽奖系统未完成；  
-- [ ] 职业系统未完全测试；  
-- [ ] 还有更多。  
-  
 [宣传图](https://biggestxuan.top/emcworld/banner.png)
 ---
 ## 特别鸣谢  
@@ -45,7 +44,8 @@
 - [方为](https://center.mcmod.cn/467324/)（测试）
 - [云兮](https://center.mcmod.cn/71130/)（测试、赞助）
 - [OneWan](https://center.mcmod.cn/564896/)（测试）
-- [uniEcho](https://center.mcmod.cn/485516/)（测试） 
+- [uniEcho](https://center.mcmod.cn/485516/)（测试）
+- [cszxymzx](https://center.mcmod.cn/557930/)（测试、赞助） 
 --- 
 # Open Source License
 ## EMCWorld uses the following open source content:

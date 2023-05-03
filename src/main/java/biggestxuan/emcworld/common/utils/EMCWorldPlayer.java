@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.utils;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/17

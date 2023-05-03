@@ -1,13 +1,12 @@
 package biggestxuan.emcworld.common.blocks.StarPedestal;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/06
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.registry.EWStarlight;
 import hellfirepvp.astralsorcery.common.constellation.IConstellation;
 import net.minecraft.item.ItemStack;
@@ -33,11 +32,11 @@ public enum StarPedestalRecipe {
             new ArrayList<>(trans(EMCWorld.getItem("mekanism:pellet_polonium"),EMCWorld.getItem("mekanism:pellet_polonium"),EMCWorld.getItem("mekanism:pellet_polonium"),EMCWorld.getItem("mekanism:pellet_polonium"),
                     EMCWorld.getItem("mekanism:pellet_plutonium"),EMCWorld.getItem("mekanism:pellet_plutonium"),EMCWorld.getItem("mekanism:pellet_plutonium"),EMCWorld.getItem("mekanism:pellet_plutonium")))),
             MODE.STAR,2,2),
-    m1(List.of(new ArrayList<>(trans(EMCWorld.getItem("the_afterlight:lunariteingot"),EMCWorld.getItem("the_afterlight:lunariteingot"),EMCWorld.getItem("the_afterlight:crystillium_ingot"),EMCWorld.getItem("the_afterlight:crystillium_ingot"))),
+    m1(List.of(new ArrayList<>(trans(EMCWorld.getItem("minecraft:nether_star"),EMCWorld.getItem("minecraft:nether_star"),EMCWorld.getItem("mythicbotany:alfsteel_ingot"),EMCWorld.getItem("mythicbotany:alfsteel_ingot"))),
             new ArrayList<>(trans(EMCWorld.getItem("undergarden:forgotten_ingot"),EMCWorld.getItem("undergarden:forgotten_ingot"),EMCWorld.getItem("undergarden:utherium_ingot"),EMCWorld.getItem("undergarden:utherium_ingot"),
                 EMCWorld.getItem("undergarden:regalium_ingot"),EMCWorld.getItem("undergarden:regalium_ingot"),EMCWorld.getItem("undergarden:regalium_ingot"),EMCWorld.getItem("undergarden:regalium_ingot")))),
             MODE.MAX_STAR,3,2),
-    m2(List.of(new ArrayList<>(trans(EMCWorld.getItem("the_afterlight:lunarite_block"),EMCWorld.getItem("the_afterlight:lunarite_block"),EMCWorld.getItem("the_afterlight:crystillium_block"),EMCWorld.getItem("the_afterlight:crystillium_block"))),
+    m2(List.of(new ArrayList<>(trans(EMCWorld.getItem("minecraft:netherite_block"),EMCWorld.getItem("minecraft:netherite_block"),EMCWorld.getItem("minecraft:netherite_block"),EMCWorld.getItem("minecraft:netherite_block"))),
             new ArrayList<>(trans(EMCWorld.getItem("undergarden:forgotten_ingot"),EMCWorld.getItem("undergarden:forgotten_ingot"),EMCWorld.getItem("undergarden:utherium_ingot"),EMCWorld.getItem("undergarden:utherium_ingot"),
                     EMCWorld.getItem("undergarden:regalium_ingot"),EMCWorld.getItem("undergarden:regalium_ingot"),EMCWorld.getItem("undergarden:regalium_ingot"),EMCWorld.getItem("undergarden:regalium_ingot")))),
             MODE.STAR,3,2),
@@ -65,6 +64,34 @@ public enum StarPedestalRecipe {
             new ArrayList<>(trans(EMCWorld.getItem("allthemodium:unobtainium_vibranium_alloy_ingot"),EMCWorld.getItem("allthemodium:unobtainium_vibranium_alloy_ingot"),EMCWorld.getItem("allthemodium:unobtainium_vibranium_alloy_ingot"),EMCWorld.getItem("allthemodium:unobtainium_vibranium_alloy_ingot"),
                     EMCWorld.getItem("allthemodium:unobtainium_allthemodium_alloy_ingot"),EMCWorld.getItem("allthemodium:unobtainium_allthemodium_alloy_ingot"),EMCWorld.getItem("allthemodium:unobtainium_allthemodium_alloy_ingot"),EMCWorld.getItem("allthemodium:unobtainium_allthemodium_alloy_ingot")))),
             MODE.STAR,5,3),
+    k1(List.of(new ArrayList<>(trans(EMCWorld.getItem("emcworld:green_matter"),EMCWorld.getItem("emcworld:green_matter"),EMCWorld.getItem("emcworld:green_matter"),EMCWorld.getItem("emcworld:green_matter"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),
+                    EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),
+                    EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball")))),
+            MODE.MAX_STAR,6,4),
+   k2(List.of(new ArrayList<>(trans(EMCWorld.getItem("emcworld:yellow_matter"),EMCWorld.getItem("emcworld:yellow_matter"),EMCWorld.getItem("emcworld:yellow_matter"),EMCWorld.getItem("emcworld:yellow_matter"))),
+           new ArrayList<>(trans(EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),
+                   EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"),EMCWorld.getItem("emcworld:lime_matter"))),
+           new ArrayList<>(trans(EMCWorld.getItem("emcworld:dragon_steel"),EMCWorld.getItem("emcworld:dragon_steel"),EMCWorld.getItem("emcworld:dragon_steel"),EMCWorld.getItem("emcworld:dragon_steel"),
+                   EMCWorld.getItem("emcworld:dragon_steel"),EMCWorld.getItem("emcworld:dragon_steel"),EMCWorld.getItem("emcworld:dragon_steel"),EMCWorld.getItem("emcworld:dragon_steel"))),
+           new ArrayList<>(trans(EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball")))),
+           MODE.STAR,6,4),
+    u1(List.of(new ArrayList<>(trans(EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:emc_core"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),
+                    EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),
+                    EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"))),
+            new ArrayList<>(trans(EMCWorld.getItem("extendedcrafting:the_ultimate_ingot"),EMCWorld.getItem("extendedcrafting:the_ultimate_ingot"),EMCWorld.getItem("extendedcrafting:the_ultimate_ingot"),EMCWorld.getItem("extendedcrafting:the_ultimate_ingot")))),
+            MODE.MAX_STAR,7,4),
+    u2(List.of(new ArrayList<>(trans(EMCWorld.getItem("mekanism:pellet_antimatter"),EMCWorld.getItem("mekanism:pellet_antimatter"),EMCWorld.getItem("mekanism:pellet_antimatter"),EMCWorld.getItem("mekanism:pellet_antimatter"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:infinity_emc_gem"),EMCWorld.getItem("emcworld:infinity_emc_gem"),EMCWorld.getItem("emcworld:infinity_emc_gem"),EMCWorld.getItem("emcworld:infinity_emc_gem"),
+                    EMCWorld.getItem("emcworld:infinity_emc_gem"),EMCWorld.getItem("emcworld:infinity_emc_gem"),EMCWorld.getItem("emcworld:infinity_emc_gem"),EMCWorld.getItem("emcworld:infinity_emc_gem"))),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:illager_shard"),EMCWorld.getItem("emcworld:illager_shard"),EMCWorld.getItem("emcworld:illager_shard"),EMCWorld.getItem("emcworld:illager_shard"),
+                    EMCWorld.getItem("emcworld:illager_shard"),EMCWorld.getItem("emcworld:illager_shard"),EMCWorld.getItem("emcworld:illager_shard"),EMCWorld.getItem("emcworld:illager_shard"))),
+            new ArrayList<>(trans(EMCWorld.getItem("extendedcrafting:the_ultimate_ingot"),EMCWorld.getItem("extendedcrafting:the_ultimate_ingot"),EMCWorld.getItem("extendedcrafting:the_ultimate_ingot"),EMCWorld.getItem("extendedcrafting:the_ultimate_ingot")))),
+            MODE.STAR,7,4),
     ;
 
     private final List<List<ItemStack>> inputs;
@@ -113,7 +140,7 @@ public enum StarPedestalRecipe {
     }
 
     @SafeVarargs
-    private static <T> List<T> trans(T... array){
+    public static <T> List<T> trans(T... array){
         return new ArrayList<>(Arrays.asList(array));
     }
 

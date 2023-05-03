@@ -1,12 +1,11 @@
 package biggestxuan.emcworld.api.item.equipment.warhammer;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/05
  */
 
-import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.IEMCRepairableItem;
@@ -18,18 +17,13 @@ import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseEMCGodSword;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
-import net.minecraft.client.util.ITooltipFlag;
+import biggestxuan.emcworld.common.utils.DamageUtils;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
 
 public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCRepairableItem, IGemInlaidItem, ISecondEMCItem, IEMCInfuserItem, IAdditionsDamageWeapon, IAttackSpeedItem, IEMCGodWeaponLevel,IUpgradeableMaterial {
     public BaseEMCGodWarHammer(){
@@ -67,27 +61,28 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
+    public DamageUtils getAttackRange(PlayerEntity player, ItemStack stack) {
         double b = attackRange(stack) * getPrefixCommonRate(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
         }
+        DamageUtils utils = DamageUtils.of(b);
         switch (getGemType(stack)){
             case 1:
-                b *= 1.07;
+                utils.append(b*0.07);
                 break;
             case 2:
-                b *= 0.9;
+                utils.append(b*-0.1);
                 break;
             case 3:
-                b *= 0.98;
+                utils.append(b*-0.02);
                 break;
             case 4:
-                b *= 1.02;
+                utils.append(b*0.02);
                 break;
         }
-        return (float) b;
+        return utils;
     }
 
     @Override
@@ -179,27 +174,28 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack){
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack){
         double b = damage(stack) * getPrefixCommonRate(stack) * getBuffer(stack);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
         }
+        DamageUtils utils = DamageUtils.of(b);
         switch (getGemType(stack)){
             case 1:
-                b *= 1.1;
+                utils.append(b*0.1);
                 break;
             case 2:
-                b *= 0.7;
+                utils.append(b*-0.3);
                 break;
             case 3:
-                b *= 0.8;
+                utils.append(b*-0.2);
                 break;
             case 4:
-                b *= 0.9;
+                utils.append(b*-0.1);
                 break;
         }
-        return (float) b;
+        return utils;
     }
 
     @Nonnull

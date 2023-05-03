@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/23
@@ -50,6 +50,9 @@ public abstract class PlayerWaystoneManagerMixin {
     private static void costEMC(Entity entity, IWaystone waystone, WarpMode warpMode, IWaystone fromWaystone, CallbackInfoReturnable<Boolean> cir){
         if(entity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entity;
+            if(waystone == null || fromWaystone == null){
+                return;
+            }
             long emc = Math.negateExact(MathUtils.getTPEMCCost(player,waystone,fromWaystone));
             EMCHelper.modifyPlayerEMC(player,new EMCSource.TeleportEMCSource(emc,player,fromWaystone.getPos(), 0, (long) MathUtils.getDistance(waystone.getPos(),fromWaystone.getPos())),true);
         }

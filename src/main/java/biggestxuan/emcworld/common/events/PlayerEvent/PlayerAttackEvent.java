@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/03
@@ -26,6 +26,7 @@ import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.common.utils.SkillUtils;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -68,7 +69,7 @@ public class PlayerAttackEvent {
                 emcItem.cost(stack);
             }
             if(stack.getItem() instanceof IAdditionsDamageWeapon){
-                damage += ((IAdditionsDamageWeapon) stack.getItem()).getAdditionsDamage(stack);
+                damage = (float) SkillUtils.getPlayerAttackDamage(player,stack).total();
             }
             damage = damage > 0 ? damage : 0;
             if(stack.getItem() instanceof ICriticalWeapon){
@@ -77,24 +78,12 @@ public class PlayerAttackEvent {
                     damage *= weapon.getActCriticalRate(stack);
                 }
             }
-            int level = cap.getLevel();
+            int modify = cap.getModify();
             int[] skills = cap.getSkills();
-            double chance = skills[8]/10000d;
             if(cap.getProfession() == 1){
-                damage *= Math.pow(1+skills[0]/10000f,level);
-                int modify = cap.getModify();
-                if(modify == 1){
-                    if(skills[36] !=0 && skills[37] !=0){
-                        if(livingEntity.getHealth() / livingEntity.getMaxHealth() <= skills[36]/10000f){
-                            livingEntity.hurt(EWDamageSource.REALLY,livingEntity.getMaxHealth());
-                        }
-                    }
-                    if(skills[40] != 0 && skills[41] != 0){
-                        chance = 1.0d;
-                    }
-                    if(util.getTimer() >0){
-                        damage *= 1+(cap.getSkills()[33]/10000f);
-                    }
+                double chance = skills[8]/10000d;
+                if(skills[40] != 0 && skills[41] != 0){
+                    chance = 1.0d;
                 }
                 if(skills[8] != 0){
                     if(MathUtils.isRandom(chance)){
@@ -104,13 +93,15 @@ public class PlayerAttackEvent {
                         else damage+=3;
                     }
                 }
-                if(skills[24] != 0){
-                    float base = 1 - skills[24] /10000f;
-                    livingEntity.hurt(EWDamageSource.REALLY,damage * skills[24]/10000f);
-                    damage *= base;
-                }
-                if(skills[28] != 0){
-                    damage += skills[28] /10000f;
+                if(modify == 1){
+                    if(skills[36] !=0 && skills[37] !=0){
+                        if(livingEntity.getHealth() / livingEntity.getMaxHealth() <= skills[36]/10000f){
+                            livingEntity.hurt(EWDamageSource.REALLY,livingEntity.getMaxHealth());
+                        }
+                    }
+                    if(skills[24] != 0){
+                        livingEntity.hurt(EWDamageSource.REALLY,damage * skills[24]/10000f);
+                    }
                 }
                 if(modify == 2){
                     float healRate = skills[36] / 10000f;
@@ -140,8 +131,8 @@ public class PlayerAttackEvent {
             }
             if(stack.getItem() instanceof IRangeAttackWeapon && livingEntity.hurtTime <= 0){
                 IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
-                if(weapon.getAttackRange(stack) > 0d){
-                    List<? extends LivingEntity> canRangeAttack = getNearEntity(player,event.getEntityLiving(),weapon.getAttackRange(stack));
+                if(weapon.getAttackRange(player,stack).total() > 0d){
+                    List<? extends LivingEntity> canRangeAttack = getNearEntity(player,event.getEntityLiving(), SkillUtils.getPlayerAttackRange(player,stack).total());
                     if(canRangeAttack.size() != 0){
                         for(LivingEntity entity:canRangeAttack){
                             if(costEMC > EMCHelper.getPlayerEMC(player)) break;
@@ -156,9 +147,6 @@ public class PlayerAttackEvent {
             }
             costEMC =(long) (costEMC * rate);
             CostPlayer(player,costEMC,event,damage,null);
-        }
-        if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
-            return;
         }
         if(source.getDirectEntity() instanceof TameableEntity){
             TameableEntity entity = (TameableEntity) source.getDirectEntity();
@@ -196,6 +184,9 @@ public class PlayerAttackEvent {
     }
 
     private static void CostPlayer(PlayerEntity player,long emc,LivingHurtEvent event,double damage,LivingEntity pet){
+        if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
+            return;
+        }
         if (emc != 0){
             if(EMCHelper.getPlayerEMC(player)>emc){
                 EMCHelper.modifyPlayerEMC(player,new EMCSource.AttackEMCSource(Math.negateExact(emc),player,event.getEntityLiving(),damage,pet),true);

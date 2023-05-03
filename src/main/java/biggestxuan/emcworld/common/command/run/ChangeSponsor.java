@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.command.run;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/05
@@ -27,7 +27,7 @@ public class ChangeSponsor implements Command<CommandSource> {
             ServerPlayerEntity player = context.getSource().getPlayerOrException();
             MinecraftServer server = player.server;
             IUtilCapability c = EMCWorldAPI.getInstance().getUtilCapability(player);
-            if(server != null && (!server.usesAuthentication() || EMCWorld.isOffline)){
+            if(c.getOnline()){
                 Message.sendMessage(player,EMCWorld.tc("message.sponsor.change_offline"));
                 return 0;
             }

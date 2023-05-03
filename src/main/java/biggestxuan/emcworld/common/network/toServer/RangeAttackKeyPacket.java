@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.network.toServer;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/01/22
@@ -34,8 +34,8 @@ public class RangeAttackKeyPacket {
             ItemStack stack = player.getMainHandItem();
             if(stack.getItem() instanceof IRangeAttackWeapon){
                 IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
-                if(weapon.getAttackRange(stack) > 0){
-                    weapon.switchAttackMode(stack);
+                if(weapon.getAttackRange(player,stack).total() > 0){
+                    weapon.switchAttackMode(player,stack);
                     Message.sendMessage(player, EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(weapon.getAttackMode(stack).getName())));
                 }
             }

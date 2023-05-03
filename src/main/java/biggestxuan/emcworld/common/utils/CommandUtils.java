@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.utils;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/04/04
@@ -38,6 +38,10 @@ public class CommandUtils {
             }
             server.ifPresent(s -> executeCommand(s,"advancement grant "+serverPlayer.getName().getString()+" only "+adv.getId().toString()));
         }
+    }
+
+    public void executeCommand(String c){
+        server.ifPresent(minecraftServer -> executeCommand(minecraftServer, c));
     }
 
     private static void executeCommand(MinecraftServer server,String command){

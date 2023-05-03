@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.ProfessionalItem;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/31
@@ -51,6 +51,15 @@ public class ProfessionalItem extends EWItem {
         }
         if(profession == 3){
             PlayerSkillModify.default3_skill0(p_77659_2_);
+        }
+        if(profession == 4){
+            PlayerSkillModify.default4_skill0(p_77659_2_);
+        }
+        if(profession == 5){
+            PlayerSkillModify.default5_skill0(p_77659_2_);
+        }
+        if(profession == 6){
+            PlayerSkillModify.default6_skill0(p_77659_2_);
         }
         return ActionResult.consume(stack);
     }

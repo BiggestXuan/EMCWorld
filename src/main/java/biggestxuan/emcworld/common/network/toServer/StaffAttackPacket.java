@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.network.toServer;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/11/22
@@ -28,7 +28,7 @@ public class StaffAttackPacket {
                 ServerPlayerEntity player = ctx.get().getSender();
                 IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
                 ItemStack stack = player.getMainHandItem();
-                /*if(stack.getItem() instanceof StaffItem && player.getAttackStrengthScale(0) == 1){
+                /**if(stack.getItem() instanceof StaffItem && player.getAttackStrengthScale(0) == 1){
                     StaffItem item = (StaffItem) stack.getItem();
                     item.spawnManaBurst(player,1);
                     if(stack.getItem() instanceof BaseEMCGodStaff){

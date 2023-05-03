@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.command.run;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/01

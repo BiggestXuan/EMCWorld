@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.item.equipment.dagger;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/09

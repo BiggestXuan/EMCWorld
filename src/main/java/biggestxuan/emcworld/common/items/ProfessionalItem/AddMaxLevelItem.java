@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.ProfessionalItem;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/07
@@ -48,24 +48,7 @@ public class AddMaxLevelItem extends EWItem {
         int profession = Minecraft.getInstance().player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new).getProfession();
         if(this.modify != 0){
             p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.changeprofession"));
-            if(profession == 1 && this.modify == 1){
-                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_kill"));
-            }
-            if(profession == 1 && this.modify == 2){
-                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_blood"));
-            }
-            if(profession == 2 && this.modify == 1){
-                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_shied"));
-            }
-            if(profession == 2 && this.modify == 2){
-                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_addon"));
-            }
-            if(profession == 3 && this.modify == 1){
-                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_big_wizard"));
-            }
-            if(profession == 3 && this.modify == 2){
-                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_protect_wizard"));
-            }
+            p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_"+profession+modify));
         }
     }
 

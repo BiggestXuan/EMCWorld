@@ -1,12 +1,13 @@
 package biggestxuan.emcworld.common.network.toServer;
 
-/**
+/***
  * EMC WORLD MOD
  * @Author Biggest_Xuan
  * 2022/10/10
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
@@ -92,7 +93,7 @@ public class AdminPacket {
                             LOGGER.info(name+" clear his skills cooldown!");
                             break;
                         case 6:
-                            EMCHelper.setPlayerEMC(player, 0);
+                            EMCHelper.modifyPlayerEMC(player,new EMCSource.CommandEMCSource(-EMCHelper.getPlayerEMC(player),player,null,0),true);
                             LOGGER.info(name+" clear his all EMC!");
                             break;
                         case 7:

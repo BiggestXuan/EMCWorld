@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.crafttweaker;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/05

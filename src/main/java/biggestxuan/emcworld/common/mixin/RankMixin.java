@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/15
@@ -32,7 +32,7 @@ public abstract class RankMixin {
     @Final
     private int defaultColor;
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason no reason~
      */
@@ -41,7 +41,7 @@ public abstract class RankMixin {
         return tier == 0 ? chance : (float) Math.min(chance * ConfigManager.DIFFICULTY.get(), 1D);
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason no reason~
      */
@@ -50,7 +50,7 @@ public abstract class RankMixin {
         return tier <= 4 && tier > 1 ? Math.round(growthFactor / 2.5F) : growthFactor;
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason no reason~
      */

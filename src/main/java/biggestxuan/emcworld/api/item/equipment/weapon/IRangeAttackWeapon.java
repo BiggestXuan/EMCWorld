@@ -1,17 +1,19 @@
 package biggestxuan.emcworld.api.item.equipment.weapon;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/30
  */
 
+import biggestxuan.emcworld.common.utils.DamageUtils;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 public interface IRangeAttackWeapon {
     String name = "attack_range_mode";
 
-    double getAttackRange(ItemStack stack);
+    DamageUtils getAttackRange(PlayerEntity player, ItemStack stack);
 
     default AttackMode getAttackMode(ItemStack stack){
         int index = stack.getOrCreateTag().getInt(name);
@@ -22,8 +24,8 @@ public interface IRangeAttackWeapon {
         stack.getOrCreateTag().putInt(name,index);
     }
 
-    default void switchAttackMode(ItemStack stack){
-        if(getAttackRange(stack) < 0)return;
+    default void switchAttackMode(PlayerEntity player,ItemStack stack){
+        if(getAttackRange(player,stack).total() < 0)return;
         int index = getAttackMode(stack).index;
         index++;
         if(index > 5){

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/26
@@ -24,7 +24,7 @@ import java.util.List;
 
 @Mixin(Item.class)
 public abstract class ItemClientMixin {
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Add EMC God Weapon Text
      */

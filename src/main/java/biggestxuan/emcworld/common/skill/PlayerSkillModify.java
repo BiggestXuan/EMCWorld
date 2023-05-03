@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.skill;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/05
@@ -186,6 +186,134 @@ public class PlayerSkillModify {
         skill10(player,1,1);
     }
 
+    public static void default4_skill0(PlayerEntity player){
+        skill0(player,20);
+    }
+    public static void default4_skill1(PlayerEntity player){
+        skill1(player,200000,1000000);
+    }
+    public static void default4_skill2(PlayerEntity player){
+        skill2(player,100);
+    }
+    public static void default4_skill3(PlayerEntity player){
+        skill3(player,50000);
+    }
+    public static void default4_skill4(PlayerEntity player){
+        skill4(player,300000,3000000);
+    }
+    public static void default4_skill5(PlayerEntity player){
+        skill5(player,1000);
+    }
+    public static void default4_skill6(PlayerEntity player){
+        skill6(player,200);
+    }
+    public static void default4_skill7(PlayerEntity player){
+        skill7(player,2000);
+    }
+    public static void default4_skill8_modify1(PlayerEntity player){
+        skill8(player,50000,2000,7000000,0);
+    }
+    public static void default4_skill9_modify1(PlayerEntity player){
+        skill9(player,100,1);
+    }
+    public static void default4_skill10_modify1(PlayerEntity player){
+        skill10(player,1,1);
+    }
+    public static void default4_skill8_modify2(PlayerEntity player){
+        skill8(player,300000,50000,8000000,0);
+    }
+    public static void default4_skill9_modify2(PlayerEntity player){
+        skill9(player,1,1);
+    }
+    public static void default4_skill10_modify2(PlayerEntity player){
+        skill10(player,1,1);
+    }
+
+    public static void default5_skill0(PlayerEntity player){
+        skill0(player,35);
+    }
+    public static void default5_skill1(PlayerEntity player){
+        skill1(player,200000,1500000);
+    }
+    public static void default5_skill2(PlayerEntity player){
+        skill2(player,300);
+    }
+    public static void default5_skill3(PlayerEntity player){
+        skill3(player,1);
+    }
+    public static void default5_skill4(PlayerEntity player){
+        skill4(player,200000,3500000);
+    }
+    public static void default5_skill5(PlayerEntity player){
+        skill5(player,1000);
+    }
+    public static void default5_skill6(PlayerEntity player){
+        skill6(player,500);
+    }
+    public static void default5_skill7(PlayerEntity player){
+        skill7(player,100);
+    }
+    public static void default5_skill8_modify1(PlayerEntity player){
+        skill8(player,5000,500000,10000000,0);
+    }
+    public static void default5_skill9_modify1(PlayerEntity player){
+        skill9(player,1,1);
+    }
+    public static void default5_skill10_modify1(PlayerEntity player){
+        skill10(player,1,1);
+    }
+    public static void default5_skill8_modify2(PlayerEntity player){
+        skill8(player,2000,400000,10000000,0);
+    }
+    public static void default5_skill9_modify2(PlayerEntity player){
+        skill9(player,1,1);
+    }
+    public static void default5_skill10_modify2(PlayerEntity player){
+        skill10(player,1000,1);
+    }
+
+    public static void default6_skill0(PlayerEntity player){
+        skill0(player,15);
+    }
+    public static void default6_skill1(PlayerEntity player){
+        skill1(player,100000,2000000);
+    }
+    public static void default6_skill2(PlayerEntity player){
+        skill2(player,300);
+    }
+    public static void default6_skill3(PlayerEntity player){
+        skill3(player,100);
+    }
+    public static void default6_skill4(PlayerEntity player){
+        skill4(player,300000,3000000);
+    }
+    public static void default6_skill5(PlayerEntity player){
+        skill5(player,1000);
+    }
+    public static void default6_skill6(PlayerEntity player){
+        skill6(player,1000);
+    }
+    public static void default6_skill7(PlayerEntity player){
+        skill7(player,2000);
+    }
+    public static void default6_skill8_modify1(PlayerEntity player){
+        skill8(player,3000,300000,10000000,0);
+    }
+    public static void default6_skill9_modify1(PlayerEntity player){
+        skill9(player,500,1);
+    }
+    public static void default6_skill10_modify1(PlayerEntity player){
+        skill10(player,1,1);
+    }
+    public static void default6_skill8_modify2(PlayerEntity player){
+        skill8(player,300000,4500,10000000,0);
+    }
+    public static void default6_skill9_modify2(PlayerEntity player){
+        skill9(player,400,1);
+    }
+    public static void default6_skill10_modify2(PlayerEntity player){
+        skill10(player,5000,1);
+    }
 
     public static void makePlayerGetDefaultSkill(PlayerEntity player,AddMaxLevelItem item){
         makePlayerGetDefaultSkill(player,item.getMaxLevel(), item.getModify());
@@ -331,6 +459,147 @@ public class PlayerSkillModify {
                 }
                 if(cap.getModify() == 2){
                     default3_skill10_modify2(player);
+                }
+            }
+        }
+        if(cap.getProfession() == 4){
+            switch (level){
+                case 20:
+                    default4_skill1(player);
+                    break;
+                case 30:
+                    default4_skill2(player);
+                    break;
+                case 40:
+                    default4_skill3(player);
+                    break;
+                case 50:
+                    default4_skill4(player);
+                    break;
+                case 60:
+                    default4_skill5(player);
+                    break;
+                case 70:
+                    default4_skill6(player);
+                    break;
+                case 80:
+                    default4_skill7(player);
+                    break;
+            }
+            if(modify == 1 && level == 90){
+                default4_skill8_modify1(player);
+            }
+            if(modify == 2 && level == 90){
+                default4_skill8_modify2(player);
+            }
+            if(level == 100){
+                if(cap.getModify() == 1){
+                    default4_skill9_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default4_skill9_modify2(player);
+                }
+            }
+            if(level == 110){
+                if(cap.getModify() == 1){
+                    default4_skill10_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default4_skill10_modify2(player);
+                }
+            }
+        }
+        if(cap.getProfession() == 5){
+            switch (level){
+                case 20:
+                    default5_skill1(player);
+                    break;
+                case 30:
+                    default5_skill2(player);
+                    break;
+                case 40:
+                    default5_skill3(player);
+                    break;
+                case 50:
+                    default5_skill4(player);
+                    break;
+                case 60:
+                    default5_skill5(player);
+                    break;
+                case 70:
+                    default5_skill6(player);
+                    break;
+                case 80:
+                    default5_skill7(player);
+                    break;
+            }
+            if(modify == 1 && level == 90){
+                default5_skill8_modify1(player);
+            }
+            if(modify == 2 && level == 90){
+                default5_skill8_modify2(player);
+            }
+            if(level == 100){
+                if(cap.getModify() == 1){
+                    default5_skill9_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default5_skill9_modify2(player);
+                }
+            }
+            if(level == 110){
+                if(cap.getModify() == 1){
+                    default5_skill10_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default5_skill10_modify2(player);
+                }
+            }
+        }
+        if(cap.getProfession() == 6){
+            switch (level){
+                case 20:
+                    default6_skill1(player);
+                    break;
+                case 30:
+                    default6_skill2(player);
+                    break;
+                case 40:
+                    default6_skill3(player);
+                    break;
+                case 50:
+                    default6_skill4(player);
+                    break;
+                case 60:
+                    default6_skill5(player);
+                    break;
+                case 70:
+                    default6_skill6(player);
+                    break;
+                case 80:
+                    default6_skill7(player);
+                    break;
+            }
+            if(modify == 1 && level == 90){
+                default6_skill8_modify1(player);
+            }
+            if(modify == 2 && level == 90){
+                default6_skill8_modify2(player);
+            }
+            if(level == 100){
+                if(cap.getModify() == 1){
+                    default6_skill9_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default6_skill9_modify2(player);
+                }
+            }
+            if(level == 110){
+                if(cap.getModify() == 1){
+                    default6_skill10_modify1(player);
+                }
+                if(cap.getModify() == 2){
+                    default6_skill10_modify2(player);
                 }
             }
         }

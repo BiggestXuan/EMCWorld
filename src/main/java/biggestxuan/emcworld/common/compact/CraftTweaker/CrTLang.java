@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.compact.CraftTweaker;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/11/09

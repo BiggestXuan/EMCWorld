@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.ModPack;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/25

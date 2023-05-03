@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/02
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(EMCHelper.class)
 public abstract class EMCHelperMixin {
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Fix a prefix bug.
      */

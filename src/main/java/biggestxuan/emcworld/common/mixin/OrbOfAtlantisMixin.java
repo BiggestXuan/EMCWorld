@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/01/31
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(OrbOfAtlantis.class)
 public abstract class OrbOfAtlantisMixin extends ItemBase {
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Fix a bug
      */

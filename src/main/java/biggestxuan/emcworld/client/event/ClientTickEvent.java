@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client.event;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/27
@@ -25,7 +25,7 @@ public class ClientTickEvent {
         //GLFW.glfwSetWindowTitle(Minecraft.getInstance().getWindow().getWindow(), EMCWorld.TITLE);
     }
 
-    /**
+    /***
      * If you are not a sponsor or developer, the Minecraft will crash when you join the world.
      * The EMCWorld has not been completed yet. I don't want others to play it.
      * The main reason is that if anyone can play the EMCWorld, I will receive a lot of negative or garbage feedback (because the EMCWorld is not completed).

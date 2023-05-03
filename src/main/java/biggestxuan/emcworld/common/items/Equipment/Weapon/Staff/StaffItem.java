@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Staff;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/11/21
@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -193,8 +194,8 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
-        return 0;
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(0);
     }
 
     @Override
@@ -239,7 +240,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
                             Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
                         }
                     }
-                    /*living.hurtTime += 5;
+                    /**living.hurtTime += 5;
                     living.invulnerableTime += 5;*/
                     if(damage == 0){
                         continue;
@@ -348,8 +349,8 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return 0;
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(0);
     }
 
     public enum StaffAttackMode{

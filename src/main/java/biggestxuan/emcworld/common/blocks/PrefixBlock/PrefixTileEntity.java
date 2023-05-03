@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.blocks.PrefixBlock;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/01
@@ -162,7 +162,7 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
             chance.add(k+c);
             k += c;
         }
-        /*
+        /**
         System.out.println("random"+random);
         System.out.println("weight");
         weight.forEach(System.out::println);

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.utils;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/19
@@ -143,7 +143,7 @@ public class CalendarUtils {
         if(hour >= 6 && hour < 12){
             s = "Good Morning";
         }else if(hour >= 12 && hour < 18){
-            s = "Good Afternoon";
+            s = "Good Afternoon";//sdxhop
         } else if(hour >= 18 && hour <= 23){
             s = "Good Evening";
         }else{

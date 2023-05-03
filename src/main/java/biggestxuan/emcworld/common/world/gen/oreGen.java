@@ -1,12 +1,13 @@
 package biggestxuan.emcworld.common.world.gen;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/31
  */
 
 import biggestxuan.emcworld.common.registry.EWBlocks;
+import com.kwpugh.gobber2.init.BlockInit;
 import com.mystic.atlantis.biomes.AtlantisBiomeSource;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
@@ -53,6 +54,12 @@ public class oreGen {
                 Feature.ORE.configured(
                                 new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
                                         EWBlocks.MAGNESIUM_ORE.get().defaultBlockState(),12)
+                        ).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,6,48)))
+                        .squared().count(6));
+        event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
+                Feature.ORE.configured(
+                                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                                        BlockInit.GOBBER2_ORE.get().defaultBlockState(),6)
                         ).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(0,6,48)))
                         .squared().count(6));
         event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,

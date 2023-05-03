@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.compact.JEI;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/09
@@ -60,7 +60,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new InfuserCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new SteelFurnaceCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new PiglinCategory(registry.getJeiHelpers().getGuiHelper()));
-        /*registry.addRecipeCategories(new GlyphCategory(registry.getJeiHelpers().getGuiHelper()));
+        /**registry.addRecipeCategories(new GlyphCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new RitualCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new AncientCategory(registry.getJeiHelpers().getGuiHelper()));*/
         registry.addRecipeCategories(new StarCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -87,7 +87,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(getIS(EWItems.INFUSER_CORE.get()),InfuserCategory.getRL());
         registration.addRecipeCatalyst(getIS(EWItems.STEEL_FURNACE_CORE.get()),SteelFurnaceCategory.rl());
         registration.addRecipeCatalyst(getIS(EWItems.STEEL_FURNACE_BRICK.get()),SteelFurnaceCategory.rl());
-        /*registration.addRecipeCatalyst(GlyphCategory.item,GlyphCategory.rl());
+        /**registration.addRecipeCatalyst(GlyphCategory.item,GlyphCategory.rl());
         registration.addRecipeCatalyst(RitualCategory.item,RitualCategory.rl());
         registration.addRecipeCatalyst(AncientCategory.item,AncientCategory.rl());*/
         for(ItemStack s : new ItemStack[]{EMCWorld.getItem("emcworld:star_pedestal"),EMCWorld.getItem("astralsorcery:rock_collector_crystal"),EMCWorld.getItem("naturesaura:wood_stand"),EMCWorld.getItem("astralsorcery:starmetal"),EMCWorld.getItem("extendedcrafting:pedestal"),EMCWorld.getItem("minecraft:netherite_block"),EMCWorld.getItem("undergarden:cloggrum_block"),EMCWorld.getItem("projecte:dm_pedestal"),EMCWorld.getItem("projecte:red_matter_block"),EMCWorld.getItem("astralsorcery:infuser")}){
@@ -113,7 +113,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         List<JEIPiglinRecipe> piglin_recipes = new ArrayList<>(Arrays.asList(JEIPiglinRecipe.values()));
         registry.addRecipes(piglin_recipes, PiglinCategory.rl());
 
-        /*List<GlyphRecipe> glyphRecipes = new ArrayList<>(Arrays.asList(GlyphRecipe.values()));
+        /**List<GlyphRecipe> glyphRecipes = new ArrayList<>(Arrays.asList(GlyphRecipe.values()));
         registry.addRecipes(glyphRecipes,GlyphCategory.rl());
 
         List<RitualRecipe> ritualRecipes = new ArrayList<>(Arrays.asList(RitualRecipe.values()));

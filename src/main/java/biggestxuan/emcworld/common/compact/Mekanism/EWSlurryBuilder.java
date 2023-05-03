@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.compact.Mekanism;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/26

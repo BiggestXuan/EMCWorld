@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/11/06
@@ -63,7 +63,7 @@ public class PlayerRightClickBlockEvent {
                     event.setCanceled(true);
                 }
             }
-            /*if(event.getPlayer() instanceof ServerPlayerEntity){
+            /**if(event.getPlayer() instanceof ServerPlayerEntity){
                 MutableBoundingBox box = new MutableBoundingBox(event.getPos(),event.getPos());
                 TFPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) event.getPlayer()), new StructureProtectionPacket(box));
             }*/

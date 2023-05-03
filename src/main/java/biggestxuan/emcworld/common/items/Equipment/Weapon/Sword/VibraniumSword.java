@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/19
@@ -12,6 +12,8 @@ import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWSwordTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
+import biggestxuan.emcworld.common.utils.DamageUtils;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 public class VibraniumSword extends BaseWeaponItem implements IUpgradeableWeapon,IRangeAttackWeapon, ISecondEMCItem, INeedLevelItem {
@@ -35,8 +37,8 @@ public class VibraniumSword extends BaseWeaponItem implements IUpgradeableWeapon
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return 2;
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(2);
     }
 
     @Override
@@ -60,7 +62,7 @@ public class VibraniumSword extends BaseWeaponItem implements IUpgradeableWeapon
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
-        return 0;
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(0);
     }
 }

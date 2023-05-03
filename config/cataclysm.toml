@@ -85,7 +85,11 @@
 	#Ignis's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
 	IgnisHealthMultiplier = 1.0
+	#Burning Arena spawn
+	BurningArenaSpawn = true
 	#Ignis's Immune to Long distance attack range.
 	#Range: 1.0 ~ 1000000.0
 	"Ignis's prevent attacks from far away Range" = 20.0
+	#Ignis's cracked block breaking ignore the MobGriefing
+	IgnisBlockBreaking = true
 

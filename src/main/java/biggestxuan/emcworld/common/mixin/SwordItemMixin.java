@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/01/18
@@ -10,6 +10,8 @@ import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.utils.DamageUtils;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -58,13 +60,14 @@ public abstract class SwordItemMixin extends TieredItem implements IUpgradeableW
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
-        return getLevel(stack) == 0 ? 0 + getPrefixDamage(getPrefix(stack)) : (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) + getPrefixDamage(getPrefix(stack)));
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(getLevel(stack) == 0 ? 0 + getPrefixDamage(getPrefix(stack)) : (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) + getPrefixDamage(getPrefix(stack))));
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return Math.max(0,getLevel(stack) == 0 ? 0 + getPrefixRange(getPrefix(stack)) : (0.075 * tier.getLevel() + (damage/65) * getLevel(stack) / 3)) + getPrefixRange(getPrefix(stack));
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        double d = Math.max(0,getLevel(stack) == 0 ? 0 + getPrefixRange(getPrefix(stack)) : (0.075 * tier.getLevel() + (damage/65) * getLevel(stack) / 3)) + getPrefixRange(getPrefix(stack));
+        return DamageUtils.of(d);
     }
 
     @Override

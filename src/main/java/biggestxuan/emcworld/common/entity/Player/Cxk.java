@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.entity.Player;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/02

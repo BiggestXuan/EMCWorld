@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/01
@@ -39,5 +39,7 @@ public class RegisterModel {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.dytlj7788,AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.lamb_kisara,AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.cmzxymzx,AtumBipedRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EWEntities.sdxhop,AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.ammo,);
     }
 }

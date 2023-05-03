@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.recipe;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/24
@@ -8,7 +8,7 @@ package biggestxuan.emcworld.api.recipe;
 
 import net.minecraft.item.ItemStack;
 
-/**
+/***
  * Use enum implements this interface to add UpdateRecipe.
  * If recipe level reach 1,this recipe only craft by Advanced Update Core.
  * Input and Output amount always only 1.

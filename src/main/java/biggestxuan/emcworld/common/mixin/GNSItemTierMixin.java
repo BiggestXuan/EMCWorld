@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/23
@@ -29,7 +29,7 @@ public abstract class GNSItemTierMixin implements IItemTier {
     @Final
     private int enchantability;
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason NULL
      */

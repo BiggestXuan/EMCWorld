@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.item.equipment.weapon;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/26
@@ -17,6 +17,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import net.minecraft.client.util.ITooltipFlag;
@@ -155,22 +156,24 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgrade
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack){
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack){
         float b = (float) (getBaseDamage(stack) * getBuffer(stack) * 0.75f);
         long costEMC = getCostEMC(stack);
         if(costEMC >= 1){
             b *= (1 + Math.log(costEMC)/85);
         }
+        DamageUtils utils = DamageUtils.of(b * getPrefixCommonRate(stack));
         if(getGemType(stack) == 1){
-            b *= 1.125f;
+            utils.append(b*0.125);
         }
         if(getGemType(stack) == 2){
+            utils.append(b*-0.2);
             b *= 0.8f;
         }
         if(getGemType(stack) == 4){
-            b *= 0.9f;
+            utils.append(b*-0.1);
         }
-        return (float) (b * getPrefixCommonRate(stack));
+        return utils;
     }
 
     @Override
@@ -179,12 +182,13 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgrade
     }
 
     @Override
-    public double getAttackRange(ItemStack stack){
+    public DamageUtils getAttackRange(PlayerEntity player, ItemStack stack){
         double b = getBaseRange(stack) * getBuffer(stack);
+        DamageUtils utils = DamageUtils.of(b * getPrefixCommonRate(stack));
         if(getGemType(stack) == 3){
-            b += 0.5;
+            utils.append(0.5);
         }
-        return b * getPrefixCommonRate(stack);
+        return utils;
     }
 
     protected double getPrefixCommonRate(ItemStack stack){
@@ -238,7 +242,7 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgrade
     public ActionResult<ItemStack> use(World p_77659_1_, PlayerEntity p_77659_2_, @Nonnull Hand p_77659_3_){
         ItemStack stack = p_77659_2_.getItemInHand(p_77659_3_);
         if(p_77659_1_.isClientSide) return ActionResult.fail(stack);
-        /*if(p_77659_2_.isShiftKeyDown()){
+        /**if(p_77659_2_.isShiftKeyDown()){
             this.lossLevel(stack,1);
         }else{
             this.addLevel(stack,1);
@@ -258,7 +262,7 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgrade
 
     private float getManaBurstDamage(ItemStack stack){
         float damage = 4f + getLevel(stack) -11f;
-        damage += getAdditionsDamage(stack);
+        //damage += getAdditionsDamage(stack);
         if(MathUtils.isRandom(getActCriticalChance(stack))){
             damage *= getActCriticalRate(stack);
         }

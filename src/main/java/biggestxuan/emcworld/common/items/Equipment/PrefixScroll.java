@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/01
@@ -59,7 +59,7 @@ public class PrefixScroll extends EWItem {
         }
     }
 
-    /*public void update(ItemStack stack,int total){
+    /**public void update(ItemStack stack,int total){
         double diff = ConfigManager.DIFFICULTY.get();
         CompoundNBT nbt = stack.getOrCreateTag();
         int w = nbt.getInt("weight");

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/04/15
@@ -50,7 +50,7 @@ public abstract class ModuleHelperMixin implements IModuleHelper {
         supportedContainers.put(EWModules.INFINITY_MODULE_UNIT_MODULE.getModuleData(),set1);
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Add something.
      */

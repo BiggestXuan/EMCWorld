@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.crafttweaker.CrockPot;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/29

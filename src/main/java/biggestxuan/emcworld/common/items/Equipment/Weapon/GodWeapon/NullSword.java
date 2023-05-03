@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/01
@@ -65,7 +65,7 @@ public class NullSword extends BaseEMCGodSword {
         if(level <10){
             return Math.round(Math.pow(1.5,level));
         }
-        return (long) (baseDamage + getAdditionsDamage(stack));
+        return (long) (baseDamage * level);
     }
 
     @Override

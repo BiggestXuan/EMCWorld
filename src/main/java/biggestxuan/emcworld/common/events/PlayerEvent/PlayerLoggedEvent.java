@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/03
@@ -9,31 +9,29 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.common.network.PacketHandler;
-import biggestxuan.emcworld.common.network.toServer.LiveModePacket;
-import biggestxuan.emcworld.common.utils.BirthdayUtils;
-import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
-import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
-import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.network.PacketHandler;
+import biggestxuan.emcworld.common.network.toServer.LiveModePacket;
+import biggestxuan.emcworld.common.network.toServer.OfflinePacket;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.BirthdayUtils;
 import biggestxuan.emcworld.common.utils.CalendarUtils;
+import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.Sponsors.ModPackHelper;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameRules;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -52,18 +50,14 @@ public class PlayerLoggedEvent {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void playerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide){
-            if(EMCWorld.isOffline){
-                PacketHandler.sendToServer(new LiveModePacket());
-            }
-        }
+        if(player.level.isClientSide) return;
         MinecraftServer server = player.getServer();
         if(server == null) return;
-        if(!server.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)){
-            server.getCommands().performCommand(server.createCommandSourceStack(),"gamerule keepInventory true");
-        }
         if(server.getGameRules().getBoolean(GameRules.RULE_SENDCOMMANDFEEDBACK)){
             server.getCommands().performCommand(server.createCommandSourceStack(),"gamerule sendCommandFeedback false");
+        }
+        if(!server.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)){
+            server.getCommands().performCommand(server.createCommandSourceStack(),"gamerule keepInventory true");
         }
         String name = player.getName().getString();
         UUID uuid = player.getUUID();
@@ -196,7 +190,12 @@ public class PlayerLoggedEvent {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void playerLoggedInLowEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide) return;
+        if(player.level.isClientSide){
+            if(EMCWorld.isOffline){
+                PacketHandler.sendToServer(new OfflinePacket());
+            }
+            return;
+        }
         giveOfflineWarn(player);
     }
 

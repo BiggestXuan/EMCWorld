@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.blocks.SuperEMCBlock;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/26

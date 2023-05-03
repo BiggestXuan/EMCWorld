@@ -1,14 +1,17 @@
 package biggestxuan.emcworld.common.network;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/04
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.network.toClient.ChangeRotPacket;
 import biggestxuan.emcworld.common.network.toServer.*;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class PacketHandler {
@@ -100,9 +103,20 @@ public class PacketHandler {
                 LiveModePacket::decode,
                 LiveModePacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                ChangeRotPacket.class,
+                ChangeRotPacket::encode,
+                ChangeRotPacket::decode,
+                ChangeRotPacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){
         HANDLER.sendToServer(msg);
+    }
+
+    public static <T> void sendToClient(T msg, ServerPlayerEntity player){
+        HANDLER.send(PacketDistributor.PLAYER.with(()->player),msg);
     }
 }

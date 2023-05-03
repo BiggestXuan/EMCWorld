@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client.screen;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/05

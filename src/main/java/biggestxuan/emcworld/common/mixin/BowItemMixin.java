@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/08
@@ -40,7 +40,7 @@ public abstract class BowItemMixin extends ShootableItem implements IPrefixItem,
         return MathUtils.getBowLossTime(stack);
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason .
      */

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/08
@@ -25,7 +25,7 @@ public abstract class ArrowItemMixin extends Item {
         super(p_i48487_1_);
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Add addition damage.
      */

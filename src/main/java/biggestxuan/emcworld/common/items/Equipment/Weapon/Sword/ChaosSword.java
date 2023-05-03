@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/13
@@ -10,7 +10,9 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -67,8 +69,8 @@ public class ChaosSword extends BaseWeaponItem implements IRangeAttackWeapon, IU
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return 1.25d;
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(1.25);
     }
 
     @Override

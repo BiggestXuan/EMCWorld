@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/09
@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
@@ -87,13 +88,13 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
-        return (float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) * getPrefixCommonRate(stack));
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of((float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) * getPrefixCommonRate(stack)));
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return 0;
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(0);
     }
 
     protected int lv(ItemStack stack){

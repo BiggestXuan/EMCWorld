@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.recipe.ioRecipe;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/15

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/20
@@ -17,6 +17,8 @@ import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
+import biggestxuan.emcworld.common.utils.DamageUtils;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -76,8 +78,8 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return 64;
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(64);
     }
 
     @Nonnull
@@ -117,8 +119,8 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
-        return 0;
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(0);
     }
 
     @Override

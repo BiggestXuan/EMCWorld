@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.network.toServer;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/12/20

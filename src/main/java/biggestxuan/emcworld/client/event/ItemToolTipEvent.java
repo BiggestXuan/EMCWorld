@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client.event;
 
-/**
+/***
  * EMC WORLD MOD
  * @Author Biggest_Xuan
  * 2022/10/13
@@ -21,8 +21,12 @@ import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
+import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import biggestxuan.emcworld.common.utils.SkillUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
+import biggestxuan.emcworld.common.utils.WeaponUtils;
 import cursedflames.bountifulbaubles.common.item.items.ItemGlovesDexterity;
 import mekanism.common.item.gear.ItemHazmatSuitArmor;
 import mekanism.common.registries.MekanismItems;
@@ -43,6 +47,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nonnull;
+
+import static biggestxuan.emcworld.common.registry.EWItems.EMC_FLOWER;
 
 @Mod.EventBusSubscriber(
         modid = EMCWorld.MODID,
@@ -148,123 +154,171 @@ public class ItemToolTipEvent {
             float damage = bow.getAdditionDamage(stack);
             float speed = bow.lossBowTime(stack);
             if(damage > 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_damage_add",String.format("%.2f",damage)));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_damage_add",f(damage)));
             }
             if(damage < 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_damage_loss",String.format("%.2f",neg(damage))));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_damage_loss",f(neg(damage))));
             }
             if(speed > 1){
-                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_add",String.format("%.2f",(speed-1)*100)+"%"));
+                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_add",f((speed-1)*100)+"%"));
             }
             if(speed < 1){
-                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_loss",String.format("%.2f",(1-speed)*100)+"%"));
+                //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_loss",f((1-speed)*100)+"%"));
             }
         }
         if(stack.getItem() instanceof StaffItem){
             StaffItem i_s = (StaffItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",String.format("%.2f",i_s.getBaseDamage(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",f(i_s.getBaseDamage(stack))));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(StaffItem.getMode(stack).getName())));
         }
         if(stack.getItem() instanceof IAdditionsDamageWeapon){
-            IAdditionsDamageWeapon item = (IAdditionsDamageWeapon) stack.getItem();
-            double damage = item.getAdditionsDamage(stack);
-            if(damage > 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",damage)));
-            }else if (damage < 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage_loss",String.format("%.2f",Math.abs(damage))));
+            DamageUtils utils = SkillUtils.getPlayerAttackDamage(player,stack);
+            double damage = utils.total();
+            boolean positive = damage > 0;
+            String text = (positive ? "" : "-") + f(Math.abs(damage));
+            StringBuilder r = new StringBuilder(text);
+            if(Screen.hasShiftDown() && utils.getAddDamage().size() > 0 && utils.getAddDamage().get(0) != 0){
+                r.append(" (");
+                r.append(f(utils.getDamage()));
+                int i = 0;
+                while (i < utils.getAddDamage().size()){
+                    double v = utils.getAddDamage().get(i);
+                    if(v > 0){
+                        r.append("+");
+                    }else if(v == 0){
+                        i++;
+                        continue;
+                    }else{
+                        r.append("-");
+                        v = -v;
+                    }
+                    r.append(f(v));
+                    i++;
+                    if(i >= utils.getAddDamage().size()){
+                        break;
+                    }
+                }
+                r.append(")");
             }
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",r.toString()));
         }
         if(stack.getItem() instanceof IRangeAttackWeapon){
-            IRangeAttackWeapon item1 = (IRangeAttackWeapon) stack.getItem();
-            double range = item1.getAttackRange(stack);
+            double range = SkillUtils.getPlayerAttackRange(player,stack).total();
+            DamageUtils utils = SkillUtils.getPlayerAttackRange(player,stack);
+            StringBuilder r = new StringBuilder(f(range));
+            if(Screen.hasShiftDown() && range > 0 && utils.getAddDamage().size() > 0 && utils.getAddDamage().get(0) != 0){
+                r.append(" (");
+                r.append(f(utils.getDamage()));
+                int i = 0;
+                while (i < utils.getAddDamage().size()){
+                    double v = utils.getAddDamage().get(i);
+                    if(v > 0){
+                        r.append("+");
+                    }else if(v == 0){
+                        i++;
+                        continue;
+                    }else{
+                        r.append("-");
+                        v = -v;
+                    }
+                    r.append(f(v));
+                    i++;
+                    if(i >= utils.getAddDamage().size()){
+                        break;
+                    }
+                }
+                r.append(")");
+            }
             if(range >0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_attack_range",String.format("%.1f",range)));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_attack_range", r.toString()));
             }
         }
         if(stack.getItem() instanceof IUpgradeableArmor){
             IUpgradeableArmor item_1_1 = (IUpgradeableArmor) stack.getItem();
             if(item_1_1.hurtRate(stack) < 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",String.format("%.2f",(1-item_1_1.hurtRate(stack))*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt",f((1-item_1_1.hurtRate(stack))*100)).append("%"));
             } else if (item_1_1.hurtRate(stack) > 1) {
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt_add",String.format("%.2f",(item_1_1.hurtRate(stack)-1)*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_hurt_add",f((item_1_1.hurtRate(stack)-1)*100)).append("%"));
             }
             if(item_1_1.extraHealth(stack) > 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",String.format("%.2f",item_1_1.extraHealth(stack))));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health",f(item_1_1.extraHealth(stack))));
             } else if(item_1_1.extraHealth(stack) < 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health_loss",String.format("%.2f",Math.abs(item_1_1.extraHealth(stack)))));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_health_loss",f(Math.abs(item_1_1.extraHealth(stack)))));
             }
         }
         if(stack.getItem() instanceof IHealBoostArmor){
             IHealBoostArmor item1_2 = (IHealBoostArmor) stack.getItem();
             if(item1_2.getHealBoostRate(stack) >1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.heal_boost",String.format("%.2f",(item1_2.getHealBoostRate(stack)-1)*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.heal_boost",f((item1_2.getHealBoostRate(stack)-1)*100)+"%"));
             } else if(item1_2.getHealBoostRate(stack) <1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.heal_boost_lost",String.format("%.2f",(1-item1_2.getHealBoostRate(stack))*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.heal_boost_lost",f((1-item1_2.getHealBoostRate(stack))*100)+"%"));
             }
         }
         if(stack.getItem() instanceof ICostEMCItem){
             ICostEMCItem item2 = (ICostEMCItem) stack.getItem();
             double cost = item2.costEMCWhenAttack(stack);
             if(cost > 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost_addon",String.format("%.2f",(cost-1)*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost_addon",f((cost-1)*100)+"%"));
             }
             if(cost < 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",String.format("%.2f",(1-cost)*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost",f((1-cost)*100)+"%"));
             }
         }
         if(stack.getItem() instanceof GunItem){
             GunItem gun = (GunItem) stack.getItem();
             float damage = gun.damage(stack);
             if(damage > 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",String.format("%.2f",damage)));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",f(damage)));
             }
             if(damage < 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage_loss",String.format("%.2f",-damage)));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage_loss",f(-damage)));
             }
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_cd",String.format("%.2f",gun.cd(stack) / 20f)));
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_acc",String.format("%.2f",gun.accuracy(stack,player)*100)+"%"));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_cd",f(gun.cd(stack) / 20f)));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_acc",f(gun.accuracy(stack,player)*100)+"%"));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_backlash",f(gun.backlash(stack,player))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_penetrate",f(gun.penetrate(stack,player)*100)+"%"));
         }
         if(stack.getItem() instanceof ISpeedArmor){
             ISpeedArmor item_2_5 = (ISpeedArmor) stack.getItem();
             double speed = item_2_5.getSpeed(stack);
             if(speed > 0) {
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed",String.format("%.2f",speed)));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed",f(speed)));
             }else if(speed < 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed_loss",String.format("%.2f",speed)));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_god_speed_loss",f(speed)));
             }
         }
         if(stack.getItem() instanceof IReachArmor){
             IReachArmor item_2_6 = (IReachArmor) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_reach_distance",String.format("%.2f",item_2_6.getReachDistance(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_reach_distance",f(item_2_6.getReachDistance(stack))));
         }
         if(stack.getItem() instanceof IEMCShieldArmor){
             IEMCShieldArmor item_2_7_3 = (IEMCShieldArmor) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_emc_max_shield",String.format("%.2f",item_2_7_3.getMaxShield(stack))));
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_emc_speed",String.format("%.2f",item_2_7_3.getShieldSpeed(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_emc_max_shield",f(item_2_7_3.getMaxShield(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.armor_emc_speed",f(item_2_7_3.getShieldSpeed(stack))));
         }
         if(stack.getItem() instanceof ICriticalWeapon){
             ICriticalWeapon ww = (ICriticalWeapon) stack.getItem();
             if(ww.getActCriticalChance(stack) > 0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",String.format("%.2f",ww.getActCriticalChance(stack)*100)).append("%"));
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_rate",String.format("%.2f",ww.getActCriticalRate(stack)*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_chance",f(ww.getActCriticalChance(stack)*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.critical_rate",f(ww.getActCriticalRate(stack)*100)).append("%"));
             }
         }
         if(stack.getItem() instanceof IAttackSpeedItem){
             IAttackSpeedItem si = (IAttackSpeedItem) stack.getItem();
             double rate = si.getAttackSpeed(stack);
             if(rate > 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_add",String.format("%.2f",(rate-1)*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_add",f((rate-1)*100)).append("%"));
             }
             if(rate < 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_loss",String.format("%.2f",(1-rate)*100)).append("%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_speed_loss",f((1-rate)*100)).append("%"));
             }
         }
         if(stack.getItem() instanceof IUpgradeableTool){
             IUpgradeableTool tool = (IUpgradeableTool) stack.getItem();
             if(tool.getAdditionSpeed(stack) > 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed",String.format("%.2f",(tool.getAdditionSpeed(stack)-1)*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed",f((tool.getAdditionSpeed(stack)-1)*100)+"%"));
             }else if(tool.getAdditionSpeed(stack) < 1){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed_loss",String.format("%.2f",(1-tool.getAdditionSpeed(stack))*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.tool_speed_loss",f((1-tool.getAdditionSpeed(stack))*100)+"%"));
             }
         }
         if(stack.getItem() instanceof ISecondEMCItem){
@@ -276,7 +330,7 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof IRangeAttackWeapon){
             IRangeAttackWeapon a_w = (IRangeAttackWeapon) stack.getItem();
-            if(a_w.getAttackRange(stack) > 0){
+            if(a_w.getAttackRange(player,stack).total() > 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(a_w.getAttackMode(stack).getName())));
             }
         }
@@ -294,6 +348,9 @@ public class ItemToolTipEvent {
                 double v = ii_i.getInfuserRate(stack) >= 0 ? ii_i.getInfuserRate(stack) * 100 : 0;
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_power",String.format("%.1f",v)).append("%"));
             }
+        }
+        if(stack.getItem().equals(EMC_FLOWER.get())){
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_flower"));
         }
         for(Item item: radiationItem){
             if(stack.getItem().getItem().equals(item)){
@@ -379,5 +436,9 @@ public class ItemToolTipEvent {
                 n = "abyss";
         }
         return EMCWorld.tc(pre+n+a).setStyle(Style.EMPTY.withColor(Color.fromRgb(BaseWeaponGemItem.gem.valueOf(n.toUpperCase()).getColor())));
+    }
+
+    private static String f(double value){
+        return String.format("%.2f",value);
     }
 }

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/05
@@ -46,7 +46,7 @@ public abstract class ExplorersCompassScreenMixin extends Screen {
         super(p_i51108_1_);
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason .
      */

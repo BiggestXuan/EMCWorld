@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.event;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/26
@@ -9,7 +9,7 @@ package biggestxuan.emcworld.api.event;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
-/**
+/***
  * This event fired when player get professional exp.
  * You can modify exp amount.
  * This event is not cancelable.

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.item.equipment;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/03/17

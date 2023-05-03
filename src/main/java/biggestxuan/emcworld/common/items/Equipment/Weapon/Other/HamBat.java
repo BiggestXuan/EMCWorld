@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.Other;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/30
@@ -13,8 +13,10 @@ import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.items.EWItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
+import biggestxuan.emcworld.common.utils.DamageUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -48,8 +50,8 @@ public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevel
     }
 
     @Override
-    public float getAdditionsDamage(ItemStack stack) {
-        return getFresh(stack) >= 100 ? 0.3F * getFresh(stack) - 10 : 0.1F * getFresh(stack) + 10;
+    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(getFresh(stack) >= 100 ? 0.3F * getFresh(stack) - 10 : 0.1F * getFresh(stack) + 10);
     }
 
     @Override
@@ -73,7 +75,7 @@ public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevel
     }
 
     @Override
-    public double getAttackRange(ItemStack stack) {
-        return 3.5D * getFresh(stack) / 200;
+    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
+        return DamageUtils.of(3.5D * getFresh(stack) / 200);
     }
 }

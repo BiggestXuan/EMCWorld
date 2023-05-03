@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.network.toServer;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/04
@@ -12,7 +12,10 @@ import biggestxuan.emcworld.common.exception.EMCWorldIllegalPacketException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWItems;
+import hellfirepvp.astralsorcery.common.util.CelestialStrike;
+import hellfirepvp.astralsorcery.common.util.data.Vector3;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -36,11 +39,13 @@ public class LeftClickPacket {
                         (BaseEMCGodSword) EWItems.ICE_SWORD.get()).spawnManaBurst(ctx.get().getSender()));
             }
             try{
+                ServerPlayerEntity player = ctx.get().getSender();
                 ItemStack stack = ctx.get().getSender().getMainHandItem();
                 if(stack.getItem() instanceof InfinitySword || MekUtils.isInfinityMekaTool(stack)){
                     ctx.get().enqueueWork(()-> {
                         List<? extends LivingEntity> canRangeAttack = getNearEntity(ctx.get().getSender(),ctx.get().getSender(),64);
                         for(LivingEntity entity:canRangeAttack){
+                            CelestialStrike.play(player, player.getLevel(), Vector3.atEntityCorner(entity), Vector3.atEntityCorner(entity));
                             entity.hurt(new EWDamageSource(ctx.get().getSender()).REALLY_PLAYER,114514);
                         }
                     });

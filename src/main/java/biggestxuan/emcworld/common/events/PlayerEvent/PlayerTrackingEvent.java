@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/**
+/***
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/02
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.network.PacketDistributor;
 public class PlayerTrackingEvent {
     @SubscribeEvent
     public static void playerTicking(TickEvent.PlayerTickEvent event){
-        /*if(!event.player.getCommandSenderWorld().isClientSide){
+        /**if(!event.player.getCommandSenderWorld().isClientSide){
             if(event.player.isDeadOrDying()) return;
             event.player.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(cap -> SkillNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new DataPack(
                     cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()

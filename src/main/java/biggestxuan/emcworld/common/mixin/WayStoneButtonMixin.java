@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-/*
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2023/02/23
@@ -56,7 +56,7 @@ public abstract class WayStoneButtonMixin extends Button {
         }
     }
 
-    /**
+    /***
      * @author Biggest_Xuan
      * @reason Overwrite button render.
      */
