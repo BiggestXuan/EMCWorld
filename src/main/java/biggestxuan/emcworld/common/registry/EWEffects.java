@@ -24,4 +24,5 @@ public class EWEffects {
     public static final RegistryObject<Effect> ATTACK_RANGE = EFFECTS.register("attack_range",() -> new BaseEMCWorldEffect(EffectType.BENEFICIAL,0xFFDAB9));
     public static final RegistryObject<Effect> REMOTE_DAMAGE = EFFECTS.register("remote_damage",() -> new BaseEMCWorldEffect(EffectType.BENEFICIAL,0x9AFF9A));
     public static final RegistryObject<Effect> ATTACK_SPEED = EFFECTS.register("attack_speed",() -> new BaseEMCWorldEffect(EffectType.BENEFICIAL,0x1E90FF));
+    public static final RegistryObject<Effect> ACCURACY = EFFECTS.register("accuracy",() -> new BaseEMCWorldEffect(EffectType.BENEFICIAL,0xcccc00));
 }

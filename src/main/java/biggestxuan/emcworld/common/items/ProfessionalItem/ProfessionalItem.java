@@ -26,11 +26,9 @@ import java.util.List;
 
 public class ProfessionalItem extends EWItem {
     private final int profession;
-    private final String tip;
 
-    public ProfessionalItem(int p,String tip){
+    public ProfessionalItem(int p){
         profession = p;
-        this.tip = tip;
     }
 
     @Nonnull
@@ -66,6 +64,6 @@ public class ProfessionalItem extends EWItem {
 
     @Override
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, @Nonnull List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_){
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.profession_item", I18n.get(tip)));
+        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.profession_item", I18n.get("profession.emcworld."+profession)));
     }
 }

@@ -186,6 +186,15 @@ public function warHammer(i as IItemStack,o as IItemStack) as void{
     ],o);
 }
 
+public function gun(aa as IItemStack,b as IItemStack) as void{
+    var a = <item:minecraft:air>;
+    addCraftShapedRecipeNoName([
+        [aa,aa,aa],
+        [aa,a,a],
+        [aa,a,a]
+    ],b);
+}
+
 public function dagger(aa as IItemStack,b as IItemStack) as void{
     var a = <item:minecraft:air>;
     var s = <tag:items:forge:rods/wooden>;

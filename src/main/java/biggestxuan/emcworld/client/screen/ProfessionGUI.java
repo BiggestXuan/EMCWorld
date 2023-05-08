@@ -40,21 +40,7 @@ public class ProfessionGUI extends Screen {
     }
 
     public static String getProfessionName(int p){
-        switch (p){
-            case 1:
-                return I18n.get("profession.emcworld.sword");
-            case 2:
-                return I18n.get("profession.emcworld.tank");
-            case 3:
-                return I18n.get("profession.emcworld.wizard");
-            case 4:
-                return I18n.get("profession.emcworld.assassin");
-            case 5:
-                return I18n.get("profession.emcworld.barbarian");
-            case 6:
-                return I18n.get("profession.emcworld.marksman");
-        }
-        return I18n.get("profession.emcworld.null");
+        return p == 0 ? I18n.get("profession.emcworld.null"): I18n.get("profession.emcworld."+p);
     }
 
     private int getProfession(){

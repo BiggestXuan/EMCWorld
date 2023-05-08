@@ -32,6 +32,8 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameRules;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -188,6 +190,7 @@ public class PlayerLoggedEvent {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @OnlyIn(Dist.CLIENT)
     public static void playerLoggedInLowEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
         if(player.level.isClientSide){

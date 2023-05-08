@@ -76,14 +76,8 @@ public class MathUtils {
     @ZenCodeType.Method
     public static int getRangeRandom(int min,int max){
         if(min == max) return min;
-        int m1 = min;
-        int m2 = max;
-        if(m2 < m1){
-            m1 = max;
-            m2 = min;
-        }
-        int range = m2 - m1;
-        return (int) (m2 - Random() * range);
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 
     @ZenCodeType.Method
@@ -156,6 +150,18 @@ public class MathUtils {
             return "-" + thousandSign(Math.negateExact(value));
         }
         return "+" + thousandSign(value);
+    }
+
+    public static boolean isNum(String s){
+        if (s == null) {
+            return false;
+        }
+        try{
+            int i = Integer.parseInt(s);
+        }catch (NumberFormatException e){
+            return false;
+        }
+        return true;
     }
 
     @ZenCodeType.Method
@@ -596,6 +602,59 @@ public class MathUtils {
         }
         //EMCWorld.LOGGER.info(flag);
         return flag;
+    }
+
+    public static List<LivingEntity> getNearLiving(LivingEntity living,int distance,boolean includePlayer){
+        AxisAlignedBB aabb = expandAABB(living.blockPosition(),distance);
+        List<LivingEntity> list = new ArrayList<>();
+        if(living.level.isClientSide) return list;
+        for(LivingEntity l : living.level.getLoadedEntitiesOfClass(LivingEntity.class,aabb)){
+            if(l instanceof PlayerEntity && !includePlayer){
+                continue;
+            }
+            list.add(l);
+        }
+        return list;
+    }
+
+    public static long C(int n,int m) {
+        long a = 1;
+        long b = 1;
+        m = Math.min(m, (n - m));
+        for (long i = m; i > 0; i--) {
+            a *= n;
+            b *= i;
+            n--;
+        }
+        return a / b;
+    }
+
+    public static List<List<Integer>> permute(List<Integer> nums, int count) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.size() == 0 || count > nums.size()) {
+            return res;
+        }
+        List<Integer> temp = new ArrayList<>();
+        backtrack(res, nums, temp, count);
+        return res;
+    }
+
+    public static void backtrack(List<List<Integer>> res, List<Integer> nums, List<Integer> temp, int count) {
+        if (temp.size() == count) {
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int num : nums) {
+            if (temp.contains(num)) {
+                continue;
+            }
+            if (temp.size() > 0 && num <= temp.get(temp.size() - 1)) {
+                continue;
+            }
+            temp.add(num);
+            backtrack(res, nums, temp, count);
+            temp.remove(temp.size() - 1);
+        }
     }
 
     @Deprecated

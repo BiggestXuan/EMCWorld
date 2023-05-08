@@ -27,7 +27,6 @@ import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
-import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
 import biggestxuan.emcworld.common.utils.ModUtils;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
@@ -56,7 +55,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -70,21 +68,19 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 @Mod(EMCWorld.MODID)
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 7;
-    public static final String PackVersion = "0.5.2";
+    public static final int ModPackVersion = 8;
+    public static final String PackVersion = "0.6.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
     public static final int HOMO = ConfigManager.GENG.get() ? 114514 : 115000;
     public static boolean isBackingUp = false;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
-    @OnlyIn(Dist.CLIENT)
     public static boolean isOffline = false;
 
     public EMCWorld(){
@@ -141,6 +137,7 @@ public class EMCWorld {
         LOGGER.info(ModUtils.addMod());
     }
 
+    @OnlyIn(Dist.CLIENT)
     private void doClientStuff(FMLClientSetupEvent event) {
         event.enqueueWork(()->{
             ScreenManager.register(EWContainerTypes.advancedUpdateContainer.get(), AdvancedUpdateGUI::new);

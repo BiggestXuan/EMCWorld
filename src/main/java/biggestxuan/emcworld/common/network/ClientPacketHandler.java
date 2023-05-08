@@ -6,10 +6,15 @@ package biggestxuan.emcworld.common.network;
  *  2022/11/03
  */
 
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.client.lottery.ChooseLotteryScreen;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.network.toClient.BuyLotteryClientPacket;
 import biggestxuan.emcworld.common.network.toClient.ChangeRotPacket;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.DataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -61,6 +66,13 @@ public class ClientPacketHandler {
     public static <T> void handlePacket(T packet, Supplier<NetworkEvent.Context> ctx){
         if(packet instanceof ChangeRotPacket){
             ClientPlayerEntity player = Minecraft.getInstance().player;
+            IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+            if(cap.getProfession() == 6){
+                double chance = cap.getSkills()[8] / 10000d;
+                if(MathUtils.isRandom(chance)){
+                    return;
+                }
+            }
             ChangeRotPacket p = (ChangeRotPacket) packet;
             if(player != null && !player.isDeadOrDying()){
                 if(p.getX() != -100){
@@ -70,6 +82,9 @@ public class ClientPacketHandler {
                     player.yRot = p.getY();
                 }
             }
+        }
+        if(packet instanceof BuyLotteryClientPacket){
+            Minecraft.getInstance().setScreen(new ChooseLotteryScreen());
         }
     }
 }

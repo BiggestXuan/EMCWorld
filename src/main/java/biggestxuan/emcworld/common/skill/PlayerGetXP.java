@@ -41,5 +41,8 @@ public class PlayerGetXP {
         if(cap.getSkills()[20] !=0){
             event.setAmount((int) (event.getAmount() * (1+cap.getSkills()[20]/10000d)));
         }
+        if(cap.getProfession() == 4 && cap.getModify() == 2 && cap.getSkills()[36] != 0){
+            event.setAmount(event.getAmount() * 2);
+        }
     }
 }

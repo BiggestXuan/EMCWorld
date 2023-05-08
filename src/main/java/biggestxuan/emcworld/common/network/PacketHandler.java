@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.network;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.network.toClient.BuyLotteryClientPacket;
 import biggestxuan.emcworld.common.network.toClient.ChangeRotPacket;
 import biggestxuan.emcworld.common.network.toServer.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -109,6 +110,20 @@ public class PacketHandler {
                 ChangeRotPacket::encode,
                 ChangeRotPacket::decode,
                 ChangeRotPacket::handle
+        );
+        HANDLER.registerMessage(
+                id++,
+                BuyLotteryPacket.class,
+                BuyLotteryPacket::encode,
+                BuyLotteryPacket::decode,
+                BuyLotteryPacket::handle
+        );
+        HANDLER.registerMessage(
+                id++,
+                BuyLotteryClientPacket.class,
+                BuyLotteryClientPacket::encode,
+                BuyLotteryClientPacket::decode,
+                BuyLotteryClientPacket::handle
         );
     }
 

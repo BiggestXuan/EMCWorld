@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IEntityUtilCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
@@ -23,6 +24,7 @@ import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -36,6 +38,8 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -116,9 +120,36 @@ public class PlayerAttackEvent {
                     }
                 }
             }
+            if(cap.getProfession() == 4){
+                double chance = skills[8]/10000d;
+                double chance1 = skills[24]/10000d;
+                if(MathUtils.isRandom(chance)){
+                    damage *= 2;
+                }
+                if(MathUtils.isRandom(chance1)){
+                    damage *= 2;
+                }
+                if(cap.getModify() == 1 && skills[36] != 0 && util.getTimer() > 0){
+                    damage = livingEntity.getMaxHealth();
+                    util.setTimer(0);
+                }
+            }
+            if(cap.getProfession() == 5){
+                double c = skills[8]/10000d;
+                if(MathUtils.isRandom(c)){
+                    livingEntity.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN,100,127));
+                }
+                if(MathUtils.isRandom(skills[24]/10000d)){
+                    player.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),200,9));
+                }
+                if(MathUtils.isRandom(skills[28]/10000d)){
+                    util.setTimer(10);
+                }
+            }
             if(world.isRaided(new BlockPos(player.position()))){
                 damage *= util.getRaidRate();
             }
+            damage *= player.getAttackStrengthScale(0);
             double rate = 1d;
             if(stack.getItem() instanceof ICostEMCItem){
                 ICostEMCItem item = (ICostEMCItem) stack.getItem();
@@ -163,9 +194,21 @@ public class PlayerAttackEvent {
             Entity entity = proEntity.getOwner();
             if(entity instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) entity;
+                var c = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+                if(c.getProfession() == 6 && c.getModify() == 2){
+                    var chance = c.getSkills()[36]/10000d;
+                    if(MathUtils.isRandom(chance)){
+                        damage *= 2f;
+                    }
+                }
                 if(player.getMainHandItem().getItem() instanceof IUpgradeBow){
                     ItemStack stack = player.getMainHandItem();
                     damage += ((IUpgradeBow) stack.getItem()).getAdditionDamage(stack);
+                }
+                EffectInstance instance = player.getEffect(EWEffects.REMOTE_DAMAGE.get());
+                if(instance != null){
+                    int level = instance.getAmplifier() + 1;
+                    damage *= 1 + level / 10f;
                 }
                 if(player.getOffhandItem().getItem() instanceof IUpgradeBow && !(player.getMainHandItem().getItem() instanceof IUpgradeBow)){
                     ItemStack stack = player.getOffhandItem();
@@ -251,8 +294,11 @@ public class PlayerAttackEvent {
     public static void attackEvent(AttackEntityEvent event){
         PlayerEntity entity = event.getPlayer();
         Entity entity1 = entity.getEntity();
+        IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(entity);
         if(entity.getMainHandItem().getItem() instanceof WarHammerItem && entity.getAttackStrengthScale(0) != 1){
-            event.setCanceled(true);
+            if(!(cap.getProfession() == 5 && cap.getModify() == 1 && cap.getSkills()[40] != 0)){
+                event.setCanceled(true);
+            }
         }
         if(entity1 instanceof LivingEntity){
             LivingEntity livingEntity = (LivingEntity) entity1;

@@ -103,8 +103,12 @@ public class EWItems {
     public static final RegistryObject<Item> PREFIX_CORE = registryBlock("prefix_core", EWBlocks.PREFIX_CORE);
     public static final RegistryObject<Item> EMC_SUPER = registryBlock("emc_super", EWBlocks.EMC_SUPER);
     public static final RegistryObject<Item> STAR_PEDESTAL = registryBlock("star_pedestal", EWBlocks.STAR_PEDESTAL);
-    public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1,"profession.emcworld.sword"));
-    public static final RegistryObject<Item> PROFESSION_TANK = ITEMS.register("profession_tank",() -> new ProfessionalItem(2,"profession.emcworld.tank"));
+    public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1));
+    public static final RegistryObject<Item> PROFESSION_TANK = ITEMS.register("profession_tank",() -> new ProfessionalItem(2));
+    public static final RegistryObject<Item> NOPOWER_STAFF = ITEMS.register("nopower_staff", () -> new ProfessionalItem(3));
+    public static final RegistryObject<Item> BROKEN_DAGGER = ITEMS.register("broken_dagger",() -> new ProfessionalItem(4));
+    public static final RegistryObject<Item> BROKEN_HAMMER = ITEMS.register("broken_hammer",() -> new ProfessionalItem(5));
+    public static final RegistryObject<Item> BROKEN_GUN = ITEMS.register("broken_gun",() -> new ProfessionalItem(6));
     public static final RegistryObject<Item> BIGGEST_XUAN_INGOT = ITEMS.register("biggest_xuan_ingot",EWItem::new);
     public static final RegistryObject<Item> ILLAGER_SHARD = ITEMS.register("illager_shard", IllagerShard::new);
     public static final RegistryObject<Item> SKILL_ITEM1 = ITEMS.register("skill_item1",EWItem::new);
@@ -157,6 +161,7 @@ public class EWItems {
     public static final RegistryObject<Item> SCROLL_TULYE = ITEMS.register("scroll_tulye", TulyeScroll::new);
     public static final RegistryObject<Item> SCROLL_BX = ITEMS.register("scroll_bx", BiggestXuanScroll::new);
     public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(1));
+    public static final RegistryObject<Item> LOTTERY = ITEMS.register("lottery",LotteryItem::new);
     public static final RegistryObject<Item> HARD_STEEL = ITEMS.register("hard_steel",() -> new EWItem(1));
     public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key",() -> new BaseGetStageItem("nether"));
     public static final RegistryObject<Item> FLYING_GEM = ITEMS.register("flying_gem",() -> new BaseGetStageItem("fly"));
@@ -182,7 +187,6 @@ public class EWItems {
     public static final RegistryObject<Item> NATURE_GEMSTONE = ITEMS.register("nature_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.NATURE));
     public static final RegistryObject<Item> LAKE_GEMSTONE = ITEMS.register("lake_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.LAKE));
     public static final RegistryObject<Item> ABYSS_GEMSTONE = ITEMS.register("abyss_gemstone",() -> new BaseWeaponGemItem(BaseWeaponGemItem.gem.ABYSS));
-    public static final RegistryObject<Item> NOPOWER_STAFF = ITEMS.register("nopower_staff", () -> new ProfessionalItem(3,"profession.emcworld.wizard"));
     public static final RegistryObject<Item> ILLAGER_GEM = ITEMS.register("illager_gem", EWItem::new);
     public static final RegistryObject<Item> EMC_HEALING_BAG = ITEMS.register("emc_healing_bag",EMCHealingItem::new);
     public static final RegistryObject<Item> EMC_CHARGE_GEM = ITEMS.register("emc_charge_gem",EMCChargeItem::new);

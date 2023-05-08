@@ -273,7 +273,7 @@ public class ItemToolTipEvent {
             if(damage < 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage_loss",f(-damage)));
             }
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_cd",f(gun.cd(stack) / 20f)));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_cd",f(gun.cd(stack,player) / 20f)));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_acc",f(gun.accuracy(stack,player)*100)+"%"));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_backlash",f(gun.backlash(stack,player))));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gun_penetrate",f(gun.penetrate(stack,player)*100)+"%"));

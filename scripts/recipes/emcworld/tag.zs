@@ -18,7 +18,8 @@ public function modifyEMCWorldTags() as void{
     ];
     val c as ItemStack[] = new Getter().getCollector();
     val r as ItemStack[] = new Getter().getRelay();
-    for i in [<item:emcworld:profession_sword>,<item:emcworld:profession_tank>,<item:emcworld:nopower_staff>]{
+    for i in [<item:emcworld:profession_sword>,<item:emcworld:profession_tank>,<item:emcworld:nopower_staff>,
+    <item:emcworld:broken_dagger>,<item:emcworld:broken_hammer>,<item:emcworld:broken_gun>]{
         <tag:items:emcworld:setting_profession>.add(i);
     }
     for i in [<item:emcworld:bright_stone>,<item:emcworld:dark_stone>]{

@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -38,6 +39,32 @@ public class PlayerWillHurtEvent {
         LivingEntity entity = event.getEntityLiving();
         if(entity.level.isClientSide || !(entity instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) entity;
+        IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
+        int[] skills = cap.getSkills();
+        if(cap.getProfession() == 4){
+            double chance = skills[0]/10000d;
+            if(cap.getModify() == 2){
+                int time = util.getTimer();
+                if(time > 0){
+                    chance *= skills[33]/10000d;
+                }
+                if(cap.getSkills()[40] != 0){
+                    chance *= 2;
+                }
+            }
+            if(MathUtils.isRandom(chance)){
+                event.setCanceled(true);
+                float rate = skills[28]/10000f;
+                player.heal(player.getMaxHealth() * rate);
+                if(cap.getModify() == 1 && skills[36] != 0){
+                    double c = skills[36]/10000d;
+                    if(MathUtils.isRandom(c)){
+                        util.setTimer(EMCWorld.HOMO);
+                    }
+                }
+            }
+        }
         if(MathUtils.canAbsorbHurt(player,event.getSource())){
             event.setCanceled(true);
             return;

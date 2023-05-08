@@ -484,7 +484,8 @@ public function emcworldRecipe() as void{
         <item:emcworld:gaia_sword>,
         <item:emcworld:gaia_staff>,
         <item:emcworld:gaia_warhammer>,
-        <item:emcworld:gaia_dagger>
+        <item:emcworld:gaia_dagger>,
+        <item:emcworld:gaia_gun>
     ];
     var staff_item as IItemStack[][]=[
         [
@@ -514,9 +515,16 @@ public function emcworldRecipe() as void{
             <item:emcworld:iron_dagger>,
             <item:emcworld:golden_dagger>,
             <item:emcworld:diamond_dagger>
+        ],
+        [
+            <item:emcworld:wooden_gun>,
+            <item:emcworld:stone_gun>,
+            <item:emcworld:iron_gun>,
+            <item:emcworld:golden_gun>,
+            <item:emcworld:diamond_gun>
         ]
     ];
-    for i in 1 .. 4{
+    for i in 1 .. 5{
         smithingRecipe(staff_item[i][4],bgi,gaia_item[i]);
     }
     smithingRecipe(<item:minecraft:diamond_sword>,bgi,gaia_item[0]);
@@ -524,7 +532,9 @@ public function emcworldRecipe() as void{
         staffRecipe(staff_item[0][i],staff_item[1][i]);
         warHammer(staff_item[0][i],staff_item[2][i]);
         dagger(staff_item[0][i],staff_item[3][i]);
+        gun(staff_item[0][i],staff_item[4][i]);
     }
+    smithingRecipe(gaia_item[4],<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_gun>);
     staffRecipe(<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_staff>);
     craftingTable.removeByModid("projectex");
     //craftingTable.removeByModid("projecte");
@@ -580,8 +590,8 @@ public function emcworldRecipe() as void{
         <item:aerialhell:obsidian_shard>,<item:aerialhell:mud_bone_block>
     ],20000,<entitytype:aerialhell:mud_cycle_mage>,"emcworld");
     setEMCStage(<item:dead_guys_untitled_deep_dark_:sculk>,1024,8);
-    addCraftShapelessRecipe([<item:minecraft:diamond_sword>,dm,dm],<item:emcworld:profession_sword>);
-    addCraftShapelessRecipe([<item:minecraft:diamond_chestplate>,dm,dm],<item:emcworld:profession_tank>);
+    addCraftShapelessRecipe([<item:minecraft:wooden_sword>,dm,dm],<item:emcworld:profession_sword>);
+    addCraftShapelessRecipe([<item:minecraft:leather_chestplate>,dm,dm],<item:emcworld:profession_tank>);
     addCraftShapedRecipeNoName([
         [a,dm,a],
         [dm,rm,dm],
@@ -887,9 +897,10 @@ public function emcworldRecipe() as void{
     combiningRecipe(<item:minecraft:stone>,<item:minecraft:obsidian>,<item:minecraft:blackstone>);
     removeFurnaceRecipe([<item:minecraft:nether_brick>]);
     runeAltarRecipe([<item:emcworld:drystone_ingot>,<item:botania:rune_fire>],<item:minecraft:nether_brick>*2,5000);
-    addCraftShapelessRecipe([
-        <item:emcworld:wooden_staff>,<item:projecte:dark_matter>,<item:projecte:dark_matter>
-    ],<item:emcworld:nopower_staff>);
+    pro(<item:emcworld:wooden_staff>,<item:emcworld:nopower_staff>);
+    pro(<item:emcworld:wooden_dagger>,<item:emcworld:broken_dagger>);
+    pro(<item:emcworld:wooden_warhammer>,<item:emcworld:broken_hammer>);
+    pro(<item:emcworld:wooden_gun>,<item:emcworld:broken_gun>);
     natureSpawnerRecipe([
         <item:naturesaura:birth_spirit>,bx,bx,bx
     ],500000,<entitytype:emcworld:biggest_xuan>,"bx");
@@ -1752,4 +1763,8 @@ public function orange() as void{
 
 public function white() as void{
     kt(<item:emcworld:clay_matter>,<item:extendedcrafting:the_ultimate_ingot>,[[<item:projectex:orange_relay>,<item:projectex:white_relay>],[<item:projectex:orange_collector>,<item:projectex:white_collector>]]);
+}
+
+public function pro(s as IItemStack,s1 as IItemStack) as void{
+    addCraftShapelessRecipe([s,<item:projecte:dark_matter>,<item:projecte:dark_matter>],s1);
 }

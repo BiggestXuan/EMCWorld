@@ -29,6 +29,7 @@ import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -52,6 +53,9 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -217,6 +221,24 @@ public class PlayerTickEvent {
             IAttackSpeedItem si = (IAttackSpeedItem) player.getMainHandItem().getItem();
             attackSpeed *= si.getAttackSpeed(player.getMainHandItem());
         }
+        int[] skills = c.getSkills();
+        if(c.getProfession() == 5){
+            if(skills[12] /10000d != 0){
+                player.removeEffect(Effects.DIG_SPEED);
+                player.removeEffect(Effects.DIG_SLOWDOWN);
+            }
+            if(c.getModify() == 2 && skills[40] != 0){
+                int level = skills[40]/10000;
+                player.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),200,level-1));
+                for(PlayerEntity p : PlayerClickEvent.getPlayers(player, 5)){
+                    p.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(k -> {
+                        if(k.getProfession() == 5){
+                            p.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),200,level-1));
+                        }
+                    });
+                }
+            }
+        }
         ModifiableAttributeInstance attack_speed_instance = player.getAttribute(Attributes.ATTACK_SPEED);
         if(attack_speed_instance != null){
             AttributeModifier modifier = attack_speed_instance.getModifier(EMCWORLD_ATTACK_SPEED_ID);
@@ -224,9 +246,34 @@ public class PlayerTickEvent {
                 attack_speed_instance.removeModifier(EMCWORLD_ATTACK_SPEED_ID);
             }
             double d = attackSpeed < 1 ? 0.8 * attackSpeed - 0.8 : 4 * attackSpeed - 4;
+            EffectInstance instance = player.getEffect(EWEffects.ATTACK_SPEED.get());
+            if(instance != null && player.getEffect(Effects.DIG_SPEED) == null){
+                int level = instance.getAmplifier() + 1;
+                d *= 1 + level / 10f;
+            }
+            if(c.getProfession() == 4 && c.getModify() == 1 && c.getSkills()[40] != 0){
+                d *= 2;
+            }
+            if(c.getProfession() == 5 && skills[36] != 0){
+                if(c.getModify() == 1){
+                    d *= 1.5;
+                }
+                if(c.getModify() == 2){
+                    d *= 1.25;
+                }
+            }
             attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,d,AttributeModifier.Operation.ADDITION));
         }
         double extraReachDistance = 0;
+        if(c.getProfession() == 4){
+            EffectInstance instance = player.getEffect(Effects.MOVEMENT_SLOWDOWN);
+            int rate = skills[12]/10000;
+            if(rate > 0 && instance != null){
+                for (int i = 0; i < rate; i++) {
+                    instance.tick(player, () -> {});
+                }
+            }
+        }
         for(ItemStack stack:player.inventory.armor){
             if(stack.getItem() instanceof IReachArmor){
                 IReachArmor armor = (IReachArmor) stack.getItem();

@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/15
  */
 
+import biggestxuan.emcworld.common.utils.LocaleUtils;
 import noobanidus.mods.lootr.repack.shoulders.data.ShoulderList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,6 +17,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class LootrMixin {
     @Inject(method = "load",at = @At("HEAD"),remap = false,cancellable = true)
     private static void disableLoad(CallbackInfo ci){
-        ci.cancel();
+        if(LocaleUtils.isChina()){
+            ci.cancel();
+        }
     }
 }

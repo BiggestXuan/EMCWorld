@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
 public class EMCLevelModel implements IItemPropertyGetter {
+    @OnlyIn(Dist.CLIENT)
     @Override
     public float call(ItemStack p_call_1_, @Nullable ClientWorld p_call_2_, @Nullable LivingEntity p_call_3_) {
         if(p_call_1_.hasTag()){

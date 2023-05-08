@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.event.PlayerAddMaxLevelEvent;
@@ -22,9 +23,13 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.EMCGemItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
+import biggestxuan.emcworld.common.network.toClient.BuyLotteryClientPacket;
 import biggestxuan.emcworld.common.network.toServer.LeftClickPacket;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.StaffAttackPacket;
@@ -36,14 +41,18 @@ import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.common.utils.SkillUtils;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchHelper;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import mekanism.common.item.ItemQIODrive;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
@@ -54,11 +63,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +98,8 @@ public class PlayerClickEvent {
     @SubscribeEvent
     public static void RightClickItemEvent(PlayerInteractEvent.RightClickItem evt){
         World world = evt.getWorld();
-        if(world.isClientSide) return;
         ItemStack itemStack = evt.getItemStack();
+        if(world.isClientSide) return;
         int count = itemStack.getCount();
         PlayerEntity player = evt.getPlayer();
         if(itemStack.isEmpty()) return;
@@ -111,6 +123,9 @@ public class PlayerClickEvent {
                 EMCHelper.modifyPlayerEMC(player, new EMCSource.UseEMCGemEMCSource(actEMC,player,itemStack,0),true);
                 itemStack.shrink(1);
             }
+        }
+        if(itemStack.getItem().equals(Items.PAPER) && ConfigManager.LOTTERY.get()){
+            PacketHandler.sendToClient(new BuyLotteryClientPacket(),(ServerPlayerEntity) player);
         }
         if(itemStack.getItem().equals(EWItems.EMC_CHECK.get())){
             double diff = CrTConfig.getWorldDifficulty();
@@ -157,45 +172,68 @@ public class PlayerClickEvent {
         }
         IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
         IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
-        if(itemStack.getItem() instanceof SwordItem && cap.getProfession() == 1 && cap.getSkills()[7] == 0 && cap.getSkills()[4] != 0){
-            player.addEffect(new EffectInstance(Effects.DAMAGE_BOOST,cap.getSkills()[4]/500,0));
-            cap.setSkills(7,cap.getSkills()[5]/500);
-        }
-        if(itemStack.getItem() instanceof ShieldItem && cap.getProfession() == 2 && cap.getSkills()[7] == 0 && cap.getSkills()[4] != 0){
-            player.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE,cap.getSkills()[4]/500,0));
-            cap.setSkills(7,cap.getSkills()[5]/500);
-        }
-        if(itemStack.getItem() instanceof StaffItem && cap.getProfession() == 3 && cap.getSkills()[7] == 0 && cap.getSkills()[4] != 0){
-            player.addEffect(new EffectInstance(EWEffects.MAGIC_PROTECT.get(),cap.getSkills()[4]/500,0));
+        if(cap.getSkills()[7] == 0 && cap.getSkills()[4] != 0){
+            if(itemStack.getItem() instanceof SwordItem && cap.getProfession() == 1){
+                player.addEffect(new EffectInstance(Effects.DAMAGE_BOOST,cap.getSkills()[4]/500,0));
+            }
+            if(itemStack.getItem() instanceof ShieldItem && cap.getProfession() == 2){
+                player.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE,cap.getSkills()[4]/500,0));
+            }
+            if(itemStack.getItem() instanceof StaffItem && cap.getProfession() == 3){
+                player.addEffect(new EffectInstance(EWEffects.MAGIC_PROTECT.get(),cap.getSkills()[4]/500,0));
+            }
+            if(itemStack.getItem() instanceof DaggerItem && cap.getProfession() == 4){
+                player.addEffect(new EffectInstance(Effects.MOVEMENT_SPEED,cap.getSkills()[4]/500,1));
+            }
+            if(itemStack.getItem() instanceof WarHammerItem && cap.getProfession() == 5){
+                player.addEffect(new EffectInstance(Effects.DAMAGE_BOOST,cap.getSkills()[4]/500,0));
+                player.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE,cap.getSkills()[4]/500,0));
+            }
+            if(itemStack.getItem() instanceof GunItem && cap.getProfession() == 6 && player.isShiftKeyDown()){
+                player.addEffect(new EffectInstance(EWEffects.ACCURACY.get(),cap.getSkills()[4]/500,1));
+            }
             cap.setSkills(7,cap.getSkills()[5]/500);
         }
         if(itemStack.getItem().equals(EWItems.SKILL_ITEM1.get())){
-            if(cap.getProfession() == 1 && cap.getSkills()[16] != 0 && cap.getSkills()[19] == 0){
+            if(cap.getSkills()[16] != 0 && cap.getSkills()[19] == 0){
                 itemStack.shrink(1);
-                for(PlayerEntity player1:getPlayers(player,5)){
-                    player1.addEffect(new EffectInstance(Effects.DAMAGE_BOOST,cap.getSkills()[16]/500,1));
-                }
                 cap.setSkills(19,cap.getSkills()[17]/500);
-            }
-            if(cap.getProfession() == 2 && cap.getSkills()[16] != 0 && cap.getSkills()[19] == 0){
-                itemStack.shrink(1);
-                for(PlayerEntity player1:getPlayers(player,5)){
-                    player1.addEffect(new EffectInstance(Effects.REGENERATION,cap.getSkills()[16]/500,2));
+                if(cap.getProfession() == 1){
+                    for(PlayerEntity player1:getPlayers(player,5)){
+                        player1.addEffect(new EffectInstance(Effects.DAMAGE_BOOST,cap.getSkills()[16]/500,1));
+                    }
                 }
-                cap.setSkills(19,cap.getSkills()[17]/500);
-            }
-            if(cap.getProfession() == 3 && cap.getSkills()[16] != 0 && cap.getSkills()[19] == 0){
-                itemStack.shrink(1);
-                for(PlayerEntity player1:getPlayers(player,5)){
-                    player1.addEffect(new EffectInstance(EWEffects.MAGIC_PROTECT.get(),cap.getSkills()[16]/500,2));
+                if(cap.getProfession() == 2){
+                    for(PlayerEntity player1:getPlayers(player,5)){
+                        player1.addEffect(new EffectInstance(Effects.REGENERATION,cap.getSkills()[16]/500,2));
+                    }
                 }
-                cap.setSkills(19,cap.getSkills()[17]/500);
+                if(cap.getProfession() == 3){
+                    for(PlayerEntity player1:getPlayers(player,5)){
+                        player1.addEffect(new EffectInstance(EWEffects.MAGIC_PROTECT.get(),cap.getSkills()[16]/500,2));
+                    }
+                }
+                if(cap.getProfession() == 4){
+                    for(PlayerEntity player1:getPlayers(player,10)){
+                        player1.addEffect(new EffectInstance(Effects.INVISIBILITY,cap.getSkills()[16]/500,2));
+                    }
+                }
+                if(cap.getProfession() == 5){
+                    for(PlayerEntity player1:getPlayers(player,5)){
+                        player1.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),cap.getSkills()[16]/500,0));
+                    }
+                }
+                if(cap.getProfession() == 6){
+                    for(PlayerEntity player1:getPlayers(player,5)){
+                        player1.addEffect(new EffectInstance(EWEffects.ATTACK_SPEED.get(),cap.getSkills()[16]/500,0));
+                    }
+                }
             }
         }
         if(itemStack.getItem().equals(EWItems.SKILL_ITEM2.get())){
             if(cap.getSkills()[43] == 0 && cap.getModify() != 0){
                 itemStack.shrink(1);
-                if(cap.getProfession() == 1 && cap.getModify() != 0){
+                if(cap.getProfession() == 1){
                     util.setTimer(cap.getSkills()[32]/500);
                     cap.setSkills(43,cap.getSkills()[35]/500);
                 } else if(cap.getProfession() == 2 && cap.getModify() == 1){
@@ -227,6 +265,41 @@ public class PlayerClickEvent {
                             }
                             entity.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN,600,cap.getSkills()[33]/10000));
                         }
+                    }
+                    cap.setSkills(43,cap.getSkills()[34]/500);
+                }else if(cap.getProfession() == 4){
+                    if(cap.getModify() == 1){
+                        for(LivingEntity living : MathUtils.getNearLiving(player,cap.getSkills()[32]/10000,false)){
+                            float base = (float) SkillUtils.getPlayerAttackDamage(player,itemStack).total();
+                            living.hurt(EWDamageSource.REALLY,(float) (base * cap.getSkills()[33]/10000d));
+                        }
+                    }else{
+                        util.setTimer(cap.getSkills()[32]/500);
+                    }
+                    cap.setSkills(43,cap.getSkills()[34]/500);
+                }else if(cap.getProfession() == 5){
+                    int im = cap.getSkills()[32]/10000;
+                    int time = cap.getSkills()[33]/500;
+                    if(cap.getModify() == 1){
+                        player.addEffect(new EffectInstance(Effects.DAMAGE_BOOST,time,4));
+                        player.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),time,im-1));
+                    }else{
+                        for(PlayerEntity player1 : getPlayers(player,5)){
+                            IPlayerSkillCapability ss = EMCWorldAPI.getInstance().getPlayerSkillCapability(player1);
+                            if(ss.getProfession() == 5){
+                                im *= 2;
+                                time *= 2;
+                            }
+                            player.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),time,im-1));
+                        }
+                    }
+                    cap.setSkills(43,cap.getSkills()[34]/500);
+                }else if(cap.getProfession() == 6){
+                    int level = cap.getSkills()[33]/10000;
+                    if(cap.getModify() == 1){
+                        player.addEffect(new EffectInstance(EWEffects.ATTACK_SPEED.get(),level-1,cap.getSkills()[32]/500));
+                    }else{
+                        player.addEffect(new EffectInstance(EWEffects.REMOTE_DAMAGE.get(),level-1,cap.getSkills()[32]/500));
                     }
                     cap.setSkills(43,cap.getSkills()[34]/500);
                 }
@@ -345,7 +418,7 @@ public class PlayerClickEvent {
         return out;
     }
 
-    private static List<? extends PlayerEntity> getPlayers(PlayerEntity player,double distance){
+    public static List<? extends PlayerEntity> getPlayers(PlayerEntity player,double distance){
         World world = player.getCommandSenderWorld();
         List<PlayerEntity> outputPlayer = new ArrayList<>();
         List<? extends PlayerEntity> allPlayer = world.players();

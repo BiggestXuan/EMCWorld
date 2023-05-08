@@ -18,10 +18,19 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.TieredItem;
 import net.minecraft.potion.EffectInstance;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SkillUtils {
+    @Nullable
+    public static Double getGunRate(PlayerEntity player){
+        var cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        if(cap.getProfession() == 6 && cap.getMaxLevel() >= 80){
+            return cap.getSkills()[28]/10000d;
+        }
+        return null;
+    }
     public static DamageUtils getPlayerAttackDamage(PlayerEntity player,ItemStack stack){
         IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
         IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
@@ -60,6 +69,9 @@ public class SkillUtils {
             if(skills[28] != 0){
                 damage += skills[28] /10000f;
             }
+        }
+        if(cap.getProfession() == 5){
+            damage *= Math.pow(1+skills[0]/10000f,level);
         }
         damage -= c;
         return utils.append(damage);

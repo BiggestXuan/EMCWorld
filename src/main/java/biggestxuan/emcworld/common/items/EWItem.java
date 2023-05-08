@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.items;
  */
 
 import biggestxuan.emcworld.api.item.EMCWorldBaseItem;
+import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 
 public class EWItem extends EMCWorldBaseItem {
     public EWItem() {
@@ -15,6 +16,10 @@ public class EWItem extends EMCWorldBaseItem {
 
     public EWItem(Properties properties){
         super(properties);
+    }
+
+    public EWItem(Integer maxSize){
+        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).stacksTo(maxSize));
     }
 
     public EWItem(int rarity){

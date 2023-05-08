@@ -51,6 +51,7 @@
     "OrbOfAtlantisMixin",
     "PickaxeItemMixin",
     "PlaguedAffixMixin",
+    "PlayerEntityMixin",
     "PlayerWaystoneManagerMixin",
     "QuarkHandlerMixin",
     "QuarkInventoryHandlerMixin",

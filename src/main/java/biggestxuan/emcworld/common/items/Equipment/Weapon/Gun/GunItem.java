@@ -7,6 +7,8 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Gun;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.gun.IGunTier;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
@@ -16,9 +18,11 @@ import biggestxuan.emcworld.common.entity.AmmoEntity;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toClient.ChangeRotPacket;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
+import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.common.utils.SkillUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -27,6 +31,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TieredItem;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.*;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.text.IFormattableTextComponent;
@@ -59,6 +64,10 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         var bullet = getEntity(player,hand,world);
         if(type == GunType.SHOTGUN){
             int count = (int) MathUtils.log(1.5,getLevel(stack)) + 1;
+            var d = SkillUtils.getGunRate(player);
+            if(d != null){
+                count *= 1 + d;
+            }
             for (int i = 0; i < count; i++) {
                 var cc = getEntity(player,hand,world);
                 if(i == 0){
@@ -74,7 +83,13 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
             world.addFreshEntity(bullet);
         }
         bullet.setInvisible(true);
-        player.getCooldowns().addCooldown(this,cd(stack));
+        var cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        if(cap.getProfession() == 6){
+            if(MathUtils.isRandom(cap.getSkills()[12]/10000d)){
+                return ActionResult.success(stack);
+            }
+        }
+        player.getCooldowns().addCooldown(this,cd(stack,player));
         return ActionResult.success(stack);
     }
 
@@ -82,7 +97,7 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         ItemStack stack = player.getItemInHand(hand);
         var type = getGunType(stack);
         var entity = new AmmoEntity(player,world){
-            public void onHitEntity(EntityRayTraceResult result) {
+            public void onHitEntity(@Nonnull EntityRayTraceResult result) {
                 super.onHitEntity(result);
                 player.level.playSound(null,player.getX(),player.getY(),player.getZ(),SoundEvents.ARROW_HIT_PLAYER, SoundCategory.PLAYERS,0.5F,1F);
                 float damage = damage(stack);
@@ -99,6 +114,10 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
                                 entity.invulnerableTime = 0;
                             }
                             if(type == GunType.ASSAULT){
+                                Double d = SkillUtils.getGunRate(player);
+                                if(d != null){
+                                    baseTime *= 1 + d;
+                                }
                                 ((LivingEntity) entity).hurtTime -= baseTime;
                                 entity.invulnerableTime -= baseTime;
                             }
@@ -232,6 +251,11 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         if(type == GunType.SNIPER){
             base *= 12;
         }
+        var cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        if(cap.getProfession() == 6){
+            double r = 1 - cap.getSkills()[24]/10000d;
+            base *= r;
+        }
         return Math.max(0,base);
     }
 
@@ -276,10 +300,29 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         if(type == GunType.SNIPER){
             base *= 3.3;
         }
+        if(type == GunType.PISTOL){
+            var d = SkillUtils.getGunRate(player);
+            if(d != null){
+                base *= 1 + d;
+            }
+        }
+        EffectInstance instance = player.getEffect(EWEffects.ACCURACY.get());
+        if(instance != null){
+            int level = instance.getAmplifier();
+            base *= (1+level) * 0.1d;
+        }
+        IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        if(cap.getProfession() == 6){
+            double b = cap.getSkills()[0]/10000d * cap.getLevel();
+            base *= 1 + b;
+            if(cap.getModify() == 2 && cap.getSkills()[40] != 0){
+                base = 1;
+            }
+        }
         return Math.min(1,base);
     }
 
-    public int cd(ItemStack stack){
+    public int cd(ItemStack stack,PlayerEntity player){
         GunType type = getGunType(stack);
         int cd = tier.cd(stack);
         cd -= cd * 0.02 * getLevel(stack);
@@ -294,6 +337,20 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         }
         if(type == GunType.SNIPER){
             cd *= 15;
+            var d = SkillUtils.getGunRate(player);
+            if(d != null){
+                cd *= 1 - d;
+            }
+        }
+        EffectInstance instance = player.getEffect(EWEffects.ATTACK_SPEED.get());
+        if(instance != null){
+            int level = Math.min(10,instance.getAmplifier());
+            cd *= (10 - level) / 10d;
+        }
+        var cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        if(cap.getProfession() == 6 && cap.getModify() == 1){
+            var r = cap.getSkills()[40]/10000d;
+            cd *= 1 - r;
         }
         return cd;
     }

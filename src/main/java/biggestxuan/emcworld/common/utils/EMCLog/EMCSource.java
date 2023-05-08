@@ -7,6 +7,8 @@ package biggestxuan.emcworld.common.utils.EMCLog;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.items.LotteryItem;
+import biggestxuan.emcworld.common.utils.Lottery.Lottery;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -365,6 +367,22 @@ public abstract class EMCSource<T> {
         @Override
         public String getInfo() {
             return super.getInfo()+EMCWorld.tc("emcsource.command",getEMC()).getString();
+        }
+    }
+
+    public static class LotteryEMCSource extends EMCSource<Lottery>{
+        private final Lottery lottery;
+
+        public LotteryEMCSource(long emc, PlayerEntity player, Lottery target) {
+            super(emc, player, target, 0);
+            lottery = target;
+        }
+
+        @Override
+        public String getInfo(){
+            List<Integer> list = lottery.getNum();
+            list.addAll(lottery.getAdd());
+            return super.getInfo()+EMCWorld.tc("emcsource.lottery",getEMC(), LotteryItem.getString(list),lottery.getRate()).getString();
         }
     }
 }

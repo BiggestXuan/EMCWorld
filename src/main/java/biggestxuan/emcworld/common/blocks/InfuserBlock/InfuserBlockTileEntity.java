@@ -251,6 +251,13 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
         World world = this.level;
         assert world != null;
         Inventory inventory = entity.getInventory();
+        boolean isNull = false;
+        for (int i = 0; i < inventory.getContainerSize(); i++) {
+            if(inventory.getItem(i).isEmpty()){
+                isNull = true;
+            }
+        }
+        if(isNull) return false;
         Optional<InfuserRecipe> match = world.getRecipeManager().getRecipeFor(InfuserRecipe.Type.INSTANCE,inventory,world);
         boolean out = match.isPresent() && canOutPut(inventory,match.get().getResultItem()) && this.craftLevel >= match.get().getCraftLevel() && this.emc >= match.get().getCostEMCRate();
         if(out){
