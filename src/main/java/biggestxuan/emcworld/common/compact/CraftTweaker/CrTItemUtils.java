@@ -29,6 +29,18 @@ import java.util.List;
 @ZenCodeType.Name("mods.emcworld.ItemUtils")
 @SuppressWarnings("unused")
 public class CrTItemUtils {
+
+    @ZenCodeType.Method
+    public static IIngredient getEMCGodItemWithMaxLevel(){
+        CompoundNBT nbt = new CompoundNBT();
+        nbt.putInt("level",30);
+        nbt.putInt("prefix",10);
+        nbt.putInt("star",8);
+        nbt.putInt("max_star",8);
+        nbt.putBoolean("star_init",true);
+        return getEMCGodItems(nbt);
+    }
+
     @ZenCodeType.Method
     public static boolean isSword(IItemStack stack){
         return stack.getImmutableInternal().getItem() instanceof SwordItem;
@@ -53,17 +65,6 @@ public class CrTItemUtils {
     public static IIngredient getEMCGodItemWithLevel(int level){
         CompoundNBT nbt = new CompoundNBT();
         nbt.putInt("level",level);
-        return getEMCGodItems(nbt);
-    }
-
-    @ZenCodeType.Method
-    public static IIngredient getEMCGodItemWithMaxLevel(){
-        CompoundNBT nbt = new CompoundNBT();
-        nbt.putInt("level",30);
-        nbt.putInt("prefix",10);
-        nbt.putInt("star",8);
-        nbt.putInt("max_star",8);
-        nbt.putBoolean("star_init",true);
         return getEMCGodItems(nbt);
     }
 

@@ -7,9 +7,9 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.data.LotteryData;
+import biggestxuan.emcworld.common.exception.EMCWorldIllegalPacketException;
 import biggestxuan.emcworld.common.items.LotteryItem;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
@@ -58,15 +58,22 @@ public class BuyLotteryPacket {
                 LotteryData data = LotteryData.getInstance(server);
                 ItemStack stack = new ItemStack(EWItems.LOTTERY.get(),1);
                 Lottery lottery = new Lottery(t(msg.num),t(msg.add),msg.rate, LotteryMode.getMode(msg.mode));
-                LotteryItem.setLottery(stack,lottery,data.getIndex()+1);
-                long emc = LotteryUtils.getBuyPrice(lottery);
-                if(EMCHelper.getPlayerEMC(player) >= emc && emc <= 10000000){
-                    player.addItem(stack);
-                    EMCHelper.modifyPlayerEMC(player,new EMCSource.LotteryEMCSource(-emc,player,lottery),true);
-                    data.setStoredEMC(data.getStoredEMC()+emc);
-                }
-                if(emc > 10000000){
-                    Message.sendMessage(player, EMCWorld.tc("tooltip.emcworld.lottery.max"));
+                try{
+                    if(LotteryUtils.getLotteryRule(lottery)){
+                        throw new EMCWorldIllegalPacketException(player.getScoreboardName());
+                    }
+                    LotteryItem.setLottery(stack,lottery,data.getIndex()+1);
+                    long emc = LotteryUtils.getBuyPrice(lottery);
+                    if(EMCHelper.getPlayerEMC(player) >= emc && emc <= 10000000){
+                        player.addItem(stack);
+                        EMCHelper.modifyPlayerEMC(player,new EMCSource.LotteryEMCSource(-emc,player,lottery),true);
+                        data.setStoredEMC(data.getStoredEMC()+(long) (emc*0.3));
+                    }
+                    if(emc > 10000000){
+                        Message.sendMessage(player, EMCWorld.tc("tooltip.emcworld.lottery.max"));
+                    }
+                }catch (EMCWorldIllegalPacketException e){
+                    EMCWorld.LOGGER.error(e.getMessage());
                 }
             }
         }

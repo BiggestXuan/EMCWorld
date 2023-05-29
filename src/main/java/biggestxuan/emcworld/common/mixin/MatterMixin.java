@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(Matter.class)
 public abstract class MatterMixin {
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Disable Power Flower
      */

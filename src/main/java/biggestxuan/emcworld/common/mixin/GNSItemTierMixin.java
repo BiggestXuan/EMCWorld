@@ -29,7 +29,7 @@ public abstract class GNSItemTierMixin implements IItemTier {
     @Final
     private int enchantability;
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason NULL
      */

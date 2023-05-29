@@ -29,7 +29,7 @@ public abstract class WayStoneSelectionScreenBaseMixin extends ContainerScreen<W
         super(p_i51105_1_, p_i51105_2_, p_i51105_3_);
     }
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason xp -> EMC
      */

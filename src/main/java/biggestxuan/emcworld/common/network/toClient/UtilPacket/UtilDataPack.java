@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.network.toClient.UtilPacket;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/17
@@ -24,7 +24,7 @@ public class UtilDataPack {
     private final float raidRate;
     private final long cd;
     private final double difficulty;
-    private final int level;
+    private final int[] level;
     private final float arcana;
     private final float maxArcana;
     private final boolean showArcana;
@@ -35,7 +35,7 @@ public class UtilDataPack {
     private final int gaiaPlayer;
     private final boolean liveMode;
 
-    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield,boolean lastShield,int gaiaPlayer,boolean liveMode){
+    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int[] level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield,boolean lastShield,int gaiaPlayer,boolean liveMode){
         this.isRaid = isRaid;
         this.state = state;
         this.pillagerAmount = pillagerAmount;
@@ -67,7 +67,7 @@ public class UtilDataPack {
         raidRate = buffer.readFloat();
         cd = buffer.readLong();
         difficulty = buffer.readDouble();
-        level = buffer.readInt();
+        level = buffer.readVarIntArray();
         arcana = buffer.readFloat();
         maxArcana = buffer.readFloat();
         showArcana = buffer.readBoolean();
@@ -89,7 +89,7 @@ public class UtilDataPack {
         buffer.writeFloat(raidRate);
         buffer.writeLong(cd);
         buffer.writeDouble(difficulty);
-        buffer.writeInt(level);
+        buffer.writeVarIntArray(level);
         buffer.writeFloat(arcana);
         buffer.writeFloat(maxArcana);
         buffer.writeBoolean(showArcana);
@@ -107,7 +107,7 @@ public class UtilDataPack {
         c.setPacketHandled(true);
     }
 
-    public int getLevel() {
+    public int[] getLevel() {
         return level;
     }
 

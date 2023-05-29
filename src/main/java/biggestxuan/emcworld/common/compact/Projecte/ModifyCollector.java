@@ -11,20 +11,20 @@ import dev.latvian.mods.projectex.Matter;
 
 public class ModifyCollector {
     public static void init(){
-        Matter.BASIC.collectorOutput = g(5);
-        Matter.DARK.collectorOutput = g(7);
-        Matter.RED.collectorOutput = g(9);
-        Matter.MAGENTA.collectorOutput = g(11);
-        Matter.PINK.collectorOutput = g(12);
-        Matter.PURPLE.collectorOutput = g(13);
-        Matter.VIOLET.collectorOutput = g(14);
-        Matter.BLUE.collectorOutput = g(17);
-        Matter.CYAN.collectorOutput = g(20);
-        Matter.GREEN.collectorOutput = g(21);
-        Matter.LIME.collectorOutput = g(23);
-        Matter.YELLOW.collectorOutput = g(26);
-        Matter.ORANGE.collectorOutput = g(28);
-        Matter.WHITE.collectorOutput = g(30);
+        Matter.BASIC.collectorOutput = g(3);
+        Matter.DARK.collectorOutput = g(4);
+        Matter.RED.collectorOutput = g(5);
+        Matter.MAGENTA.collectorOutput = g(6);
+        Matter.PINK.collectorOutput = g(7);
+        Matter.PURPLE.collectorOutput = g(8);
+        Matter.VIOLET.collectorOutput = g(9);
+        Matter.BLUE.collectorOutput = g(11);
+        Matter.CYAN.collectorOutput = g(13);
+        Matter.GREEN.collectorOutput = g(15);
+        Matter.LIME.collectorOutput = g(17);
+        Matter.YELLOW.collectorOutput = g(19);
+        Matter.ORANGE.collectorOutput = g(22);
+        Matter.WHITE.collectorOutput = g(25);
         Matter.FINAL.collectorOutput = 0;
         Matter.FADING.collectorOutput = 0;
     }

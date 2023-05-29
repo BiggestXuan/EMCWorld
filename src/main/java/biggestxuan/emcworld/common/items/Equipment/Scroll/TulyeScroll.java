@@ -36,6 +36,6 @@ public class TulyeScroll extends ScrollItem implements ISponsorItem {
     @Nullable
     @Override
     public Sponsors getSponsor() {
-        return new Sponsors("Tulye","52a0f9c3-5551-4de9-bfe5-16f803f44633",3);
+        return Sponsors.all.TULYE.getSponsors();
     }
 }

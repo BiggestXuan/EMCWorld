@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(OrbOfAtlantis.class)
 public abstract class OrbOfAtlantisMixin extends ItemBase {
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Fix a bug
      */

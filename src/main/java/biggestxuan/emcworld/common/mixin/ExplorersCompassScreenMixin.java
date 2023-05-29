@@ -46,7 +46,7 @@ public abstract class ExplorersCompassScreenMixin extends Screen {
         super(p_i51108_1_);
     }
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason .
      */

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/03
@@ -75,7 +75,7 @@ public class PlayerAttackEvent {
             if(stack.getItem() instanceof IAdditionsDamageWeapon){
                 damage = (float) SkillUtils.getPlayerAttackDamage(player,stack).total();
             }
-            damage = damage > 0 ? damage : 0;
+            damage = damage > 0 ? damage : 1;
             if(stack.getItem() instanceof ICriticalWeapon){
                 ICriticalWeapon weapon = (ICriticalWeapon) stack.getItem();
                 if(MathUtils.isRandom(weapon.getActCriticalChance(stack))){
@@ -149,7 +149,7 @@ public class PlayerAttackEvent {
             if(world.isRaided(new BlockPos(player.position()))){
                 damage *= util.getRaidRate();
             }
-            damage *= player.getAttackStrengthScale(0);
+            damage *= util.getAttackCD();
             double rate = 1d;
             if(stack.getItem() instanceof ICostEMCItem){
                 ICostEMCItem item = (ICostEMCItem) stack.getItem();
@@ -292,18 +292,20 @@ public class PlayerAttackEvent {
 
     @SubscribeEvent
     public static void attackEvent(AttackEntityEvent event){
-        PlayerEntity entity = event.getPlayer();
-        Entity entity1 = entity.getEntity();
-        IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(entity);
-        if(entity.getMainHandItem().getItem() instanceof WarHammerItem && entity.getAttackStrengthScale(0) != 1){
+        PlayerEntity player = event.getPlayer();
+        Entity entity = player.getEntity();
+        IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        var util = EMCWorldAPI.getInstance().getUtilCapability(player);
+        util.setAttackCD(player.getAttackStrengthScale(0));
+        if(player.getMainHandItem().getItem() instanceof WarHammerItem && player.getAttackStrengthScale(0) != 1){
             if(!(cap.getProfession() == 5 && cap.getModify() == 1 && cap.getSkills()[40] != 0)){
                 event.setCanceled(true);
             }
         }
-        if(entity1 instanceof LivingEntity){
-            LivingEntity livingEntity = (LivingEntity) entity1;
-            if(entity.getMainHandItem().getItem() instanceof DaggerItem){
-                DaggerItem daggerItem = (DaggerItem) entity.getMainHandItem().getItem();
+        if(entity instanceof LivingEntity){
+            LivingEntity livingEntity = (LivingEntity) entity;
+            if(player.getMainHandItem().getItem() instanceof DaggerItem){
+                DaggerItem daggerItem = (DaggerItem) player.getMainHandItem().getItem();
                 if(daggerItem.getTier().getSpeed() >= -1.6){
                     return;
                 }
@@ -311,8 +313,8 @@ public class PlayerAttackEvent {
                 livingEntity.invulnerableTime -= 3;
                 if(daggerItem instanceof BaseEMCGodDagger){
                     BaseEMCGodDagger emcGodDagger = (BaseEMCGodDagger) daggerItem;
-                    livingEntity.hurtTime -= Math.round(0.5 * emcGodDagger.getLevel(entity.getMainHandItem()));
-                    livingEntity.invulnerableTime -= Math.round(0.5 * emcGodDagger.getLevel(entity.getMainHandItem()));
+                    livingEntity.hurtTime -= Math.round(0.5 * emcGodDagger.getLevel(player.getMainHandItem()));
+                    livingEntity.invulnerableTime -= Math.round(0.5 * emcGodDagger.getLevel(player.getMainHandItem()));
                 }
             }
         }

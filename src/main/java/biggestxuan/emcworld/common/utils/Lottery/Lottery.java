@@ -37,7 +37,7 @@ public final class Lottery {
             int a = num.size();
             List<List<Integer>> temp = MathUtils.permute(add,7-a);
             for(List<Integer> i : temp){
-                List<Integer> t = num;
+                List<Integer> t = MathUtils.copyList(num);
                 t.addAll(i);
                 list.add(t);
             }

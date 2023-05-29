@@ -27,7 +27,7 @@ public abstract class ItemDaggerOfSacrificeMixin extends Item {
     public void hurt(ItemStack stack, LivingEntity target, LivingEntity attacker, CallbackInfoReturnable<Boolean> cir){
         if(!attacker.level.isClientSide && attacker instanceof PlayerEntity && target != null){
             PlayerEntity player = (PlayerEntity) target;
-            if(target.getHealth() > EMCWorldAPI.getInstance().getUtilCapability(player).getLevel()){
+            if(target.getHealth() > EMCWorldAPI.getInstance().getPlayerSkillCapability(player).getLevel()){
                 cir.setReturnValue(false);
                 cir.cancel();
             }

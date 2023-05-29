@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.network;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/10/04

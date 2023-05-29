@@ -56,7 +56,7 @@ public abstract class ItemMixin implements INameItem {
         return null;
     }
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Item's level and prefix.
      */

@@ -25,13 +25,4 @@ public class CompoundLotteryScreen extends BuyLotteryScreen {
     protected boolean renderConfirmButton() {
         return true;
     }
-
-    @Override
-    public boolean canSend(){
-        var flag = super.canSend();
-        if(numList.size() < 7 || numList.size() > 20){
-            flag = false;
-        }
-        return flag;
-    }
 }

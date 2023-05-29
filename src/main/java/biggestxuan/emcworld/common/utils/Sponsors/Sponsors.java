@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.utils.Sponsors;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/17
@@ -24,6 +24,7 @@ public class Sponsors extends EMCWorldPlayer {
         _Btmy_ (new Sponsors("_Btmy_","ec54ae0b-a148-4408-8ff8-0661ab44fed0",5)),
         dytlj7788 (new Sponsors("dytlj7788","e690ea7a-8fce-4049-80dd-07158cd6a348",5)),
         Chara_SS (new Sponsors("Chara_SS","1738cb1b-ea69-4e0f-8678-688aea7e8d1b",5)),
+        TULYE (new Sponsors("Tulye","52a0f9c3-5551-4de9-bfe5-16f803f44633",6)),
         xiangshushumiao (new Sponsors("xiangshushumiao","19cd7e09-e249-4b92-b35a-770b3399a302",4)),
         MCyunxi (new Sponsors("MCyunxi","eb91acd8-a70e-4b1d-b1c4-34fc4c8af495",3)),
         HIEHEIHEICAT (new Sponsors("HIEHEIHEICAT","28f6f584-5d9c-45ba-b919-a8ebabf53477",3)),
@@ -39,41 +40,41 @@ public class Sponsors extends EMCWorldPlayer {
             return sponsors;
         }
     }
-    private final int index;
+    private final int[] index;
     public final static int maxIndex = 6;
 
-    public Sponsors(String name,UUID uuid,int index){
+    public Sponsors(String name,UUID uuid,int[] index){
         super(name,uuid);
         this.index = index;
     }
 
-    public Sponsors(String name,String uuid,int index){
-        this(name,UUID.fromString(uuid),index);
+    public Sponsors(String name,String uuid,int[] index){
+        super(name,UUID.fromString(uuid));
+        this.index = index;
+    }
+
+    private Sponsors(String name,String uuid,int index){
+        this(name,UUID.fromString(uuid),new int[]{index});
     }
 
     public Sponsors(PlayerEntity player){
         this(player.getScoreboardName(),player.getUUID(),EMCWorldAPI.getInstance().getUtilCapability(player).getLevel());
     }
 
-    public int getIndex(){
+    public int[] getIndex(){
         return this.index;
     }
 
-    public List<Integer> canSwitchIndex(){
+    public List<Integer> getIndexList(){
         List<Integer> list = new ArrayList<>();
-        if(index <= 5){
-            for (int i = 0; i <= index ; i++) {
-                if(i == 3 && index == 4) continue;
-                list.add(i);
-            }
-        }
-        if(index > 5){
-            for (int i = 0; i <= 4; i++) {
-                list.add(i);
-            }
-            list.add(index);
+        for(int i : index){
+            list.add(i);
         }
         return list;
+    }
+
+    public int getMaxIndex(){
+        return index == null ? 0 : index[index.length-1];
     }
 
     public static String getSponsorName(int index){

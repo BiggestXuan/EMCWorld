@@ -32,7 +32,7 @@ public class LotteryData extends WorldSavedData {
         return manager.computeIfAbsent(LotteryData::new,name);
     }
 
-    public void refreshNum(){
+    private void refreshNum(){
        num = LotteryUtils.getRandCode();
        setDirty();
     }
@@ -42,8 +42,14 @@ public class LotteryData extends WorldSavedData {
         setDirty();
     }
 
-    public void setIndex(int index){
+    private void setIndex(int index){
         this.index = index;
+        setDirty();
+    }
+
+    public void openLottery(){
+        refreshNum();
+        index++;
         setDirty();
     }
 

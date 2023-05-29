@@ -56,7 +56,7 @@ public abstract class WayStoneButtonMixin extends Button {
         }
     }
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Overwrite button render.
      */

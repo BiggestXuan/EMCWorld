@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.utils;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/26
@@ -22,7 +22,6 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
-import biggestxuan.emcworld.common.registry.EWModules;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
@@ -50,6 +49,7 @@ import org.openzen.zencode.java.ZenCodeType;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -120,6 +120,14 @@ public class MathUtils {
         return 0;
     }
 
+    public static int[] StringArray2IntArray(String[] array){
+        int[] a = new int[array.length];
+        for (int i = 0; i < array.length ; i++) {
+            a[i] = isNum(array[i]) ? Integer.parseInt(array[i]) : 0;
+        }
+        return a;
+    }
+
     public static String thousandSign(long text){
         return thousandSign(String.valueOf(text));
     }
@@ -143,6 +151,10 @@ public class MathUtils {
     public static float getAdditionDamage(Entity attacker, LivingEntity target, float damage){
         double difficulty = DifficultyHelper.getLivingDifficulty(target);
         return (float) (damage * (difficulty / 120f * ConfigManager.DIFFICULTY.get()));
+    }
+
+    public static <T> List<T> copyList(List<T> list){
+        return new ArrayList<>(list);
     }
 
     public static String longSign(long value){

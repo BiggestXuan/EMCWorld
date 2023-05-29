@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.capability.Util;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/26
@@ -10,7 +10,7 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import net.minecraft.nbt.CompoundNBT;
 
 public class UtilCapability implements IUtilCapability {
-    private int SponsorLevel;
+    private int[] SponsorLevel;
     private long CoolDown;
     private int timer;
     private boolean isRaid;
@@ -46,9 +46,10 @@ public class UtilCapability implements IUtilCapability {
     private int displayIndex;
     private boolean liveMode;
     private boolean online;
+    private float attackCD;
 
     public UtilCapability(){
-        this.SponsorLevel = 0;
+        this.SponsorLevel = new int[0];
         this.CoolDown = 0;
         this.timer = 0;
         this.isRaid = false;
@@ -82,6 +83,17 @@ public class UtilCapability implements IUtilCapability {
         this.displayIndex = 0;
         this.liveMode = false;
         this.online = true;
+        this.attackCD = 1F;
+    }
+
+    @Override
+    public float getAttackCD() {
+        return attackCD;
+    }
+
+    @Override
+    public void setAttackCD(float value) {
+        attackCD = value;
     }
 
     @Override
@@ -105,12 +117,12 @@ public class UtilCapability implements IUtilCapability {
     }
 
     @Override
-    public void setLevel(int level) {
+    public void setLevel(int[] level) {
         this.SponsorLevel = level;
     }
 
     @Override
-    public int getLevel() {
+    public int[] getLevel() {
         return this.SponsorLevel;
     }
 
@@ -452,7 +464,7 @@ public class UtilCapability implements IUtilCapability {
     @Override
     public CompoundNBT serializeNBT() {
         CompoundNBT tag = new CompoundNBT();
-        tag.putInt("sponsorLevel",this.SponsorLevel);
+        tag.putIntArray("sponsorLevel",this.SponsorLevel);
         tag.putLong("CoolDown",this.CoolDown);
         tag.putInt("timer",this.timer);
         tag.putBoolean("isRaid",this.isRaid);
@@ -488,12 +500,13 @@ public class UtilCapability implements IUtilCapability {
         tag.putInt("displayIndex",displayIndex);
         tag.putBoolean("liveMode",liveMode);
         tag.putBoolean("online",online);
+        tag.putFloat("attackCD",attackCD);
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundNBT nbt) {
-        this.SponsorLevel = nbt.getInt("sponsorLevel");
+        this.SponsorLevel= nbt.getIntArray("sponsorLevel");
         this.CoolDown = nbt.getLong("CoolDown");
         this.timer = nbt.getInt("timer");
         this.isRaid = nbt.getBoolean("isRaid");
@@ -529,5 +542,6 @@ public class UtilCapability implements IUtilCapability {
         this.displayIndex = nbt.getInt("displayIndex");
         this.liveMode = nbt.getBoolean("liveMode");
         this.online = nbt.getBoolean("online");
+        this.attackCD = nbt.getFloat("attackCD");
     }
 }

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/24
@@ -137,7 +137,6 @@ public class EMCWorld {
         LOGGER.info(ModUtils.addMod());
     }
 
-    @OnlyIn(Dist.CLIENT)
     private void doClientStuff(FMLClientSetupEvent event) {
         event.enqueueWork(()->{
             ScreenManager.register(EWContainerTypes.advancedUpdateContainer.get(), AdvancedUpdateGUI::new);
@@ -158,7 +157,6 @@ public class EMCWorld {
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
             ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
-            ItemModelsProperties.register(EWItems.EMC_CHARGE_GEM.get(),rl("level"),new EMCLevelModel());
         });
     }
 
@@ -202,7 +200,7 @@ public class EMCWorld {
 
     private static void welcome(){
         Arrays.stream(Sponsors.all.values()).forEach(s -> {
-            if(s.getSponsors().getIndex() == 3 || s.getSponsors().getIndex() >= 6){
+            if(s.getSponsors().getMaxIndex() >= 3 || s.getSponsors().getMaxIndex() >= 6){
                 LOGGER.info("Thanks for: "+s.getSponsors().getPlayerName());
             }
         });

@@ -31,17 +31,7 @@ public class TBLotteryScreen extends BuyLotteryScreen {
     }
 
     @Override
-    public boolean canSend(){
-        var flag = super.canSend();
-        if(numList.size() < 1 || numList.size() >= 6 || numList.size() + addList.size() <= 6 || numList.size() + addList.size() > 20){
-            flag = false;
-        }
-        return flag;
-    }
-
-    @Override
     protected void subRender(MatrixStack stack){
-        var base = ModList.get().isLoaded("modernui") ? 0.55 : 0.2;
         drawCenteredString(stack,font, EMCWorld.tc("tooltip.emcworld.lottery.tb_tip"),(int)(width*0.3),(int)(height*0.07),0xffffff);
         //drawCenteredString(stack,font, EMCWorld.tc("tooltip.emcworld.lottery.tb_tip"),(int)(width*0.1),(int)(height*0.15),0xffffff);
         drawString(stack,font, EMCWorld.tc("tooltip.emcworld.lottery.tow", LotteryItem.getString(numList)),(int)(width*0.25),(int)(height*base),0xffffff);

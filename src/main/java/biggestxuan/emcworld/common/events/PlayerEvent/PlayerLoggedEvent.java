@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.events.PlayerEvent;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/03
@@ -13,7 +13,6 @@ import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.network.PacketHandler;
-import biggestxuan.emcworld.common.network.toServer.LiveModePacket;
 import biggestxuan.emcworld.common.network.toServer.OfflinePacket;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.BirthdayUtils;
@@ -21,7 +20,7 @@ import biggestxuan.emcworld.common.utils.CalendarUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
-import biggestxuan.emcworld.common.utils.Sponsors.ModPackHelper;
+import biggestxuan.emcworld.common.utils.Network.Network;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
@@ -67,19 +66,18 @@ public class PlayerLoggedEvent {
         sponsorCap.ifPresent(cp -> cp.setOnline(server.usesAuthentication()));
         ResearchManager.setTomeReceived(player);
         IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
-        ModPackHelper.packInfo info = ModPackHelper.getPackInfo();
-        int level = 0;
+        int[] level = MathUtils.StringArray2IntArray(Network.getInfo(player).split(","));
         sendHappyBirthday(server,player);
-        for(Sponsors sp:info.getSponsors()){
-            if(name.equals(sp.getPlayerName()) && uuid.equals(sp.getPlayerUUID())){
-                level = sp.getIndex();
-                c.setLevel(level);
-                break;
+        sponsorCap.ifPresent(sp -> {
+            if(server.usesAuthentication()){
+                sp.setLevel(level);
+            }else{
+                sp.setLevel(new int[]{0});
+                giveOfflineWarn(player);
             }
-            sponsorCap.ifPresent((cap)-> cap.setLevel(0));
-        }
-        if(c.getDisplayIndex() == 0 && c.getLevel() != 0){
-            c.setDisplayIndex(c.getLevel());
+        });
+        if(c.getDisplayIndex() == 0 && c.getLevel()[0] != 0){
+            c.setDisplayIndex(c.getLevel()[c.getLevel().length-1]);
         }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
@@ -139,16 +137,17 @@ public class PlayerLoggedEvent {
         if(instance.isChristmasDay()){
             Message.sendMessage(player,tc("message.festival.christmas"));
         }
-        if(info.getVersion() == 0){
+        String[] ver = Network.getInfo(0).split(",");
+        if(Integer.parseInt(ver[0]) == 0){
             Message.sendMessage(player,tc("message.update_fail"));
-        }else if(info.getVersion() > EMCWorld.ModPackVersion){
-            Message.sendMessage(player, tc("message.update_need",info.getVersionName()));
+        }else if(Integer.parseInt(ver[0]) > EMCWorld.ModPackVersion){
+            Message.sendMessage(player, tc("message.update_need",ver[1]));
         }else{
             Message.sendMessage(player,tc("message.update_none"));
         }
         server.setDifficulty(Difficulty.HARD,true);
         server.setDifficultyLocked(true);
-        if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel() == 0){
+        if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel()[0] == 0){
             Message.sendMessage(player,EMCWorld.tc("message.log.sponsor",log+1));
         }
         sponsorCap.ifPresent((cap) -> {
@@ -189,7 +188,7 @@ public class PlayerLoggedEvent {
         });
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    //@SubscribeEvent(priority = EventPriority.LOWEST)
     @OnlyIn(Dist.CLIENT)
     public static void playerLoggedInLowEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();

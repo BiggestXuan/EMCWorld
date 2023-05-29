@@ -2,7 +2,7 @@ package biggestxuan.emcworld.common.utils;
 
 import biggestxuan.emcworld.common.config.ConfigManager;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/03

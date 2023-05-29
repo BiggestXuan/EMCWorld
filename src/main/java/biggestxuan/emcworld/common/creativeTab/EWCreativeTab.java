@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.creativeTab;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/07/27

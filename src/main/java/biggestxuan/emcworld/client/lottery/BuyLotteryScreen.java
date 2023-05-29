@@ -8,6 +8,7 @@ package biggestxuan.emcworld.client.lottery;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.items.LotteryItem;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.BuyLotteryPacket;
 import biggestxuan.emcworld.common.utils.Lottery.Lottery;
@@ -21,9 +22,9 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.ModList;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public abstract class BuyLotteryScreen extends Screen {
     protected final List<Integer> numList;
     protected final List<Integer> addList;
     private TextFieldWidget text;
+    private boolean lastIsShift = false;
+    protected double base = ModList.get().isLoaded("modernui") ? 0.55 : 0.2;
 
     protected BuyLotteryScreen(String name) {
         super(EMCWorld.tc("screen.lottery."+name));
@@ -57,7 +60,9 @@ public abstract class BuyLotteryScreen extends Screen {
         }
         this.addButton(new RefreshButton());
         this.addButton(new BackButton());
+        this.addButton(new UndoButton());
         text = new TextFieldWidget(Minecraft.getInstance().font, (int) (width * 0.25), (int) (height*0.75),100,20,EMCWorld.tc("aaa"));
+        text.setMaxLength(5);
         text.setValue("1");
         this.children.add(text);
     }
@@ -66,12 +71,8 @@ public abstract class BuyLotteryScreen extends Screen {
     public void render(@Nonnull MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks){
         this.renderBackground(matrixStack);
         Minecraft mc = Minecraft.getInstance();
-        int w = Math.min((int) Math.round(this.width * 0.8),550);
-        int h = Math.min((int) Math.round(this.height * 0.8),275);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        //this.minecraft.getTextureManager().bind(EMCWorld.rl("textures/gui/level_core.png"));
-        //blit(matrixStack, this.width/12, 5, 0, 0, w, h, w, h);
         drawCenteredString(matrixStack,mc.font,EMCWorld.tc("tooltip.emcworld.lottery."+getMode()),width/2,(int)(height*0.15),0xffffff);
         drawCenteredString(matrixStack,mc.font,EMCWorld.tc("tooltip.emcworld.lottery.cost",MathUtils.format(LotteryUtils.getBuyPrice(getLottery()))),(int)(width*0.83),(int)(height*0.5),0xffffff);
         drawString(matrixStack,mc.font,EMCWorld.tc("tooltip.emcworld.lottery.rate"),(int) (width * 0.25) - 30, (int) (height*0.77),0xffffff);
@@ -80,6 +81,13 @@ public abstract class BuyLotteryScreen extends Screen {
             if(b instanceof ConfirmButton){
                 b.active = canSend();
             }
+            if(b instanceof UndoButton){
+                b.active = canUndo();
+            }
+        }
+        if(getScreenLotteryMode() != LotteryMode.TOW_BALL){
+            List<Integer> temp = MathUtils.copyList(numList);
+            drawString(matrixStack,font, EMCWorld.tc("tooltip.emcworld.lottery.num", LotteryItem.getString(temp)),(int)(width*0.25),(int)(height*base),0xffffff);
         }
         subRender(matrixStack);
     }
@@ -129,6 +137,36 @@ public abstract class BuyLotteryScreen extends Screen {
         }
     }
 
+    private class UndoButton extends Button{
+        public UndoButton(){
+            super((int) (BuyLotteryScreen.this.width * 0.8), (int) (BuyLotteryScreen.this.height*0.75)-40,50,20,EMCWorld.tc("tooltip.emcworld.lottery.undo"),Button::onPress);
+            active = false;
+        }
+
+        @Override
+        public void onPress(){
+            LotteryMode mode = getScreenLotteryMode();
+            int index;
+            if(mode == LotteryMode.TOW_BALL && lastIsShift && addList.size() > 0){
+                index = addList.remove(addList.size()-1);
+            }else{
+                index = numList.remove(numList.size()-1);
+            }
+            for(Widget b : buttons){
+                if(b instanceof NumButton){
+                    NumButton button = (NumButton) b;
+                    if(button.num == index){
+                        button.active = true;
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean canUndo(){
+        return getScreenLotteryMode() == LotteryMode.TOW_BALL ? numList.size() + addList.size() >= 1 : numList.size() >= 1;
+    }
+
     private String getMode(){
         LotteryMode mode = getScreenLotteryMode();
         String s = "";
@@ -157,7 +195,7 @@ public abstract class BuyLotteryScreen extends Screen {
             numList.clear();
             addList.clear();
             buttons.forEach(b -> {
-                if(!(b instanceof RefreshButton || b instanceof ConfirmButton)){
+                if(!(b instanceof RefreshButton || b instanceof ConfirmButton || b instanceof UndoButton)){
                     b.active = true;
                 }
             });
@@ -175,6 +213,7 @@ public abstract class BuyLotteryScreen extends Screen {
         @Override
         public void onPress(){
             LotteryMode mode = getScreenLotteryMode();
+            lastIsShift = Screen.hasShiftDown();
             if(mode == LotteryMode.TOW_BALL && Screen.hasShiftDown()){
                 addList.add(num);
             }else{
@@ -188,7 +227,10 @@ public abstract class BuyLotteryScreen extends Screen {
         boolean flag = MathUtils.isNum(text.getValue());
         if(EMCHelper.getPlayerEMC(getMinecraft().player) < getLotteryPrice()){
             flag = false;
-        }//override size.
+        }
+        if(LotteryUtils.getLotteryRule(getLottery())){
+            flag = false;
+        }
         return flag;
     }
 
@@ -208,7 +250,7 @@ public abstract class BuyLotteryScreen extends Screen {
         return a;
     }
 
-    private Lottery getLottery(){
+    protected Lottery getLottery(){
         return new Lottery(numList,addList,getRate(),getScreenLotteryMode());
     }
 

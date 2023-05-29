@@ -18,6 +18,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChangeSponsor implements Command<CommandSource> {
@@ -27,18 +28,21 @@ public class ChangeSponsor implements Command<CommandSource> {
             ServerPlayerEntity player = context.getSource().getPlayerOrException();
             MinecraftServer server = player.server;
             IUtilCapability c = EMCWorldAPI.getInstance().getUtilCapability(player);
-            if(c.getOnline()){
+            if(!c.getOnline()){
                 Message.sendMessage(player,EMCWorld.tc("message.sponsor.change_offline"));
                 return 0;
             }
-            if(c.getLevel() == 0){
+            if(c.getLevel()[0] == 0){
                 Message.sendMessage(player,EMCWorld.tc("message.sponsor.change_deny"));
                 return 0;
             }
-            List<Integer> i = new Sponsors(player).canSwitchIndex();
+            List<Integer> i = new ArrayList<>();
+            for(int p : c.getLevel()){
+                i.add(p);
+            }
             int index = i.indexOf(c.getDisplayIndex());
             int k = ++index;
-            if(k >= i.size()){
+            if(k >= i.size() && i.size() >= 1){
                 k = i.get(0);
             }else k = i.get(index);
             c.setDisplayIndex(k);

@@ -79,7 +79,7 @@ public enum StarPedestalRecipe {
            new ArrayList<>(trans(EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball"),EMCWorld.getItem("emcworld:universal_ball")))),
            MODE.STAR,6,4),
     u1(List.of(new ArrayList<>(trans(EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:emc_core"))),
-            new ArrayList<>(trans(EMCWorld.getItem("emcworld:emc_core"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),
+            new ArrayList<>(trans(EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),
                     EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"),EMCWorld.getItem("emcworld:fading_matter"))),
             new ArrayList<>(trans(EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),
                     EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"),EMCWorld.getItem("emcworld:clay_matter"))),

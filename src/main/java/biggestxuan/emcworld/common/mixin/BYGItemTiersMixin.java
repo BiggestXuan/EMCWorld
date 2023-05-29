@@ -21,7 +21,7 @@ public abstract class BYGItemTiersMixin implements IItemTier {
     @Final
     private float attackDamage;
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Add 50% damage
      */

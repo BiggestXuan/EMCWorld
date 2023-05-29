@@ -1031,6 +1031,7 @@
   "tooltip.emcworld.lottery.confirm": "确认",
   "tooltip.emcworld.lottery.refresh": "重置",
   "tooltip.emcworld.lottery.back": "返回",
+  "tooltip.emcworld.lottery.undo": "撤回",
   "tooltip.emcworld.lottery.max": "§4单张奖券购买不可超过 10M EMC！",
   "tooltip.emcworld.lottery.tb_tip": "提示：点击选择胆码，按住Shift键选择拖码",
   "tooltip.emcworld.lottery.warn": "§4本项功能仅供娱乐，请理性购买。本内容仅在游戏中生效，请勿在现实世界中模仿！",

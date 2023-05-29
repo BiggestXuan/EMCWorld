@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.client.event;
 
-/***
+/**
  * EMC WORLD MOD
  * @Author Biggest_Xuan
  * 2022/10/13
@@ -386,7 +386,7 @@ public class ItemToolTipEvent {
         if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){
             ISponsorItem item4 = (ISponsorItem) stack.getItem();
             Sponsors sp = item4.getSponsor();
-            int level = 0;
+            int[] level = new int[]{0};
             String name;
             if(sp == null){
                 name = "";
@@ -394,7 +394,7 @@ public class ItemToolTipEvent {
                 level = sp.getIndex();
                 name = sp.getPlayerName();
             }
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoritem",name).setStyle(Style.EMPTY.withItalic(true).withColor(getColor(level))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoritem",name).setStyle(Style.EMPTY.withItalic(true).withColor(getColor(sp == null ? 0 : sp.getMaxIndex()))));
             if(new Sponsors(player.getScoreboardName(),player.getUUID(), EMCWorldAPI.getInstance().getUtilCapability(player).getLevel()).equals(sp)){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
             }

@@ -40,7 +40,7 @@ public abstract class BowItemMixin extends ShootableItem implements IPrefixItem,
         return MathUtils.getBowLossTime(stack);
     }
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason .
      */

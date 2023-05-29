@@ -1031,6 +1031,7 @@
   "tooltip.emcworld.lottery.confirm": "Confirm",
   "tooltip.emcworld.lottery.refresh": "Refresh",
   "tooltip.emcworld.lottery.back": "Back",
+  "tooltip.emcworld.lottery.undo": "Undo",
   "tooltip.emcworld.lottery.max": "§4Single lottery ticket purchase cannot exceed 10M EMC!",
   "tooltip.emcworld.lottery.tb_tip": "Tip: Click to select the tow code, hold down the Shift key to select the ball code",
   "tooltip.emcworld.lottery.warn": "§4This feature is for entertainment only, please purchase it rationally. This content is only valid in the game, please do not imitate it in the real world!",

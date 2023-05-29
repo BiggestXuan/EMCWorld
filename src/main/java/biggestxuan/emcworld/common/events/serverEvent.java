@@ -32,8 +32,7 @@ public class serverEvent {
             ServerWorld world = server.overworld();
             LotteryData data = LotteryData.getInstance(server);
             if(world.getDayTime() % 240000 == 0 || world.getDayTime() == 0){
-                data.refreshNum();
-                data.setIndex(data.getIndex()+1);
+                data.openLottery();
             }
             if(world.getDayTime() == 0){
                 data.setStoredEMC(2000000000L);

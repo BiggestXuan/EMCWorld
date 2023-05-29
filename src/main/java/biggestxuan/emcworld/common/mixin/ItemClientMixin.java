@@ -24,7 +24,7 @@ import java.util.List;
 
 @Mixin(Item.class)
 public abstract class ItemClientMixin {
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Add EMC God Weapon Text
      */

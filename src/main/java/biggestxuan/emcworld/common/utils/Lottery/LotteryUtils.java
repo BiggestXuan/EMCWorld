@@ -84,4 +84,21 @@ public class LotteryUtils {
                 return 0;
         }
     }
+
+    public static boolean getLotteryRule(Lottery lottery){
+        List<Integer> nums = lottery.getNum();
+        List<Integer> add = lottery.getAdd();
+        LotteryMode mode = lottery.getMode();
+        if(mode == LotteryMode.SIMPLEX){
+            return nums.size() != 7;
+        }
+        if(mode == LotteryMode.COMPOUND){
+            nums.addAll(add);
+            return nums.size() < 7 || nums.size() > 20;
+        }
+        if(mode == LotteryMode.TOW_BALL){
+            return nums.size() < 1 || nums.size() > 6 || nums.size() + add.size() < 7 || nums.size() + add.size() >= 20;
+        }
+        return true;
+    }
 }

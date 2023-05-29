@@ -14,7 +14,7 @@ import top.theillusivec4.champions.common.ChampionEventsHandler;
 
 @Mixin(ChampionEventsHandler.class)
 public abstract class ChampionEventsHandlerMixin {
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason cancel this event.
      */

@@ -26,7 +26,7 @@ public abstract class StructureSearchEntryMixin extends ExtendedList.AbstractLis
     @Shadow (remap = false)
     private long lastClickTime;
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason .
      */

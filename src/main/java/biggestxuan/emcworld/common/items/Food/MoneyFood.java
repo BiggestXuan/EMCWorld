@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Food;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/24

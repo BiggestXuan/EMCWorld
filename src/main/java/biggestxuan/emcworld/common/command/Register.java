@@ -7,10 +7,9 @@ package biggestxuan.emcworld.common.command;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.command.run.ChangeSponsor;
-import biggestxuan.emcworld.common.command.run.DumpPlayerInfo;
-import biggestxuan.emcworld.common.command.run.Hand;
+import biggestxuan.emcworld.common.command.run.*;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.LongArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
@@ -29,6 +28,7 @@ public class Register {
                 .requires((permission) -> permission.hasPermission(4))
                 .then(Commands.literal("dump").then(Commands.argument("target", EntityArgument.player()).executes(new DumpPlayerInfo())))
                 .then(Commands.literal("hand").executes(new Hand()))
+                .then(Commands.literal("lottery").executes(new LotteryFresh()))
                 .requires((permission) -> permission.hasPermission(0))
                 .then(Commands.literal("prefix").executes(new ChangeSponsor()))
         );

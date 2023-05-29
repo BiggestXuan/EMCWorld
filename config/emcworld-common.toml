@@ -47,6 +47,7 @@
 						enabled = true
 
 ["Game Setting"]
+	"Enable Lottery" = true
 	#Enable Refined Storage Automation,such as Pattern,Crafter
 	"Enable Refined Storage Automation" = false
 

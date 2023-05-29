@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/09/28
@@ -53,6 +53,6 @@ public class CharaSword extends BaseEMCGodSword implements ISponsorItem {
 
     @Override
     public Sponsors getSponsor(){
-        return new Sponsors("cx02","1738cb1b-ea69-4e0f-8678-688aea7e8d1b",3);
+        return Sponsors.all.Chara_SS.getSponsors();
     }
 }

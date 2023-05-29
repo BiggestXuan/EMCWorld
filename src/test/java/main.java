@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import static biggestxuan.emcworld.common.utils.MathUtils.getRangeRandom;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/10

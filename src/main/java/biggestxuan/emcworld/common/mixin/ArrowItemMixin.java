@@ -25,7 +25,7 @@ public abstract class ArrowItemMixin extends Item {
         super(p_i48487_1_);
     }
 
-    /***
+    /**
      * @author Biggest_Xuan
      * @reason Add addition damage.
      */

@@ -1,53 +1,52 @@
 package biggestxuan.emcworld.common.utils.Network;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/17
  */
 
-import biggestxuan.emcworld.common.utils.Sponsors.ModPackHelper;
-import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
+import net.minecraft.entity.player.PlayerEntity;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.UUID;
 
 public class Network {
-    public static StringBuilder getNetwork(){
+    public static String getInfo(Object param){
         try{
-            URL url = new URL("https://biggestxuan.top/emcworld/main.txt");
+            if(!(param instanceof Integer) && !(param instanceof PlayerEntity)){
+                return "";
+            }
+            String u = "https://biggestxuan.top/emcworld/api.php?";
+            if(param instanceof Integer){
+                int index = (int) param;
+                u += "version="+index;
+            }
+            if(param instanceof PlayerEntity){
+                PlayerEntity player = (PlayerEntity) param;
+                u += "name="+player.getScoreboardName()+"&uuid="+player.getStringUUID();
+            }
+            System.out.println(u);
+            URL url = new URL(u);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             BufferedReader bf = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder out = new StringBuilder();
-            int count = 0;
-            while (bf.readLine() != null) {
-                String line = bf.readLine();
-                if(count <2){
-                    count++;
-                    out.append(line);
-                    continue;
-                }
-                out.append(line);
+            String s = bf.readLine();
+            if(s == null){
+                return "0,0,0,0,0";
             }
-            bf.close();
-            return out;
-        }catch (IOException e){
-            e.printStackTrace();
+            System.out.println(s);
+            return s;
+        }catch (Exception ignored){
+
         }
-        return null;
+        return "0,0,0,0,0";
     }
 
     public static void main(String[] args) {
-        for(Sponsors sp: ModPackHelper.getPackInfo().getSponsors()){
-            System.out.println(sp);
-        }
-        System.out.println(ModPackHelper.getPackInfo().getVersionName());
-        System.out.println(UUID.randomUUID());
+        System.out.println(getInfo(2));
     }
 }

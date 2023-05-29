@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.api.capability;
 
-/***
+/**
  *  EMC WORLD MOD
  *  @Author Biggest_Xuan
  *  2022/08/26
@@ -10,9 +10,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.util.INBTSerializable;
 
 public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
-    void setLevel(int level);
+    void setLevel(int[] level);
 
-    int getLevel();
+    int[] getLevel();
 
     long getCoolDown();
 
@@ -155,4 +155,8 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     boolean getOnline();
 
     void setOnline(boolean value);
+
+    float getAttackCD();
+
+    void setAttackCD(float value);
 }
