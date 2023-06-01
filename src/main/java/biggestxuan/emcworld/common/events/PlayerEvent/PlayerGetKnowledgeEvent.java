@@ -7,7 +7,9 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.IFakeEMCItem;
 import biggestxuan.emcworld.common.registry.EWItems;
+import moze_intel.projecte.api.ItemInfo;
 import moze_intel.projecte.api.event.PlayerAttemptLearnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +18,13 @@ import net.minecraftforge.fml.common.Mod;
 public class PlayerGetKnowledgeEvent {
     @SubscribeEvent
     public static void playerGetKnowledgeEvent(PlayerAttemptLearnEvent event){
-        if(event.getSourceInfo().getItem().equals(EWItems.VOUCHER.get())){
+        ItemInfo info = event.getSourceInfo();
+        if(info.getItem().equals(EWItems.VOUCHER.get())){
+            event.setCanceled(true);
+        }
+        if(info.getItem() instanceof IFakeEMCItem){
+            IFakeEMCItem item = (IFakeEMCItem) info.getItem();
+            item.doSomething(event.getPlayer());
             event.setCanceled(true);
         }
     }

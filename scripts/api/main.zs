@@ -1,6 +1,7 @@
 #priority 1
 
 public function main() as void{
+    modifyAtumRecipe();
     addNitrogenRecipe();
     setEMC();
     modifyBotaniaTags();
@@ -43,7 +44,6 @@ public function main() as void{
     modifyAetherRecipe();
     addDIMStage();
     setItemStage();
-    modifyAtumRecipe();
     //modifyAfterNightRecipe();
     modifyUnderGradenRecipe();
     modifyAtlantisRecipe();

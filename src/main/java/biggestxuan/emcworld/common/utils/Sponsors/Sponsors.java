@@ -29,7 +29,8 @@ public class Sponsors extends EMCWorldPlayer {
         MCyunxi (new Sponsors("MCyunxi","eb91acd8-a70e-4b1d-b1c4-34fc4c8af495",3)),
         HIEHEIHEICAT (new Sponsors("HIEHEIHEICAT","28f6f584-5d9c-45ba-b919-a8ebabf53477",3)),
         CSZXYMZX (new Sponsors("cszxymzx","e99f4af7-c050-4552-9627-6f80b5f0a0d3",3)),
-        ABunana (new Sponsors("Abunana","6105dab8-94a6-440f-b797-00d046587eda",1))
+        ABunana (new Sponsors("Abunana","6105dab8-94a6-440f-b797-00d046587eda",1)),
+        LITTLE_YU(new Sponsors("LITTLE_YU","b6526df8-cb57-48f5-bbb7-0e4b0653f2c6",1))
         ;
         private final Sponsors sponsors;
         all(Sponsors sponsors){

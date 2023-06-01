@@ -26,6 +26,13 @@
 				type: "dimension"
 				dimension: "minecraft:the_end"
 			}]
+			rewards: [{
+				id: "0760F34C8482227B"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_magicandcorrupted}"
@@ -58,6 +65,13 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "324BA8E7863A58A3"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_oldandrogue}"
@@ -90,6 +104,13 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "47BEC4B7F7004B52"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_netherandwither}"
@@ -122,6 +143,13 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "7C1E896516BE8825"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_nlackandguardian}"
@@ -154,6 +182,13 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "0594ABCE0C0F58BC"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_witchandcrystal}"
@@ -186,6 +221,13 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "51746333525C7E47"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_coldandlost}"
@@ -218,6 +260,13 @@
 					}
 				}
 			]
+			rewards: [{
+				id: "6D50D553B74C0B6C"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_kill}"
@@ -232,6 +281,31 @@
 				entity: "minecraft:ender_dragon"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "7EB71E1F905CC653"
+					type: "item"
+					item: "minecraft:dragon_head"
+				}
+				{
+					id: "0EFCFB2A1F53D406"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+				{
+					id: "12C3782A6A430732"
+					type: "item"
+					item: {
+						id: "minecraft:elytra"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seven_end_find1}"
@@ -246,6 +320,13 @@
 				timer: 0L
 				observe_type: 0
 				to_observe: "stalwart_dungeons:shelterer_altar"
+			}]
+			rewards: [{
+				id: "7835320CE0F9E683"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
 			}]
 		}
 		{
@@ -263,6 +344,13 @@
 				advancement: "cataclysm:find_ruined_citadel"
 				criterion: ""
 			}]
+			rewards: [{
+				id: "4D47E3C00BA62CB6"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_kill4}"
@@ -277,6 +365,13 @@
 				icon: "cataclysm:gauntlet_of_guard"
 				entity: "cataclysm:ender_guardian"
 				value: 1L
+			}]
+			rewards: [{
+				id: "743259340D01FF3E"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
 			}]
 		}
 		{
@@ -293,6 +388,21 @@
 				entity: "stalwart_dungeons:shelterer"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "5CFEAA81E7844A0C"
+					type: "item"
+					item: "stalwart_dungeons:void_crystal"
+					count: 2
+				}
+				{
+					id: "6D983C6ABCF84663"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seven_end_chorundum}"
@@ -305,6 +415,21 @@
 				type: "item"
 				item: "stalwart_dungeons:chorundum"
 			}]
+			rewards: [
+				{
+					id: "5D6539E89E922346"
+					type: "item"
+					item: "stalwart_dungeons:chorundum"
+					count: 4
+				}
+				{
+					id: "6FA217B2455D68FB"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seven_end_gebber2ingotend}"
@@ -318,6 +443,21 @@
 				type: "item"
 				item: "gobber2:gobber2_ingot_end"
 			}]
+			rewards: [
+				{
+					id: "4BE4681A61D62314"
+					type: "item"
+					item: "gobber2:gobber2_ingot_end"
+					count: 4
+				}
+				{
+					id: "1B05AEAA02C4D077"
+					type: "custom"
+					title: "{reward.emcwrold.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seven_end_enderiteingot}"
@@ -330,6 +470,21 @@
 				type: "item"
 				item: "cataclysm:enderite_ingot"
 			}]
+			rewards: [
+				{
+					id: "5D5A903898784109"
+					type: "item"
+					item: "cataclysm:enderite_ingot"
+					count: 4
+				}
+				{
+					id: "4001B09741DB0BAD"
+					type: "custom"
+					title: "{reward.emcworld.normal}"
+					icon: "emcworld:big_emc_gem"
+					tags: ["normal"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seven_end_atomic_disassembleer}"
@@ -354,6 +509,13 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "2E6DD1190DAC416C"
+				type: "custom"
+				title: "{reward.emcworld.epic}"
+				icon: "emcworld:advanced_emc_gem"
+				tags: ["epic"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_end_kill2}"
@@ -368,6 +530,21 @@
 				entity: "dungeonsmod:voidmaster"
 				value: 1L
 			}]
+			rewards: [
+				{
+					id: "3A0316D511886577"
+					type: "item"
+					item: "cataclysm:void_core"
+					count: 2
+				}
+				{
+					id: "5BD66E9C29699DF2"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seven_end_digital_miner}"
@@ -381,6 +558,31 @@
 				type: "item"
 				item: "mekanism:digital_miner"
 			}]
+			rewards: [
+				{
+					id: "34BCC301977B6884"
+					type: "item"
+					item: {
+						id: "mekanism:ultimate_energy_cube"
+						Count: 1b
+						tag: {
+							mekData: {
+								EnergyContainers: [{
+									Container: 0b
+									stored: "256000000"
+								}]
+							}
+						}
+					}
+				}
+				{
+					id: "2F94039D5BE24822"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
 		}
 	]
 }

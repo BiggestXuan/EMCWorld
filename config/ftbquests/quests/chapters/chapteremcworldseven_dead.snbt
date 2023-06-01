@@ -20,6 +20,13 @@
 				type: "item"
 				item: "dead_guys_untitled_deep_dark_:unactivated_lightn_dark_block"
 			}]
+			rewards: [{
+				id: "5BBF5FFB9899B7E3"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_dead_gointodeepdarkfantasty}"
@@ -34,6 +41,13 @@
 				id: "52FCED8DCBB3CD42"
 				type: "dimension"
 				dimension: "dead_guys_untitled_deep_dark_:deep_darky"
+			}]
+			rewards: [{
+				id: "08938C2D16CC5DF6"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
 			}]
 		}
 		{
@@ -50,6 +64,13 @@
 				type: "item"
 				item: "dead_guys_untitled_deep_dark_:unactivated_darkn_light"
 			}]
+			rewards: [{
+				id: "32AD2FED2AC1736C"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
 		}
 		{
 			title: "{quest.emcworld.seven_dead_warden}"
@@ -62,6 +83,21 @@
 				type: "item"
 				item: "dead_guys_untitled_deep_dark_:warden_antler"
 			}]
+			rewards: [
+				{
+					id: "561D98C349A4D535"
+					type: "item"
+					item: "dead_guys_untitled_deep_dark_:warden_antler"
+					random_bonus: 3
+				}
+				{
+					id: "461EF04A5F352840"
+					type: "custom"
+					title: "{reward.emcworld.epic}"
+					icon: "emcworld:advanced_emc_gem"
+					tags: ["epic"]
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.seventh.collector}"

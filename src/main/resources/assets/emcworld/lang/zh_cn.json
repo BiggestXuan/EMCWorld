@@ -381,6 +381,7 @@
   "item.emcworld.broken_hammer": "无力棒槌",
   "item.emcworld.broken_gun": "炽热火枪",
   "item.emcworld.lottery": "质能奖券",
+  "item.emcworld.unequal": "不等式",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -1012,6 +1013,7 @@
   "tooltip.emcworld.bow_speed_add": "§9+ %d §9拉弓速度",
   "tooltip.emcworld.bow_speed_loss": "§9- %d §9拉弓速度",
   "tooltip.emcworld.emc_repair": "§9耐久度： %d §9EMC / 点",
+  "tooltip.emcworld.unequal": "§3贪心是要付出代价的！",
   "tooltip.emcworld.gun_cd": "§9攻击间隔： %d §9秒",
   "tooltip.emcworld.gun_acc": "§9准确度： %d",
   "tooltip.emcworld.gun_backlash": "§9后座力： %d",

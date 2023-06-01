@@ -49,6 +49,7 @@ import biggestxuan.emcworld.common.items.ProfessionalItem.ProfessionalItem;
 import biggestxuan.emcworld.common.items.RaidItem.IllagerShard;
 import biggestxuan.emcworld.common.items.RaidItem.RaidLightItem;
 import biggestxuan.emcworld.common.items.SponsorsItem.AbunanaLoot;
+import biggestxuan.emcworld.common.items.SponsorsItem.NoEqualItem;
 import biggestxuan.emcworld.common.items.SponsorsItem.NoNameCatFood;
 import biggestxuan.emcworld.common.items.SponsorsItem.XiangshushumiaoPillow;
 import net.minecraft.block.Block;
@@ -160,6 +161,7 @@ public class EWItems {
     public static final RegistryObject<Item> SCROLL_GOLD = ITEMS.register("scroll_gold", () -> new ScrollItem(3f,5000));
     public static final RegistryObject<Item> SCROLL_TULYE = ITEMS.register("scroll_tulye", TulyeScroll::new);
     public static final RegistryObject<Item> SCROLL_BX = ITEMS.register("scroll_bx", BiggestXuanScroll::new);
+    public static final RegistryObject<Item> UnEqual = ITEMS.register("unequal", NoEqualItem::new);
     public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(1));
     public static final RegistryObject<Item> LOTTERY = ITEMS.register("lottery",LotteryItem::new);
     public static final RegistryObject<Item> HARD_STEEL = ITEMS.register("hard_steel",() -> new EWItem(1));

@@ -1117,6 +1117,11 @@ public function emcworldRecipe() as void{
         <item:mythicbotany:vanaheim_rune>
     ],<item:byg:nightshade_sapling>,con[3][5]*2);
     addCraftShapedRecipeNoName([
+        [rm,rm,rm],
+        [rm,<tag:items:emcworld:godblock>,rm],
+        [rm,rm,rm]
+    ],<item:projectex:energy_link>);
+    addCraftShapedRecipeNoName([
         [a,bge,a],
         [bge,<item:astralsorcery:parchment>,bge],
         [a,bge,a]

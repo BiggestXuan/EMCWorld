@@ -381,6 +381,7 @@
   "item.emcworld.broken_hammer": "Broken Hammer",
   "item.emcworld.broken_gun": "Broken Gun",
   "item.emcworld.lottery": "EMC Lottery",
+  "item.emcworld.unequal": "UnEqual",
 
   "block.emcworld.hardcore_stone": "Hardcore Stone",
   "block.emcworld.emc_ore": "EMC Ore",
@@ -1012,6 +1013,7 @@
   "tooltip.emcworld.bow_speed_add": "§9+ %d §9Bow Speed",
   "tooltip.emcworld.bow_speed_loss": "§9- %d §9Bow Speed",
   "tooltip.emcworld.emc_repair": "§9Durability: %d §9EMC / Point",
+  "tooltip.emcworld.unequal": "§3Greed comes at a cost!",
   "tooltip.emcworld.gun_cd": "§9Cooldown: %d §9s",
   "tooltip.emcworld.gun_acc": "§9Accuracy: %d",
   "tooltip.emcworld.gun_backlash": "§9Backlash: %d",

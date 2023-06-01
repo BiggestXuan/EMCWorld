@@ -11,7 +11,7 @@ import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.equipment.*;
 import biggestxuan.emcworld.api.item.equipment.armor.*;
-import biggestxuan.emcworld.api.item.equipment.bow.*;
+import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.api.item.equipment.weapon.*;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
@@ -21,12 +21,10 @@ import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
-import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.DamageUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.SkillUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
-import biggestxuan.emcworld.common.utils.WeaponUtils;
 import cursedflames.bountifulbaubles.common.item.items.ItemGlovesDexterity;
 import mekanism.common.item.gear.ItemHazmatSuitArmor;
 import mekanism.common.registries.MekanismItems;
@@ -105,6 +103,10 @@ public class ItemToolTipEvent {
         long value;
         String stage = "";
         value = EMCHelper.getEmcValue(stack);
+        if(stack.getItem() instanceof IFakeEMCItem){
+            IFakeEMCItem item = (IFakeEMCItem) stack.getItem();
+            value = item.getFakeEMC(stack);
+        }
         boolean isTrans = true;
         boolean free = ConfigManager.FREE_MODE.get();
         if(value > 0L){
