@@ -42,15 +42,22 @@ public class LivingJoinWorldEvent {
         }
         if(event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof LichEntity)){
             LivingEntity livingEntity = (LivingEntity) event.getEntity();
-            if(livingEntity.getLootTable().getNamespace().equals("divinerpg") && livingEntity.level.dimension().equals(World.OVERWORLD)){
-                AxisAlignedBB aabb = MathUtils.expandAABB(livingEntity.position(),64);
-                List<PlayerEntity> players = livingEntity.level.getLoadedEntitiesOfClass(PlayerEntity.class,aabb);
-                for(PlayerEntity p : players){
-                    if(GameStageManager.hasStage(p,"two")){
-                        return;
+            if(livingEntity.getLootTable().getNamespace().equals("divinerpg")){
+                if(livingEntity.level.dimension().equals(World.OVERWORLD)){
+                    AxisAlignedBB aabb = MathUtils.expandAABB(livingEntity.position(),64);
+                    List<PlayerEntity> players = livingEntity.level.getLoadedEntitiesOfClass(PlayerEntity.class,aabb);
+                    for(PlayerEntity p : players){
+                        if(GameStageManager.hasStage(p,"two")){
+                            return;
+                        }
                     }
+                    event.setCanceled(true);
+                    return;
                 }
-                event.setCanceled(true);
+                if(MathUtils.isRandom(0.5)){
+                    event.setCanceled(true);
+                    return;
+                }
             }
             ItemStack headItem = livingEntity.getItemBySlot(EquipmentSlotType.HEAD);
             if(headItem.getItem() instanceof SkullItem){

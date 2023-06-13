@@ -45,7 +45,7 @@ public class LivingDamageEvent {
         }else{
             damage *= 1 + (3 - diff) / 3;
         }
-        if(entity instanceof AbstractRaiderEntity){
+        if(entity instanceof AbstractRaiderEntity && ConfigManager.RAID_ILLAGER_TEAM_DAMAGE.get()){
             MinecraftServer server = entity.getServer();
             if(server == null) return;
             Raid raid = server.overworld().getRaidAt(entity.blockPosition());

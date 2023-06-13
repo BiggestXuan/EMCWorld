@@ -21,6 +21,8 @@
     "ChampionBuilderMixin",
     "ChampionEventsHandlerMixin",
     "ClassicBarMixin",
+    "CollectorBlockEntityMixin",
+    "CollectorBlockMixin",
     "CommonPlayerTickHandlerMixin",
     "ConjurerMixin",
     "DivineToolMaterialsMixin",

@@ -7,7 +7,9 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.LotteryData;
 import biggestxuan.emcworld.common.exception.EMCWorldIllegalPacketException;
 import biggestxuan.emcworld.common.items.LotteryItem;
@@ -53,7 +55,7 @@ public class BuyLotteryPacket {
     public static void handle(BuyLotteryPacket msg, Supplier<NetworkEvent.Context> ctx) {
         if (ctx.get().getDirection().getReceptionSide().isServer()) {
             ServerPlayerEntity player = ctx.get().getSender();
-            if(player != null){
+            if(player != null && ConfigManager.LOTTERY.get()){
                 MinecraftServer server = player.server;
                 LotteryData data = LotteryData.getInstance(server);
                 ItemStack stack = new ItemStack(EWItems.LOTTERY.get(),1);
@@ -68,6 +70,11 @@ public class BuyLotteryPacket {
                         player.addItem(stack);
                         EMCHelper.modifyPlayerEMC(player,new EMCSource.LotteryEMCSource(-emc,player,lottery),true);
                         data.setStoredEMC(data.getStoredEMC()+(long) (emc*0.3));
+                        EMCHelper.awardAdvancement(player,EMCWorld.rl("lottery/buy"));
+                        player.getCapability(EMCWorldCapability.UTIL).ifPresent(c -> {
+                            long mv = (long) (emc * 0.27D);
+                            c.setMV(c.getMV() + mv);
+                        });
                     }
                     if(emc > 10000000){
                         Message.sendMessage(player, EMCWorld.tc("tooltip.emcworld.lottery.max"));

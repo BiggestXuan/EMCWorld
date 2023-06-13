@@ -6,9 +6,9 @@ package biggestxuan.emcworld.common.utils.Sponsors;
  *  2022/08/17
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.common.utils.EMCWorldPlayer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerEntity;
 
 import java.util.ArrayList;
@@ -102,7 +102,7 @@ public class Sponsors extends EMCWorldPlayer {
             default:
                 n += "only";
         }
-        return I18n.get(n);
+        return EMCWorld.tc(n).getString();
     }
 
     @Override

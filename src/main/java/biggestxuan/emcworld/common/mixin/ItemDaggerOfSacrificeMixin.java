@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -25,7 +26,7 @@ public abstract class ItemDaggerOfSacrificeMixin extends Item {
 
     @Inject(method = "hurtEnemy",at = @At("HEAD"), cancellable = true)
     public void hurt(ItemStack stack, LivingEntity target, LivingEntity attacker, CallbackInfoReturnable<Boolean> cir){
-        if(!attacker.level.isClientSide && attacker instanceof PlayerEntity && target != null){
+        if(!attacker.level.isClientSide && attacker instanceof PlayerEntity && target != null && ConfigManager.SUNDRY_DISABLE_SACRIFICE.get()){
             PlayerEntity player = (PlayerEntity) target;
             if(target.getHealth() > EMCWorldAPI.getInstance().getPlayerSkillCapability(player).getLevel()){
                 cir.setReturnValue(false);

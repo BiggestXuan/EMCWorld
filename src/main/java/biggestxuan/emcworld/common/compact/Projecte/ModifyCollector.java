@@ -15,16 +15,16 @@ public class ModifyCollector {
         Matter.DARK.collectorOutput = g(4);
         Matter.RED.collectorOutput = g(5);
         Matter.MAGENTA.collectorOutput = g(6);
-        Matter.PINK.collectorOutput = g(7);
-        Matter.PURPLE.collectorOutput = g(9);
-        Matter.VIOLET.collectorOutput = g(10);
-        Matter.BLUE.collectorOutput = g(12);
-        Matter.CYAN.collectorOutput = g(14);
-        Matter.GREEN.collectorOutput = g(16);
-        Matter.LIME.collectorOutput = g(18);
-        Matter.YELLOW.collectorOutput = g(21);
-        Matter.ORANGE.collectorOutput = g(24);
-        Matter.WHITE.collectorOutput = g(27);
+        Matter.PINK.collectorOutput = g(8);
+        Matter.PURPLE.collectorOutput = g(11);
+        Matter.VIOLET.collectorOutput = g(12);
+        Matter.BLUE.collectorOutput = g(14);
+        Matter.CYAN.collectorOutput = g(16);
+        Matter.GREEN.collectorOutput = g(18);
+        Matter.LIME.collectorOutput = g(20);
+        Matter.YELLOW.collectorOutput = g(24);
+        Matter.ORANGE.collectorOutput = g(26);
+        Matter.WHITE.collectorOutput = g(28);
         Matter.FINAL.collectorOutput = 0;
         Matter.FADING.collectorOutput = 0;
     }

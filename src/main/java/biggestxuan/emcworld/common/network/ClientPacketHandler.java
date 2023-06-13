@@ -46,6 +46,7 @@ public class ClientPacketHandler {
                 cap.setLastShield(pack.isLastShield());
                 cap.setGaiaPlayer(pack.getGaiaPlayer());
                 cap.setLiveMode(pack.isLiveMode());
+                cap.setMV(pack.getMV());
             });
         }
     }

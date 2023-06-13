@@ -12,6 +12,7 @@ import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.registry.EWItems;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
@@ -106,4 +107,6 @@ public class CrTItemUtils {
         }
         return list;
     }
+
+
 }

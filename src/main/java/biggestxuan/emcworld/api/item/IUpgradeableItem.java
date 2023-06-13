@@ -7,6 +7,7 @@ package biggestxuan.emcworld.api.item;
  */
 
 import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.item.ItemStack;
 
 public interface IUpgradeableItem {
@@ -33,9 +34,9 @@ public interface IUpgradeableItem {
 
     default int getWeightRequired(ItemStack stack){
         int l = getLevel(stack);
-        int weight = 10;
+        int weight = ConfigManager.UPGRADE_WEIGHT.get();
         for (int i = 0; i < l; i++) {
-            weight = (int) (1.344f * weight);
+            weight = (int) (ConfigManager.UPGRADE_WEIGHT_RATE.get() * weight);
         }
         return weight;
     }

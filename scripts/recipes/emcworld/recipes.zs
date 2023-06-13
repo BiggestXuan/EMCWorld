@@ -8,6 +8,7 @@ import crafttweaker.api.recipe.Replacer;
 import mods.emcworld.CrTFoodValue;
 import mods.emcworld.CrTRequirement;
 import mods.emcworld.CrTWeightItem;
+import mods.emcworld.CrTSingularity;
 import mods.emcworld.EWItem;
 import mods.emcworld.EMCHelper;
 import mods.emcworld.ItemUtils;
@@ -37,7 +38,7 @@ public function emcworldRecipe() as void{
     var rl = <item:emcworld:raid_light>;
     var ifc = <item:emcworld:infinity_catalyst>;
     var mmas = <item:mythicbotany:alfsteel_sword>;
-    var aqd = <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:alfsteel" as string});
+    var aqd = CrTSingularity.getCrTSingularity("alfsteel");
     var gr = <item:gobber2:gobber2_rod>;
     var dm = <item:projecte:dark_matter>;
     var rm = <item:projecte:red_matter>;
@@ -91,7 +92,7 @@ public function emcworldRecipe() as void{
     var sar = <item:bloodmagic:sacrificerune>;
     var sel = <item:bloodmagic:selfsacrificerune>;
     var nei = <item:minecraft:netherite_ingot>;
-    var viqd = <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:vibranium" as string});
+    var viqd = CrTSingularity.getCrTSingularity("vibranium");
     var ss = <item:emcworld:stainless_steel>;
     var wp = <item:endrem:witch_pupil>;
     var we = <item:endrem:witch_eye>;
@@ -120,15 +121,7 @@ public function emcworldRecipe() as void{
     var aq = <item:astralsorcery:aquamarine>;
     var pa = <item:minecraft:paper>;
     var camt = getColorBlockCount();
-    var baseqd as IIngredient = 
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:iron" as string})|
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:steel" as string})|
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:nickel" as string})|
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:copper" as string})|
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:lead" as string})|
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:aluminum" as string})|
-        <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:silver" as string})
-    ;
+    var baseqd as IIngredient = new CrTSingularity("iron",2).addSingularity("steel","nickel","copper","lead","aluminum","silver").asIIngredient(); 
     var bases as IIngredient = ItemUtils.getEMCGodItemWithLevel(14);
     var adss as IIngredient = ItemUtils.getEMCGodItemWithLevel(20);
     var con as IItemStack[][] = [
@@ -291,6 +284,25 @@ public function emcworldRecipe() as void{
         <item:mekanism:mekasuit_pants>,
         <item:mekanism:mekasuit_boots>
     ];
+    var pipez as IItemStack[] = [
+        <item:pipez:item_pipe>,
+        <item:pipez:fluid_pipe>,
+        <item:pipez:energy_pipe>,
+        <item:pipez:gas_pipe>
+    ];
+    var pipez_u as ItemStack[] = [
+        <item:pipez:basic_upgrade>,
+        <item:pipez:improved_upgrade>,
+        <item:pipez:advanced_upgrade>,
+        <item:pipez:ultimate_upgrade>,
+        <item:pipez:infinity_upgrade>
+    ];
+    var pipez_m as IItemStack[] = [
+        <item:mekanism:basic_control_circuit>,
+        <item:minecraft:bucket>,
+        <item:minecraft:redstone>,
+        <item:minecraft:glass>
+    ];
     var ngb1 as ItemStack[]=[
         <item:gobber2:gobber2_bow_nether>,
         <item:gobber2:gobber2_tree_axe_nether>,
@@ -424,31 +436,31 @@ public function emcworldRecipe() as void{
     ];
     var sing as IItemStack[][] = [
         [
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:atm" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:vibranium" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:invar" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:coal" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:electrum" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:alfsteel" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:redstone" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:emerald" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:glowstone" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:steel" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:diamond" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:uranium" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:iron" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:lead" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:copper" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:silver" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:tin" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:nickel" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:lapis_lazuli" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:bronze" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:clock" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:dark_matter" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:red_matter" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:sculk" as string}),
-            <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:aluminum" as string}),
+            s("atm"),
+            s("vibranium"),
+            s("invar"),
+            s("coal"),
+            s("electrum"),
+            s("alfsteel"),
+            s("redstone"),
+            s("emerald"),
+            s("glowstone"),
+            s("steel"),
+            s("diamond"),
+            s("uranium"),
+            s("iron"),
+            s("lead"),
+            s("copper"),
+            s("silver"),
+            s("tin"),
+            s("nickel"),
+            s("lapis_lazuli"),
+            s("bronze"),
+            s("clock"),
+            s("dark_matter"),
+            s("red_matter"),
+            s("sculk"),
+            s("aluminum"),
             unqd
         ],
         [
@@ -473,7 +485,7 @@ public function emcworldRecipe() as void{
             <item:minecraft:lapis_lazuli>,
             <item:mekanism:ingot_bronze>,
             <item:minecraft:clock>,
-            <item:projecte:dark_matter>,
+            dm,
             <item:projecte:red_matter>,
             <item:dead_guys_untitled_deep_dark_:sculk>,
             <item:emcworld:aluminum_ingot>,
@@ -615,7 +627,7 @@ public function emcworldRecipe() as void{
     ],<item:emcworld:steel_furnace_core>);*/
     tartaricForgeRecipe([<item:emcworld:base_key>,<item:twilightforest:lamp_of_cinders>,<item:astralsorcery:rock_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:vicio" as string}}),<item:rats:dutchrat_wheel>],<item:emcworld:nether_key>,4096,1000);
     smithingRecipe(sword[0],atmqd*3,sword[1]);
-    smithingRecipe(sword[1],viqd*3,sword[2]);
+    smithingRecipe(sword[1],new CrTSingularity("vibranium",3).asIIngredient(),sword[2]);
     modifyShapedRecipe([
         [bp,cho,bp],
         [cho,<item:minecraft:glowstone_dust>,cho],
@@ -680,6 +692,16 @@ public function emcworldRecipe() as void{
         yellow(<item:projectex:lime_collector>,<item:projectex:yellow_collector>);
         yellow(<item:projectex:lime_relay>,<item:projectex:yellow_relay>);
     }
+    for i in 0 .. pipez.length{
+        removeCraftRecipe([pipez[i]]);
+        removeCraftRecipe([pipez_u[i]]);
+        pipe(pipez_m[i],pipez[i]*8); 
+    }
+    metallurgicInfusingRecipe(<item:mekanism:ingot_tin>,<infuse_type:mekanism:redstone>*20,pipez_u[0]);
+    metallurgicInfusingRecipe(pipez_u[0],<infuse_type:mekanism:diamond>*40,pipez_u[1]);
+    metallurgicInfusingRecipe(pipez_u[1],<infuse_type:mekanism:refined_obsidian>*80,pipez_u[2]);
+    combiningRecipe(pipez_u[2],<item:minecraft:netherite_ingot>,pipez_u[3]);
+    combiningRecipe(pipez_u[3],<item:mekanism:pellet_antimatter>,pipez_u[4]);
     setEMCStage(<item:botania:manasteel_ingot>,864,3);
     setEMCStage(<item:botania:mana_pearl>,1146,3);
     setEMCStage(<item:botania:mana_diamond>,8246,3);
@@ -782,7 +804,7 @@ public function emcworldRecipe() as void{
             Replacer.forTypes(craftingTable)
             .forMods("projecte")
             .forOutput(i,craftingTable)
-            .replace(<item:projecte:dark_matter>,pfm)
+            .replace(dm,pfm)
             .replace(<item:projecte:red_matter>,pcm)
             .execute();
         }
@@ -865,7 +887,7 @@ public function emcworldRecipe() as void{
     removeRecipe(armor);
     //multiFurnaceRecipe(<tag:items:mekanism:colorable/concrete>,<item:emcworld:steel_furnace_brick>);
     removeSmithingRecipe(mmas);
-    smithingRecipe(<item:mekanism:atomic_disassembler>,aqd*2,mmas);
+    smithingRecipe(<item:mekanism:atomic_disassembler>,new CrTSingularity("alfsteel",2).asIIngredient(),mmas);
     removeFurnaceRecipe([aq]);
     removeCraftRecipe([nei]);
     removeCraftRecipe(tung);
@@ -1238,7 +1260,7 @@ public function emcworldRecipe() as void{
     steelFurnaceRecipe([<item:gobber2:gobber2_ingot>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,300);
     steelFurnaceRecipe([<item:emcworld:enriched_gobber>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,600);
     infuserRecipe([ss,rai,ki,zi,asi],hs,5000,15000000,2);
-    addNuggetAndIngotRecipe(<item:projecte:dark_matter>,<item:projecte:dark_matter_block>);
+    addNuggetAndIngotRecipe(dm,<item:projecte:dark_matter_block>);
     addNuggetAndIngotRecipe(<item:projecte:red_matter>,<item:projecte:red_matter_block>);
     mythicInfuserRecipe([
         <item:atum:godforged_block>,<item:emcworld:god_steel_ingot>,<item:emcworld:orichalcos_ingot>
@@ -1771,5 +1793,18 @@ public function white() as void{
 }
 
 public function pro(s as IItemStack,s1 as IItemStack) as void{
-    addCraftShapelessRecipe([s,<item:projecte:dark_matter>,<item:projecte:dark_matter>],s1);
+    var dm = <item:projecte:dark_matter>;
+    addCraftShapelessRecipe([s,dm,dm],s1);
+}
+
+public function pipe(input as IItemStack,output as IItemStack) as void{
+    addCraftShapedRecipeNoName([
+        [<tag:items:forge:ingots/steel>],
+        [input],
+        [<tag:items:forge:ingots/steel>]
+    ],output);
+}
+
+public function s(name as string) as IIngredient{
+    return CrTSingularity.getCrTSingularity(name);
 }

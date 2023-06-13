@@ -73,8 +73,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 8;
-    public static final String PackVersion = "0.6.0";
+    public static final int ModPackVersion = 9;
+    public static final String PackVersion = "0.7.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -155,7 +155,9 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(LiveMode.LiveMode);
             ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
-            ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
+            if(ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get()){
+                ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
+            }
             LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
     }

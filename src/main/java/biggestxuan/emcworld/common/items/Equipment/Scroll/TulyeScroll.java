@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.items.Equipment.Scroll;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.ISponsorItem;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -25,7 +26,7 @@ public class TulyeScroll extends ScrollItem implements ISponsorItem {
 
     @Override
     public double breakWeaponRate(){
-        return 0.3d;
+        return ConfigManager.UPGRADE_TULYE_SCROLL.get() ? 0.3d : 0;
     }
 
     @Override

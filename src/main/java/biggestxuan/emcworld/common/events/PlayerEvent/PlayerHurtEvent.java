@@ -148,6 +148,9 @@ public class PlayerHurtEvent {
             for(DifficultySetting obj:DifficultySetting.values()){
                 if(GameStageManager.hasStage(player, obj.getGameStage())){
                     long costEMC =MathUtils.doubleToLong(obj.getHurtBase() * amount * MathUtils.difficultyLoss());
+                    if(!ConfigManager.EMC_HURT.get()){
+                        costEMC = 0;
+                    }
                     if(event.getAmount() >= player.getHealth()){
                         break;
                     }

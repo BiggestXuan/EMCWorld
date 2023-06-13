@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.events;
  *  2022/11/04
  */
 
+import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.event.CommandEvent;
@@ -22,7 +23,9 @@ public class commandEvent {
         if(source.getEntity() instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) source.getEntity();
             if(!player.isCreative() && (name.contains("tp") || name.contains("teleport") || name.contains("execute"))){
-                event.setCanceled(true);
+                if(ConfigManager.SUNDRY_DISABLE_TELEPORT_COMMAND.get()){
+                    event.setCanceled(true);
+                }
             }
         }
     }

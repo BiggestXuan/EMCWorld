@@ -159,4 +159,8 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     float getAttackCD();
 
     void setAttackCD(float value);
+
+    long getMV();
+
+    void setMV(long mv);
 }

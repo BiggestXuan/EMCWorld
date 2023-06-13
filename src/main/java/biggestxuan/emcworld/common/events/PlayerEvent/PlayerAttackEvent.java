@@ -20,6 +20,7 @@ import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
@@ -227,7 +228,7 @@ public class PlayerAttackEvent {
     }
 
     private static void CostPlayer(PlayerEntity player,long emc,LivingHurtEvent event,double damage,LivingEntity pet){
-        if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
+        if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get()) || !ConfigManager.EMC_ATTACK.get()){
             return;
         }
         if (emc != 0){

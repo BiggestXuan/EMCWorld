@@ -137,7 +137,7 @@ public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairabl
 
     @Override
     public long getTickCost(ItemStack stack) {
-        return (long) (40L * getLevel(stack) * MathUtils.difficultyLoss());
+        return (long) (40L * (getLevel(stack) + 1) * MathUtils.difficultyLoss());
     }
 
     @Override

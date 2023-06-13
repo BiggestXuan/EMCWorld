@@ -10,10 +10,15 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.api.item.IEMCGod;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
+import biggestxuan.emcworld.common.recipes.ItemStageLimit;
+import biggestxuan.emcworld.common.registry.EWRecipeTypes;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
@@ -25,10 +30,14 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.RecipeManager;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerPickUpItemEvent {
@@ -36,7 +45,7 @@ public class PlayerPickUpItemEvent {
     public static void playerPickUpItemEvent(EntityItemPickupEvent event) {
         PlayerEntity player = event.getPlayer();
         ItemStack item = event.getItem().getItem();
-        if (player.getCommandSenderWorld().isClientSide) return;
+        if (player.level.isClientSide) return;
         int amt = item.getCount() * (64 / item.getMaxStackSize());
         if(item.getMaxStackSize() >= 65) amt *= (EMCWorld.HOMO << 18);
         double rate = 1d;
@@ -50,7 +59,7 @@ public class PlayerPickUpItemEvent {
         if(c.getPickMode() == 2 && item.getMaxStackSize() <= 64){
             if(KnowledgeHelper.itemInAlchemyBag(item,player,DyeColor.BLACK,false)){
                 event.setCanceled(true);
-                if(!(item.getItem() instanceof IEMCGodWeaponLevel)){
+                if(!(item.getItem() instanceof IEMCGod)){
                     event.getItem().remove();
                 }
                 return;
@@ -59,8 +68,7 @@ public class PlayerPickUpItemEvent {
         if (item.getItem() instanceof ICostEMCItem) {
             rate = ((ICostEMCItem) item.getItem()).getEMCCostRate();
         }
-        final Restriction restriction = RestrictionManager.INSTANCE.getRestriction(player, item);
-        if (restriction != null && restriction.shouldPreventPickup()) {
+        if (shouldPrevent(player,item)) {
             ItemEntity entity = event.getItem();
             ItemStack ret = UnknownPouchUtils.putItem(player,entity.getItem());
             if(ret.equals(ItemStack.EMPTY)){
@@ -74,6 +82,9 @@ public class PlayerPickUpItemEvent {
         }
         if(full(player,item)) return;
         long costEMC = MathUtils.doubleToLong(amt * rate * MathUtils.difficultyLoss() * MathUtils.getPickUpItemBaseCost(player));
+        if(!ConfigManager.EMC_PICK.get()){
+            costEMC = 0;
+        }
         if (costEMC == 0) return;
         if (EMCHelper.getPlayerEMC(player) < costEMC) {
             event.setCanceled(true);
@@ -93,5 +104,29 @@ public class PlayerPickUpItemEvent {
             }
         }
         return true;
+    }
+
+    private static boolean shouldPrevent(PlayerEntity player,ItemStack stack){
+        if(ConfigManager.FREE_MODE.get()){
+            return false;
+        }
+        final Restriction restriction = RestrictionManager.INSTANCE.getRestriction(player, stack);
+        if(!player.level.isClientSide){
+            MinecraftServer server = player.getServer();
+            assert server != null;
+            RecipeManager manager = server.getRecipeManager();
+            List<ItemStageLimit> recipes = manager.getAllRecipesFor(ItemStageLimit.ItemStageLimitType.INSTANCE);
+            for(ItemStageLimit limit : recipes){
+                if(limit.getItem().equals(stack.getItem())){
+                    String stage = limit.getStage();
+                    if(!GameStageManager.hasStage(player,stage)){
+                        return true;
+                    }
+                }
+            }
+        }else{
+            return restriction != null && restriction.shouldPreventPickup();
+        }
+        return false;
     }
 }

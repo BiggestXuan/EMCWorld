@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "emcworld:lottery"
+    },
+    "title": {
+      "translate": "advancement.emcworld.lottery_buy"
+    },
+    "description": {
+      "translate": "advancement.emcworld.lottery_buy.desc"
+    },
+    "hidden": true
+  },
+  "parent": "emcworld:welcome",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

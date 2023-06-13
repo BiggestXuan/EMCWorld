@@ -160,7 +160,7 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
 
     @Override
     public long getTickCost(ItemStack stack) {
-        return 40L * getLevel(stack);
+        return 40L * (getLevel(stack)+1);
     }
 
     @Override

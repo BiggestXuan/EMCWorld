@@ -78,4 +78,14 @@ public class HamBat extends EWItem implements IAdditionsDamageWeapon, INeedLevel
     public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
         return DamageUtils.of(3.5D * getFresh(stack) / 200);
     }
+
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return 1 - getFresh(stack) / 200d;
+    }
 }

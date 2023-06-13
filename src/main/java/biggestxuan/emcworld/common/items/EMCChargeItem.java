@@ -55,7 +55,7 @@ public class EMCChargeItem extends EWItem implements IEMCInfuserItem, IUpgradeab
                         continue;
                     }
                     long cost = MathUtils.min(used,this.getInfuser(p_77663_1_), (long) (this.getMaxInfuser(p_77663_1_)*0.01D));
-                    this.addInfuser(p_77663_1_,Math.negateExact(cost));
+                    this.addInfuser(p_77663_1_,-cost);
                     item.addInfuser(stack,cost);
                 }
             }

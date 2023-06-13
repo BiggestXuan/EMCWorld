@@ -40,7 +40,7 @@ public class ContainerDenyRender extends TileEntityRenderer<LockableTileEntity> 
             ILootTile tile = (ILootTile) p_225616_1_;
             ResourceLocation rl = tile.getTable();
             if(rl != null && (rl.getNamespace().contains("illager") || rl.getPath().contains("illager"))){
-                if(player != null && !GameStageManager.hasStage(player,"three")){
+                if(player != null && !GameStageManager.hasStage(player,"three") && ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get()){
                     if(world != null && world.getDayTime() % 40 == 0){
                         world.addParticle(ParticleTypes.BARRIER, pos.getX() + 0.5D, pos.getY() + 1.5D, pos.getZ()+ 0.5D, 0.0D, 0.0D, 0.0D);
                     }

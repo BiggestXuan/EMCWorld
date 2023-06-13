@@ -25,9 +25,13 @@ public abstract class ItemMagicMirrorMixin extends BBItem {
         super(name, props);
     }
 
-    @Inject(method = "doTeleport",at = @At("HEAD"),remap = false)
+    @Inject(method = "doTeleport",at = @At("HEAD"),remap = false, cancellable = true)
     private static void _inject(PlayerEntity player, World origin, World target, double x, double y, double z, CallbackInfo ci){
         long emc = MathUtils.getMirrorTPCost(player,origin,target,x,y,z);
-        EMCHelper.modifyPlayerEMC(player,new EMCSource.TeleportEMCSource(-emc,player,new BlockPos(x,y,z),0,(long) (MathUtils.getDistance(new BlockPos(player.position()),new BlockPos(x,y,z)))),true);
+        if(EMCHelper.getPlayerEMC(player) > emc){
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.TeleportEMCSource(-emc,player,new BlockPos(x,y,z),0,(long) (MathUtils.getDistance(new BlockPos(player.position()),new BlockPos(x,y,z)))),true);
+        }else{
+            ci.cancel();
+        }
     }
 }

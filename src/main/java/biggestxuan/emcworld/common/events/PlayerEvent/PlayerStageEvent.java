@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.LotteryData;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import net.darkhax.gamestages.event.GameStageEvent;
@@ -31,7 +32,7 @@ public class PlayerStageEvent {
         String stage = event.getStageName();
         for(DifficultySetting ds : DifficultySetting.values()){
             if(stage.equals(ds.getGameStage().toLowerCase())){
-                DifficultyHelper.addPlayerDifficulty(player,ds.getDifficulty());
+                DifficultyHelper.addPlayerDifficulty(player,ds.getDifficulty() * ConfigManager.SUNDRY_DIFFICULTY_STAGE.get());
                 if(player instanceof ServerPlayerEntity){
                     ServerPlayerEntity p = (ServerPlayerEntity) player;
                     MinecraftServer server = p.server;

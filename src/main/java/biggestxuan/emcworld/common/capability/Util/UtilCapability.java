@@ -47,6 +47,7 @@ public class UtilCapability implements IUtilCapability {
     private boolean liveMode;
     private boolean online;
     private float attackCD;
+    private long mv;
 
     public UtilCapability(){
         this.SponsorLevel = new int[0];
@@ -84,6 +85,17 @@ public class UtilCapability implements IUtilCapability {
         this.liveMode = false;
         this.online = true;
         this.attackCD = 1F;
+        this.mv = 0L;
+    }
+
+    @Override
+    public long getMV() {
+        return mv;
+    }
+
+    @Override
+    public void setMV(long mv) {
+        this.mv = mv;
     }
 
     @Override
@@ -501,6 +513,7 @@ public class UtilCapability implements IUtilCapability {
         tag.putBoolean("liveMode",liveMode);
         tag.putBoolean("online",online);
         tag.putFloat("attackCD",attackCD);
+        tag.putLong("mv",mv);
         return tag;
     }
 
@@ -543,5 +556,6 @@ public class UtilCapability implements IUtilCapability {
         this.liveMode = nbt.getBoolean("liveMode");
         this.online = nbt.getBoolean("online");
         this.attackCD = nbt.getFloat("attackCD");
+        this.mv = nbt.getLong("mv");
     }
 }

@@ -26,9 +26,17 @@ public function getLootTableAddition(base as float) as float{
 public function addStage(items as ItemStack[],stage as string) as void{
     for i in items{
         ItemStages.restrict(i.asIItemStack().anyDamage(),stage);
+        <recipetype:emcworld:item_stage_limit>.addRecipe(getRecipeName(i)+"_"+stage,i,stage);
     }
 }
 
 public function addModStage(id as string[],stage as string) as void{
     ItemStages.createModRestriction(id,stage);
+    for i in id{
+        if(i != ""){
+            for item in loadedMods.getMod(i).items{
+                addStage([item],stage);
+            }
+        }
+    }
 }

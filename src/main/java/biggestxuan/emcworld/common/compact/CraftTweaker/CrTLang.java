@@ -6,8 +6,8 @@ package biggestxuan.emcworld.common.compact.CraftTweaker;
  *  2022/11/09
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import net.minecraft.client.resources.I18n;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
@@ -15,6 +15,6 @@ import org.openzen.zencode.java.ZenCodeType;
 public class CrTLang {
     @ZenCodeType.Method
     public static String DimTip(){
-        return I18n.get("message.dim.deny");
+        return EMCWorld.tc("message.dim.deny").getString();
     }
 }

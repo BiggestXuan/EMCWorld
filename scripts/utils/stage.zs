@@ -89,7 +89,6 @@ public class sitem{
             <item:mekanismgenerators:fusion_reactor_port>,
             <item:mekanismgenerators:fusion_reactor_logic_adapter>,
             <item:mekanismgenerators:hohlraum>,
-            <item:mekanismgenerators:hohlraum>,
             <item:mekanism:upgrade_filter>
         ];
     }

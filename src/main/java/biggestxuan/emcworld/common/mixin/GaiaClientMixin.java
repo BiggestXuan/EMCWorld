@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -21,6 +22,9 @@ public abstract class GaiaClientMixin {
     @Redirect(method = "bossBarRenderCallback",at = @At(value = "INVOKE",target = "Ljava/lang/Integer;toString(I)Ljava/lang/String;"),remap = false)
     @OnlyIn(Dist.CLIENT)
     public String playerCount(int i){
+        if(!ConfigManager.SUNDRY_GAIA_MULTI.get()){
+            return "1";
+        }
         ClientPlayerEntity player = Minecraft.getInstance().player;
         if(player != null && !player.isDeadOrDying()){
             return String.valueOf(EMCWorldAPI.getInstance().getUtilCapability(player).gaiaPlayer());

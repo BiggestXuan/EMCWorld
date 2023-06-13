@@ -10,6 +10,10 @@ public function addCraftShapedRecipe(input as IIngredient[][],output as ItemStac
     craftingTable.addShaped(getRecipeName(output)+addon,output,input);
 }
 
+public function addCraftShapedMirrorRecipe(input as IIngredient[][],output as ItemStack) as void{
+    craftingTable.addShapedMirrored(getRecipeName(output),output,input);
+}
+
 public function addCraftShapedRecipeNoName(input as IIngredient[][],output as ItemStack) as void{
     var amount = output.asIItemStack().amount;
     if(amount == 1){

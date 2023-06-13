@@ -40,7 +40,7 @@ public class DumpPlayerInfo implements Command<CommandSource> {
         builder.append("Player Name: ")
                 .append(player.getScoreboardName()).append(" UUID: ")
                 .append(player.getStringUUID()).append("\n")
-                .append("Profession: ").append(ProfessionGUI.getProfessionName(skill.getProfession())).append(" Level: ").append(skill.getLevel()).append(" Exp: ").append(skill.getXP())
+                .append("Profession: ").append(skill.getProfession()).append(" Level: ").append(skill.getLevel()).append(" Exp: ").append(skill.getXP())
                 .append("\n")
                 .append("EMC: ").append(EMCHelper.getPlayerEMC(player))
                 .append("\n")

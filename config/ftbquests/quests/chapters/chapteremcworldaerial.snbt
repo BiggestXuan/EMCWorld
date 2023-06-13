@@ -12,6 +12,8 @@
 			title: "{quest.emcworld.aerial_lighter}"
 			x: 3.0d
 			y: 3.0d
+			dependencies: ["131D06E6858EA93F"]
+			hide: true
 			id: "4EE4DE2C96ACCFDD"
 			tasks: [{
 				id: "19C94678AD0D2E7A"

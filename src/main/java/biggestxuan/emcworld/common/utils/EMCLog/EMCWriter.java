@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.utils.EMCLog;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.utils.CalendarUtils;
 import codechicken.lib.util.ServerUtils;
@@ -27,7 +28,7 @@ public class EMCWriter {
 
     public static void WriteEMCLog(PlayerEntity player,EMCSource<?> source) {
         try{
-            if(player == null || source.emc == 0 || source.amt == -1){
+            if(player == null || source.emc == 0 || source.amt == -1 || !ConfigManager.EMC_LOG.get()){
                 return;
             }
             File file = getPlayerFile(player);

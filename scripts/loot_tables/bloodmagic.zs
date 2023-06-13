@@ -1,4 +1,5 @@
 #priority 30
+import mods.emcworld.configHelper;
 
 public function tweakerBloodMagicLootTable() as void{
     var name as string[]=[
@@ -16,6 +17,6 @@ public function tweakerBloodMagicLootTable() as void{
     ];
     var be = <item:emcworld:blood_eye>;
     for i in name{
-        modifyLootTable(be,0.12f,getRL(i));
+        modifyLootTable(be,configHelper.bloodEyeChance(),getRL(i));
     }
 }

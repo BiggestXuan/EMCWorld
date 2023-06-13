@@ -294,7 +294,6 @@
 		{
 			x: 7.5d
 			y: -6.0d
-			dependencies: ["64162D6185D1A516"]
 			size: 3.0d
 			id: "3CBD98CE48A9B3B5"
 			tasks: [{

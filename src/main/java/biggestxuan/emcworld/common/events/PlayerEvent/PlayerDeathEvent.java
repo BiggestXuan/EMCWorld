@@ -15,6 +15,7 @@ import biggestxuan.emcworld.api.item.equipment.armor.BaseEMCGodArmorItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -72,7 +73,7 @@ public class PlayerDeathEvent {
             BlockPos deathPos = new BlockPos(livingEntity.position());
             Raid raid = world.getRaidAt(deathPos);
             player.getCapability(EMCWorldCapability.UTIL).ifPresent(c -> c.setHealTick(0));
-            if(raid != null){
+            if(raid != null && ConfigManager.RAID_PLAYER_DEATH.get()){
                 for(PlayerEntity p: getNearPlayer(raid)){
                     Message.sendMessage(p, EMCWorld.tc("message.raid.loss"));
                 }

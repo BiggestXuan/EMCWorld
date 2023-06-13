@@ -7,6 +7,7 @@ package biggestxuan.emcworld.api.crafttweaker;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.recipes.InfuserRecipe;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -21,6 +22,7 @@ import org.openzen.zencode.java.ZenCodeType;
 
 @ZenCodeType.Name("mods.emcworld.Infuser")
 @ZenRegister
+@SuppressWarnings("unused")
 public class CrTInfuserRecipe implements IRecipeManager {
     @ZenCodeType.Method
     public void addRecipe(String name, IIngredient[] input, IItemStack output,int level,int time,int costEMC){
@@ -28,6 +30,7 @@ public class CrTInfuserRecipe implements IRecipeManager {
         for(IIngredient i:input){
             list.add(i.asVanillaIngredient());
         }
+        time = ConfigManager.SUNDRY_INFUSER_QUICK.get() ? Math.max(time/100,1) : time;
         InfuserRecipe recipe = new InfuserRecipe(EMCWorld.rl(name),output.getInternal(),list,level,costEMC,time);
         CraftTweakerAPI.apply(new ActionAddRecipe(this,recipe,""));
     }

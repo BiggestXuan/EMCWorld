@@ -29,9 +29,9 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Sword.InfinitySword;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
+import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toClient.BuyLotteryClientPacket;
 import biggestxuan.emcworld.common.network.toServer.LeftClickPacket;
-import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.StaffAttackPacket;
 import biggestxuan.emcworld.common.recipes.AdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.recipes.UpdateRecipe;
@@ -46,7 +46,6 @@ import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchHelper;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import mekanism.common.item.ItemQIODrive;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -63,14 +62,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -345,7 +341,7 @@ public class PlayerClickEvent {
                     itemStack.shrink(1);
                 }
                 if(!player.isCreative()){
-                    player.getCooldowns().addCooldown(item,1200);
+                    player.getCooldowns().addCooldown(item,ConfigManager.SUNDRY_RAID_LIGHT_CD.get());
                 }
                 for(AbstractRaiderEntity entity:getNearRaidEntity(player)){
                     entity.addEffect(new EffectInstance(Effects.GLOWING,1200,0));

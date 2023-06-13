@@ -26,15 +26,18 @@ import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.SkillUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import cursedflames.bountifulbaubles.common.item.items.ItemGlovesDexterity;
+import dev.latvian.mods.projectex.block.CollectorBlock;
 import mekanism.common.item.gear.ItemHazmatSuitArmor;
 import mekanism.common.registries.MekanismItems;
 import moze_intel.projecte.utils.EMCHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.Style;
@@ -83,7 +86,7 @@ public class ItemToolTipEvent {
                 return;
             }
         }
-        if(stack.getItem() instanceof IGemInlaidItem){
+        if(stack.getItem() instanceof IGemInlaidItem && ConfigManager.UPGRADE_GEM.get()){
             IGemInlaidItem i_q = (IGemInlaidItem) stack.getItem();
             if(i_q.getGemType(stack) == 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.gem_null"));
@@ -149,6 +152,18 @@ public class ItemToolTipEvent {
             if(stack.getItem() instanceof IStarItem){
                 IStarItem item = (IStarItem) stack.getItem();
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.star",item.getStar(stack),item.getMaxStar(stack)));
+            }
+        }
+        if(stack.getItem() instanceof BlockItem){
+            BlockItem blockItem = (BlockItem) stack.getItem();
+            if(blockItem.getBlock() instanceof CollectorBlock){
+                CollectorBlock block = (CollectorBlock) blockItem.getBlock();
+                CompoundNBT nbt = stack.getOrCreateTag();
+                int life = nbt.getInt("lifespan");
+                int maxLife = nbt.getInt("maxLife") == 0 ? ConfigManager.SUNDRY_COLLECTOR_LIFESPAN.get() : nbt.getInt("maxLife");
+                String maxEMC = MathUtils.format((maxLife - life) * block.matter.collectorOutput / 20);
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.collector.lifespan",(maxLife-life)/20,String.format("%.2f",(1-(1d*life/maxLife))*100)+"%"));
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.collector.max",maxEMC));
             }
         }
         if(stack.getItem() instanceof IUpgradeBow){

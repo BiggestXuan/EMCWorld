@@ -1,5 +1,6 @@
 #priority 72
 import crafttweaker.api.item.ItemStack;
+import mods.emcworld.configHelper;
 
 public function modifyProjecteRecipe() as void{
     var table = <item:projecte:transmutation_table>;
@@ -23,6 +24,7 @@ public function modifyProjecteRecipe() as void{
     var ei = <item:extendedcrafting:ender_ingot>;
     var a = <item:minecraft:air>;
     var ro = <item:mekanism:ingot_refined_obsidian>;
+    var di = <item:minecraft:diamond>;
     var flowers as ItemStack[] = new Getter().getFlowers();
 
     removeAllRecipe(collector);
@@ -58,11 +60,19 @@ public function modifyProjecteRecipe() as void{
         addCraftShapelessRecipe([coals[i],coals[i],coals[i],coals[i]],coals[i+1]);
     }
     addCraftShapelessRecipe([c,c,c,c],coals[0]);
-    addCraftShapedRecipeNoName([
-        [ab,ab,ab],
-        [ab,<item:minecraft:diamond>,ab],
-        [ab,ab,ab]
-    ],d);
+    if(configHelper.easyDarkMatter()){
+        addCraftShapedRecipeNoName([
+            [di,di,di],
+            [di,ab,di],
+            [di,di,di]
+        ],d);
+    }else{
+        addCraftShapedRecipeNoName([
+            [ab,ab,ab],
+            [ab,di,ab],
+            [ab,ab,ab]
+        ],d);
+    }
     addCraftShapedRecipeNoName([
         [ecc,s[2],ecc],
         [si,collector[0],si],

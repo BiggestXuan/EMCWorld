@@ -7,6 +7,9 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -39,7 +42,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerWakeUpEvent(PlayerWakeUpEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide) return;
+        if(player.level.isClientSide || !ConfigManager.EMC_WAKE.get()) return;
         long baseEMC = MathUtils.doubleToLong(MathUtils.getWakeUpBaseCost(player) * MathUtils.difficultyLoss());
         if(baseEMC == 0) return;
         long costEMC = player.getMainHandItem().getItem().equals(EWItems.XIANGSHUSHUMIAO_PILLOW.get()) ? 0 : Math.min(baseEMC, EMCHelper.getPlayerEMC(player));
@@ -49,7 +52,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerUseHoeEvent(UseHoeEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide) return;
+        if(player.level.isClientSide || !ConfigManager.EMC_HOE.get()) return;
         long costEMC = MathUtils.doubleToLong(MathUtils.difficultyLoss() * MathUtils.getUseHoeBaseCost(player));
         if(costEMC == 0) return;
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
@@ -64,7 +67,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerOpenChestEvent(PlayerContainerEvent.Open event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide) return;
+        if(player.level.isClientSide || !ConfigManager.EMC_CONTAINER.get()) return;
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getChestBaseCost(player,event.getContainer()) * MathUtils.difficultyLoss()),EMCHelper.getPlayerEMC(player));
         if(costEMC == 0) return;
         EMCHelper.modifyPlayerEMC(player,new EMCSource.OpenContainerEMCSource(Math.negateExact(costEMC),player,event.getContainer(),0),true);
@@ -73,7 +76,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerFillBucketEvent(FillBucketEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.level.isClientSide) return;
+        if(player.level.isClientSide || !ConfigManager.EMC_BUCKET.get()) return;
         long costEMC = MathUtils.doubleToLong(MathUtils.getFillBucketBaseCost(player) * MathUtils.difficultyLoss());
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
             EMCHelper.modifyPlayerEMC(player,new EMCSource.FillBucketEMCSource(Math.negateExact(costEMC),player,event.getFilledBucket(),0),true);
@@ -87,7 +90,7 @@ public class PlayerBlockEvent {
     @SubscribeEvent
     public static void playerCraftItemEvent(final PlayerEvent.ItemCraftedEvent event){
         PlayerEntity player = event.getPlayer();
-        if(player.getCommandSenderWorld().isClientSide) return;
+        if(player.level.isClientSide || !ConfigManager.EMC_CRAFT.get()) return;
         long playerEMC = EMCHelper.getPlayerEMC(player);
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getCraftBaseCost(player) * MathUtils.difficultyLoss() * event.getCrafting().getCount() * (1.0 * 64 / event.getCrafting().getMaxStackSize())),playerEMC);
         if(costEMC == 0) return;
@@ -96,7 +99,7 @@ public class PlayerBlockEvent {
 
     @SubscribeEvent
     public static void blockBreakEvent(BlockEvent.BreakEvent event){
-        if(event.getWorld().isClientSide()) return;
+        if(event.getWorld().isClientSide() || !ConfigManager.EMC_DESTROY.get()) return;
         int level = event.getState().getHarvestLevel();
         if(level <= 0) return;
         PlayerEntity player = event.getPlayer();
@@ -132,6 +135,23 @@ public class PlayerBlockEvent {
         if(event.getPlayer().level.isClientSide) return;
         if((item instanceof SwordItem || item instanceof StaffItem || item instanceof WarHammerItem || item instanceof DaggerItem || item instanceof BowItem)){
             //event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void upgradeWeaponEvent(PlayerUpgradeItemEvent.Pre event){
+        PlayerEntity player = event.getPlayer();
+        double chance = event.getSuccessChance();
+        try{
+            IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
+            if(cap.getMV() > 1 && ConfigManager.LOTTERY.get()){
+                long mv = cap.getMV();
+                double c = Math.max(MathUtils.log(1000,mv) / 100d,0.025d * ConfigManager.DIFFICULTY.get());
+                event.setSuccessChance(chance + c);
+                cap.setMV(0);
+            }
+        }catch (NullPointerException ignored){
+
         }
     }
 

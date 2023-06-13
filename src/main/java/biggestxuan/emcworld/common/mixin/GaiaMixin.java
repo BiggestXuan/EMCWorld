@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.mixin;
  */
 
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -84,10 +85,13 @@ public abstract class GaiaMixin extends LivingEntity {
                 this.setLastHurtByPlayer(player);
             }
         }
+        if(!ConfigManager.SUNDRY_GAIA_MULTI.get()){
+            playersWhoAttacked.clear();
+        }
         if (attacker != null) {
             int actPlayer = getPlayersAround().size();
             double difficulty = DifficultyHelper.getAreaDifficulty(gaia.level,gaia.blockPosition());
-            if(playerCount < actPlayer){
+            if(playerCount < actPlayer && ConfigManager.SUNDRY_GAIA_MULTI.get()){
                 Objects.requireNonNull(gaia.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(MAX_HP * (1 + actPlayer * 0.25) + difficulty);
                 gaia.heal((float) ((actPlayer-playerCount)*(320 + difficulty)));
                 playerCount = actPlayer;

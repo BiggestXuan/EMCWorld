@@ -23,6 +23,7 @@ public class PCLWarningScreen extends Screen {
 
     protected void init() {
         super.init();
+        WarningEvent.isShowPCL = true;
         this.addButton(new Button(this.width / 2 - 75, this.height * 3 / 4, 150, 20,EMCWorld.tc("screen.pcl.ik"), (p_i232255_5) -> {
             Minecraft.getInstance().setScreen(finalScreen);
             WarningEvent.isShowPCL = true;

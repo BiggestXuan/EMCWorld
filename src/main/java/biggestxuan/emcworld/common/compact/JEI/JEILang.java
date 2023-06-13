@@ -6,8 +6,8 @@ package biggestxuan.emcworld.common.compact.JEI;
  *  2022/08/19
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import net.minecraft.client.resources.I18n;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
@@ -15,6 +15,6 @@ import org.openzen.zencode.java.ZenCodeType;
 public class JEILang {
     @ZenCodeType.Method
     public static String getAdvancedCoreDesc(){
-        return I18n.get("jei.emcworld.advanced_update_desc");
+        return EMCWorld.tc("jei.emcworld.advanced_update_desc").getString();
     }
 }

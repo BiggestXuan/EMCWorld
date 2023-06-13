@@ -159,9 +159,11 @@ public class RaidUtils {
 
     public static void init(){
         int b = g(1);
-        Raid.WaveMember.create("biggest_xuan", EWEntities.biggest_xuan,new int[]{0,0,0,0,0,0,1,0});
-        Raid.WaveMember.create("dctor",EWEntities.dctor_0415,new int[]{0,0,0,0,1,0,0,0});
-        Raid.WaveMember.create("tulye",EWEntities.tulye,new int[]{0,0,0,0,0,0,0,1});
+        if(ConfigManager.RAID_SPONSORS.get()){
+            Raid.WaveMember.create("biggest_xuan", EWEntities.biggest_xuan,new int[]{0,0,0,0,0,0,1,0});
+            Raid.WaveMember.create("dctor",EWEntities.dctor_0415,new int[]{0,0,0,0,1,0,0,0});
+            Raid.WaveMember.create("tulye",EWEntities.tulye,new int[]{0,0,0,0,0,0,0,1});
+        }
         Raid.WaveMember.create("illusioner", EntityType.ILLUSIONER,new int[]{0,0,0,1,0,0,b, g(2)});
         //Raid.WaveMember.create("frost", EntityInit.FROSTMANCER,new int[]{0,0,1,1,b,2,g(2),g(3)});
         Raid.WaveMember.create("conjurer", IllagerEntityTypes.CONJURER,new int[]{0,0,0,1,0,0,1,g(1)});

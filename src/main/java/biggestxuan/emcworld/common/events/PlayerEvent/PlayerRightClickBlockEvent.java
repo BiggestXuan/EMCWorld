@@ -46,7 +46,7 @@ public class PlayerRightClickBlockEvent {
         ResourceLocation rl = block.getRegistryName();
         if(event.getWorld().isClientSide || rl == null) return;
         if(block instanceof BlockAltar || block instanceof BlockRitualPedestal){
-            if(!event.getWorld().dimension().equals(Alfheim.DIMENSION)){
+            if(!event.getWorld().dimension().equals(Alfheim.DIMENSION) && ConfigManager.SUNDRY_ASTRAL_CRAFT_LIMIT.get()){
                 event.setResult(Event.Result.DENY);
                 Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.altar.cancel"));
                 event.setCanceled(true);
@@ -59,7 +59,7 @@ public class PlayerRightClickBlockEvent {
         if(event.getWorld().getBlockEntity(event.getPos()) instanceof ILootTile && !ConfigManager.FREE_MODE.get()){
             ILootTile tile = (ILootTile) event.getWorld().getBlockEntity(event.getPos());
             if(tile != null && tile.getTable() != null && (tile.getTable().getNamespace().contains("illager") || tile.getTable().getPath().contains("illager"))){
-                if(!GameStageManager.hasStage(event.getPlayer(),"three")){
+                if(!GameStageManager.hasStage(event.getPlayer(),"three") && ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get()){
                     event.setCanceled(true);
                 }
             }

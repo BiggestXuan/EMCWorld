@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.compact.Projecte;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.CommandUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
@@ -77,7 +78,6 @@ public class EMCHelper {
             int level = player.getEffect(EWEffects.EMC_BROKEN.get()).getAmplifier() + 1;
             modify *= level;
         }
-        EMCWriter.WriteEMCLog(player,source);
         if(showMessage){
             if(modify < 0){
                 Message.LossEMCMessage(player,Math.negateExact(modify));
@@ -91,6 +91,7 @@ public class EMCHelper {
             triggerAdvancement(player,modify);
             modify = Math.negateExact(PlayerCurios.costTotem(player,Math.negateExact(modify)));
         }
+        EMCWriter.WriteEMCLog(player,source);
         long afterEMC = getPlayerActEMC(player)+modify;
         getPlayerIKP(player).setEmc(BigInteger.valueOf(Math.max(0,afterEMC)));
         flushPlayer(player);

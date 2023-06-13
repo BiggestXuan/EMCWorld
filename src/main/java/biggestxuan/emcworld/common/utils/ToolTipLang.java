@@ -6,8 +6,8 @@ package biggestxuan.emcworld.common.utils;
  *  2022/08/23
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import net.minecraft.client.resources.I18n;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister
@@ -15,30 +15,30 @@ import org.openzen.zencode.java.ZenCodeType;
 public class ToolTipLang {
     @ZenCodeType.Method
     public static String updateAddTime(){
-        return I18n.get("tooltip.emcworld.update_add_time");
+        return EMCWorld.tc("tooltip.emcworld.update_add_time").getString();
     }
     @ZenCodeType.Method
     public static String updateLossTime(){
-        return I18n.get("tooltip.emcworld.update_loss_time");
+        return EMCWorld.tc("tooltip.emcworld.update_loss_time").getString();
     }
     @ZenCodeType.Method
     public static String updateAddCost(){
-        return I18n.get("tooltip.emcworld.update_add_cost");
+        return EMCWorld.tc("tooltip.emcworld.update_add_cost").getString();
     }
     @ZenCodeType.Method
     public static String updateLossCost(){
-        return I18n.get("tooltip.emcworld.update_loss_cost");
+        return EMCWorld.tc("tooltip.emcworld.update_loss_cost").getString();
     }
     @ZenCodeType.Method
     public static String updateAddAddon(){
-        return I18n.get("tooltip.emcworld.update_add_addon");
+        return EMCWorld.tc("tooltip.emcworld.update_add_addon").getString();
     }
     @ZenCodeType.Method
     public static String getBiggestEMCGemDesc(){
-        return I18n.get("tooltip.emcworld.biggest_emc_gem");
+        return EMCWorld.tc("tooltip.emcworld.biggest_emc_gem").getString();
     }
     @ZenCodeType.Method
     public static String getNiobiumNuggetDesc(){
-        return I18n.get("tooltip.emcworld.niobium_nugget");
+        return EMCWorld.tc("tooltip.emcworld.niobium_nugget").getString();
     }
 }

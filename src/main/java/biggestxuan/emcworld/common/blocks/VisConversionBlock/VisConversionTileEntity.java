@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.blocks.VisConversionBlock;
  */
 
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -25,7 +26,7 @@ public class VisConversionTileEntity extends TileEntity implements ITickableTile
 
     @Override
     public void tick() {
-        if(this.level.isClientSide) return;
+        if(this.level.isClientSide || !ConfigManager.SUNDRY_VIS_CORE.get()) return;
         List<? extends PlayerEntity> players = this.level.players();
         List<PlayerEntity> actPlayers = new ArrayList<>();
         for(PlayerEntity p :players){

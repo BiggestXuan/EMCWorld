@@ -6,8 +6,11 @@ package biggestxuan.emcworld.common.utils.Lottery;
  *  2023/05/07
  */
 
+import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.data.LotteryData;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 
 import java.util.ArrayList;
@@ -50,11 +53,11 @@ public class LotteryUtils {
         return list;
     }
 
-    public static long getLotteryPrice(Lottery lottery,List<Integer> win,MinecraftServer server){
+    public static long getLotteryPrice(Lottery lottery,List<Integer> win,MinecraftServer server,ServerPlayerEntity player){
         long emc = 0;
         List<List<Integer>> list = lottery.getAll();
         for(List<Integer> i : list){
-            emc += getLotteryEMC(getLotteryNum(win,i),server);
+            emc += getLotteryEMC(getLotteryNum(win,i),server,player);
         }
         return emc * lottery.getRate();
     }
@@ -69,7 +72,11 @@ public class LotteryUtils {
         return count;
     }
 
-    public static long getLotteryEMC(int index, MinecraftServer server){
+    public static long getLotteryEMC(int index, MinecraftServer server, ServerPlayerEntity player){
+        int s = index - 3;
+        if(s >= 1 && s <= 4){
+            EMCHelper.awardAdvancement(player, EMCWorld.rl("lottery/reward"+s));
+        }
         switch (index){
             case 7:
                 long base = (long) (LotteryData.getInstance(server).getStoredEMC() * 0.1);

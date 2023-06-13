@@ -27,7 +27,6 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -375,7 +374,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         }
 
         public String getName() {
-            return I18n.get("attack_range_"+name);
+            return EMCWorld.tc("attack_range_"+name).getString();
         }
 
     }

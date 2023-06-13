@@ -114,7 +114,7 @@ public class PlayerTickEvent {
                 cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
         )));
         player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
-                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode()
+                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode(),cap.getMV()
         )));
         ServerPlayerEntity SP = (ServerPlayerEntity) player;
         LazyOptional<IUtilCapability> cap = player.getCapability(EMCWorldCapability.UTIL);
@@ -365,7 +365,7 @@ public class PlayerTickEvent {
                 util.setState(4);
             }else util.setState(1);
             float rate = 1f;
-            if(getVillagerAmount(raid) <= 10){
+            if(getVillagerAmount(raid) <= 10 && ConfigManager.RAID_PLAYER_DAMAGE.get()){
                 rate = (float) (1f + ((-0.2 * getVillagerAmount(raid) + 2) / (float) MathUtils.difficultyLoss()));
             }
             util.setPillager(raid.getTotalRaidersAlive());
@@ -373,7 +373,7 @@ public class PlayerTickEvent {
             util.setWave(raid.getGroupsSpawned());
             util.setRaidRate(rate);
             util.setMaxWave(RaidUtils.getRaidWave());
-            if(c.getModify() == 0 || c.getLevel() < 80){
+            if((c.getModify() == 0 || c.getLevel() < 80) && ConfigManager.RAID_PLAYER_LEVEL.get()){
                 for(PlayerEntity player1 : PlayerDeathEvent.getNearPlayer(raid)){
                     Message.sendMessage(player1, EMCWorld.tc("message.raid.cancel"));
                 }
@@ -546,7 +546,7 @@ public class PlayerTickEvent {
             if(stack.getItem() instanceof IEMCShieldArmor){
                 IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
                 long cost = (long) (-100000 * Math.pow(1.145,armor.getShieldSpeed(stack)) / 100);
-                if(armor.getShield(stack) < armor.getMaxShield(stack) && armor.getInfuser(stack) >= cost){
+                if(armor.getShield(stack) < armor.getMaxShield(stack) && armor.getInfuser(stack) >= -cost){
                     armor.addInfuser(stack, cost);
                     armor.heal(stack);
                 }

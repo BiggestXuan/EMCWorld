@@ -13,6 +13,7 @@ import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Scroll.BiggestXuanScroll;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.LuckyItem.ILuckyItem;
 import biggestxuan.emcworld.common.registry.EWItems;
@@ -193,12 +194,15 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
             return;
         }
         IUpgradeableItem weapon1 = (IUpgradeableItem) weapon.getItem();
-        if(weapon1.getLevel(weapon) > weapon1.getMaxLevel()/3){
+        if(weapon1.getLevel(weapon) > weapon1.getMaxLevel()/3 && ConfigManager.UPGRADE_FAIL_LOSS.get()){
             weapon1.lossLevel(weapon,1);
         }
     }
 
     private boolean hasBXScroll(){
+        if(!ConfigManager.UPGRADE_BX_SCROLL.get()){
+            return false;
+        }
         Inventory inventory = this.inventory;
         for (int i = 1; i < 6; i++) {
             if(inventory.getItem(i).getItem().equals(EWItems.SCROLL_BX.get())){

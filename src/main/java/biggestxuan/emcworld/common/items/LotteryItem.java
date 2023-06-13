@@ -17,6 +17,7 @@ import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
@@ -91,7 +92,7 @@ public class LotteryItem extends EWItem{
         List<Integer> list = data.getNum();
         Message.sendMessage(player,EMCWorld.tc("message.lottery.num",getString(list)));
         if(index == serverIndex){
-            long emc = LotteryUtils.getLotteryPrice(getLottery(stack),list,server);
+            long emc = LotteryUtils.getLotteryPrice(getLottery(stack),list,server,(ServerPlayerEntity) player);
             if(emc > 0){
                 if(nbt.getBoolean("lottery_drawn")){
                     Message.sendMessage(player,EMCWorld.tc("message.lottery.been"));

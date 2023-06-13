@@ -103,7 +103,7 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     }
     @Override
     public long costEMC(){
-        return level >= 6 && ConfigManager.DIFFICULTY.get() == 3.0D ? cost << (level - 4)  : cost;
+        return (long) ((level >= 6 && ConfigManager.DIFFICULTY.get() == 3.0D ? cost << (level - 4)  : cost) * ConfigManager.CRAFT_LOOT_ADVANCED_CRAFT_RATE.get());
     }
 
     @Override

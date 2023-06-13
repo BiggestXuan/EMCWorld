@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.blocks;
  *  2022/08/19
  */
 
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
@@ -71,9 +72,9 @@ public class MultiBlock {
         double time = 1d;
         double cost = 1d;
         double addon = 1d;
-        long t = 18000L;
+        long t = (long) ConfigManager.SUNDRY_CRAFT_CD.get();
         if(world.getBlockState(pos).equals(EWBlocks.CONTROL_UPDATE_CORE.get().defaultBlockState())){
-            return new UpdateMath(1,18000,1,0);
+            return new UpdateMath(1,ConfigManager.SUNDRY_CRAFT_CD.get(),1,0);
         }
         for (int i = 1; i < level+1; i++) {
             for (int j = x-i; j < x+i+1; j++) {

@@ -16,14 +16,6 @@
 	#Enable sponsorship messages that players send every 100 times they enter the game.
 	"Enable Info" = true
 
-[Festival]
-	#Get gifts on certain festivals,only configurable festivals that give gifts
-	SpringFestival = true
-	DragonBoatFestival = true
-	LanternFestival = true
-	FoolsDay = true
-	MidAutumnFestival = true
-
 [constellation]
 
 	[constellation.effect]
@@ -47,7 +39,88 @@
 						enabled = true
 
 ["Game Setting"]
-	"Enable Lottery" = true
-	#Enable Refined Storage Automation,such as Pattern,Crafter
-	"Enable Refined Storage Automation" = false
+
+	["Game Setting".Champions]
+		EMCProtecting = true
+		EMCBroken = true
+		Healing = true
+		EMCFlaming = true
+		ShieldFlaming = true
+
+	["Game Setting".Festival]
+		#Get gifts on certain festivals,only configurable festivals that give gifts
+		SpringFestival = true
+		DragonBoatFestival = true
+		LanternFestival = true
+		FoolsDay = true
+		MidAutumnFestival = true
+
+	["Game Setting"."EMC Modify"]
+		Pick = true
+		Craft = true
+		Log = true
+		Locate = true
+		Attack = true
+		Teleport = true
+		Wake = true
+		Hurt = true
+		Quest = true
+		Container = true
+		Bucket = true
+		Destroy = true
+		Death = true
+		Hoe = true
+
+	["Game Setting".Sundry]
+		"Enable Lottery" = false
+		#Range: 0.0 ~ 1500.0
+		DifficultyStageRate = 1.0
+		VisCore = true
+		InfuserQuickCraft = false
+		DisableSacrifice = true
+		#Enable Refined Storage Automation,such as Pattern,Crafter
+		"Enable Refined Storage Automation" = false
+		DisableMapTeleport = true
+		#Range: > 0
+		CraftCD = 18000
+		#Range: > 0
+		RaidLightCD = 1200
+		GaiaMulti = true
+		AstralDimensionCraftLimit = true
+		PillagerChestStageLimit = true
+		#Range: > 0
+		CollectorLifespan = 360000
+		GuardianDeathPortal = true
+		DisableCommandTeleport = true
+
+	["Game Setting".Raid]
+		Sponsors = true
+		PlayerDeath = true
+		TeamDamage = true
+		PlayerDamage = true
+		BlockSleep = true
+		PlayerLevel = true
+
+	["Game Setting".Upgrade]
+		FailLoss = true
+		TulyeScrollFail = true
+		CriticalOverflow = true
+		#Range: 1 ~ 30000
+		BaseWeight = 10
+		#Range: 1.0 ~ 100.0
+		BaseWeightRate = 1.5
+		PrefixDisplay = true
+		GemDisplay = true
+		BXScrollFail = true
+		DisableAnvil = true
+		StarDisplay = true
+
+	["Game Setting"."Craft & Loot"]
+		#Range: 0.0 ~ 1.0
+		AtumMedal = 0.15
+		#Range: 0.0 ~ 32767.0
+		AdvanceCraftEMCRate = 1.0
+		#Range: 0.0 ~ 1.0
+		BloodEye = 0.12
+		EasyDarkMatter = true
 

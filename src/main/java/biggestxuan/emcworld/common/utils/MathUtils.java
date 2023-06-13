@@ -257,6 +257,9 @@ public class MathUtils {
     }
 
     public static long getPlayerDeathBaseCost(PlayerEntity player) {
+        if(!ConfigManager.EMC_DEATH.get()){
+            return 0L;
+        }
         long costEMC = 0;
         for (DifficultySetting obj : DifficultySetting.values()) {
             if (GameStageManager.hasStage(player, obj.getGameStage())) {
@@ -296,6 +299,9 @@ public class MathUtils {
     }
 
     public static double getAttackBaseCost(PlayerEntity player){
+        if(!ConfigManager.EMC_ATTACK.get()){
+            return 0;
+        }
         for(DifficultySetting obj:DifficultySetting.values()){
             if(GameStageManager.hasStage(player, obj.getGameStage())){
                 return obj.getAttackBase();
@@ -306,6 +312,9 @@ public class MathUtils {
 
     public static double getChestBaseCost(PlayerEntity player, Container container){
         double baseCost = 0;
+        if(!ConfigManager.EMC_CONTAINER.get()){
+            return 0;
+        }
         for(DifficultySetting obj:DifficultySetting.values()){
             if(GameStageManager.hasStage(player,obj.getGameStage())){
                 double rate;
@@ -354,6 +363,9 @@ public class MathUtils {
         return getCommonBaseCost(player) * 0.2d;
     }
     public static double getQuestCompletedRewardBase(String stage, CustomReward customReward){
+        if(!ConfigManager.EMC_QUEST.get()){
+            return 0;
+        }
         double base = 0d;
         for(DifficultySetting obj:DifficultySetting.values()){
             if(stage.equals(obj.getGameStage().toLowerCase())){
@@ -493,6 +505,9 @@ public class MathUtils {
     }
 
     public static int getTPEMCCost(PlayerEntity player,Position start,Position end){
+        if(!ConfigManager.EMC_TELEPORT.get()){
+            return 0;
+        }
         if(end == null){
             return 0;
         }

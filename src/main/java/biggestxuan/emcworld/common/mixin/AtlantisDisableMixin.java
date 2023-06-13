@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/13
  */
 
+import biggestxuan.emcworld.common.config.ConfigManager;
 import com.mystic.atlantis.event.ElderPortalEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class AtlantisDisableMixin {
     @Inject(method = "onDeath",at = @At("HEAD"),remap = false,cancellable = true)
     private static void disabled(LivingDeathEvent event, CallbackInfo ci){
-        ci.cancel();
+        if(ConfigManager.SUNDRY_GUARDIAN_DEATH_PORTAL.get()){
+            ci.cancel();
+        }
     }
 }

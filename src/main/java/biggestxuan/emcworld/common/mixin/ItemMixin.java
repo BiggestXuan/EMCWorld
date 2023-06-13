@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.item.INameItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -84,14 +85,14 @@ public abstract class ItemMixin implements INameItem {
                 }
             }
         }
-        if(item instanceof IPrefixItem){
+        if(item instanceof IPrefixItem && ConfigManager.UPGRADE_PREFIX.get()){
             IPrefixItem prefixItem = (IPrefixItem) item;
             if(prefixItem.getPrefix(p_200295_1_).getLevel() != 0){
                 IPrefixItem.Prefix prefix = prefixItem.getPrefix(p_200295_1_);
                 text = (TranslationTextComponent) prefix.getName().setStyle(Style.EMPTY.withColor(Color.fromRgb(prefix.getColor()))).append(text);
             }
         }
-        if(item instanceof IStarItem){
+        if(item instanceof IStarItem && ConfigManager.UPGRADE_STAR.get()){
             IStarItem item1 = (IStarItem) item;
             String star = " "+"\u2605".repeat(Math.max(0, item1.getStar(p_200295_1_)));
             text.append(star);

@@ -33,6 +33,9 @@ public class FindScreen extends BaseEMCConfirmScreen {
 
     @OnlyIn(Dist.CLIENT)
     private static long getEMCCost(){
+        if(!ConfigManager.EMC_LOCATE.get()){
+            return 0L;
+        }
         ClientPlayerEntity player = Minecraft.getInstance().player;
         for(DifficultySetting setting : DifficultySetting.values()){
             if(GameStageManager.hasStage(player,setting.getGameStage())){

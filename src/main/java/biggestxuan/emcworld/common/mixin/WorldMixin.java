@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/21
  */
 
+import biggestxuan.emcworld.common.config.ConfigManager;
 import hellfirepvp.astralsorcery.common.tile.base.TileEntitySynchronized;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -33,6 +34,9 @@ public abstract class WorldMixin {
 
     @Inject(method = "tickBlockEntities",at = @At("HEAD"))
     public void tickEntities(CallbackInfo ci){
+        if(!ConfigManager.RAID_BLOCK_SLEEP.get()){
+            return;
+        }
         World world = (World)(Object)this;
         MinecraftServer server = world.getServer();
         if(server == null) return;

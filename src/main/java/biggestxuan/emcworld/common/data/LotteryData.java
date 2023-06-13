@@ -17,7 +17,7 @@ import net.minecraft.world.storage.WorldSavedData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LotteryData extends WorldSavedData {
+public final class LotteryData extends WorldSavedData {
     static String name = "Lottery";
     private int index = 0;
     private List<Integer> num = new ArrayList<>();
@@ -39,11 +39,6 @@ public class LotteryData extends WorldSavedData {
 
     public void setStoredEMC(long emc){
         storedEMC = emc;
-        setDirty();
-    }
-
-    private void setIndex(int index){
-        this.index = index;
         setDirty();
     }
 

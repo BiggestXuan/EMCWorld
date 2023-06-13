@@ -11,7 +11,6 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.common.skill.PlayerSkillModify;
 import biggestxuan.emcworld.common.items.EWItem;
 import biggestxuan.emcworld.common.utils.MathUtils;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -64,6 +63,6 @@ public class ProfessionalItem extends EWItem {
 
     @Override
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, @Nonnull List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_){
-        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.profession_item", I18n.get("profession.emcworld."+profession)));
+        p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.profession_item", EMCWorld.tc("profession.emcworld."+profession).getString()));
     }
 }

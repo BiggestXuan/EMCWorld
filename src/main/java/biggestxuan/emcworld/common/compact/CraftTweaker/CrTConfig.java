@@ -29,4 +29,19 @@ public class CrTConfig {
     public static boolean enableRS(){
         return ConfigManager.RSAutomation.get();
     }
+
+    @ZenCodeType.Method
+    public static boolean easyDarkMatter(){
+        return ConfigManager.CRAFT_LOOT_EASY_DARK_MATTER.get();
+    }
+
+    @ZenCodeType.Method
+    public static double bloodEyeChance(){
+        return ConfigManager.CRAFT_LOOT_BLOOD_EYE.get();
+    }
+
+    @ZenCodeType.Method
+    public static double medalChance(){
+        return ConfigManager.CRAFT_LOOT_ATUM_MEDAL.get();
+    }
 }
