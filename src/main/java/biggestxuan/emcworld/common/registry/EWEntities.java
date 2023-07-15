@@ -46,6 +46,7 @@ public class EWEntities {
     public static final EntityType<LAMB_Kisara> lamb_kisara = register("lamb_kisara",LAMB_Kisara::new);
     public static final EntityType<cmzxymzx> cmzxymzx = register("cmzxymzx",cmzxymzx::new);
     public static final EntityType<sdxhop> sdxhop = register("sdxhop",sdxhop::new);
+    //public static final EntityType<Yuan_Shou> yuan_shou = register("yuan_shou",Yuan_Shou::new);
     public static final EntityType<AmmoEntity> ammo = registerAmmo("ammo",AmmoEntity::new);
 
     @SubscribeEvent
@@ -71,6 +72,7 @@ public class EWEntities {
         event.put(lamb_kisara,LAMB_Kisara.create().build());
         event.put(sdxhop,LAMB_Kisara.create().build());
         event.put(cmzxymzx, biggestxuan.emcworld.common.entity.Player.cmzxymzx.create().build());
+        //event.put(yuan_shou,Yuan_Shou.create().build());
     }
 
     public static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {

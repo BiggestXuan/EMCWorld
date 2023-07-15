@@ -7,9 +7,11 @@ package biggestxuan.emcworld.common.compact.Curios;
  */
 
 import biggestxuan.emcworld.common.registry.EWItems;
+import journeymap.client.ui.component.Slot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.RegistryObject;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -50,9 +52,17 @@ public class PlayerCurios {
         return stack;
     }
 
-    public static ItemStack getPlayerEMCShield(PlayerEntity player){
-        List<SlotResult> results = getPlayerCurios(player,EWItems.EMC_SHIELD_SUPPLY.get());
+    public static ItemStack getStack(PlayerEntity player,RegistryObject<Item> object){
+        List<SlotResult> results = getPlayerCurios(player,object.get());
         return results.size() == 0 ? ItemStack.EMPTY : results.get(0).getStack();
+    }
+
+    public static ItemStack getPlayerEMCShield(PlayerEntity player){
+        return getStack(player,EWItems.EMC_SHIELD_SUPPLY);
+    }
+
+    public static ItemStack getPlayerExceptionApple(PlayerEntity player){
+        return getStack(player,EWItems.EXCEPTION_APPLE);
     }
 
     public static long getPlayerAdditionEMC(PlayerEntity player){

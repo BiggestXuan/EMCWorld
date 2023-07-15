@@ -1,16 +1,16 @@
 {
-  "name": "吉祥物",
+  "name": "Mascot",
   "icon": "minecraft:totem_of_undying",
   "category": "sponsors",
   "sortnum": 4,
   "pages": [
     {
       "type": "text",
-      "text": "所有参加EMCWorld整合包内测的玩家均为吉祥物，但会在公测后对吉祥物玩家权益进行重新评判。$(br2)若提出了相当的意见，对整合包开发有积极作用的将保留。$(br2)公测后不再提供整合包吉祥物权益。"
+      "text": "All players who participated in the internal testing of the EMCWorld modpack are mascots, but their rights will be re-evaluated after public release. $(br2) Those who have made positive contributions to the development of the modpack and have made significant suggestions will be retained. $(br2) Mascot rights will no longer be provided after public release."
     },
     {
       "type": "text",
-      "text": "进入游戏的时候，会显示深蓝色的欢迎语，当前服务器的所有玩家都会收到信息.$(br2)在聊天发送信息的时候，旁边的括号将会有特殊的颜色，就像下面这样：$(br2)$(6)<$()名字$(6)>$() 信息"
+      "text": "When entering the game, a dark blue welcome message will be displayed, and all players on the current server will receive the message. $(br2) When sending a message in chat, the parentheses next to it will have a special color, like this: $(br2)$(6)<$()Name$(6)>$() Message"
     }
   ]
 }

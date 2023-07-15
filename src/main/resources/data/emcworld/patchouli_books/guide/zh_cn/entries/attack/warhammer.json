@@ -1,0 +1,12 @@
+{
+  "name": "战锤",
+  "icon": "emcworld:diamond_warhammer",
+  "category": "attack",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "战锤是一个具有高伤害，并且能够群体杀伤的武器。$(br2)战锤的冷却时间较长，并且只有在战锤攻击冷却$(c)完全充满$()时才能发起攻击。"
+    }
+  ]
+}

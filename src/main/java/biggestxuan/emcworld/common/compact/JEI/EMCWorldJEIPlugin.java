@@ -24,6 +24,7 @@ import biggestxuan.emcworld.common.compact.JEI.SteelFurnace.SteelFurnaceCategory
 import biggestxuan.emcworld.common.compact.JEI.SuperEMC.SuperEMCCategory;
 import biggestxuan.emcworld.common.compact.JEI.Update.JEIUpdateRecipe;
 import biggestxuan.emcworld.common.compact.JEI.Update.UpdateCategory;
+import biggestxuan.emcworld.common.items.MatterItem;
 import biggestxuan.emcworld.common.recipes.*;
 import biggestxuan.emcworld.common.registry.EWItems;
 import mezz.jei.api.IModPlugin;
@@ -65,6 +66,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new AncientCategory(registry.getJeiHelpers().getGuiHelper()));*/
         registry.addRecipeCategories(new StarCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new SuperEMCCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new CollectorFixCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -127,6 +129,9 @@ public class EMCWorldJEIPlugin implements IModPlugin {
 
         List<SuperEMCRecipe> superEMCRecipes = new ArrayList<>(Arrays.asList(SuperEMCRecipe.values()));
         registry.addRecipes(superEMCRecipes,SuperEMCCategory.rl());
+
+        List<MatterFixRecipe> recipes1 = new ArrayList<>(Arrays.asList(MatterFixRecipe.values()));
+        registry.addRecipes(recipes1,CollectorFixCategory.getRL());
 
         RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
         registry.addRecipes(recipeManager.getAllRecipesFor(InfuserRecipe.Type.INSTANCE),InfuserCategory.getRL());

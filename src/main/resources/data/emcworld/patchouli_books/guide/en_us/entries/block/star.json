@@ -1,20 +1,20 @@
 {
-  "name": "质能占星架构",
+  "name": "EMCWorld: Energy Condenser Pedestal",
   "icon": "emcworld:star_pedestal",
   "category": "block",
   "sortnum": 7,
   "pages": [
     {
       "type": "text",
-      "text": "该多方块结构在单个方块的时候不成形。$(br2)这是一个通过使用材料给$(6)质能圣器$()添加星级的架构。$(br2)该架构有两种模式：增加最大星数和增加星数。$(br2)增加星数必须存在其最大星数的时候才能使用。"
+      "text": "This multi-block structure cannot be formed with a single block. $(br2) It is a structure that adds star levels to the $(6) Energy Condenser $() by using materials. $(br2) There are two modes for this structure: increasing the maximum star count and increasing the star count. $(br2) The star count mode can only be used when the maximum star count is present. "
     },
     {
       "type": "text",
-      "text": "该架构共有四个等级，这些等级对应的基座分别是：木基座、基座、暗物质台座、星能注入器。$(br2)所有的配方都可以在JEI中查到。$(br2)对于同一个类型的基座，上方物品的摆放是无序的。$(br2)当材料摆放好后将$(6)质能圣器$()放在核心上面，使用共振星杖右击，等待一会就能合成了。$(br2)合成完成后会消耗台座上的物品，然后实现对应效果。"
+      "text": "There are four levels for this structure, and the corresponding bases are: Wood Pedestal, Pedestal, Dark Matter Pedestal, and Star Injector. $(br2) All recipes can be found in JEI. $(br2) For the same type of base, the placement of items above it is unordered. $(br2) After placing the materials, put the $(6) Energy Condenser $() on top of the core, right-click with a Resonant Star Wand, and wait for the synthesis to complete. $(br2) After the synthesis is completed, the items on the pedestal will be consumed, and the corresponding effect will be achieved. "
     },
     {
       "type": "text",
-      "text": "需要注意的是，不同的配方可能有对应的星座，这个时候你就要调整上面的聚能水晶对应的星座了。$(br2)对于$(6)质能圣器$()而言，每一颗星会使其全能面板提升1%，第二颗星会提升2%，第三颗是3%，以此类推。$(br2)$(c)目前$()每次合成只需要3秒，且100%成功。$(br2)当你搭建好多方块结构后，上面的聚能水晶会发出其他颜色的光芒，多方块结构参见下一页。"
+      "text": "It should be noted that different recipes may correspond to different constellations, in which case you need to adjust the corresponding star of the focusing crystal above. $(br2) For the $(6) Energy Condenser $(), each star will increase its omnidirectional panel by 1%, the second star by 2%, the third by 3%, and so on. $(br2) $(c)Currently$() each synthesis only takes 3 seconds and has a 100% success rate. $(br2) After building the multi-block structure, the focusing crystal above it will emit light of different colors. See the next page for the multi-block structure. "
     },
     {
       "type": "multiblock",

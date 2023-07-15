@@ -16,7 +16,7 @@ public function modifyRSRecipe() as void{
     var glass = <tag:items:forge:glass>;
 
     if(!configHelper.enableRS()){
-        removeRecipe([
+        removeCraftRecipeIItemStack([
             <item:refinedstorage:pattern_grid>,
             <item:refinedstorage:network_receiver>,
             <item:refinedstorage:network_transmitter>,

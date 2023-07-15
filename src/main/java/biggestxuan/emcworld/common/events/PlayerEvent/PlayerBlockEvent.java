@@ -8,21 +8,31 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.event.PlayerEatFoodEvent;
+import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
+import biggestxuan.emcworld.common.items.SponsorsItem.ExceptionApple;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.traits.ITrait;
+import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.common.traits.TraitUtils;
+import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -103,10 +113,23 @@ public class PlayerBlockEvent {
         int level = event.getState().getHarvestLevel();
         if(level <= 0) return;
         PlayerEntity player = event.getPlayer();
+        ItemStack s = player.getMainHandItem();
         long playerEMC = EMCHelper.getPlayerEMC(player);
         long costEMC = Math.min(MathUtils.doubleToLong(MathUtils.getBreakBlockCost(player) * level * MathUtils.difficultyLoss()),playerEMC);
         EMCHelper.modifyPlayerEMC(player,new EMCSource.BreakBlockEMCSource(Math.negateExact(costEMC),player,event.getState(),0),true);
         //Message.sendMessage(event.getPlayer(),EMCWorld.tc("111"));
+        TraitUtils.getStackTraits(s).forEach(e -> {
+            if(e.getTraitType() == TraitType.TOOL){
+                e.beforeBreak(player,event.getState(),s);
+            }
+        });
+        for(ItemStack stack : player.inventory.armor){
+            TraitUtils.getStackTraits(stack).forEach(e -> {
+                if(e.getTraitType() == TraitType.ARMOR){
+                    e.beforeBreak(player,event.getState(),stack);
+                }
+            });
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -138,10 +161,40 @@ public class PlayerBlockEvent {
         }
     }
 
+    @EMCWorldSince("0.9.0")
+    @SubscribeEvent
+    public static void FishEvent(ItemFishedEvent event){
+        PlayerEntity player = event.getPlayer();
+        int count = 0;
+        if(!player.level.isClientSide){
+            for(ItemStack s : event.getDrops()){
+                count += s.getCount() * 64 / s.getMaxStackSize();
+            }
+        }
+        for(DifficultySetting setting : DifficultySetting.values()){
+            if(GameStageManager.hasStage(player,setting.getGameStage())){
+                double diff = setting.getCommonBase();
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.FishEMCSource((long) (-count*diff*5),player,event.getDrops()));
+            }
+        }
+    }
+
     @SubscribeEvent
     public static void upgradeWeaponEvent(PlayerUpgradeItemEvent.Pre event){
         PlayerEntity player = event.getPlayer();
         double chance = event.getSuccessChance();
+        for(ITrait trait : TraitUtils.getStackTraits(event.getItem())){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                trait.onUpgradeItem(player,event, event.getItem());
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onUpgradeItem(player,event,s);
+                }
+            }
+        }
         try{
             IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
             if(cap.getMV() > 1 && ConfigManager.LOTTERY.get()){
@@ -152,6 +205,39 @@ public class PlayerBlockEvent {
             }
         }catch (NullPointerException ignored){
 
+        }
+    }
+
+
+    @EMCWorldSince("1.0.0")
+    @SubscribeEvent
+    public static void prefix(PlayerPrefixFreshEvent event){
+        PlayerEntity player = event.getPlayer();
+        for(ITrait trait : TraitUtils.getStackTraits(event.getStack())){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                trait.onPrefixFresh(player,event, event.getStack());
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onPrefixFresh(player,event,s);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void eat(PlayerEatFoodEvent event){
+        PlayerEntity player = event.getPlayer();
+        if(!player.level.isClientSide){
+            ItemStack stack = PlayerCurios.getPlayerExceptionApple(player);
+            if(!stack.isEmpty()){
+                ((ExceptionApple) stack.getItem()).WhenPlayerEatOtherFood(player);
+            }
+            for(ItemStack s : player.inventory.armor){
+                TraitUtils.getStackTraits(s).forEach(e -> e.onEat(player,s));
+            }
         }
     }
 

@@ -1,28 +1,28 @@
 {
-  "name": "进阶升级核心架构",
+  "name": "Advanced Upgrade Core",
   "icon": "emcworld:advanced_update_core",
   "category": "block",
   "sortnum": 2,
   "pages": [
     {
       "type": "text",
-      "text": "该多方块结构在单个方块的时候不成形。$(br2)这是使用EMC将一个物品转变为另一个物品的多方块结构，在转化的时候，只需要玩家站在上面，手持物品右击空气即可。$(br2)当玩家有对应的EMC，那么会消耗掉EMC，从而制作物品。"
+      "text": "This multi-block structure is not formable with a single block.$(br2)It is a multi-block structure that uses EMC to transform one item into another. To perform the transformation, the player only needs to stand on top of it and right-click the air while holding the item.$(br2)When the player has the corresponding EMC, it will be consumed to make the item."
     },
     {
       "type": "text",
-      "text": "按下$(3)潜行键$()制作的时候，会自动计算当前制作最大数量来制作。$(br2)每次制作一个物品后，会给予玩家制作冷却时间。一次制作多个物品，冷却时间$(3)不会叠加$()。$(br2)当玩家指向方块的时候，Hwyla插件会显示玩家冷却时间还有多少。$(br2)右击即可打开GUI，看到多方块结构的信息，将物品放在右边的格子里，以计算当前合成需要消耗多少EMC。"
+      "text": "When $(3)sneak key$() is pressed during crafting, it will automatically calculate the maximum number of items that can be crafted at the current time. $(br2)After each item is crafted, the player will receive a crafting cooldown time. Crafting multiple items at once will $(3)not stack$() the cooldown time. $(br2)When the player points to the block, the Hwyla plugin will display the player's remaining cooldown time. $(br2)Right-click to open the GUI to see the information of the multi-block structure, and place the item in the right-hand slot to calculate how much EMC is required for the current synthesis."
     },
     {
       "type": "text",
-      "text": "制作物品需要多方块结构达到一定的等级，增加等级需要按照类似$(3)信标$()的结构进行搭建，每一层搭建的时候，方块的搭建等级需要大于等于当前层数。$(br2)方块等级按颜色依次是：紫，大轩紫，蓝，青，绿，黄，橙，红。分别对应1~8级的方块。$(br2)因类似信标搭建，每一层需要的方块消耗会越来越多，第一层是3×3，第二层是5×5...依此类推。"
+      "text": "Making items requires the multi-block structure to reach a certain level, and increasing the level requires building a structure similar to a $(3)beacon$(), where the level of the blocks being built for each layer must be greater than or equal to the current layer. $(br2)The block levels are in order of color: purple, magenta, blue, cyan, green, yellow, orange, red, corresponding to level 1 to 8 blocks, respectively. $(br2)As with the beacon building, the required block consumption for each layer will increase, the first layer is 3x3, the second layer is 5x5, and so on."
     },
     {
       "type": "text",
-      "text": "构建方块可以用于搭建，同时它们还有对应的量产方块，加速方块，减耗方块。将它们替换多方块结构的部分，即可实时在GUI中看到变动。$(br2)需要注意的是，调整方块的等级与前面所说的对应，因此等级也需要大于等于当前层数的需求等级。$(br2)当产出率超过100%的时候，则有可能产出$(3)多倍物品$()。"
+      "text": "Construction blocks can be used for building, and they also have corresponding production blocks, acceleration blocks, and reduction blocks. Replace some parts of the multi-block structure with them to see the changes in the GUI in real-time. $(br2)It should be noted that the level of the adjusted blocks must correspond to the previous requirement, so the level must also be greater than or equal to the current layer's demand level. $(br2)When the output rate exceeds 100%, it is possible to produce $(3)multiple items$()."
     },
     {
       "type": "text",
-      "text": "例如：350%意味着固定产出3份物品，同时有50%的概率产出第4份。$(br2)一个最高级的架构应该是右边这样的："
+      "text": "For example, 350% means that three items will be produced, and there is a 50% chance of producing a fourth item. $(br2)The highest level structure should look like this on the right:"
     },
     {
       "type": "multiblock",

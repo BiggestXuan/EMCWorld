@@ -13,12 +13,13 @@ import net.minecraft.item.crafting.Ingredient;
 public enum GunTier implements IGunTier {
     WOODEN(64,5.2,0,35,0.1,3.6,0.02,"wooden"),
     STONE(128,6.6,1,28,0.2,3.3,0.04,"stone"),
-    IRON(256,8.1,2,22,0.4,2.9,0.08,"iron"),
+    IRON(256,8.1,2,22,0.3,2.9,0.08,"iron"),
     GOLDEN(48,3.7,0,4,0.7,0.4,0.14,"golden"),
-    DIAMOND(2048,9.3,3,16,0.6,2.5,0.18,"diamond"),
-    GAIA(3012,11.4,3,14,0.7,2.3,0.26,"gaia"),
-    RAINBOW(3547,12.8,3,13,0.75,2.2,0.29,"rainbow"),
-    NETHERITE(4096,16.2,4,9,0.8,1.7,0.4,"netherite")
+    DIAMOND(2048,9.3,3,16,0.4,2.5,0.18,"diamond"),
+    GAIA(3012,11.4,3,14,0.5,2.3,0.26,"gaia"),
+    RAINBOW(3547,12.8,3,13,0.6,2.2,0.29,"rainbow"),
+    GOD(3710,13.6,3,11,0.62,2.1,0.27,"god"),
+    NETHERITE(4096,16.2,4,9,0.65,1.7,0.4,"netherite")
     ;
 
     private final int use;

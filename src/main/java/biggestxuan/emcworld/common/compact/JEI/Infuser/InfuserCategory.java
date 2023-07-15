@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
 import biggestxuan.emcworld.common.recipes.InfuserRecipe;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -19,7 +20,9 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -126,6 +129,11 @@ public class InfuserCategory implements IRecipeCategory<InfuserRecipe> {
         else{
             info = "jei.emcworld.infuser_emc_amount6";
         }
-        return I18n.get(info);
+        info = EMCWorld.tc(info).getString();
+        if(Screen.hasShiftDown()){
+            info += " (";
+            info += MathUtils.format(recipe.getCostEMC())+" EMC)";
+        }
+        return info;
     }
 }

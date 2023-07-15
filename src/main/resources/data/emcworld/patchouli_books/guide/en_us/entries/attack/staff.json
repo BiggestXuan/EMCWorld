@@ -1,16 +1,16 @@
 {
-  "name": "法杖",
+  "name": "Staff",
   "icon": "emcworld:diamond_staff",
   "category": "attack",
   "sortnum": 2,
   "pages": [
     {
       "type": "text",
-      "text": "质能世界的法杖原型是$(2)泰拉之刃$()，但是存在一些不同的地方。$(br2)法杖的射线会$(c)穿过$()实体，这就意味着你一次可以攻击多个实体。$(br2)为了避免攻击到队友或者友善生物，你可以调整射线会攻击到哪些生物（需要调整键位）。"
+      "text": "The prototype of the Staff in EMCWorld is the Terra Blade, but there are some differences. $(br2) The Staff's beam can pass through entities, which means you can attack multiple entities at once. $(br2) To avoid hitting teammates or friendly entities, you can adjust which entities the beam will hit (requires keybind adjustment)."
     },
     {
       "type": "text",
-      "text": "被法杖击中的实体，“无敌帧”会额外增加0.25秒。$(br2)法杖只有击中实体后才会损失EMC，同时法杖消耗的EMC会更高。"
+      "text": "Entities hit by the Staff will have an additional 0.25 seconds of invincibility frames. $(br2) The Staff only consumes EMC when it hits an entity, and the EMC cost is higher compared to other weapons."
     }
   ]
 }

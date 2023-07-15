@@ -1,20 +1,20 @@
 {
-  "name": "袭击",
+  "name": "Raid",
   "icon": "minecraft:textures/mob_effect/bad_omen.png",
   "category": "emerald",
   "sortnum": 2,
   "pages": [
     {
       "type": "text",
-      "text": "受质能力量的影响，这里的灾厄村民变得极为狂躁且更加趾高气扬。$(br2)在它们眼中，只愿攻击$(c)玩家职业等级达到80级且二转$()后玩家所在的村庄，同时它们不愿意在$(c)除了主世界$()的维度发起袭击。"
+      "text": "Affected by the power of EMCWorld, the raiding villagers here become extremely aggressive and arrogant. $(br2) In their eyes, they only want to attack $(c) players with a profession level of at least 80 and second class who are in a village, and they are unwilling to launch raids in $(c) dimensions other than the Overworld $()."
     },
     {
       "type": "text",
-      "text": "灾厄村民觉得只有价值的村庄才适合去进攻，当玩家死亡后村庄将被洗劫一空，这也意味着$(c)袭击失败$()。$(br2)受质能力量影响，袭击的最大波数将提升至$(c)20$()波（受难度而定），灾厄村民将更狂躁的进行攻击。$(br2)当袭击开始时，灾厄村民会从村庄$(c)任何位置$()进攻，且所有灾厄村民将全部分散式进攻，它们会精密计算，按照村民和玩家所在位置的$(2)算术平均值$()坐标进攻。"
+      "text": "Raiding villagers think that only valuable villages are suitable for attack. When the player dies, the village will be completely looted, which also means $(c) raid failure $(). $(br2)Affected by the power of EMCWorld, the maximum number of waves of raiding will be increased to $(c) 20 $() waves (depending on the difficulty), and the raiding villagers will become more aggressive. $(br2)When the raid begins, the raiding villagers will attack from $(c) any position in the village $(), and all raiding villagers will attack in a dispersed manner. They will precisely calculate and attack according to the $(2) arithmetic mean coordinates of the villager and player positions."
     },
     {
       "type": "text",
-      "text": "灾厄村民们掌握到了质能力量的核心，因此在袭击进行时，所有方块实体将会$(c)停止工作$()。同时它们$(c)不会$()受到摔落、爆炸、队友伤害。$(br2)而村民压制了质能世界的力量，因此当村民过少时，玩家将获得额外的$(2)伤害加成$()。$(br2)这些袭击者们会掉落独特的灾厄碎片（仅3.0难度），这些碎片具有极大的作用，并且十分的稀有。"
+      "text": "The raiding villagers have mastered the core of EMCWorld, so during the raid, all block entities will $(c) stop working $(). At the same time, they $(c) will not $() be affected by falling, explosions, or friendly fire. $(br2)The villagers have suppressed the power of EMCWorld, so when there are too few villagers, the player will receive additional $(2) damage bonus $(). $(br2)These raiders will drop unique pieces of Raid Fragment (only on 3.0 difficulty), which have great effects and are extremely rare."
     }
   ]
 }

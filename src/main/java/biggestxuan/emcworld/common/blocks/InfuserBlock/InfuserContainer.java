@@ -96,23 +96,8 @@ public class InfuserContainer extends EMCWorldBaseContainer {
         return s;
     }
 
-    public int getProgress() {
-        int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);
-        int progressArrowSize = 20;
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
-    }
-
     public int getCraftLevel(){
         return this.data.get(4);
-    }
-
-    public int getRadiation(){
-        return Math.min(57 * this.data.get(3) / this.data.get(6),57);
-    }
-
-    public int getEMC(){
-        return (int) (70 - (70 * (1.0d * this.data.get(2) / this.data.get(5))));
     }
 
     public BlockPos getPos(){

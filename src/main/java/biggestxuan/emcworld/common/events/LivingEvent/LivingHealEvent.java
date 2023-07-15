@@ -10,6 +10,9 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.equipment.armor.IHealBoostArmor;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
+import biggestxuan.emcworld.common.traits.ITrait;
+import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -47,13 +50,25 @@ public class LivingHealEvent {
                 }
             }
             double rate = 1;
+            ItemStack stack = player.getMainHandItem();
+            for(ITrait t : TraitUtils.getStackTraits(stack)){
+                if(t.getTraitType() == TraitType.TOOL){
+                    amount = t.onHeal(player,amount,stack);
+                }
+            }
             for(ItemStack s : player.inventory.armor){
                 if(s.getItem() instanceof IHealBoostArmor){
                     IHealBoostArmor armor = (IHealBoostArmor) s.getItem();
                     rate += armor.getHealBoostRate(s)-1;
                 }
+                for(ITrait t : TraitUtils.getStackTraits(s)){
+                    if(t.getTraitType() == TraitType.ARMOR){
+                        amount = t.onHeal(player,amount,s);
+                    }
+                }
             }
             amount *= Math.max(0,rate);
+
         }
         else{
             amount *= 1.33f;

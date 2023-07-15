@@ -149,7 +149,7 @@ public function getStageName(num as int) as string{
 }
 
 public function piglinTrade(input as IIngredient,output as CrTWeightItem[]) as void{
-    var name as string = getRecipeName(input.items[0]);
+    var name as string = getRecipeName(input.items[0])+"_piglin_trade";
     <recipetype:crockpot:piglin_bartering>.addRecipe(name,input,output);
 }
 

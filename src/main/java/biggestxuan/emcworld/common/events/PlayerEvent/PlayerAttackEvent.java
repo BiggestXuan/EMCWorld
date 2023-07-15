@@ -26,6 +26,9 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
+import biggestxuan.emcworld.common.traits.ITrait;
+import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -81,6 +84,18 @@ public class PlayerAttackEvent {
                 ICriticalWeapon weapon = (ICriticalWeapon) stack.getItem();
                 if(MathUtils.isRandom(weapon.getActCriticalChance(stack))){
                     damage *= weapon.getActCriticalRate(stack);
+                }
+            }
+            for(ITrait trait : TraitUtils.getStackTraits(stack)){
+                if(trait.getTraitType() == TraitType.TOOL){
+                    damage = trait.onAttackEntity(player,livingEntity,damage,stack);
+                }
+            }
+            for(ItemStack s : player.inventory.armor){
+                for(ITrait trait : TraitUtils.getStackTraits(s)){
+                    if(trait.getTraitType() == TraitType.ARMOR){
+                        damage = trait.onAttackEntity(player,livingEntity,damage,stack);
+                    }
                 }
             }
             int modify = cap.getModify();
@@ -296,6 +311,7 @@ public class PlayerAttackEvent {
         PlayerEntity player = event.getPlayer();
         Entity entity = player.getEntity();
         IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+        ItemStack stack = player.getMainHandItem();
         var util = EMCWorldAPI.getInstance().getUtilCapability(player);
         util.setAttackCD(player.getAttackStrengthScale(0));
         if(player.getMainHandItem().getItem() instanceof WarHammerItem && player.getAttackStrengthScale(0) != 1){
@@ -305,6 +321,18 @@ public class PlayerAttackEvent {
         }
         if(entity instanceof LivingEntity){
             LivingEntity livingEntity = (LivingEntity) entity;
+            TraitUtils.getStackTraits(stack).forEach(e -> {
+                if(e.getTraitType() == TraitType.TOOL){
+                    e.onHitEntity(player,livingEntity,stack);
+                }
+            });
+            for(ItemStack s : player.inventory.armor){
+                TraitUtils.getStackTraits(s).forEach(e -> {
+                    if(e.getTraitType() == TraitType.ARMOR){
+                        e.onHitEntity(player,livingEntity,stack);
+                    }
+                });
+            }
             if(player.getMainHandItem().getItem() instanceof DaggerItem){
                 DaggerItem daggerItem = (DaggerItem) player.getMainHandItem().getItem();
                 if(daggerItem.getTier().getSpeed() >= -1.6){

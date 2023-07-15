@@ -1,0 +1,82 @@
+{
+  "name": "礦石",
+  "icon": "emcworld:emc_ore",
+  "category": "start",
+  "sortnum": 4,
+  "pages":[
+    {
+      "type": "text",
+      "text": "在質能世界新增了很多礦石，本章將說明礦石的生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:hardcore_stone",
+      "text": "任何維度均會代替石頭生成，挖掘等級高，硬度大，不建議直接挖掘。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:emc_ore",
+      "text": "任何維度均會生成，用於燒煉獲取EMC寶石。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:rich_emc_ore",
+      "text": "和EMC礦石一樣，但生成會更少，產量會更高。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:nether_emc_ore",
+      "text": "和EMC礦石一樣，但是在$(4)下界$()生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:end_emc_ore",
+      "text": "和EMC礦石一樣，但是在$(3)末地$()生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:end_rich_emc_ore",
+      "text": "和末地EMC礦石一樣，生成更少，產量更高。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:cold_ore",
+      "text": "在任何$(3)寒冷$()生物群系生成，僅會生成在冰和浮冰上。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:chlorophyte_ore",
+      "text": "在任何$(2)叢林$()生物群系生成，僅會生成在泥土上。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:orichalcos_ore",
+      "text": "任何生物群系會極少量生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:sunlit_ore",
+      "text": "僅在$(6)天界$()少量生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:drystone_ore",
+      "text": "在$(5)惡地$()生物群系生成，僅會生成在陶瓦上。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:aquamarine_ore",
+      "text": "在$(3)亞特蘭蒂斯$()生成，代替星輝魔法原有的海藍寶石砂岩生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:indium_ore",
+      "text": "在$(4)下界$()少量生成。"
+    },
+    {
+      "type": "spotlight",
+      "item": "emcworld:titanium_ore",
+      "text": "在$(3)末地$()極少量生成。"
+    }
+  ]
+}

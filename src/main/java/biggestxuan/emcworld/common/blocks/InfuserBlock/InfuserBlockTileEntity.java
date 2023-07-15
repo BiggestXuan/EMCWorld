@@ -26,11 +26,15 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
+import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -52,6 +56,30 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
     @Override
     public void onLoad() {
         super.onLoad();
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public int getRadiation() {
+        return radiation;
+    }
+
+    public int getEmc() {
+        return emc;
+    }
+
+    public int getMaxEMC() {
+        return maxEMC;
+    }
+
+    public int getMaxProgress() {
+        return maxProgress;
+    }
+
+    public int getMaxRadiation() {
+        return maxRadiation;
     }
 
     public InfuserBlockTileEntity() {
@@ -109,7 +137,31 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
                     return 7;
                 }
             };
-        }
+    }
+    @Nonnull
+    @Override
+    public final CompoundNBT getUpdateTag() {
+        CompoundNBT nbt = super.getUpdateTag();
+        nbt.putInt("progress",progress);
+        nbt.putInt("maxProgress",maxProgress);
+        nbt.putInt("level",craftLevel);
+        nbt.putInt("EMC",emc);
+        nbt.putInt("maxEMC",maxEMC);
+        nbt.putInt("radiation",radiation);
+        nbt.putInt("maxRadiation",maxRadiation);
+        return nbt;
+    }
+
+    @Override
+    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+        progress = tag.getInt("progress");
+        maxProgress = tag.getInt("maxProgress");
+        craftLevel = tag.getInt("level");
+        emc = tag.getInt("EMC");
+        maxEMC = tag.getInt("maxEMC");
+        radiation = tag.getInt("radiation");
+        maxRadiation = tag.getInt("maxRadiation");
+    }
 
     @Override
     public void load(@Nonnull BlockState p_230337_1_, @Nonnull CompoundNBT p_230337_2_) {
@@ -161,6 +213,7 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
         writeData();
         ItemStack mainItem = this.inventory.getItem(2);
         int nowEMC = this.data.get(2);
+        level.sendBlockUpdated(getBlockPos(),getBlockState(),getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
         for (int i = 0; i < this.inventory.getMaxStackSize(); i++) {
             ItemStack stack = this.inventory.getItem(i);
             if(stack.equals(ItemStack.EMPTY)) continue;
@@ -174,7 +227,7 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
             }
             if(stack.getItem() instanceof IEMCInfuserItem){
                 IEMCInfuserItem item = (IEMCInfuserItem) stack.getItem();
-                long baseEMC = (long) (maxEMC * 0.01);
+                long baseEMC = MathUtils.min((long)(maxEMC * 0.01),emc,item.getUse(stack));
                 if(emc > baseEMC && item.getMaxInfuser(stack) != item.getInfuser(stack)){
                     emc -= baseEMC;
                     item.addInfuser(stack, baseEMC);
@@ -214,6 +267,17 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
                 return (int) (2225 * addon);
         }
         return 0;
+    }
+
+    @Nullable
+    @Override
+    public SUpdateTileEntityPacket getUpdatePacket() {
+        return new SUpdateTileEntityPacket(getBlockPos(), 1, getUpdateTag());
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+        handleUpdateTag(level.getBlockState(pkt.getPos()), pkt.getTag());
     }
 
     private void craftItem(InfuserBlockTileEntity entity){
@@ -258,6 +322,9 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
             }
         }
         if(isNull) return false;*/
+        if(inventory.isEmpty()){
+            return false;
+        }
         Optional<InfuserRecipe> match = world.getRecipeManager().getRecipeFor(InfuserRecipe.Type.INSTANCE,inventory,world);
         boolean out = match.isPresent() && canOutPut(inventory,match.get().getResultItem()) && this.craftLevel >= match.get().getCraftLevel() && this.emc >= match.get().getCostEMCRate();
         if(out){

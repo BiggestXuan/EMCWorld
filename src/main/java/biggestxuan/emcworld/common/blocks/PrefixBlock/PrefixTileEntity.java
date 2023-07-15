@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.blocks.PrefixBlock;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
+import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
@@ -31,6 +32,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.common.MinecraftForge;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -115,9 +117,11 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
             if(left.getItem() instanceof PrefixScroll && right.getItem() instanceof IPrefixItem){
                 IPrefixItem r = (IPrefixItem) right.getItem();
                 IPrefixItem.Prefix prefix = getPrefix(left);
+                PlayerPrefixFreshEvent event = new PlayerPrefixFreshEvent(lastClick,right,prefix);
+                MinecraftForge.EVENT_BUS.post(event);
                 if(prefix != IPrefixItem.Prefix.NULL){
                     costLeft();
-                    r.setPrefix(right,prefix);
+                    r.setPrefix(right,event.getPrefix());
                     if(prefix == IPrefixItem.Prefix.LEGEND || prefix == IPrefixItem.Prefix.MYTH){
                         MinecraftServer server = getLevel().getServer();
                         CompoundNBT nbt = left.getOrCreateTag();

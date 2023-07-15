@@ -59,7 +59,9 @@ public class WeaponUpgradeGUI extends ContainerScreen<WeaponUpgradeContainer> {
     @Override
     protected void renderLabels(@Nonnull MatrixStack matrixStack, int x, int y) {
         drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.weapon_upgrade_core"),100,5,0xffffff);
-        int chance = this.menu.getChance();
+        WeaponUpgradeBlockTileEntity tile = (WeaponUpgradeBlockTileEntity) world.getBlockEntity(pos);
+        assert tile != null;
+        int chance = tile.getChance();
         if(chance == 1919810){
             drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.weapon_upgrade_max"),100,30,0xffffff);
             return;

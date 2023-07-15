@@ -17,11 +17,12 @@ import net.minecraftforge.fml.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class CostEMCPacket {
-    private int index;
-    private long emc;
+    private final int index;
+    private final long emc;
 
     public CostEMCPacket(long emc,int index){
         this.index = index;
+        this.emc = emc;
     }
 
     public static void encode(CostEMCPacket msg, PacketBuffer buf) {
@@ -38,14 +39,14 @@ public class CostEMCPacket {
             ServerPlayerEntity player = context.get().getSender();
             if(player != null){
                 try{
-                    long emc = msg.getEmc();
+                    long emc = -msg.getEmc();
                     EMCSource<?> source;
                     if(msg.index == 1){
                         source = new EMCSource.LocateEMCSource(emc,player,null,0);
                     }else{
                         source = new EMCSource.TeleportEMCSource(emc,player);
                     }
-                    if(emc < 0){
+                    if(emc > 0){
                         throw new EMCWorldIllegalPacketException(player.getScoreboardName());
                     }else{
                         EMCHelper.modifyPlayerEMC(player, source, true);

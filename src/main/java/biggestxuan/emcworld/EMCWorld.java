@@ -8,7 +8,6 @@ package biggestxuan.emcworld;
 
 import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.*;
-import biggestxuan.emcworld.client.models.EMCLevelModel;
 import biggestxuan.emcworld.client.render.ContainerDenyRender;
 import biggestxuan.emcworld.client.render.StarPedestalRender;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateGUI;
@@ -27,6 +26,7 @@ import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.*;
+import biggestxuan.emcworld.common.traits.TraitManager;
 import biggestxuan.emcworld.common.utils.ModUtils;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
@@ -34,7 +34,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -44,7 +43,6 @@ import net.minecraft.resources.ResourcePackInfo;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -73,8 +71,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 9;
-    public static final String PackVersion = "0.7.0";
+    public static final int ModPackVersion = 12;
+    public static final String PackVersion = "1.0.0";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -129,6 +127,7 @@ public class EMCWorld {
         event.enqueueWork(SkillNetworking::registerMessage);
         event.enqueueWork(RaidUtils::init);
         event.enqueueWork(PacketHandler::init);
+        TraitManager.init();
         MinecraftForge.EVENT_BUS.register(new commandEvent());
         ModifyCollector.init();
         ChampionsInit.init();
@@ -153,6 +152,7 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(RangeAttack.Range_Attack);
             ClientRegistry.registerKeyBinding(PickModeKey.pickMode);
             ClientRegistry.registerKeyBinding(LiveMode.LiveMode);
+            //ClientRegistry.registerKeyBinding(Trait.Trait); (Only in 1.1.0)
             ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
             if(ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get()){
@@ -190,9 +190,7 @@ public class EMCWorld {
 
     public static List<Ingredient> itemstack2ingredient(List<ItemStack> stacks){
         List<Ingredient> list = new ArrayList<>();
-        stacks.forEach((i)->{
-            list.add(Ingredient.of(i));
-        });
+        stacks.forEach((i)-> list.add(Ingredient.of(i)));
         return list;
     }
 

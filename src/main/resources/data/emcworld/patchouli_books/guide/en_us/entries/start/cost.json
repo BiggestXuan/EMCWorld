@@ -1,16 +1,16 @@
 {
-  "name": "EMC损耗",
+  "name": "EMC Loss",
   "icon": "emcworld:small_emc_gem",
   "category": "start",
   "sortnum": 1,
   "pages":[
     {
       "type": "text",
-      "text": "这是一个被质能所控制的世界，你在这里的一举一动都会打破这个世界的质能平衡。$(br2)因此当你在这个世界打破平衡的时候，你将会$(4)损失$()一定的EMC值，当你的EMC不足以损耗的时候，可能会带来严重后果。$(br2)随着你能力的变强，对世界的平衡破坏越大，你将损失$(4)更多$()的EMC值。"
+      "text": "This is a world controlled by EMC, and every action you take here will disrupt the balance of EMC in this world. $(br2)Therefore, when you disrupt the balance in this world, you will $(4)lose$() a certain amount of EMC, and when your EMC is not enough to cover the loss, it may have serious consequences. $(br2)As your abilities become stronger, the damage you do to the world's balance will become greater, and you will lose $(4)more$() EMC. "
     },
     {
       "type": "text",
-      "text": "当你攻击、受伤、死亡、捡起物品、起床、打开容器、使用锄头、使用桶、制作物品都会消耗EMC值。$(br2)你的EMC值会在屏幕左上角显示，EMC右侧的数值为$(4)死亡阈值$()，当玩家死亡的时候若EMC低于$(4)死亡阈值$()物品将会全部掉落。反之，消耗$(4)死亡阈值$()的EMC，进而保证玩家死亡后物品不掉落。$(br2)自 EMCWorld 0.4.0 版本起，$(6)质能圣器$()无论如何不会在玩家死亡时掉落。"
+      "text": "When you attack, take damage, die, pick up items, sleep, open containers, use a hoe, use a bucket, or craft items, you will consume EMC. $(br2)Your EMC value will be displayed in the upper left corner of the screen, and the number to the right of EMC is the $(4)death threshold$(), which is the EMC value below which all items will drop when you die. Conversely, consuming $(4)death threshold$() EMC ensures that items will not drop when you die. $(br2)Since EMCWorld version 0.4.0, the $(6)Energy Collector$() will not drop under any circumstances when the player dies."
     }
   ]
 }

@@ -21,6 +21,9 @@ import biggestxuan.emcworld.common.entity.Player.Dctor_0415;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
+import biggestxuan.emcworld.common.traits.ITrait;
+import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -70,6 +73,12 @@ public class PlayerHurtEvent {
             }
             IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
             IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
+            ItemStack s = player.getMainHandItem();
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.TOOL){
+                    amount = trait.onHurt(player,source,amount,s);
+                }
+            }
             int level = cap.getLevel();
             int modify = cap.getModify();
             int[] skill = cap.getSkills();
@@ -135,6 +144,11 @@ public class PlayerHurtEvent {
                     IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
                     amount -= armor.getShield(stack);
                     armor.setShield(stack,0);
+                }
+                for(ITrait trait : TraitUtils.getStackTraits(s)){
+                    if(trait.getTraitType() == TraitType.ARMOR){
+                        amount = trait.onHurt(player,source,amount,s);
+                    }
                 }
             }
             if(!curios_shield.equals(ItemStack.EMPTY)){

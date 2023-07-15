@@ -1,0 +1,107 @@
+{
+  "name": "注入核心架構",
+  "icon": "emcworld:infuser_core",
+  "category": "block",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "該方塊單個方塊即可成型，搭建多方塊結構使當前架構有不同等級。$(br2)該結構是消耗EMC從而將五個物品合成為一個的結構。$(br2)右擊即可打開GUI，在最中間的格子放入任何等級的EMC寶石即可為架構填充EMC。"
+    },
+    {
+      "type": "text",
+      "text": "如果一個EMC的寶石提供的EMC大於當前架構的最大容量，那麼不會消耗寶石也不會填充EMC。$(br2)合成需要消耗大量時間，多方塊架構會根據當前區塊的$(2)輻射劑量$()加速。$(br2)右側的條代表當前$(5)EMC存量$()，下方的條代表當前$(2)輻射劑量$()。$(br2)所有可以質能充能的物品均可在裏面充能，充能速率由當前架構等級決定。"
+    },
+    {
+      "type": "text",
+      "text": "不同等級的架構會在GUI中以左上角的顏色塊來顯示，不同等級的架構的EMC存量，$(2)輻射最大量$()都不相同。$(br2)架構的等級必須大於等於物品的製作需求等級。後面分別是二，三，四級的多方塊示意圖。$(br2)在升級的時候，你不需要拆除原有的方塊，因為每一級都是按原有等級升級上去的。"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["       "," H   H ","       ","   I   ","       "," H   H ","       "],
+          ["       "," F   F ","       ","   0   ","       "," F   F ","       "],
+          ["       "," F   F ","       ","   G   ","       "," F   F ","       "],
+          [" AAAAA ","ABCCCBA","ACDDDCA","ACDEDCA","ACDDDCA","ABCCCBA"," AAAAA "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:marble_runed",
+          "B": "bloodmagic:masterritualstone",
+          "C": "astralsorcery:black_marble_arch",
+          "D": "mekanism:steel_casing",
+          "E": "minecraft:beacon",
+          "F": "astralsorcery:infused_wood_column",
+          "G": "emcworld:infuser_core",
+          "H": "astralsorcery:celestial_collector_crystal",
+          "I": "botania:natura_pylon"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["         "," O     O ","         ","         ","    0    ","         ","         "," O     O ","         "],
+          ["         "," N     N ","  H   H  ","         ","    I    ","         ","  H   H  "," N     N ","         "],
+          ["         "," L     L ","  F   F  ","         ","    M    ","         ","  F   F  "," L     L ","         "],
+          ["         "," L     L ","  F   F  ","         ","    G    ","         ","  F   F  "," L     L ","         "],
+          [" KKKKKKK ","KJAAAAAJK","KABCCCBAK","KACDDDCAK","KACDEDCAK","KACDDDCAK","KABCCCBAK","KJAAAAAJK"," KKKKKKK "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:marble_runed",
+          "B": "bloodmagic:masterritualstone",
+          "C": "astralsorcery:black_marble_arch",
+          "D": "mekanism:steel_casing",
+          "E": "minecraft:beacon",
+          "F": "astralsorcery:infused_wood_column",
+          "G": "emcworld:infuser_core",
+          "H": "astralsorcery:celestial_collector_crystal",
+          "I": "botania:natura_pylon",
+          "J": "undergarden:forgotten_block",
+          "K": "undergarden:shiverstone_bricks",
+          "L": "astralsorcery:marble_pillar",
+          "M": "astralsorcery:ritual_pedestal",
+          "N": "minecraft:lodestone",
+          "O": "naturesaura:field_creator"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["U         U","           ","           ","           ","           ","           ","           ","           ","           ","           ","U         U"],
+          ["S         S","           ","  O     O  ","           ","           ","     0     ","           ","           ","  O     O  ","           ","S         S"],
+          ["S         S","           ","  N     N  ","   H   H   ","           ","     I     ","           ","   H   H   ","  N     N  ","           ","S         S"],
+          ["S         S","           ","  L     L  ","   F   F   ","           ","     M     ","           ","   F   F   ","  L     L  ","           ","S         S"],
+          ["S         S"," T       T ","  L     L  ","   F   F   ","           ","     G     ","           ","   F   F   ","  L     L  "," T       T ","S         S"],
+          ["PQQQQQQQQQP","QRKKKKKKKRQ","QKJAAAAAJKQ","QKABCCCBAKQ","QKACDDDCAKQ","QKACDEDCAKQ","QKACDDDCAKQ","QKABCCCBAKQ","QKJAAAAAJKQ","QRKKKKKKKRQ","PQQQQQQQQQP"]
+        ],
+        "mapping": {
+          "A": "astralsorcery:marble_runed",
+          "B": "bloodmagic:masterritualstone",
+          "C": "astralsorcery:black_marble_arch",
+          "D": "mekanism:steel_casing",
+          "E": "minecraft:beacon",
+          "F": "astralsorcery:infused_wood_column",
+          "G": "emcworld:infuser_core",
+          "H": "astralsorcery:celestial_collector_crystal",
+          "I": "botania:natura_pylon",
+          "J": "undergarden:forgotten_block",
+          "K": "undergarden:shiverstone_bricks",
+          "L": "astralsorcery:marble_pillar",
+          "M": "astralsorcery:ritual_pedestal",
+          "N": "minecraft:lodestone",
+          "O": "naturesaura:field_creator",
+          "P": "allthemodium:unobtainium_block",
+          "Q": "minecraft:end_stone_bricks",
+          "R": "cataclysm:chiseled_end_stone_bricks",
+          "S": "cataclysm:end_stone_pillar",
+          "T": "minecraft:netherite_block",
+          "U": "gobber2:gobber2_block_end"
+        }
+      }
+    }
+  ]
+}

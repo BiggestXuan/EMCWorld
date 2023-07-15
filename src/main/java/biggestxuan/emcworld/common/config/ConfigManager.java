@@ -86,6 +86,7 @@ public class ConfigManager {
     public static ForgeConfigSpec.BooleanValue SUNDRY_DISABLE_TELEPORT_COMMAND;
     public static ForgeConfigSpec.BooleanValue SUNDRY_DISABLE_MAP_TELEPORT;
     public static ForgeConfigSpec.BooleanValue SUNDRY_ASTRAL_CRAFT_LIMIT;
+    public static ForgeConfigSpec.BooleanValue SUNDRY_ANNOUNCEMENT;
 
     static
     {
@@ -162,7 +163,7 @@ public class ConfigManager {
         BUILDER.push("Sundry");
         SUNDRY_CRAFT_CD = BUILDER.defineInRange("CraftCD",18000,0,Integer.MAX_VALUE);
         SUNDRY_RAID_LIGHT_CD = BUILDER.defineInRange("RaidLightCD",1200,0,Integer.MAX_VALUE);
-        SUNDRY_COLLECTOR_LIFESPAN = BUILDER.defineInRange("CollectorLifespan",480000,0,Integer.MAX_VALUE);
+        SUNDRY_COLLECTOR_LIFESPAN = BUILDER.defineInRange("CollectorLifespan",720000,0,Integer.MAX_VALUE);
         SUNDRY_DIFFICULTY_STAGE = BUILDER.defineInRange("DifficultyStageRate",1d,0,1500);
         SUNDRY_VIS_CORE = BUILDER.define("VisCore",true);
         SUNDRY_INFUSER_QUICK = BUILDER.define("InfuserQuickCraft",false);
@@ -173,6 +174,7 @@ public class ConfigManager {
         SUNDRY_DISABLE_TELEPORT_COMMAND = BUILDER.define("DisableCommandTeleport",true);
         SUNDRY_DISABLE_MAP_TELEPORT = BUILDER.define("DisableMapTeleport",true);
         SUNDRY_ASTRAL_CRAFT_LIMIT = BUILDER.define("AstralDimensionCraftLimit",true);
+        SUNDRY_ANNOUNCEMENT = BUILDER.define("Announcement",true);
         RSAutomation = BUILDER.comment("Enable Refined Storage Automation,such as Pattern,Crafter").define("Enable Refined Storage Automation",false);
         LOTTERY = BUILDER.define("Enable Lottery",false);
         BUILDER.pop();

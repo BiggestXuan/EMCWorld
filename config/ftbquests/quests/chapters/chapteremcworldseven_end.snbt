@@ -385,7 +385,7 @@
 				id: "6196E4F44825A1E1"
 				type: "kill"
 				icon: "stalwart_dungeons:void_crystal"
-				entity: "stalwart_dungeons:shelterer"
+				entity: "stalwart_dungeons:shelterer_without_armor"
 				value: 1L
 			}]
 			rewards: [

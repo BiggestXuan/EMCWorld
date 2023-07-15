@@ -1,16 +1,16 @@
 {
-  "name": "灵气转化架构",
+  "name": "Vis Conversion Core",
   "icon": "emcworld:vis_conversion_core",
   "category": "block",
   "sortnum": 5,
   "pages": [
     {
       "type": "text",
-      "text": "该架构单个方块无法使用，必须搭建多方块结构。$(br2)这是一个吸取玩家$(5)EMC$()从而转变为$(2)灵气$()的核心。$(br2)搭建好多方块结构后，玩家在方块的五格内，就会消耗玩家的$(5)EMC$()从而为当前区块补充$(2)灵气$()。"
+      "text": "This architecture cannot be used as a single block and must be built as a multi-block structure. $(br2) It is a core that absorbs a player's $(5)EMC$() and converts it into $(2)Vis$(). $(br2) Once the multi-block structure is built, when a player is within five blocks of the core, it will consume the player's $(5)EMC$() and replenish the $(2)Vis$() in the current chunk."
     },
     {
       "type": "text",
-      "text": "多方块结构：$(br2)我还没想好"
+      "text": "Multi-block structure: $(br2) I haven't figured it out yet."
     }
   ]
-}
+}  

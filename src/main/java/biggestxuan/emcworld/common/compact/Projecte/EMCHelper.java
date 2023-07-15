@@ -7,9 +7,9 @@ package biggestxuan.emcworld.common.compact.Projecte;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
-import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.CommandUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
@@ -68,6 +68,11 @@ public class EMCHelper {
         return emc.longValue();
     }
 
+    @EMCWorldSince("0.9.0")
+    public static void modifyPlayerEMC(PlayerEntity player, EMCSource<?> source){
+        modifyPlayerEMC(player,source,true);
+    }
+
     public static void modifyPlayerEMC(PlayerEntity player, EMCSource<?> source, boolean showMessage){
         long modify = source.emc();
         if(player.hasEffect(EWEffects.EMC_PROTECT.get()) && modify < 0){
@@ -86,15 +91,19 @@ public class EMCHelper {
                 Message.addEMCMessage(player,modify);
             }
         }
-        if(modify<0){
-            MinecraftForge.EVENT_BUS.post(new PlayerCostEMCEvent(player,modify));
-            triggerAdvancement(player,modify);
-            modify = Math.negateExact(PlayerCurios.costTotem(player,Math.negateExact(modify)));
+        source.setEmc(modify);
+        PlayerCostEMCEvent event = new PlayerCostEMCEvent(player,source);
+        if(!MinecraftForge.EVENT_BUS.post(event)) {
+            modify = event.getSource().emc();
+            if (modify < 0) {
+                triggerAdvancement(player, modify);
+                modify = Math.negateExact(PlayerCurios.costTotem(player, Math.negateExact(modify)));
+            }
+            EMCWriter.WriteEMCLog(player, source);
+            long afterEMC = getPlayerActEMC(player) + modify;
+            getPlayerIKP(player).setEmc(BigInteger.valueOf(Math.max(0, afterEMC)));
+            flushPlayer(player);
         }
-        EMCWriter.WriteEMCLog(player,source);
-        long afterEMC = getPlayerActEMC(player)+modify;
-        getPlayerIKP(player).setEmc(BigInteger.valueOf(Math.max(0,afterEMC)));
-        flushPlayer(player);
     }
 
     @ZenCodeType.Method

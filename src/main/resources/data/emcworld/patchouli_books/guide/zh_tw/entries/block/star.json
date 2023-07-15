@@ -1,0 +1,101 @@
+{
+  "name": "質能占星架構",
+  "icon": "emcworld:star_pedestal",
+  "category": "block",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "text",
+      "text": "該多方塊結構在單個方塊的時候不成形。$(br2)這是一個通過使用材料給$(6)質能聖器$()添加星級的架構。$(br2)該架構有兩種模式：增加最大星數和增加星數。$(br2)增加星數必須存在其最大星數的時候才能使用。"
+    },
+    {
+      "type": "text",
+      "text": "該架構共有四個等級，這些等級對應的基座分別是：木基座、基座、暗物質臺座、星能注入器。$(br2)所有的配方都可以在JEI中查到。$(br2)對於同一個類型的基座，上方物品的擺放是無序的。$(br2)當材料擺放好後將$(6)質能聖器$()放在核心上面，使用共振星杖右擊，等待一會就能合成了。$(br2)合成完成後會消耗臺座上的物品，然後實現對應效果。"
+    },
+    {
+      "type": "text",
+      "text": "需要注意的是，不同的配方可能有對應的星座，這個時候你就要調整上面的聚能水晶對應的星座了。$(br2)對於$(6)質能聖器$()而言，每一顆星會使其全能面板提升1%，第二顆星會提升2%，第三顆是3%，以此類推。$(br2)$(c)目前$()每次合成只需要3秒，且100%成功。$(br2)當你搭建好多方塊結構後，上面的聚能水晶會發出其他顏色的光芒，多方塊結構參見下一頁。"
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["       ","       ","       ","   A   ","       ","       ","       "],
+          ["       ","       ","       ","   0   ","       ","       ","       "],
+          ["   B   ","       ","       ","B  C  B","       ","       ","   B   "],
+          ["   D   ","       ","       ","D     D","       ","       ","   D   "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["             ","             ","             ","             ","             ","             ","      A      ","             ","             ","             ","             ","             ","             "],
+          ["      E      ","             ","             ","   E     E   ","             ","             ","E     0     E","             ","             ","   E     E   ","             ","             ","      E      "],
+          ["      F      ","             ","             ","   F  B  F   ","             ","             ","F  B  C  B  F","             ","             ","   F  B  F   ","             ","             ","      F      "],
+          ["             ","             ","             ","      D      ","             ","             ","   D     D   ","             ","             ","      D      ","             ","             ","             "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal",
+          "E": "extendedcrafting:pedestal",
+          "F": "minecraft:netherite_block"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["   G     G   ","             ","             ","G           G","             ","             ","      A      ","             ","             ","G           G","             ","             ","   G     G   "],
+          ["   H  E  H   ","             ","             ","H  E     E  H","             ","             ","E     0     E","             ","             ","H  E     E  H","             ","             ","   H  E  H   "],
+          ["   H  F  H   ","             ","             ","H  F  B  F  H","             ","             ","F  B  C  B  F","             ","             ","H  F  B  F  H","             ","             ","   H  F  H   "],
+          ["             ","             ","             ","      D      ","             ","             ","   D     D   ","             ","             ","      D      ","             ","             ","             "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal",
+          "E": "extendedcrafting:pedestal",
+          "F": "minecraft:netherite_block",
+          "G": "projecte:dm_pedestal",
+          "H": "undergarden:cloggrum_block"
+        }
+      }
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern": [
+          ["         I         ","                   ","                   ","                   ","                   ","                   ","                   ","                   ","                   ","I                 I","                   ","                   ","                   ","                   ","                   ","                   ","                   ","                   ","         I         "],
+          ["         J         ","                   ","                   ","      G     G      ","                   ","                   ","   G           G   ","                   ","                   ","J        A        J","                   ","                   ","   G           G   ","                   ","                   ","      G     G      ","                   ","                   ","         J         "],
+          ["         J         ","                   ","                   ","      H  E  H      ","                   ","                   ","   H  E     E  H   ","                   ","                   ","J  E     0     E  J","                   ","                   ","   H  E     E  H   ","                   ","                   ","      H  E  H      ","                   ","                   ","         J         "],
+          ["         J         ","                   ","                   ","      H  F  H      ","                   ","                   ","   H  F  B  F  H   ","                   ","                   ","J  F  B  C  B  F  J","                   ","                   ","   H  F  B  F  H   ","                   ","                   ","      H  F  H      ","                   ","                   ","         J         "],
+          ["                   ","                   ","                   ","                   ","                   ","                   ","         D         ","                   ","                   ","      D     D      ","                   ","                   ","         D         ","                   ","                   ","                   ","                   ","                   ","                   "]
+        ],
+        "mapping": {
+          "A": "astralsorcery:rock_collector_crystal",
+          "B": "naturesaura:wood_stand",
+          "C": "emcworld:star_pedestal",
+          "D": "astralsorcery:starmetal",
+          "E": "extendedcrafting:pedestal",
+          "F": "minecraft:netherite_block",
+          "G": "projecte:dm_pedestal",
+          "H": "undergarden:cloggrum_block",
+          "I": "astralsorcery:infuser",
+          "J": "projecte:red_matter_block"
+        }
+      }
+    }
+  ]
+}

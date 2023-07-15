@@ -366,10 +366,13 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         return (int) (tier.getLevel() * 2.75 * ConfigManager.DIFFICULTY.get() / 3);
     }
 
-    @Nonnull
+    protected IFormattableTextComponent getGunName(ItemStack stack){
+        return EMCWorld.tc("item.emcworld.tier."+tier.getName());
+    }
+
     @Override
     public IFormattableTextComponent getKey(ItemStack stack) {
-        return EMCWorld.tc("item.emcworld.tier."+tier.getName()).append(EMCWorld.tc("item.emcworld.gun."+getGunType(stack).name));
+        return getGunName(stack).append(EMCWorld.tc("item.emcworld.gun."+getGunType(stack).name));
     }
 
     public GunType getGunType(ItemStack stack){
@@ -382,7 +385,11 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         return GunType.PISTOL;
     }
 
-    public enum GunType{
+    public int lv(ItemStack stack) {
+        return IUpgradeableItem.super.getWeightRequired(stack);
+    }
+
+    public enum GunType {
         PISTOL(1,"pistol"),
         ASSAULT(2,"assault"),
         SHOTGUN(3,"shotgun"),
@@ -394,6 +401,10 @@ public class GunItem extends TieredItem implements ISponsorItem, IPrefixItem, IU
         GunType(int index,String name){
            this.index = index;
            this.name = name;
+        }
+
+        public String getName() {
+            return name;
         }
     }
 }

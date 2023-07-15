@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IEMCGod;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
@@ -24,6 +25,7 @@ import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @ZenRegister
@@ -39,7 +41,7 @@ public class CrTItemUtils {
         nbt.putInt("star",8);
         nbt.putInt("max_star",8);
         nbt.putBoolean("star_init",true);
-        return getEMCGodItems(nbt);
+        return IIngredient.fromIngredient(Ingredient.of(getEMCGodItems(nbt).stream()));
     }
 
     @ZenCodeType.Method
@@ -64,12 +66,21 @@ public class CrTItemUtils {
 
     @ZenCodeType.Method
     public static IIngredient getEMCGodItemWithLevel(int level){
+        List<ItemStack> list = new ArrayList<>();
         CompoundNBT nbt = new CompoundNBT();
         nbt.putInt("level",level);
-        return getEMCGodItems(nbt);
+        list.addAll(getEMCGodItems(nbt));
+        if(level != 30){
+            for (int i = level+1; i <= 30; i++) {
+                nbt = new CompoundNBT();
+                nbt.putInt("level",i);
+                list.addAll(getEMCGodItems(nbt));
+            }
+        }
+        return IIngredient.fromIngredient(Ingredient.of(list.stream()));
     }
 
-    public static IIngredient getEMCGodItems(CompoundNBT nbt){
+    public static List<ItemStack> getEMCGodItems(CompoundNBT nbt){
         List<ItemStack> list = new ArrayList<>();
         try{
             for(Item item : get()){
@@ -84,9 +95,7 @@ public class CrTItemUtils {
             EMCWorld.LOGGER.error(e.getMessage());
             throw new EMCWorldCommonException("EMCWorld caused a error!");
         }
-        ItemStack[] stacks = list.toArray(new ItemStack[0]);
-        Ingredient in = Ingredient.of(stacks);
-        return IIngredient.fromIngredient(in);
+        return list;
     }
 
     @Nonnull
@@ -108,5 +117,11 @@ public class CrTItemUtils {
         return list;
     }
 
-
+    public static IIngredient mergeIIngredient(IIngredient ... ingredients){
+        List<Ingredient> list = new ArrayList<>();
+        for(IIngredient i : ingredients){
+            list.add(i.asVanillaIngredient());
+        }
+        return IIngredient.fromIngredient(MathUtils.mergeIngredient(list));
+    }
 }

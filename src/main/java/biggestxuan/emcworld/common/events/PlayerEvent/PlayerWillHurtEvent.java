@@ -15,6 +15,10 @@ import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.google.common.util.concurrent.AtomicDouble;
+import mekanism.api.Coord4D;
+import mekanism.api.MekanismAPI;
+import mekanism.api.radiation.IRadiationManager;
+import mekanism.common.registries.MekanismDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -28,7 +32,6 @@ import top.theillusivec4.champions.common.capability.ChampionCapability;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static biggestxuan.emcworld.common.events.PlayerEvent.PlayerHurtEvent.getPlayerHurtRate;
 
@@ -71,6 +74,18 @@ public class PlayerWillHurtEvent {
         }
         if(costEMCShield(player,event.getAmount(),event.getSource())){
             event.setCanceled(true);
+        }
+        if(event.getSource().equals(MekanismDamageSource.RADIATION)){
+            float amount = event.getAmount();
+            if(util.getShield() >= amount * 2){
+                if(costEMCShield(player,amount * 2,event.getSource())){
+                    event.setCanceled(true);
+                }
+                IRadiationManager manager = MekanismAPI.getRadiationManager();
+                if(util.getShield() * 100 >= manager.getRadiationLevel(new Coord4D(player)) && costEMCShield(player,amount * 10,event.getSource())){
+                    MekanismAPI.getRadiationManager().removeRadiationSource(new Coord4D(player));
+                }
+            }
         }
     }
 

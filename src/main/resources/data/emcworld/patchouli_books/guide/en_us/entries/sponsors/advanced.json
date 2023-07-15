@@ -1,16 +1,16 @@
 {
-  "name": "高级赞助者",
+  "name": "Advanced Sponsor",
   "icon": "emcworld:elite_emc_stored_totem",
   "category": "sponsors",
   "sortnum": 2,
   "pages": [
     {
       "type": "text",
-      "text": "当赞助累计达到88.88元，则作为整合包的高级赞助者。$(br2)高级赞助者可以在合理范围定制一个或多个特别属于赞助者的专属物品，同时你可以将这些物品作为整合包的支线内容。$(br2)在进入游戏的时候，会显示蓝色的欢迎语，当前维度的其他玩家也可见。"
+      "text": "When the sponsorship accumulates to 88.88 RMB, you become an Advanced Sponsor of the modpack. $(br2)Advanced Sponsors can customize one or more special items exclusively for sponsors within a reasonable range, and you can include these items as a side content of the modpack. $(br2)When entering the game, a blue welcome message will be displayed, which can also be seen by other players in the current dimension."
     },
     {
       "type": "text",
-      "text": "在聊天发送信息的时候，旁边的括号将会有特殊的颜色，就像下面这样：$(br2)$(3)<$()名字$(3)>$() 信息"
+      "text": "When sending messages in chat, the brackets next to your name will have a special color, just like this: $(br2)$(3)<$()Name$(3)>$() Message"
     }
   ]
 }

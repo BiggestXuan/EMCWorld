@@ -1,16 +1,16 @@
 {
-  "name": "职业",
+  "name": "Profession",
   "icon": "emcworld:profession_sword",
   "category": "start",
   "sortnum": 3,
   "pages":[
     {
       "type": "text",
-      "text": "想要在这个世界成功立足，当然要选择属于自己的职业。$(br2)目前可供选择：战士，坦克，法师三个职业，当使用对应的职业物品后即可转为该职业。$(br2)玩家的职业等级能在屏幕左上角EMC下方查看。"
+      "text": "To succeed in this world, you need to choose a profession that suits you best. $(br2)Currently, there are three professions to choose from: warrior, tank, and mage. You can switch to the desired profession by using the corresponding profession item. $(br2)You can check your profession level below EMC in the top left corner of the screen."
     },
     {
       "type": "text",
-      "text": "在质能世界里面提升等级只有一种方式，那就是消耗EMC。$(br2)当玩家每次消耗EMC的时候，都会给玩家增加一定的经验值。$(br2)玩家初始最大等级为10级，需要制作不同的物品来提升等级上限，同时玩家能获取到新的技能。$(br2)玩家职业信息和技能列表可在职业站点核心查看。"
+      "text": "There is only one way to level up in the EMCWorld, which is to consume EMC. $(br2)Each time you consume EMC, you will gain a certain amount of experience points. $(br2)The initial maximum level for players is 10, and you need to craft different items to increase the level cap and unlock new skills. $(br2)You can view your profession information and skill list at the Profession Station Core."
     }
   ]
 }

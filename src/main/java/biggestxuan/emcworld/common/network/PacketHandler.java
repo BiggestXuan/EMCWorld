@@ -125,6 +125,13 @@ public class PacketHandler {
                 BuyLotteryClientPacket::decode,
                 BuyLotteryClientPacket::handle
         );
+        HANDLER.registerMessage(
+                id++,
+                TraitActivePacket.class,
+                TraitActivePacket::encode,
+                TraitActivePacket::decode,
+                TraitActivePacket::handle
+        );
     }
 
     public static <T> void sendToServer(T msg){

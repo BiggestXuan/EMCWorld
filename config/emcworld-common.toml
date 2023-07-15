@@ -3,32 +3,119 @@
 	#Difficulty Setting
 	#Range: 0.5 ~ 3.0
 	"World Difficulty" = 3.0
+	#Whether unable EMCWorld Admin Menu
+	"Able Admin Menu" = true
 	#Enable free mode to delete all gamestage
 	"Able Free Mode" = false
 	#Let the values of the modpack be displayed in K, M, G instead of the full value
 	"Format Text" = true
 	#Give a warn when logging server to offline mode player
 	"Warn player" = true
-	#Enable some funny things?
-	geng = true
-	#Whether unable EMCWorld Admin Menu
-	"Able Admin Menu" = true
 	#Enable sponsorship messages that players send every 100 times they enter the game.
 	"Enable Info" = true
+	#Enable some funny things?
+	geng = true
+
+["Game Setting"]
+
+	["Game Setting"."EMC Modify"]
+		Attack = true
+		Wake = true
+		Hoe = true
+		Container = true
+		Bucket = true
+		Craft = true
+		Destroy = true
+		Death = true
+		Hurt = true
+		Pick = true
+		Locate = true
+		Teleport = true
+		Quest = true
+		Log = true
+
+	["Game Setting".Upgrade]
+		#Range: 1 ~ 30000
+		BaseWeight = 10
+		#Range: 1.0 ~ 100.0
+		BaseWeightRate = 1.344
+		FailLoss = true
+		PrefixDisplay = true
+		GemDisplay = true
+		StarDisplay = true
+		DisableAnvil = true
+		TulyeScrollFail = true
+		BXScrollFail = true
+		CriticalOverflow = true
+
+	["Game Setting".Raid]
+		PlayerLevel = true
+		PlayerDeath = true
+		PlayerDamage = true
+		Sponsors = true
+		TeamDamage = true
+		BlockSleep = true
+
+	["Game Setting".Champions]
+		EMCFlaming = true
+		EMCBroken = true
+		EMCProtecting = true
+		Healing = true
+		ShieldFlaming = true
+
+	["Game Setting"."Craft & Loot"]
+		EasyDarkMatter = false
+		#Range: 0.0 ~ 1.0
+		BloodEye = 0.12
+		#Range: 0.0 ~ 1.0
+		AtumMedal = 0.15
+		#Range: 0.0 ~ 32767.0
+		AdvanceCraftEMCRate = 1.0
+
+	["Game Setting".Sundry]
+		#Range: > 0
+		CraftCD = 18000
+		#Range: > 0
+		RaidLightCD = 1200
+		#Range: > 0
+		CollectorLifespan = 720000
+		#Range: 0.0 ~ 1500.0
+		DifficultyStageRate = 1.0
+		VisCore = true
+		InfuserQuickCraft = false
+		GaiaMulti = true
+		GuardianDeathPortal = true
+		PillagerChestStageLimit = true
+		DisableSacrifice = true
+		DisableCommandTeleport = true
+		DisableMapTeleport = true
+		AstralDimensionCraftLimit = true
+		Announcement = true
+		#Enable Refined Storage Automation,such as Pattern,Crafter
+		"Enable Refined Storage Automation" = false
+		"Enable Lottery" = true
+
+	["Game Setting".Festival]
+		#Get gifts on certain festivals,only configurable festivals that give gifts
+		SpringFestival = true
+		LanternFestival = true
+		FoolsDay = true
+		DragonBoatFestival = true
+		MidAutumnFestival = true
 
 [constellation]
 
 	[constellation.effect]
 
 		[constellation.effect.emc]
+			#Set this to false to disable this ritual effect
+			enabled = true
 			#Defines the radius (in blocks) in which the ritual will do its effects.
 			#Range: 1.0 ~ 512.0
 			range = 8.0
 			#Defines the increase in radius the ritual will get per active lens enhancing the ritual.
 			#Range: 0.0 ~ 128.0
 			rangePerLens = 8.0
-			#Set this to false to disable this ritual effect
-			enabled = true
 
 			[constellation.effect.emc.constellation]
 
@@ -37,90 +124,4 @@
 					[constellation.effect.emc.constellation.mantle.emc]
 						#Set this to false to disable this mantle effect
 						enabled = true
-
-["Game Setting"]
-
-	["Game Setting".Champions]
-		EMCProtecting = true
-		EMCBroken = true
-		Healing = true
-		EMCFlaming = true
-		ShieldFlaming = true
-
-	["Game Setting".Festival]
-		#Get gifts on certain festivals,only configurable festivals that give gifts
-		SpringFestival = true
-		DragonBoatFestival = true
-		LanternFestival = true
-		FoolsDay = true
-		MidAutumnFestival = true
-
-	["Game Setting"."EMC Modify"]
-		Pick = true
-		Craft = true
-		Log = true
-		Locate = true
-		Attack = true
-		Teleport = true
-		Wake = true
-		Hurt = true
-		Quest = true
-		Container = true
-		Bucket = true
-		Destroy = true
-		Death = true
-		Hoe = true
-
-	["Game Setting".Sundry]
-		"Enable Lottery" = false
-		#Range: 0.0 ~ 1500.0
-		DifficultyStageRate = 1.0
-		VisCore = true
-		InfuserQuickCraft = false
-		DisableSacrifice = true
-		#Enable Refined Storage Automation,such as Pattern,Crafter
-		"Enable Refined Storage Automation" = false
-		DisableMapTeleport = true
-		#Range: > 0
-		CraftCD = 18000
-		#Range: > 0
-		RaidLightCD = 1200
-		GaiaMulti = true
-		AstralDimensionCraftLimit = true
-		PillagerChestStageLimit = true
-		#Range: > 0
-		CollectorLifespan = 360000
-		GuardianDeathPortal = true
-		DisableCommandTeleport = true
-
-	["Game Setting".Raid]
-		Sponsors = true
-		PlayerDeath = true
-		TeamDamage = true
-		PlayerDamage = true
-		BlockSleep = true
-		PlayerLevel = true
-
-	["Game Setting".Upgrade]
-		FailLoss = true
-		TulyeScrollFail = true
-		CriticalOverflow = true
-		#Range: 1 ~ 30000
-		BaseWeight = 10
-		#Range: 1.0 ~ 100.0
-		BaseWeightRate = 1.5
-		PrefixDisplay = true
-		GemDisplay = true
-		BXScrollFail = true
-		DisableAnvil = true
-		StarDisplay = true
-
-	["Game Setting"."Craft & Loot"]
-		#Range: 0.0 ~ 1.0
-		AtumMedal = 0.15
-		#Range: 0.0 ~ 32767.0
-		AdvanceCraftEMCRate = 1.0
-		#Range: 0.0 ~ 1.0
-		BloodEye = 0.12
-		EasyDarkMatter = true
 

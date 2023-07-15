@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "emcworld:item/shengxuan_white"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "emcworld:god_gun": 1
+      },
+      "model": "emcworld:item/shengxuan_black"
+    }
+  ]
+}

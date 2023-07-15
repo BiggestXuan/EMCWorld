@@ -15,7 +15,7 @@ public interface IUpgradeableItem {
 
     default int getLevel(ItemStack stack){
         if(MekUtils.isInfinityMekaTool(stack)){
-            return 32;
+            return 30;
         }
         return stack.getOrCreateTag().getInt("level");
     };

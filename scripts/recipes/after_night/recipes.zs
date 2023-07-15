@@ -11,7 +11,7 @@ public function modifyAfterNightRecipe() as void{
     var gor = <item:the_afterlight:golden_shards_of_radiance>;
     var mo as IIngredient = <item:the_afterlight:overworld_moon_crystal_ore>|<item:the_afterlight:slate_moon_crystal_ore>;
     
-    removeRecipe([ga,<item:the_afterlight:ritual_altar>,wa]);
+    removeCraftRecipeIItemStack([ga,<item:the_afterlight:ritual_altar>,wa]);
     nucleosyRecipe(mo,<gas:mekanism:antimatter>*5,mc*12,100);
     natureAltarRecipe(<item:astralsorcery:marble_raw>,vr,2,100000);
     combiningRecipe(<item:the_afterlight:radiant_shards>,<item:minecraft:gold_ingot>,gor);

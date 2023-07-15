@@ -6,12 +6,14 @@ package biggestxuan.emcworld.common.utils.Network;
  *  2022/08/17
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import net.minecraft.entity.player.PlayerEntity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 public class Network {
     public static String getInfo(Object param){
@@ -22,23 +24,28 @@ public class Network {
             String u = "https://biggestxuan.top/emcworld/api.php?";
             if(param instanceof Integer){
                 int index = (int) param;
-                u += "version="+index;
+                if(index <= 10){
+                    u += "version="+index;
+                }else{
+                    u = "https://biggestxuan.top/emcworld/announcement.php";
+                }
             }
             if(param instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) param;
                 u += "name="+player.getScoreboardName()+"&uuid="+player.getStringUUID();
             }
-            System.out.println(u);
+            EMCWorld.LOGGER.info(u);
             URL url = new URL(u);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
-            BufferedReader bf = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            InputStreamReader sr = new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8);
+            BufferedReader bf = new BufferedReader(sr);
             String s = bf.readLine();
             if(s == null){
                 return "0,0,0,0,0";
             }
-            System.out.println(s);
+            EMCWorld.LOGGER.info(s);
             return s;
         }catch (Exception ignored){
 

@@ -1,16 +1,16 @@
 {
-  "name": "质能护盾",
+  "name": "Energy Shield",
   "icon": "emcworld:emc_shield_supply",
   "category": "attack",
   "sortnum": 5,
   "pages": [
     {
       "type": "text",
-      "text": "当你穿戴盔甲$(6)质能圣器$()或者将质能护盾发生器装备在饰品栏中，你将获得质能护盾。$(br2)质能护盾会依赖其载体中质能充能提供护盾，这些护盾可以完全抵挡伤害。"
+      "text": "When wearing $(6)Energy Collectors$() armor or having an Energy Shield Generator equipped in the accessory slot, you will have an Energy Shield. $(br2)The Energy Shield relies on energy from its carrier to provide complete protection against damage."
     },
     {
       "type": "text",
-      "text": "当你穿戴全套的盔甲$(6)质能圣器$()，同时每个$(6)质能圣器$()的质能充能超过 $(4)10.00M EMC$()，你可以开启$(c)最后防线$()模式。$(br2)最后防线可以在你死亡的时候，消耗这些$(6)质能圣器$()的$(br)$(4)10.00M EMC$(0)阻挡死亡。$(br2)同时恢复你完全的生命值和1/5左右的质能护盾充能。"
+      "text": "When you wear a full set of $(6)Energy Collectors$() armor, and each $(6)Energy Collector$() has more than $(4)10.00M EMC$() of energy, you can activate the $(c)Last Stand$() mode. $(br2)In Last Stand mode, when you die, it will consume the $(6)Energy Collectors$() and $(br)$(4)10.00M EMC$(0) to prevent death. $(br2)At the same time, it will restore your full health and about 1/5 of your Energy Shield charge."
     }
   ]
 }

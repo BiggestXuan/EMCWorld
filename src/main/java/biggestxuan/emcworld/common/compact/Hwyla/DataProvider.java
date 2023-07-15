@@ -8,9 +8,11 @@ package biggestxuan.emcworld.common.compact.Hwyla;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateBlock;
+import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlock;
+import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.common.compact.Projecte.itf.CollectorLifeSpan;
+import biggestxuan.emcworld.common.compact.Projecte.itf.ICollectorLifeSpan;
 import biggestxuan.emcworld.common.registry.EWBlocks;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import dev.latvian.mods.projectex.block.CollectorBlock;
@@ -49,10 +51,19 @@ public class DataProvider implements IComponentProvider {
         }
         if(block instanceof CollectorBlock){
             CollectorBlock block1 = (CollectorBlock) block;
-            CollectorLifeSpan lifeSpan = (CollectorLifeSpan) tile;
+            ICollectorLifeSpan lifeSpan = (ICollectorLifeSpan) tile;
             String maxEMC = MathUtils.format((lifeSpan.getMaxLifeSpan() - lifeSpan.getLifeSpan()) * block1.matter.collectorOutput / 20);
             tooltip.add(EMCWorld.tc("tooltip.emcworld.collector.lifespan",(lifeSpan.getMaxLifeSpan()-lifeSpan.getLifeSpan())/20,String.format("%.2f",(1-(1d*lifeSpan.getLifeSpan()/lifeSpan.getMaxLifeSpan()))*100)+"%"));
             tooltip.add(EMCWorld.tc("tooltip.emcworld.collector.max",maxEMC));
+        }
+        if(block instanceof InfuserBlock){
+            InfuserBlockTileEntity infuser = (InfuserBlockTileEntity) tile;
+            int emc = infuser.getEmc();
+            int max = infuser.getMaxEMC();
+            int progress = infuser.getProgress();
+            int maxProgress = infuser.getMaxProgress() == 0 ? 1 : infuser.getMaxProgress();
+            tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(emc)+"/"+MathUtils.format(max)+" ("+String.format("%.2f",100d*emc/max)+"%)"));
+            tooltip.add(EMCWorld.tc("tooltip.emcworld.infuser_progress",String.format("%.2f",100d*progress/maxProgress)+"%"));
         }
     }
 }

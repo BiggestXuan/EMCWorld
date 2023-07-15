@@ -1,16 +1,16 @@
 {
-  "name": "灾厄村民",
+  "name": "Disaster Villager",
   "icon": "minecraft:iron_axe",
   "category": "emerald",
   "sortnum": 1,
   "pages": [
     {
       "type": "text",
-      "text": "在远古时期，村民为了和灾厄村民抢夺质能力量进行了一场持续114514天无休止的战斗，但最后非常不幸，灾厄村民抢到了这股未知的力量。$(br2)他们将对玩家造成更高伤害，当玩家$(c)未进入$()one阶段，其伤害提升18倍；$(c)未进入$()two阶段，伤害提升6倍；$(c)未进入$()three阶段，伤害提升2倍。"
+      "text": "In ancient times, villagers fought an endless battle with Disaster Villagers for the unknown power of EMCWorld that lasted for 114514 days. Unfortunately, Disaster Villagers eventually seized this power. $(br2)They will deal higher damage to players. When a player$(c) has not entered$() the one stage, their damage is increased by 18 times; $(c) has not entered$() the two stage, their damage is increased by 6 times; $(c) has not entered$() the three stage, their damage is increased by 2 times."
     },
     {
       "type": "text",
-      "text": "这股神奇的力量同时应用到了其远程伤害。$(br2)同时这股力量持续打压村民和铁傀儡，因此无论周围玩家到何阶段何难度，村民和铁傀儡的生命值、铁傀儡的攻击力将$(c)永远$()维持在默认值。$(br2)由灾厄村民看守的战利品宝箱，因受其强大的质能力量影响，当玩家在进入three阶段之前无法打开。"
+      "text": "This magical power is also applied to their ranged attacks. $(br2)At the same time, this power constantly suppresses villagers and iron golems. Therefore, regardless of the player's stage or difficulty, the health of villagers and iron golems, and the attack power of iron golems will $(c) always $()be maintained at default values. $(br2)Treasure chests guarded by Disaster Villagers cannot be opened by players before they enter the three stage due to the influence of their powerful EMCWorld power."
     }
   ]
 }

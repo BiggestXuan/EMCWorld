@@ -13,6 +13,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.RestoreStageScroll;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -50,7 +51,10 @@ public class PlayerQuestCompletedEvent {
             if(tag.contains("stage_")){
                 if(ConfigManager.FREE_MODE.get()){
                     Message.sendMessage(player,EMCWorld.tc("message.evt.stage.cancel"));
-                }else GameStageManager.addStage(player,getStage(tag));
+                }else{
+                    player.addItem(RestoreStageScroll.init(player,getStage(tag)));
+                    GameStageManager.addStage(player,getStage(tag));
+                }
             }
         }
         if(event.getReward().hasTag("first_final")){

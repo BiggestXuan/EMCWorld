@@ -5,7 +5,7 @@ import mods.emcworld.math;
 import crafttweaker.api.item.ItemStack;
 import crafttweaker.api.item.IItemStack;
 
-public function setItemEMC(item as ItemStack,emc as long) as void{
+public function setCrTItemEMC(item as ItemStack,emc as long) as void{
     EMCHelper.setItemEMC(item,emc);
 }
 
@@ -60,19 +60,19 @@ public function setEMC() as void{
     ];
     clearEMC(Ice.INSTANCE.getIce());
     for i in 0 .. item.length{
-        setItemEMC(item[i],emcValue[i]);
+        setCrTItemEMC(item[i],emcValue[i]);
     }
     clearEMC(emcItem.INSTANCE.getStack());
     for i in <tag:items:minecraft:flowers>.elements{
-        setItemEMC(i.getDefaultInstance(),0);
+        setCrTItemEMC(i.getDefaultInstance(),0);
     }
     for i in <tag:items:minecraft:carpets>.elements{
-        setItemEMC(i.getDefaultInstance(),0);
+        setCrTItemEMC(i.getDefaultInstance(),0);
     }
     for i in <tag:items:atum:godshards>.elements{
-        setItemEMC(i.getDefaultInstance(),0);
+        setCrTItemEMC(i.getDefaultInstance(),0);
     }
     if(getGameDifficulty()<=1){
-        setItemEMC(<item:atum:godforged_block>,82400);
+        setCrTItemEMC(<item:atum:godforged_block>,82400);
     }
 }

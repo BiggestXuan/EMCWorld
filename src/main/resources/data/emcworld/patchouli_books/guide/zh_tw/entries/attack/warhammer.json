@@ -1,0 +1,12 @@
+{
+  "name": "戰錘",
+  "icon": "emcworld:diamond_warhammer",
+  "category": "attack",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "戰錘是一個具有高傷害，並且能夠群體殺傷的武器。$(br2)戰錘的冷卻時間較長，並且只有在戰錘攻擊冷卻$(c)完全充滿$()時才能發起攻擊。"
+    }
+  ]
+}

@@ -22,6 +22,7 @@ import biggestxuan.emcworld.common.compact.Mekanism.MekUtils;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.entity.Player.Yuan_Shou;
 import biggestxuan.emcworld.common.items.EMCGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
@@ -46,6 +47,7 @@ import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchHelper;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import mekanism.common.item.ItemQIODrive;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -74,6 +76,22 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerClickEvent {
+    @SubscribeEvent
+    public static void rightClickItemToEntity(PlayerInteractEvent.EntityInteract event){
+        Entity entity = event.getEntity();
+        PlayerEntity player = event.getPlayer();
+        if(!entity.level.isClientSide && entity instanceof Yuan_Shou){
+            ItemStack s = player.getMainHandItem();
+            Yuan_Shou yuan_shou = (Yuan_Shou) entity;
+            if(!yuan_shou.isTame() && s.getItem().equals(Items.CAKE)){
+                yuan_shou.setOwnerUUID(player.getUUID());
+                if(!player.isCreative()){
+                    s.shrink(1);
+                }
+            }
+        }
+    }
+
     @SubscribeEvent
     public static void LeftClickItemEvent(PlayerInteractEvent.LeftClickEmpty event){
         ItemStack stack = event.getItemStack();
@@ -414,8 +432,8 @@ public class PlayerClickEvent {
         return out;
     }
 
-    public static List<? extends PlayerEntity> getPlayers(PlayerEntity player,double distance){
-        World world = player.getCommandSenderWorld();
+    public static List<? extends PlayerEntity> getPlayers(LivingEntity player,double distance){
+        World world = player.level;
         List<PlayerEntity> outputPlayer = new ArrayList<>();
         List<? extends PlayerEntity> allPlayer = world.players();
         for(PlayerEntity player1 : allPlayer){

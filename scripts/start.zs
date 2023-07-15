@@ -1,2 +1,0 @@
-#loadlast
-main();

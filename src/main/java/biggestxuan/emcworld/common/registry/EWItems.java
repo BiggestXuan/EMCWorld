@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.registry;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.base.BaseGetStageItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.ShengXuan;
 import biggestxuan.emcworld.common.compact.Mekanism.Module.EMCProtect.EnergyProtectModuleItem;
 import biggestxuan.emcworld.common.compact.Mekanism.Module.Infinity.InfinityModuleItem;
 import biggestxuan.emcworld.common.items.Curios.EMCShieldSupply;
@@ -45,13 +46,11 @@ import biggestxuan.emcworld.common.items.FestivalItem.ZongZi;
 import biggestxuan.emcworld.common.items.Food.MoneyFood;
 import biggestxuan.emcworld.common.items.ModPack.Voucher;
 import biggestxuan.emcworld.common.items.ProfessionalItem.AddMaxLevelItem;
+import biggestxuan.emcworld.common.items.ProfessionalItem.ClearProfessionItem;
 import biggestxuan.emcworld.common.items.ProfessionalItem.ProfessionalItem;
 import biggestxuan.emcworld.common.items.RaidItem.IllagerShard;
 import biggestxuan.emcworld.common.items.RaidItem.RaidLightItem;
-import biggestxuan.emcworld.common.items.SponsorsItem.AbunanaLoot;
-import biggestxuan.emcworld.common.items.SponsorsItem.NoEqualItem;
-import biggestxuan.emcworld.common.items.SponsorsItem.NoNameCatFood;
-import biggestxuan.emcworld.common.items.SponsorsItem.XiangshushumiaoPillow;
+import biggestxuan.emcworld.common.items.SponsorsItem.*;
 import dev.latvian.mods.projectex.Matter;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -89,6 +88,7 @@ public class EWItems {
     public static final RegistryObject<Item> YEARCAKE = ITEMS.register("year_cake", YearCake::new);
     public static final RegistryObject<Item> ZONGZI = ITEMS.register("zongzi", ZongZi::new);
     public static final RegistryObject<Item> XIANGSHUSHUMIAO_PILLOW = ITEMS.register("xiangshushumiao_pillow", XiangshushumiaoPillow::new);
+    public static final RegistryObject<Item> EXCEPTION_APPLE = ITEMS.register("exception_apple", ExceptionApple::new);
     public static final RegistryObject<Item> EMC_CHECK = ITEMS.register("emc_check", EWItem::new);
     public static final RegistryObject<Item> MONEY = ITEMS.register("money", MoneyFood::new);
     public static final RegistryObject<Item> STONE_SHARD = ITEMS.register("stone_shard", EWItem::new);
@@ -179,6 +179,8 @@ public class EWItems {
     public static final RegistryObject<Item> EMC_CORE = ITEMS.register("emc_core",() -> new FinalItem(2));
     public static final RegistryObject<Item> WOODEN_INGOT = ITEMS.register("wooden_ingot",() -> new FinalItem(2));
     public static final RegistryObject<Item> STONE_INGOT = ITEMS.register("stone_ingot",() -> new FinalItem(2));
+    public static final RegistryObject<Item> RESET_SCROLL = ITEMS.register("reset_scroll", ClearProfessionItem::new);
+    public static final RegistryObject<Item> RESTORE_SCROLL = ITEMS.register("restore_scroll", RestoreStageScroll::new);
     public static final RegistryObject<Item> RUNE_INGOT = ITEMS.register("rune_ingot",() -> new FinalItem(2));
     public static final RegistryObject<Item> NATURE_INGOT = ITEMS.register("nature_ingot",() -> new FinalItem(2));
     public static final RegistryObject<Item> DRAGON_STEEL = ITEMS.register("dragon_steel",() -> new FinalItem(1));
@@ -229,7 +231,8 @@ public class EWItems {
     public static final RegistryObject<Item> GAIA_GUN = ITEMS.register("gaia_gun",() -> new GunItem(api.getGunTier("gaia")));
     public static final RegistryObject<Item> RAINBOW_GUN = ITEMS.register("rainbow_gun", RainbowGunItem::new);
     public static final RegistryObject<Item> NETHERITE_GUN = ITEMS.register("netherite_gun",() -> new GunItem(api.getGunTier("netherite")));
-    
+    public static final RegistryObject<Item> SHENG_XUAN = ITEMS.register("shengxuan", ShengXuan::new);
+
     public static final RegistryObject<Item> EMC_FLOWER = registryBlock("emc_flower",EWBlocks.EMC_FLOWER);
 
     public static final RegistryObject<Item> WOODEN_STAFF = ITEMS.register("wooden_staff",() -> new StaffItem(api.getStaffTier("wooden")));

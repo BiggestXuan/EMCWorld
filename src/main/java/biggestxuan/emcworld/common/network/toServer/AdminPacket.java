@@ -84,6 +84,7 @@ public class AdminPacket {
                                 skill.setSkills(i, 0);
                             }
                             util.setTimer(0);
+                            skill.setModify(0);
                             LOGGER.info(name+" clear his skills and level!");
                             break;
                         case 5:

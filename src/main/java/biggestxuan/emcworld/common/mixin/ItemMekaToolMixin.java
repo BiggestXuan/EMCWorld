@@ -62,7 +62,7 @@ public abstract class ItemMekaToolMixin extends ItemEnergized implements IModule
 
     @Override
     public int getMaxLevel() {
-        return 32;
+        return 30;
     }
 
     private static boolean a(ItemStack stack){

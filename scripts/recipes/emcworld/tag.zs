@@ -14,7 +14,8 @@ public function modifyEMCWorldTags() as void{
         <item:emcworld:creation>,
         <item:emcworld:super_star>,
         <item:emcworld:night_light>,
-        <item:emcworld:red_green_dagger>
+        <item:emcworld:red_green_dagger>,
+        <item:emcworld:shengxuan>
     ];
     val c as ItemStack[] = new Getter().getCollector();
     val r as ItemStack[] = new Getter().getRelay();

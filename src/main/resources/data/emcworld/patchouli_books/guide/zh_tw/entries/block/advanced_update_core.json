@@ -1,0 +1,55 @@
+{
+  "name": "進階升級核心架構",
+  "icon": "emcworld:advanced_update_core",
+  "category": "block",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "該多方塊結構在單個方塊的時候不成形。$(br2)這是使用EMC將一個物品轉變為另一個物品的多方塊結構，在轉化的時候，只需要玩家站在上面，手持物品右擊空氣即可。$(br2)當玩家有對應的EMC，那麼會消耗掉EMC，從而製作物品。"
+    },
+    {
+      "type": "text",
+      "text": "按下$(3)潛行鍵$()製作的時候，會自動計算當前製作最大數量來製作。$(br2)每次製作一個物品後，會給予玩家製作冷卻時間。一次製作多個物品，冷卻時間$(3)不會疊加$()。$(br2)當玩家指向方塊的時候，Hwyla插件會顯示玩家冷卻時間還有多少。$(br2)右擊即可打開GUI，看到多方塊結構的資訊，將物品放在右邊的格子裏，以計算當前合成需要消耗多少EMC。"
+    },
+    {
+      "type": "text",
+      "text": "製作物品需要多方塊結構達到一定的等級，增加等級需要按照類似$(3)信標$()的結構進行搭建，每一層搭建的時候，方塊的搭建等級需要大於等於當前層數。$(br2)方塊等級按顏色依次是：紫，大軒紫，藍，青，綠，黃，橙，紅。分別對應1~8級的方塊。$(br2)因類似信標搭建，每一層需要的方塊消耗會越來越多，第一層是3×3，第二層是5×5...依此類推。"
+    },
+    {
+      "type": "text",
+      "text": "構建方塊可以用於搭建，同時它們還有對應的量產方塊，加速方塊，減耗方塊。將它們替換多方塊結構的部分，即可即時在GUI中看到變動。$(br2)需要注意的是，調整方塊的等級與前面所說的對應，因此等級也需要大於等於當前層數的需求等級。$(br2)當產出率超過100%的時候，則有可能產出$(3)多倍物品$()。"
+    },
+    {
+      "type": "text",
+      "text": "例如：350%意味著固定產出3份物品，同時有50%的概率產出第4份。$(br2)一個最高級的架構應該是右邊這樣的："
+    },
+    {
+      "type": "multiblock",
+      "multiblock": {
+        "pattern":[
+          ["                 ","                 ","                 ","                 ","                 ","                 ","                 ","        0        ","        I        ","                 ","                 ","                 ","                 ","                 ","                 ","                 ","                 "],
+          ["                 ","                 ","                 ","                 ","                 ","                 ","                 ","       HHH       ","       HHH       ","       HHH       ","                 ","                 ","                 ","                 ","                 ","                 ","                 "],
+          ["                 ","                 ","                 ","                 ","                 ","                 ","      GGGGG      ","      GGGGG      ","      GGGGG      ","      GGGGG      ","      GGGGG      ","                 ","                 ","                 ","                 ","                 ","                 "],
+          ["                 ","                 ","                 ","                 ","                 ","     FFFFFFF     ","     FFFFFFF     ","     FFFFFFF     ","     FFFFFFF     ","     FFFFFFF     ","     FFFFFFF     ","     FFFFFFF     ","                 ","                 ","                 ","                 ","                 "],
+          ["                 ","                 ","                 ","                 ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","    EEEEEEEEE    ","                 ","                 ","                 ","                 "],
+          ["                 ","                 ","                 ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","   DDDDDDDDDDD   ","                 ","                 ","                 "],
+          ["                 ","                 ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","  CCCCCCCCCCCCC  ","                 ","                 "],
+          ["                 "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB "," BBBBBBBBBBBBBBB ","                 "],
+          ["AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAA"]
+        ],
+        "mapping": {
+          "A": "emcworld:update_base_red",
+          "B": "emcworld:update_base_orange",
+          "C": "emcworld:update_base_yellow",
+          "D": "emcworld:update_base_green",
+          "E": "emcworld:update_base_cyan",
+          "F": "emcworld:update_base_blue",
+          "G": "emcworld:update_base_bx_purple",
+          "H": "emcworld:update_base_purple",
+          "I": "emcworld:advanced_update_core"
+        }
+      }
+    }
+  ]
+}

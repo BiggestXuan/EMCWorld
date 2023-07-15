@@ -16,8 +16,7 @@ import net.minecraft.server.MinecraftServer;
 public class LotteryFresh implements Command<CommandSource> {
     @Override
     public int run(CommandContext<CommandSource> context) throws CommandSyntaxException {
-        MinecraftServer server = context.getSource().getServer();
-        LotteryData.getInstance(server).openLottery();
+        LotteryData.getInstance(context.getSource().getServer()).openLottery();
         return 0;
     }
 }

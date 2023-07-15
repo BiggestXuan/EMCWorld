@@ -10,5 +10,5 @@ package biggestxuan.emcworld.api.item;
 import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 
-public interface IEMCGod extends IUpgradeableItem,IUpgradeableMaterial,IPrefixItem, IStarItem, IGemInlaidItem {
+public interface IEMCGod extends IUpgradeableItem,IUpgradeableMaterial,IPrefixItem, IStarItem, IGemInlaidItem,IEMCRepairableItem,IEMCInfuserItem {
 }

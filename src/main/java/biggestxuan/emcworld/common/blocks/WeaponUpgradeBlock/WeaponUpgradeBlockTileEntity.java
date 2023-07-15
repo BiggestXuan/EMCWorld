@@ -30,6 +30,8 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.math.BlockPos;
@@ -37,6 +39,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -108,28 +111,31 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
 
     @Override
     public void tick() {
-        if(states.equals(States.STARTING) && canStart(this)){
-            boolean isSucceed = true;
-            boolean isBreak = false;
-            lastChance = getChance(this.inventory);
-            PlayerUpgradeItemEvent.Pre event = new PlayerUpgradeItemEvent.Pre(lastClick,this.inventory.getItem(0),lastChance/10000d,getBreakChance()/10000d,this);
-            MinecraftForge.EVENT_BUS.post(event);
-            lastChance = (int) (event.getSuccessChance() * 10000);
-            double breakChance = event.getBreakChance();
-            if(isSuccess(lastChance)){
-                success(this);
-            }else{
-                isSucceed = false;
-                if(MathUtils.isRandom(breakChance)){
-                    breakWeapon();
-                    isBreak = true;
+        if(level != null && !level.isClientSide){
+            level.sendBlockUpdated(getBlockPos(),getBlockState(),getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
+            if(states.equals(States.STARTING) && canStart(this)){
+                boolean isSucceed = true;
+                boolean isBreak = false;
+                lastChance = getChance(this.inventory);
+                PlayerUpgradeItemEvent.Pre event = new PlayerUpgradeItemEvent.Pre(lastClick,this.inventory.getItem(0),lastChance/10000d,getBreakChance()/10000d,this);
+                MinecraftForge.EVENT_BUS.post(event);
+                lastChance = (int) (event.getSuccessChance() * 10000);
+                double breakChance = event.getBreakChance();
+                if(isSuccess(lastChance)){
+                    success(this);
+                }else{
+                    isSucceed = false;
+                    if(MathUtils.isRandom(breakChance)){
+                        breakWeapon();
+                        isBreak = true;
+                    }
+                    fail(this);
                 }
-                fail(this);
+                MinecraftForge.EVENT_BUS.post(new PlayerUpgradeItemEvent.After(lastClick,this.inventory.getItem(0),lastChance/10000d,breakChance,isSucceed,isBreak,this));
             }
-            MinecraftForge.EVENT_BUS.post(new PlayerUpgradeItemEvent.After(lastClick,this.inventory.getItem(0),lastChance/10000d,breakChance,isSucceed,isBreak,this));
+            states = States.STOP;
+            this.data.set(0,getChance(this.inventory));
         }
-        states = States.STOP;
-        this.data.set(0,getChance(this.inventory));
     }
 
     private boolean canStart(WeaponUpgradeBlockTileEntity entity){
@@ -140,6 +146,34 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
             return item.getLevel(stack) < item.getMaxLevel() && (getChance(inventory) > 0 && getChance(inventory) < 114513);
         }
         return false;
+    }
+
+    public int getChance() {
+        return chance;
+    }
+
+    @Override
+    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+        chance = tag.getInt("chance");
+    }
+
+    @Nonnull
+    @Override
+    public final CompoundNBT getUpdateTag() {
+        CompoundNBT nbt = super.getUpdateTag();
+        nbt.putInt("chance",chance);
+        return nbt;
+    }
+
+    @Nullable
+    @Override
+    public SUpdateTileEntityPacket getUpdatePacket() {
+        return new SUpdateTileEntityPacket(getBlockPos(), 1, getUpdateTag());
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+        handleUpdateTag(level.getBlockState(pkt.getPos()), pkt.getTag());
     }
 
     private double getBreakChance(){
@@ -235,9 +269,20 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         }
     }
 
+    private int getInventoryAmount(){
+        int a = 0;
+        for (int i = 1; i <= 4; i++) {
+            ItemStack stack = inventory.getItem(i);
+            if(stack.isEmpty()){
+                a++;
+            }
+        }
+        return 4 - a;
+    }
+
     private float getDifficultyChance(){
         double diff = CrTConfig.getWorldDifficulty();
-        float chance = 1f;
+        float chance = 1 - 0.05f * getInventoryAmount();
         if(diff < 1){
             chance *= 0.8f;
         }
@@ -260,7 +305,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
     private int getChance(Inventory inventory){
         int weight,requireWeight;
         Item mainItem = inventory.getItem(0).getItem();
-        if(mainItem instanceof IUpgradeableItem){
+        if(mainItem instanceof IUpgradeableItem && getInventoryAmount() >= 1){
             IUpgradeableItem weapon = (IUpgradeableItem) mainItem;
             if(weapon.getMaxLevel() <= weapon.getLevel(inventory.getItem(0))){
                 return 1919810;

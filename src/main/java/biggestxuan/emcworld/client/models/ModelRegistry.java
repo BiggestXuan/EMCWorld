@@ -20,5 +20,6 @@ public class ModelRegistry {
     @SubscribeEvent
     public static void ItemModelRegistry(FMLClientSetupEvent event){
         event.enqueueWork(()-> ItemModelsProperties.register(EWItems.EMC_CHARGE_GEM.get(),rl("level"),new EMCLevelModel()));
+        event.enqueueWork(()-> ItemModelsProperties.register(EWItems.SHENG_XUAN.get(),rl("god_gun"),new GodGunModel()));
     }
 }

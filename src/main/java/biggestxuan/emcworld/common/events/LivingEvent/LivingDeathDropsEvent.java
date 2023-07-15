@@ -101,31 +101,35 @@ public class LivingDeathDropsEvent {
             int tier = rank.getTier();
             switch (tier){
                 case 1:
-                    addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,16));
+                    addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,32));
                     break;
                 case 2:
-                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,16));
+                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,24));
                     break;
                 case 3:
                     addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,64));
+                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,32));
+                    if(MathUtils.isMaxDifficulty()){
+                        addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                    }
                     break;
                 case 4:
-                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,16));
+                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,24));
                     break;
                 case 5:
                     addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(20 * ConfigManager.DIFFICULTY.get())));
                     break;
                 case 6:
-                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(4 * ConfigManager.DIFFICULTY.get())));
+                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(8 * ConfigManager.DIFFICULTY.get())));
                     if(MathUtils.isMaxDifficulty()){
-                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,3));
+                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,5));
                     }
                     break;
                 case 7:
-                    addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                    addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,12));
                     if(MathUtils.isMaxDifficulty()){
-                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,6));
-                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,2));
+                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,3));
                     }
                     break;
                 case 8:

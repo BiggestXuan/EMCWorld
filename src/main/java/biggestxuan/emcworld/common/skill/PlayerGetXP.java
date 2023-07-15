@@ -12,7 +12,11 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
 import biggestxuan.emcworld.api.event.PlayerGetXPEvent;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
+import biggestxuan.emcworld.common.traits.ITrait;
+import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -31,6 +35,19 @@ public class PlayerGetXP {
             MinecraftForge.EVENT_BUS.post(postEvent);
             int value = postEvent.getAmount();
             cap.addXP(value);
+        }
+        ItemStack stack = player.getMainHandItem();
+        for(ITrait trait : TraitUtils.getStackTraits(stack)){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                trait.onEMCModify(player,event, stack);
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onEMCModify(player,event,s);
+                }
+            }
         }
     }
 

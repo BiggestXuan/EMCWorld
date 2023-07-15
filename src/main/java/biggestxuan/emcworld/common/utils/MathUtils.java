@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.utils;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
+import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
@@ -22,6 +23,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.registry.EWModules;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
@@ -37,6 +39,8 @@ import net.minecraft.item.BowItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
@@ -46,6 +50,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import org.openzen.zencode.java.ZenCodeType;
+import vazkii.botania.common.item.ItemKeepIvy;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -77,6 +82,10 @@ public class MathUtils {
     public static int getRangeRandom(int min,int max){
         if(min == max) return min;
         Random random = new Random();
+        int value = max - min;
+        if(value < 0){
+            return -(random.nextInt(-value + 1) + min);
+        }
         return random.nextInt(max - min + 1) + min;
     }
 
@@ -267,6 +276,9 @@ public class MathUtils {
                 double amt = 0;
                 for (ItemStack item : playerInventory.items) {
                     double rate = 1.0d;
+                    if(ItemKeepIvy.hasIvy(item)){
+                        rate = 0d;
+                    }
                     if(item.getItem() instanceof ICostEMCItem){
                         rate = ((ICostEMCItem) item.getItem()).getEMCCostRate();
                     }
@@ -614,20 +626,13 @@ public class MathUtils {
                 if(armor.getModules(stack).size() == 0){
                     return false;
                 }
-                for(Module<?> module : armor.getModules(stack)){
-                    if(module.getData().getRegistryName() != null){
-                        if(module.getData().getRegistryName().equals(EMCWorld.rl("energy_protect_module"))){
-                            break;
-                        }else{
-                            flag = false;
-                        }
-                    }
+                if(!containerModule(armor,stack,EMCWorld.rl("energy_protect_module"))){
+                    flag = false;
                 }
             }else{
                 flag = false;
             }
         }
-        //EMCWorld.LOGGER.info(flag);
         return flag;
     }
 
@@ -684,8 +689,31 @@ public class MathUtils {
         }
     }
 
+    public static Ingredient mergeIngredient(Ingredient ... ingredients){
+        return mergeIngredient(List.of(ingredients));
+    }
+
+    public static Ingredient mergeIngredient(List<Ingredient> l){
+        List<ItemStack> list = new ArrayList<>();
+        for(Ingredient i : l){
+            list.addAll(Arrays.asList(i.getItems()));
+        }
+        return Ingredient.of(list.stream());
+    }
+
     @Deprecated
     public static String t(BlockPos pos){
         return pos.getX()+","+pos.getY()+","+pos.getZ();
+    }
+
+    @EMCWorldSince("1.0.0")
+    private static boolean containerModule(ItemMekaSuitArmor armor,ItemStack stack,ResourceLocation rl){
+        if(armor.getModules(stack).size() == 0) return false;
+        for(Module<?> module : armor.getModules(stack)){
+            if(module.getData().getRegistryName().equals(rl)){
+                return true;
+            }
+        }
+        return false;
     }
 }

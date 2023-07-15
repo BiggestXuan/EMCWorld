@@ -1,0 +1,12 @@
+{
+  "name": "匕首",
+  "icon": "emcworld:diamond_dagger",
+  "category": "attack",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "text",
+      "text": "匕首是一個快速但較低傷害的武器。$(br2)受到匕首攻擊的目標，其“無敵幀”時間會縮短（視匕首品質）。$(br2)（未完工）右擊匕首即可將使用者向前衝刺一段距離。"
+    }
+  ]
+}

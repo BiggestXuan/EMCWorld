@@ -1,24 +1,24 @@
 {
-  "name": "武器升级核心",
+  "name": "Weapon Upgrade Core",
   "icon": "emcworld:weapon_upgrade_core",
   "category": "block",
   "sortnum": 4,
   "pages": [
     {
       "type": "text",
-      "text": "该架构单个方块即可使用，无多方块结构。$(br2) 所有的武器、工具、盔甲都可以升级，它的等级会在名字旁边以+x的形式显示。$(br2)每当提升它们的等级，它的攻击力、范围攻击、治疗效能、最大生命值等属性均会发生变动，不同类型的物品会变动的属性不相同。"
+      "text": "This architecture can be used with a single block and does not require a multi-block structure. $(br2) All weapons, tools, and armor can be upgraded, and their level will be displayed as +x next to their name. $(br2) Each time they are upgraded, their attributes such as attack power, area attack, healing efficiency, and maximum health will change. The properties that different types of items will change are not the same."
     },
     {
       "type": "text",
-      "text": "$(br2)随着强化，它们的额外属性会线性提升，但$(6)质能圣器$()的额外属性会指数提升。$(br2)打开GUI后，将需要强化的装备放在中间，在周围四个格子里面放入$(6)质能圣器$()或$(6)武器强化卷轴$()，在右侧会显示出当前升级的成功率。"
+      "text": "$(br2)As the item is upgraded, its additional attributes will increase linearly, but the additional attributes of the $(6)Energy Sacred Artifact$() will increase exponentially. $(br2)After opening the GUI, place the equipment that needs to be upgraded in the center and put $(6)Energy Sacred Artifacts$() or $(6)Weapon Upgrade Scrolls$() in the four slots around it. The success rate of the current upgrade will be displayed on the right."
     },
     {
       "type": "text",
-      "text": "在右下角的格子中，可以放入$(5)幸运水晶$()，以便提高升级的成功率。$(br2)当你一切准备就绪后，关闭GUI页面，保持空手，按住潜行右击武器升级核心即可升级。$(br2)如果升级成功，那么武器的等级将+1，如果升级失败，那么不会发生任何变化。$(br2)值得注意的是：当武器的强化等级大于其最大等级的1/3，失败后武器的强化会$(4)回退一级$()。"
+      "text": "You can put $(5)Lucky Crystals$() in the lower right slot to increase the success rate of the upgrade. $(br2)When you are ready, close the GUI page, keep your hands empty, and hold down the sneak key while right-clicking the Weapon Upgrade Core to upgrade the equipment. $(br2)If the upgrade is successful, the equipment's level will increase by 1. If the upgrade fails, there will be no change. $(br2)It is worth noting that when the equipment's upgrade level is greater than one-third of its maximum level, the upgrade will $(4)degrade by one level$() after a failed attempt."
     },
     {
       "type": "text",
-      "text": "无论成功还是失败，周围的材料和幸运宝石都会被消耗。$(br2)当合成失败的时候（无论是否搭建多方块），会在上方产出一定量$(5)幸运宝石$()，产出数量跟成功率，强化等级有关。$(br2)幸运宝石可以8个合成为更高级的幸运宝石。"
+      "text": "Whether the upgrade is successful or not, the surrounding materials and lucky gems will be consumed. $(br2)When the upgrade fails (whether or not a multi-block is built), a certain amount of $(5)Lucky Gems$() will be produced above it, and the number of gems produced is related to the success rate and upgrade level. $(br2)Eight Lucky Gems can be combined to create a higher-level Lucky Gem."
     }
   ]
 }

@@ -26,7 +26,13 @@ public class EMCShieldBar implements BarOverlay {
 
     @Override
     public boolean shouldRender(PlayerEntity playerEntity) {
-        return playerEntity != null && !playerEntity.isDeadOrDying() && EMCWorldAPI.getInstance().getUtilCapability(playerEntity).getMaxShield() > 0;
+        boolean flag = playerEntity != null && !playerEntity.isDeadOrDying();
+        try{
+            boolean a = EMCWorldAPI.getInstance().getUtilCapability(playerEntity).getMaxShield() > 0;
+            return flag && a;
+        }catch (NullPointerException e){
+            return false;
+        }
     }
 
     @Override

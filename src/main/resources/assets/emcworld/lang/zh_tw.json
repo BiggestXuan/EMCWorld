@@ -382,6 +382,10 @@
   "item.emcworld.broken_gun": "熾熱火槍",
   "item.emcworld.lottery": "質能獎券",
   "item.emcworld.unequal": "不等式",
+  "item.emcworld.reset_scroll": "職業重置卷軸",
+  "item.emcworld.restore_scroll": "階段回復卷軸",
+  "item.emcworld.exception_apple": "異常紅潤的蘋果",
+  "item.emcworld.shengxuan": "圣宣",
 
   "block.emcworld.hardcore_stone": "石頭之核",
   "block.emcworld.emc_ore": "質能礦石",
@@ -593,6 +597,7 @@
   "entity.emcworld.dytlj7788": "小高",
   "entity.emcworld.lamb_kisara": "清瞳",
   "entity.emcworld.cmzxymzx": "塵世之汐 云夢之仙",
+  "entity.emcworld.yuan_shou": "元首",
   "entity.minecraft.villager.emcworld.emc_villager": "質能工程師",
   "entity.minecraft.villager.emc_villager": "質能工程師",
 
@@ -622,6 +627,8 @@
   "jei.emcworld.infuser_time": "%d 秒",
   "jei.emcworld.infuser_emc": "消耗EMC：%d",
   "jei.emcworld.hazmat_desc": "僅能抵抗 50,000 Sv/h 以下輻射",
+  "jei.emcworld.collector_fix.title": "收集器修復",
+  "jei.emcworld.collector_fix.efficiency": "比例：",
   "jei.emcworld.title.multiblock_advanced_update": "升級多方塊結構",
   "jei.emcworld.advanced_update_desc": "使用核心方塊和基座方塊類似信標結構進行搭建，每個顏色的構建方塊都具有不同的等級，它們從一級到八級分別對應的顏色是：紫，大軒紫，藍，青，綠，黃，橙，紅。\n每一層都需要對應等級或更高級的構建方塊搭建，同時你也可以使用當前等級或更高等級的調整方塊讓合成的CD，消耗，額外輸出變動。\n每次合成會帶來900秒的冷卻時間，進入冷卻時間的玩家無法合成。\n玩家可以按下潛行鍵一次進行多個合成。\n合成的時候需要對著空氣右擊，對著核心右擊將會打開其頁面，顯示相關的信息。",
 
@@ -648,6 +655,8 @@
   "emcsource.effect": "[藥水] 效果： %d, 等級： %d, %d EMC",
   "emcsource.command": "[命令] %d EMC",
   "emcsource.lottery": "[獎券] %d EMC，數字：[ %d]，倍率：%d",
+  "emcsource.fish": "[垂釣]物品：%d，%d EMC",
+  "emcsource.exception_apple": "[異常紅潤的蘋果] %d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -1039,6 +1048,11 @@
   "tooltip.emcworld.lottery.warn": "§4本項功能僅供娛樂，請理性購買。本內容僅在游戲中生效，請勿在現實世界中模仿！",
   "tooltip.emcworld.collector.lifespan": "壽命：%d 秒（%d）",
   "tooltip.emcworld.collector.max": "§2預期總收益：%d EMC",
+  "tooltip.emcworld.restore_scroll1": "§2儅玩家缺失游戲階段時使用",
+  "tooltip.emcworld.restore_scroll2": "游戲階段： %d",
+  "tooltip.emcworld.restore_scroll3": "玩家： %d",
+  "tooltip.emcworld.restore_scroll4": "UUID： %d",
+  "tooltip.emcworld.exception_apple": "§6如果它不是那麽香甜的話，我會説它聞起來像血",
 
   "attack_range_none": "關閉",
   "attack_range_all": "全部攻擊",
@@ -1104,6 +1118,10 @@
   "advancement.emcworld.lottery_reward3.desc": "真機車，這都中上了啦",
   "advancement.emcworld.lottery_reward4": "獲取頭獎",
   "advancement.emcworld.lottery_reward4.desc": "WTF！也許你要重新評估自己了！",
+  "advancement.emcworld.yuan_shou_tame": "這可不是謊言",
+  "advancement.emcworld.yuan_shou_tame.desc": "使用蛋糕馴服贊助者元首",
+  "advancement.emcworld.yuan_shou_kill": "百年之後",
+  "advancement.emcworld.yuan_shou_kill.desc": "在 2099 年后擊殺元首",
 
   "skills.emcworld.p1_default": "[固有] 每級獲得 %d 可疊加傷害加成",
   "skills.emcworld.p1_skill10": "[主動] 手持任意劍右擊發動，在獲得力量I效果 %d 秒，冷卻時間 %d 秒",

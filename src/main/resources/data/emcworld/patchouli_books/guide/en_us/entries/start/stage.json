@@ -1,20 +1,20 @@
 {
-  "name": "游戏阶段",
+  "name": "Game Phases",
   "icon": "minecraft:diamond_sword",
   "category": "start",
   "sortnum": 2,
   "pages":[
     {
       "type": "text",
-      "text": "在这个世界探索会触及到越来越有力量的位置，同时你需要不断的提升自己以便和这些内容抗衡。$(br2)因此有些物品的获取必须在玩家达成一定的阶段后才能解锁，否则玩家无法捡起物品。$(br2)在这之前，玩家可以制作一个未知之袋提前将物品放到袋子里面，当玩家解锁对应阶段后即可取出。"
+      "text": "Exploring this world will take you to increasingly powerful places, and you'll need to constantly improve yourself to keep up with them. $(br2)As a result, some items can only be obtained after the player reaches a certain phase, otherwise the player will not be able to pick them up. $(br2)Before that, players can make an Unknown Bag to put items in, and take them out later when the corresponding phase is unlocked."
     },
     {
       "type": "text",
-      "text": "当玩家制作出了对应的能量凝聚器后即可解锁相应的阶段。$(br2)需要注意的是，对着玩家能力的加强，周围的怪物也会加强。$(br2)同时，对质能世界的扰乱会更大，在每次行为后会消耗更多的EMC。$(br2)部分物品无法由EMC凝聚，必须当玩家有足够的阶段才可以凝聚。否则，物品只能被转化为EMC。"
+      "text": "Once the player has made the corresponding Energy Condenser, they can unlock the corresponding phase. $(br2)It's worth noting that as the player's abilities become stronger, the monsters around them will also become stronger. $(br2)At the same time, the disturbance to the EMCWorld will be greater, and more EMC will be consumed after each action. $(br2)Some items cannot be condensed by EMC and must be obtained when the player has reached a sufficient phase. Otherwise, the items can only be converted into EMC."
     },
     {
       "type": "text",
-      "text": "另外一点需要注意的是，在整合包3.0难度（默认）下，怪物受伤会减少33.3%，而玩家受伤会增加16.7%"
+      "text": "Another thing to note is that in modpack 3.0 difficulty (default), monster damage is reduced by 33.3%, while player damage is increased by 16.7%."
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:cake"
+    },
+    "title": {
+      "translate": "advancement.emcworld.yuan_shou_kill"
+    },
+    "description": {
+      "translate": "advancement.emcworld.yuan_shou_kill.desc"
+    },
+    "hidden": true
+  },
+  "parent": "emcworld:welcome",
+  "criteria": {
+    "emcworld": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

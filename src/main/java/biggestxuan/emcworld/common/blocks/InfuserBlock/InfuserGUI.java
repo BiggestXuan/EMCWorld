@@ -35,24 +35,20 @@ public class InfuserGUI extends ContainerScreen<InfuserContainer> {
         int y = (height - imageHeight) / 2; //83
         assert this.minecraft != null;
         this.minecraft.getTextureManager().bind(EMCWorld.rl("textures/gui/infuser_core.png"));
+        InfuserBlockTileEntity tile = (InfuserBlockTileEntity) world.getBlockEntity(pos);
+        assert tile != null;
+        int progress = tile.getProgress();
+        int maxProgress = tile.getMaxProgress();
+        int emc = tile.getEmc();
+        int maxEMC = tile.getMaxEMC();
+        int radiation = tile.getRadiation();
+        int maxRadiation = tile.getMaxRadiation();
+        int craftLevel = tile.getCraftLevel();
         blit(p_230450_1_,x,y,0,0,imageWidth,imageHeight);
-        blit(p_230450_1_,x+98,y+30,176,0, this.menu.getProgress(),14);
-        blit(p_230450_1_,x+90,y+70,176,14,this.menu.getRadiation(),3);
-        blit(p_230450_1_,x+163,y+6,176,17,5,this.menu.getEMC());
-        switch (this.menu.getCraftLevel()){
-            case 1:
-                blit(p_230450_1_,x+6,y+6,176,87,8,8);
-                break;
-            case 2:
-                blit(p_230450_1_,x+6,y+6,176,87+8,8,8);
-                break;
-            case 3:
-                blit(p_230450_1_,x+6,y+6,176,87+8+8,8,8);
-                break;
-            case 4:
-                blit(p_230450_1_,x+6,y+6,176,87+8+8+8,8,8);
-                break;
-        }
+        blit(p_230450_1_,x+98,y+30,176,0, getProgress(progress,maxProgress),14);
+        blit(p_230450_1_,x+90,y+70,176,14,getRadiation(radiation,maxRadiation),3);
+        blit(p_230450_1_,x+163,y+6,176,17,5,getEMC(emc,maxEMC));
+        blit(p_230450_1_,x+6,y+6,176,87+(craftLevel-1)*8,8,8);
     }
 
     @Override
@@ -60,7 +56,21 @@ public class InfuserGUI extends ContainerScreen<InfuserContainer> {
         renderBackground(matrixStack);
         super.render(matrixStack,mouseX,mouseY,partialTicks);
         renderTooltip(matrixStack,mouseX,mouseY);
+    }
 
+    private int getProgress(int progress,int maxProgress){
+        int progressArrowSize = 20;
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    private int getRadiation(int radiation,int maxRadiation){
+        return Math.min(57 * radiation / maxRadiation,57);
+    }
+
+    private int getEMC(int emc,int maxEMC){
+        double rate = 1d * emc / maxEMC;
+        int length = (int) Math.round(70 * rate);
+        return Math.min(70,70 - length);
     }
 
     @Override

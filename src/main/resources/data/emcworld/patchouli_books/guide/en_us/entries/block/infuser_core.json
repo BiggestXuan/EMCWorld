@@ -1,20 +1,20 @@
 {
-  "name": "注入核心架构",
+  "name": "Infuser Core",
   "icon": "emcworld:infuser_core",
   "category": "block",
   "sortnum": 3,
   "pages": [
     {
       "type": "text",
-      "text": "该方块单个方块即可成型，搭建多方块结构使当前架构有不同等级。$(br2)该结构是消耗EMC从而将五个物品合成为一个的结构。$(br2)右击即可打开GUI，在最中间的格子放入任何等级的EMC宝石即可为架构填充EMC。"
+      "text": "This block can be formed by a single block, and building a multi-block structure will give the current structure different levels. $(br2)This structure consumes EMC to combine five items into one. $(br2)Right-click to open the GUI and place any level of EMC gem in the middle slot to fill the structure with EMC."
     },
     {
       "type": "text",
-      "text": "如果一个EMC的宝石提供的EMC大于当前架构的最大容量，那么不会消耗宝石也不会填充EMC。$(br2)合成需要消耗大量时间，多方块架构会根据当前区块的$(2)辐射剂量$()加速。$(br2)右侧的条代表当前$(5)EMC存量$()，下方的条代表当前$(2)辐射剂量$()。$(br2)所有可以质能充能的物品均可在里面充能，充能速率由当前架构等级决定。"
+      "text": "If an EMC gem provides more EMC than the current structure's maximum capacity, it will not be consumed or fill the structure with EMC. $(br2)The synthesis process takes a lot of time, and the multi-block structure will accelerate based on the $(2)radiation dose$() of the current chunk. $(br2)The bar on the right represents the current $(5)EMC storage$(), and the bar below represents the current $(2)radiation dose$(). $(br2)All items that can be energized with matter can be energized inside, and the energization rate is determined by the current level of the structure."
     },
     {
       "type": "text",
-      "text": "不同等级的架构会在GUI中以左上角的颜色块来显示，不同等级的架构的EMC存量，$(2)辐射最大量$()都不相同。$(br2)架构的等级必须大于等于物品的制作需求等级。后面分别是二，三，四级的多方块示意图。$(br2)在升级的时候，你不需要拆除原有的方块，因为每一级都是按原有等级升级上去的。"
+      "text": "Different levels of the structure will be displayed in the GUI with a color block in the upper left corner, and the EMC storage and $(2)maximum radiation dose$() of different levels of the structure are not the same. $(br2)The level of the structure must be greater than or equal to the crafting requirement level of the item. The following are the schematic diagrams of the multi-block structures for level two, three, and four. $(br2)When upgrading, you don't need to dismantle the original blocks because each level is upgraded based on the original level."
     },
     {
       "type": "multiblock",

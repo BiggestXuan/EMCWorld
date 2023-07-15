@@ -40,6 +40,7 @@ public class RegisterModel {
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.lamb_kisara,AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.cmzxymzx,AtumBipedRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EWEntities.sdxhop,AtumBipedRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EWEntities.yuan_shou,AtumBipedRender::new);
         //RenderingRegistry.registerEntityRenderingHandler(EWEntities.ammo,);
     }
 }

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-import biggestxuan.emcworld.common.compact.Projecte.itf.CollectorLifeSpan;
+import biggestxuan.emcworld.common.compact.Projecte.itf.ICollectorLifeSpan;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import dev.latvian.mods.projectex.block.entity.CollectorBlockEntity;
 import moze_intel.projecte.api.capabilities.tile.IEmcStorage;
@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  */
 
 @Mixin(CollectorBlockEntity.class)
-public abstract class CollectorBlockEntityMixin extends TileEntity implements ITickableTileEntity, IEmcStorage, CollectorLifeSpan {
+public abstract class CollectorBlockEntityMixin extends TileEntity implements ITickableTileEntity, IEmcStorage, ICollectorLifeSpan {
     private int lifespan;
     public CollectorBlockEntityMixin(TileEntityType<?> p_i48289_1_) {
         super(p_i48289_1_);
@@ -76,7 +76,9 @@ public abstract class CollectorBlockEntityMixin extends TileEntity implements IT
     @Inject(method = "tick",at = @At("HEAD"), cancellable = true)
     public void tick_mixin(CallbackInfo ci){
         if(level != null && !level.isClientSide){
-            level.sendBlockUpdated(getBlockPos(),getBlockState(),getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
+            if(level.getDayTime() % 20 == 0){
+                level.sendBlockUpdated(getBlockPos(),getBlockState(),getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
+            }
             if(lifespan < getMaxLifeSpan()){
                 lifespan++;
             }else{

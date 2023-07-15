@@ -25,6 +25,12 @@
 					}
 				}
 			}]
+			rewards: [{
+				id: "39EB01BA3A06E3B9"
+				type: "item"
+				item: "emcworld:reset_scroll"
+				count: 10
+			}]
 		}
 		{
 			x: 3.0d

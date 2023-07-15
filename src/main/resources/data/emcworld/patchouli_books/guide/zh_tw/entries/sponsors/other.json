@@ -1,0 +1,16 @@
+{
+  "name": "特殊頭銜",
+  "icon": "minecraft:barrier",
+  "category": "sponsors",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "text",
+      "text": "該頭銜僅在整合包開發期間能夠獲取。$(br2)通常是給予 Biggest_Xuan 的朋友。$(br2)歡迎語和聊天樣式均按照要求自行定制。"
+    },
+    {
+      "type": "text",
+      "text": "因聊天樣式和歡迎語均不相同，本頁不提供示例。$(br2)目前共有 $(6)2$() 位玩家獲取該頭銜。"
+    }
+  ]
+}

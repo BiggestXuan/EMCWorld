@@ -382,6 +382,10 @@
   "item.emcworld.broken_gun": "炽热火枪",
   "item.emcworld.lottery": "质能奖券",
   "item.emcworld.unequal": "不等式",
+  "item.emcworld.reset_scroll": "职业重置卷轴",
+  "item.emcworld.restore_scroll": "阶段恢复卷轴",
+  "item.emcworld.exception_apple": "异常红润的苹果",
+  "item.emcworld.shengxuan": "圣宣",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -593,6 +597,7 @@
   "entity.emcworld.dytlj7788": "小高",
   "entity.emcworld.lamb_kisara": "清瞳",
   "entity.emcworld.cmzxymzx": "尘世之汐 云梦之仙",
+  "entity.emcworld.yuan_shou": "元首",
   "entity.minecraft.villager.emcworld.emc_villager": "质能工程师",
   "entity.minecraft.villager.emc_villager": "质能工程师",
 
@@ -622,6 +627,8 @@
   "jei.emcworld.infuser_time": "%d 秒",
   "jei.emcworld.infuser_emc": "消耗EMC：%d",
   "jei.emcworld.hazmat_desc": "仅能抵抗 50,000 Sv/h 以下辐射",
+  "jei.emcworld.collector_fix.title": "收集器修复",
+  "jei.emcworld.collector_fix.efficiency": "比例： ",
   "jei.emcworld.title.multiblock_advanced_update": "升级多方块结构",
   "jei.emcworld.advanced_update_desc": "使用核心方块和基座方块类似信标结构进行搭建，每个颜色的构建方块都具有不同的等级，它们从一级到八级分别对应的颜色是：紫，大轩紫，蓝，青，绿，黄，橙，红。\n每一层都需要对应等级或更高级的构建方块搭建，同时你也可以使用当前等级或更高等级的调整方块让合成的CD，消耗，额外输出变动。\n每次合成会带来900秒的冷却时间，进入冷却时间的玩家无法合成。\n玩家可以按下潜行键一次进行多个合成。\n合成的时候需要对着空气右击，对着核心右击将会打开其页面，显示相关的信息。",
 
@@ -648,6 +655,8 @@
   "emcsource.effect": "[药水] 效果： %d, 等级： %d, %d EMC",
   "emcsource.command": "[命令] %d EMC",
   "emcsource.lottery": "[奖券] %d EMC，数字：[ %d]，倍率：%d",
+  "emcsource.fish": "[垂钓]物品：%d，%d EMC",
+  "emcsource.exception_apple": "[异常红润的苹果] %d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -1039,6 +1048,11 @@
   "tooltip.emcworld.lottery.warn": "§4本项功能仅供娱乐，请理性购买。本内容仅在游戏中生效，请勿在现实世界中模仿！",
   "tooltip.emcworld.collector.lifespan": "寿命：%d 秒（%d）",
   "tooltip.emcworld.collector.max": "§2预期总收益：%d EMC",
+  "tooltip.emcworld.restore_scroll1": "§2当玩家缺失游戏阶段时使用",
+  "tooltip.emcworld.restore_scroll2": "游戏阶段： %d",
+  "tooltip.emcworld.restore_scroll3": "玩家： %d",
+  "tooltip.emcworld.restore_scroll4": "UUID： %d",
+  "tooltip.emcworld.exception_apple": "§6如果它不是那么香甜的话，我会说它闻起来像血",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",
@@ -1104,6 +1118,10 @@
   "advancement.emcworld.lottery_reward3.desc": "什么运气？",
   "advancement.emcworld.lottery_reward4": "中头奖",
   "advancement.emcworld.lottery_reward4.desc": "你这能中？我不信？",
+  "advancement.emcworld.yuan_shou_tame": "这可不是谎言",
+  "advancement.emcworld.yuan_shou_tame.desc": "使用蛋糕驯服赞助者元首",
+  "advancement.emcworld.yuan_shou_kill": "百年之后",
+  "advancement.emcworld.yuan_shou_kill.desc": "在 2099 年后击杀元首",
 
   "skills.emcworld.p1_default": "[固有] 每级获得 %d 可叠加伤害加成",
   "skills.emcworld.p1_skill10": "[主动] 手持任意剑右击发动，在获得力量I效果 %d 秒，冷却时间 %d 秒",

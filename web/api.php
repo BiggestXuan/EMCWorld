@@ -21,29 +21,33 @@ foreach ($logLines as $line) {
   }
 }
 
-if ($count > 20) {
+if ($count > 30) {
     echo "[ERROR] Exceeded the number of requests in a short period of time!";
     exit();
 }
 
-$version = 7;
-$versionName = "0.5.2";
-$index = isset($_GET["version"])?$_GET["version"]:NULL;
-$name = isset($_GET["name"])?$_GET['name']:NULL;
-$uuid = isset($_GET["uuid"])?$_GET["uuid"]:NULL;
-$dbhost = '???';
-$dbuser = '???';
-$dbpassword = '???';
-$connect = new mysqli($dbhost,$dbuser,$dbpassword,"emcworld");
+$version = 12;
+$versionName = "1.0.0";
+$index = isset($_GET["version"]) ? $_GET["version"] : NULL;
+$name = isset($_GET["name"]) ? $_GET['name'] : NULL;
+$uuid = isset($_GET["uuid"]) ? $_GET["uuid"] : NULL;
+$dbhost = 'xxx';
+$dbuser = 'xxx';
+$dbpassword = 'xxx';
+$connect = new mysqli($dbhost,$dbuser,$dbpassword,"xxx");
 if(($index == NULL & $name == NULL & $uuid == NULL) | (($name == NULL & $uuid != NULL) | ($name != NULL & $uuid == NULL))){
     header("Location:https://www.bilibili.com/video/BV1GJ411x7h7/");
+    exit();
+}
+if($uuid != NULL && strpos($uuid,"select") !== false){
+    echo "Access Denied!";
     exit();
 }
 if($index != NULL){
     echo $version.",".$versionName;
 }
 
-$sql = "SELECT level FROM sponsors WHERE (playerName=?) AND (uuid=?)";
+$sql = "xxx";
 $stmt = $connect->stmt_init();
 if ($stmt->prepare($sql) & $index == NULL) {
     $stmt->bind_param("ss",$name, $uuid);

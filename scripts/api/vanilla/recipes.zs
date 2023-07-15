@@ -54,7 +54,7 @@ public function removeCraftRecipe(input as ItemStack[]) as void{
     }
 }
 
-public function removeRecipe(input as IItemStack[]) as void{
+public function removeCraftRecipeIItemStack(input as IItemStack[]) as void{
     for i in input{
        craftingTable.removeRecipe(i); 
     }

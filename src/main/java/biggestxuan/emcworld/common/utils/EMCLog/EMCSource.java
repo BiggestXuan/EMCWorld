@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.utils.EMCLog;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.common.items.LotteryItem;
 import biggestxuan.emcworld.common.utils.Lottery.Lottery;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -18,6 +19,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -28,7 +30,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class EMCSource<T> {
-    protected final long emc;
+    protected long emc;
     private final BlockPos pos;
     private final RegistryKey<World> dim;
     private final T target;
@@ -44,6 +46,10 @@ public abstract class EMCSource<T> {
 
     public long emc(){
         return emc;
+    }
+
+    public void setEmc(long emc){
+        this.emc = emc;
     }
 
     public BlockPos getPos() {
@@ -383,6 +389,30 @@ public abstract class EMCSource<T> {
             List<Integer> list = lottery.getNum();
             list.addAll(lottery.getAdd());
             return super.getInfo()+EMCWorld.tc("emcsource.lottery",getEMC(), LotteryItem.getString(list),lottery.getRate()).getString();
+        }
+    }
+
+    @EMCWorldSince("0.9.0")
+    public static class FishEMCSource extends EMCSource<NonNullList<ItemStack>>{
+        public FishEMCSource(long emc, PlayerEntity player, NonNullList<ItemStack> target) {
+            super(emc, player, target,0);
+        }
+
+        @Override
+        public String getInfo() {
+            return super.getInfo()+EMCWorld.tc("emcsource.fish",getTarget().toString(),getEMC()).getString();
+        }
+    }
+
+    @EMCWorldSince("0.9.0")
+    public static class ExceptionAppleEMCSource extends EMCSource<Object>{
+        public ExceptionAppleEMCSource(long emc,PlayerEntity player){
+            super(emc,player,null,0);
+        }
+
+        @Override
+        public String getInfo(){
+            return super.getInfo()+EMCWorld.tc("emcworld.exception_apple",getEMC());
         }
     }
 }

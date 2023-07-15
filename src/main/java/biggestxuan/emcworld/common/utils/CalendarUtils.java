@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.utils;
  */
 
 import biggestxuan.emcworld.common.config.ConfigManager;
+import cn.hutool.core.date.ChineseDate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,22 +30,14 @@ public class CalendarUtils {
 
     public boolean isSpringFestival(){
         if(ConfigManager.SpringFestival.get()){
-            return year == 2023 && month == 1 && day == 22 ||
-                    (year == 2024 && month == 2 && day == 10) ||
-                    (year == 2025 && month == 1 && day == 29) ||
-                    (year == 2026 && month == 2 && day == 17) ||
-                    (year == 2027 && month == 2 && day == 6);
+            return isChineseFestival(1,1);
         }
         return false;
     }
 
     public boolean isLanternFestival(){
         if(ConfigManager.LanternFestival.get()){
-            return year == 2023 && month == 2 && day == 5 ||
-                    (year == 2024 && month == 2 && day == 24) ||
-                    (year == 2025 && month == 2 && day == 12) ||
-                    (year == 2026 && month == 3 && day == 3) ||
-                    (year == 2027 && month == 2 && day == 20);
+            return isChineseFestival(1,15);
         }
         return false;
     }
@@ -62,11 +55,7 @@ public class CalendarUtils {
 
     public boolean isDragonBoatFestival(){
         if(ConfigManager.DragonBoatFestival.get()){
-            return year == 2023 && month == 6 && day == 22 ||
-                    (year == 2024 && month == 6 && day == 10) ||
-                    (year == 2025 && month == 5 && day == 31) ||
-                    (year == 2026 && month == 6 && day == 19) ||
-                    (year == 2027 && month == 6 && day == 9);
+            return isChineseFestival(5,5);
         }
         return false;
     }
@@ -81,11 +70,7 @@ public class CalendarUtils {
 
     public boolean isMidAutumnFestival(){
         if(ConfigManager.MidAutumnFestival.get()){
-            return year == 2023 && month == 9 && day == 29 ||
-                    (year == 2024 && month == 9 && day == 17) ||
-                    (year == 2025 && month == 10 && day == 6) ||
-                    (year == 2026 && month == 9 && day == 25) ||
-                    (year == 2027 && month == 9 && day == 15);
+            return isChineseFestival(8,15);
         }
         return false;
     }
@@ -150,5 +135,10 @@ public class CalendarUtils {
             s = "Have A Good Dream";
         }
         return s;
+    }
+
+    public boolean isChineseFestival(int ChineseMonth, int ChineseDay){
+        ChineseDate date = new ChineseDate(year,ChineseMonth,ChineseDay);
+        return date.getGregorianMonth() + 1 == this.month && date.getGregorianDay() == this.day;
     }
 }

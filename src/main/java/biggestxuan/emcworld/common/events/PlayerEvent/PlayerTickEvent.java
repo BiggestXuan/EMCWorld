@@ -30,6 +30,7 @@ import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -53,7 +54,6 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
@@ -541,6 +541,9 @@ public class PlayerTickEvent {
                     }
                 }
             }
+            if(stack.getItem() instanceof IHasTraitItem){
+                TraitUtils.getStackTraits(stack).forEach(e -> e.onInventoryTick(player,stack));
+            }
         }
         for(ItemStack stack:player.inventory.armor){
             if(stack.getItem() instanceof IEMCShieldArmor){
@@ -553,7 +556,11 @@ public class PlayerTickEvent {
                 total += armor.getShield(stack);
                 max_total += armor.getMaxShield(stack);
             }
+            if(stack.getItem() instanceof IHasTraitItem){
+                TraitUtils.getStackTraits(stack).forEach(e -> e.onArmorTick(player,stack));
+            }
         }
+
         ItemStack shield = PlayerCurios.getPlayerEMCShield(player);
         if(!shield.equals(ItemStack.EMPTY) && shield.getItem() instanceof IEMCShieldArmor && shield.getItem() instanceof EMCShieldSupply){
             EMCShieldSupply supply = (EMCShieldSupply) shield.getItem();

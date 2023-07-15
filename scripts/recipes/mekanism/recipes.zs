@@ -84,7 +84,7 @@ public function modifyMEKRecipe() as void{
         <item:mekanism:ultimate_induction_provider>
     ];
     for i in 1 .. 4{
-        removeRecipe([ic[i],ip[i]]);
+        removeCraftRecipeIItemStack([ic[i],ip[i]]);
     }
     modifyShapedRecipe([
         [iron,iron,iron],
@@ -209,7 +209,7 @@ public function modifyMEKRecipe() as void{
         [hs,pp2,pp],
         [<item:stalwart_dungeons:awful_gun>,<item:cataclysm:ignitium_ingot>,<item:mekanism:ultimate_chemical_tank>]
     ],<item:mekanism:flamethrower>);
-    removeRecipe([ad,dm]);
+    removeCraftRecipeIItemStack([ad,dm]);
     extendedCraftingShapedRecipe([
 	    [wa, cho, cho, cei, cei, cei, <item:gobber2:gobber2_paxel_end>.withTag({Damage: 0 as int})], 
 	    [a, a, a, a, uic , <item:mekanism:pellet_antimatter>, cei], 
@@ -229,7 +229,7 @@ public function modifyMEKRecipe() as void{
         <item:botania:orechid>,
         <item:botania:orechid_ignem>
     ],<item:byg:ether_sapling>,dm);
-    removeRecipe([
+    removeCraftRecipeIItemStack([
         <item:mekanism:qio_drive_array>,
         <item:mekanism:qio_dashboard>,
         <item:mekanism:qio_importer>,

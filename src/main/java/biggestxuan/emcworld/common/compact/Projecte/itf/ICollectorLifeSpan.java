@@ -6,7 +6,7 @@ package biggestxuan.emcworld.common.compact.Projecte.itf;
  * 2023/06/12
  */
 
-public interface CollectorLifeSpan {
+public interface ICollectorLifeSpan {
     int getMaxLifeSpan();
 
     int getLifeSpan();

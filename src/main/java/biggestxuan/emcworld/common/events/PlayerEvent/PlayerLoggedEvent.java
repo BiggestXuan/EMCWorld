@@ -28,7 +28,10 @@ import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.GameRules;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,6 +41,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.silentchaos512.utils.Color;
 import vazkii.patchouli.common.item.PatchouliItems;
 
 import java.util.ArrayList;
@@ -138,9 +142,9 @@ public class PlayerLoggedEvent {
             Message.sendMessage(player,tc("message.festival.christmas"));
         }
         String[] ver = Network.getInfo(0).split(",");
-        if(Integer.parseInt(ver[0]) == 0){
+        if(getInt(ver[0]) == 0){
             Message.sendMessage(player,tc("message.update_fail"));
-        }else if(Integer.parseInt(ver[0]) > EMCWorld.ModPackVersion){
+        }else if(getInt(ver[0]) > EMCWorld.ModPackVersion){
             Message.sendMessage(player, tc("message.update_need",ver[1]));
         }else{
             Message.sendMessage(player,tc("message.update_none"));
@@ -186,6 +190,13 @@ public class PlayerLoggedEvent {
                     break;
             }
         });
+        if(ConfigManager.SUNDRY_ANNOUNCEMENT.get()){
+            String announcement = Network.getInfo(15);
+            if(!announcement.contains("null")){
+                String[] ann = announcement.split(";");
+                Message.sendMessage(player,EMCWorld.tc(ann[0]).setStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,ann[1])).withColor(TextFormatting.AQUA).withBold(true).withItalic(true)));
+            }
+        }
     }
 
     //@SubscribeEvent(priority = EventPriority.LOWEST)
@@ -228,5 +239,13 @@ public class PlayerLoggedEvent {
                 }
             }
         });
+    }
+
+    private static int getInt(String r){
+        try{
+            return Integer.parseInt(r);
+        }catch (Exception e){
+            return 0;
+        }
     }
 }

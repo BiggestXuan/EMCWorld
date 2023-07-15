@@ -32,6 +32,10 @@ public function extendedCraftingShapelessRecipe(input as IIngredient[],output as
     TableCrafting.addShapeless(getRecipeName(output)+"_extended_crafting_"+tier,tier,output,input);
 }
 
+public function removeExtendedCraftRecipe(item as IItemStack) as void{
+    TableCrafting.remove(item);
+}
+
 public function extendedCombinationRecipe(input as IIngredient[],output as IItemStack) as void{
     CombinationCrafting.addRecipe(getRecipeName(output),output,100000,input);
 }

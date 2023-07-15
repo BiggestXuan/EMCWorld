@@ -33,7 +33,7 @@ public function modifyExtendedCraftingRecipe() as void{
     var et = <item:extendedcrafting:elite_table>;
     var eec = cc4;
     var at = <item:extendedcrafting:advanced_table>;
-    removeRecipe([et]);
+    removeCraftRecipeIItemStack([et]);
     modifyShapelessRecipe([
         <item:extendedcrafting:black_iron_slate>,lm,<item:minecraft:diamond_block>,<item:minecraft:diamond_block>
     ],c4);

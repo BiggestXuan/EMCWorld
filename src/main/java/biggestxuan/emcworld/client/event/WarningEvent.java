@@ -44,7 +44,7 @@ public class WarningEvent {
 
     private static boolean isPCL(){
         String args = System.getProperties().getProperty("minecraft.launcher.brand");
-        return args != null && args.equals("PCL2");
+        return args != null && args.contains("PCL");
     }
 
     private static boolean addMod(){

@@ -1,6 +1,6 @@
 package biggestxuan.emcworld.common.mixin;
 
-import biggestxuan.emcworld.common.compact.Projecte.itf.CollectorLifeSpan;
+import biggestxuan.emcworld.common.compact.Projecte.itf.ICollectorLifeSpan;
 import dev.latvian.mods.projectex.block.CollectorBlock;
 import dev.latvian.mods.projectex.block.entity.CollectorBlockEntity;
 import net.minecraft.block.Block;
@@ -44,7 +44,7 @@ public abstract class CollectorBlockMixin extends Block {
         TileEntity tile = world.getBlockEntity(pos);
         if(!world.isClientSide && tile instanceof CollectorBlockEntity){
             CollectorBlockEntity collectorBlock = (CollectorBlockEntity) tile;
-            CollectorLifeSpan lifeSpan = (CollectorLifeSpan) collectorBlock;
+            ICollectorLifeSpan lifeSpan = (ICollectorLifeSpan) collectorBlock;
             ItemStack stack = new ItemStack(state.getBlock());
             CompoundNBT nbt = stack.getOrCreateTag();
             nbt.putInt("lifespan",lifeSpan.getLifeSpan());
@@ -62,7 +62,7 @@ public abstract class CollectorBlockMixin extends Block {
         TileEntity tile = p_180633_1_.getBlockEntity(p_180633_2_);
         if(!p_180633_1_.isClientSide && tile instanceof CollectorBlockEntity){
             CollectorBlockEntity collector = (CollectorBlockEntity) tile;
-            CollectorLifeSpan ls = (CollectorLifeSpan) collector;
+            ICollectorLifeSpan ls = (ICollectorLifeSpan) collector;
             ls.setLifeSpan(lifespan);
         }
     }

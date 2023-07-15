@@ -1,6 +1,6 @@
 {
-  "name": "特殊玩家",
-  "description": "通过对整合包的贡献，将获得不同的权益，当一些时候会有特殊的效果。$(br)需要注意的是，特殊玩家除外观外，不会有其他加成。$(br2)所有特殊玩家权益仅在正版登录的单人游戏或开启正版验证服务器生效。",
+  "name": "Special Players",
+  "description": "By contributing to the modpack, players can obtain different privileges, which may provide special effects at times. $(br)It should be noted that special players will not receive any other bonuses besides appearance. $(br2)All special player privileges only take effect in single-player games logged in with a valid account or on servers with authentication enabled.",
   "icon": "emcworld:base_emc_stored_totem",
   "sortnum": 10
 }

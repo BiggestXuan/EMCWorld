@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/30
  */
 
+import biggestxuan.emcworld.common.entity.Player.Yuan_Shou;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -29,7 +30,7 @@ public abstract class ModifierHandlerMixin {
 
     @Inject(method = "setMaxHealth",at = @At("HEAD"),cancellable = true,remap = false)
     private static void disableHealth(LivingEntity entity, double amount, AttributeModifier.Operation op, CallbackInfo ci){
-        if(entity instanceof IronGolemEntity){
+        if(entity instanceof IronGolemEntity || entity instanceof Yuan_Shou){
             ci.cancel();
         }
     }

@@ -44,4 +44,9 @@ public class CrTConfig {
     public static double medalChance(){
         return ConfigManager.CRAFT_LOOT_ATUM_MEDAL.get();
     }
+
+    @ZenCodeType.Method
+    public static boolean PillagerChestLimit(){
+        return ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get();
+    }
 }
