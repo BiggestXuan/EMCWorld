@@ -1,23 +1,17 @@
 # EMCWorld
 
-## 整合包已开始半公开测试！  
+## 整合包已发布正式版！  
+
+CurseForge：[https://www.curseforge.com/minecraft/modpacks/emcworld](https://www.curseforge.com/minecraft/modpacks/emcworld)  
   
-### 公开测试条件：
-- 会玩 Minecraft。
-- 对一些不会的内容会首先自己查阅公告，整合包 Wiki，MC 百科寻找。
-- 公开测试群获取整合包版本会比内测群晚 7 天。
+整合包依旧在持续更新，将带来更多有意思的内容，如果你想提前体验这些的话：  
   
-### 内测条件： 
+### 抢先体验条件： 
 - 在 2021/3/1 之前认识 Biggest_Xuan 并且对 Minecraft 的模组有一定了解。  
 - 会 Java 和 CraftTweaker，能够帮我们优化代码和增加新功能（详情见上方的 Wiki）  
 - 是大轩主导开发任意整合包的高级赞助者。  
-- 如果你觉得自己会玩各类模组或者和大轩很熟，也许可以问问大轩捏？
   
-自 `0.3.0-pre10` 起，整合包完全弃用kubejs。
-  
-满足对应条件即可加群：  
-公开测试群：573239523；  
-内测群：772115049。
+符合条件可加入内测群，内测群群号：772115049。
   
 [更新日志](https://www.kdocs.cn/l/cmWg2YY8ecuW)
 
