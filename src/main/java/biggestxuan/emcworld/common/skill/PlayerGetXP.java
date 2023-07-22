@@ -9,7 +9,7 @@ package biggestxuan.emcworld.common.skill;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
-import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
+import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
 import biggestxuan.emcworld.api.event.PlayerGetXPEvent;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.traits.ITrait;
@@ -25,11 +25,11 @@ import net.minecraftforge.fml.common.Mod;
 public class PlayerGetXP {
 
     @SubscribeEvent
-    public static void playerCostEMCEvent(PlayerCostEMCEvent event){
+    public static void playerCostEMCEvent(PlayerModifyEMCEvent event){
         PlayerEntity player = event.getPlayer();
         long cost = event.getEMC();
         IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
-        if(cap.getLevel() < cap.getMaxLevel()){
+        if(cap.getLevel() < cap.getMaxLevel() && cost < 0){
             int base = Math.negateExact((int) Math.round(600 * Math.pow(2, CrTConfig.getWorldDifficulty()/2)));
             PlayerGetXPEvent postEvent = new PlayerGetXPEvent(player,(int) (cost / base));
             MinecraftForge.EVENT_BUS.post(postEvent);

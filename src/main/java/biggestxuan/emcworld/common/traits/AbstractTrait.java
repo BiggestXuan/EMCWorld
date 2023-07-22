@@ -2,7 +2,7 @@ package biggestxuan.emcworld.common.traits;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
-import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
+import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
 import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import net.minecraft.block.BlockState;
@@ -109,7 +109,7 @@ public abstract class AbstractTrait implements ITrait{
     }
 
     @Override
-    public void onEMCModify(PlayerEntity player, PlayerCostEMCEvent event, ItemStack stack) {
+    public void onEMCModify(PlayerEntity player, PlayerModifyEMCEvent event, ItemStack stack) {
 
     }
 

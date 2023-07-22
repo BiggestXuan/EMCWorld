@@ -61,7 +61,10 @@ public class PlayerLevelCapability implements IPlayerSkillCapability {
 
     @Override
     public int getXP() {
-        return this.xp;
+        if(this.xp < 0){
+            this.xp = 0;
+        }
+        return xp;
     }
 
     @Override

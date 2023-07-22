@@ -87,6 +87,9 @@ public class PlayerBlockEvent {
     public static void playerFillBucketEvent(FillBucketEvent event){
         PlayerEntity player = event.getPlayer();
         if(player.level.isClientSide || !ConfigManager.EMC_BUCKET.get()) return;
+        if(event.getEmptyBucket().equals(event.getFilledBucket())){
+            return;
+        }
         long costEMC = MathUtils.doubleToLong(MathUtils.getFillBucketBaseCost(player) * MathUtils.difficultyLoss());
         if(EMCHelper.getPlayerEMC(player) >= costEMC){
             EMCHelper.modifyPlayerEMC(player,new EMCSource.FillBucketEMCSource(Math.negateExact(costEMC),player,event.getFilledBucket(),0),true);

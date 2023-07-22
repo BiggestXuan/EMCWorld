@@ -71,8 +71,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 12;
-    public static final String PackVersion = "1.0.0";
+    public static final int ModPackVersion = 13;
+    public static final String PackVersion = "1.0.1";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;

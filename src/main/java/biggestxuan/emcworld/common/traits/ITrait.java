@@ -1,7 +1,7 @@
 package biggestxuan.emcworld.common.traits;
 
 import biggestxuan.emcworld.api.EMCWorldSince;
-import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
+import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
 import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import net.minecraft.block.BlockState;
@@ -67,7 +67,7 @@ public interface ITrait {
     void onPrefixFresh(PlayerEntity player, PlayerPrefixFreshEvent event,ItemStack stack);
 
     //When player get or loss EMC.
-    void onEMCModify(PlayerEntity player, PlayerCostEMCEvent event,ItemStack stack);
+    void onEMCModify(PlayerEntity player, PlayerModifyEMCEvent event, ItemStack stack);
 
     //When player press trait key.
     void onKeyPressed(PlayerEntity player,ItemStack stack);

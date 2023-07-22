@@ -36,7 +36,10 @@ public class ModUtils {
                 add.add(info.getModId());
             }
         }
-        EMCWorld.LOGGER.error("Client added additions mods:"+ add);
-        return add.size() > 0;
+        if(add.size() > 0){
+            EMCWorld.LOGGER.error("Client added additions mods:"+ add);
+            return true;
+        }
+        return false;
     }
 }

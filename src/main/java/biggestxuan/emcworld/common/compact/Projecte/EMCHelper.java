@@ -8,7 +8,7 @@ package biggestxuan.emcworld.common.compact.Projecte;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
-import biggestxuan.emcworld.api.event.PlayerCostEMCEvent;
+import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.CommandUtils;
@@ -92,7 +92,7 @@ public class EMCHelper {
             }
         }
         source.setEmc(modify);
-        PlayerCostEMCEvent event = new PlayerCostEMCEvent(player,source);
+        PlayerModifyEMCEvent event = new PlayerModifyEMCEvent(player,source);
         if(!MinecraftForge.EVENT_BUS.post(event)) {
             modify = event.getSource().emc();
             if (modify < 0) {
