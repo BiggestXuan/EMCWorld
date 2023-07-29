@@ -8,6 +8,8 @@ package biggestxuan.emcworld.common.mixin;
 
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.utils.DamageUtils;
@@ -19,7 +21,7 @@ import net.minecraft.item.TieredItem;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(SwordItem.class)
-public abstract class SwordItemMixin extends TieredItem implements IUpgradeableWeapon, IPrefixItem, IAttackSpeedItem {
+public abstract class SwordItemMixin extends TieredItem implements IAdditionsDamageWeapon, IRangeAttackWeapon,IUpgradeableWeapon, IPrefixItem, IAttackSpeedItem {
     private final IItemTier tier = ((SwordItem) (Object) this).getTier();
 
     private final float damage = tier.getAttackDamageBonus();

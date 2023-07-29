@@ -48,7 +48,9 @@ public class AddMaxLevelItem extends EWItem {
         int profession = Minecraft.getInstance().player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new).getProfession();
         if(this.modify != 0){
             p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.changeprofession"));
-            p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_"+profession+modify));
+            if(profession != 0){
+                p_77624_3_.add(EMCWorld.tc("profession.emcworld.modify_"+profession+modify));
+            }
         }
     }
 

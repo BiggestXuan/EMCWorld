@@ -386,6 +386,7 @@
   "item.emcworld.restore_scroll": "階段回復卷軸",
   "item.emcworld.exception_apple": "異常紅潤的蘋果",
   "item.emcworld.shengxuan": "圣宣",
+  "item.emcworld.emc_dagger": "質能犧牲匕首",
 
   "block.emcworld.hardcore_stone": "石頭之核",
   "block.emcworld.emc_ore": "質能礦石",
@@ -657,6 +658,7 @@
   "emcsource.lottery": "[獎券] %d EMC，數字：[ %d]，倍率：%d",
   "emcsource.fish": "[垂釣]物品：%d，%d EMC",
   "emcsource.exception_apple": "[異常紅潤的蘋果] %d EMC",
+  "emcsource.emc2blood": "[犧牲匕首] %d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -698,6 +700,7 @@
   "message.evt.questcompleted": "你完成了難度為 %d 的任務，已獲取 %d EMC",
   "message.welcome.default": "歡迎玩家 %d 加入游戲！",
   "message.welcome.normal": "§2歡迎贊助者 %d §2加入游戲！",
+  "message.welcome.spr":"§9歡迎精神贊助者 %d §9加入游戲！",
   "message.welcome.advanced": "§3歡迎高級贊助者 %d §3加入游戲！",
   "message.welcome.mascot": "§3歡迎吉祥物 %d §3加入游戲！",
   "message.welcome.highest": "§6歡迎頂級贊助者 %d §6加入游戲！",
@@ -761,6 +764,7 @@
   "message.sponsor.change_offline": "§4頭銜修改僅能在正版登錄的單人游戲或開啟正版驗證的服務器使用！",
   "message.sponsor.change_success": "§2您的頭銜被設置為了： %d",
   "message.sponsor.sponsor": "贊助者",
+  "message.sponsor.spr": "精神贊助者",
   "message.sponsor.senior_sponsor": "高級贊助者",
   "message.sponsor.top_sponsor": "頂級贊助者",
   "message.sponsor.mascot": "吉祥物",
@@ -1053,6 +1057,8 @@
   "tooltip.emcworld.restore_scroll3": "玩家： %d",
   "tooltip.emcworld.restore_scroll4": "UUID： %d",
   "tooltip.emcworld.exception_apple": "§6如果它不是那麽香甜的話，我會説它聞起來像血",
+  "tooltip.blood_dagger.desc": "§6以你的職能之力代替生命值損耗",
+  "tooltip.mana_item.desc": "§2也許要使用火花彌散才能爲其充能？",
 
   "attack_range_none": "關閉",
   "attack_range_all": "全部攻擊",

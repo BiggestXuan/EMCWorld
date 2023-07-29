@@ -14,6 +14,7 @@ import biggestxuan.emcworld.api.item.*;
 import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
 import biggestxuan.emcworld.api.item.equipment.*;
 import biggestxuan.emcworld.api.item.equipment.armor.*;
+import biggestxuan.emcworld.api.item.equipment.warhammer.BaseEMCGodWarHammer;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
@@ -36,6 +37,7 @@ import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import dev.latvian.mods.projectex.Matter;
+import dev.latvian.mods.projectex.block.CollectorBlock;
 import divinerpg.capability.Arcana;
 import divinerpg.capability.ArcanaCapability;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
@@ -51,6 +53,7 @@ import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -167,6 +170,8 @@ public class PlayerTickEvent {
                 if(gaia != null){
                     util.setGaiaPlayer(gaia.getPlayersAround().size());
                 }
+            }else{
+                util.setGaiaPlayer(0);
             }
         }
         util.setSHDifficulty(DifficultyHelper.getLivingDifficulty(player));
@@ -239,6 +244,14 @@ public class PlayerTickEvent {
                 }
             }
         }
+        if(c.getProfession() == 5 && skills[36] != 0 && player.getMainHandItem().getItem() instanceof BaseEMCGodWarHammer){
+            if(c.getModify() == 1){
+                attackSpeed *= 1.5;
+            }
+            if(c.getModify() == 2){
+                attackSpeed *= 1.25;
+            }
+        }
         ModifiableAttributeInstance attack_speed_instance = player.getAttribute(Attributes.ATTACK_SPEED);
         if(attack_speed_instance != null){
             AttributeModifier modifier = attack_speed_instance.getModifier(EMCWORLD_ATTACK_SPEED_ID);
@@ -253,14 +266,6 @@ public class PlayerTickEvent {
             }
             if(c.getProfession() == 4 && c.getModify() == 1 && c.getSkills()[40] != 0){
                 d *= 2;
-            }
-            if(c.getProfession() == 5 && skills[36] != 0){
-                if(c.getModify() == 1){
-                    d *= 1.5;
-                }
-                if(c.getModify() == 2){
-                    d *= 1.25;
-                }
             }
             attack_speed_instance.addPermanentModifier(new AttributeModifier(EMCWORLD_ATTACK_SPEED_ID, EMCWORLD_ATTACK_SPEED_NAME,d,AttributeModifier.Operation.ADDITION));
         }
@@ -532,6 +537,13 @@ public class PlayerTickEvent {
             for(Item item:radiationItem){
                 if(stack.getItem().equals(item)){
                     //MekanismAPI.getRadiationManager().radiate(new Coord4D(player),0.2d);
+                }
+            }
+            if(stack.getItem() instanceof BlockItem){
+                BlockItem blockItem = (BlockItem) stack.getItem();
+                if(blockItem.getBlock() instanceof CollectorBlock && !stack.hasTag()){
+                    CompoundNBT nbt = stack.getOrCreateTag();
+                    nbt.putInt("lifespan",0);
                 }
             }
             if(ConfigManager.FREE_MODE.get()){

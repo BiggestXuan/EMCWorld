@@ -386,6 +386,7 @@
   "item.emcworld.restore_scroll": "阶段恢复卷轴",
   "item.emcworld.exception_apple": "异常红润的苹果",
   "item.emcworld.shengxuan": "圣宣",
+  "item.emcworld.emc_dagger": "质能牺牲匕首",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -657,6 +658,7 @@
   "emcsource.lottery": "[奖券] %d EMC，数字：[ %d]，倍率：%d",
   "emcsource.fish": "[垂钓]物品：%d，%d EMC",
   "emcsource.exception_apple": "[异常红润的苹果] %d EMC",
+  "emcsource.emc2blood": "[牺牲匕首] %d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -697,6 +699,7 @@
   "message.check.tip": "§4需要消耗§f意味着必须要达到这个值，否则不会触发。§4会消耗§f意味着，触发后就消耗。",
   "message.evt.questcompleted": "你完成了难度为 %d 的任务，已获取 %d EMC",
   "message.welcome.default": "欢迎玩家 %d 加入游戏！",
+  "message.welcome.spr": "§9欢迎精神赞助者 %d §9加入游戏！",
   "message.welcome.normal": "§2欢迎赞助者 %d §2加入游戏！",
   "message.welcome.advanced": "§3欢迎高级赞助者 %d §3加入游戏！",
   "message.welcome.mascot": "§3欢迎吉祥物 %d §3加入游戏！",
@@ -761,6 +764,7 @@
   "message.sponsor.change_offline": "§4头衔修改仅能在正版登录的单人游戏或开启正版验证的服务器使用！",
   "message.sponsor.change_success": "§2您的头衔被设置为了： %d",
   "message.sponsor.sponsor": "赞助者",
+  "message.sponsor.spr": "精神赞助者",
   "message.sponsor.senior_sponsor": "高级赞助者",
   "message.sponsor.top_sponsor": "顶级赞助者",
   "message.sponsor.mascot": "吉祥物",
@@ -1053,6 +1057,8 @@
   "tooltip.emcworld.restore_scroll3": "玩家： %d",
   "tooltip.emcworld.restore_scroll4": "UUID： %d",
   "tooltip.emcworld.exception_apple": "§6如果它不是那么香甜的话，我会说它闻起来像血",
+  "tooltip.blood_dagger.desc": "§6以你的质能之力代替生命损耗",
+  "tooltip.mana_item.desc": "§2也许得使用火花弥散才能充能？",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

@@ -386,6 +386,7 @@
   "item.emcworld.restore_scroll": "Stage Restore Scroll",
   "item.emcworld.exception_apple": "Exception Apple",
   "item.emcworld.shengxuan": "ShengXuan",
+  "item.emcworld.emc_dagger": "EMC Sacrificial Knife",
 
   "block.emcworld.hardcore_stone": "Hardcore Stone",
   "block.emcworld.emc_ore": "EMC Ore",
@@ -657,6 +658,7 @@
   "emcsource.lottery": "[Lottery] %d EMC，Nums: [ %d]，Rate: %d",
   "emcsource.fish": "[Fishing]ItemStack: %d, %d EMC",
   "emcsource.exception_apple": "[Exception Apple] %d EMC",
+  "emcsource.emc2blood": "[Sacrificial Knife] %d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -697,7 +699,8 @@
   "message.check.tip": "",
   "message.evt.questcompleted": "You have completed a quest with difficulty %d and have get %d EMC",
   "message.welcome.default": "Welcome player %d joined the game!",
-  "message.welcome.normal": "§2Welcome sponsor %d §2joined the game!",
+  "message.welcome.normal": "§2Welcome sponsor %d §2 joined the game!",
+  "message.welcome.spr": "§9Welcome spiritual sponsors %d §9joined the game!",
   "message.welcome.advanced": "§3Welcome Senior sponsor %d §3joined the game!",
   "message.welcome.mascot": "§3Welcome mascot %d §3joined the game!",
   "message.welcome.highest": "§6Welcome Top Sponsor %d §6joined the game!",
@@ -761,6 +764,7 @@
   "message.sponsor.change_offline": "§4Sponsors change prefix only in online server!",
   "message.sponsor.change_success": "§2Your prefix has been set: %d",
   "message.sponsor.sponsor": "Sponsor",
+  "message.sponsor.spr": "Spiritual sponsor",
   "message.sponsor.senior_sponsor": "Senior Sponsor",
   "message.sponsor.top_sponsor": "Top Sponsor",
   "message.sponsor.mascot": "Mascot",
@@ -1053,6 +1057,8 @@
   "tooltip.emcworld.restore_scroll3": "Player: %d",
   "tooltip.emcworld.restore_scroll4": "UUID: %d",
   "tooltip.emcworld.exception_apple": "§6If it weren't so sweet, I would say it smelled like blood",
+  "tooltip.blood_dagger.desc": "§6Replace the loss of life with your EMC",
+  "tooltip.mana_item.desc": "§2Perhaps spark dispersion is needed to charge?",
 
   "attack_range_none": "Off",
   "attack_range_all": "All",

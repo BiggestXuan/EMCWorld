@@ -15,6 +15,7 @@ import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.utils.DamageUtils;
@@ -116,11 +117,6 @@ public class InfinitySword extends BaseWeaponItem implements IUpgradeableWeapon,
     @Override
     public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){
         return false;
-    }
-
-    @Override
-    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(0);
     }
 
     @Override

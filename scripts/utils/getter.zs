@@ -1,5 +1,6 @@
 #priority 63
 import crafttweaker.api.item.ItemStack;
+import crafttweaker.api.item.IItemStack;
 
 public class Getter{
     var EMCWorldGems as ItemStack[]=[
@@ -88,7 +89,7 @@ public class Getter{
         <item:mythicbotany:helheim_rune>
     ];
 
-    var ProjectEXCollector as ItemStack[]=[
+    var ProjectEXCollector as IItemStack[]=[
         <item:projectex:basic_collector>,
         <item:projectex:dark_collector>,
         <item:projectex:red_collector>,
@@ -110,7 +111,7 @@ public class Getter{
         <item:projecte:collector_mk3>
     ];
 
-    var ProjectEXRelay as ItemStack[]=[
+    var ProjectEXRelay as IItemStack[]=[
         <item:projectex:basic_relay>,
         <item:projectex:dark_relay>,
         <item:projectex:red_relay>,
@@ -161,7 +162,7 @@ public class Getter{
         <item:projectex:fading_compressed_collector>
     ];
 
-    var projectexFlower as ItemStack[]=[
+    var projectexFlower as IItemStack[]=[
         <item:projectex:basic_power_flower>,
         <item:projectex:dark_power_flower>,
         <item:projectex:red_power_flower>,
@@ -260,11 +261,11 @@ public class Getter{
         return this.MBRunes;
     }
 
-    public getCollector() as ItemStack[]{
+    public getCollector() as IItemStack[]{
         return this.ProjectEXCollector;
     }
 
-    public getRelay() as ItemStack[]{
+    public getRelay() as IItemStack[]{
         return this.ProjectEXRelay;
     }
 
@@ -272,7 +273,7 @@ public class Getter{
         return this.projectexHide;
     }
 
-    public getFlowers() as ItemStack[]{
+    public getFlowers() as IItemStack[]{
         return this.projectexFlower;
     }
 }

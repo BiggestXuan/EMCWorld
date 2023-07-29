@@ -14,7 +14,6 @@ import biggestxuan.emcworld.common.utils.DamageUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
-public interface IUpgradeableWeapon extends IUpgradeableItem,IRangeAttackWeapon,IAdditionsDamageWeapon, ICostEMCItem, ISecondEMCItem, IEMCRepairableItem {
-    @Override
-    DamageUtils getAttackRange(PlayerEntity player, ItemStack stack);
+public interface IUpgradeableWeapon extends IUpgradeableItem, ICostEMCItem, ISecondEMCItem, IEMCRepairableItem {
+
 }

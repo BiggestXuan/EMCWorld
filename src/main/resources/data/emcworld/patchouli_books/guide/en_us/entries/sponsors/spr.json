@@ -1,0 +1,12 @@
+{
+  "name": "精神赞助者",
+  "icon": "minecraft:netherite_block",
+  "category": "sponsors",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "当在 MC百科 给 EMCWorld 发布页面投红票、点赞、收藏即可获得该头衔。$(br2)执行完操作后你需要在大轩论坛的 EMCWorld 板块按照格式申请。"
+    }
+  ]
+}

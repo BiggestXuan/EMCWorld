@@ -22,7 +22,7 @@ public class NatureSword extends BaseEMCGodSword {
 
     @Override
     public double getBaseCriticalChance(ItemStack stack) {
-        return Math.pow(1.01,getLevel(stack)) - 1;
+        return Math.pow(1.004,getLevel(stack)) - 1;
     }
 
     @Override

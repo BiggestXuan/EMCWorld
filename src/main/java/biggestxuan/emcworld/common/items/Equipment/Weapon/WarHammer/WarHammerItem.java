@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer;
 
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.warhammer.IWarHammerTier;
+import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
@@ -29,7 +30,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class WarHammerItem extends TieredItem implements IUpgradeableWeapon,IRangeAttackWeapon, IPrefixItem, ICriticalWeapon {
+public class WarHammerItem extends TieredItem implements IUpgradeableWeapon,IRangeAttackWeapon, IPrefixItem, ICriticalWeapon, IAdditionsDamageWeapon {
     protected final IWarHammerTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
 

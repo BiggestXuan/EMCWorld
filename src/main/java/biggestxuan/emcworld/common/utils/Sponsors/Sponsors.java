@@ -81,6 +81,9 @@ public class Sponsors extends EMCWorldPlayer {
     public static String getSponsorName(int index){
         String n = "message.sponsor.";
         switch (index){
+            case -1:
+                n += "spr";
+                break;
             case 0:
                 n += "none";
                 break;

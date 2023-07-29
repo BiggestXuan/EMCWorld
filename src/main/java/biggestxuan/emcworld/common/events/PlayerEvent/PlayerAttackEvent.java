@@ -72,6 +72,12 @@ public class PlayerAttackEvent {
             IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
             ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
             ServerWorld world = player.getServer().overworld();
+            if(stack.getItem() instanceof WarHammerItem){
+                stack.setDamageValue(stack.getDamageValue()+1);
+                if(stack.getDamageValue() >= stack.getMaxDamage()){
+                    stack.shrink(1);
+                }
+            }
             if(stack.getItem() instanceof IEMCInfuserItem){
                 IEMCInfuserItem emcItem = (IEMCInfuserItem) stack.getItem();
                 emcItem.cost(stack);
@@ -184,7 +190,7 @@ public class PlayerAttackEvent {
                         for(LivingEntity entity:canRangeAttack){
                             if(costEMC > EMCHelper.getPlayerEMC(player)) break;
                             entity.hurt(new EWDamageSource(player).REALLY_PLAYER,damage);
-                            if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
+                            if(entity.getType().equals(Registry.TARGET_DUMMY.get())){
                                 continue;
                             }
                             costEMC += damageCost;

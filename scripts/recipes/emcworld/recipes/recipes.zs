@@ -872,7 +872,7 @@ public function emcworldRecipe() as void{
             [uvai,uvai,uvai,uvai,uvai,uvai,uvai]
         ],unqd,3);
         infuserRecipe([
-            ub,<item:gobber2:dragon_star>,<item:emcworld:hard_steel>
+            ub,<item:gobber2:dragon_star>,<item:emcworld:hard_steel>,<item:emcworld:hard_steel>,<item:emcworld:hard_steel>
         ],ds,6000,1000000000,4);
     }
     modifyShapelessRecipe([
@@ -909,7 +909,7 @@ public function emcworldRecipe() as void{
         <item:emcworld:gold_medal>
     );
     for i in 0 .. 15{
-        var c as ItemStack = new Getter().getCollector()[i];
+        var c as IItemStack = new Getter().getCollector()[i];
         var b as ItemStack = abag[i];
         addCraftShapelessRecipe([
             abag[11],c

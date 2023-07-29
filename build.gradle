@@ -6,7 +6,15 @@ buildscript {
             url "https://repo.spongepowered.org/repository/maven-public/"
             content { includeGroup "org.spongepowered" }
         }
-        mavenCentral()
+        maven {
+            allowInsecureProtocol = true
+            url 'https://maven.aliyun.com/repository/google' } //google
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
@@ -19,7 +27,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.5.1'
+version = '1.0.2'
 group = 'biggestxuan.emcworld'
 archivesBaseName = 'EMCWorld'
 
@@ -124,6 +132,7 @@ dependencies {
     implementation fg.deobf("curse.maven:Architectury-419699:3857643")
     implementation fg.deobf("curse.maven:Citadel-331936:3441028")
     implementation fg.deobf("curse.maven:CCL-242818:3681973")
+    implementation fg.deobf("curse.maven:Nature's_Compass-252848:3382150")
     implementation fg.deobf("curse.maven:Library-404465:3553840")
     implementation fg.deobf("curse.maven:Teams-404468:3535953")
     implementation fg.deobf("curse.maven:crock_pot-404523:3568413")
@@ -161,7 +170,7 @@ dependencies {
     implementation fg.deobf("curse.maven:Explorers_Compass-491794:3412474")
     implementation fg.deobf("curse.maven:JourneyMap-32274:4012858")
     implementation fg.deobf("curse.maven:shutup_experimental_settings-407174:3188120")
-    implementation fg.deobf("curse.maven:cataclysm-551586:3875120")
+    implementation fg.deobf("curse.maven:cataclysm-551586:4418434")
     implementation fg.deobf("vazkii.patchouli:Patchouli:1.16.4-53.3")
     implementation fg.deobf("vazkii.autoreglib:AutoRegLib:1.6-49.90")
     implementation fg.deobf("io.github.noeppi_noeppi.mods:LibX:1.16.3-1.0.80")
@@ -170,8 +179,8 @@ dependencies {
     implementation fg.deobf("curse.maven:lootr-361276:4110873")
     implementation fg.deobf("curse.maven:RSInfinityBooster-446870:3613350")
     implementation fg.deobf("curse.maven:RS-243076:3807951")
-    implementation fg.deobf("curse.maven:Champions-307152:3243441")
     implementation fg.deobf("curse.maven:waystone-245755:3515707")
+    implementation fg.deobf("curse.maven:ftbc-314906:4297564")
     implementation fg.deobf("com.blakebr0.cucumber:Cucumber:1.16.5-4.1.12")
     implementation fg.deobf("com.blakebr0.extendedcrafting:ExtendedCrafting:1.16.5-3.1.12")
     implementation fg.deobf("net.darkhax.gamestages:GameStages-Forge-1.16.5:7.3.14")

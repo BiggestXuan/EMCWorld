@@ -60,9 +60,4 @@ public class VibraniumSword extends BaseWeaponItem implements IUpgradeableWeapon
     public int getMaxLevel() {
         return 0;
     }
-
-    @Override
-    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(0);
-    }
 }

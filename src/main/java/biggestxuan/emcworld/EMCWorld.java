@@ -17,7 +17,6 @@ import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixGUI;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceGUI;
 import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
-import biggestxuan.emcworld.common.compact.Champions.ChampionsInit;
 import biggestxuan.emcworld.common.compact.Projecte.ModifyCollector;
 import biggestxuan.emcworld.common.config.ClientConfigManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -71,8 +70,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 13;
-    public static final String PackVersion = "1.0.1";
+    public static final int ModPackVersion = 14;
+    public static final String PackVersion = "1.0.2";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -130,10 +129,10 @@ public class EMCWorld {
         TraitManager.init();
         MinecraftForge.EVENT_BUS.register(new commandEvent());
         ModifyCollector.init();
-        ChampionsInit.init();
         welcome();
         //ModUtils.modList();
         LOGGER.info(ModUtils.addMod());
+        //Champions.scalingHealthLoaded = false;
     }
 
     private void doClientStuff(FMLClientSetupEvent event) {

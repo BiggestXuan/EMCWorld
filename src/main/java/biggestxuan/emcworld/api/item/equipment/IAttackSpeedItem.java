@@ -6,6 +6,7 @@ package biggestxuan.emcworld.api.item.equipment;
  *  2022/12/05
  */
 
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 public interface IAttackSpeedItem {

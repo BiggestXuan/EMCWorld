@@ -29,7 +29,7 @@
   },
   "relay_inputs": [
     {
-      "item": "the_afterlight:glyph_of_power"
+      "item": "minecraft:obsidian"
     },
     {
       "item": "mythicbotany:asgard_rune"

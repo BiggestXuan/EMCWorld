@@ -57,6 +57,10 @@ public function modifyBloodMagicRecipe() as void{
     modifyAltarRecipe(<item:minecraft:sugar_cane>,<item:bloodmagic:waterscribetool>,1500,2);
     modifyAltarRecipe(<item:minecraft:obsidian>,<item:bloodmagic:earthscribetool>,1500,2);
     bloodAltarRecipe(<item:emcworld:dust_aquamarine>,<item:bloodmagic:sand_hellforged>,5000,3);
+    addCraftShapelessRecipe([
+        <item:bloodmagic:blankslate>,
+        <item:emcworld:big_emc_gem>
+    ],<item:bloodmagic:divinationsigil>);
     removeAlchemalTableRecipe([rb]);
     alchemalTableRecipe([
         <item:extendedcrafting:luminessence>,
@@ -64,6 +68,7 @@ public function modifyBloodMagicRecipe() as void{
         <item:bloodmagic:weakbloodshard>
     ],rb,10000,4);
     removeFurnaceRecipe([he]);
+    combiningRecipe(<item:bloodmagic:sacrificialdagger>,<item:emcworld:biggest_emc_gem>,<item:bloodmagic:sacrificialdagger>.withTag({emc_modify: 1 as byte}));
     tartaricForgeRecipe([
         <item:bloodmagic:sand_hellforged>,
         <item:minecraft:iron_ingot>,

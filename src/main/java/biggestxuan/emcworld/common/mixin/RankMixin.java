@@ -11,12 +11,12 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import top.theillusivec4.champions.common.rank.Rank;
+//import top.theillusivec4.champions.common.rank.Rank;
 
-@Mixin(Rank.class)
+//@Mixin(Rank.class)
 public abstract class RankMixin {
 
-    @Shadow(remap = false)
+    /*@Shadow(remap = false)
     @Final
     private int tier;
 
@@ -32,28 +32,28 @@ public abstract class RankMixin {
     @Final
     private int defaultColor;
 
-    /**
+    *//**
      * @author Biggest_Xuan
      * @reason no reason~
-     */
+     *//*
     @Overwrite(remap = false)
     public float getChance() {
         return tier == 0 ? chance : (float) Math.min(chance * ConfigManager.DIFFICULTY.get(), 1D);
     }
 
-    /**
+    *//**
      * @author Biggest_Xuan
      * @reason no reason~
-     */
+     *//*
     @Overwrite(remap = false)
     public int getGrowthFactor() {
         return tier <= 4 && tier > 1 ? Math.round(growthFactor / 2.5F) : growthFactor;
     }
 
-    /**
+    *//**
      * @author Biggest_Xuan
      * @reason no reason~
-     */
+     *//*
     @Overwrite(remap = false)
     public int getDefaultColor() {
         int color = 0x000000;
@@ -85,5 +85,5 @@ public abstract class RankMixin {
                 break;
         }
         return color;
-    }
+    }*/
 }

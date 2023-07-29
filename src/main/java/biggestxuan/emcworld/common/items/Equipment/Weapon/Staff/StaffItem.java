@@ -127,15 +127,27 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         return (float) (tier.getAttackDamageBonus() * getPrefixCommonRate(stack) + tier.getAttackDamageBonus() * 0.13 * getLevel(stack));
     }
 
-    private float getManaBurstDamage(ItemStack stack,Entity entity){
-        float damage = getBaseDamage(stack);
-        double chance = getActCriticalChance(stack);
+    public DamageUtils getManaBurstBaseDamage(ItemStack stack,Entity entity){
+        DamageUtils base = DamageUtils.of(getBaseDamage(stack));
         if(entity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entity;
             IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
             if(cap.getProfession() == 3){
                 double skillRate = Math.pow(1+(cap.getSkills()[0]/10000f),cap.getLevel());
-                damage *= skillRate;
+                double b = base.total();
+                base.append(b*skillRate-b);
+            }
+        }
+        return base;
+    }
+
+    private float getManaBurstDamage(ItemStack stack,Entity entity){
+        float damage = (float) getManaBurstBaseDamage(stack,entity).total();
+        double chance = getActCriticalChance(stack);
+        if(entity instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entity;
+            IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+            if(cap.getProfession() == 3){
                 if(cap.getSkills()[12] != 0){
                     damage += cap.getSkills()[12]/10000f;
                 }
@@ -190,11 +202,6 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
 
     protected int getColor(){
         return tier.getColor();
-    }
-
-    @Override
-    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(0);
     }
 
     @Override
@@ -345,11 +352,6 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
     @Override
     public int getMaxLevel() {
         return (int) ((tier.getLevel() + 1) * ConfigManager.DIFFICULTY.get() * 0.75d);
-    }
-
-    @Override
-    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(0);
     }
 
     public enum StaffAttackMode{

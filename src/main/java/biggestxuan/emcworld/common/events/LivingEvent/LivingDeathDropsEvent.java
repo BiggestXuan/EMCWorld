@@ -16,6 +16,7 @@ import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
@@ -29,7 +30,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
-import top.theillusivec4.champions.common.capability.ChampionCapability;
+//import top.theillusivec4.champions.common.capability.ChampionCapability;
 
 import java.util.List;
 
@@ -97,52 +98,54 @@ public class LivingDeathDropsEvent {
                 addDrops(entity,ModItems.ENDERITE_INGOT.get());
             }
         }
-        ChampionCapability.getCapability(entity).ifPresent(iChampion -> iChampion.getServer().getRank().ifPresent(rank -> {
+       /* ChampionCapability.getCapability(entity).ifPresent(iChampion -> iChampion.getServer().getRank().ifPresent(rank -> {
             int tier = rank.getTier();
-            switch (tier){
-                case 1:
-                    addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,32));
-                    break;
-                case 2:
-                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,24));
-                    break;
-                case 3:
-                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,64));
-                    addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,32));
-                    if(MathUtils.isMaxDifficulty()){
-                        addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,8));
-                    }
-                    break;
-                case 4:
-                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,24));
-                    break;
-                case 5:
-                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(20 * ConfigManager.DIFFICULTY.get())));
-                    break;
-                case 6:
-                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(8 * ConfigManager.DIFFICULTY.get())));
-                    if(MathUtils.isMaxDifficulty()){
-                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,5));
-                    }
-                    break;
-                case 7:
-                    addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,12));
-                    if(MathUtils.isMaxDifficulty()){
-                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,8));
-                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,3));
-                    }
-                    break;
-                case 8:
-                    addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,16));
-                    if(MathUtils.isMaxDifficulty()){
-                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,4));
-                        if(MathUtils.isRandom(0.15)){
-                            addDrops(entity,EWItems.INFINITY_EMC_GEM,MathUtils.getRangeRandom(1,4));
+            if(canChampionDrop(entity,tier)){
+                switch (tier){
+                    case 1:
+                        addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,32));
+                        break;
+                    case 2:
+                        addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,24));
+                        break;
+                    case 3:
+                        addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,64));
+                        addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,32));
+                        if(MathUtils.isMaxDifficulty()){
+                            addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,8));
                         }
-                    }
-                    break;
+                        break;
+                    case 4:
+                        addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,24));
+                        break;
+                    case 5:
+                        addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(20 * ConfigManager.DIFFICULTY.get())));
+                        break;
+                    case 6:
+                        addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(8 * ConfigManager.DIFFICULTY.get())));
+                        if(MathUtils.isMaxDifficulty()){
+                            addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,5));
+                        }
+                        break;
+                    case 7:
+                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,12));
+                        if(MathUtils.isMaxDifficulty()){
+                            addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                            addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,3));
+                        }
+                        break;
+                    case 8:
+                        addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,16));
+                        if(MathUtils.isMaxDifficulty()){
+                            addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,4));
+                            if(MathUtils.isRandom(0.15)){
+                                addDrops(entity,EWItems.INFINITY_EMC_GEM,MathUtils.getRangeRandom(1,4));
+                            }
+                        }
+                        break;
+                }
             }
-        }));
+        }));*/
         if(rl.equals(new ResourceLocation("dungeonsmod","entites/voidmaster"))){
             addDrops(entity,ModItems.VOID_CORE.get());
             event.setCanceled(true);
@@ -176,5 +179,10 @@ public class LivingDeathDropsEvent {
             item = ModItems.IGNITIUM_LEGGINGS.get();
         }else item = ModItems.IGNITIUM_BOOTS.get();
         return new ItemStack(item);
+    }
+
+    public static boolean canChampionDrop(Entity living, double level){
+        double index = MathUtils.getRangePlayerAverageIndex(living,64);
+        return index >= level;
     }
 }

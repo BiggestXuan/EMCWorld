@@ -4,10 +4,10 @@ license="https://biggestxuan.top/emcworld/l"
 issueTrackerURL="https://github.com/BiggestXuan/EMCworld/issues"
 [[mods]]
 modId="emcworld"
-version="1.0.0"
+version="1.0.2"
 displayName="EMCWorld"
 logoFile=""
-credits=""
+credits="Dctor_0415,sdxhop"
 authors="Biggest_Xuan"
 description='''
 '''

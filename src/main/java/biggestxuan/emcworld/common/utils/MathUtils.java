@@ -15,6 +15,7 @@ import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
+import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
@@ -22,6 +23,8 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWModules;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
@@ -35,10 +38,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
@@ -543,7 +543,7 @@ public class MathUtils {
                 break;
             }
         }
-        return emc >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) emc / 30;
+        return emc >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) emc / 18;
     }
 
     public static int getTPEMCCost(PlayerEntity player, IWaystone start,IWaystone end){
@@ -699,6 +699,43 @@ public class MathUtils {
             list.addAll(Arrays.asList(i.getItems()));
         }
         return Ingredient.of(list.stream());
+    }
+
+    @EMCWorldSince("1.0.2")
+    public static float getMusicShooterDamage(float base,ItemStack stack){
+        Item item = stack.getItem();
+        if(!(item instanceof IUpgradeableItem) || !(item instanceof IPrefixItem)){
+            return base;
+        }
+        IUpgradeableItem u = (IUpgradeableItem) item;
+        IPrefixItem p = (IPrefixItem) item;
+        base += base * 0.05 * u.getLevel(stack);
+        int level = p.getPrefix(stack).getLevel();
+        base += level <= 3 ? base * -0.12 * level : base * 0.04 * level;
+        return base;
+    }
+
+    @EMCWorldSince("1.0.2")
+    public static double getWeaponDPS(ItemStack stack,PlayerEntity player){
+        Item item = stack.getItem();
+        if(!(item instanceof TieredItem)){
+            return -1;
+        }
+        double base = 0;
+        boolean flag = false;
+        if(item instanceof StaffItem){
+            flag = true;
+            base = ((StaffItem) item).getBaseDamage(stack);
+        }else{
+            if(item instanceof IAdditionsDamageWeapon){
+                flag = true;
+                base = ((IAdditionsDamageWeapon) item).getAdditionsDamage(player,stack).total();
+            }
+        }
+        if(!flag){
+            return -1;
+        }
+        return -1;//todo
     }
 
     @Deprecated

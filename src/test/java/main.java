@@ -1,9 +1,7 @@
-import biggestxuan.emcworld.common.utils.CalendarUtils;
-import biggestxuan.emcworld.common.utils.MathUtils;
+import hutool.core.date.ChineseDate;
 
+import java.util.Date;
 import java.util.UUID;
-
-import static biggestxuan.emcworld.common.utils.MathUtils.getRangeRandom;
 
 /**
  *  EMC WORLD MOD
@@ -32,7 +30,12 @@ public class main {
             System.out.println(i+":"+(MathUtils.format((long)(MathUtils.log(i,3000)*1800000.0))));
             i += 0.01;
         }*/
-        System.out.println(CalendarUtils.INSTANCE.getHour());
+        ChineseDate d = new ChineseDate(2023,5,5);
+        Date dd = d.getGregorianDate();
+        System.out.println(d.getGregorianYear());
+        System.out.println(d.getGregorianMonth());
+        System.out.println(d.getGregorianDay());
+        System.out.println((long) Math.abs(UUID.fromString("29328b6c-6f03-4fba-9436-678b696e8aeb").hashCode()));
     }
 }
 

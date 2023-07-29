@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.utils;
  */
 
 import biggestxuan.emcworld.common.config.ConfigManager;
-import cn.hutool.core.date.ChineseDate;
+import hutool.core.date.ChineseDate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraftforge.api.distmarker.Dist;

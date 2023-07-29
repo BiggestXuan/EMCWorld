@@ -28,7 +28,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import top.theillusivec4.champions.common.capability.ChampionCapability;
+//import top.theillusivec4.champions.common.capability.ChampionCapability;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +42,9 @@ public class PlayerWillHurtEvent {
         LivingEntity entity = event.getEntityLiving();
         if(entity.level.isClientSide || !(entity instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) entity;
+        if(player.isDeadOrDying()){
+            return;
+        }
         IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
         IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);
         int[] skills = cap.getSkills();
@@ -126,11 +129,11 @@ public class PlayerWillHurtEvent {
         if(shield < amount) return false;
         if(source.getDirectEntity() instanceof LivingEntity && !(source.getDirectEntity() instanceof PlayerEntity)){
             LivingEntity living = (LivingEntity) source.getDirectEntity();
-            ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getServer().getAffixes().forEach(affix -> {
+            /*ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getServer().getAffixes().forEach(affix -> {
                 if(affix.getIdentifier().equals("shield_flaming")){
                     iChampion.getServer().getRank().ifPresent(rank -> rate.set(1 + rank.getTier() / 3f));
                 }
-            }));
+            }));*/
         }
         amount *= rate.get();
         for (ItemStack stack : armors) {

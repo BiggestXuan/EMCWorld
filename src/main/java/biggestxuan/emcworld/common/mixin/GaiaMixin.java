@@ -16,7 +16,6 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -116,7 +115,7 @@ public abstract class GaiaMixin extends LivingEntity {
 
     @Inject(method = "hurt",at = @At("HEAD"), cancellable = true)
     public void staffAttack(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if(source instanceof EWDamageSource){
+        if(source instanceof EWDamageSource && invulnerableTime == 0){
             cir.setReturnValue(super.hurt(source,Math.min(amount,MAX_HP * 0.15f)));
         }
     }

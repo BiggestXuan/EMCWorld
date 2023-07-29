@@ -243,6 +243,7 @@
 			title: "{quest.emcworld.terra_steel}"
 			x: 15.0d
 			y: 3.0d
+			subtitle: "\"{quest.emcworld.spark_desc}\""
 			dependencies: ["46AFD5E8DD96DB45"]
 			id: "1F441D7C1DA23A83"
 			tasks: [{

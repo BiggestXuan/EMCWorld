@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.OfflinePacket;
@@ -90,8 +91,9 @@ public class PlayerLoggedEvent {
             ItemStack book = new ItemStack(PatchouliItems.book);
             book.getOrCreateTag().putString("patchouli:book","emcworld:guide");
             //player.addItem(book);
-            int emc = (int) (150000 / MathUtils.difficultyLoss());
+            int emc = (int) (90000 / MathUtils.difficultyLoss());
             EMCHelper.modifyPlayerEMC(player,new EMCSource.QuestCompletedEMCSource(emc,player,null,0,"start","start"),false);
+            DifficultyHelper.addPlayerDifficulty(player,1.5*ConfigManager.DIFFICULTY.get());
         }
         if(ConfigManager.FREE_MODE.get()){
             TeamData data = ServerQuestFile.INSTANCE.getData(player);
@@ -164,6 +166,9 @@ public class PlayerLoggedEvent {
                 return;
             }
             switch (sponsorLevel){
+                case -1:
+                    Message.sendMessage(player, tc("message.welcome.spr",name));
+                    break;
                 case 1:
                     Message.sendMessage(player, tc("message.welcome.normal",name));
                     break;
@@ -191,11 +196,16 @@ public class PlayerLoggedEvent {
             }
         });
         if(ConfigManager.SUNDRY_ANNOUNCEMENT.get()){
-            String announcement = Network.getInfo(15);
-            if(!announcement.contains("null")){
-                String[] ann = announcement.split(";");
-                Message.sendMessage(player,EMCWorld.tc(ann[0]).setStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,ann[1])).withColor(TextFormatting.AQUA).withBold(true).withItalic(true)));
+            try{
+                String announcement = Network.getInfo(15);
+                if(!announcement.contains("null")){
+                    String[] ann = announcement.split(";");
+                    Message.sendMessage(player,EMCWorld.tc(ann[0]).setStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,ann[1])).withColor(TextFormatting.AQUA).withBold(true).withItalic(true)));
+                }
+            }catch (Exception ignored){
+
             }
+
         }
     }
 

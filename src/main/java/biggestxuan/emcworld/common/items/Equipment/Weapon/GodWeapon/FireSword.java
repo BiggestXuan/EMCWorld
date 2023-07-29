@@ -29,7 +29,7 @@ public class FireSword extends BaseEMCGodSword {
     @Override
     public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = this.getLevel(stack);
-        return Math.pow(1.0675f,level);
+        return Math.pow(1.0625f,level);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class FireSword extends BaseEMCGodSword {
 
     @Override
     public double getBaseCriticalChance(ItemStack stack) {
-        return Math.pow(1.022,getLevel(stack)) - 1;
+        return Math.pow(1.011,getLevel(stack)) - 1;
     }
 
     @Override

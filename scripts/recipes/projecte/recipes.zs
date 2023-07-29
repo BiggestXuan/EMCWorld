@@ -1,5 +1,6 @@
 #priority 72
 import crafttweaker.api.item.ItemStack;
+import crafttweaker.api.item.IItemStack;
 import mods.emcworld.configHelper;
 
 public function modifyProjecteRecipe() as void{
@@ -25,13 +26,16 @@ public function modifyProjecteRecipe() as void{
     var a = <item:minecraft:air>;
     var ro = <item:mekanism:ingot_refined_obsidian>;
     var di = <item:minecraft:diamond>;
-    var flowers as ItemStack[] = new Getter().getFlowers();
+    var flowers as IItemStack[] = new Getter().getFlowers();
 
-    removeAllRecipe(collector);
-    removeAllRecipe(relay);
-    removeAllRecipe(flowers);
+    removeCraftRecipeIItemStack(collector);
+    removeCraftRecipeIItemStack(relay);
+    removeCraftRecipeIItemStack(flowers);
     removeAllRecipe([table,condenser_mk1,red,<item:projectex:personal_link>]);
     addNuggetAndIngotRecipe(g[0],g[1]);
+    for i in 0 .. collector.length-3{
+        addCraftShapelessRecipe([collector[i].withTag({lifespan:0 as int})],flowers[i]);
+    }
     addCraftShapedRecipeNoName([
         [a,b,a],
         [b,d,b],

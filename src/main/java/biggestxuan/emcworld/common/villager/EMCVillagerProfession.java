@@ -16,6 +16,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import moze_intel.projecte.gameObjs.registries.PEItems;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.SoundEvents;
@@ -34,6 +35,15 @@ public class EMCVillagerProfession extends VillagerProfession {
     @SubscribeEvent
     public static void Trades(VillagerTradesEvent event){
         Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
+        if(event.getType().equals(VillagerProfession.ARMORER)){
+            trades.get(2).add(new VillagerTradeBuilder(new ItemStack(Items.EMERALD),new ItemStack(Items.COAL,32),8).get());
+        }
+        if(event.getType().equals(VillagerProfession.TOOLSMITH)){
+            trades.get(2).add(new VillagerTradeBuilder(new ItemStack(Items.IRON_INGOT,8),new ItemStack(Items.COAL,32),8).get());
+        }
+        if(event.getType().equals(VillagerProfession.CLERIC)){
+            trades.get(2).add(new VillagerTradeBuilder(new ItemStack(Items.GOLD_INGOT,1),new ItemStack(Items.COAL,32),8).get());
+        }
         if(event.getType().equals(EWVillagers.EMC_VILLAGER.get())){
             trades.get(1).add(new VillagerTradeBuilder(new ItemStack(EWItems.BIG_EMC_GEM.get(),3),new ItemStack(Items.EMERALD),8).get());
             trades.get(1).add(new VillagerTradeBuilder(new ItemStack(Items.EMERALD,3),new ItemStack(EWItems.MONEY.get()),8).get());

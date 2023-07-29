@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 public class Creation extends BaseEMCGodWarHammer {
     @Override
     protected double getAttackCostRate(ItemStack stack) {
-        return Math.pow(1.075f,getLevel(stack));
+        return Math.pow(1.07f,getLevel(stack));
     }
 
     @Override
@@ -23,17 +23,17 @@ public class Creation extends BaseEMCGodWarHammer {
 
     @Override
     protected double criticalChance(ItemStack stack) {
-        return Math.pow(1.0145,getLevel(stack)) - 0.8;
+        return Math.pow(1.021,getLevel(stack)) - 0.8;
     }
 
     @Override
     protected double criticalRate(ItemStack stack) {
-        return Math.pow(1.0175,getLevel(stack));
+        return Math.pow(1.018,getLevel(stack));
     }
 
     @Override
     protected float damage(ItemStack stack) {
-        float base = (float) (Math.pow(1.163,Math.min(22,getLevel(stack))) * 5);
+        float base = (float) (Math.pow(1.154,Math.min(22,getLevel(stack))) * 5);
         return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack, base) : base;
     }
 
@@ -43,7 +43,7 @@ public class Creation extends BaseEMCGodWarHammer {
     }
 
     @Override
-    public double getAttackSpeed(ItemStack stack) {
+    public double AttackSpeed(ItemStack stack) {
         return Math.pow(0.93,getLevel(stack));
     }
 

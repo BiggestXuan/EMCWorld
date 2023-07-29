@@ -53,7 +53,11 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
     }
 
     @Override
-    public abstract double getAttackSpeed(ItemStack stack);
+    public double getAttackSpeed(ItemStack stack){
+        return AttackSpeed(stack);
+    };
+
+    public abstract double AttackSpeed(ItemStack stack);
 
     @Override
     public boolean canBeHurtBy(@Nonnull DamageSource p_234685_1_){

@@ -12,11 +12,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import top.theillusivec4.champions.common.integration.scalinghealth.ScalingHealthManager;
+//import top.theillusivec4.champions.common.integration.scalinghealth.ScalingHealthManager;
 
-@Mixin(ScalingHealthManager.class)
+//@Mixin(ScalingHealthManager.class)
 public abstract class ScalingHealthManagerMixin {
-    @Inject(method = "getSpawnIncrease",at = @At("HEAD"),remap = false,cancellable = true)
+    /*@Inject(method = "getSpawnIncrease",at = @At("HEAD"),remap = false,cancellable = true)
     private static void getIncrease(int tier, LivingEntity livingEntity, CallbackInfoReturnable<Double> cir){
         double avg = MathUtils.getRangePlayerAverageIndex(livingEntity,64);
         double cc = Math.abs(avg - tier);
@@ -38,5 +38,5 @@ public abstract class ScalingHealthManagerMixin {
         }
         else c += 0.15D;
         cir.setReturnValue(c);
-    }
+    }*/
 }

@@ -34,7 +34,7 @@ public class IceSword extends BaseEMCGodSword {
 
     @Override
     public double getBaseCriticalChance(ItemStack stack) {
-        return Math.pow(1.014,getLevel(stack)) - 1;
+        return Math.pow(1.008,getLevel(stack)) - 1;
     }
 
     @Override

@@ -12,6 +12,7 @@ import biggestxuan.emcworld.api.item.INameItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
+import biggestxuan.emcworld.common.compact.BloodMagic.BloodMagicHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -72,6 +73,9 @@ public abstract class ItemMixin implements INameItem {
         }
         if(f != null){
             text = (TranslationTextComponent) f;
+        }
+        if(BloodMagicHelper.isEMCModifyDagger(p_200295_1_)){
+            return EMCWorld.tc("item.emcworld.emc_dagger");
         }
         if(p_200295_1_.hasTag()){
             CompoundNBT nbt = p_200295_1_.getTag();

@@ -89,12 +89,8 @@ public class ProfessionGUI extends Screen {
             skill.add(format(i));
         }
         String[] skillInfo = skill.toArray(new String[44]);
-        if(getProfession() ==1) {
-            renderString(matrixStack, EMCWorld.tc(base + "p1_default", skillInfo[0]), xPos, yPos);
-        } else if(getProfession() == 2) {
-            renderString(matrixStack, EMCWorld.tc(base + "p2_default", skillInfo[0]), xPos, yPos);
-        } else if(getProfession() == 3) {
-            renderString(matrixStack, EMCWorld.tc(base + "p3_default", skillInfo[0]), xPos, yPos);
+        if(getProfession() != 0){
+            renderString(matrixStack, EMCWorld.tc(base + "p"+getProfession()+"_default", skillInfo[0]), xPos, yPos);
         }
         yPos += line;
         int level = 10;

@@ -1,12 +1,13 @@
 #priority 42
 
 import crafttweaker.api.item.ItemStack;
+import crafttweaker.api.item.IItemStack;
 
 public class sitem{
     public static var INSTANCE = new sitem();
 
-    val c as ItemStack[] = new Getter().getCollector();
-    val r as ItemStack[] = new Getter().getRelay();
+    val c as IItemStack[] = new Getter().getCollector();
+    val r as IItemStack[] = new Getter().getRelay();
 
     this(){
 

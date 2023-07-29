@@ -48,7 +48,7 @@ import java.util.List;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.GodWeapon")
-public abstract class BaseEMCGodSword extends BaseWeaponItem implements IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem, IEMCGodWeaponLevel, IPrefixItem, IGemInlaidItem {
+public abstract class BaseEMCGodSword extends BaseWeaponItem implements IRangeAttackWeapon,IAdditionsDamageWeapon,IUpgradeableWeapon, IUpgradeableMaterial, ILensEffect, ICriticalWeapon, IEMCInfuserItem, IEMCGodWeaponLevel, IPrefixItem, IGemInlaidItem {
 
     protected final float baseDamage;
     private final int color;

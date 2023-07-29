@@ -28,6 +28,7 @@ public class ClearProfessionItem extends EWItem {
                 cap.setModify(0);
                 cap.setLevel(1);
                 cap.setMaxLevel(10);
+                cap.setXP(0);
                 for (int i = 0; i < cap.getSkills().length; i++) {
                     cap.setSkills(i,0);
                 }

@@ -68,11 +68,11 @@ public abstract class EMCSource<T> {
         return MathUtils.longSign(emc);
     }
 
-    public String getInfo(){
-        if(getPet() != null){
-            return EMCWorld.tc("emcsource.title_pet",getPet().getDisplayName().getString(),pos.toString(),getDim().toString()).getString()+" ";
+    public String getInfo() {
+        if (getPet() != null) {
+            return EMCWorld.tc("emcsource.title_pet", getPet().getDisplayName().getString(), pos.toString(), getDim().toString()).getString() + " ";
         }
-        return EMCWorld.tc("emcsource.title",pos.toString(),getDim().toString()).getString()+" ";
+        return EMCWorld.tc("emcsource.title", pos.toString(), getDim().toString()).getString() + " ";
     }
 
     @Nullable
@@ -80,8 +80,8 @@ public abstract class EMCSource<T> {
         return null;
     }
 
-    public EMCSource(long emc, PlayerEntity player, T target, double amt){
-        this(emc,new BlockPos(player.position()),player.level.dimension(),target,amt);
+    public EMCSource(long emc, Entity entity, T target, double amt){
+        this(emc,new BlockPos(entity.position()),entity.level.dimension(),target,amt);
     }
 
     public static class AttackEMCSource extends EMCSource<LivingEntity>{
@@ -414,5 +414,18 @@ public abstract class EMCSource<T> {
         public String getInfo(){
             return super.getInfo()+EMCWorld.tc("emcworld.exception_apple",getEMC());
         }
+    }
+
+    @EMCWorldSince("1.0.2")
+    public static class EMCTransferBloodSource extends EMCSource<Object>{
+        public EMCTransferBloodSource(long emc,PlayerEntity player){
+            super(emc,player,null,0);
+        }
+
+        @Override
+        public String getInfo(){
+            return super.getInfo()+EMCWorld.tc("emcworld.emc2blood",getEMC());
+        }
+
     }
 }

@@ -41,11 +41,14 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.Color;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import vazkii.botania.api.mana.IManaItem;
 
 import javax.annotation.Nonnull;
 
@@ -102,6 +105,9 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.need_level_to_use",itemLevel));
                 return;
             }
+        }
+        if(stack.getItem() instanceof IManaItem){
+            event.getToolTip().add(EMCWorld.tc("tooltip.mana_item.desc").withStyle(TextFormatting.AQUA));
         }
         long value;
         String stage = "";
@@ -185,69 +191,17 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof StaffItem){
             StaffItem i_s = (StaffItem) stack.getItem();
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",f(i_s.getBaseDamage(stack))));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",getDamaUtilsDesc(i_s.getManaBurstBaseDamage(stack,player))));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(StaffItem.getMode(stack).getName())));
         }
         if(stack.getItem() instanceof IAdditionsDamageWeapon){
             DamageUtils utils = SkillUtils.getPlayerAttackDamage(player,stack);
-            double damage = utils.total();
-            boolean positive = damage > 0;
-            String text = (positive ? "" : "-") + f(Math.abs(damage));
-            StringBuilder r = new StringBuilder(text);
-            if(Screen.hasShiftDown() && utils.getAddDamage().size() > 0 && utils.getAddDamage().get(0) != 0){
-                r.append(" (");
-                r.append(f(utils.getDamage()));
-                int i = 0;
-                while (i < utils.getAddDamage().size()){
-                    double v = utils.getAddDamage().get(i);
-                    if(v > 0){
-                        r.append("+");
-                    }else if(v == 0){
-                        i++;
-                        continue;
-                    }else{
-                        r.append("-");
-                        v = -v;
-                    }
-                    r.append(f(v));
-                    i++;
-                    if(i >= utils.getAddDamage().size()){
-                        break;
-                    }
-                }
-                r.append(")");
-            }
-            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",r.toString()));
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_addition_damage",getDamaUtilsDesc(utils)));
         }
         if(stack.getItem() instanceof IRangeAttackWeapon){
-            double range = SkillUtils.getPlayerAttackRange(player,stack).total();
             DamageUtils utils = SkillUtils.getPlayerAttackRange(player,stack);
-            StringBuilder r = new StringBuilder(f(range));
-            if(Screen.hasShiftDown() && range > 0 && utils.getAddDamage().size() > 0 && utils.getAddDamage().get(0) != 0){
-                r.append(" (");
-                r.append(f(utils.getDamage()));
-                int i = 0;
-                while (i < utils.getAddDamage().size()){
-                    double v = utils.getAddDamage().get(i);
-                    if(v > 0){
-                        r.append("+");
-                    }else if(v == 0){
-                        i++;
-                        continue;
-                    }else{
-                        r.append("-");
-                        v = -v;
-                    }
-                    r.append(f(v));
-                    i++;
-                    if(i >= utils.getAddDamage().size()){
-                        break;
-                    }
-                }
-                r.append(")");
-            }
-            if(range >0){
-                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_attack_range", r.toString()));
+            if(utils.total() >0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_attack_range", getDamaUtilsDesc(utils)));
             }
         }
         if(stack.getItem() instanceof IUpgradeableArmor){
@@ -416,6 +370,38 @@ public class ItemToolTipEvent {
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sponsoract"));
             }
         }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private static String getDamaUtilsDesc(DamageUtils utils){
+        double damage = utils.total();
+        boolean positive = damage > 0;
+        String text = (positive ? "" : "-") + f(Math.abs(damage));
+        StringBuilder r = new StringBuilder(text);
+        if(Screen.hasShiftDown() && utils.getAddDamage().size() > 0 && utils.getAddDamage().get(0) != 0){
+            r.append(" (");
+            r.append(f(utils.getDamage()));
+            int i = 0;
+            while (i < utils.getAddDamage().size()){
+                double v = utils.getAddDamage().get(i);
+                if(v > 0){
+                    r.append("+");
+                }else if(v == 0){
+                    i++;
+                    continue;
+                }else{
+                    r.append("-");
+                    v = -v;
+                }
+                r.append(f(v));
+                i++;
+                if(i >= utils.getAddDamage().size()){
+                    break;
+                }
+            }
+            r.append(")");
+    }
+        return r.toString();
     }
 
     @Nonnull

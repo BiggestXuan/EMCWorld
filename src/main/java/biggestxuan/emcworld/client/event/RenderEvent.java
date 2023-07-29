@@ -17,7 +17,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tfar.classicbar.ModUtils;
-import top.theillusivec4.champions.common.capability.ChampionCapability;
+//import top.theillusivec4.champions.common.capability.ChampionCapability;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,value = Dist.CLIENT)
 public class RenderEvent {
@@ -37,12 +37,12 @@ public class RenderEvent {
         if(accessor.getEntity() != null){
             if(accessor.getEntity() instanceof LivingEntity){
                 LivingEntity living = (LivingEntity) accessor.getEntity();
-                ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getClient().getRank().ifPresent(rank -> {
+                /*ChampionCapability.getCapability(living).ifPresent(iChampion -> iChampion.getClient().getRank().ifPresent(rank -> {
                     if(rank.getA() >= 1){
                         event.setCanceled(true);
                     }
                 }));
-                return;
+                return;*/
             }
             event.setCanceled(true);
         }

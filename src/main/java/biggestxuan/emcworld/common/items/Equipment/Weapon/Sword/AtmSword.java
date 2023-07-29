@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Sword;
 import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.BaseWeaponItem;
+import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Tier.EWSwordTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
@@ -61,8 +62,4 @@ public class AtmSword extends BaseWeaponItem implements IUpgradeableWeapon,IRang
         return 0;
     }
 
-    @Override
-    public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(0);
-    }
 }

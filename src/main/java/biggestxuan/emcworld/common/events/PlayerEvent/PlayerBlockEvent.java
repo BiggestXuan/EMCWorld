@@ -13,6 +13,7 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.event.PlayerEatFoodEvent;
 import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
+import biggestxuan.emcworld.common.compact.BloodMagic.BloodMagicHelper;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
@@ -44,6 +45,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import wayoftime.bloodmagic.event.SacrificeKnifeUsedEvent;
 
 import java.util.List;
 
@@ -211,7 +213,6 @@ public class PlayerBlockEvent {
         }
     }
 
-
     @EMCWorldSince("1.0.0")
     @SubscribeEvent
     public static void prefix(PlayerPrefixFreshEvent event){
@@ -227,6 +228,16 @@ public class PlayerBlockEvent {
                     trait.onPrefixFresh(player,event,s);
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    @EMCWorldSince("1.0.2")
+    public static void playerUseDaggerEvent(SacrificeKnifeUsedEvent event){
+        ItemStack stack = event.player.getMainHandItem();
+        if(BloodMagicHelper.isEMCModifyDagger(stack)){
+            event.shouldDrainHealth = false;
+            EMCHelper.modifyPlayerEMC(event.player, new EMCSource.EMCTransferBloodSource((long) (-1000*ConfigManager.DIFFICULTY.get()),event.player));
         }
     }
 

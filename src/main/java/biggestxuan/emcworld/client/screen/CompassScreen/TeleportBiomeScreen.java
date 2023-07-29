@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.client.screen.BaseEMCConfirmScreen;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.CostEMCPacket;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -60,6 +61,6 @@ public class TeleportBiomeScreen extends BaseEMCConfirmScreen {
                 pos2 = new MathUtils.Position(new BlockPos(x,player.blockPosition().getY(),z),player.level.dimension().location());
             }
         }
-        return MathUtils.getTPEMCCost(player,pos1,pos2);
+        return MathUtils.getTPEMCCost(player,pos1,pos2) * 50L * ConfigManager.DIFFICULTY.get().longValue();
     }
 }

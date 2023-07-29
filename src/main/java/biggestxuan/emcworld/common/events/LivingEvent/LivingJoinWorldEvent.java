@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.events.LivingEvent;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
@@ -23,10 +24,10 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import top.theillusivec4.champions.Champions;
+/*import top.theillusivec4.champions.Champions;
 import top.theillusivec4.champions.api.IChampionsApi;
 import top.theillusivec4.champions.common.capability.ChampionCapability;
-import top.theillusivec4.champions.common.rank.Rank;
+import top.theillusivec4.champions.common.rank.Rank;*/
 import twilightforest.entity.boss.LichEntity;
 
 import java.util.List;
@@ -40,8 +41,18 @@ public class LivingJoinWorldEvent {
             Tulye e = (Tulye) event.getEntity();
             e.addEffect(new EffectInstance(Effects.INVISIBILITY,600,0));
         }
+        if(ConfigManager.DIFFICULTY.get() == 0.5 && MathUtils.isRandom(0.95) && !(event.getEntity() instanceof PlayerEntity)){
+            event.setCanceled(true);
+            return;
+        }
         if(event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof LichEntity)){
             LivingEntity livingEntity = (LivingEntity) event.getEntity();
+           /* ChampionCapability.getCapability(livingEntity).ifPresent(c -> {
+                var api = c.getServer();
+                if(api.getRank().isEmpty() || api.getRank().get().getTier() == 0){
+                    event.setCanceled(true);
+                }
+            });*/
             if(livingEntity.getLootTable().getNamespace().equals("divinerpg")){
                 if(livingEntity.level.dimension().equals(World.OVERWORLD)){
                     AxisAlignedBB aabb = MathUtils.expandAABB(livingEntity.position(),64);
@@ -54,7 +65,7 @@ public class LivingJoinWorldEvent {
                     event.setCanceled(true);
                     return;
                 }
-                if(MathUtils.isRandom(0.5)){
+                if(MathUtils.isRandom(0.2)){
                     event.setCanceled(true);
                     return;
                 }
@@ -64,12 +75,12 @@ public class LivingJoinWorldEvent {
                 livingEntity.setItemSlot(EquipmentSlotType.HEAD,ItemStack.EMPTY);
             }
             try{
-                ChampionCapability.getCapability(livingEntity).ifPresent(cap -> {
+                /*ChampionCapability.getCapability(livingEntity).ifPresent(cap -> {
                     double level = MathUtils.getRangePlayerAverageIndex(livingEntity,64);
                     if(level <= 1.25){
                         cap.getServer().setRank(new Rank());
                     }
-                });
+                });*/
             }catch (RuntimeException e){
                 EMCWorld.LOGGER.fatal("Oh...This is all Biggest_Xuan's fault");
             }

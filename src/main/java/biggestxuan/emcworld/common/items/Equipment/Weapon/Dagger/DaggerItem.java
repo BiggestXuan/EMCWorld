@@ -6,9 +6,11 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger;
  *  2022/12/09
  */
 
+import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
 import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
+import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
@@ -28,7 +30,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttackSpeedItem, IPrefixItem {
+public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttackSpeedItem, IPrefixItem, IAdditionsDamageWeapon {
     protected final IDaggerTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
 
@@ -44,6 +46,11 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon Attack Speed modifier", tier.getSpeed(), AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon Attack Damage modifier", tier.getAttackDamageBonus(), AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
+    }
+
+    @EMCWorldSince("1.0.2")
+    public float getDamage(){
+        return tier.getAttackDamageBonus();
     }
 
     @Nonnull
@@ -90,11 +97,6 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
     @Override
     public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
         return DamageUtils.of((float) (tier.getAttackDamageBonus() * 0.1 * getLevel(stack) * getPrefixCommonRate(stack)));
-    }
-
-    @Override
-    public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(0);
     }
 
     protected int lv(ItemStack stack){

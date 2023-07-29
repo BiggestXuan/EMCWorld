@@ -18,12 +18,12 @@ public class PurpleStaff extends BaseEMCGodStaff {
 
     @Override
     protected double getBaseCostRate(ItemStack stack) {
-        return Math.pow(1.081,getLevel(stack));
+        return Math.pow(1.069,getLevel(stack));
     }
 
     @Override
     protected float getBaseBurstDamage(ItemStack stack) {
-        float base = (float) Math.pow(1.25f,Math.min(22,getLevel(stack)));
+        float base = (float) Math.pow(1.19f,Math.min(22,getLevel(stack)));
         return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack,base) : base;
     }
 
@@ -34,7 +34,7 @@ public class PurpleStaff extends BaseEMCGodStaff {
 
     @Override
     protected double getBaseCriticalRate(ItemStack stack) {
-        return 0.025 * getLevel(stack);
+        return 0.022 * getLevel(stack);
     }
 
     @Override
