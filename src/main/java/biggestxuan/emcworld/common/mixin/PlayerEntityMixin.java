@@ -6,7 +6,9 @@ package biggestxuan.emcworld.common.mixin;
  *  2023/05/04
  */
 
+import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.EMCWorldSince;
+import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.event.PlayerEatFoodEvent;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import net.minecraft.entity.EntityType;
@@ -14,12 +16,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -46,13 +50,28 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         });
     }
 
-    @Inject(method = "eat",at = @At("HEAD"))
+    @Inject(method = "eat",at = @At("RETURN"))
     @EMCWorldSince("0.9.0")
     public void _eat(World p_213357_1_, ItemStack p_213357_2_, CallbackInfoReturnable<ItemStack> cir){
         if(p_213357_2_.isEdible()){
             PlayerEntity player = (PlayerEntity) (Object) this;
             Food food = p_213357_2_.getItem().getFoodProperties();
-            MinecraftForge.EVENT_BUS.post(new PlayerEatFoodEvent(player,food.getNutrition(),food.getSaturationModifier()));
+            MinecraftForge.EVENT_BUS.post(new PlayerEatFoodEvent(player,food.getNutrition(),food.getSaturationModifier(),food));
         }
+    }
+
+    @Redirect(method = "hurtCurrentlyUsedShield",at = @At(value = "INVOKE",target = "Lnet/minecraft/util/math/MathHelper;floor(F)I"))
+    @EMCWorldSince("1.0.3")
+    public int __no_loss(float p_76141_0_){
+        PlayerEntity player = (PlayerEntity) (Object) this;
+        try{
+            IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
+            if(cap.getProfession() == 2){
+                return 0;
+            }
+        }catch (Exception ignored){
+
+        }
+        return MathHelper.floor(p_76141_0_);
     }
 }

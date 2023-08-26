@@ -12,7 +12,7 @@ import biggestxuan.emcworld.api.item.ISecondEMCItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import net.minecraft.item.ItemStack;
 
-public interface IUpgradeableArmor extends IUpgradeableItem ,ICostEMCItem, ISecondEMCItem, IEMCRepairableItem {
+public interface IUpgradeableArmor extends IUpgradeableItem ,ICostEMCItem, ISecondEMCItem{
     double hurtRate(ItemStack stack);
 
     float extraHealth(ItemStack stack);

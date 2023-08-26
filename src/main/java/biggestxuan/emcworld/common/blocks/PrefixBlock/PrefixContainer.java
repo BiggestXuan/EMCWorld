@@ -85,7 +85,7 @@ public class PrefixContainer extends EMCWorldBaseContainer {
                             return ItemStack.EMPTY;
                         }
                     } else if (index < 38){
-                        if (!moveItemStackTo(stack, 2, 38, false)) {
+                        if (!moveItemStackTo(stack, 2, 29, false)) {
                             return ItemStack.EMPTY;
                         }
                     }
@@ -95,6 +95,9 @@ public class PrefixContainer extends EMCWorldBaseContainer {
                 slot.set(ItemStack.EMPTY);
             }else{
                 slot.setChanged();
+            }
+            if(s.getCount() == stack.getCount()){
+                return ItemStack.EMPTY;
             }
             slot.onTake(playerIn,stack);
         }

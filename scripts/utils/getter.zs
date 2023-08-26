@@ -221,9 +221,7 @@ public class Getter{
         <item:projecte:nova_cataclysm>,
         <item:projecte:nova_catalyst>,
         <item:projecte:red_matter_block>,
-        <item:projecte:dark_matter_block>,
         <item:projecte:rm_furnace>,
-        <item:projecte:dm_pedestal>,
         <item:projecte:dm_furnace>,
         <item:projecte:philosophers_stone>,
         <item:projecte:alchemical_chest>

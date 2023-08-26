@@ -25,7 +25,7 @@ public interface IUpgradeableItem {
     };
 
     default void addLevel(ItemStack stack, int level){
-        setLevel(stack,Math.min(getMaxLevel(),getLevel(stack)+level));
+        setLevel(stack,getLevel(stack)+level);
     };
 
     default void lossLevel(ItemStack stack, int level){

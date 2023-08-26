@@ -14,6 +14,6 @@ import biggestxuan.emcworld.common.utils.DamageUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
-public interface IUpgradeableWeapon extends IUpgradeableItem, ICostEMCItem, ISecondEMCItem, IEMCRepairableItem {
+public interface IUpgradeableWeapon extends IUpgradeableItem, ICostEMCItem, ISecondEMCItem{
 
 }

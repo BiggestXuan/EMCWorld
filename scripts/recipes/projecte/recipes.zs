@@ -31,7 +31,7 @@ public function modifyProjecteRecipe() as void{
     removeCraftRecipeIItemStack(collector);
     removeCraftRecipeIItemStack(relay);
     removeCraftRecipeIItemStack(flowers);
-    removeAllRecipe([table,condenser_mk1,red,<item:projectex:personal_link>]);
+    removeAllRecipe([table,condenser_mk1,red,<item:projectex:personal_link>,<item:projecte:dark_matter_block>]);
     addNuggetAndIngotRecipe(g[0],g[1]);
     for i in 0 .. collector.length-3{
         addCraftShapelessRecipe([collector[i].withTag({lifespan:0 as int})],flowers[i]);

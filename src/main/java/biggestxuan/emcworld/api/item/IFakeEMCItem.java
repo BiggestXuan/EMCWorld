@@ -14,7 +14,7 @@ public interface IFakeEMCItem {
 
     long getActEMC(ItemStack stack);
 
-    default void doSomething(PlayerEntity player){
+    default void doSomething(PlayerEntity player,ItemStack stack){
 
     }
 }

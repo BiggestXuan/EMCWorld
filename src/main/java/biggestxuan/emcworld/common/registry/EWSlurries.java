@@ -54,6 +54,7 @@ public class EWSlurries {
     public static final SlurryRegistryObject<Slurry, Slurry> ARLEMITE = SLURRY.registry(new EWSlurry("arlemite",0x92E151));
     public static final SlurryRegistryObject<Slurry, Slurry> REALMITE = SLURRY.registry(new EWSlurry("realmite",0xEEB022));
     public static final SlurryRegistryObject<Slurry, Slurry> TUNGSTEN = SLURRY.registry(new EWSlurry("tungsten",0x728E3C));
+    public static final SlurryRegistryObject<Slurry, Slurry> KNIGHTMETAL = SLURRY.registry(new EWSlurry("knightmetal",0x9FAE9E));
     public static final SlurryRegistryObject<Slurry, Slurry> TORRIDITE = SLURRY.registry(new EWSlurry("torridite",0xE14C35));
     public static final SlurryRegistryObject<Slurry, Slurry> BLOODGEM = SLURRY.registry(new EWSlurry("bloodgem",0xE74D90));
 }

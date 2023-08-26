@@ -4,6 +4,10 @@
     {
       "id":"emcworld:exception_apple",
       "required":false
+    },
+    {
+      "id": "emcworld:exorcism_candle",
+      "required": false
     }
   ]
 }

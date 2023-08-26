@@ -53,11 +53,6 @@ public class AtmSword extends BaseWeaponItem implements IUpgradeableWeapon,IRang
     }
 
     @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
     public int getMaxLevel() {
         return 0;
     }

@@ -87,6 +87,7 @@ public class ConfigManager {
     public static ForgeConfigSpec.BooleanValue SUNDRY_DISABLE_MAP_TELEPORT;
     public static ForgeConfigSpec.BooleanValue SUNDRY_ASTRAL_CRAFT_LIMIT;
     public static ForgeConfigSpec.BooleanValue SUNDRY_ANNOUNCEMENT;
+    public static ForgeConfigSpec.BooleanValue SUNDRY_LOCK_DIFFICULTY;
 
     static
     {
@@ -175,6 +176,7 @@ public class ConfigManager {
         SUNDRY_DISABLE_MAP_TELEPORT = BUILDER.define("DisableMapTeleport",true);
         SUNDRY_ASTRAL_CRAFT_LIMIT = BUILDER.define("AstralDimensionCraftLimit",true);
         SUNDRY_ANNOUNCEMENT = BUILDER.define("Announcement",true);
+        SUNDRY_LOCK_DIFFICULTY = BUILDER.define("lock_difficulty",true);
         RSAutomation = BUILDER.comment("Enable Refined Storage Automation,such as Pattern,Crafter").define("Enable Refined Storage Automation",false);
         LOTTERY = BUILDER.define("Enable Lottery",false);
         BUILDER.pop();

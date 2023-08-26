@@ -412,7 +412,7 @@ public abstract class EMCSource<T> {
 
         @Override
         public String getInfo(){
-            return super.getInfo()+EMCWorld.tc("emcworld.exception_apple",getEMC());
+            return super.getInfo()+EMCWorld.tc("emcsource.exception_apple",getEMC());
         }
     }
 
@@ -424,8 +424,21 @@ public abstract class EMCSource<T> {
 
         @Override
         public String getInfo(){
-            return super.getInfo()+EMCWorld.tc("emcworld.emc2blood",getEMC());
+            return super.getInfo()+EMCWorld.tc("emcsource.emc2blood",getEMC());
         }
 
+    }
+
+    @EMCWorldSince("1.0.3")
+    public static class EMCPowerFlowerSource extends EMCSource<BlockPos>{
+
+        public EMCPowerFlowerSource(long emc, Entity entity, BlockPos target) {
+            super(emc, entity, target, 0);
+        }
+
+        @Override
+        public String getInfo(){
+            return super.getInfo()+EMCWorld.tc("emcsource.powerflower",getTarget().toString(),getEMC()).getString();
+        }
     }
 }

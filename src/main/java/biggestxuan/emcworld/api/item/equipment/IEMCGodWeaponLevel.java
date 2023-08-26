@@ -11,7 +11,7 @@ import biggestxuan.emcworld.api.item.INeedLevelItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import net.minecraft.item.ItemStack;
 
-public interface IEMCGodWeaponLevel extends INeedLevelItem,IStarItem, IEMCGod {
+public interface IEMCGodWeaponLevel extends INeedLevelItem,IEMCGod {
     @Override
     default int getUseLevel(ItemStack stack){
         if(stack.getItem() instanceof IUpgradeableItem){

@@ -387,6 +387,13 @@
   "item.emcworld.exception_apple": "Exception Apple",
   "item.emcworld.shengxuan": "ShengXuan",
   "item.emcworld.emc_dagger": "EMC Sacrificial Knife",
+  "item.emcworld.ikun_adventure_record": "只因大冒险 - 纳米雷电（Bilibili）",
+  "item.emcworld.clump_knightmetal": "Knightmetal Clump",
+  "item.emcworld.crystal_knightmetal": "Knightmetal Crystal",
+  "item.emcworld.dirty_dust_knightmetal": "Dirty Knightmetal Dust",
+  "item.emcworld.dust_knightmetal": "Knightmetal Dust",
+  "item.emcworld.shard_knightmetal": "Knightmetal Shard",
+  "item.emcworld.exorcism_candle": "Exorcism Candle",
 
   "block.emcworld.hardcore_stone": "Hardcore Stone",
   "block.emcworld.emc_ore": "EMC Ore",
@@ -454,6 +461,7 @@
   "block.emcworld.star_pedestal": "EMC Infuser Star Pedestal",
   "block.emcworld.tungsten_ore": "Tungsten Ore",
   "block.emcworld.emc_super": "Super EMC Core",
+  "block.emcworld.top_core": "Top Core",
 
   "fluid.emcworld.air" : "Liquid Air",
   "fluid.emcworld.sodium_cyanide" : "Liquid Sodium Cyanide",
@@ -552,6 +560,8 @@
   "slurry.emcworld.dirty_torridite": "Dirty Torridite Slurry",
   "slurry.emcworld.clean_bloodgem": "Clean BloodGem Slurry",
   "slurry.emcworld.dirty_bloodgem": "Dirty BloodGem Slurry",
+  "slurry.emcworld.clean_knightmetal": "Clean Knightmetal Slurry",
+  "slurry.emcworld.dirty_knightmetal": "Dirty Knightmetal Slurry",
 
   "infuse_type.emcworld.iron": "Iron",
   "infuse_type.emcworld.nickel": "Nickel",
@@ -659,6 +669,7 @@
   "emcsource.fish": "[Fishing]ItemStack: %d, %d EMC",
   "emcsource.exception_apple": "[Exception Apple] %d EMC",
   "emcsource.emc2blood": "[Sacrificial Knife] %d EMC",
+  "emcsource.powerflower": "[PowerFlower] Pos: %d,%d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -920,6 +931,10 @@
 
   "menu.emcworld.sponsor": "Become Sponsor",
 
+  "enchantment.emcworld.emc_repair": "EMC Mending",
+  "enchantment.emcworld.emc_reduce": "EMC Reduce",
+  "enchantment.emcworld.emc_looting": "EMC Looting",
+
   "tooltip.emcworld.update_add_time": "§4Time + ",
   "tooltip.emcworld.update_loss_time": "§2Time - ",
   "tooltip.emcworld.update_add_cost": "§4Cost + ",
@@ -1059,6 +1074,12 @@
   "tooltip.emcworld.exception_apple": "§6If it weren't so sweet, I would say it smelled like blood",
   "tooltip.blood_dagger.desc": "§6Replace the loss of life with your EMC",
   "tooltip.mana_item.desc": "§2Perhaps spark dispersion is needed to charge?",
+  "tooltip.cost.line0": "§9Average Attack Cost:%d",
+  "tooltip.cost.line1": "§9Base: %d",
+  "tooltip.cost.line2": "§9Base: %d",
+  "tooltip.cost.line3": "§9Profession&Gem: %d",
+  "tooltip.cost.line5": "§9Critical: %d",
+  "tooltip.emcworld.exorcism_candle": "§9Ban DRPG's mobs spawning from nearby",
 
   "attack_range_none": "Off",
   "attack_range_all": "All",

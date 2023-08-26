@@ -10,6 +10,7 @@ import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IHealBoostArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,7 +34,7 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
 
     @Override
     public double getHealBoostRate(ItemStack stack) {
-        return 1 + 0.0125 * getLevel(stack) * defense;
+        return 1 + 0.0125 * getLevel(stack) * MathUtils.log(2,defense);
     }
 
     @Override
@@ -49,11 +50,6 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
         return 1;
-    }
-
-    @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
     }
 
     @Override
@@ -93,7 +89,7 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
             }
         }
         int level = getLevel(stack);
-        health = health >= 1 ? (float) ((1 + 0.0125 * level) * health) : 0.05f * defense * level;
+        health = health >= 1 ? (float) ((1 + 0.0125 * level) * health) : (float) (0.75f * MathUtils.log(2,defense) * level);
         return health;
     }
 }

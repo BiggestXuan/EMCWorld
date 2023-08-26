@@ -175,7 +175,7 @@ public class PlayerAttackEvent {
             double rate = 1d;
             if(stack.getItem() instanceof ICostEMCItem){
                 ICostEMCItem item = (ICostEMCItem) stack.getItem();
-                rate = item.costEMCWhenAttack(stack);
+                rate = item.costEMCWhenAttackActually(stack);
             }
             long damageCost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
             long costEMC = damageCost;

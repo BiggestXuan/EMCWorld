@@ -33,7 +33,7 @@ public class NoEqualItem extends EWItem implements ISponsorItem, IFakeEMCItem {
     }
 
     @Override
-    public void doSomething(PlayerEntity player) {
+    public void doSomething(PlayerEntity player,ItemStack stack) {
         EMCHelper.setPlayerEMC(player,(long)(EMCHelper.getPlayerActEMC(player)*0.5));
     }
 

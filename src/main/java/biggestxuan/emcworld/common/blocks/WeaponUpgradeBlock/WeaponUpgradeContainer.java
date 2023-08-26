@@ -104,7 +104,7 @@ public class WeaponUpgradeContainer extends EMCWorldBaseContainer {
                             return ItemStack.EMPTY;
                         }
                     } else if (index < 41){
-                        if (!moveItemStackTo(stack, 6, 41, false)) {
+                        if (!moveItemStackTo(stack, 6, 32, false)) {
                             return ItemStack.EMPTY;
                         }
                     }
@@ -114,6 +114,9 @@ public class WeaponUpgradeContainer extends EMCWorldBaseContainer {
                 slot.set(ItemStack.EMPTY);
             }else{
                 slot.setChanged();
+            }
+            if(stack.getCount() == s.getCount()){
+                return ItemStack.EMPTY;
             }
             slot.onTake(playerIn,stack);
         }

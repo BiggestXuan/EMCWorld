@@ -18,6 +18,24 @@ public class DamageUtils {
         this.addDamage = damages;
     }
 
+    public int getSize(){
+        return addDamage.size() + 1;
+    }
+
+    public double getBaseDamage(){
+        return get(0);
+    }
+
+    public double get(int index){
+        if(index == 0){
+            return damage;
+        }
+        if(index > addDamage.size()){
+            return 0;
+        }
+        return addDamage.get(index-1);
+    }
+
     public DamageUtils(double damage){
         this(damage,new ArrayList<>());
     }
@@ -32,9 +50,20 @@ public class DamageUtils {
         return this;
     }
 
+    public DamageUtils append(DamageUtils utils){
+        this.addDamage.addAll(utils.addDamage);
+        return this;
+    }
+
     public DamageUtils append(double value){
         addDamage.add(value);
         return this;
+    }
+
+    public DamageUtils copy(){
+        DamageUtils d = new DamageUtils(damage);
+        d.append(addDamage);
+        return d;
     }
 
     public static DamageUtils of(double d){
@@ -55,5 +84,27 @@ public class DamageUtils {
             t += v;
         }
         return t;
+    }
+
+    @Override
+    public String toString(){
+        return "["+damage+"],("+new ArrayList<>(addDamage).toString()+")";
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(!(obj instanceof DamageUtils)){
+            return false;
+        }
+        DamageUtils u = (DamageUtils) obj;
+        if(this.getSize() != u.getSize() || this.getBaseDamage() != u.getBaseDamage()){
+            return false;
+        }
+        for (int i = 0; i < this.getSize(); i++) {
+            if(this.get(i) != u.get(i)){
+                return false;
+            }
+        }
+        return true;
     }
 }

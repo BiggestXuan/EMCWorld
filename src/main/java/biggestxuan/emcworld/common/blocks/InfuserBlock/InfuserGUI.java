@@ -7,9 +7,9 @@ package biggestxuan.emcworld.common.blocks.InfuserBlock;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.screen.EMCWorldContainerHelperGUI;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class InfuserGUI extends ContainerScreen<InfuserContainer> {
+public class InfuserGUI extends EMCWorldContainerHelperGUI<InfuserContainer> {
     private final BlockPos pos;
     private final World world;
 
@@ -76,5 +76,10 @@ public class InfuserGUI extends ContainerScreen<InfuserContainer> {
     @Override
     protected void renderLabels(@Nonnull MatrixStack matrixStack, int x, int y) {
         drawCenteredString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.infuser_core"),100,5,0xffffff);
+    }
+
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3148142";
     }
 }

@@ -715,7 +715,14 @@
 			tasks: [{
 				id: "790E23933E04D6B3"
 				type: "item"
-				item: "projectex:white_collector"
+				title: "Any #emcworld:stage_fourteen"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:level_fourteen"
+					}
+				}
 			}]
 			rewards: [{
 				id: "345F91D8953DC289"
@@ -735,7 +742,14 @@
 			tasks: [{
 				id: "25DF810DD7EC6131"
 				type: "item"
-				item: "projectex:orange_collector"
+				title: "Any #emcworld:stage_thirteen"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:level_thirteen"
+					}
+				}
 			}]
 			rewards: [{
 				id: "2404EF74E85B7578"

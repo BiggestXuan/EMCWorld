@@ -6,15 +6,9 @@ package biggestxuan.emcworld.api.item;
  *  2022/12/03
  */
 
-import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.extensions.IForgeItem;
 
-public interface IEMCInfuserItem extends IForgeItem ,IEMCRepairableItem{
-
-    default long getTickCost(ItemStack stack){
-        return (long) (120 * ConfigManager.DIFFICULTY.get());
-    }
+public interface IEMCInfuserItem {
 
     long getMaxInfuser(ItemStack stack);
 
@@ -56,18 +50,5 @@ public interface IEMCInfuserItem extends IForgeItem ,IEMCRepairableItem{
         addInfuser(stack,Math.negateExact(getCostEMC(stack)));
     }
 
-    @Override
-    default boolean showDurabilityBar(ItemStack stack) {
-        return true;
-    }
 
-    @Override
-    default double getDurabilityForDisplay(ItemStack stack) {
-        return 1 - 1d * getInfuser(stack) / getMaxInfuser(stack);
-    }
-
-    @Override
-    default int getRGBDurabilityForDisplay(ItemStack stack) {
-        return 0xD7C8F3;
-    }
 }

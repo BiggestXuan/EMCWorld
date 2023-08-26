@@ -71,6 +71,7 @@
 		CollectorLifespan = 720000
 		GuardianDeathPortal = true
 		DisableCommandTeleport = true
+		lock_difficulty = true
 
 	["Game Setting".Raid]
 		Sponsors = true

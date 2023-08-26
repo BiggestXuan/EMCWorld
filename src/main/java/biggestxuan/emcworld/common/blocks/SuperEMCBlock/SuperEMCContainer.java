@@ -62,7 +62,7 @@ public class SuperEMCContainer extends EMCWorldBaseContainer {
                             return ItemStack.EMPTY;
                         }
                     } else if (index < 39){
-                        if (!moveItemStackTo(stack, 3, 39, false)) {
+                        if (!moveItemStackTo(stack, 3, 30, false)) {
                             return ItemStack.EMPTY;
                         }
                     }
@@ -72,6 +72,9 @@ public class SuperEMCContainer extends EMCWorldBaseContainer {
                 slot.set(ItemStack.EMPTY);
             }else{
                 slot.setChanged();
+            }
+            if(s.getCount() == stack.getCount()){
+                return ItemStack.EMPTY;
             }
             slot.onTake(playerIn,stack);
         }

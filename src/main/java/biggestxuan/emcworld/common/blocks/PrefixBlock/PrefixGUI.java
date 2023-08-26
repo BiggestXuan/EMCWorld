@@ -7,10 +7,10 @@ package biggestxuan.emcworld.common.blocks.PrefixBlock;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.screen.EMCWorldContainerHelperGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.math.BlockPos;
@@ -18,11 +18,16 @@ import net.minecraft.util.text.ITextComponent;
 
 import javax.annotation.Nonnull;
 
-public class PrefixGUI extends ContainerScreen<PrefixContainer> {
+public class PrefixGUI extends EMCWorldContainerHelperGUI<PrefixContainer> {
     private final BlockPos pos;
     public PrefixGUI(PrefixContainer p_i51105_1_, PlayerInventory p_i51105_2_, ITextComponent p_i51105_3_) {
         super(p_i51105_1_, p_i51105_2_, p_i51105_3_);
         pos = p_i51105_1_.getPos();
+    }
+
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3148138";
     }
 
     @Override
@@ -53,6 +58,7 @@ public class PrefixGUI extends ContainerScreen<PrefixContainer> {
 
     @Override
     protected void renderLabels(@Nonnull MatrixStack matrixStack, int x, int y) {
+        super.renderLabels(matrixStack, x, y);
         drawString(matrixStack,this.font, EMCWorld.tc("gui.prefix.title"),72,8,0xffffff);
     }
 }

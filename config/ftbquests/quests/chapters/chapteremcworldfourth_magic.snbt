@@ -712,14 +712,14 @@
 					type: "item"
 					team_reward: true
 					item: {
-						id: "refinedstorage:creative_storage_disk"
+						id: "extradisks:256k_storage_disk"
 						Count: 1b
 						tag: {
 							Id: [I;
-								1780356306
-								-2132195973
-								-1255943488
-								-1280299542
+								2139825316
+								1266569179
+								-1727321083
+								-105316608
 							]
 						}
 					}

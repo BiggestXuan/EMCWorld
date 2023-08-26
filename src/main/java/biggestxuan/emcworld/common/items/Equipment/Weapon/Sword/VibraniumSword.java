@@ -52,11 +52,6 @@ public class VibraniumSword extends BaseWeaponItem implements IUpgradeableWeapon
     }
 
     @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
     public int getMaxLevel() {
         return 0;
     }

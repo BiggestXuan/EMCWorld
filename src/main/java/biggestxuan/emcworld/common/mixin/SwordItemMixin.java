@@ -47,11 +47,6 @@ public abstract class SwordItemMixin extends TieredItem implements IAdditionsDam
     }
 
     @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
     public long EMCModifySecond(ItemStack stack) {
         return 0;
     }

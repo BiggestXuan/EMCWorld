@@ -6,7 +6,6 @@ package biggestxuan.emcworld;
  *  2022/07/24
  */
 
-import biggestxuan.emcworld.client.event.ClientTickEvent;
 import biggestxuan.emcworld.client.key.*;
 import biggestxuan.emcworld.client.render.ContainerDenyRender;
 import biggestxuan.emcworld.client.render.StarPedestalRender;
@@ -16,6 +15,7 @@ import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserGUI;
 import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixGUI;
 import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceGUI;
 import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCGUI;
+import biggestxuan.emcworld.common.blocks.TopCore.TopCoreGUI;
 import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeGUI;
 import biggestxuan.emcworld.common.compact.Projecte.ModifyCollector;
 import biggestxuan.emcworld.common.config.ClientConfigManager;
@@ -70,8 +70,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 14;
-    public static final String PackVersion = "1.0.2";
+    public static final int ModPackVersion = 15;
+    public static final String PackVersion = "1.0.3";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -87,9 +87,10 @@ public class EMCWorld {
         bus.addListener(this::doClientStuff);
         bus.addListener(this::doStuff);
 
-        EWItems.ITEMS.register(bus);
+        EWSounds.SOUND.register(bus);
         EWEffects.EFFECTS.register(bus);
         EWTileEntityTypes.TILE_ENTITIES.register(bus);
+        EWItems.ITEMS.register(bus);
         EWBlocks.BLOCKS.register(bus);
         EWBlocks.B.register(bus);
         EWSlurries.SLURRY.register(bus);
@@ -99,10 +100,10 @@ public class EMCWorld {
         EWPigments.PIGMENTS.register(bus);
         EWContainerTypes.CONTAINERS.register(bus);
         EWRecipeTypes.RECIPES.register(bus);
-        EWSounds.SOUND.register(bus);
         EWVillagers.POI.register(bus);
         EWVillagers.PROFESSION.register(bus);
         EWModules.MODULES.register(bus);
+        EWEnchantments.EN.register(bus);
 
         bus.addGenericListener(Block.class,EWBlocks::botaniaInit);
 
@@ -144,6 +145,7 @@ public class EMCWorld {
             ScreenManager.register(EWContainerTypes.steelFurnaceContainer.get(), SteelFurnaceGUI::new);
             ScreenManager.register(EWContainerTypes.prefixContainer.get(), PrefixGUI::new);
             ScreenManager.register(EWContainerTypes.superEMCContainer.get(), SuperEMCGUI::new);
+            ScreenManager.register(EWContainerTypes.topCoreContainer.get(), TopCoreGUI::new);
             ClientRegistry.registerKeyBinding(Admin.ADMIN_KEY);
             ClientRegistry.registerKeyBinding(SpeedControl.SPEED_KEY);
             ClientRegistry.registerKeyBinding(ArcanaDisplay.ArcanaKey);
@@ -157,7 +159,6 @@ public class EMCWorld {
             if(ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get()){
                 ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
             }
-            LOGGER.info(ClientTickEvent.isCrash); //DEBUG
         });
     }
 

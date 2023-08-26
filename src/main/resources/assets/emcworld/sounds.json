@@ -5,5 +5,13 @@
       "name": "emcworld:cxk_death"
     }
     ]
+  },
+  "cxk_adventure": {
+    "subtitle": "sound.emcworld.cxk_adventure",
+    "sounds": [{
+      "name": "emcworld:cxk_adventure",
+      "stream": true
+    }
+    ]
   }
 }

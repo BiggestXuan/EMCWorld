@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.screen.EMCWorldContainerHelperGUI;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.WeaponCoreButtonPacket;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -20,7 +21,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class WeaponUpgradeGUI extends ContainerScreen<WeaponUpgradeContainer> {
+public class WeaponUpgradeGUI extends EMCWorldContainerHelperGUI<WeaponUpgradeContainer> {
     private final BlockPos pos;
     private final World world;
     private Button button;
@@ -69,6 +70,11 @@ public class WeaponUpgradeGUI extends ContainerScreen<WeaponUpgradeContainer> {
         if(chance != 114514){
             drawString(matrixStack,this.font, EMCWorld.tc("gui.emcworld.weapon_upgrade_chance",String.format("%.2f",chance/100f)+"%"),100,30,0xffffff);
         }
+    }
+
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3148137";
     }
 
     public static class ButtonPress implements Button.IPressable{

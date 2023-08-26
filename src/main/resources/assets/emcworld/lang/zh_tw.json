@@ -387,6 +387,13 @@
   "item.emcworld.exception_apple": "異常紅潤的蘋果",
   "item.emcworld.shengxuan": "圣宣",
   "item.emcworld.emc_dagger": "質能犧牲匕首",
+  "item.emcworld.ikun_adventure_record": "只因大冒险 - 纳米雷电（Bilibili）",
+  "item.emcworld.clump_knightmetal": "骑士金属碎块",
+  "item.emcworld.crystal_knightmetal": "骑士金属晶体",
+  "item.emcworld.dirty_dust_knightmetal": "污浊骑士金属粉",
+  "item.emcworld.dust_knightmetal": "骑士金属粉",
+  "item.emcworld.shard_knightmetal": "骑士金属碎片",
+  "item.emcworld.exorcism_candle": "驅魔蠟燭",
 
   "block.emcworld.hardcore_stone": "石頭之核",
   "block.emcworld.emc_ore": "質能礦石",
@@ -454,6 +461,7 @@
   "block.emcworld.star_pedestal": "質能注星核心",
   "block.emcworld.tungsten_ore": "鎢礦石",
   "block.emcworld.emc_super": "超級質能核心",
+  "block.emcworld.top_core": "突破核心",
 
   "fluid.emcworld.air": "液態空氣",
   "fluid.emcworld.sodium_cyanide": "液態氰化鈉",
@@ -552,6 +560,8 @@
   "slurry.emcworld.dirty_torridite": "污濁熾炎溶液",
   "slurry.emcworld.clean_bloodgem": "純凈血寶石溶液",
   "slurry.emcworld.dirty_bloodgem": "污濁血寶石溶液",
+  "slurry.emcworld.clean_knightmetal": "純凈骑士金属溶液",
+  "slurry.emcworld.dirty_knightmetal": "污濁骑士金属溶液",
 
   "infuse_type.emcworld.iron": "鐵",
   "infuse_type.emcworld.nickel": "鎳",
@@ -659,6 +669,7 @@
   "emcsource.fish": "[垂釣]物品：%d，%d EMC",
   "emcsource.exception_apple": "[異常紅潤的蘋果] %d EMC",
   "emcsource.emc2blood": "[犧牲匕首] %d EMC",
+  "emcsource.powerflower": "[力量花盆] 坐標：%d，%d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -920,6 +931,10 @@
 
   "menu.emcworld.sponsor": "成為贊助者",
 
+  "enchantment.emcworld.emc_repair": "職能修復",
+  "enchantment.emcworld.emc_reduce": "職能减损",
+  "enchantment.emcworld.emc_looting": "職能抢夺",
+
   "tooltip.emcworld.update_add_time": "§4耗時 + ",
   "tooltip.emcworld.update_loss_time": "§2耗時 - ",
   "tooltip.emcworld.update_add_cost": "§4消耗 + ",
@@ -1059,6 +1074,12 @@
   "tooltip.emcworld.exception_apple": "§6如果它不是那麽香甜的話，我會説它聞起來像血",
   "tooltip.blood_dagger.desc": "§6以你的職能之力代替生命值損耗",
   "tooltip.mana_item.desc": "§2也許要使用火花彌散才能爲其充能？",
+  "tooltip.cost.line0": "§平均攻擊消耗：%d",
+  "tooltip.cost.line1": "§9攻击单个目标 EMC 消耗明细",
+  "tooltip.cost.line2": "§9基礎傷害：%d（%d）",
+  "tooltip.cost.line3": "§9職業和寶石：%d（%d）",
+  "tooltip.cost.line5": "§9平均暴擊：%d（%d）",
+  "tooltip.emcworld.exorcism_candle": "§9禁止附近神聖RPG的生物生成",
 
   "attack_range_none": "關閉",
   "attack_range_all": "全部攻擊",

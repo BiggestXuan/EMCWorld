@@ -41,7 +41,7 @@
     {
       "type": "spotlight",
       "item": "emcworld:cold_ore",
-      "text": "在任何$(3)寒冷$()生物群系生成，仅会生成在冰和浮冰上。"
+      "text": "在任何$(3)寒冷$()生物群系生成，仅会生成在浮冰上。"
     },
     {
       "type": "spotlight",

@@ -23,18 +23,17 @@ import static biggestxuan.emcworld.EMCWorld.tc;
 public abstract class BaseModPackItem extends EWItem {
     @Nonnull
     private final String name;
-    @Nullable
-    private final String usage;
 
-    public BaseModPackItem(@Nonnull String name, @Nullable String usage){
+    public BaseModPackItem(@Nonnull String name){
         this.name = name;
-        this.usage = usage;
     }
+
+    protected abstract List<ITextComponent> getUsages();
 
     @Override
     public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, @Nonnull List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_) {
-        if(usage != null){
-            p_77624_3_.add(tc(usage));
+        if(getUsages().size() != 0){
+            p_77624_3_.addAll(getUsages());
         }
         p_77624_3_.add(tc("tooltip.emcworld.modpack",name).withStyle(Style.EMPTY.withItalic(true).withColor(Color.fromRgb(0x3d9140))));
     }

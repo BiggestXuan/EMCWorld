@@ -548,6 +548,7 @@ public function emcworldRecipe() as void{
         gun(staff_item[0][i],staff_item[4][i]);
     }
     smithingRecipe(gaia_item[4],<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_gun>);
+    smithingRecipe(gaia_item[1],<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_staff>);
     staffRecipe(<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_staff>);
     craftingTable.removeByModid("projectex");
     //craftingTable.removeByModid("projecte");
@@ -585,6 +586,7 @@ public function emcworldRecipe() as void{
         [<item:mekanism:pellet_plutonium>,sp,<item:mekanism:pellet_plutonium>],
         [sp,<item:mekanism:pellet_polonium>,sp]
     ],sr*2);
+    removeFurnaceRecipe([<item:twilightforest:knightmetal_ingot>]);
     addCraftShapedRecipeNoName([
         [tun,tun,tun],
         [tun,sr,tun],

@@ -43,6 +43,9 @@ public class PlayerQuestCompletedEvent {
         ServerPlayerEntity player = event.getPlayer();
         if(event.getReward().hasTag("sea_lantern")){
             KnowledgeHelper.addPlayerKnowledge(player, new ItemStack(Blocks.SEA_LANTERN.asItem()));
+            if(ConfigManager.GENG.get()){
+                player.addItem(new ItemStack(EWItems.CXK_ADVENTURE_RECORD.get(),1));
+            }
         }
         if(event.getReward().hasTag("hard")){
             player.addItem(new ItemStack(EWItems.MONEY.get(),1));

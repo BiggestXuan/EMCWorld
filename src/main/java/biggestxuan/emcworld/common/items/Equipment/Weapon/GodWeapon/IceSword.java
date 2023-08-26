@@ -17,7 +17,7 @@ public class IceSword extends BaseEMCGodSword {
 
     @Override
     public float getBaseDamage(ItemStack stack) {
-        float base = (float) ((Math.pow(1.155f,Math.min(22,getLevel(stack)))*baseDamage)-baseDamage);
+        float base = (float) ((Math.pow(1.146f,Math.min(22,getLevel(stack)))*baseDamage)-baseDamage);
         return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack, base) : base;
     }
 

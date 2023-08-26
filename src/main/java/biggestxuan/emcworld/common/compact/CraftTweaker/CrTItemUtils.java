@@ -35,13 +35,17 @@ public class CrTItemUtils {
 
     @ZenCodeType.Method
     public static IIngredient getEMCGodItemWithMaxLevel(){
-        CompoundNBT nbt = new CompoundNBT();
-        nbt.putInt("level",30);
-        nbt.putInt("prefix",10);
-        nbt.putInt("star",8);
-        nbt.putInt("max_star",8);
-        nbt.putBoolean("star_init",true);
-        return IIngredient.fromIngredient(Ingredient.of(getEMCGodItems(nbt).stream()));
+        List<ItemStack> list = new ArrayList<>();
+        for (int i = 30; i < 45; i++) {
+            CompoundNBT nbt = new CompoundNBT();
+            nbt.putInt("level",i);
+            nbt.putInt("prefix",10);
+            nbt.putInt("star",8);
+            nbt.putInt("max_star",8);
+            nbt.putBoolean("star_init",true);
+            list.addAll(getEMCGodItems(nbt));
+        }
+        return IIngredient.fromIngredient(Ingredient.of(list.stream()));
     }
 
     @ZenCodeType.Method
@@ -70,8 +74,8 @@ public class CrTItemUtils {
         CompoundNBT nbt = new CompoundNBT();
         nbt.putInt("level",level);
         list.addAll(getEMCGodItems(nbt));
-        if(level != 30){
-            for (int i = level+1; i <= 30; i++) {
+        if(level != 45){
+            for (int i = level+1; i <= 45; i++) {
                 nbt = new CompoundNBT();
                 nbt.putInt("level",i);
                 list.addAll(getEMCGodItems(nbt));
@@ -109,8 +113,11 @@ public class CrTItemUtils {
             if(Modifier.isFinal(mod) && Modifier.isStatic(mod)){
                 Object o = f.get(clz);
                 if(o instanceof RegistryObject<?>){
-                    RegistryObject<Item> r = (RegistryObject<Item>) o;
-                    list.add(r.get());
+                    RegistryObject<?> r = (RegistryObject<?>) o;
+                    if(r.get() instanceof Item){
+                        Item i = (Item) r.get();
+                        list.add(i);
+                    }
                 }
             }
         }

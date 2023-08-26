@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.utils;
  */
 
 import biggestxuan.emcworld.common.config.ConfigManager;
-import hutool.core.date.ChineseDate;
+//import cn.hutool.core.date.ChineseDate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -138,7 +138,8 @@ public class CalendarUtils {
     }
 
     public boolean isChineseFestival(int ChineseMonth, int ChineseDay){
-        ChineseDate date = new ChineseDate(year,ChineseMonth,ChineseDay);
-        return date.getGregorianMonth() + 1 == this.month && date.getGregorianDay() == this.day;
+        return false;
+        /*ChineseDate date = new ChineseDate(year,ChineseMonth,ChineseDay);
+        return date.getGregorianMonth() + 1 == this.month && date.getGregorianDay() == this.day;*/
     }
 }

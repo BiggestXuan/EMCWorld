@@ -16,13 +16,13 @@ public function main() as void{
     addGobberOresProceRecipe();
     modifyGobberRecipe();
     modifyManaSteelRecipe();
+    emcworldRecipe();
     emcworldOresProcessing();
     modifyPendoriteRecipe();
     removeTETags();
     modifyTERecipe();
     fixTEAlloyRecipe();
     addEMCWorldOresTag();
-    emcworldRecipe();
     modifyHemRecipe();
     addEmeraldShardRecipe();
     addAlloyRecipe();

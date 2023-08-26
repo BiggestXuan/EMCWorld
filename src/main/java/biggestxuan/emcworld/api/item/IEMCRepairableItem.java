@@ -8,6 +8,6 @@ package biggestxuan.emcworld.api.item;
 
 import net.minecraft.item.ItemStack;
 
-public interface IEMCRepairableItem {
+public interface IEMCRepairableItem{
     long getTickCost(ItemStack stack);
 }

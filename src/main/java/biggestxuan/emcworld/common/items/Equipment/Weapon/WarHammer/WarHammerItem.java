@@ -82,11 +82,6 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon,IRan
     }
 
     @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
     public long EMCModifySecond(ItemStack stack) {
         return 0;
     }

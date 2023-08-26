@@ -174,6 +174,17 @@ public function emcworldOresProcessing() as void{
         <item:good_nights_sleep:rainbow_ingot>
     );
     addNormalOreProceRecipe(
+        <item:twilightforest:armor_shard_cluster>,
+        <slurry:emcworld:dirty_knightmetal>,
+        <slurry:emcworld:clean_knightmetal>,
+        <item:emcworld:crystal_knightmetal>,
+        <item:emcworld:shard_knightmetal>,
+        <item:emcworld:clump_knightmetal>,
+        <item:emcworld:dirty_dust_knightmetal>,
+        <item:emcworld:dust_knightmetal>,
+        <item:twilightforest:knightmetal_ingot>
+    );
+    addNormalOreProceRecipe(
         <item:good_nights_sleep:zitrite_ore>,
         <slurry:emcworld:dirty_zitrite>,
         <slurry:emcworld:clean_zitrite>,

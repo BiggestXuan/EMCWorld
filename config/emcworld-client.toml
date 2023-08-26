@@ -1,1 +1,6 @@
 
+[General]
+	add_mod_warning = true
+	render_gui_helper = true
+	pcl_warning = true
+

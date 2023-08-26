@@ -39,4 +39,8 @@ public interface IPlayerSkillCapability extends INBTSerializable<CompoundNBT> {
     void setModify(int modify);
 
     int getModify();
+
+    long getCostEMC();
+
+    void setCostEMC(long emc);
 }

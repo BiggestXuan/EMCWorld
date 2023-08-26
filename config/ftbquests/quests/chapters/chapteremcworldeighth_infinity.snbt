@@ -594,18 +594,18 @@
 				"35383154D1ABF1D6"
 			]
 			id: "0072CCA8E57C7C88"
-			tasks: [
-				{
-					id: "59C7AD166DE8C9AA"
-					type: "item"
-					item: "projectex:lime_collector"
+			tasks: [{
+				id: "59C7AD166DE8C9AA"
+				type: "item"
+				title: "Any #emcworld:level_eleven"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "emcworld:level_eleven"
+					}
 				}
-				{
-					id: "5B16413621E720CA"
-					type: "item"
-					item: "projectex:lime_relay"
-				}
-			]
+			}]
 			rewards: [{
 				id: "45D1AEFC7D9097E4"
 				type: "custom"

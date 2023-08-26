@@ -26,6 +26,7 @@ public class Sponsors extends EMCWorldPlayer {
         Chara_SS (new Sponsors("Chara_SS","1738cb1b-ea69-4e0f-8678-688aea7e8d1b",5)),
         TULYE (new Sponsors("Tulye","52a0f9c3-5551-4de9-bfe5-16f803f44633",6)),
         xiangshushumiao (new Sponsors("xiangshushumiao","19cd7e09-e249-4b92-b35a-770b3399a302",4)),
+        yuluo_1("yuluo_1","1719c509-2b62-47a4-a080-bef535fa1e68",4),
         MCyunxi (new Sponsors("MCyunxi","eb91acd8-a70e-4b1d-b1c4-34fc4c8af495",3)),
         HIEHEIHEICAT (new Sponsors("HIEHEIHEICAT","28f6f584-5d9c-45ba-b919-a8ebabf53477",3)),
         CSZXYMZX (new Sponsors("cszxymzx","e99f4af7-c050-4552-9627-6f80b5f0a0d3",3)),
@@ -37,10 +38,15 @@ public class Sponsors extends EMCWorldPlayer {
             this.sponsors = sponsors;
         }
 
+        all(String name,String uuid,int index){
+            this.sponsors = new Sponsors(name, uuid, index);
+        }
+
         public Sponsors getSponsors() {
             return sponsors;
         }
     }
+
     private final int[] index;
     public final static int maxIndex = 6;
 

@@ -7,10 +7,12 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -19,6 +21,7 @@ import net.minecraft.item.SkullItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.Dimension;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -54,16 +57,8 @@ public class LivingJoinWorldEvent {
                 }
             });*/
             if(livingEntity.getLootTable().getNamespace().equals("divinerpg")){
-                if(livingEntity.level.dimension().equals(World.OVERWORLD)){
-                    AxisAlignedBB aabb = MathUtils.expandAABB(livingEntity.position(),64);
-                    List<PlayerEntity> players = livingEntity.level.getLoadedEntitiesOfClass(PlayerEntity.class,aabb);
-                    for(PlayerEntity p : players){
-                        if(GameStageManager.hasStage(p,"two")){
-                            return;
-                        }
-                    }
+                if(!canSpawnDivingRPGMob(livingEntity)){
                     event.setCanceled(true);
-                    return;
                 }
                 if(MathUtils.isRandom(0.2)){
                     event.setCanceled(true);
@@ -85,5 +80,19 @@ public class LivingJoinWorldEvent {
                 EMCWorld.LOGGER.fatal("Oh...This is all Biggest_Xuan's fault");
             }
         }
+    }
+
+    private static boolean canSpawnDivingRPGMob(Entity entity){
+        AxisAlignedBB aabb = MathUtils.expandAABB(entity.position(),64);
+        List<PlayerEntity> players = entity.level.getLoadedEntitiesOfClass(PlayerEntity.class,aabb);
+        for(PlayerEntity p : players){
+            if(!GameStageManager.hasStage(p,"two") && entity.level.dimension().equals(World.OVERWORLD)){
+                return false;
+            }
+            if(PlayerCurios.hasExorcismCandle(p)){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -15,19 +15,19 @@ import net.minecraft.item.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-public class RainbowStaff extends StaffItem implements IEMCInfuserItem, INeedLevelItem {
+public class RainbowStaff extends StaffItem implements IEMCInfuserItem,INeedLevelItem {
     public RainbowStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("diamond"));
     }
 
     @Override
-    public long getMaxInfuser(ItemStack stack) {
-        return 3000000;
+    public int getUseLevel(ItemStack stack) {
+        return 20;
     }
 
     @Override
-    public int getUseLevel(ItemStack stack) {
-        return 20;
+    public long getMaxInfuser(ItemStack stack) {
+        return 3000000;
     }
 
     @Override

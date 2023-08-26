@@ -55,14 +55,17 @@ import dev.latvian.mods.projectex.Matter;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nonnull;
+
 @SuppressWarnings("unused")
 public class EWItems {
     private static final EMCWorldAPI api = EMCWorldAPI.getInstance();
-    
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EMCWorld.MODID);
 
     public static final RegistryObject<Item> SMALL_EMC_GEM = ITEMS.register("small_emc_gem", EMCGemItem::new);
@@ -103,6 +106,7 @@ public class EWItems {
     public static final RegistryObject<Item> BASE_KEY = ITEMS.register("base_key",EWItem::new);
     public static final RegistryObject<Item> INFUSE_CORE = ITEMS.register("infuse_core",EWItem::new);
     public static final RegistryObject<Item> PREFIX_CORE = registryBlock("prefix_core", EWBlocks.PREFIX_CORE);
+    public static final RegistryObject<Item> TOP_CORE = registryBlock("top_core", EWBlocks.TOP_CORE);
     public static final RegistryObject<Item> EMC_SUPER = registryBlock("emc_super", EWBlocks.EMC_SUPER);
     public static final RegistryObject<Item> STAR_PEDESTAL = registryBlock("star_pedestal", EWBlocks.STAR_PEDESTAL);
     public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1));
@@ -163,6 +167,13 @@ public class EWItems {
     public static final RegistryObject<Item> SCROLL_TULYE = ITEMS.register("scroll_tulye", TulyeScroll::new);
     public static final RegistryObject<Item> SCROLL_BX = ITEMS.register("scroll_bx", BiggestXuanScroll::new);
     public static final RegistryObject<Item> UnEqual = ITEMS.register("unequal", NoEqualItem::new);
+    public static final RegistryObject<Item> EXORCISM_CANDLE = ITEMS.register("exorcism_candle", () -> new EWItem(){
+        @Nonnull
+        @Override
+        public ITextComponent getDescription() {
+            return EMCWorld.tc("tooltip.emcworld.exorcism_candle");
+        }
+    });
     public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(1));
     public static final RegistryObject<Item> LOTTERY = ITEMS.register("lottery",LotteryItem::new);
     public static final RegistryObject<Item> HARD_STEEL = ITEMS.register("hard_steel",() -> new EWItem(1));
@@ -197,6 +208,7 @@ public class EWItems {
     public static final RegistryObject<Item> EMC_CHARGE_GEM = ITEMS.register("emc_charge_gem",EMCChargeItem::new);
     public static final RegistryObject<Item> ENERGY_PROTECT_MODULE = ITEMS.register("energy_protect_module", () -> new EnergyProtectModuleItem(EWModules.ENERGY_PROTECT_MODULE));
     public static final RegistryObject<Item> INFINITY_MODULE = ITEMS.register("infinity_module", () -> new InfinityModuleItem(EWModules.INFINITY_MODULE_UNIT_MODULE));
+    public static final RegistryObject<Item> CXK_ADVENTURE_RECORD = ITEMS.register("ikun_adventure_record",() -> new EWRecordItem(EWSounds.CXK_ADVENTURE,true));
 
     public static final RegistryObject<Item> FIRE_RED_HELMET = ITEMS.register("fire_red_helmet",()->new fireRedArmor(1));
     public static final RegistryObject<Item> FIRE_RED_CHESTPLATE = ITEMS.register("fire_red_chestplate",()->new fireRedArmor(2));
@@ -275,12 +287,18 @@ public class EWItems {
     public static final RegistryObject<Item> CLUMP_STARSMETAL = ITEMS.register("clump_starmetal", EWOresItem::new);
     public static final RegistryObject<Item> DIRTY_DUST_STARSMETAL = ITEMS.register("dirty_dust_starmetal", EWOresItem::new);
     public static final RegistryObject<Item> DUST_STARSMETAL = ITEMS.register("dust_starmetal", EWOresItem::new);
-    
+
     public static final RegistryObject<Item> CRYSTAL_PENDORITE= ITEMS.register("crystal_pendorite",EWOresItem::new);
     public static final RegistryObject<Item> SHARD_PENDORITE= ITEMS.register("shard_pendorite",EWOresItem::new);
     public static final RegistryObject<Item> CLUMP_PENDORITE= ITEMS.register("clump_pendorite",EWOresItem::new);
     public static final RegistryObject<Item> DIRTY_DUST_PENDORITE= ITEMS.register("dirty_dust_pendorite",EWOresItem::new);
     public static final RegistryObject<Item> DUST_PENDORITE= ITEMS.register("dust_pendorite",EWOresItem::new);
+
+    public static final RegistryObject<Item> CLUMP_KNIGHTMETAL = ITEMS.register("clump_knightmetal", EWOresItem::new);
+    public static final RegistryObject<Item> CRYSTAL_KNIGHTMETAL = ITEMS.register("crystal_knightmetal", EWOresItem::new);
+    public static final RegistryObject<Item> DIRTY_DUST_KNIGHTMETAL = ITEMS.register("dirty_dust_knightmetal", EWOresItem::new);
+    public static final RegistryObject<Item> DUST_KNIGHTMETAL = ITEMS.register("dust_knightmetal", EWOresItem::new);
+    public static final RegistryObject<Item> SHARD_KNIGHTMETAL = ITEMS.register("shard_knightmetal", EWOresItem::new);
 
     public static final RegistryObject<Item> CRYSTAL_AQUAMARINE= ITEMS.register("crystal_aquamarine",EWOresItem::new);
     public static final RegistryObject<Item> SHARD_AQUAMARINE= ITEMS.register("shard_aquamarine",EWOresItem::new);
@@ -422,14 +440,14 @@ public class EWItems {
     public static final RegistryObject<Item> DIRTY_DUST_MAGNESIUM= ITEMS.register("dirty_dust_magnesium",EWOresItem::new);
     public static final RegistryObject<Item> DUST_MAGNESIUM= ITEMS.register("dust_magnesium",EWOresItem::new);
     public static final RegistryObject<Item> MAGNESIUM_INGOT = ITEMS.register("magnesium_ingot",EWOresItem::new);
-    
+
     public static final RegistryObject<Item> CRYSTAL_INDIUM= ITEMS.register("crystal_indium",EWOresItem::new);
     public static final RegistryObject<Item> SHARD_INDIUM= ITEMS.register("shard_indium",EWOresItem::new);
     public static final RegistryObject<Item> CLUMP_INDIUM= ITEMS.register("clump_indium",EWOresItem::new);
     public static final RegistryObject<Item> DIRTY_DUST_INDIUM= ITEMS.register("dirty_dust_indium",EWOresItem::new);
     public static final RegistryObject<Item> DUST_INDIUM= ITEMS.register("dust_indium",EWOresItem::new);
     public static final RegistryObject<Item> INDIUM_INGOT = ITEMS.register("indium_ingot",EWOresItem::new);
-    
+
     public static final RegistryObject<Item> CRYSTAL_TITANIUM= ITEMS.register("crystal_titanium",EWOresItem::new);
     public static final RegistryObject<Item> SHARD_TITANIUM= ITEMS.register("shard_titanium",EWOresItem::new);
     public static final RegistryObject<Item> CLUMP_TITANIUM= ITEMS.register("clump_titanium",EWOresItem::new);
@@ -480,7 +498,7 @@ public class EWItems {
     public static final RegistryObject<Item> NUCLEAR_BALL = ITEMS.register("nuclear_ball",() -> new NuclearBall(10000,1));
     public static final RegistryObject<Item> NUCLEAR_ADVANCED_BALL = ITEMS.register("nuclear_advanced_ball",() -> new NuclearBall(30000,2));
     public static final RegistryObject<Item> NUCLEAR_EPIC_BALL= ITEMS.register("nuclear_epic_ball",() -> new NuclearBall(100000,3));
-    
+
     public static final RegistryObject<Item> HARDCORE_STONE = registryBlock("hardcore_stone",EWBlocks.HARDCORE_STONE);
     public static final RegistryObject<Item> CONTROL_UPDATE_CORE = registryBlock("control_update_core",EWBlocks.CONTROL_UPDATE_CORE);
     public static final RegistryObject<Item> VIS_CONVERSION_CORE = registryBlock("vis_conversion_core",EWBlocks.VIS_CONVERSION_CORE);
@@ -515,7 +533,7 @@ public class EWItems {
     public static final RegistryObject<Item> ADVANCED_EMC_STORED_TOTEM = ITEMS.register("advanced_emc_stored_totem",()-> new StoredTotem(10000000));
     public static final RegistryObject<Item> ELITE_EMC_STORED_TOTEM = ITEMS.register("elite_emc_stored_totem",()-> new StoredTotem(150000000));
     public static final RegistryObject<Item> ULTIMATE_EMC_STORED_TOTEM = ITEMS.register("ultimate_emc_stored_totem",()-> new StoredTotem(Integer.MAX_VALUE));
-   
+
     public static final RegistryObject<Item> UPDATE_BASE_PURPLE = registryUpdateBlock("update_base_purple",EWBlocks.UPDATE_BASE_PURPLE);
     public static final RegistryObject<Item> UPDATE_BASE_BX_PURPLE = registryUpdateBlock("update_base_bx_purple",EWBlocks.UPDATE_BASE_BX_PURPLE);
     public static final RegistryObject<Item> UPDATE_BASE_BLUE = registryUpdateBlock("update_base_blue",EWBlocks.UPDATE_BASE_BLUE);

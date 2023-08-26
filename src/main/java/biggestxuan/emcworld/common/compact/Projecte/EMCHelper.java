@@ -75,6 +75,9 @@ public class EMCHelper {
 
     public static void modifyPlayerEMC(PlayerEntity player, EMCSource<?> source, boolean showMessage){
         long modify = source.emc();
+        if(modify == 0){
+            return;
+        }
         if(player.hasEffect(EWEffects.EMC_PROTECT.get()) && modify < 0){
             modify *= 0.9d;
             modify = Math.round(modify);

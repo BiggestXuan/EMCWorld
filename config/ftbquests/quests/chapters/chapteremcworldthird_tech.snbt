@@ -314,6 +314,11 @@
 					tags: ["hard"]
 					auto: "no_toast"
 				}
+				{
+					id: "04DB553A32E18933"
+					type: "item"
+					item: "emcworld:exorcism_candle"
+				}
 			]
 		}
 		{

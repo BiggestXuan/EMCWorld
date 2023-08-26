@@ -12,10 +12,13 @@ import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
+import biggestxuan.emcworld.api.item.IEMCRepairableItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
+import biggestxuan.emcworld.api.item.equipment.IGemInlaidItem;
 import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
@@ -26,6 +29,7 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
+import biggestxuan.emcworld.common.registry.EWEnchantments;
 import biggestxuan.emcworld.common.registry.EWModules;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
@@ -33,6 +37,9 @@ import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import mekanism.common.content.gear.Module;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.blay09.mods.waystones.api.IWaystone;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,20 +55,18 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import org.openzen.zencode.java.ZenCodeType;
 import vazkii.botania.common.item.ItemKeepIvy;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.math")
 @SuppressWarnings("unused")
-public class MathUtils {
+public final class MathUtils {
 
     @ZenCodeType.Method
     public static double Random(){
@@ -586,7 +591,7 @@ public class MathUtils {
         return getTPEMCCost(player,pos1,pos2);
     }
 
-    public static class Position{
+    public final static class Position{
         private final BlockPos pos;
         private final ResourceLocation world;
 
@@ -596,7 +601,7 @@ public class MathUtils {
         }
     }
 
-    public static class QuestInfo{
+    public final static class QuestInfo{
         private final long emc;
         private final String difficulty;
 
@@ -701,6 +706,11 @@ public class MathUtils {
         return Ingredient.of(list.stream());
     }
 
+    @EMCWorldSince("1.0.3")
+    public static String getDoubleFormat(double d){
+        return String.format("%.2f",d);
+    }
+
     @EMCWorldSince("1.0.2")
     public static float getMusicShooterDamage(float base,ItemStack stack){
         Item item = stack.getItem();
@@ -738,6 +748,51 @@ public class MathUtils {
         return -1;//todo
     }
 
+    @EMCWorldSince("1.0.3")
+    public static List<TranslationTextComponent> getWeaponDisplayWillCost(PlayerEntity player, ItemStack stack, boolean isShift){
+        Item i = stack.getItem();
+        var list = new ArrayList<TranslationTextComponent>();
+        double cost = getAttackBaseCost(player) * ConfigManager.DIFFICULTY.get();
+        if(stack.getItem() instanceof ICostEMCItem){
+            if(stack.getItem() instanceof StaffItem){
+                cost *= ((StaffItem) stack.getItem()).getCostRate(stack,player);
+            }else{
+                cost *= ((ICostEMCItem) stack.getItem()).costEMCWhenAttackActually(stack);
+            }
+        }
+        double t = 0;
+        var damage = i instanceof StaffItem ? ((StaffItem) i).getManaBurstBaseDamage(stack,player):SkillUtils.getPlayerAttackDamage(player,stack);
+        DamageUtils u = new DamageUtils(0);
+        if(damage.getBaseDamage() == 0){
+            return list;
+        }
+        if(stack.getItem() instanceof ICriticalWeapon){
+            var item = (ICriticalWeapon) stack.getItem();
+            double chance = item.getActCriticalChance(stack);
+            double rate = item.getActCriticalRate(stack);
+            t = damage.total() * chance * rate;
+            u = damage.copy().append(t);
+        }
+        if(isShift){
+            //list.add(EMCWorld.tc("tooltip.cost.line1"));
+            list.add(EMCWorld.tc("tooltip.cost.line2",getDoubleFormat(damage.getBaseDamage()),format(damage.getBaseDamage()*cost)+" EMC"));
+            if(damage.getAddDamage().size() > 0){
+                double d = damage.get(1);
+                if(i instanceof IGemInlaidItem){
+                    if(((IGemInlaidItem) i).getGemIndex(stack) != 0){
+                        d += damage.get(2);
+                    }
+                }
+                list.add(EMCWorld.tc("tooltip.cost.line3",getDoubleFormat(d),format(d*cost)+" EMC"));
+            }
+            if(u.getBaseDamage() != 0){
+                list.add(EMCWorld.tc("tooltip.cost.line5",getDoubleFormat(t),format(t * cost)+" EMC"));
+            }
+        }
+        list.add(EMCWorld.tc("tooltip.cost.line0",format(cost * damage.append(t).total())+" EMC"));
+        return list;
+    }
+
     @Deprecated
     public static String t(BlockPos pos){
         return pos.getX()+","+pos.getY()+","+pos.getZ();
@@ -752,5 +807,18 @@ public class MathUtils {
             }
         }
         return false;
+    }
+
+    @EMCWorldSince("1.0.3")
+    public static long getEMCRepairCost(ItemStack stack){
+        Item item = stack.getItem();
+        if(item instanceof IEMCRepairableItem){
+            return ((IEMCRepairableItem) item).getTickCost(stack);
+        }
+        int level = EnchantmentHelper.getItemEnchantmentLevel(EWEnchantments.EMC_REPAIR.get(),stack);
+        if(level >= 1){
+            return 1080 + (-250L * level);
+        }
+        return -1;
     }
 }

@@ -27,7 +27,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class BaseEMCGodStaff extends StaffItem implements IEMCRepairableItem, ISecondEMCItem, IEMCInfuserItem, IEMCGodWeaponLevel,IUpgradeableMaterial, IGemInlaidItem {
+public abstract class BaseEMCGodStaff extends StaffItem implements ISecondEMCItem, IEMCGodWeaponLevel{
     public BaseEMCGodStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("god"));
     }

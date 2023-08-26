@@ -74,11 +74,11 @@ public class guardianArmor extends BaseEMCGodArmorItem implements IDifficultyIte
 
     @Override
     public float shield(ItemStack stack) {
-        return (float) (25 * getPrefixCommonRate(stack) + 6f * getLevel(stack) * getShieldRate());
+        return (float) ((37.5 * getPrefixCommonRate(stack) + 32f * getLevel(stack) + 150) * getShieldRate());
     }
 
     @Override
     public float shield_speed(ItemStack stack) {
-        return (float) (3f * getPrefixCommonRate(stack) + 0.3f * getLevel(stack) * getShieldRate());
+        return (float) (4.5f * getPrefixCommonRate(stack) + 0.35f * getLevel(stack) * getShieldRate());
     }
 }

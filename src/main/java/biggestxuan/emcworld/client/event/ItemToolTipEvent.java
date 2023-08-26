@@ -38,10 +38,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -51,6 +48,8 @@ import net.minecraftforge.fml.common.Mod;
 import vazkii.botania.api.mana.IManaItem;
 
 import javax.annotation.Nonnull;
+
+import java.util.List;
 
 import static biggestxuan.emcworld.common.registry.EWItems.EMC_FLOWER;
 
@@ -227,7 +226,7 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof ICostEMCItem){
             ICostEMCItem item2 = (ICostEMCItem) stack.getItem();
-            double cost = item2.costEMCWhenAttack(stack);
+            double cost = item2.costEMCWhenAttackActually(stack);
             if(cost > 1){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_cost_addon",f((cost-1)*100)+"%"));
             }
@@ -343,15 +342,17 @@ public class ItemToolTipEvent {
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
         }
         if(stack.isDamageableItem() && !(stack.getItem() instanceof StoredTotem)){
-            if(stack.getItem() instanceof IEMCRepairableItem){
-                IEMCRepairableItem item = (IEMCRepairableItem) stack.getItem();
-                if(item.getTickCost(stack) > 0){
-                    event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_repair",MathUtils.format(item.getTickCost(stack))));
-                    return;
-                }
-            }
-            if(stack.getMaxDamage() >= 0){
+            long cost = MathUtils.getEMCRepairCost(stack);
+            if(cost >= 0){
+                event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_repair",MathUtils.format(cost)));
+            }else if(stack.getMaxDamage() >= 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.durability",stack.getMaxDamage()-stack.getDamageValue(),stack.getMaxDamage()));
+            }
+        }
+        List<TranslationTextComponent> list = MathUtils.getWeaponDisplayWillCost(player,stack,true);
+        if(list.size() > 0 && GameStageManager.hasStage(player,"two")){
+            for(TranslationTextComponent s : MathUtils.getWeaponDisplayWillCost(player,stack,Screen.hasShiftDown() && Screen.hasControlDown())){
+                event.getToolTip().add(s);
             }
         }
         if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){

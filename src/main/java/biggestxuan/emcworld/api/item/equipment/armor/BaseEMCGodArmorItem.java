@@ -20,7 +20,7 @@ import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor,IHealBoostArmor, IEMCGod {
+public abstract class BaseEMCGodArmorItem extends BaseArmorItem implements IUpgradeableArmor,ISpeedArmor,IReachArmor,IEMCShieldArmor,IHealBoostArmor,IEMCGod {
     protected final int index;
     public BaseEMCGodArmorItem(IArmorMaterial p_i48534_1_, int p_i48534_2_) {
         super(p_i48534_1_, getType(p_i48534_2_));

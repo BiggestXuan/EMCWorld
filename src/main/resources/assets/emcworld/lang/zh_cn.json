@@ -387,6 +387,13 @@
   "item.emcworld.exception_apple": "异常红润的苹果",
   "item.emcworld.shengxuan": "圣宣",
   "item.emcworld.emc_dagger": "质能牺牲匕首",
+  "item.emcworld.ikun_adventure_record": "只因大冒险 - 纳米雷电（Bilibili）",
+  "item.emcworld.clump_knightmetal": "骑士金属碎块",
+  "item.emcworld.crystal_knightmetal": "骑士金属晶体",
+  "item.emcworld.dirty_dust_knightmetal": "污浊骑士金属粉",
+  "item.emcworld.dust_knightmetal": "骑士金属粉",
+  "item.emcworld.shard_knightmetal": "骑士金属碎片",
+  "item.emcworld.exorcism_candle": "驱魔蜡烛",
 
   "block.emcworld.hardcore_stone": "石头之核",
   "block.emcworld.emc_ore": "质能矿石",
@@ -454,6 +461,7 @@
   "block.emcworld.star_pedestal": "质能注星核心",
   "block.emcworld.tungsten_ore": "钨矿石",
   "block.emcworld.emc_super": "超级质能核心",
+  "block.emcworld.top_core": "突破核心",
 
   "fluid.emcworld.air": "液态空气",
   "fluid.emcworld.sodium_cyanide": "液态氰化钠",
@@ -552,6 +560,8 @@
   "slurry.emcworld.dirty_torridite": "污浊炽炎溶液",
   "slurry.emcworld.clean_bloodgem": "纯净血宝石溶液",
   "slurry.emcworld.dirty_bloodgem": "污浊血宝石溶液",
+  "slurry.emcworld.clean_knightmetal": "纯净骑士金属溶液",
+  "slurry.emcworld.dirty_knightmetal": "污浊骑士金属溶液",
 
   "infuse_type.emcworld.iron": "铁",
   "infuse_type.emcworld.nickel": "镍",
@@ -659,6 +669,7 @@
   "emcsource.fish": "[垂钓]物品：%d，%d EMC",
   "emcsource.exception_apple": "[异常红润的苹果] %d EMC",
   "emcsource.emc2blood": "[牺牲匕首] %d EMC",
+  "emcsource.powerflower": "[力量花盆] 坐标：%d，%d EMC",
 
   "message.evt.addemc": "§2+ %d §2EMC",
   "message.evt.lossemc": "§4- %d §4EMC",
@@ -920,6 +931,10 @@
 
   "menu.emcworld.sponsor": "成为赞助者",
 
+  "enchantment.emcworld.emc_repair": "质能修复",
+  "enchantment.emcworld.emc_reduce": "质能减损",
+  "enchantment.emcworld.emc_looting": "质能抢夺",
+
   "tooltip.emcworld.update_add_time": "§4耗时 + ",
   "tooltip.emcworld.update_loss_time": "§2耗时 - ",
   "tooltip.emcworld.update_add_cost": "§4消耗 + ",
@@ -1059,6 +1074,12 @@
   "tooltip.emcworld.exception_apple": "§6如果它不是那么香甜的话，我会说它闻起来像血",
   "tooltip.blood_dagger.desc": "§6以你的质能之力代替生命损耗",
   "tooltip.mana_item.desc": "§2也许得使用火花弥散才能充能？",
+  "tooltip.cost.line0": "§9平均攻击消耗：%d",
+  "tooltip.cost.line1": "§9攻击单个目标 EMC 消耗明细",
+  "tooltip.cost.line2": "§9基础伤害：%d（%d）",
+  "tooltip.cost.line3": "§9职业和宝石：%d（%d）",
+  "tooltip.cost.line5": "§9平均暴击：%d（%d）",
+  "tooltip.emcworld.exorcism_candle": "§9禁止周围神圣RPG的生物生成",
 
   "attack_range_none": "关闭",
   "attack_range_all": "全部攻击",

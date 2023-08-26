@@ -11,8 +11,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
+import org.lwjgl.system.CallbackI;
 import org.openzen.zencode.java.ZenCodeType;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,14 +61,18 @@ public class CrTSingularity {
     }
 
     @ZenCodeType.Method
+    @ZenCodeType.Nullable
+    @Nullable
     public static ItemStack getSingularity(String name){
         ItemStack stack = EMCWorld.getItem("extendedcrafting:singularity");
+        if(name.equals("platinum")){
+            return null;
+        }
         CompoundNBT nbt = stack.getOrCreateTag();
         if(!name.contains(":")){
             name = "extendedcrafting:"+name;
         }
         nbt.putString("Id",name);
-
         return stack;
     }
 
@@ -84,12 +90,15 @@ public class CrTSingularity {
     @EMCWorldSince("1.0.0")
     public static ItemStack[] getAllSingularity(){
         List<Singularity> list = SingularityRegistry.getInstance().getSingularities();
-        ItemStack[] stacks = new ItemStack[list.size()];
-        for (int i = 0; i < stacks.length; i++) {
-            ItemStack sing = getSingularity(list.get(i).getId().toString());
-            stacks[i] = sing;
+        List<ItemStack> stacks = new ArrayList<>();
+        for (Singularity s : list) {
+            ItemStack sing = getSingularity(s.getId().toString());
+            if(s.getName().contains("platinum")){
+                continue;
+            }
+            stacks.add(sing);
         }
-        return stacks;
+        return stacks.toArray(new ItemStack[]{});
     }
 
     @ZenCodeType.Method

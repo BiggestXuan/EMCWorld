@@ -11,6 +11,7 @@ public function modifyNatureAuraRecipe() as void{
     var gp = <item:naturesaura:gold_powder>;
     var ni = <item:emcworld:niobium_ingot>;
     var na = <item:naturesaura:nature_altar>;
+    var iib = <item:naturesaura:infused_iron_block>;
     var cs = <item:naturesaura:calling_spirit>;
     var eye = <item:naturesaura:eye>;
     var gb = <item:naturesaura:gold_brick>;
@@ -18,7 +19,7 @@ public function modifyNatureAuraRecipe() as void{
     var nas = <item:naturesaura:ancient_sapling>;
     var ei = <item:naturesaura:eye_improved>;
     var gl = <item:naturesaura:gold_leaf>;
-    removeNatureAltarRecipe([ii,tg]);
+    removeNatureAltarRecipe([ii,tg,iib]);
     removeCraftRecipe([
         gf,gp,<item:naturesaura:wood_stand>,gb,gnb,<item:naturesaura:offering_table>,cs
     ]);

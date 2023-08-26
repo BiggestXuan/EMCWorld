@@ -89,8 +89,8 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 5.5);
     }
 
-    private double getCostRate(PlayerEntity player){
-        double costRate = 1;
+    public double getCostRate(ItemStack stack,PlayerEntity player){
+        double costRate = costEMCWhenAttackActually(stack);
         IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
         if(cap.getModify() == 2 && cap.getProfession() == 3 && cap.getSkills()[36] != 0){
             double r = cap.getSkills()[36] /10000f;
@@ -235,7 +235,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
                     float damage = getManaBurstDamage(stack,thrower);
                     if(thrower instanceof PlayerEntity){
                         PlayerEntity player = (PlayerEntity) thrower;
-                        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getCostRate(player) * getManaBurstDamage(stack,player));
+                        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getCostRate(stack,player) * getManaBurstDamage(stack,player));
                         if(living.getType().equals(Registry.TARGET_DUMMY.get())){
                             cost = 0;
                         }
@@ -337,11 +337,6 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
     @Override
     public boolean hurtEnemy(ItemStack p_77644_1_, LivingEntity p_77644_2_, LivingEntity p_77644_3_) {
         return false;
-    }
-
-    @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
     }
 
     @Override

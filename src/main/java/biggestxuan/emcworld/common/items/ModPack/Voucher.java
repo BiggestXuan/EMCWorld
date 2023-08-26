@@ -7,9 +7,18 @@ package biggestxuan.emcworld.common.items.ModPack;
  */
 
 import biggestxuan.emcworld.api.item.base.BaseModPackItem;
+import net.minecraft.util.text.ITextComponent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Voucher extends BaseModPackItem {
     public Voucher(){
-        super("\u6c22\u91cf\u7a7a\u5c9b (Hydrogen Skyblock)",null);
+        super("\u6c22\u91cf\u7a7a\u5c9b (Hydrogen Skyblock)");
+    }
+
+    @Override
+    protected List<ITextComponent> getUsages() {
+        return new ArrayList<>();
     }
 }

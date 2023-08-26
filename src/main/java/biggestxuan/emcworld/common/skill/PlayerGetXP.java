@@ -31,7 +31,15 @@ public class PlayerGetXP {
         IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
         if(cap.getLevel() < cap.getMaxLevel() && cost < 0){
             int base = Math.negateExact((int) Math.round(600 * Math.pow(2, CrTConfig.getWorldDifficulty()/2)));
-            PlayerGetXPEvent postEvent = new PlayerGetXPEvent(player,(int) (cost / base));
+            int xp = (int) (cost / base); //cost,base are negative.
+            if(-cost < -base){
+                cap.setCostEMC(-cost);
+                if(cap.getCostEMC() >= -base){
+                    xp = 1;
+                    cap.setCostEMC(cap.getCostEMC()+base);
+                }
+            }
+            PlayerGetXPEvent postEvent = new PlayerGetXPEvent(player,xp);
             MinecraftForge.EVENT_BUS.post(postEvent);
             int value = postEvent.getAmount();
             cap.addXP(value);

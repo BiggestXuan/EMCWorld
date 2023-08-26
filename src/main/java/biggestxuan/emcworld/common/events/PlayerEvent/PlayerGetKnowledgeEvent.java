@@ -24,7 +24,7 @@ public class PlayerGetKnowledgeEvent {
         }
         if(info.getItem() instanceof IFakeEMCItem){
             IFakeEMCItem item = (IFakeEMCItem) info.getItem();
-            item.doSomething(event.getPlayer());
+            item.doSomething(event.getPlayer(),info.createStack());
             event.setCanceled(true);
         }
     }

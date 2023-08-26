@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.mixin;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.IWIP;
+import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.INameItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
@@ -18,7 +19,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.*;
+import net.minecraftforge.common.extensions.IForgeItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,7 +30,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
-public abstract class ItemMixin implements INameItem {
+public abstract class ItemMixin implements INameItem, IForgeItem {
     @Shadow
     private String descriptionId;
 
@@ -51,6 +54,30 @@ public abstract class ItemMixin implements INameItem {
                 cir.setReturnValue("item.emcworld.unknown_bag");
                 break;
         }
+    }
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        if(stack.getItem() instanceof IEMCInfuserItem){
+            return true;
+        }
+        return stack.isDamaged();
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        if(stack.getItem() instanceof IEMCInfuserItem){
+            var i = (IEMCInfuserItem) stack.getItem();
+            return 1 - 1d * i.getInfuser(stack) / i.getMaxInfuser(stack);
+        }
+        return 1d * stack.getDamageValue() / stack.getMaxDamage();
+    }
+
+    @Override
+    public int getRGBDurabilityForDisplay(ItemStack stack) {
+        if(stack.getItem() instanceof IEMCInfuserItem){
+            return 0xD7C8F3;
+        }
+        return MathHelper.hsvToRgb(Math.max(0.0F, (float) (1.0F - getDurabilityForDisplay(stack))) / 3.0F, 1.0F, 1.0F);
     }
 
     @Override

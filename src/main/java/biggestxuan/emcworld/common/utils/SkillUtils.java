@@ -31,6 +31,7 @@ public class SkillUtils {
         }
         return null;
     }
+
     public static DamageUtils getPlayerAttackDamage(PlayerEntity player,ItemStack stack){
         IPlayerSkillCapability cap = EMCWorldAPI.getInstance().getPlayerSkillCapability(player);
         IUtilCapability util = EMCWorldAPI.getInstance().getUtilCapability(player);

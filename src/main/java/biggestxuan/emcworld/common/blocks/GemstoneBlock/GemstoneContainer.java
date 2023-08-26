@@ -60,11 +60,11 @@ public class GemstoneContainer extends EMCWorldBaseContainer {
                 }
             }else{
                 if(index < 28){
-                    if (!moveItemStackTo(stack, 29, 38, false)) {
+                    if (!moveItemStackTo(stack, 28, 38, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (index < 38){
-                    if (!moveItemStackTo(stack, 2, 38, false)) {
+                    if (!moveItemStackTo(stack, 2, 28, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
@@ -73,6 +73,9 @@ public class GemstoneContainer extends EMCWorldBaseContainer {
                 slot.set(ItemStack.EMPTY);
             } else {
                 slot.setChanged();
+            }
+            if(stack.getCount() == s.getCount()){
+                return ItemStack.EMPTY;
             }
             slot.onTake(playerIn,stack);
         }

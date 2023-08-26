@@ -152,7 +152,7 @@ public class PlayerLoggedEvent {
             Message.sendMessage(player,tc("message.update_none"));
         }
         server.setDifficulty(Difficulty.HARD,true);
-        server.setDifficultyLocked(true);
+        server.setDifficultyLocked(ConfigManager.SUNDRY_LOCK_DIFFICULTY.get());
         if((log+1) % 100 == 0 && ConfigManager.SPONSOR_INFO.get() && c.getLevel()[0] == 0){
             Message.sendMessage(player,EMCWorld.tc("message.log.sponsor",log+1));
         }

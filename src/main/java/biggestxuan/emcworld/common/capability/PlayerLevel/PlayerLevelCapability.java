@@ -18,6 +18,7 @@ public class PlayerLevelCapability implements IPlayerSkillCapability {
     private int profession;
     private int[] skills;
     private int modify;
+    private long costEMC;
 
     public PlayerLevelCapability(){
         this.maxLevel = 10;
@@ -26,6 +27,17 @@ public class PlayerLevelCapability implements IPlayerSkillCapability {
         this.profession = 0;
         this.skills = new int[44];
         this.modify = 0;
+        this.costEMC = 0;
+    }
+
+    @Override
+    public long getCostEMC() {
+        return this.costEMC;
+    }
+
+    @Override
+    public void setCostEMC(long emc) {
+        this.costEMC = emc;
     }
 
     @Override
@@ -135,6 +147,7 @@ public class PlayerLevelCapability implements IPlayerSkillCapability {
         tag.putInt("modify",this.modify);
         tag.putInt("profession",this.profession);
         tag.putIntArray("skills",this.skills);
+        tag.putLong("costEMC",this.costEMC);
         return tag;
     }
 
@@ -146,5 +159,6 @@ public class PlayerLevelCapability implements IPlayerSkillCapability {
         this.profession = nbt.getInt("profession");
         this.skills = nbt.getIntArray("skills");
         this.modify = nbt.getInt("modify");
+        this.costEMC = nbt.getLong("costEMC");
     }
 }

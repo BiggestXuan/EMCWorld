@@ -86,4 +86,8 @@ public class PlayerCurios {
         }
         return willCost;
     }
+
+    public static boolean hasExorcismCandle(PlayerEntity player){
+        return !getStack(player,EWItems.EXORCISM_CANDLE).equals(ItemStack.EMPTY);
+    }
 }

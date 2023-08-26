@@ -75,11 +75,6 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
     }
 
     @Override
-    public long getTickCost(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
     public long EMCModifySecond(ItemStack stack) {
         return 0;
     }

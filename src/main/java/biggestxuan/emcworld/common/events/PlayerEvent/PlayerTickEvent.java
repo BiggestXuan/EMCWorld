@@ -453,10 +453,10 @@ public class PlayerTickEvent {
         float max_total = 0f;
         float total = 0f;
         for(ItemStack stack:getPlayerAllItem(player)){
-            if(stack.getItem() instanceof IEMCRepairableItem){
-                IEMCRepairableItem item = (IEMCRepairableItem) stack.getItem();
-                if(EMCHelper.getPlayerEMC(player) >= item.getTickCost(stack) && stack.getDamageValue() != 0 && item.getTickCost(stack) > 0){
-                    EMCHelper.modifyPlayerEMC(player,new EMCSource.RepairItemEMCSource(Math.negateExact(item.getTickCost(stack)),player,stack,0),false);
+            long EMCRepair = MathUtils.getEMCRepairCost(stack);
+            if(EMCRepair >= 0){
+                if(EMCHelper.getPlayerEMC(player) >= EMCRepair && stack.getDamageValue() != 0){
+                    EMCHelper.modifyPlayerEMC(player,new EMCSource.RepairItemEMCSource(-EMCRepair,player,stack,0),false);
                     stack.setDamageValue(stack.getDamageValue()-1);
                 }
             }
