@@ -78,3 +78,7 @@ License: [MIT License](https://github.com/Morpheus1101/Avaritia/blob/master/READ
 ### [StorageDrawers](https://github.com/jaquadro/StorageDrawers)  
 Author: [jaquadro](https://github.com/jaquadro)  
 License: [MIT License](https://github.com/jaquadro/StorageDrawers/blob/1.16/LICENSE)
+  
+### [只因大冒险](https://www.bilibili.com/video/BV19x4y1R7ar/)
+Author:[纳米雷电](https://space.bilibili.com/497926520)
+License:[Here](https://biggestxuan.top/emcworld/license/chi.png)
