@@ -10,17 +10,15 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.network.PacketHandler;
 import biggestxuan.emcworld.common.network.toServer.OfflinePacket;
 import biggestxuan.emcworld.common.registry.EWItems;
-import biggestxuan.emcworld.common.utils.BirthdayUtils;
-import biggestxuan.emcworld.common.utils.CalendarUtils;
+import biggestxuan.emcworld.common.utils.*;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
-import biggestxuan.emcworld.common.utils.MathUtils;
-import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.Network.Network;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
@@ -71,6 +69,8 @@ public class PlayerLoggedEvent {
         sponsorCap.ifPresent(cp -> cp.setOnline(server.usesAuthentication()));
         ResearchManager.setTomeReceived(player);
         IUtilCapability c = sponsorCap.orElseThrow(NullPointerException::new);
+        c.clearPlayTime();
+        //PlayTimeUtils.sendRestMessage(player);  //test
         int[] level = MathUtils.StringArray2IntArray(Network.getInfo(player).split(","));
         sendHappyBirthday(server,player);
         sponsorCap.ifPresent(sp -> {
@@ -86,6 +86,9 @@ public class PlayerLoggedEvent {
         }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
+        if(!GameStageManager.hasStage(player,"start")){
+            GameStageManager.addStage(player,"start");
+        }
         if(log + 1 == 1){
             player.inventory.clearContent();
             ItemStack book = new ItemStack(PatchouliItems.book);

@@ -10,8 +10,6 @@ import crafttweaker.api.event.entity.player.MCItemPickupEvent;
 import crafttweaker.api.event.block.MCBlockBreakEvent;
 */
 
-import crafttweaker.api.util.BlockPos;
-
 CTEventManager.register<MCPlayerLoggedInEvent>(EventPriority.LOWEST,(event)=>{
     var player = event.player;
     if(player.LogCount() == 1){
@@ -22,7 +20,7 @@ CTEventManager.register<MCPlayerLoggedInEvent>(EventPriority.LOWEST,(event)=>{
 
 CTEventManager.register<MCLivingDeathEvent>((event)=>{
     if(event.getEntityLiving().getName() == "emcworld:cxk"){
-        var pos as BlockPos = event.getEntityLiving().getPosition();
+        var pos = event.getEntityLiving().getPosition();
         event.getEntityLiving().world.asServerWorld().server.executeCommand("playsound emcworld:cxk_death ambient @p "+pos.x+" "+pos.y+" "+pos.z, true);
     }
 });

@@ -7,13 +7,13 @@ package biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.screen.EMCWorldContainerHelperGUI;
 import biggestxuan.emcworld.common.blocks.MultiBlock;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.recipes.AdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class AdvancedUpdateGUI extends ContainerScreen<AdvancedUpdateContainer> {
+public class AdvancedUpdateGUI extends EMCWorldContainerHelperGUI<AdvancedUpdateContainer> {
     private final BlockPos pos;
     private final World world;
     public AdvancedUpdateGUI(AdvancedUpdateContainer p_i51105_1_, PlayerInventory p_i51105_2_, ITextComponent p_i51105_3_) {
@@ -75,5 +75,10 @@ public class AdvancedUpdateGUI extends ContainerScreen<AdvancedUpdateContainer> 
         if(itemStack.isEmpty()){
             drawCenteredString(matrixStack, this.font, "0 EMC", 138, 20, 0xffffff);
         }
+    }
+
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3199293";
     }
 }

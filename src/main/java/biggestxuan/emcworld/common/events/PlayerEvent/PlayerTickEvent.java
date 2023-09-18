@@ -35,6 +35,7 @@ import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.common.utils.PlayTimeUtils;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import dev.latvian.mods.projectex.Matter;
 import dev.latvian.mods.projectex.block.CollectorBlock;
@@ -62,6 +63,8 @@ import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
@@ -107,8 +110,12 @@ public class PlayerTickEvent {
         PlayerEntity player = event.player;
         MinecraftServer server = player.getCommandSenderWorld().getServer();
         if(!GameStageManager.hasStage(player,"fly") && !player.isCreative() && !player.isSpectator()){
+            if(player.abilities.flying){
+                Message.sendMessage(player,EMCWorld.tc("message.emcworld.cant_fly").setStyle(Style.EMPTY.withColor(TextFormatting.DARK_RED)));
+            }
             player.abilities.flying=false;
             player.abilities.mayfly=false;
+
         }
         if(player.level.isClientSide() || event.side.isClient()) return;
         if(event.phase == TickEvent.Phase.END) return;
@@ -407,8 +414,8 @@ public class PlayerTickEvent {
             util.setRaidDamage(0f);
         }
         DifficultyData data = DifficultyData.getInstance(server.overworld());
-        data.putDifficulty(Math.min(data.getDifficulty(),ConfigManager.DIFFICULTY.get()));
-        util.setDifficulty(data.getDifficulty());
+        data.putDifficulty(Math.max(Math.min(data.getDifficulty(),ConfigManager.DIFFICULTY.get()),0.5));
+        util.setDifficulty(Math.max(Math.min(util.getDifficulty(),ConfigManager.DIFFICULTY.get()),0.5));
         double radiation = MekanismAPI.getRadiationManager().getRadiationLevel(new Coord4D(playerPos,player.level));
         if(radiation > 50000 && !player.isCreative()){
             ItemStack stack = PlayerCurios.getPlayerNuclearBall(player);
@@ -430,6 +437,10 @@ public class PlayerTickEvent {
         if(world.getGameTime() % 20 == 0){
             long amount = 0;
             List<ItemStack> list = new ArrayList<>();
+            util.addPlayTime();
+            if(PlayTimeUtils.shouldSendMessage(player)){
+                PlayTimeUtils.sendRestMessage(player);
+            }
             for(ItemStack stack:getPlayerAllItem(player)){
                 if(stack.getItem() instanceof ISecondEMCItem){
                     ISecondEMCItem item = (ISecondEMCItem) stack.getItem();
@@ -577,7 +588,7 @@ public class PlayerTickEvent {
         if(!shield.equals(ItemStack.EMPTY) && shield.getItem() instanceof IEMCShieldArmor && shield.getItem() instanceof EMCShieldSupply){
             EMCShieldSupply supply = (EMCShieldSupply) shield.getItem();
             long cost = (long) (-100000 * Math.pow(1.135,Math.pow(1.5,supply.getLevel(shield))) / 100);
-            if(supply.getShield(shield) < supply.getMaxShield(shield) && supply.getInfuser(shield) >= cost){
+            if(supply.getShield(shield) < supply.getMaxShield(shield) && supply.getInfuser(shield) >= -cost){
                 supply.addInfuser(shield, cost);
                 supply.heal(shield);
             }

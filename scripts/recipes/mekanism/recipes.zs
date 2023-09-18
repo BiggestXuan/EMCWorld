@@ -3,6 +3,8 @@ import crafttweaker.api.item.ItemStack;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.recipe.Replacer;
 
+import mods.emcworld.configHelper;
+
 import math.Functions;
 
 public function modifyMEKRecipe() as void{
@@ -194,6 +196,9 @@ public function modifyMEKRecipe() as void{
         [ar2,sc,<item:astralsorcery:colored_lens_spectral>],
         [ar2,et,a]
     ],la);
+    if(configHelper.isEasyMekNuclear()){
+        reactionRecipe(<item:emcworld:big_emc_gem>,<fluid:minecraft:water>*1000,<gas:mekanism:fissile_fuel>*2000,<item:emcworld:small_emc_gem>,<gas:mekanism:spent_nuclear_waste>*2000);
+    }
     modifyShapedRecipe([
         [sia,ro,rg],
         [sia,<item:mekanism:ultimate_energy_cube>,<item:botania:lens_warp>],

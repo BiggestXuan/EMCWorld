@@ -223,7 +223,7 @@ public final class MathUtils {
         return 0f;
     }
 
-    public static long min(long a,long b,long c){
+    public static double min(double a,double b,double c){
         if(a == b && b == c) return a;
         a = Math.min(a,b);
         a = Math.min(a,c);

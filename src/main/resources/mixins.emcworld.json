@@ -96,6 +96,7 @@
     "NaturesCompassScreenMixin",
     "RatsPlagueMixin",
     "RenderTickHandlerMixin",
+    "ScreenJournalPerkTreeMixin",
     "SpecialLootChestItemRendererMixin",
     "SpecialLootChestTileRendererMixin",
     "StructureSearchEntryMixin",

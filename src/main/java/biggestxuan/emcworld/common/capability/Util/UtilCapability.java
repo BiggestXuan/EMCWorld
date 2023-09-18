@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.capability.Util;
  */
 
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.nbt.CompoundNBT;
 
 public class UtilCapability implements IUtilCapability {
@@ -48,6 +49,7 @@ public class UtilCapability implements IUtilCapability {
     private boolean online;
     private float attackCD;
     private long mv;
+    private int playTime;
 
     public UtilCapability(){
         this.SponsorLevel = new int[0];
@@ -66,7 +68,7 @@ public class UtilCapability implements IUtilCapability {
         this.raidDamage = 0;
         this.displayDamage = false;
         this.raidRate = 1f;
-        this.difficulty = 0;
+        this.difficulty = ConfigManager.DIFFICULTY.get();
         this.modifyDifficulty = false;
         this.speed = 0f;
         this.arcana = 0f;
@@ -86,6 +88,22 @@ public class UtilCapability implements IUtilCapability {
         this.online = true;
         this.attackCD = 1F;
         this.mv = 0L;
+        this.playTime = 0;
+    }
+
+    @Override
+    public int getPlayTime() {
+        return this.playTime;
+    }
+
+    @Override
+    public void addPlayTime() {
+        playTime++;
+    }
+
+    @Override
+    public void clearPlayTime() {
+        playTime = 0;
     }
 
     @Override
@@ -514,6 +532,7 @@ public class UtilCapability implements IUtilCapability {
         tag.putBoolean("online",online);
         tag.putFloat("attackCD",attackCD);
         tag.putLong("mv",mv);
+        tag.putInt("playTime",playTime);
         return tag;
     }
 
@@ -557,5 +576,6 @@ public class UtilCapability implements IUtilCapability {
         this.online = nbt.getBoolean("online");
         this.attackCD = nbt.getFloat("attackCD");
         this.mv = nbt.getLong("mv");
+        this.playTime = nbt.getInt("playTime");
     }
 }

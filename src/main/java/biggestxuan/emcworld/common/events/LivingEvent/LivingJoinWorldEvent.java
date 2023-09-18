@@ -59,9 +59,6 @@ public class LivingJoinWorldEvent {
             if(livingEntity.getLootTable().getNamespace().equals("divinerpg")){
                 if(!canSpawnDivingRPGMob(livingEntity)){
                     event.setCanceled(true);
-                }
-                if(MathUtils.isRandom(0.2)){
-                    event.setCanceled(true);
                     return;
                 }
             }
@@ -83,7 +80,7 @@ public class LivingJoinWorldEvent {
     }
 
     private static boolean canSpawnDivingRPGMob(Entity entity){
-        AxisAlignedBB aabb = MathUtils.expandAABB(entity.position(),64);
+        AxisAlignedBB aabb = MathUtils.expandAABB(entity.position(),128);
         List<PlayerEntity> players = entity.level.getLoadedEntitiesOfClass(PlayerEntity.class,aabb);
         for(PlayerEntity p : players){
             if(!GameStageManager.hasStage(p,"two") && entity.level.dimension().equals(World.OVERWORLD)){

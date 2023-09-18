@@ -25,5 +25,7 @@ public class EWItem extends EMCWorldBaseItem {
     public EWItem(int rarity){
         super(rarity);
     }
+
+
 }
 

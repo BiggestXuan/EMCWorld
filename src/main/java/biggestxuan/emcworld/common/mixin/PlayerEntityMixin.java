@@ -56,7 +56,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         if(p_213357_2_.isEdible()){
             PlayerEntity player = (PlayerEntity) (Object) this;
             Food food = p_213357_2_.getItem().getFoodProperties();
-            MinecraftForge.EVENT_BUS.post(new PlayerEatFoodEvent(player,food.getNutrition(),food.getSaturationModifier(),food));
+            PlayerEatFoodEvent event = new PlayerEatFoodEvent(player,food.getNutrition(),food.getSaturationModifier(),food,p_213357_2_);
+            if(MinecraftForge.EVENT_BUS.post(event)){
+                cir.setReturnValue(p_213357_2_);
+            }else{
+                super.eat(p_213357_1_,p_213357_2_);
+            }
         }
     }
 

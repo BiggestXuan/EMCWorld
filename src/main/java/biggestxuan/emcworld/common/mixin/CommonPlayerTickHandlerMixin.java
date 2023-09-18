@@ -25,7 +25,7 @@ public abstract class CommonPlayerTickHandlerMixin {
     @Inject(method = "isJetpackOn",at = @At("HEAD"),remap = false, cancellable = true)
     @EMCWorldSince("1.0.2")
     private static void __inject(PlayerEntity player, ItemStack chest, CallbackInfoReturnable<Boolean> cir){
-        if(!yes(player)){
+        if(yes(player)){
             cir.setReturnValue(false);
         }
     }
@@ -33,16 +33,13 @@ public abstract class CommonPlayerTickHandlerMixin {
     @Inject(method = "handleJetpackMotion",at = @At("HEAD"),remap = false,cancellable = true)
     @EMCWorldSince("1.0.2")
     private static void __inject(PlayerEntity player, ItemJetpack.JetpackMode mode, BooleanSupplier ascendingSupplier, CallbackInfoReturnable<Boolean> cir){
-        if(!yes(player)){
+        if(!player.isDeadOrDying() && yes(player)){
             cir.setReturnValue(false);
         }
     }
 
     private static boolean yes(PlayerEntity player){
-        if(player.isDeadOrDying()){
-            return false;
-        }
         IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
-        return cap.gaiaPlayer() < 1;
+        return cap.gaiaPlayer() >= 1;
     }
 }

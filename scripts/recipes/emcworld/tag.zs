@@ -45,7 +45,7 @@ public function modifyEMCWorldTags() as void{
     for i in [c[6],r[6],f[6]]{
         <tag:items:emcworld:stage_five>.add(i);
     }
-    for i in [c[7],r[7],f[6]]{
+    for i in [c[7],r[7],f[7]]{
         <tag:items:emcworld:stage_six>.add(i);
     }
     for i in [c[8],r[8],f[8]]{

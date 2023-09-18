@@ -11,6 +11,7 @@ import mods.mekanism.api.chemical.SlurryStack;
 
 import crafttweaker.api.item.ItemStack;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.fluid.IFluidStack;
 
 public function DLRecipeSlurry(input as ItemStack,gasInput as GasStack,output as SlurryStack,addon as string) as void{
@@ -58,9 +59,9 @@ public function enrichingRecipe(input as ItemStack,output as ItemStack,rate as i
     <recipetype:mekanism:enriching>.addRecipe(recipeName,input.asIItemStack(),output.asIItemStack()*rate);
 }
 
-public function combiningRecipe(input as ItemStack,extra as ItemStack,output as ItemStack) as void{
+public function combiningRecipe(input as IIngredient,extra as IIngredient,output as ItemStack) as void{
     var recipeName as string = getRecipeName(output)+"_combining";
-    <recipetype:mekanism:combining>.addRecipe(recipeName,input.asIItemStack(),extra.asIItemStack(),output.asIItemStack());
+    <recipetype:mekanism:combining>.addRecipe(recipeName,input,extra,output.asIItemStack());
 }
 
 public function blastRecipe(output as ItemStack,input as ItemStack) as void{

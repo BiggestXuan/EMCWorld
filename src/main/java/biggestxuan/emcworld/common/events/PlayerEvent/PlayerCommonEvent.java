@@ -22,6 +22,7 @@ import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.SponsorsItem.ExceptionApple;
+import biggestxuan.emcworld.common.items.SponsorsItem.IceCream;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.traits.ITrait;
 import biggestxuan.emcworld.common.traits.TraitType;
@@ -32,6 +33,7 @@ import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -248,6 +250,17 @@ public class PlayerCommonEvent {
         if(event.getFood().equals(Foods.GOLDEN_APPLE)){
             player.removeEffect(Effects.HEAL);
             player.removeEffect(Effects.ABSORPTION);
+        }
+        if(event.getFood().equals(IceCream.ICE_FOOD)){
+            long base = MathUtils.getEatFoodBase(player,event.getFood())*10000;
+            if(EMCHelper.getPlayerEMC(player) > base){
+                player.addEffect(new EffectInstance(Effects.HEAL,EMCWorld.HOMO,4));
+                player.addEffect(new EffectInstance(Effects.ABSORPTION,EMCWorld.HOMO,4));
+                EMCHelper.modifyPlayerEMC(player,new EMCSource.IceCreamSource(-base,player));
+                player.getCooldowns().addCooldown(event.getStack().getItem(),1200);
+            }else{
+                event.setCanceled(true);
+            }
         }
         if(!player.level.isClientSide){
             ItemStack stack = PlayerCurios.getPlayerExceptionApple(player);

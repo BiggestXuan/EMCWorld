@@ -319,6 +319,12 @@
 					type: "item"
 					item: "emcworld:exorcism_candle"
 				}
+				{
+					id: "266B2B9FA783CEFE"
+					type: "item"
+					team_reward: true
+					item: "projecte:interdiction_torch"
+				}
 			]
 		}
 		{

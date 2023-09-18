@@ -724,6 +724,12 @@
 						}
 					}
 				}
+				{
+					id: "1A743FAD19B39214"
+					type: "item"
+					team_reward: true
+					item: "projecte:interdiction_torch"
+				}
 			]
 		}
 		{

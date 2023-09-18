@@ -53,14 +53,19 @@ import biggestxuan.emcworld.common.items.RaidItem.RaidLightItem;
 import biggestxuan.emcworld.common.items.SponsorsItem.*;
 import dev.latvian.mods.projectex.Matter;
 import net.minecraft.block.Block;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class EWItems {
@@ -168,10 +173,9 @@ public class EWItems {
     public static final RegistryObject<Item> SCROLL_BX = ITEMS.register("scroll_bx", BiggestXuanScroll::new);
     public static final RegistryObject<Item> UnEqual = ITEMS.register("unequal", NoEqualItem::new);
     public static final RegistryObject<Item> EXORCISM_CANDLE = ITEMS.register("exorcism_candle", () -> new EWItem(){
-        @Nonnull
         @Override
-        public ITextComponent getDescription() {
-            return EMCWorld.tc("tooltip.emcworld.exorcism_candle");
+        public void appendHoverText(@Nonnull ItemStack p_77624_1_, @Nullable World p_77624_2_, @Nonnull List<ITextComponent> p_77624_3_, @Nonnull ITooltipFlag p_77624_4_){
+            p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.exorcism_candle"));
         }
     });
     public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(1));

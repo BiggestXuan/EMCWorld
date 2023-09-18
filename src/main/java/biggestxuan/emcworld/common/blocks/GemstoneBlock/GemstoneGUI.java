@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.blocks.GemstoneBlock;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.screen.EMCWorldContainerHelperGUI;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -15,9 +16,14 @@ import net.minecraft.util.text.ITextComponent;
 
 import javax.annotation.Nonnull;
 
-public class GemstoneGUI extends ContainerScreen<GemstoneContainer> {
+public class GemstoneGUI extends EMCWorldContainerHelperGUI<GemstoneContainer> {
     public GemstoneGUI(GemstoneContainer p_i51105_1_, PlayerInventory p_i51105_2_, ITextComponent p_i51105_3_) {
         super(p_i51105_1_, p_i51105_2_, p_i51105_3_);
+    }
+
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3148394";
     }
 
     @Override

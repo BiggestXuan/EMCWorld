@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.compact.CraftTweaker;
  *  2022/07/26
  */
 
+import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import org.openzen.zencode.java.ZenCodeType;
@@ -48,5 +49,11 @@ public class CrTConfig {
     @ZenCodeType.Method
     public static boolean PillagerChestLimit(){
         return ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get();
+    }
+
+    @ZenCodeType.Method
+    @EMCWorldSince("1.0.4")
+    public static boolean isEasyMekNuclear(){
+        return ConfigManager.CRAFT_EASY_MEKANISM_NUCLEAR.get();
     }
 }

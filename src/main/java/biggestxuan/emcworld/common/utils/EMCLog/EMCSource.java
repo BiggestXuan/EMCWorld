@@ -441,4 +441,16 @@ public abstract class EMCSource<T> {
             return super.getInfo()+EMCWorld.tc("emcsource.powerflower",getTarget().toString(),getEMC()).getString();
         }
     }
+
+    @EMCWorldSince("1.0.4")
+    public static class IceCreamSource extends EMCSource<Object>{
+        public IceCreamSource(long emc,PlayerEntity player){
+            super(emc,player,player,0);
+        }
+
+        @Override
+        public String getInfo(){
+            return super.getInfo()+EMCWorld.tc("emcsource.icecream",getTarget().toString(),getEMC()).getString();
+        }
+    }
 }

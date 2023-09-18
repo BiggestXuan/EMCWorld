@@ -171,7 +171,7 @@ public class PlayerClickEvent {
             MultiBlock.UpdateMath info = MultiBlock.getUpdateInfo(world,act);
             for(UpdateRecipe obj:UpdateRecipe.values()){
                 if(itemStack.getItem().equals(obj.getInput().getItem()) && obj.recipeLevel() == 0){
-                    craftRecipe(obj,player,info);
+                    craftRecipe(obj,player,info,true);
                 }
             }
         }
@@ -180,7 +180,7 @@ public class PlayerClickEvent {
             MultiBlock.UpdateMath info = MultiBlock.getUpdateInfo(world,act);
             for(AdvancedUpdateRecipe obj:AdvancedUpdateRecipe.values()){
                 if(itemStack.getItem().equals(obj.getInput().getItem()) && obj.recipeLevel() <= level){
-                    craftRecipe(obj,player,info);
+                    craftRecipe(obj,player,info,false);
                 }
             }
         }
@@ -372,7 +372,7 @@ public class PlayerClickEvent {
         }
     }
 
-    private static void craftRecipe(IUpdateRecipe recipe, PlayerEntity player, MultiBlock.UpdateMath info){
+    private static void craftRecipe(IUpdateRecipe recipe, PlayerEntity player, MultiBlock.UpdateMath info,boolean passCD){
         ItemStack itemStack = player.getItemInHand(Hand.MAIN_HAND);
         ItemStack output = recipe.getOutput();
         if(PlayerPickUpItemEvent.full(player,output)){
@@ -386,7 +386,7 @@ public class PlayerClickEvent {
         if(playerEMC < costEMC) return;
         IUtilCapability c = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
         long time = info.getTime();
-        if(c.getCoolDown() == 0){
+        if(c.getCoolDown() == 0 || passCD){
             int craftAmount = MathUtils.getMaxAmount(playerEMC,costEMC);
             int hasAmount = itemStack.getCount();
             int actAmount = Math.min(craftAmount,hasAmount);

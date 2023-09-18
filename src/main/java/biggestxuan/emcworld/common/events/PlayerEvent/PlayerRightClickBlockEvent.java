@@ -52,7 +52,11 @@ public class PlayerRightClickBlockEvent {
                 event.setCanceled(true);
             }
         }
-        if(block instanceof ShulkerBoxBlock || (rl.getNamespace().equals("refinedstorage") && (rl.getPath().equals("destructor") || rl.getPath().equals("constructor")))){
+        if(block instanceof ShulkerBoxBlock){
+            event.setCanceled(true);
+            Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.disable.deny"));
+        }
+        if(!ConfigManager.RSAutomation.get() && rl.getNamespace().equals("refinedstorage") && (rl.getPath().equals("destructor") || rl.getPath().equals("constructor"))){
             event.setCanceled(true);
             Message.sendMessage(event.getPlayer(),EMCWorld.tc("message.disable.deny"));
         }

@@ -12,7 +12,7 @@
 	#Enable some funny things?
 	geng = true
 	#Whether unable EMCWorld Admin Menu
-	"Able Admin Menu" = true
+	"Able Admin Menu" = false
 	#Enable sponsorship messages that players send every 100 times they enter the game.
 	"Enable Info" = true
 
@@ -50,7 +50,7 @@
 		Hoe = true
 
 	["Game Setting".Sundry]
-		"Enable Lottery" = true
+		"Enable Lottery" = false
 		#Range: 0.0 ~ 1500.0
 		DifficultyStageRate = 1.0
 		Announcement = true
@@ -62,6 +62,7 @@
 		DisableMapTeleport = true
 		#Range: > 0
 		CraftCD = 18000
+		"Rest Message" = true
 		#Range: > 0
 		RaidLightCD = 1200
 		GaiaMulti = true
@@ -102,6 +103,7 @@
 		AdvanceCraftEMCRate = 1.0
 		#Range: 0.0 ~ 1.0
 		BloodEye = 0.12
+		"Easy Mek Nuclear" = false
 		EasyDarkMatter = false
 
 [constellation]

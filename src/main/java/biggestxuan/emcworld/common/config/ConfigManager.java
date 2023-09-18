@@ -73,6 +73,7 @@ public class ConfigManager {
     public static ForgeConfigSpec.DoubleValue CRAFT_LOOT_BLOOD_EYE;
     public static ForgeConfigSpec.DoubleValue CRAFT_LOOT_ATUM_MEDAL;
     public static ForgeConfigSpec.DoubleValue CRAFT_LOOT_ADVANCED_CRAFT_RATE;
+    public static ForgeConfigSpec.BooleanValue CRAFT_EASY_MEKANISM_NUCLEAR;
     public static ForgeConfigSpec.IntValue SUNDRY_CRAFT_CD;
     public static ForgeConfigSpec.IntValue SUNDRY_RAID_LIGHT_CD;
     public static ForgeConfigSpec.IntValue SUNDRY_COLLECTOR_LIFESPAN;
@@ -88,6 +89,7 @@ public class ConfigManager {
     public static ForgeConfigSpec.BooleanValue SUNDRY_ASTRAL_CRAFT_LIMIT;
     public static ForgeConfigSpec.BooleanValue SUNDRY_ANNOUNCEMENT;
     public static ForgeConfigSpec.BooleanValue SUNDRY_LOCK_DIFFICULTY;
+    public static ForgeConfigSpec.BooleanValue SUNDRY_REST_MESSAGE;
 
     static
     {
@@ -159,6 +161,7 @@ public class ConfigManager {
         CRAFT_LOOT_BLOOD_EYE = BUILDER.defineInRange("BloodEye",0.12,0,1);
         CRAFT_LOOT_ATUM_MEDAL = BUILDER.defineInRange("AtumMedal",0.15,0,1);
         CRAFT_LOOT_ADVANCED_CRAFT_RATE = BUILDER.defineInRange("AdvanceCraftEMCRate",1d,0,Short.MAX_VALUE);
+        CRAFT_EASY_MEKANISM_NUCLEAR = BUILDER.define("Easy Mek Nuclear",false);
         BUILDER.pop();
 
         BUILDER.push("Sundry");
@@ -179,6 +182,7 @@ public class ConfigManager {
         SUNDRY_LOCK_DIFFICULTY = BUILDER.define("lock_difficulty",true);
         RSAutomation = BUILDER.comment("Enable Refined Storage Automation,such as Pattern,Crafter").define("Enable Refined Storage Automation",false);
         LOTTERY = BUILDER.define("Enable Lottery",false);
+        SUNDRY_REST_MESSAGE = BUILDER.define("Rest Message",true);
         BUILDER.pop();
 
         BUILDER.push("Festival");

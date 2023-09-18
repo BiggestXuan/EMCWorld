@@ -6,6 +6,7 @@ package biggestxuan.emcworld.api.capability;
  *  2022/08/26
  */
 
+import biggestxuan.emcworld.api.EMCWorldSince;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.util.INBTSerializable;
 
@@ -163,4 +164,11 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     long getMV();
 
     void setMV(long mv);
+
+    @EMCWorldSince("1.0.4")
+    int getPlayTime();
+
+    void addPlayTime(); //second
+
+    void clearPlayTime();
 }

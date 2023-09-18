@@ -17,6 +17,10 @@ import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
+import net.minecraft.entity.monster.WitchEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
@@ -24,8 +28,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import wayoftime.bloodmagic.ritual.RitualManager;
 
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class LivingHurtEvent {
@@ -55,6 +61,12 @@ public class LivingHurtEvent {
                         break;
                     }
                 }
+            }
+        }
+        if(entity instanceof WitchEntity && event.getSource().equals(RitualManager.RITUAL_DAMAGE)){
+            ModifiableAttributeInstance instance = entity.getAttribute(Attributes.MAX_HEALTH);
+            if(instance != null){
+                instance.addPermanentModifier(new AttributeModifier(UUID.randomUUID(),"emcworld_bm_ritual_loss",-1, AttributeModifier.Operation.ADDITION));
             }
         }
         event.setAmount(damage);

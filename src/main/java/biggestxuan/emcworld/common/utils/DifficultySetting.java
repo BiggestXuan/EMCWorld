@@ -46,7 +46,7 @@ public enum DifficultySetting{
     }
 
     public double getDeathBase(){
-        return deathBase;
+        return deathBase * 1.25;
     }
 
     public double getAttackBase(){

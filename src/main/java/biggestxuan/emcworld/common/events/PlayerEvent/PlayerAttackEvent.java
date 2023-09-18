@@ -66,140 +66,143 @@ public class PlayerAttackEvent {
         DamageSource source = event.getSource();
         LivingEntity livingEntity = event.getEntityLiving();
         float damage = event.getAmount();
-        if(source.getDirectEntity() instanceof PlayerEntity && !source.equals(EWDamageSource.REALLY)){
+        if(source.getDirectEntity() instanceof PlayerEntity && !source.equals(EWDamageSource.REALLY)) {
             PlayerEntity player = (PlayerEntity) source.getDirectEntity();
-            IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
-            IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
             ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
             ServerWorld world = player.getServer().overworld();
-            if(stack.getItem() instanceof WarHammerItem){
-                stack.setDamageValue(stack.getDamageValue()+1);
-                if(stack.getDamageValue() >= stack.getMaxDamage()){
+            if (stack.getItem() instanceof WarHammerItem) {
+                stack.setDamageValue(stack.getDamageValue() + 1);
+                if (stack.getDamageValue() >= stack.getMaxDamage()) {
                     stack.shrink(1);
                 }
             }
-            if(stack.getItem() instanceof IEMCInfuserItem){
+            if (stack.getItem() instanceof IEMCInfuserItem) {
                 IEMCInfuserItem emcItem = (IEMCInfuserItem) stack.getItem();
                 emcItem.cost(stack);
             }
-            if(stack.getItem() instanceof IAdditionsDamageWeapon){
-                damage = (float) SkillUtils.getPlayerAttackDamage(player,stack).total();
+            if (stack.getItem() instanceof IAdditionsDamageWeapon) {
+                damage = (float) SkillUtils.getPlayerAttackDamage(player, stack).total();
             }
             damage = damage > 0 ? damage : 1;
-            if(stack.getItem() instanceof ICriticalWeapon){
+            if (stack.getItem() instanceof ICriticalWeapon) {
                 ICriticalWeapon weapon = (ICriticalWeapon) stack.getItem();
-                if(MathUtils.isRandom(weapon.getActCriticalChance(stack))){
+                if (MathUtils.isRandom(weapon.getActCriticalChance(stack))) {
                     damage *= weapon.getActCriticalRate(stack);
                 }
             }
-            for(ITrait trait : TraitUtils.getStackTraits(stack)){
-                if(trait.getTraitType() == TraitType.TOOL){
-                    damage = trait.onAttackEntity(player,livingEntity,damage,stack);
+            for (ITrait trait : TraitUtils.getStackTraits(stack)) {
+                if (trait.getTraitType() == TraitType.TOOL) {
+                    damage = trait.onAttackEntity(player, livingEntity, damage, stack);
                 }
             }
-            for(ItemStack s : player.inventory.armor){
-                for(ITrait trait : TraitUtils.getStackTraits(s)){
-                    if(trait.getTraitType() == TraitType.ARMOR){
-                        damage = trait.onAttackEntity(player,livingEntity,damage,stack);
+            for (ItemStack s : player.inventory.armor) {
+                for (ITrait trait : TraitUtils.getStackTraits(s)) {
+                    if (trait.getTraitType() == TraitType.ARMOR) {
+                        damage = trait.onAttackEntity(player, livingEntity, damage, stack);
                     }
                 }
             }
-            int modify = cap.getModify();
-            int[] skills = cap.getSkills();
-            if(cap.getProfession() == 1){
-                double chance = skills[8]/10000d;
-                if(skills[40] != 0 && skills[41] != 0){
-                    chance = 1.0d;
-                }
-                if(skills[8] != 0){
-                    if(MathUtils.isRandom(chance)){
-                        if(skills[12] >=0){
-                            damage *= skills[12]/10000d+1;
-                        }
-                        else damage+=3;
+            try {
+                IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
+                IUtilCapability util = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(NullPointerException::new);
+                int modify = cap.getModify();
+                int[] skills = cap.getSkills();
+                if (cap.getProfession() == 1) {
+                    double chance = skills[8] / 10000d;
+                    if (skills[40] != 0 && skills[41] != 0) {
+                        chance = 1.0d;
                     }
-                }
-                if(modify == 1){
-                    if(skills[36] !=0 && skills[37] !=0){
-                        if(livingEntity.getHealth() / livingEntity.getMaxHealth() <= skills[36]/10000f){
-                            livingEntity.hurt(EWDamageSource.REALLY,livingEntity.getMaxHealth());
+                    if (skills[8] != 0) {
+                        if (MathUtils.isRandom(chance)) {
+                            if (skills[12] >= 0) {
+                                damage *= skills[12] / 10000d + 1;
+                            } else damage += 3;
                         }
                     }
-                    if(skills[24] != 0){
-                        livingEntity.hurt(EWDamageSource.REALLY,damage * skills[24]/10000f);
-                    }
-                }
-                if(modify == 2){
-                    float healRate = skills[36] / 10000f;
-                    if(skills[40] != 0 && skills[41] != 0){
-                        healRate = 1.0f;
-                    }
-                    if(skills[36] != 0 && skills[37] != 0){
-                        player.heal(healRate * damage);
-                    }
-                    if(util.getTimer() > 0){
-                        player.heal(damage * cap.getSkills()[33]/10000f);
-                    }
-                }
-            }
-            if(cap.getProfession() == 4){
-                double chance = skills[8]/10000d;
-                double chance1 = skills[24]/10000d;
-                if(MathUtils.isRandom(chance)){
-                    damage *= 2;
-                }
-                if(MathUtils.isRandom(chance1)){
-                    damage *= 2;
-                }
-                if(cap.getModify() == 1 && skills[36] != 0 && util.getTimer() > 0){
-                    damage = livingEntity.getMaxHealth();
-                    util.setTimer(0);
-                }
-            }
-            if(cap.getProfession() == 5){
-                double c = skills[8]/10000d;
-                if(MathUtils.isRandom(c)){
-                    livingEntity.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN,100,127));
-                }
-                if(MathUtils.isRandom(skills[24]/10000d)){
-                    player.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(),200,9));
-                }
-                if(MathUtils.isRandom(skills[28]/10000d)){
-                    util.setTimer(10);
-                }
-            }
-            if(world.isRaided(new BlockPos(player.position()))){
-                damage *= util.getRaidRate();
-            }
-            damage *= util.getAttackCD();
-            double rate = 1d;
-            if(stack.getItem() instanceof ICostEMCItem){
-                ICostEMCItem item = (ICostEMCItem) stack.getItem();
-                rate = item.costEMCWhenAttackActually(stack);
-            }
-            long damageCost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage *  MathUtils.difficultyLoss());
-            long costEMC = damageCost;
-            if(event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())){
-                costEMC = 0;
-            }
-            if(stack.getItem() instanceof IRangeAttackWeapon && livingEntity.hurtTime <= 0){
-                IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
-                if(weapon.getAttackRange(player,stack).total() > 0d){
-                    List<? extends LivingEntity> canRangeAttack = getNearEntity(player,event.getEntityLiving(), SkillUtils.getPlayerAttackRange(player,stack).total());
-                    if(canRangeAttack.size() != 0){
-                        for(LivingEntity entity:canRangeAttack){
-                            if(costEMC > EMCHelper.getPlayerEMC(player)) break;
-                            entity.hurt(new EWDamageSource(player).REALLY_PLAYER,damage);
-                            if(entity.getType().equals(Registry.TARGET_DUMMY.get())){
-                                continue;
+                    if (modify == 1) {
+                        if (skills[36] != 0 && skills[37] != 0) {
+                            if (livingEntity.getHealth() / livingEntity.getMaxHealth() <= skills[36] / 10000f) {
+                                livingEntity.hurt(EWDamageSource.REALLY, livingEntity.getMaxHealth());
                             }
-                            costEMC += damageCost;
+                        }
+                        if (skills[24] != 0) {
+                            livingEntity.hurt(EWDamageSource.REALLY, damage * skills[24] / 10000f);
+                        }
+                    }
+                    if (modify == 2) {
+                        float healRate = skills[36] / 10000f;
+                        if (skills[40] != 0 && skills[41] != 0) {
+                            healRate = 1.0f;
+                        }
+                        if (skills[36] != 0 && skills[37] != 0) {
+                            player.heal(healRate * damage);
+                        }
+                        if (util.getTimer() > 0) {
+                            player.heal(damage * cap.getSkills()[33] / 10000f);
                         }
                     }
                 }
+                if (cap.getProfession() == 4) {
+                    double chance = skills[8] / 10000d;
+                    double chance1 = skills[24] / 10000d;
+                    if (MathUtils.isRandom(chance)) {
+                        damage *= 2;
+                    }
+                    if (MathUtils.isRandom(chance1)) {
+                        damage *= 2;
+                    }
+                    if (cap.getModify() == 1 && skills[36] != 0 && util.getTimer() > 0) {
+                        damage = livingEntity.getMaxHealth();
+                        util.setTimer(0);
+                    }
+                }
+                if (cap.getProfession() == 5) {
+                    double c = skills[8] / 10000d;
+                    if (MathUtils.isRandom(c)) {
+                        livingEntity.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 100, 127));
+                    }
+                    if (MathUtils.isRandom(skills[24] / 10000d)) {
+                        player.addEffect(new EffectInstance(EWEffects.ATTACK_RANGE.get(), 200, 9));
+                    }
+                    if (MathUtils.isRandom(skills[28] / 10000d)) {
+                        util.setTimer(10);
+                    }
+                }
+                if (world.isRaided(new BlockPos(player.position()))) {
+                    damage *= util.getRaidRate();
+                }
+                damage *= util.getAttackCD();
+                double rate = 1d;
+                if (stack.getItem() instanceof ICostEMCItem) {
+                    ICostEMCItem item = (ICostEMCItem) stack.getItem();
+                    rate = item.costEMCWhenAttackActually(stack);
+                }
+                long damageCost = MathUtils.doubleToLong(MathUtils.getAttackBaseCost(player) * damage * MathUtils.difficultyLoss());
+                long costEMC = damageCost;
+                if (event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())) {
+                    costEMC = 0;
+                }
+                if (stack.getItem() instanceof IRangeAttackWeapon && livingEntity.hurtTime <= 0) {
+                    IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
+                    if (weapon.getAttackRange(player, stack).total() > 0d) {
+                        List<? extends LivingEntity> canRangeAttack = getNearEntity(player, event.getEntityLiving(), SkillUtils.getPlayerAttackRange(player, stack).total());
+                        if (canRangeAttack.size() != 0) {
+                            for (LivingEntity entity : canRangeAttack) {
+                                if (costEMC > EMCHelper.getPlayerEMC(player)) break;
+                                entity.hurt(new EWDamageSource(player).REALLY_PLAYER, damage);
+                                if (entity.getType().equals(Registry.TARGET_DUMMY.get())) {
+                                    continue;
+                                }
+                                costEMC += damageCost;
+                            }
+                        }
+                    }
+                }
+                costEMC = (long) (costEMC * rate);
+                CostPlayer(player, costEMC, event, damage, null);
+            }catch (NullPointerException ignored){
+
             }
-            costEMC =(long) (costEMC * rate);
-            CostPlayer(player,costEMC,event,damage,null);
         }
         if(source.getDirectEntity() instanceof TameableEntity){
             TameableEntity entity = (TameableEntity) source.getDirectEntity();

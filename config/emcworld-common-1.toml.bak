@@ -62,6 +62,7 @@
 		DisableMapTeleport = true
 		#Range: > 0
 		CraftCD = 18000
+		"Rest Message" = true
 		#Range: > 0
 		RaidLightCD = 1200
 		GaiaMulti = true
@@ -71,6 +72,7 @@
 		CollectorLifespan = 720000
 		GuardianDeathPortal = true
 		DisableCommandTeleport = true
+		lock_difficulty = true
 
 	["Game Setting".Raid]
 		Sponsors = true
@@ -101,6 +103,7 @@
 		AdvanceCraftEMCRate = 1.0
 		#Range: 0.0 ~ 1.0
 		BloodEye = 0.12
+		"Easy Mek Nuclear" = false
 		EasyDarkMatter = false
 
 [constellation]

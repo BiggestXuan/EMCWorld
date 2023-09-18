@@ -7,6 +7,7 @@ package biggestxuan.emcworld.client.lottery;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.client.screen.EMCWorldHelperGUI;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.items.LotteryItem;
 import biggestxuan.emcworld.common.network.PacketHandler;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class BuyLotteryScreen extends Screen {
+public abstract class BuyLotteryScreen extends EMCWorldHelperGUI {
     protected final List<Integer> numList;
     protected final List<Integer> addList;
     private TextFieldWidget text;
@@ -42,6 +43,11 @@ public abstract class BuyLotteryScreen extends Screen {
         super(EMCWorld.tc("screen.lottery."+name));
         numList = new ArrayList<>();
         addList = new ArrayList<>();
+    }
+
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3158082";
     }
 
     protected abstract LotteryMode getScreenLotteryMode();

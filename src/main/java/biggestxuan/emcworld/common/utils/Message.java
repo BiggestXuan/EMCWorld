@@ -62,7 +62,7 @@ public class Message {
             player.displayClientMessage(EMCWorld.tc("message.evt.lossemc",output),true);
         }
     }
-    public static <T> void DisPlayEMCMessage(PlayerEntity player,T emc){
+    public static <T> void DisplayEMCMessage(PlayerEntity player,T emc){
         if(emc instanceof Long || emc instanceof String){
             if(String.valueOf(emc).equals(String.valueOf(0))){
                 return;

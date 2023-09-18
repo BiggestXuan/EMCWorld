@@ -679,14 +679,22 @@
 					}
 				}
 			}]
-			rewards: [{
-				id: "348F10A58BDEC91E"
-				type: "custom"
-				title: "{quest.emcworld_stage_two}"
-				icon: "botania:pinkinator"
-				tags: ["stage_two"]
-				auto: "enabled"
-			}]
+			rewards: [
+				{
+					id: "348F10A58BDEC91E"
+					type: "custom"
+					title: "{quest.emcworld_stage_two}"
+					icon: "botania:pinkinator"
+					tags: ["stage_two"]
+					auto: "enabled"
+				}
+				{
+					id: "4A1D449CCE0A8010"
+					type: "item"
+					team_reward: true
+					item: "projecte:interdiction_torch"
+				}
+			]
 		}
 	]
 }

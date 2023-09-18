@@ -19,6 +19,11 @@
     "allow_direct_memory_access": true,
     "ignore_driver_blacklist": false
   },
+  "performance": {
+    "chunk_builder_threads": 0,
+    "always_defer_chunk_updates": false,
+    "use_no_error_g_l_context": true
+  },
   "notifications": {
     "hide_donation_button": false
   }

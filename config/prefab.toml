@@ -1,7 +1,7 @@
 
 [general]
 	#Can new players for a world receive a starting item?. Server configuration overrides client.
-	"New Players Get Starting Item" = true
+	"New Players Get Starting Item" = false
 	#Determines if the loft starter house is enabled. This house contains Nether materials in it's construction. Server configuration overrides client.
 	"Enable Loft House" = false
 	#Determines if the mineshaft chest is included when building mineshafts for various structures.
@@ -13,13 +13,13 @@
 	#Determines if the bulldozer item can create drops when it clears an area.
 	"Bulldozer Creates Drops" = true
 	#Enable Automation Options For Moderate Farm
-	"Enable Automation Options For Moderate Farm" = true
+	"Enable Automation Options For Moderate Farm" = false
 	#Determines if the spawners for the Monster Masher building are included. Server configuration overrides client.
-	"Include Spawners in Monster Masher" = true
+	"Include Spawners in Monster Masher" = false
 	#Play Sound When Generating Blueprint
 	"Play Building Sound" = true
 	#Determines if water can be generated in structures when the current dimension is not the oveworld. Does not affect Nether
-	"Include Water In Non-Overworld Dimesions" = true
+	"Include Water In Non-Overworld Dimesions" = false
 
 	[general.recipes]
 		#Determines if the recipe(s) associated with the Grassy Plains are enabled.

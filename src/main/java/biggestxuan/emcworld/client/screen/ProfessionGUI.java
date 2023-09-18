@@ -23,7 +23,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfessionGUI extends Screen {
+public class ProfessionGUI extends EMCWorldHelperGUI {
     private final PlayerLevelCapability cap;
     ResourceLocation bg = EMCWorld.rl("textures/gui/level_core.png");
     public ProfessionGUI(ITextComponent title, PlayerLevelCapability cap){
@@ -31,7 +31,12 @@ public class ProfessionGUI extends Screen {
         this.cap = cap;
     }
 
-    public void renderString(MatrixStack m,TranslationTextComponent t,int x, int y){
+    @Override
+    public String getHelperLink() {
+        return "https://www.kancloud.cn/biggest_xuan/emcworld/3148091";
+    }
+
+    public void renderString(MatrixStack m, TranslationTextComponent t, int x, int y){
         drawString(m,this.font,t,x,y,0xffffff);
     }
 
@@ -68,6 +73,7 @@ public class ProfessionGUI extends Screen {
     @Override
     public void render(@Nonnull MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks){
         this.renderBackground(matrixStack);
+        super.render(matrixStack, mouseX, mouseY, partialTicks);
         int b = this.width/16;
         int xPos = b+20;
         int line = 16;

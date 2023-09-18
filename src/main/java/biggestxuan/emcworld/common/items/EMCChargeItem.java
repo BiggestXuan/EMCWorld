@@ -54,7 +54,7 @@ public class EMCChargeItem extends EWItem implements IEMCInfuserItem, IUpgradeab
                     if(used <= 0){
                         continue;
                     }
-                    long cost = MathUtils.min(used,this.getInfuser(p_77663_1_), (long) (this.getMaxInfuser(p_77663_1_)*0.01D));
+                    long cost = (long) (MathUtils.min(used,this.getInfuser(p_77663_1_), (long) (this.getMaxInfuser(p_77663_1_)*0.01D)));
                     this.addInfuser(p_77663_1_,-cost);
                     item.addInfuser(stack,cost);
                 }
