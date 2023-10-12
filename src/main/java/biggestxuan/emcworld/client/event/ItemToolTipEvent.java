@@ -336,9 +336,7 @@ public class ItemToolTipEvent {
         }
         if(!(isTrans || free) && stage.equals("disabled") && EMCHelper.getEmcValue(stack) > 0){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_disable"));
-            return;
-        }
-        if(!(isTrans || free) && !stage.equals("") && EMCHelper.getEmcValue(stack) > 0){
+        }else if(!(isTrans || free) && !stage.equals("") && EMCHelper.getEmcValue(stack) > 0){
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.emc_locked",stage));
         }
         if(stack.isDamageableItem() && !(stack.getItem() instanceof StoredTotem)){
@@ -353,6 +351,13 @@ public class ItemToolTipEvent {
         if(list.size() > 0 && GameStageManager.hasStage(player,"two")){
             for(TranslationTextComponent s : MathUtils.getWeaponDisplayWillCost(player,stack,Screen.hasShiftDown() && Screen.hasControlDown())){
                 event.getToolTip().add(s);
+            }
+        }
+        var nbt = stack.getTag();
+        if(nbt != null){
+            double chance = nbt.getDouble("emc_ore_chance");
+            if(chance > 0){
+                event.getToolTip().add(EMCWorld.tc("("+String.format("%.2f",100*chance)+"%)").withStyle(Style.EMPTY.withColor(TextFormatting.DARK_PURPLE)));
             }
         }
         if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){

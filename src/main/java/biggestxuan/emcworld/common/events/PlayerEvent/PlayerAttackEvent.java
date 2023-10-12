@@ -181,8 +181,7 @@ public class PlayerAttackEvent {
                 long costEMC = damageCost;
                 if (event.getEntityLiving().getType().equals(Registry.TARGET_DUMMY.get())) {
                     costEMC = 0;
-                }
-                if (stack.getItem() instanceof IRangeAttackWeapon && livingEntity.hurtTime <= 0) {
+                }else if (stack.getItem() instanceof IRangeAttackWeapon && livingEntity.hurtTime <= 0) {
                     IRangeAttackWeapon weapon = (IRangeAttackWeapon) stack.getItem();
                     if (weapon.getAttackRange(player, stack).total() > 0d) {
                         List<? extends LivingEntity> canRangeAttack = getNearEntity(player, event.getEntityLiving(), SkillUtils.getPlayerAttackRange(player, stack).total());

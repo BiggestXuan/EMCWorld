@@ -263,9 +263,11 @@ public function emcworldRecipe() as void{
     addEMCWorldGodStaffRecipe();
     smithingRecipe(sword[2],unqd,sword[3]);
     crockPotRecipe(new CrTRequirement().addCategoryMin(new CrTFoodValue().put("meat",1.5).put("sweetener",1.5)).addMustItem(<item:farmersdelight:smoked_ham>,1),<item:farmersdelight:honey_glazed_ham_block>,30);
-    for i in 20 .. 24{
-        removeSmithingRecipe(armor[i]);
-    }
+    addCraftShapedRecipeNoName([
+        [sp,sp,sp],
+        [sp,<item:emcworld:weapon_upgrade_core>,sp],
+        [sp,sp,sp]
+    ],<item:emcworld:top_core>);
     addEMCWorldSmithingRecipe();
     for i in 24 .. 28{
         removeCraftRecipeIItemStack([armor[i],pdm[i]]);
@@ -302,7 +304,6 @@ public function emcworldRecipe() as void{
         <tag:items:emcworld:god_weapon>.add(i);
         <tag:items:emcworld:god_weapon_armor>.add(i);
     }
-    removeExtendedCraftRecipe(eus);
     combiningRecipe(<item:scalinghealth:medkit>,<item:emcworld:biggest_emc_gem>,<item:emcworld:emc_healing_bag>);
     modifyShapelessRecipe([
         <item:divinerpg:purple_blaze>,<item:divinerpg:purple_blaze>,<item:minecraft:netherite_ingot>,<item:emcworld:advanced_emc_gem>
@@ -496,6 +497,7 @@ public function emcworldRecipe() as void{
         <item:emcworld:illager_gem>
     ],<item:minecraft:emerald>*8);
     combiningRecipe(<item:minecraft:torch>,<item:mekanism:pellet_plutonium> | <item:mekanism:pellet_polonium>,<item:projecte:interdiction_torch>);
+    setEMCStage(<item:hem:bronze_ingot>,2048,3);
     addCraftShapedRecipeNoName([
         [bge,ws,bge],
         [ws,<item:emcworld:hardcore_stone>,ws],
@@ -505,6 +507,7 @@ public function emcworldRecipe() as void{
     infuserRecipe([sa,sa,sa,sa,sa],<item:emcworld:raid_light>,15000,100000,1);
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
+    setEMCStage(<item:hem:copparite>,3170,5);
     combiningRecipe(<tag:items:quark:candles>,<item:projecte:red_matter>,<item:emcworld:exorcism_candle>);
     infuserRecipe([ali,alv,a,a,a],vaai*32,10000,10000000,3);
     crushingRecipe(<item:mekanism:enriched_diamond>,<item:minecraft:coal>,64);

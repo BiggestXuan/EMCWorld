@@ -103,7 +103,7 @@ public class LivingDeathDropsEvent {
             PlayerEntity player = (PlayerEntity) source.getDirectEntity();
             ItemStack mainHandItem = player.getMainHandItem();
             int EMCLootingLevel = EnchantmentHelper.getItemEnchantmentLevel(EWEnchantments.EMC_LOOTING.get(),mainHandItem);
-            if(EMCLootingLevel != 0){
+            if(EMCLootingLevel != 0 && MathUtils.isRandom(0.01)){
                 if(canChampionDrop(entity,EMCLootingLevel)){
                     switch (EMCLootingLevel){
                         case 1:

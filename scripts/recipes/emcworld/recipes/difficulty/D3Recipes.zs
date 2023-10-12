@@ -24,6 +24,7 @@ public function D3Recipes() as void{
     var lg as IItemStack[] = getLuckGems();
     var a = <item:minecraft:air>;
     var tui = <item:extendedcrafting:the_ultimate_ingot>;
+    removeExtendedCraftRecipe(eus);
     extendedCraftingShapelessRecipe(CrTSingularity.getAllSingularityAsIIngredientArray(),eus,4);
     for i in 0 .. 4{
         combiningRecipe(red_armor[i+4].withArmorLevelMax(),<item:emcworld:dragon_steel>,red_armor[i]);

@@ -7,14 +7,7 @@ package biggestxuan.emcworld.common.registry;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateContainer;
-import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneContainer;
-import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserContainer;
-import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixContainer;
-import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceCoreContainer;
-import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCContainer;
-import biggestxuan.emcworld.common.blocks.TopCore.TopCoreContainer;
-import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeContainer;
+import biggestxuan.emcworld.common.blocks.container.*;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -50,6 +43,12 @@ public class EWContainerTypes {
 
     public static final RegistryObject<ContainerType<TopCoreContainer>> topCoreContainer =
             registerMenuType(TopCoreContainer::new, "top_core_container");
+
+    public static final RegistryObject<ContainerType<EMCOreCoreContainer>> emcOreCoreContainer =
+            registerMenuType(EMCOreCoreContainer::new,"emc_core_container");
+
+    public static final RegistryObject<ContainerType<PersonalLinkContainer>> personalLinkContainer =
+            registerMenuType(PersonalLinkContainer::new,"personal_link_container");
 
     private static <T extends Container> RegistryObject<ContainerType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return CONTAINERS.register(name, () -> IForgeContainerType.create(factory));

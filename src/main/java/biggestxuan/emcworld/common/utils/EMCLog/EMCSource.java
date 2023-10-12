@@ -111,7 +111,7 @@ public abstract class EMCSource<T> {
 
         @Override
         public String getInfo() {
-            return super.getInfo()+EMCWorld.tc("emcsource.wake",getEMC());
+            return super.getInfo()+EMCWorld.tc("emcsource.wake",getEMC()).getString();
         }
     }
 
@@ -452,5 +452,17 @@ public abstract class EMCSource<T> {
         public String getInfo(){
             return super.getInfo()+EMCWorld.tc("emcsource.icecream",getTarget().toString(),getEMC()).getString();
         }
+    }
+
+    @EMCWorldSince("1.0.5")
+    public static class TulyeShieldSource extends EMCSource<Object>{
+        public TulyeShieldSource(long emc,PlayerEntity player){
+            super(emc,player,player,0);
+        }
+
+        @Override
+        public String getInfo(){
+            return super.getInfo()+EMCWorld.tc("emcsource.tulye_shield",getTarget().toString(),getEMC()).getString();
+        }//todo
     }
 }

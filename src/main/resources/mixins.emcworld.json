@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "emcworld.refmap.json",
   "mixins": [
+    "AbsorptionMixin",
     "AbstractChestBlockMixin",
     "AerialHellSwordItemMixin",
     "AlchemicalBagMixin",
@@ -47,6 +48,7 @@
     "ItemMixin",
     "ItemMusicShooterMixin",
     "ItemSacrificialDaggerMixin",
+    "ItemStackUtilMixin",
     "ItemStageMixin",
     "ItemStagesMixin",
     "ItemTierMixin",
@@ -61,6 +63,8 @@
     "ModuleHelperMixin",
     "NPlayerUtilsMixin",
     "OrbOfAtlantisMixin",
+    "PersonalLinkBlockEntityMixin",
+    "PersonalLinkBlockMixin",
     "PickaxeItemMixin",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
@@ -84,10 +88,12 @@
     "UncraftingTableBlockMixin",
     "WebHelperDisableMixin",
     "WirelessTransmitterNetworkNodeMixin",
+    "WorldHelperMixin",
     "WorldMixin"
   ],
   "client": [
     "AlchemicalBagClientMixin",
+    "ContainerScreenMixin",
     "ExplorersCompassScreenMixin",
     "GaiaClientMixin",
     "ItemClientMixin",

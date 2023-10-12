@@ -42,6 +42,11 @@
 					tags: ["easy"]
 					auto: "no_toast"
 				}
+				{
+					id: "01F2A616CA053221"
+					type: "item"
+					item: "dungeonsmod:home_gem"
+				}
 			]
 		}
 		{

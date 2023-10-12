@@ -23,7 +23,7 @@ public interface IGemInlaidItem {
         return (getGemIndex(stack) / 10);
     }
 
-    default int getColor(ItemStack stack){
+    default int getGemColor(ItemStack stack){
         int t = getGemType(stack);
         int c;
         if(t >= 40){

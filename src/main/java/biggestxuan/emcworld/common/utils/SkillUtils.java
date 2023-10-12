@@ -12,10 +12,12 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.registry.EWEffects;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.TieredItem;
+import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 
 import javax.annotation.Nullable;
@@ -93,5 +95,9 @@ public class SkillUtils {
         List<Double> list = new ArrayList<>();
         list.add(effect);
         return range.append(list);
+    }
+
+    public static void addEffect(LivingEntity living, Effect effect,int time,int level){
+        living.addEffect(new EffectInstance(effect,time,level));
     }
 }

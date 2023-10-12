@@ -5,7 +5,6 @@ import biggestxuan.emcworld.common.traits.ITrait;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import net.minecraft.item.ItemStack;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

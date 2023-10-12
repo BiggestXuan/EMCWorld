@@ -1,0 +1,51 @@
+{
+	id: "5E0E4CB6E85FD6F2"
+	order_index: 11
+	title: "{sheet.emcworld.crawler}"
+	icon: {
+		id: "dungeonsmod:crawler_chestplate"
+		Count: 1b
+		tag: {
+			Damage: 0
+		}
+	}
+	loot_size: 1
+	rewards: [
+		{
+			item: {
+				id: "dungeonsmod:crawler_helmet"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "dungeonsmod:crawler_chestplate"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "dungeonsmod:crawler_leggins"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				id: "dungeonsmod:crawler_boots"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+}

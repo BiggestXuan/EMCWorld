@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.compact.JEI.Star;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalRecipe;
+import biggestxuan.emcworld.common.recipes.StarPedestalRecipe;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import hellfirepvp.astralsorcery.client.util.Blending;

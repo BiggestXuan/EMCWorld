@@ -7,9 +7,9 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixTileEntity;
-import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCTileEntity;
-import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlockTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.PrefixTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.SuperEMCTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.WeaponUpgradeBlockTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;

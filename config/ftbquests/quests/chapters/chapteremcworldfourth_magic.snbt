@@ -730,6 +730,15 @@
 					team_reward: true
 					item: "projecte:interdiction_torch"
 				}
+				{
+					id: "1230A167F98DD49D"
+					type: "item"
+					item: {
+						id: "emcworld:common_cd_scroll"
+						Count: 1b
+						tag: { }
+					}
+				}
 			]
 		}
 		{

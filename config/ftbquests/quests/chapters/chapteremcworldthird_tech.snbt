@@ -325,6 +325,15 @@
 					team_reward: true
 					item: "projecte:interdiction_torch"
 				}
+				{
+					id: "0D853CB336A1BEC9"
+					type: "item"
+					item: {
+						id: "emcworld:emc_ore_core"
+						Count: 1b
+						tag: { }
+					}
+				}
 			]
 		}
 		{

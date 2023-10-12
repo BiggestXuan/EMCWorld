@@ -21,21 +21,8 @@ public abstract class EMCWorldBaseItem extends Item implements ICostEMCItem {
         super(properties);
     }
 
-    public EMCWorldBaseItem(int rarity){
-        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).rarity(getRarity(rarity)));
-    }
-
-    private static Rarity getRarity(int r){
-        switch (r){
-            case 1:
-                return Rarity.UNCOMMON;
-            case 2:
-                return Rarity.RARE;
-            case 3:
-                return Rarity.EPIC;
-            default:
-                return Rarity.COMMON;
-        }
+    public EMCWorldBaseItem(Rarity rarity){
+        super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).rarity(rarity));
     }
 
     @Override

@@ -597,12 +597,26 @@
 				type: "item"
 				item: "emcworld:control_update_core"
 			}]
-			rewards: [{
-				id: "51BDA0E598FB92CC"
-				type: "item"
-				item: "emcworld:big_emc_gem"
-				count: 64
-			}]
+			rewards: [
+				{
+					id: "51BDA0E598FB92CC"
+					type: "item"
+					item: "emcworld:big_emc_gem"
+					count: 64
+				}
+				{
+					id: "19BBA183C77BD0E2"
+					type: "item"
+					item: {
+						id: "emcworld:craft_cd_scroll"
+						Count: 1b
+						tag: {
+							craftType: 1
+						}
+					}
+					count: 16
+				}
+			]
 		}
 		{
 			title: "{quest.emcworld.gaia_pylon}"

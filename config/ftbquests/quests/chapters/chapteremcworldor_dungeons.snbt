@@ -1,0 +1,562 @@
+{
+	id: "2784E674C9098BEA"
+	group: "082C00FA3A553D98"
+	order_index: 3
+	filename: "chapteremcworldor_dungeons"
+	title: "{chapter.emcworld.or_dungeons}"
+	icon: "dungeonsmod:sun_overdrive"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.emcworld.or_dungeons_begin}"
+			x: 0.0d
+			y: 0.0d
+			description: ["{quest.emcworld.or_dungeons_begin_desc}"]
+			id: "298F239FC32EFF85"
+			tasks: [{
+				id: "67E71CA6359DD3ED"
+				type: "item"
+				item: "dungeonsmod:home_gem"
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_unstablemap}"
+			x: 0.0d
+			y: -6.0d
+			description: ["{quest.emcworld.or_dungeons_unstablemap_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "1E98DB5C3DD05626"
+			tasks: [{
+				id: "4C6694F99A90261B"
+				type: "item"
+				item: "dungeonsmod:unstable_map"
+			}]
+			rewards: [{
+				id: "15F4FE488F7FE0C5"
+				type: "custom"
+				title: "{reward.emcworld.normal}"
+				icon: "emcworld:big_emc_gem"
+				tags: ["normal"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_king}"
+			x: 6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.or_dungeons_king_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "689936B4C86D9B19"
+			tasks: [{
+				id: "5CA51B5D258DDE68"
+				type: "observation"
+				icon: {
+					id: "minecraft:golden_hoe"
+					Count: 1b
+					tag: {
+						Damage: 0
+						level: 0
+						prefix: 5
+						display: {
+							Lore: ["{\"translate\":\"item.dungeonsmod.king1.lore\"}"]
+							Name: "{\"translate\":\"item.dungeonsmod.king1.name\"}"
+						}
+						Enchantments: [
+							{
+								lvl: 5s
+								id: "minecraft:looting"
+							}
+							{
+								lvl: 3s
+								id: "minecraft:sharpness"
+							}
+						]
+					}
+				}
+				timer: 0L
+				observe_type: 5
+				to_observe: "dungeonsmod:king"
+			}]
+			rewards: [{
+				id: "4D81A601FD78C44F"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_kraken}"
+			x: 3.0d
+			y: 3.0d
+			description: ["{quest.emcworld.or_dungeons_kraken_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "5011484799483EC2"
+			tasks: [{
+				id: "57A5CD4F48DA504E"
+				type: "observation"
+				icon: "dungeonsmod:kraken_tentacle"
+				timer: 0L
+				observe_type: 0
+				to_observe: "dungeonsmod:kraken"
+			}]
+			rewards: [{
+				id: "702A32999CD7D475"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_soulbottle}"
+			x: -3.0d
+			y: 3.0d
+			description: ["{quest.emcworld.or_dungeons_soulbottle_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "700EC3C770EA4C9E"
+			tasks: [{
+				id: "216374D8E39B1DCD"
+				type: "item"
+				item: "dungeonsmod:soul_bottle"
+			}]
+			rewards: [{
+				id: "5D9BB078DED5483B"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_deserted}"
+			x: -6.0d
+			y: 0.0d
+			description: ["{quest.emcworld.or_dungeons_deserted_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "6E72AAC878C26875"
+			tasks: [{
+				id: "1993BB5100F82940"
+				type: "observation"
+				icon: "minecraft:sand"
+				timer: 0L
+				observe_type: 5
+				to_observe: "dungeonsmod:deserted"
+			}]
+			rewards: [{
+				id: "710F6D04222D5C9C"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_crawler}"
+			x: -3.0d
+			y: -3.0d
+			description: ["{quest.emcworld.or_dungeons_crawler_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "0E89C987CDA538CC"
+			tasks: [{
+				id: "17A19E39D84EE2BD"
+				type: "observation"
+				icon: "minecraft:redstone_block"
+				timer: 0L
+				observe_type: 5
+				to_observe: "dungeonsmod:crawler "
+			}]
+			rewards: [{
+				id: "3D7D90F2E52120F0"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+				tags: ["easy"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killcrawler}"
+			x: -3.0d
+			y: -9.0d
+			description: ["{quest.emcworld.or_dungeons_killcrawler_desc}"]
+			dependencies: ["0E89C987CDA538CC"]
+			id: "27E7B5F26C206E66"
+			tasks: [{
+				id: "56C34FE2A6EFA99E"
+				type: "kill"
+				icon: {
+					id: "dungeonsmod:crawler_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "dungeonsmod:crawler"
+				value: 1L
+			}]
+			rewards: [
+				{
+					id: "6751A1D72F65267C"
+					type: "random"
+					table_id: 6777438837705529074L
+				}
+				{
+					id: "55BE6DEE585B461E"
+					type: "custom"
+					title: "{reward.emcworld.hard}"
+					icon: "emcworld:biggest_emc_gem"
+					tags: ["hard"]
+				}
+			]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killdeserted}"
+			x: -8.5d
+			y: -2.5d
+			description: [""]
+			dependencies: ["6E72AAC878C26875"]
+			id: "59FE0228B7EAFC03"
+			tasks: [{
+				id: "574CC4AFDEA55F22"
+				type: "kill"
+				icon: {
+					id: "minecraft:wooden_sword"
+					Count: 1b
+					tag: {
+						level: 0
+						prefix: 2
+						display: {
+							Lore: ["{\"translate\":\"item.dungeonsmod.deserted1.lore\"}"]
+							Name: "{\"translate\":\"item.dungeonsmod.deserted1.name\"}"
+						}
+						Enchantments: [{
+							lvl: 10s
+							id: "minecraft:sharpness"
+						}]
+						Damage: 50
+						AttributeModifiers: [
+							{
+								Amount: 5.0d
+								Slot: "mainhand"
+								AttributeName: "minecraft:generic.attack_damage"
+								Operation: 1
+								UUID: [I;
+									1666484896
+									1192509741
+									-1881971224
+									1024615137
+								]
+								Name: "Damage"
+							}
+							{
+								Amount: -0.800000011920929d
+								Slot: "mainhand"
+								AttributeName: "minecraft:generic.attack_speed"
+								Operation: 2
+								UUID: [I;
+									-919786278
+									-655734605
+									-2121360842
+									1032284224
+								]
+								Name: "Speed"
+							}
+						]
+					}
+				}
+				entity: "dungeonsmod:deserted"
+				value: 1L
+			}]
+			rewards: [{
+				id: "689A3CD599DB2531"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killlordskeleton}"
+			x: -9.0d
+			y: 3.0d
+			description: ["{quest.emcworld.or_dungeons_killlordskeleton_desc}"]
+			dependencies: ["700EC3C770EA4C9E"]
+			id: "49F25BDF1B1A336A"
+			tasks: [{
+				id: "0000E156C2C4DB20"
+				type: "kill"
+				icon: "dungeonsmod:golden_bone"
+				entity: "dungeonsmod:lordskeleton"
+				value: 1L
+			}]
+			rewards: [{
+				id: "0C1BF90899024E2E"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killkraken}"
+			x: 9.0d
+			y: 3.0d
+			dependencies: ["5011484799483EC2"]
+			id: "6A2CB6D4657E2B89"
+			tasks: [{
+				id: "69064935C0990DD1"
+				type: "kill"
+				icon: "dungeonsmod:cooked_kraken"
+				entity: "dungeonsmod:kraken"
+				value: 1L
+			}]
+			rewards: [{
+				id: "0AC1EB4CC19FF533"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killking}"
+			x: 9.0d
+			y: -3.0d
+			description: ["{quest.emcworld.or_dungeons_killking_desc}"]
+			dependencies: ["689936B4C86D9B19"]
+			id: "1EA63779877170EA"
+			tasks: [{
+				id: "7B00CDDC2D0FD52F"
+				type: "kill"
+				icon: {
+					id: "dungeonsmod:king_crown"
+					Count: 1b
+					tag: {
+						Damage: 0
+						level: 0
+						prefix: 3
+					}
+				}
+				entity: "dungeonsmod:king"
+				value: 1L
+			}]
+			rewards: [{
+				id: "523B778053DE4F9D"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_ironslime}"
+			x: 3.0d
+			y: -3.0d
+			description: ["{quest.emcworld.or_dungeons_ironslime_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "04ACC1222F196BDD"
+			tasks: [{
+				id: "296813ED9DAC1F5D"
+				type: "observation"
+				icon: "minecraft:iron_block"
+				timer: 0L
+				observe_type: 5
+				to_observe: "dungeonsmod:ironslime"
+			}]
+			rewards: [{
+				id: "16C4DB18A2A05D42"
+				type: "custom"
+				title: "{reward.emcworld.easy}"
+				icon: "emcworld:small_emc_gem"
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killironslime}"
+			x: 3.0d
+			y: -9.0d
+			dependencies: ["04ACC1222F196BDD"]
+			id: "5FEA89184EF0046D"
+			tasks: [{
+				id: "347CAE9C1440006F"
+				type: "kill"
+				icon: {
+					id: "minecraft:iron_pickaxe"
+					Count: 1b
+					tag: {
+						Unbreakable: 1b
+						level: 0
+						prefix: 4
+						display: {
+							Lore: ["{\"translate\":\"item.dungeonsmod.ironslime1.lore\"}"]
+							Name: "{\"translate\":\"item.dungeonsmod.ironslime1.name\"}"
+						}
+						Enchantments: [{
+							lvl: 2s
+							id: "minecraft:efficiency"
+						}]
+						Damage: 85
+						AttributeModifiers: [
+							{
+								Amount: -0.8999999761581421d
+								Slot: "mainhand"
+								AttributeName: "minecraft:generic.knockback_resistance"
+								Operation: 1
+								UUID: [I;
+									1377599346
+									711739992
+									-1892766946
+									-1407282158
+								]
+								Name: "Knockback"
+							}
+							{
+								Amount: 0.25d
+								Slot: "mainhand"
+								AttributeName: "minecraft:generic.movement_speed"
+								Operation: 1
+								UUID: [I;
+									-464375778
+									134824654
+									-1382020096
+									468932669
+								]
+								Name: "Speed"
+							}
+							{
+								Amount: -0.25d
+								Slot: "mainhand"
+								AttributeName: "minecraft:generic.max_health"
+								Operation: 2
+								UUID: [I;
+									1957526662
+									-1808904610
+									-1112773983
+									-1546981742
+								]
+								Name: "Health"
+							}
+						]
+					}
+				}
+				entity: "dungeonsmod:ironslime"
+				value: 1L
+			}]
+			rewards: [{
+				id: "10505000E382F661"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killwinterhunter}"
+			x: 0.0d
+			y: 4.5d
+			description: ["{quest.emcworld.or_dungeons_killwinterhunter_desc}"]
+			dependencies: ["298F239FC32EFF85"]
+			id: "000978E9A36D0D50"
+			tasks: [{
+				id: "67F05ECCA078D4F7"
+				type: "kill"
+				icon: {
+					id: "minecraft:bow"
+					Count: 1b
+					tag: {
+						level: 0
+						prefix: 4
+						display: {
+							Lore: ["{\"translate\":\"item.dungeonsmod.winterhunter1.lore\"}"]
+							Name: "{\"translate\":\"item.dungeonsmod.winterhunter1.name\"}"
+						}
+						Enchantments: [{
+							lvl: 8s
+							id: "minecraft:power"
+						}]
+						Damage: 91
+						AttributeModifiers: [{
+							Amount: -1.0d
+							Slot: "mainhand"
+							AttributeName: "minecraft:generic.movement_speed"
+							Operation: 1
+							UUID: [I;
+								-641221758
+								-1230156907
+								-2038541123
+								636282021
+							]
+							Name: "Speed"
+						}]
+					}
+				}
+				entity: "dungeonsmod:winterhunter"
+				value: 1L
+			}]
+			rewards: [{
+				id: "5C8A8F5B28F4F97A"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killvoidmaster}"
+			x: 0.0d
+			y: -12.0d
+			description: ["{quest.emcworld.or_dungeons_killvoidmaster_desc}"]
+			dependencies: [
+				"1E98DB5C3DD05626"
+				"67986A0B3586A400"
+			]
+			hide: true
+			id: "1F9FA6098C7B26FF"
+			tasks: [{
+				id: "6A546C548AEE0D7C"
+				type: "kill"
+				icon: {
+					id: "dungeonsmod:void_tome"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+				entity: "dungeonsmod:voidmaster"
+				value: 1L
+			}]
+			rewards: [{
+				id: "3021922681364755"
+				type: "custom"
+				title: "{reward.emcworld.epic}"
+				icon: "emcworld:advanced_emc_gem"
+				tags: ["epic"]
+			}]
+		}
+		{
+			title: "{quest.emcworld.or_dungeons_killsun}"
+			x: 0.0d
+			y: 7.5d
+			description: ["{quest.emcworld.or_dungeons_killsun_desc}"]
+			dependencies: [
+				"298F239FC32EFF85"
+				"45950F380D6786BA"
+			]
+			hide: true
+			id: "099F2EE153095592"
+			tasks: [{
+				id: "18029F9C293D2899"
+				type: "kill"
+				icon: "dungeonsmod:sun_overdrive"
+				entity: "dungeonsmod:sun"
+				value: 1L
+			}]
+			rewards: [{
+				id: "45243B0D4210680F"
+				type: "custom"
+				title: "{reward.emcworld.hard}"
+				icon: "emcworld:biggest_emc_gem"
+				tags: ["hard"]
+			}]
+		}
+	]
+}

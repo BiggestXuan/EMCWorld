@@ -8,8 +8,11 @@ package biggestxuan.emcworld.common.items;
 
 import biggestxuan.emcworld.api.item.EMCWorldBaseItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
+import net.minecraft.item.Rarity;
 
 public class EWItem extends EMCWorldBaseItem {
+    public static final Properties EWProperties = new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB);
+
     public EWItem() {
         super();
     }
@@ -18,14 +21,12 @@ public class EWItem extends EMCWorldBaseItem {
         super(properties);
     }
 
-    public EWItem(Integer maxSize){
+    public EWItem(int maxSize){
         super(new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB).stacksTo(maxSize));
     }
 
-    public EWItem(int rarity){
+    public EWItem(Rarity rarity){
         super(rarity);
     }
-
-
 }
 

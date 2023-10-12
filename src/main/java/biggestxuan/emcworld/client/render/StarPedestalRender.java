@@ -6,7 +6,7 @@ package biggestxuan.emcworld.client.render;
  *  2023/02/04
  */
 
-import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.StarPedestalTileEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import hellfirepvp.astralsorcery.client.util.RenderingDrawUtils;
 import net.minecraft.client.Minecraft;

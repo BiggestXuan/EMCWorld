@@ -1,4 +1,4 @@
-package biggestxuan.emcworld.common.blocks.Ores;
+package biggestxuan.emcworld.common.blocks.ores;
 
 /**
  *  EMC WORLD MOD

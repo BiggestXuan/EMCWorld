@@ -6,7 +6,7 @@ package biggestxuan.emcworld.api.event;
  *  2022/11/04
  */
 
-import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlockTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.WeaponUpgradeBlockTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;

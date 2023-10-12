@@ -1,5 +1,7 @@
 //import cn.hutool.core.date.ChineseDate;
 
+import biggestxuan.emcworld.common.utils.MathUtils;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -36,7 +38,11 @@ public class main {
         System.out.println(d.getGregorianMonth());
         System.out.println(d.getGregorianDay());
         System.out.println((long) Math.abs(UUID.fromString("29328b6c-6f03-4fba-9436-678b696e8aeb").hashCode()));
-*/    }
+*/
+        for (int i = 0; i < 10; i++) {
+            System.out.println(MathUtils.getRangeRandom(0,3));
+        }
+    }
 }
 
 

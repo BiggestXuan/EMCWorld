@@ -7,9 +7,11 @@ package biggestxuan.emcworld.common.compact.Hwyla;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateBlock;
-import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlock;
-import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
+import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock;
+import biggestxuan.emcworld.common.blocks.EMCOreCoreBlock;
+import biggestxuan.emcworld.common.blocks.tile.EMCOreCoreTileEntity;
+import biggestxuan.emcworld.common.blocks.InfuserBlock;
+import biggestxuan.emcworld.common.blocks.tile.InfuserBlockTileEntity;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.common.compact.Projecte.itf.ICollectorLifeSpan;
@@ -62,6 +64,15 @@ public class DataProvider implements IComponentProvider {
             int max = infuser.getMaxEMC();
             int progress = infuser.getProgress();
             int maxProgress = infuser.getMaxProgress() == 0 ? 1 : infuser.getMaxProgress();
+            tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(emc)+"/"+MathUtils.format(max)+" ("+String.format("%.2f",100d*emc/max)+"%)"));
+            tooltip.add(EMCWorld.tc("tooltip.emcworld.infuser_progress",String.format("%.2f",100d*progress/maxProgress)+"%"));
+        }
+        if(block instanceof EMCOreCoreBlock){
+            EMCOreCoreTileEntity infuser = (EMCOreCoreTileEntity) tile;
+            long emc = infuser.emc;
+            long max = infuser.maxEMC;
+            int progress = infuser.progress;
+            int maxProgress = infuser.maxProgress == 0 ? 1 : infuser.maxProgress;
             tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(emc)+"/"+MathUtils.format(max)+" ("+String.format("%.2f",100d*emc/max)+"%)"));
             tooltip.add(EMCWorld.tc("tooltip.emcworld.infuser_progress",String.format("%.2f",100d*progress/maxProgress)+"%"));
         }

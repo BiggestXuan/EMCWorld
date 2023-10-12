@@ -215,19 +215,5 @@
 				}
 			]
 		}
-		{
-			title: "{quest.emcworld.fourth_tech_test}"
-			x: 8.0d
-			y: 0.0d
-			description: ["{quest.emcworld.fourth_tech_test_desc}"]
-			dependencies: ["3CB37FCC7A09D63F"]
-			optional: true
-			id: "35D9E6B63FA59A90"
-			tasks: [{
-				id: "303E08BC62CC2968"
-				type: "forge_energy"
-				value: 1000000000000L
-			}]
-		}
 	]
 }

@@ -26,7 +26,7 @@ public class UpdateBlockItem extends BlockItem {
     private final Block block;
 
     public UpdateBlockItem(Block p_i48527_1_) {
-        super(p_i48527_1_,new Properties().tab(EWCreativeTabs.EW_ORES_TAB));
+        super(p_i48527_1_,new Properties().tab(EWCreativeTabs.EW_BLOCKS_TAB));
         this.block = p_i48527_1_;
     }
 

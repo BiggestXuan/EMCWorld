@@ -7,17 +7,8 @@ package biggestxuan.emcworld.common.registry;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock.AdvancedUpdateTileEntity;
-import biggestxuan.emcworld.common.blocks.PrefixBlock.PrefixTileEntity;
-import biggestxuan.emcworld.common.blocks.StarPedestal.StarPedestalTileEntity;
-import biggestxuan.emcworld.common.blocks.SuperEMCBlock.SuperEMCTileEntity;
-import biggestxuan.emcworld.common.blocks.TopCore.TopCoreTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.*;
 import biggestxuan.emcworld.common.compact.Botania.BotaniaFlowers.TileEMCFlower;
-import biggestxuan.emcworld.common.blocks.GemstoneBlock.GemstoneTileEntity;
-import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
-import biggestxuan.emcworld.common.blocks.SteelFurnace.SteelFurnaceTileEntity;
-import biggestxuan.emcworld.common.blocks.VisConversionBlock.VisConversionTileEntity;
-import biggestxuan.emcworld.common.blocks.WeaponUpgradeBlock.WeaponUpgradeBlockTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -57,6 +48,9 @@ public class EWTileEntityTypes {
     public static RegistryObject<TileEntityType<TopCoreTileEntity>> topCoreTileEntity = TILE_ENTITIES.register
             ("top_core_tileentity", () -> TileEntityType.Builder.of(TopCoreTileEntity::new,
                     EWBlocks.TOP_CORE.get()).build(null));
+    public static RegistryObject<TileEntityType<EMCOreCoreTileEntity>> emc_oreTileEntity = TILE_ENTITIES.register
+            ("emc_ore_tileentity", () -> TileEntityType.Builder.of(EMCOreCoreTileEntity::new,
+                    EWBlocks.EMC_ORE_CORE.get()).build(null));
 
     // Botania
     public static RegistryObject<TileEntityType<TileEMCFlower>> EMC_FLOWER = TILE_ENTITIES.register

@@ -47,7 +47,7 @@ public abstract class BaseTileBlock extends EWBlock {
     }
 
     private static <T extends BaseContainerTileEntity> void drop(T tile){
-        if(tile.getLevel() == null) return;
+        if(tile.getLevel() == null || tile.getInventory() == null) return;
         InventoryHelper.dropContents(tile.getLevel(),tile.getBlockPos(),tile.getInventory());
     }
 }

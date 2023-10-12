@@ -17,6 +17,7 @@ import com.blamejared.crafttweaker.api.item.IIngredientWithAmount;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.fml.RegistryObject;
 import org.openzen.zencode.java.ZenCodeType;
@@ -26,6 +27,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @ZenRegister
@@ -82,6 +84,34 @@ public class CrTItemUtils {
             }
         }
         return IIngredient.fromIngredient(Ingredient.of(list.stream()));
+    }
+
+    @ZenCodeType.Method
+    public static String getItemNBTName(ItemStack stack,String base){
+        String s = base+"_";
+        s += stack.getItem().getRegistryName().toString();
+        if(stack.hasTag()){
+            s += FormateNBT(stack.getTag());
+        }
+        return s;
+    }
+
+    @ZenCodeType.Method
+    public static String getItemNBTName(IItemStack stack,String base){
+        return getItemNBTName(stack.getImmutableInternal(),base);
+    }
+
+    private static String FormateNBT(CompoundNBT nbt){
+        StringBuilder builder = new StringBuilder();
+        Collection<String> collection = nbt.tags.keySet();
+        for(String s : collection) {
+            if (builder.length() != 1) {
+                builder.append('_');
+            }
+
+            builder.append('_').append(nbt.tags.get(s));
+        }
+        return builder.toString();
     }
 
     public static List<ItemStack> getEMCGodItems(CompoundNBT nbt){

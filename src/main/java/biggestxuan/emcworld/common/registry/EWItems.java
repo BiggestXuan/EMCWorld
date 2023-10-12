@@ -9,6 +9,8 @@ package biggestxuan.emcworld.common.registry;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.base.BaseGetStageItem;
+import biggestxuan.emcworld.common.items.CDReduceScroll.CommonCDReduceScrollItem;
+import biggestxuan.emcworld.common.items.CDReduceScroll.CraftCDReduceScrollItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.ShengXuan;
 import biggestxuan.emcworld.common.compact.Mekanism.Module.EMCProtect.EnergyProtectModuleItem;
 import biggestxuan.emcworld.common.compact.Mekanism.Module.Infinity.InfinityModuleItem;
@@ -57,6 +59,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
@@ -112,6 +115,7 @@ public class EWItems {
     public static final RegistryObject<Item> INFUSE_CORE = ITEMS.register("infuse_core",EWItem::new);
     public static final RegistryObject<Item> PREFIX_CORE = registryBlock("prefix_core", EWBlocks.PREFIX_CORE);
     public static final RegistryObject<Item> TOP_CORE = registryBlock("top_core", EWBlocks.TOP_CORE);
+    public static final RegistryObject<Item> EMC_ORE_CORE = registryEMCOreCoreBlock("emc_ore_core",EWBlocks.EMC_ORE_CORE);
     public static final RegistryObject<Item> EMC_SUPER = registryBlock("emc_super", EWBlocks.EMC_SUPER);
     public static final RegistryObject<Item> STAR_PEDESTAL = registryBlock("star_pedestal", EWBlocks.STAR_PEDESTAL);
     public static final RegistryObject<Item> PROFESSION_SWORD = ITEMS.register("profession_sword",() -> new ProfessionalItem(1));
@@ -143,6 +147,8 @@ public class EWItems {
     public static final RegistryObject<Item> NETHERITE_STICK = ITEMS.register("netherite_stick",EWItem::new);
     public static final RegistryObject<Item> NONAME_CATFOOD = ITEMS.register("noname_catfood", NoNameCatFood::new);
     public static final RegistryObject<Item> PREFIX_SCROLL = ITEMS.register("prefix_scroll", PrefixScroll::new);
+    public static final RegistryObject<Item> CRAFT_CD_SCROLL = ITEMS.register("craft_cd_scroll", CraftCDReduceScrollItem::new);
+    public static final RegistryObject<Item> COMMON_CD_SCROLL = ITEMS.register("common_cd_scroll", CommonCDReduceScrollItem::new);
     public static final RegistryObject<Item> RAID_LIGHT = ITEMS.register("raid_light", RaidLightItem::new);
     public static final RegistryObject<Item> ABUNANA_LOOT = ITEMS.register("abunana_loot", AbunanaLoot::new);
     public static final RegistryObject<Item> BLUE_MATTER = ITEMS.register("blue_matter",() -> new MatterItem(Matter.BLUE));
@@ -178,12 +184,12 @@ public class EWItems {
             p_77624_3_.add(EMCWorld.tc("tooltip.emcworld.exorcism_candle"));
         }
     });
-    public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(1));
+    public static final RegistryObject<Item> STAINLESS_STEEL = ITEMS.register("stainless_steel",() -> new EWItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> LOTTERY = ITEMS.register("lottery",LotteryItem::new);
-    public static final RegistryObject<Item> HARD_STEEL = ITEMS.register("hard_steel",() -> new EWItem(1));
+    public static final RegistryObject<Item> HARD_STEEL = ITEMS.register("hard_steel",() -> new EWItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key",() -> new BaseGetStageItem("nether"));
     public static final RegistryObject<Item> FLYING_GEM = ITEMS.register("flying_gem",() -> new BaseGetStageItem("fly"));
-    public static final RegistryObject<Item> RAINBOW_INGOT = ITEMS.register("rainbow_ingot",() -> new EWItem(1));
+    public static final RegistryObject<Item> RAINBOW_INGOT = ITEMS.register("rainbow_ingot",() -> new EWItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> ATM_SWORD = ITEMS.register("atm_sword",AtmSword::new);
     public static final RegistryObject<Item> INFINITY_SWORD = ITEMS.register("infinity_sword", InfinitySword::new);
     public static final RegistryObject<Item> CREATION = ITEMS.register("creation", Creation::new);
@@ -577,14 +583,18 @@ public class EWItems {
     public static final RegistryObject<Item> TEST_BLOCK = registryBlock("test_block",EWBlocks.TEST_BLOCK);
 
     private static RegistryObject<Item> registryBlock(String name, RegistryObject<Block> block){
-        return ITEMS.register(name,() -> new BlockItem(block.get(),new Item.Properties().tab(EWCreativeTabs.EW_ORES_TAB)));
+        return ITEMS.register(name,() -> new BlockItem(block.get(),new Item.Properties().tab(EWCreativeTabs.EW_BLOCKS_TAB)));
     }
 
     private static RegistryObject<Item> registryBlock(String name, Block block){
-        return ITEMS.register(name,() -> new BlockItem(block,new Item.Properties().tab(EWCreativeTabs.EW_ORES_TAB)));
+        return ITEMS.register(name,() -> new BlockItem(block,new Item.Properties().tab(EWCreativeTabs.EW_BLOCKS_TAB)));
     }
 
     private static RegistryObject<Item> registryUpdateBlock(String name,RegistryObject<Block> block){
         return ITEMS.register(name,() -> new UpdateBlockItem(block.get()));
+    }
+
+    private static RegistryObject<Item> registryEMCOreCoreBlock(String name,RegistryObject<Block> block){
+        return ITEMS.register(name,() -> new EMCOreCoreBlockItem(block.get()));
     }
 }

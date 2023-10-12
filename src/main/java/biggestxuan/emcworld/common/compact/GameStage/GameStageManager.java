@@ -7,10 +7,14 @@ package biggestxuan.emcworld.common.compact.GameStage;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.EMCWorldSince;
+import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.Message;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+
+import java.util.Locale;
 
 public class GameStageManager {
     public static void syncStage(PlayerEntity player){
@@ -36,5 +40,15 @@ public class GameStageManager {
             GameStageHelper.removeStage((ServerPlayerEntity) player,name);
             syncStage(player);
         }
+    }
+
+    @EMCWorldSince("1.0.5")
+    public static int getPlayerGameStageByInt(PlayerEntity player){
+        for(DifficultySetting s : DifficultySetting.values()){
+            if(hasStage(player,s.getGameStage().toLowerCase(Locale.ROOT))){
+                return s.getIndex();
+            }
+        }
+        return 0;
     }
 }

@@ -26,19 +26,15 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
-import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEnchantments;
-import biggestxuan.emcworld.common.registry.EWModules;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import dev.ftb.mods.ftbquests.quest.reward.CustomReward;
 import mekanism.common.content.gear.Module;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.blay09.mods.waystones.api.IWaystone;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -47,7 +43,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
@@ -61,7 +56,10 @@ import org.openzen.zencode.java.ZenCodeType;
 import vazkii.botania.common.item.ItemKeepIvy;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 @ZenRegister
 @ZenCodeType.Name("mods.emcworld.math")
@@ -201,6 +199,10 @@ public final class MathUtils {
         return text;
     }
 
+    public static int MaxMin(int value,int min,int max){
+        return value >= max ? max : value <= min ? min : value;
+    }
+
     public static String KMT(String text){
         if(text.length() <= 6){
             return format(text);
@@ -322,6 +324,18 @@ public final class MathUtils {
         for(DifficultySetting obj:DifficultySetting.values()){
             if(GameStageManager.hasStage(player, obj.getGameStage())){
                 return obj.getAttackBase();
+            }
+        }
+        return 0;
+    }
+
+    public static double getHurtBaseCost(PlayerEntity player){
+        if(!ConfigManager.EMC_HURT.get()){
+            return 0;
+        }
+        for(DifficultySetting obj:DifficultySetting.values()){
+            if(GameStageManager.hasStage(player, obj.getGameStage())){
+                return obj.getHurtBase();
             }
         }
         return 0;
@@ -514,6 +528,9 @@ public final class MathUtils {
     }
 
     public static double log(double base,double value){
+        if(base <= 0 || value <= 0){
+            return 0;
+        }
         return Math.log(value) / Math.log(base);
     }
 
@@ -817,7 +834,7 @@ public final class MathUtils {
         }
         int level = EnchantmentHelper.getItemEnchantmentLevel(EWEnchantments.EMC_REPAIR.get(),stack);
         if(level >= 1){
-            return 1080 + (-250L * level);
+            return Math.max(0,1080 + (-250L * level));
         }
         return -1;
     }

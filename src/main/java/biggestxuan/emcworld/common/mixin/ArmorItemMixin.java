@@ -89,7 +89,7 @@ public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, 
             }
         }
         int level = getLevel(stack);
-        health = health >= 1 ? (float) ((1 + 0.0125 * level) * health) : (float) (0.75f * MathUtils.log(2,defense) * level);
+        health = health >= 1 ? (float) ((1 + 0.0125 * level) * health) : (float) (0.75f * MathUtils.log(2,defense+1) * level);
         return health;
     }
 }

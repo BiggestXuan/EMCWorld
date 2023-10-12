@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Dctor_0415;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
+import biggestxuan.emcworld.common.items.Equipment.TulyeShieldItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.traits.ITrait;
@@ -159,6 +160,22 @@ public class PlayerHurtEvent {
                 }
             }
             amount = Math.max(0,amount);
+            ItemStack isShield = TulyeShieldItem.getPlayerTulyeShield(player);
+            if(isShield != null){
+                TulyeShieldItem shield = (TulyeShieldItem) isShield.getItem();
+                if(shield.getSkillLevel(player,isShield) >= 2){
+                    long cost = (long) (MathUtils.getAttackBaseCost(player) * 10 * amount);
+                    if(EMCHelper.getPlayerEMC(player) >= cost){
+                        event.setCanceled(true);
+                        EMCHelper.modifyPlayerEMC(player,new EMCSource.TulyeShieldSource(-cost,player));
+                    }else{
+                        player.die(EWDamageSource.REALLY);
+                        player.setHealth(0);
+                        Message.sendMessage(player, EMCWorld.tc("message.evt.hurtcancel",MathUtils.format(String.valueOf(cost))));
+                    }
+                }
+
+            }
             for(DifficultySetting obj:DifficultySetting.values()){
                 if(GameStageManager.hasStage(player, obj.getGameStage())){
                     long costEMC =MathUtils.doubleToLong(obj.getHurtBase() * amount * MathUtils.difficultyLoss());

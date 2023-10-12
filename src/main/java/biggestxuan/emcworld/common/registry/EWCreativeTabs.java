@@ -14,7 +14,7 @@ import net.minecraft.item.ItemGroup;
 
 public class EWCreativeTabs {
     public static final ItemGroup EW_CREATIVE_TAB = new EWCreativeTab();
-    public static final ItemGroup EW_ORES_TAB = new EWOresTab();
+    public static final ItemGroup EW_BLOCKS_TAB = new EWOresTab();
     public static final ItemGroup EW_ORE_ITEMS = new EWOreItemsTab();
     public static final ItemGroup EW_EQUIPMENT_TAB = new EWCEquipmentTab();
 }

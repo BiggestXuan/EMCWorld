@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.compact.JEI.Infuser;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.InfuserBlock.InfuserBlockTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.InfuserBlockTileEntity;
 import biggestxuan.emcworld.common.recipes.InfuserRecipe;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -20,7 +20,6 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.resources.I18n;

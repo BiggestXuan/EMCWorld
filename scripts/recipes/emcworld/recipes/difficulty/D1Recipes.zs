@@ -29,6 +29,7 @@ public function D1Recipes() as void{
         smithingRecipe(armor[i-4],unqd,armor[i]);
     }
     for i in 20 .. 24{
+        removeSmithingRecipe(armor[i]);
         smithingRecipe(armor[i-4],<item:emcworld:dragon_steel>*3,armor[i]);
     }
     for i in 24 .. 28{

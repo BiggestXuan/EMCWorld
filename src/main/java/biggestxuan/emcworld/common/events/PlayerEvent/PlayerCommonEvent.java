@@ -238,9 +238,11 @@ public class PlayerCommonEvent {
         if(event.player.level.isClientSide){
             return;
         }
-        if(BloodMagicHelper.isEMCModifyDagger(stack)){
+        long cost = BloodMagicHelper.getEMCDaggerEMCCost(stack);
+        if(BloodMagicHelper.isEMCModifyDagger(stack) && EMCHelper.getPlayerEMC(event.player) >= -cost){
             event.shouldDrainHealth = false;
-            EMCHelper.modifyPlayerEMC(event.player, new EMCSource.EMCTransferBloodSource((long) (-1000*ConfigManager.DIFFICULTY.get()),event.player));
+            event.lpAdded *= Math.pow(2,BloodMagicHelper.getEMCDaggerLevel(stack));
+            EMCHelper.modifyPlayerEMC(event.player, new EMCSource.EMCTransferBloodSource(cost,event.player));
         }
     }
 
