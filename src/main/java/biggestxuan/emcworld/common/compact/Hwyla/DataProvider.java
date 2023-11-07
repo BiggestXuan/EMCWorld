@@ -18,9 +18,11 @@ import biggestxuan.emcworld.common.compact.Projecte.itf.ICollectorLifeSpan;
 import biggestxuan.emcworld.common.registry.EWBlocks;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import dev.latvian.mods.projectex.block.CollectorBlock;
+import dev.latvian.mods.projectex.block.entity.CollectorBlockEntity;
 import mcp.mobius.waila.api.IComponentProvider;
 import mcp.mobius.waila.api.IDataAccessor;
 import mcp.mobius.waila.api.IPluginConfig;
+import moze_intel.projecte.api.capabilities.tile.IEmcStorage;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
@@ -64,7 +66,7 @@ public class DataProvider implements IComponentProvider {
             int max = infuser.getMaxEMC();
             int progress = infuser.getProgress();
             int maxProgress = infuser.getMaxProgress() == 0 ? 1 : infuser.getMaxProgress();
-            tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(emc)+"/"+MathUtils.format(max)+" ("+String.format("%.2f",100d*emc/max)+"%)"));
+            //tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(emc)+"/"+MathUtils.format(max)+" ("+String.format("%.2f",100d*emc/max)+"%)"));
             tooltip.add(EMCWorld.tc("tooltip.emcworld.infuser_progress",String.format("%.2f",100d*progress/maxProgress)+"%"));
         }
         if(block instanceof EMCOreCoreBlock){
@@ -73,8 +75,11 @@ public class DataProvider implements IComponentProvider {
             long max = infuser.maxEMC;
             int progress = infuser.progress;
             int maxProgress = infuser.maxProgress == 0 ? 1 : infuser.maxProgress;
-            tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(emc)+"/"+MathUtils.format(max)+" ("+String.format("%.2f",100d*emc/max)+"%)"));
             tooltip.add(EMCWorld.tc("tooltip.emcworld.infuser_progress",String.format("%.2f",100d*progress/maxProgress)+"%"));
+        }
+        if(tile instanceof IEmcStorage && !(tile instanceof CollectorBlockEntity)){
+            IEmcStorage storage = (IEmcStorage) tile;
+            tooltip.add(EMCWorld.tc("EMC: "+MathUtils.format(storage.getStoredEmc())+"/"+MathUtils.format(storage.getMaximumEmc())+" ("+String.format("%.2f",100d*storage.getStoredEmc()/storage.getMaximumEmc())+"%)"));
         }
     }
 }

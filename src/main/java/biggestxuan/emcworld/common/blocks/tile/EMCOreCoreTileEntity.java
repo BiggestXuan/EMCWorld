@@ -2,6 +2,7 @@ package biggestxuan.emcworld.common.blocks.tile;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.block.BaseContainerTileEntity;
+import biggestxuan.emcworld.api.block.BaseUpgradeTileEntity;
 import biggestxuan.emcworld.common.blocks.container.EMCOreCoreContainer;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -45,7 +46,7 @@ import java.util.stream.IntStream;
  * 2023/10/09
  */
 
-public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITickableTileEntity, INamedContainerProvider, ISidedInventory, IEmcStorage {
+public class EMCOreCoreTileEntity extends BaseUpgradeTileEntity implements ITickableTileEntity, INamedContainerProvider, ISidedInventory, IEmcStorage {
     public static ITextComponent NAME = EMCWorld.tc("block.emcworld.emc_ore_core");
     private final int[] DIRECTION_DOWN = IntStream.range(1,15).toArray();
     private final int[] DIRECTION_ELSE = new int[]{0};
@@ -57,12 +58,9 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
 
     public int maxProgress;
     public int progress;
-    public int upgradeLevel;
-    public int prefix;
-    public int star;
     public long emc;
     public long maxEMC;
-    public int maxStar;
+    public int selectLevel;
 
     LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this,Direction.UP,Direction.DOWN);
     LazyOptional<IEmcStorage> emcStorageCapability;
@@ -73,12 +71,9 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
         ItemStackHelper.loadAllItems(nbt,items);
         maxProgress = nbt.getInt("maxProgress");
         progress = nbt.getInt("progress");
-        upgradeLevel = nbt.getInt("level");
-        prefix = nbt.getInt("prefix");
-        star = nbt.getInt("star");
         emc = nbt.getLong("emc");
         maxEMC = nbt.getLong("maxEMC");
-        maxStar = nbt.getInt("max_tar");
+        selectLevel = nbt.getInt("selectLevel");
     }
 
     @Override
@@ -116,12 +111,9 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
         ItemStackHelper.saveAllItems(nbt,items);
         nbt.putInt("maxProgress",maxProgress);
         nbt.putInt("progress",progress);
-        nbt.putInt("level", upgradeLevel);
-        nbt.putInt("prefix",prefix);
-        nbt.putInt("star",star);
         nbt.putLong("emc",emc);
         nbt.putLong("maxEMC",maxEMC);
-        nbt.putInt("max_star",maxStar);
+        nbt.putInt("selectLevel",selectLevel);
         return nbt;
     }
 
@@ -131,35 +123,27 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
         var nbt = super.getUpdateTag();
         nbt.putInt("maxProgress",maxProgress);
         nbt.putInt("progress",progress);
-        nbt.putInt("level", upgradeLevel);
-        nbt.putInt("prefix",prefix);
-        nbt.putInt("star",star);
         nbt.putLong("emc",emc);
         nbt.putLong("maxEMC",maxEMC);
-        nbt.putInt("max_star",maxStar);
+        nbt.putInt("selectLevel",selectLevel);
         return nbt;
     }
 
     @Override
     public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
+        super.handleUpdateTag(state,nbt);
         maxProgress = nbt.getInt("maxProgress");
         progress = nbt.getInt("progress");
-        upgradeLevel = nbt.getInt("level");
-        prefix = nbt.getInt("prefix");
-        star = nbt.getInt("star");
         emc = nbt.getLong("emc");
         maxEMC = nbt.getLong("maxEMC");
-        maxStar = nbt.getInt("max_star");
+        selectLevel = nbt.getInt("selectLevel");
     }
 
-    @Nullable
-    @Override
-    public Inventory getInventory() {
-        Inventory inventory = new Inventory(items.size());
-        for (int i = 0; i < inventory.getContainerSize(); i++) {
-            inventory.setItem(i,items.get(i));
+    public void setOreLevel(int level){
+        if(level >= 0 && level <= star){
+            selectLevel = level;
+            stop();
         }
-        return inventory;
     }
 
     @Nonnull
@@ -243,23 +227,12 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
         return new EMCOreCoreContainer(p_createMenu_1_,p_createMenu_2_,this);
     }
 
-    @Nullable
-    @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(getBlockPos(), 1, getUpdateTag());
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        handleUpdateTag(level.getBlockState(pkt.getPos()), pkt.getTag());
-    }
-
     @Override
     public void tick() {
+        super.tick();
         if(level == null || level.isClientSide){
             return;
         }
-        level.sendBlockUpdated(getBlockPos(),getBlockState(),getBlockState(), Constants.BlockFlags.BLOCK_UPDATE);
         flushEMCAndTime();
         useEMCGem();
         doing();
@@ -271,7 +244,7 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
     }
 
     private void craftItem(){
-        int recipeLevel = star;
+        int recipeLevel = selectLevel;
         int weight = MathUtils.getRangeRandom(0,EMCOreRecipe.getTotalWeight(recipeLevel));
         EMCOreRecipe recipe = null;
         for(var r : EMCOreRecipe.getRequireLevelRecipe(recipeLevel)){
@@ -299,7 +272,6 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
                 }else{
                     stack.setCount(stack.getCount() - (items.get(i).getMaxStackSize() - items.get(i).getCount()));
                     items.get(i).setCount(items.get(i).getMaxStackSize());
-                    insertItem(stack);
                 }
             }
         }
@@ -307,7 +279,7 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
 
     private void doing(){
         if(canStart()){
-            emc -= getTickCost(star,upgradeLevel,prefix);
+            emc -= getTickCost(selectLevel,upgradeLevel,prefix);
             progress++;
             if(progress >= maxProgress){
                 stop();
@@ -379,7 +351,7 @@ public class EMCOreCoreTileEntity extends BaseContainerTileEntity implements ITi
         if(level <= 5){
             return 1200 - level * 20; //base:1200
         }
-        return 1000 - (level - 5) * 10;  //1000
+        return 1000 - (level - 5) * 100;  //1000
     }
 
     public static long getProduceCost(int level,int prefix){

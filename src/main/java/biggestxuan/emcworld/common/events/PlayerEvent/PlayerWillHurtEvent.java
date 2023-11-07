@@ -136,6 +136,9 @@ public class PlayerWillHurtEvent {
             }));*/
         }
         amount *= rate.get();
+        if(maxShield <= 0){
+            return false;
+        }
         for (ItemStack stack : armors) {
             IEMCShieldArmor armor = (IEMCShieldArmor) armors.get(0).getItem();
             armor.modifyShield(stack, negateExact(amount * armor.getMaxShield(stack) / maxShield));

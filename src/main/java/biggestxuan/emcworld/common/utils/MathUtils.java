@@ -586,7 +586,11 @@ public final class MathUtils {
             o = "G";
         }else if(c <= 15 && c >= 13){
             o = "T";
-        }else if(c <= 18 && c >= 16)o = "P";
+        }else if(c <= 18 && c >= 16){
+            o = "P";
+        }else if(c > 18){
+            o = "E";
+        }
         return o;
     }
 

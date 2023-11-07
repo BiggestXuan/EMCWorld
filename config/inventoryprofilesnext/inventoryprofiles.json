@@ -1,8 +1,15 @@
 {
     "ModSettings": {
+        "enable_lock_slots": {
+            "value": false
+        },
+        "enable_updates_check": false,
         "first_run": false
     },
     "GuiSettings": {
+        "enable_inventory_buttons": {
+            "value": false
+        },
         "continuous_crafting_saved_value": false
     }
 }

@@ -12,7 +12,7 @@
 	#Enable some funny things?
 	geng = true
 	#Whether unable EMCWorld Admin Menu
-	"Able Admin Menu" = false
+	"Able Admin Menu" = true
 	#Enable sponsorship messages that players send every 100 times they enter the game.
 	"Enable Info" = true
 

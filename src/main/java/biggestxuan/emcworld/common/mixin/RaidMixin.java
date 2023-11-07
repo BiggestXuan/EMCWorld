@@ -28,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
 @Mixin(Raid.class)
@@ -52,6 +53,8 @@ public abstract class RaidMixin {
     @Shadow
     private long ticksActive;
 
+    @Shadow @Nullable protected abstract BlockPos findRandomSpawnPos(int p_221298_1_, int p_221298_2_);
+
     protected RaidMixin(int numGroups, ServerWorld level) {
         this.numGroups = numGroups;
         this.level = level;
@@ -67,18 +70,10 @@ public abstract class RaidMixin {
     public void getDefaultNumSpawns(Raid.WaveMember p_221330_1_, int p_221330_2_, boolean p_221330_3_, CallbackInfoReturnable<Integer> cir){
         if(groupsSpawned >= 14){
             int i =  groupsSpawned - 14;
-            List<Raid.WaveMember> members = new ArrayList<>(Arrays.asList(Raid.WaveMember.values()));
-            for(Raid.WaveMember m : members){
-                cir.setReturnValue(m.spawnsPerWaveBeforeBonus[i] + m.spawnsPerWaveBeforeBonus[7] * 2);
-                cir.cancel();
-            }
+            cir.setReturnValue(p_221330_1_.spawnsPerWaveBeforeBonus[i] + p_221330_1_.spawnsPerWaveBeforeBonus[7] * 2);
         }else if(groupsSpawned >= 7){
             int i =  groupsSpawned - 7;
-            List<Raid.WaveMember> members = new ArrayList<>(Arrays.asList(Raid.WaveMember.values()));
-            for(Raid.WaveMember m : members){
-                cir.setReturnValue(m.spawnsPerWaveBeforeBonus[i] + m.spawnsPerWaveBeforeBonus[7]);
-                cir.cancel();
-            }
+            cir.setReturnValue(p_221330_1_.spawnsPerWaveBeforeBonus[i] + p_221330_1_.spawnsPerWaveBeforeBonus[7]);
         }
     }
 
@@ -90,7 +85,7 @@ public abstract class RaidMixin {
 
     @Inject(method = "getPotentialBonusSpawns",at = @At("HEAD"),cancellable = true)
     public void getAddonSpawns(Raid.WaveMember p_221335_1_, Random p_221335_2_, int p_221335_3_, DifficultyInstance p_221335_4_, boolean p_221335_5_, CallbackInfoReturnable<Integer> cir){
-        cir.setReturnValue(0);
+        cir.setReturnValue(1);
         cir.cancel();
     }
 
@@ -124,7 +119,7 @@ public abstract class RaidMixin {
     @Inject(method = "joinRaid",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/monster/AbstractRaiderEntity;setPos(DDD)V"),cancellable = true)
     public void spawn(int p_221317_1_, AbstractRaiderEntity p_221317_2_, BlockPos p_221317_3_, boolean p_221317_4_, CallbackInfo ci){
         Raid raid = (Raid) (Object) this;
-        BlockPos pos = new RaidUtils(raid).getRandomPos(p_221317_3_);
+        BlockPos pos = findRandomSpawnPos(0,20);
         if(pos == null){
             raid.stop();
             ci.cancel();

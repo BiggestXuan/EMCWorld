@@ -32,7 +32,7 @@ import java.util.List;
 @EMCWorldSince("0.9.0")
 public class ExceptionApple extends EWItem implements ISponsorItem {
     public ExceptionApple(){
-        super((Integer) 1);
+        super(1);
     }
 
     @Override

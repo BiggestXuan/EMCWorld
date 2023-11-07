@@ -12,6 +12,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.utils.MathUtils;
+import com.github.alexthe666.rats.server.entity.RatsEntityRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -88,6 +89,9 @@ public class LivingJoinWorldEvent {
                 return false;
             }
             if(PlayerCurios.hasExorcismCandle(p)){
+                if(entity.getType().equals(RatsEntityRegistry.PLAGUE_DOCTOR)){
+                    return false;
+                }
                 return false;
             }
         }

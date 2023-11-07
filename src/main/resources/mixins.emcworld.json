@@ -37,6 +37,7 @@
     "GNSBedMixin",
     "GNSItemTierMixin",
     "GobberTierMixin",
+    "InterdictionTileMixin",
     "ItemDaggerOfSacrificeMixin",
     "ItemEntityMixin",
     "ItemGlovesDexterityMixin",
@@ -48,6 +49,7 @@
     "ItemMixin",
     "ItemMusicShooterMixin",
     "ItemSacrificialDaggerMixin",
+    "ItemSerenadeOfHealthMixin",
     "ItemStackUtilMixin",
     "ItemStageMixin",
     "ItemStagesMixin",
@@ -88,6 +90,7 @@
     "UncraftingTableBlockMixin",
     "WebHelperDisableMixin",
     "WirelessTransmitterNetworkNodeMixin",
+    "WitchEntityMixin",
     "WorldHelperMixin",
     "WorldMixin"
   ],

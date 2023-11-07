@@ -144,6 +144,7 @@ public class EWItems {
     public static final RegistryObject<Item> EVIL_BOOK = ITEMS.register("evil_book",() -> new AddMaxLevelItem(100,0));
     public static final RegistryObject<Item> ULTIMATE_SINGULARITY = ITEMS.register("ultimate_singularity",() -> new AddMaxLevelItem(110,0));
     public static final RegistryObject<Item> EMC_LEAF = ITEMS.register("emc_leaf",EWItem::new);
+    public static final RegistryObject<Item> EMCWORLD_QUEST_ITEM = ITEMS.register("quest_item",EMCWorldQuestsItem::new);
     public static final RegistryObject<Item> NETHERITE_STICK = ITEMS.register("netherite_stick",EWItem::new);
     public static final RegistryObject<Item> NONAME_CATFOOD = ITEMS.register("noname_catfood", NoNameCatFood::new);
     public static final RegistryObject<Item> PREFIX_SCROLL = ITEMS.register("prefix_scroll", PrefixScroll::new);

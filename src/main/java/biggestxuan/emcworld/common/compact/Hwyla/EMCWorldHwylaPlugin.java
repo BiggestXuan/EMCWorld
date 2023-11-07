@@ -6,11 +6,7 @@ package biggestxuan.emcworld.common.compact.Hwyla;
  *  2022/09/16
  */
 
-import biggestxuan.emcworld.common.blocks.AdvancedUpdateBlock;
-import biggestxuan.emcworld.common.blocks.EMCOreCoreBlock;
-import biggestxuan.emcworld.common.blocks.InfuserBlock;
-import biggestxuan.emcworld.common.blocks.ProfessionalBlock;
-import biggestxuan.emcworld.common.blocks.UpdateBlock;
+import biggestxuan.emcworld.common.blocks.*;
 import dev.latvian.mods.projectex.block.CollectorBlock;
 import mcp.mobius.waila.api.IRegistrar;
 import mcp.mobius.waila.api.IWailaPlugin;
@@ -28,5 +24,6 @@ public class EMCWorldHwylaPlugin implements IWailaPlugin {
         iRegistrar.registerComponentProvider(DataProvider.INSTANCE, TooltipPosition.BODY, CollectorBlock.class);
         iRegistrar.registerComponentProvider(DataProvider.INSTANCE, TooltipPosition.BODY, InfuserBlock.class);
         iRegistrar.registerComponentProvider(DataProvider.INSTANCE, TooltipPosition.BODY, EMCOreCoreBlock.class);
+        //iRegistrar.registerComponentProvider(DataProvider.INSTANCE, TooltipPosition.BODY, VisConversionBlock.class);
     }
 }

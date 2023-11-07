@@ -391,6 +391,9 @@ public function emcworldRecipe() as void{
         extendedCombinationRecipe([
         <item:extendedcrafting:the_ultimate_block>,eeeg,eeeg,eeeg,eeeg
     ],<item:emcworld:infinity_emc_gem>);
+    infuserRecipe([
+        <item:emcworld:purple_matter>,aeg,aeg,aeg,aeg
+    ],<item:emcworld:emc_charge_gem>,1000,1000000,2);
     addNuggetAndIngotRecipe(cei,<item:cataclysm:enderite_block>);
     natureSpawnerRecipe([
         <item:dead_guys_untitled_deep_dark_:warden_antler>,

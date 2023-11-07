@@ -31,7 +31,7 @@ import java.util.List;
 
 public class RestoreStageScroll extends EWItem{
     public RestoreStageScroll(){
-        super(Integer.parseInt("1"));
+        super(1);
     }
 
     @Override

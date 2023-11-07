@@ -7,6 +7,7 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.common.blocks.tile.EMCOreCoreTileEntity;
 import biggestxuan.emcworld.common.blocks.tile.PrefixTileEntity;
 import biggestxuan.emcworld.common.blocks.tile.SuperEMCTileEntity;
 import biggestxuan.emcworld.common.blocks.tile.WeaponUpgradeBlockTileEntity;
@@ -46,13 +47,11 @@ public class WeaponCoreButtonPacket {
                 PlayerEntity player = context.get().getSender();
                 if(player == null) return;
                 TileEntity tile = player.level.getBlockEntity(msg.pos);
-                EMCWorld.LOGGER.info("gg");
                 if(tile instanceof WeaponUpgradeBlockTileEntity){
                     WeaponUpgradeBlockTileEntity entity = (WeaponUpgradeBlockTileEntity) tile;
                     entity.setStates(WeaponUpgradeBlockTileEntity.States.STARTING);
                 }
                 if(tile instanceof SuperEMCTileEntity){
-                    EMCWorld.LOGGER.info("ccccc");
                     SuperEMCTileEntity tileEntity = (SuperEMCTileEntity) tile;
                     tileEntity.start();
                 }
@@ -63,6 +62,10 @@ public class WeaponCoreButtonPacket {
                     }
                     tileEntity.setPlayer(player);
                     tileEntity.start();
+                }
+                if(tile instanceof EMCOreCoreTileEntity){
+                    EMCOreCoreTileEntity tileEntity = (EMCOreCoreTileEntity) tile;
+                    tileEntity.setOreLevel(msg.mode);
                 }
             }
         });

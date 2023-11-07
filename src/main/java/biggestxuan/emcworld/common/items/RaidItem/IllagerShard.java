@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class IllagerShard extends EWItem implements IPlayerDifficultyItem {
     public IllagerShard(){
-        super(3);
+        super(Rarity.EPIC);
     }
 
     @OnlyIn(Dist.CLIENT)

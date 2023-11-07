@@ -18,6 +18,10 @@ public interface IEMCShieldArmor extends IEMCInfuserItem {
     }
 
     default float getShield(ItemStack stack){
+        float value = stack.getOrCreateTag().getFloat("emc_shield");
+        if(Double.isNaN(value)){
+            setShield(stack,0);
+        }
         return stack.getOrCreateTag().getFloat("emc_shield");
     }
 
@@ -30,6 +34,7 @@ public interface IEMCShieldArmor extends IEMCInfuserItem {
     }
 
     default void setShield(ItemStack stack,float value){
+        value = Double.isNaN(value) ? 0 : value;
         stack.getOrCreateTag().putFloat("emc_shield",value);
     }
 

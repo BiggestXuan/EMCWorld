@@ -396,6 +396,7 @@
   "item.emcworld.exorcism_candle": "Exorcism Candle",
   "item.emcworld.craft_cd_scroll": "Craft Cooldown Scroll",
   "item.emcworld.common_cd_scroll": "Common Cooldown Scroll",
+  "item.emcworld.ftbq": "Quest-%d",
 
   "block.emcworld.hardcore_stone": "Hardcore Stone",
   "block.emcworld.emc_ore": "EMC Ore",
@@ -642,6 +643,10 @@
   "jei.emcworld.infuser_level": "Require Level: %d",
   "jei.emcworld.infuser_time": "%d s",
   "jei.emcworld.infuser_emc": "Cost EMC：%d",
+  "jei.emcworld.ftbq.title": "FTB Quests",
+  "jei.emcworld.ftbq.emc_reward": "%d EMC",
+  "jei.emcworld.ftbq.dependencies": "Dependencies",
+  "jei.emcworld.ftbq.dependants": "Dependants：",
   "jei.emcworld.collector_fix.title": "Collector Fix",
   "jei.emcworld.collector_fix.efficiency": "Rate: ",
   "jei.emcworld.hazmat_desc": "Can only withstand radiation below 50000 Sv/h",

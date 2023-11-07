@@ -38,7 +38,6 @@ public class EMCOreCoreContainer extends EMCWorldBaseContainer {
         EMCOreCoreTileEntity tile = (EMCOreCoreTileEntity) blockEntity;
         world = tile.getLevel();
         pos = tile.getBlockPos();
-        assert tile.getInventory() != null;
         this.addSlot(new Slot(tile, 0, 12, 34) {
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
@@ -83,7 +82,11 @@ public class EMCOreCoreContainer extends EMCWorldBaseContainer {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (index < 43) {
+                if(index < 16){
+                    if (!moveItemStackTo(stack, 16, 52, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }else if (index < 43) {
                     if (!moveItemStackTo(stack, 43, 52, false)) {
                         return ItemStack.EMPTY;
                     }

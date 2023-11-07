@@ -193,12 +193,12 @@ public class RaidUtils {
         IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);
         float all = 0f;
         if(!cap.isRaid() || cap.getState() == 3) return all;
-        all += Math.pow(1.33,cap.getWave());
+        all += Math.pow(1.38,cap.getWave());
         all -= cap.getVillager() >= 5 ? 1.5f * cap.getVillager() : 0;
         World world1 = entity == null ? player.level : entity.level;
         BlockPos pos = player.level instanceof ClientWorld ? player.blockPosition() : entity.blockPosition();
         double diff = player.level instanceof ClientWorld ? cap.getSHDifficulty() : DifficultyHelper.getAreaDifficulty(world1,pos);
-        all += 0.05 * (diff - 1000);
+        all += 0.1 * (diff - 1000);
         //all *= 1000; //Test
         return Math.max(all / 10000d,0f);
     }

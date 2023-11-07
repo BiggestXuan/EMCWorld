@@ -396,6 +396,7 @@
   "item.emcworld.exorcism_candle": "驅魔蠟燭",
   "item.emcworld.craft_cd_scroll": "製作冷卻卷軸",
   "item.emcworld.common_cd_scroll": "通用冷卻卷軸",
+  "item.emcworld.ftbq": "任務-%d",
 
   "block.emcworld.hardcore_stone": "石頭之核",
   "block.emcworld.emc_ore": "質能礦石",
@@ -642,6 +643,10 @@
   "jei.emcworld.infuser_level": "需要等級：%d",
   "jei.emcworld.infuser_time": "%d 秒",
   "jei.emcworld.infuser_emc": "消耗EMC：%d",
+  "jei.emcworld.ftbq.title": "FTB 任務",
+  "jei.emcworld.ftbq.emc_reward": "%d EMC",
+  "jei.emcworld.ftbq.dependencies": "前置任務：",
+  "jei.emcworld.ftbq.dependants": "后置任務：",
   "jei.emcworld.hazmat_desc": "僅能抵抗 50,000 Sv/h 以下輻射",
   "jei.emcworld.collector_fix.title": "收集器修復",
   "jei.emcworld.collector_fix.efficiency": "比例：",

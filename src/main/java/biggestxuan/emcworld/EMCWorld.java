@@ -64,8 +64,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 18;
-    public static final String PackVersion = "1.0.5";
+    public static final int ModPackVersion = 19;
+    public static final String PackVersion = "1.0.6";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -192,6 +192,10 @@ public class EMCWorld {
 
     public static List<Ingredient> itemstack2ingredient(ItemStack[] stacks){
         return itemstack2ingredient(new ArrayList<>(Arrays.asList(stacks)));
+    }
+
+    public static List<ItemStack> ingredient2itemstackList(Ingredient ingredient){
+        return List.of(ingredient.getItems());
     }
 
     private static void welcome(){

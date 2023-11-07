@@ -12,6 +12,9 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.registry.EWEffects;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -19,6 +22,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.TieredItem;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -45,7 +49,13 @@ public class SkillUtils {
         double damage = utils.total();
         if(stack.getItem() instanceof SwordItem){
             SwordItem sword = (SwordItem) stack.getItem();
-            utils.set(sword.getDamage()+1+utils.total());
+            var d = sword.getDamage();
+            d += EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SHARPNESS,stack) * 0.75;
+            EffectInstance instance = player.getEffect(Effects.DAMAGE_BOOST);
+            if(instance != null){
+                d += instance.getAmplifier() * 1.25;
+            }
+            utils.set(d+1+utils.total());
             damage += sword.getDamage();
         } else{
             if(stack.getItem() instanceof TieredItem){
@@ -98,6 +108,10 @@ public class SkillUtils {
     }
 
     public static void addEffect(LivingEntity living, Effect effect,int time,int level){
-        living.addEffect(new EffectInstance(effect,time,level));
+        living.addEffect(getEffect(effect,time,level));
+    }
+
+    public static EffectInstance getEffect(Effect effect,int time,int level){
+        return new EffectInstance(effect,time <= 0 ? 1 : time, level <= -1 ? 0 : level);
     }
 }

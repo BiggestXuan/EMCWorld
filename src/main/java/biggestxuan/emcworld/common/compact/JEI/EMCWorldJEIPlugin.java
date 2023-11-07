@@ -7,11 +7,11 @@ package biggestxuan.emcworld.common.compact.JEI;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.recipes.StarPedestalRecipe;
 import biggestxuan.emcworld.common.compact.JEI.AdvanceUpdate.AdvancedUpdateCategory;
 import biggestxuan.emcworld.common.compact.JEI.AdvanceUpdate.JEIAdvancedUpdateRecipe;
 import biggestxuan.emcworld.common.compact.JEI.EMCOre.EMCOreCategory;
 import biggestxuan.emcworld.common.compact.JEI.EMCOre.EMCOreJEIRecipe;
+import biggestxuan.emcworld.common.compact.JEI.FTBQ.FTBQCategory;
 import biggestxuan.emcworld.common.compact.JEI.Infuser.InfuserCategory;
 import biggestxuan.emcworld.common.compact.JEI.PiglinRecipe.JEIPiglinRecipe;
 import biggestxuan.emcworld.common.compact.JEI.PiglinRecipe.PiglinCategory;
@@ -22,11 +22,14 @@ import biggestxuan.emcworld.common.compact.JEI.Update.JEIUpdateRecipe;
 import biggestxuan.emcworld.common.compact.JEI.Update.UpdateCategory;
 import biggestxuan.emcworld.common.recipes.*;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.utils.FTBQJeiUtils;
+import dev.ftb.mods.ftbquests.item.FTBQuestsItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -49,6 +52,10 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         return EMCWorld.rl("jei");
     }
 
+    public void registerItemSubtypes(ISubtypeRegistration registration) {
+        registration.useNbtForSubtypes(EWItems.EMCWORLD_QUEST_ITEM.get());
+    }
+
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         registry.addRecipeCategories(new UpdateCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -63,6 +70,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new SuperEMCCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new CollectorFixCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new EMCOreCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new FTBQCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -93,6 +101,7 @@ public class EMCWorldJEIPlugin implements IModPlugin {
             registration.addRecipeCatalyst(s,StarCategory.rl());
         }
         registration.addRecipeCatalyst(getIS(EWItems.EMC_SUPER.get()),SuperEMCCategory.rl());
+        registration.addRecipeCatalyst(getIS(FTBQuestsItems.BOOK.get()),FTBQCategory.rl());
     }
 
     @Override
@@ -129,6 +138,8 @@ public class EMCWorldJEIPlugin implements IModPlugin {
 
         List<MatterFixRecipe> recipes1 = new ArrayList<>(Arrays.asList(MatterFixRecipe.values()));
         registry.addRecipes(recipes1,CollectorFixCategory.getRL());
+
+        registry.addRecipes(FTBQJeiUtils.getAllQuests(true),FTBQCategory.rl());
 
         List<EMCOreJEIRecipe> recipes2 = new ArrayList<>();
         for (int i = 0; i <= 8; i++) {

@@ -4,6 +4,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
+import biggestxuan.emcworld.api.item.base.BaseUpgradeBlockItem;
 import biggestxuan.emcworld.api.item.equipment.IStarItem;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
 import net.minecraft.block.Block;
@@ -18,7 +19,7 @@ import net.minecraft.item.ItemStack;
  */
 
 @EMCWorldSince("1.0.5")
-public class EMCOreCoreBlockItem extends BlockItem implements IUpgradeableItem, IStarItem, IPrefixItem {
+public class EMCOreCoreBlockItem extends BaseUpgradeBlockItem {
     public EMCOreCoreBlockItem(Block p_i48527_1_) {
         super(p_i48527_1_,new Properties().tab(EWCreativeTabs.EW_BLOCKS_TAB).stacksTo(1));
     }

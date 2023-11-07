@@ -1,6 +1,8 @@
 package biggestxuan.emcworld.common.blocks;
 
+import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
+import biggestxuan.emcworld.api.block.BaseUpgradeBlock;
 import biggestxuan.emcworld.common.blocks.EWBlock;
 import biggestxuan.emcworld.common.blocks.tile.EMCOreCoreTileEntity;
 import net.minecraft.block.AbstractBlock;
@@ -42,7 +44,7 @@ import java.util.List;
  */
 
 @EMCWorldSince("1.0.5")
-public class EMCOreCoreBlock extends EWBlock {
+public class EMCOreCoreBlock extends BaseUpgradeBlock {
     public EMCOreCoreBlock() {
         super(AbstractBlock.Properties.of(Material.GLASS).noOcclusion().sound(SoundType.STONE).isViewBlocking(EMCOreCoreBlock::never).strength(5F).harvestTool(ToolType.PICKAXE));
     }
@@ -82,15 +84,10 @@ public class EMCOreCoreBlock extends EWBlock {
             EMCOreCoreTileEntity tile = (EMCOreCoreTileEntity) t;
             tile.stop();
             ItemStack stack = new ItemStack(p_196243_1_.getBlock());
-            var nbt = new CompoundNBT();
-            nbt.putBoolean("star_init",true);
-            nbt.putInt("level",tile.upgradeLevel);
-            nbt.putInt("prefix",tile.prefix);
-            nbt.putInt("star",tile.star);
+            var nbt = getRemoveNBT(tile);
             nbt.putLong("emc",tile.emc);
             nbt.putLong("maxEMC",tile.maxEMC);
             ItemStackHelper.saveAllItems(nbt,tile.items);
-            nbt.putInt("max_star", tile.maxStar);
             stack.setTag(nbt);
             world.addFreshEntity(new ItemEntity(world,pos.getX(),pos.getY()+0.5D,pos.getZ(),stack));
         }
@@ -105,13 +102,10 @@ public class EMCOreCoreBlock extends EWBlock {
             TileEntity t = world.getBlockEntity(pos);
             if(t instanceof EMCOreCoreTileEntity){
                 EMCOreCoreTileEntity tile = (EMCOreCoreTileEntity) t;
-                tile.upgradeLevel = nbt.getInt("level");
-                tile.prefix = nbt.getInt("prefix");
-                tile.star = nbt.getInt("star");
+                setPlaceNBT(tile,nbt);
                 tile.emc = nbt.getLong("emc");
                 tile.maxEMC= nbt.getLong("maxEMC");
                 ItemStackHelper.loadAllItems(nbt,tile.items);
-                tile.maxStar = nbt.getInt("max_star");
                 tile.stop();
             }
         }

@@ -9,14 +9,11 @@ package biggestxuan.emcworld.common.mixin;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
-import biggestxuan.emcworld.api.event.PlayerEatFoodEvent;
 import biggestxuan.emcworld.api.event.PlayerShieldDefenseEvent;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Food;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
@@ -49,30 +45,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "tick",at = @At("HEAD"))
     public void tick(CallbackInfo ci){
         PlayerEntity player = (PlayerEntity) (Object) this;
-        player.getCapability(EMCWorldCapability.UTIL).ifPresent(c -> {
-            player.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(s -> {
-                if(c.getTimer() > 0 && s.getProfession() == 5){
-                    c.setTimer(0);
-                    this.attackStrengthTicker = (int) this.getCurrentItemAttackStrengthDelay();
-                }
-            });
-        });
-    }
-
-    @Inject(method = "eat",at = @At("RETURN"), cancellable = true)
-    @EMCWorldSince("0.9.0")
-    public void _eat(World p_213357_1_, ItemStack p_213357_2_, CallbackInfoReturnable<ItemStack> cir){
-        if(p_213357_2_.isEdible()){
-            PlayerEntity player = (PlayerEntity) (Object) this;
-            Food food = p_213357_2_.getItem().getFoodProperties();
-            PlayerEatFoodEvent event = new PlayerEatFoodEvent(player,food.getNutrition(),food.getSaturationModifier(),food,p_213357_2_);
-            if(MinecraftForge.EVENT_BUS.post(event)){
-                cir.setReturnValue(p_213357_2_);
-            }else{
-                super.eat(p_213357_1_,p_213357_2_);
-                cir.cancel();
+        player.getCapability(EMCWorldCapability.UTIL).ifPresent(c -> player.getCapability(EMCWorldCapability.PLAYER_LEVEL).ifPresent(s -> {
+            if(c.getTimer() > 0 && s.getProfession() == 5){
+                c.setTimer(0);
+                this.attackStrengthTicker = (int) this.getCurrentItemAttackStrengthDelay();
             }
-        }
+        }));
     }
 
     @Redirect(method = "hurtCurrentlyUsedShield",at = @At(value = "INVOKE",target = "Lnet/minecraft/util/math/MathHelper;floor(F)I"))

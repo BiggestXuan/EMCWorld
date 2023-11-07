@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 import net.silentchaos512.scalinghealth.utils.SHDifficulty;
 
 public class DifficultyHelper {
-    public static double getLivingDifficulty(LivingEntity player){
-        return SHDifficulty.getDifficultyOf(player);
+    public static double getLivingDifficulty(LivingEntity living){
+        return SHDifficulty.getDifficultyOf(living);
     }
     public static void setPlayerDifficulty(PlayerEntity player,double value){
         SHDifficulty.setSourceDifficulty(player,value);

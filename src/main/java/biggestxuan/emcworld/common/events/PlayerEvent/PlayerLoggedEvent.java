@@ -21,6 +21,9 @@ import biggestxuan.emcworld.common.utils.*;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.Network.Network;
 import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
+import dev.ftb.mods.ftbquests.FTBQuests;
+import dev.ftb.mods.ftbquests.client.FTBQuestsClient;
+import dev.ftb.mods.ftbquests.quest.QuestFile;
 import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import dev.ftb.mods.ftbquests.quest.TeamData;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
@@ -212,17 +215,44 @@ public class PlayerLoggedEvent {
         }
     }
 
-    //@SubscribeEvent(priority = EventPriority.LOWEST)
-    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void playerLoggedInLowEvent(PlayerEvent.PlayerLoggedInEvent event){
         PlayerEntity player = event.getPlayer();
         if(player.level.isClientSide){
+            EMCWorld.LOGGER.info("test");
             if(EMCWorld.isOffline){
                 PacketHandler.sendToServer(new OfflinePacket());
+                giveOfflineWarn(player);
             }
-            return;
+            QuestFile file = FTBQuests.PROXY.getClientQuestFile();
+            if(file != null){
+                file.getAllTasks().forEach(t -> {
+                    EMCWorld.LOGGER.info("1"+t.quest.getTitle().getString());
+                    if(t.quest.getDependants().size() >= 1){
+                        t.quest.getDependants().forEach(e -> {
+                            EMCWorld.LOGGER.info("2"+e.getTitle().getString());
+                        });
+                    }
+                });
+            }
+            QuestFile file1 = FTBQuests.PROXY.getQuestFile(false);
+            try{
+                if(file1 != null){
+                    file1.getAllTasks().forEach(t -> {
+                        EMCWorld.LOGGER.info(t.quest.getTitle().getString());
+                        if(t.quest.getDependants().size() >= 1){
+                            t.quest.getDependants().forEach(e -> {
+                                EMCWorld.LOGGER.info(e.getTitle().getString());
+                            });
+                        }
+                    });
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
-        giveOfflineWarn(player);
+
+
     }
 
     private static void sendHappyBirthday(MinecraftServer server,PlayerEntity player){

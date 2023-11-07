@@ -139,7 +139,7 @@ public class PlayerQuestCompletedEvent {
     }
 
     @Nullable
-    private static String getQuestStage(Reward reward){
+    public static String getQuestStage(Reward reward){
         Quest quest = reward.quest;
         if(quest.getQuestChapter() == null || quest.getQuestChapter().group == null){
             return null;

@@ -10,7 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
-import biggestxuan.emcworld.api.event.PlayerEatFoodEvent;
+import biggestxuan.emcworld.api.event.LivingEatFoodEvent;
 import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
 import biggestxuan.emcworld.common.compact.BloodMagic.BloodMagicHelper;
@@ -31,6 +31,7 @@ import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -247,14 +248,20 @@ public class PlayerCommonEvent {
     }
 
     @SubscribeEvent
-    public static void eat(PlayerEatFoodEvent event){
-        PlayerEntity player = event.getPlayer();
-        if(event.getFood().equals(Foods.GOLDEN_APPLE)){
-            player.removeEffect(Effects.HEAL);
-            player.removeEffect(Effects.ABSORPTION);
-        }
-        if(event.getFood().equals(IceCream.ICE_FOOD)){
+    public static void eat(LivingEatFoodEvent event){
+        LivingEntity living = event.getEntityLiving();
+        if(event.getFood().equals(IceCream.ICE_FOOD) && living instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) living;
             long base = MathUtils.getEatFoodBase(player,event.getFood())*10000;
+            if(!player.level.isClientSide){
+                ItemStack stack = PlayerCurios.getPlayerExceptionApple(player);
+                if(!stack.isEmpty()){
+                    ((ExceptionApple) stack.getItem()).WhenPlayerEatOtherFood(player);
+                }
+                for(ItemStack s : player.inventory.armor){
+                    TraitUtils.getStackTraits(s).forEach(e -> e.onEat(player,s));
+                }
+            }
             if(EMCHelper.getPlayerEMC(player) > base){
                 player.addEffect(new EffectInstance(Effects.HEAL,EMCWorld.HOMO,4));
                 player.addEffect(new EffectInstance(Effects.ABSORPTION,EMCWorld.HOMO,4));
@@ -264,13 +271,10 @@ public class PlayerCommonEvent {
                 event.setCanceled(true);
             }
         }
-        if(!player.level.isClientSide){
-            ItemStack stack = PlayerCurios.getPlayerExceptionApple(player);
-            if(!stack.isEmpty()){
-                ((ExceptionApple) stack.getItem()).WhenPlayerEatOtherFood(player);
-            }
-            for(ItemStack s : player.inventory.armor){
-                TraitUtils.getStackTraits(s).forEach(e -> e.onEat(player,s));
+        if(!living.level.isClientSide){
+            if(event.getFood().equals(Foods.GOLDEN_APPLE)){
+                living.removeEffect(Effects.HEAL);
+                living.removeEffect(Effects.ABSORPTION);
             }
         }
     }

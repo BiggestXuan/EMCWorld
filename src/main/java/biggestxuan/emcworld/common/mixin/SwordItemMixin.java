@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(SwordItem.class)
 public abstract class SwordItemMixin extends TieredItem implements IAdditionsDamageWeapon, IRangeAttackWeapon,IUpgradeableWeapon, IPrefixItem, IAttackSpeedItem {
-    private final IItemTier tier = ((SwordItem) (Object) this).getTier();
+    private final IItemTier tier = getTier();
 
     private final float damage = tier.getAttackDamageBonus();
 

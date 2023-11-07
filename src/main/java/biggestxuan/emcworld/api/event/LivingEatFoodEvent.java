@@ -1,11 +1,12 @@
 package biggestxuan.emcworld.api.event;
 
 import biggestxuan.emcworld.api.EMCWorldSince;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.Cancelable;
 
 /**
  * EMC WORLD MOD
@@ -15,17 +16,12 @@ import net.minecraftforge.eventbus.api.Cancelable;
  */
 
 @EMCWorldSince("0.9.0")
-@Cancelable
-public class PlayerEatFoodEvent extends PlayerEvent {
-    private final int level;
-    private final float saturation;
+public class LivingEatFoodEvent extends LivingEvent {
     private final Food food;
     private final ItemStack stack;
 
-    public PlayerEatFoodEvent(PlayerEntity player,int level,float saturation,Food food,ItemStack stack) {
-        super(player);
-        this.level = level;
-        this.saturation = saturation;
+    public LivingEatFoodEvent(LivingEntity living, Food food, ItemStack stack) {
+        super(living);
         this.food = food;
         this.stack = stack;
     }
@@ -35,11 +31,11 @@ public class PlayerEatFoodEvent extends PlayerEvent {
     }
 
     public int getLevel() {
-        return level;
+        return food.getNutrition();
     }
 
     public float getSaturation() {
-        return saturation;
+        return food.getSaturationModifier();
     }
 
     public Food getFood() {
