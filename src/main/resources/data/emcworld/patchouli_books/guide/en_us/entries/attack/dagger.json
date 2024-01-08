@@ -1,7 +1,7 @@
 {
   "name": "Dagger",
   "icon": "emcworld:diamond_dagger",
-  "category": "Attack",
+  "category": "attack",
   "sortnum": 4,
   "pages": [
     {
