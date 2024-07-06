@@ -7,6 +7,8 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
@@ -15,6 +17,7 @@ import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.RestoreStageScroll;
 import biggestxuan.emcworld.common.registry.EWItems;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -113,6 +116,19 @@ public class PlayerQuestCompletedEvent {
         Team team = FTBTeamsAPI.getPlayerTeam(player);
         int amt = team.getMembers().size();
         baseGet = baseGet / (amt <= 0 ? 1 : amt);
+        ItemStack stack = player.getMainHandItem();
+        for(ITrait trait : TraitUtils.getStackTraits(stack)){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                baseGet = trait.onQuestComplete(player,stack,baseGet);
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    baseGet = trait.onQuestComplete(player,s,baseGet);
+                }
+            }
+        }
         EMCHelper.modifyPlayerEMC(player,new EMCSource.QuestCompletedEMCSource(baseGet,player,null,0,stage,difficulty),true);
         for(QuestReward obj : QuestReward.values()){
             CustomReward reward = event.getReward();

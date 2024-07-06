@@ -15,9 +15,10 @@ import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
 import biggestxuan.emcworld.api.item.equipment.*;
 import biggestxuan.emcworld.api.item.equipment.armor.*;
 import biggestxuan.emcworld.api.item.equipment.warhammer.BaseEMCGodWarHammer;
+import biggestxuan.emcworld.api.trait.IHasTraitItem;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
@@ -31,6 +32,7 @@ import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
+import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -51,6 +53,7 @@ import mekanism.common.registries.MekanismItems;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -124,7 +127,7 @@ public class PlayerTickEvent {
                 cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
         )));
         player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
-                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode(),cap.getMV()
+                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode(),cap.getMV(),cap.getLastAttackTime()
         )));
         ServerPlayerEntity SP = (ServerPlayerEntity) player;
         LazyOptional<IUtilCapability> cap = player.getCapability(EMCWorldCapability.UTIL);
@@ -155,6 +158,7 @@ public class PlayerTickEvent {
         }
         emcData.setEMC(EMCHelper.getPlayerEMC(player));
         EMCHelper.setPlayerEMC(player,emcData.getEMC());*/
+        dropRainFallStar(player);
         if(c.getSkills()[7] >0){
             c.setSkills(7,c.getSkills()[7]-1);
         }
@@ -418,7 +422,7 @@ public class PlayerTickEvent {
         util.setDifficulty(Math.max(Math.min(util.getDifficulty(),ConfigManager.DIFFICULTY.get()),0.5));
         double radiation = MekanismAPI.getRadiationManager().getRadiationLevel(new Coord4D(playerPos,player.level));
         if(radiation > 50000 && !player.isCreative()){
-            ItemStack stack = PlayerCurios.getPlayerNuclearBall(player);
+            ItemStack stack = PlayerCuriosUtils.getPlayerNuclearBall(player);
             float hurt = player.getMaxHealth() / 20f;
             if(!stack.equals(ItemStack.EMPTY)){
                 NuclearBall ball = (NuclearBall) stack.getItem();
@@ -438,6 +442,7 @@ public class PlayerTickEvent {
             long amount = 0;
             List<ItemStack> list = new ArrayList<>();
             util.addPlayTime();
+            util.setLastAttackTime(util.getLastAttackTime()+1);
             if(PlayTimeUtils.shouldSendMessage(player)){
                 PlayTimeUtils.sendRestMessage(player);
             }
@@ -450,10 +455,13 @@ public class PlayerTickEvent {
                             continue;
                         }
                     }
-                    amount += item.EMCModifySecond(stack);
+                    amount += item.getActEMC(stack);
                     if(item.EMCModifySecond(stack) > 0){
                         list.add(stack);
                     }
+                }
+                if(stack.getItem() instanceof IHasTraitItem){
+                    IHasTraitItem.init(stack);
                 }
             }
             if(amount > 0){
@@ -584,7 +592,7 @@ public class PlayerTickEvent {
             }
         }
 
-        ItemStack shield = PlayerCurios.getPlayerEMCShield(player);
+        ItemStack shield = PlayerCuriosUtils.getPlayerEMCShield(player);
         if(!shield.equals(ItemStack.EMPTY) && shield.getItem() instanceof IEMCShieldArmor && shield.getItem() instanceof EMCShieldSupply){
             EMCShieldSupply supply = (EMCShieldSupply) shield.getItem();
             long cost = (long) (-100000 * Math.pow(1.135,Math.pow(1.5,supply.getLevel(shield))) / 100);
@@ -656,6 +664,25 @@ public class PlayerTickEvent {
         }
         return max;
     }
+
+    public static void dropRainFallStar(PlayerEntity player){
+        if(GameStageManager.hasStage(player,"five")){
+            World world = player.level;
+            if (!world.isClientSide){
+                double chance = EMCWorld.isDevMode ? 1 : 0.01;
+                if(world.isRaining() && world.isNight() && world.getGameTime() % 20 == 0 && MathUtils.isRandom(chance)){
+                    EMCWorld.DevLogger("[test pos]");
+                    BlockPos pos = player.blockPosition();
+                    int c = MathUtils.getRangeRandom(-20,20);
+                    //EMCWorld.DevLogger(c);
+                    BlockPos pos1 = new BlockPos(pos.getX() + c,255,pos.getY()+c);
+                    ItemEntity item = new ItemEntity(world,pos1.getX(),pos1.getY(),pos1.getZ(),new ItemStack(EWItems.FXT_XY.get()));
+                    world.addFreshEntity(item);
+                }
+            }
+        }
+    }
+
     enum MAP{
         ONE(Matter.BASIC,"one"),
         TWO(Matter.DARK, "two"),

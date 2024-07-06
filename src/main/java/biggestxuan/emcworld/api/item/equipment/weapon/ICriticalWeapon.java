@@ -17,7 +17,7 @@ public interface ICriticalWeapon {
     default double getActCriticalRate(ItemStack stack){
         double a = 0;
         if(getCriticalChance(stack) > 1 && ConfigManager.UPGRADE_CRITICAL_OVERFLOW.get()){
-            a = getCriticalChance(stack) -1;
+            a = (getCriticalChance(stack) - 1) / 3;
         }
         return getCriticalRate(stack) + a;
     }

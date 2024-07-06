@@ -18,7 +18,7 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     protected long modifyEMCSecond(ItemStack stack) {
-        return Math.round(Math.pow(1.39,getLevel(stack)-5)*8.5);
+        return Math.round(Math.pow(1.36,getLevel(stack)-5)*8.5);
     }
 
     @Override

@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.mixin;
  *  2023/01/19
  */
 
+import biggestxuan.emcworld.api.trait.IHasTraitItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IHealBoostArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
@@ -20,7 +21,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(ArmorItem.class)
-public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, IHealBoostArmor,IPrefixItem {
+public abstract class ArmorItemMixin extends Item implements IUpgradeableArmor, IHealBoostArmor,IPrefixItem, IHasTraitItem {
 
     @Shadow
     @Final

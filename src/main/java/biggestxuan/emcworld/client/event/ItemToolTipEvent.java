@@ -13,6 +13,7 @@ import biggestxuan.emcworld.api.item.equipment.*;
 import biggestxuan.emcworld.api.item.equipment.armor.*;
 import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.api.item.equipment.weapon.*;
+import biggestxuan.emcworld.api.trait.IHasTraitItem;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -21,6 +22,7 @@ import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.DamageUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.SkillUtils;
@@ -36,6 +38,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.TieredItem;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.*;
@@ -51,6 +54,7 @@ import javax.annotation.Nonnull;
 
 import java.util.List;
 
+import static biggestxuan.emcworld.EMCWorld.tc;
 import static biggestxuan.emcworld.common.registry.EWItems.EMC_FLOWER;
 
 @Mod.EventBusSubscriber(
@@ -188,6 +192,11 @@ public class ItemToolTipEvent {
                 //event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.bow_speed_loss",f((1-speed)*100)+"%"));
             }
         }
+        if(EMCWorld.isDevMode && stack.getItem() instanceof IHasTraitItem && stack.getItem() instanceof TieredItem && stack.hasTag() && IHasTraitItem.isInit(stack)){
+            IHasTraitItem item = (IHasTraitItem) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.trait.main",TraitUtils.getTraitsCount(stack),item.getMaxTraits(stack)));
+            event.getToolTip().addAll(TraitUtils.getDesc(stack,Screen.hasAltDown()));
+        }
         if(stack.getItem() instanceof StaffItem){
             StaffItem i_s = (StaffItem) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",getDamaUtilsDesc(i_s.getManaBurstBaseDamage(stack,player))));
@@ -293,7 +302,7 @@ public class ItemToolTipEvent {
         }
         if(stack.getItem() instanceof ISecondEMCItem){
             ISecondEMCItem item3 = (ISecondEMCItem) stack.getItem();
-            long emc = item3.EMCModifySecond(stack);
+            long emc = item3.getActEMC(stack);
             if(emc != 0){
                 event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.weapon_god_emc_second", MathUtils.format(emc)));
             }
@@ -359,6 +368,10 @@ public class ItemToolTipEvent {
             if(chance > 0){
                 event.getToolTip().add(EMCWorld.tc("("+String.format("%.2f",100*chance)+"%)").withStyle(Style.EMPTY.withColor(TextFormatting.DARK_PURPLE)));
             }
+        }
+        if(stack.getItem() instanceof IModpackItem){
+            IModpackItem item = (IModpackItem) stack.getItem();
+            event.getToolTip().add(tc("tooltip.emcworld.modpack",item.getModpackName()).withStyle(Style.EMPTY.withItalic(true).withColor(Color.fromRgb(0x3d9140))));
         }
         if(stack.getItem() instanceof ISponsorItem && !EMCWorld.isOffline){
             ISponsorItem item4 = (ISponsorItem) stack.getItem();
@@ -430,7 +443,6 @@ public class ItemToolTipEvent {
     private static IFormattableTextComponent getGemName(int type){
         String pre = "item."+EMCWorld.MODID+".";
         String n = "";
-        String a = "_gemstone";
         switch (type){
             case 1:
                 n = "blood";
@@ -443,8 +455,16 @@ public class ItemToolTipEvent {
                 break;
             case 4:
                 n = "abyss";
+                break;
+            case 5:
+                n = "end_light";
+                break;
         }
-        return EMCWorld.tc(pre+n+a).setStyle(Style.EMPTY.withColor(Color.fromRgb(BaseWeaponGemItem.gem.valueOf(n.toUpperCase()).getColor())));
+        String a = "";
+        if(type <= 4){
+            a = "_gemstone";
+        }
+        return EMCWorld.tc(pre+n+a).setStyle(Style.EMPTY.withColor(Color.fromRgb(BaseWeaponGemItem.WeaponGem.valueOf(n.toUpperCase()).getColor())));
     }
 
     private static String f(double value){

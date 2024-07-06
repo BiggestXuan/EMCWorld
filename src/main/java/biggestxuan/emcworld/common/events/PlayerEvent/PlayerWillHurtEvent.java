@@ -11,7 +11,7 @@ import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.google.common.util.concurrent.AtomicDouble;
@@ -96,6 +96,9 @@ public class PlayerWillHurtEvent {
         if(source instanceof EWDamageSource || source.equals(DamageSource.OUT_OF_WORLD) || player.isCreative()){
             return false;
         }
+        if(player.hurtTime > 0){
+            return true;
+        }
         if(MathUtils.isMaxDifficulty()) amount *= 1.167f;
         if(source.getDirectEntity() instanceof ProjectileEntity){
             amount = MathUtils.getAdditionDamage(source.getDirectEntity(),player,amount);
@@ -119,7 +122,7 @@ public class PlayerWillHurtEvent {
                 maxShield += armor.getMaxShield(stack);
             }
         }
-        ItemStack stack1 = PlayerCurios.getPlayerEMCShield(player);
+        ItemStack stack1 = PlayerCuriosUtils.getPlayerEMCShield(player);
         if(!stack1.equals(ItemStack.EMPTY) && stack1.getItem() instanceof IEMCShieldArmor){
             IEMCShieldArmor shieldArmor = (IEMCShieldArmor) stack1.getItem();
             shield += shieldArmor.getShield(stack1);
@@ -148,6 +151,7 @@ public class PlayerWillHurtEvent {
             armor.modifyShield(stack1,negateExact(amount * armor.getMaxShield(stack1) / maxShield));
         }
         player.playSound(SoundEvents.ANVIL_BREAK,1,1);
+        player.hurtTime += 15;
         return true;
     }
 

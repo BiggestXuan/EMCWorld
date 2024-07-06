@@ -171,4 +171,8 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     void addPlayTime(); //second
 
     void clearPlayTime();
+
+    int getLastAttackTime();
+
+    void setLastAttackTime(int time);
 }

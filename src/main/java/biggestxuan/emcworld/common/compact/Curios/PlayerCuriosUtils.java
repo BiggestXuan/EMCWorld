@@ -7,7 +7,6 @@ package biggestxuan.emcworld.common.compact.Curios;
  */
 
 import biggestxuan.emcworld.common.registry.EWItems;
-import journeymap.client.ui.component.Slot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +17,7 @@ import top.theillusivec4.curios.api.SlotResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerCurios {
+public class PlayerCuriosUtils {
     public static List<SlotResult> getPlayerCurios(PlayerEntity player,Item item){
          return CuriosApi.getCuriosHelper().findCurios(player,item);
     }

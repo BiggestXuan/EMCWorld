@@ -27,7 +27,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.0.4'
+version = '1.1.0'
 group = 'biggestxuan.emcworld'
 archivesBaseName = 'EMCWorld'
 
@@ -114,7 +114,7 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.511")
-    implementation fg.deobf("vazkii.botania:Botania:1.16.5-420.2")
+    implementation fg.deobf("curse.maven:botania-225643:3608755")
     implementation fg.deobf("curse.maven:blood-magic-224791:3870899")
     implementation fg.deobf("curse.maven:rats-323596:3319810")
     implementation fg.deobf("curse.maven:atlantis-355418:3247019")
@@ -124,6 +124,7 @@ dependencies {
     implementation fg.deobf("curse.maven:byg-247560:3485079")
     implementation fg.deobf("curse.maven:slientlib-242998:3385768")
     implementation fg.deobf("curse.maven:Structure-378802:3498310")
+    implementation fg.deobf("curse.maven:emcstage-896923:4673776")
     implementation fg.deobf("curse.maven:LiteWolfCore-655678:3925019")
     implementation fg.deobf("curse.maven:Blueprint-382216:3607198")
     implementation fg.deobf("curse.maven:Undergarden-379849:3477594")
@@ -183,6 +184,8 @@ dependencies {
     implementation fg.deobf("curse.maven:RS-243076:3807951")
     implementation fg.deobf("curse.maven:waystone-245755:3515707")
     implementation fg.deobf("curse.maven:ftbc-314906:4297564")
+    implementation fg.deobf("curse.maven:Mystical_Agriculture-246640:3562127")
+    implementation fg.deobf("curse.maven:Mystical_Agradditions-256247:3548286")
     implementation fg.deobf("com.blakebr0.cucumber:Cucumber:1.16.5-4.1.12")
     implementation fg.deobf("com.blakebr0.extendedcrafting:ExtendedCrafting:1.16.5-3.1.12")
     implementation fg.deobf("net.darkhax.gamestages:GameStages-Forge-1.16.5:7.3.14")

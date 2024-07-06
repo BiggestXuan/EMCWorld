@@ -18,7 +18,7 @@ public class PurpleStaff extends BaseEMCGodStaff {
 
     @Override
     protected double getBaseCostRate(ItemStack stack) {
-        return Math.pow(1.069,getLevel(stack));
+        return Math.pow(1.058,getLevel(stack));
     }
 
     @Override

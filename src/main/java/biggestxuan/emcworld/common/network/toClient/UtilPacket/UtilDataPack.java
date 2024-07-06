@@ -35,8 +35,9 @@ public class UtilDataPack {
     private final int gaiaPlayer;
     private final boolean liveMode;
     private final long mv;
+    private final int lastAttackTime;
 
-    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int[] level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield,boolean lastShield,int gaiaPlayer,boolean liveMode,long mv){
+    public UtilDataPack(boolean isRaid, int state, int pillagerAmount, int villagerAmount,int wave,int maxWave,float raidRate,long cd,double difficulty,int[] level,float arcana,float maxArcana,boolean showArcana,double sh_difficulty,float shield,float maxShield,boolean lastShield,int gaiaPlayer,boolean liveMode,long mv,int lastAttackTime){
         this.isRaid = isRaid;
         this.state = state;
         this.pillagerAmount = pillagerAmount;
@@ -57,6 +58,7 @@ public class UtilDataPack {
         this.gaiaPlayer = gaiaPlayer;
         this.liveMode = liveMode;
         this.mv = mv;
+        this.lastAttackTime = lastAttackTime;
     }
 
     public UtilDataPack(PacketBuffer buffer){
@@ -80,6 +82,7 @@ public class UtilDataPack {
         gaiaPlayer = buffer.readInt();
         liveMode = buffer.readBoolean();
         mv = buffer.readLong();
+        lastAttackTime = buffer.readInt();
     }
 
     public void encode(PacketBuffer buffer){
@@ -103,6 +106,7 @@ public class UtilDataPack {
         buffer.writeInt(gaiaPlayer);
         buffer.writeBoolean(liveMode);
         buffer.writeLong(mv);
+        buffer.writeInt(lastAttackTime);
     }
 
     public void handle(Supplier<NetworkEvent.Context> context){
@@ -189,6 +193,10 @@ public class UtilDataPack {
 
     public long getMV() {
         return mv;
+    }
+
+    public int getLastAttackTime() {
+        return lastAttackTime;
     }
 }
 

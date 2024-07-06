@@ -98,6 +98,10 @@ public class EWBlocks {
         public static final RegistryObject<Block> MAGNESIUM_ORE = BLOCKS.register("magnesium_ore",() -> new EWStoneOre(3,6F));
         public static final RegistryObject<Block> TITANIUM_ORE = BLOCKS.register("titanium_ore",() -> new EWDirtOre(5,22.5F));
         public static final RegistryObject<Block> TUNGSTEN_ORE = BLOCKS.register("tungsten_ore",() -> new EWStoneOre(1,5F));
+        public static final RegistryObject<Block> EMC_CORE_ASSEMBLER = BLOCKS.register("emc_core_assembler", EMCCoreBlock.Assembler::new);
+        public static final RegistryObject<Block> EMC_CORE_PULLER = BLOCKS.register("emc_core_puller", EMCCoreBlock.Puller::new);
+        public static final RegistryObject<Block> EMC_CORE_GENERATOR = BLOCKS.register("emc_core_generator", EMCCoreBlock.Generator::new);
+        public static final RegistryObject<Block> EMC_CORE_PUNCHER = BLOCKS.register("emc_core_puncher", EMCCoreBlock.Puncher::new);
 
         public static final RegistryObject<Block> UPDATE_BASE_PURPLE = BLOCKS.register("update_base_purple",() -> new EWUpdateBlock(1,1,1,1));
         public static final RegistryObject<Block> UPDATE_BASE_BX_PURPLE = BLOCKS.register("update_base_bx_purple",() -> new EWUpdateBlock(2,1,1,1));

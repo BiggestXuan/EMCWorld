@@ -132,7 +132,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
                     }
                     fail(this);
                 }
-                MinecraftForge.EVENT_BUS.post(new PlayerUpgradeItemEvent.After(lastClick,this.inventory.getItem(0),lastChance/10000d,breakChance,isSucceed,isBreak,this));
+                MinecraftForge.EVENT_BUS.post(new PlayerUpgradeItemEvent.After(lastClick,this.inventory.getItem(0),lastChance/10000d,breakChance,isBreak,isSucceed,this));
             }
             states = States.STOP;
             this.data.set(0,getChance(this.inventory));

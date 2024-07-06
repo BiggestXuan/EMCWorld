@@ -379,10 +379,10 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
 
     private int getRadiationRate(){
         int rad = this.radiation;
-        if(rad <= 50000) return Math.max(rad / 25000,1);
-        if(rad <= 150000) return 2 + rad / 30000;
-        if(rad <= 1000000) return 5 + rad / 50000;
-        else return 10 + rad /100000;
+        if(rad <= 2000) return Math.max(rad / 400,1);
+        if(rad <= 15000) return 7 + rad / 2000;
+        if(rad <= 35000) return 15 + rad / 5000;
+        else return 30 + rad /10000;
     }
 
     private boolean canOutPut(ItemStack output){
@@ -414,13 +414,13 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
     private void setMaxRadiation(){
         switch (this.craftLevel){
             case 1:
-                this.maxRadiation = 50000;
+                this.maxRadiation = 5000;
                 break;
             case 2:
-                this.maxRadiation = 150000;
+                this.maxRadiation = 35000;
                 break;
             case 3:
-                this.maxRadiation = 1000000;
+                this.maxRadiation = 80000;
                 break;
             case 4:
                 this.maxRadiation = 10000000;

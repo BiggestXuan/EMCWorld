@@ -125,7 +125,7 @@ public final class FTBQJeiUtils {
                 if(recipe.isValid()){
                     list.add(recipe);
                 }
-                EMCWorld.LOGGER.info(recipe.toString());
+                //EMCWorld.LOGGER.info(recipe.toString());
             }));
         }
         return list;

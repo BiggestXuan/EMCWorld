@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "emcworld:block/emc_core_puncher_model" }
+  }
+}

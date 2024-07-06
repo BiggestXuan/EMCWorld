@@ -22,17 +22,4 @@ public interface IGemInlaidItem {
     default int getGemType(ItemStack stack){
         return (getGemIndex(stack) / 10);
     }
-
-    default int getGemColor(ItemStack stack){
-        int t = getGemType(stack);
-        int c;
-        if(t >= 40){
-            c = BaseWeaponGemItem.gem.ABYSS.getColor();
-        }else if(t >= 30){
-            c = BaseWeaponGemItem.gem.LAKE.getColor();
-        }else if(t >= 20){
-            c = BaseWeaponGemItem.gem.NATURE.getColor();
-        }else c = BaseWeaponGemItem.gem.BLOOD.getColor();
-        return c;
-    }
 }

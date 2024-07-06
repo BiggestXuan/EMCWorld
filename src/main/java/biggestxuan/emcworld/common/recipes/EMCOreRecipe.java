@@ -75,10 +75,12 @@ public enum EMCOreRecipe {
     H3(EMCWorld.getItem("mekanism:reprocessed_fissile_fragment"),6,7),
     H4(EMCWorld.getItem("allthemodium:unobtainium_ore"),1,7),
     H5(EMCWorld.getItem("gobber2:gobber2_ore_end"),3,7),
+    H6(EMCWorld.getItem("emcworld:super_emc_gem"),1,7),
     I1(EMCWorld.getItem("mekanism:pellet_antimatter"),1500,8),
     I2(EMCWorld.getItem("emcworld:illager_shard"),500,8),
     I3(EMCWorld.getItem("extendedcrafting:the_ultimate_nugget"),6000,8),
-    I4(EMCWorld.getItem("emcworld:emc_ore_core"),1,8)
+    I4(EMCWorld.getItem("emcworld:emc_ore_core"),12,8),
+    I5(EMCWorld.getItem("emcworld:epic_emc_gem"),60,8)
     ;
     private final ItemStack output;
     private final int weight;

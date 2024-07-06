@@ -13,7 +13,7 @@ import biggestxuan.emcworld.api.entity.PlayerRaidBaseEntity;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.api.item.equipment.armor.IUpgradeableArmor;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -22,8 +22,8 @@ import biggestxuan.emcworld.common.entity.Player.Tulye;
 import biggestxuan.emcworld.common.items.Equipment.TulyeShieldItem;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
-import biggestxuan.emcworld.common.traits.ITrait;
-import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
@@ -139,7 +139,7 @@ public class PlayerHurtEvent {
                     break;
                 }
             }
-            ItemStack curios_shield = PlayerCurios.getPlayerEMCShield(player);
+            ItemStack curios_shield = PlayerCuriosUtils.getPlayerEMCShield(player);
             for(ItemStack stack : player.inventory.armor){
                 if(stack.getItem() instanceof IEMCShieldArmor && !(source instanceof EWDamageSource || source.equals(DamageSource.OUT_OF_WORLD))){
                     IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();

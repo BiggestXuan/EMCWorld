@@ -50,6 +50,7 @@ public class UtilCapability implements IUtilCapability {
     private float attackCD;
     private long mv;
     private int playTime;
+    private int lastAttackTime;
 
     public UtilCapability(){
         this.SponsorLevel = new int[0];
@@ -89,6 +90,17 @@ public class UtilCapability implements IUtilCapability {
         this.attackCD = 1F;
         this.mv = 0L;
         this.playTime = 0;
+        this.lastAttackTime = 0;
+    }
+
+    @Override
+    public int getLastAttackTime() {
+        return lastAttackTime;
+    }
+
+    @Override
+    public void setLastAttackTime(int time) {
+        lastAttackTime = time;
     }
 
     @Override
@@ -533,6 +545,7 @@ public class UtilCapability implements IUtilCapability {
         tag.putFloat("attackCD",attackCD);
         tag.putLong("mv",mv);
         tag.putInt("playTime",playTime);
+        tag.putInt("lastAttackTime",lastAttackTime);
         return tag;
     }
 
@@ -577,5 +590,6 @@ public class UtilCapability implements IUtilCapability {
         this.attackCD = nbt.getFloat("attackCD");
         this.mv = nbt.getLong("mv");
         this.playTime = nbt.getInt("playTime");
+        this.lastAttackTime = nbt.getInt("lastAttackTime");
     }
 }

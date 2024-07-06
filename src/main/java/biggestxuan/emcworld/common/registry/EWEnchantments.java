@@ -2,6 +2,7 @@ package biggestxuan.emcworld.common.registry;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
+import biggestxuan.emcworld.common.enchantments.EMCGiantKillerEnchantment;
 import biggestxuan.emcworld.common.enchantments.EMCLootingEnchantment;
 import biggestxuan.emcworld.common.enchantments.EMCReduceEnchantment;
 import biggestxuan.emcworld.common.enchantments.EMCRepairEnchantment;
@@ -25,4 +26,5 @@ public class EWEnchantments {
     public static final RegistryObject<Enchantment> EMC_REPAIR = EN.register("emc_repair", EMCRepairEnchantment::new);
     public static final RegistryObject<Enchantment> EMC_REDUCE = EN.register("emc_reduce", EMCReduceEnchantment::new);
     public static final RegistryObject<Enchantment> EMC_LOOTING = EN.register("emc_looting", EMCLootingEnchantment::new);
+    public static final RegistryObject<Enchantment> EMC_GIANT_KILLER = EN.register("emc_giant_killer", EMCGiantKillerEnchantment::new);
 }

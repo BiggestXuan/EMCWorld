@@ -36,6 +36,11 @@ import java.util.List;
 public class CrTItemUtils {
 
     @ZenCodeType.Method
+    public static boolean isFood(IItemStack stack){
+        return stack.isFood();
+    }
+
+    @ZenCodeType.Method
     public static IIngredient getEMCGodItemWithMaxLevel(){
         List<ItemStack> list = new ArrayList<>();
         for (int i = 30; i < 45; i++) {

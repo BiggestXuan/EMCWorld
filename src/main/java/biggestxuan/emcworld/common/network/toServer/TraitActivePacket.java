@@ -6,8 +6,8 @@ package biggestxuan.emcworld.common.network.toServer;
  *  2023/01/22
  */
 
-import biggestxuan.emcworld.common.traits.ITrait;
-import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ArmorItem;
@@ -42,7 +42,7 @@ public class TraitActivePacket {
                     if((trait.getTraitType() == TraitType.ARMOR && !(s.getItem() instanceof ArmorItem)) || (trait.getTraitType() == TraitType.TOOL && s.getItem() instanceof ArmorItem)){
                         continue;
                     }
-                    trait.onKeyPressed(player,s);
+                    trait.onKeyPress(player,s);
                 }
             }
         }

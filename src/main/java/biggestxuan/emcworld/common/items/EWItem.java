@@ -13,10 +13,6 @@ import net.minecraft.item.Rarity;
 public class EWItem extends EMCWorldBaseItem {
     public static final Properties EWProperties = new Properties().tab(EWCreativeTabs.EW_CREATIVE_TAB);
 
-    public EWItem() {
-        super();
-    }
-
     public EWItem(Properties properties){
         super(properties);
     }
@@ -27,6 +23,10 @@ public class EWItem extends EMCWorldBaseItem {
 
     public EWItem(Rarity rarity){
         super(rarity);
+    }
+
+    public EWItem() {
+        super();
     }
 }
 

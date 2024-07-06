@@ -19,6 +19,7 @@ public class ConfigManager {
     public static ForgeConfigSpec COMMON_CONFIG ;
     public static ForgeConfigSpec.DoubleValue DIFFICULTY;
     public static ForgeConfigSpec.BooleanValue FORMAT;
+    public static ForgeConfigSpec.BooleanValue DEV_MODE;
     public static ForgeConfigSpec.BooleanValue SPONSOR_INFO;
     public static ForgeConfigSpec.BooleanValue ADMIN_MENU;
     public static ForgeConfigSpec.BooleanValue FREE_MODE;
@@ -103,6 +104,7 @@ public class ConfigManager {
         OFFLINE_WARN = BUILDER.comment("Give a warn when logging server to offline mode player").define("Warn player",true);
         SPONSOR_INFO = BUILDER.comment("Enable sponsorship messages that players send every 100 times they enter the game.").define("Enable Info",true);
         GENG = BUILDER.comment("Enable some funny things?").define("geng",true);
+        //DEV_MODE = BUILDER.comment("Enable Dev Mode").define("Dev Mode",false);
         //SHARE_EMC = BUILDER.comment("").define("Share EMC",false);
         BUILDER.pop();
 

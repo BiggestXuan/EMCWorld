@@ -11,6 +11,7 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
+import biggestxuan.emcworld.common.items.ModPack.EndLight;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -52,8 +53,8 @@ public class SkillUtils {
             var d = sword.getDamage();
             d += EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SHARPNESS,stack) * 0.75;
             EffectInstance instance = player.getEffect(Effects.DAMAGE_BOOST);
-            if(instance != null){
-                d += instance.getAmplifier() * 1.25;
+            if(instance != null) {
+                d += (instance.getAmplifier()+1) * 1.25;
             }
             utils.set(d+1+utils.total());
             damage += sword.getDamage();
@@ -67,6 +68,7 @@ public class SkillUtils {
         int level = cap.getLevel();
         int[] skills = cap.getSkills();
         double c = damage;
+        damage *= EndLight.getAttackTimeDamageBoost(player);
         if(cap.getProfession() == 1){
             damage *= Math.pow(1+skills[0]/10000f,level);
             int modify = cap.getModify();

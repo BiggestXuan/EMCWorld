@@ -8,6 +8,10 @@
     {
       "id": "emcworld:exorcism_candle",
       "required": false
+    },
+    {
+      "id": "emcworld:fxt_xy",
+      "required": false
     }
   ]
 }

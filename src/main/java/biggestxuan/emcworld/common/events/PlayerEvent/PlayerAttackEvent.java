@@ -24,16 +24,20 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
+import biggestxuan.emcworld.common.items.ModPack.EndLight;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
-import biggestxuan.emcworld.common.traits.ITrait;
-import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
+import biggestxuan.emcworld.common.registry.EWEnchantments;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.SkillUtils;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -172,7 +176,20 @@ public class PlayerAttackEvent {
                     damage *= util.getRaidRate();
                 }
                 damage *= util.getAttackCD();
+                if(EndLight.weaponHasEndLight(stack)){
+                    livingEntity.hurt(EWDamageSource.REALLY,livingEntity.getMaxHealth()*0.01F);
+                }
+                EndLight.triggerParasitism(player,damage);
+                util.setLastAttackTime(0);
                 double rate = 1d;
+                int giantKiller = EnchantmentHelper.getItemEnchantmentLevel(EWEnchantments.EMC_GIANT_KILLER.get(), stack);
+                if(giantKiller >= 1 && livingEntity.getHealth() >= player.getMaxHealth() * 8){
+                    damage *= 1F + giantKiller * 0.1F;
+                    if(giantKiller == EWEnchantments.EMC_GIANT_KILLER.get().getMaxLevel()){
+                        livingEntity.hurt(EWDamageSource.REALLY,damage * 0.1F);
+                        player.heal(damage * 0.1F);
+                    }
+                }
                 if (stack.getItem() instanceof ICostEMCItem) {
                     ICostEMCItem item = (ICostEMCItem) stack.getItem();
                     rate = item.costEMCWhenAttackActually(stack);

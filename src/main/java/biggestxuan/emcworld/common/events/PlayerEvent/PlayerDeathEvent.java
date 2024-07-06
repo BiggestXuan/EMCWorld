@@ -13,9 +13,12 @@ import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
 import biggestxuan.emcworld.api.item.equipment.armor.BaseEMCGodArmorItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
@@ -46,8 +49,19 @@ public class PlayerDeathEvent {
         if(livingEntity.level.isClientSide) return;
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
+            ItemStack sk = player.getMainHandItem();
+            for(ITrait trait : TraitUtils.getStackTraits(sk)){
+                if(trait.getTraitType() != TraitType.ARMOR){
+                    trait.onDeath(player,sk);
+                }
+            }
             boolean isTrigger = true;
             for(ItemStack stack:player.inventory.armor){
+                for(ITrait trait : TraitUtils.getStackTraits(stack)){
+                    if(trait.getTraitType() == TraitType.ARMOR){
+                        trait.onDeath(player,stack);
+                    }
+                }
                 if(stack.getItem() instanceof IEMCShieldArmor){
                     IEMCShieldArmor armor = (IEMCShieldArmor) stack.getItem();
                     if(armor.getInfuser(stack) < 10000000L){

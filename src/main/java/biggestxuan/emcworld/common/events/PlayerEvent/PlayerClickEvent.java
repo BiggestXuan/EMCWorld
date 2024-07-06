@@ -117,6 +117,24 @@ public class PlayerClickEvent {
         int count = itemStack.getCount();
         PlayerEntity player = evt.getPlayer();
         if(itemStack.isEmpty()) return;
+        //test
+        /*ItemStack s = itemStack;
+        IHasTraitItem.init(s);
+        if(player.isShiftKeyDown()){
+            TraitUtils.removeTrait(s,1);
+            TraitUtils.getStackTraits(s).forEach(e -> {
+                System.out.println(((AbstractTrait) e).toString());
+            });
+        }else{
+            ITrait trait = TraitUtils.findTrait(EMCWorld.rl("stone"), TraitType.TOOL,1);
+            ITrait trait1 = TraitUtils.findTrait(EMCWorld.rl("emc"), TraitType.TOOL,1);
+            TraitUtils.setTrait(trait,s,1);
+            TraitUtils.setTrait(trait1,s,3);
+            TraitUtils.getStackTraits(s).forEach(e -> {
+                System.out.println(((AbstractTrait) e).toString());
+            });
+        }
+        */
         PlayerProgress progress = ResearchHelper.getProgress(player, LogicalSide.SERVER);
         if(itemStack.getItem() instanceof EMCGemItem && progress.isValid() && !progress.hasConstellationDiscovered(EMCWorld.rl("emc"))){
             ResearchManager.discoverConstellation(EWStarlight.EMC_STAR.get(),player);
@@ -171,7 +189,7 @@ public class PlayerClickEvent {
             MultiBlock.UpdateMath info = MultiBlock.getUpdateInfo(world,act);
             for(UpdateRecipe obj:UpdateRecipe.values()){
                 if(itemStack.getItem().equals(obj.getInput().getItem()) && obj.recipeLevel() == 0){
-                    craftRecipe(obj,player,info,true);
+                    craftRecipe(itemStack,obj,player,info,true);
                 }
             }
         }
@@ -180,7 +198,7 @@ public class PlayerClickEvent {
             MultiBlock.UpdateMath info = MultiBlock.getUpdateInfo(world,act);
             for(AdvancedUpdateRecipe obj:AdvancedUpdateRecipe.values()){
                 if(itemStack.getItem().equals(obj.getInput().getItem()) && obj.recipeLevel() <= level){
-                    craftRecipe(obj,player,info,false);
+                    craftRecipe(itemStack,obj,player,info,false);
                 }
             }
         }
@@ -372,8 +390,7 @@ public class PlayerClickEvent {
         }
     }
 
-    private static void craftRecipe(IUpdateRecipe recipe, PlayerEntity player, MultiBlock.UpdateMath info,boolean passCD){
-        ItemStack itemStack = player.getItemInHand(Hand.MAIN_HAND);
+    private static void craftRecipe(ItemStack itemStack,IUpdateRecipe recipe, PlayerEntity player, MultiBlock.UpdateMath info,boolean passCD){
         ItemStack output = recipe.getOutput();
         if(PlayerPickUpItemEvent.full(player,output)){
             return;

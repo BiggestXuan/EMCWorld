@@ -7,7 +7,7 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
@@ -21,9 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SkullItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.world.Dimension;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -88,7 +86,7 @@ public class LivingJoinWorldEvent {
             if(!GameStageManager.hasStage(p,"two") && entity.level.dimension().equals(World.OVERWORLD)){
                 return false;
             }
-            if(PlayerCurios.hasExorcismCandle(p)){
+            if(PlayerCuriosUtils.hasExorcismCandle(p)){
                 if(entity.getType().equals(RatsEntityRegistry.PLAGUE_DOCTOR)){
                     return false;
                 }

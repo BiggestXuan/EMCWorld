@@ -12,8 +12,8 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
 import biggestxuan.emcworld.api.event.PlayerGetXPEvent;
 import biggestxuan.emcworld.common.compact.CraftTweaker.CrTConfig;
-import biggestxuan.emcworld.common.traits.ITrait;
-import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -68,6 +68,19 @@ public class PlayerGetXP {
         }
         if(cap.getProfession() == 4 && cap.getModify() == 2 && cap.getSkills()[36] != 0){
             event.setAmount(event.getAmount() * 2);
+        }
+        ItemStack stack = player.getMainHandItem();
+        for(ITrait trait : TraitUtils.getStackTraits(stack)){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                trait.onProfessionalExp(player,stack,event);
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onProfessionalExp(player,stack,event);
+                }
+            }
         }
     }
 }

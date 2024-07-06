@@ -89,9 +89,9 @@ public class FTBQCategory implements IRecipeCategory<FTBQJeiUtils> {
         FontRenderer fontRenderer = Minecraft.getInstance().font;
         String questName = recipe.questName;
         fontRenderer.draw(matrix,questName,110-fontRenderer.width(questName)/2,8,0xffffff);
-        fontRenderer.draw(matrix, EMCWorld.tc("jei.emcworld.ftbq.emc_reward",MathUtils.format(recipe.emc)),10,80,0xffffff);
+        fontRenderer.draw(matrix, EMCWorld.tc("jei.emcworld.ftbq.emc_reward","+"+MathUtils.format(recipe.emc)),147,80,0xffffff);
         if(recipe.hasDependence()){
-            int y = 80;
+            int y = 100;
             fontRenderer.draw(matrix, EMCWorld.tc("jei.emcworld.ftbq.dependencies"),147,y,0xffffff);
             for(var d : recipe.dependencies){
                 y += 10;
@@ -99,7 +99,7 @@ public class FTBQCategory implements IRecipeCategory<FTBQJeiUtils> {
             }
         }
         if(recipe.hasDependant()){
-            int y = 110;
+            int y = 80;
             fontRenderer.draw(matrix, EMCWorld.tc("jei.emcworld.ftbq.dependants"),10,y,0xffffff);
             for(var d : recipe.dependants){
                 y += 10;

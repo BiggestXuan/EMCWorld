@@ -109,7 +109,7 @@ public class RaidUtils {
                 return pos2;
             }
         }
-        if(getVillager().size() >= 1){
+        if(!getVillager().isEmpty()){
             VillagerEntity randomVillager = getVillager().get((int) (MathUtils.Random() * getVillager().size()));
             return randomVillager.blockPosition();
         }

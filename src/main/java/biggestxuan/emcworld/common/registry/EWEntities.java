@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.registry;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.entity.AmmoEntity;
+import biggestxuan.emcworld.common.entity.IceCreamEntity;
 import biggestxuan.emcworld.common.entity.Player.*;
 import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = EMCWorld.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@SuppressWarnings("unused")
 public class EWEntities {
     public static final List<EntityType<?>> ENTITIES = Lists.newArrayList();
 
@@ -48,6 +50,7 @@ public class EWEntities {
     public static final EntityType<sdxhop> sdxhop = register("sdxhop",sdxhop::new);
     //public static final EntityType<Yuan_Shou> yuan_shou = register("yuan_shou",Yuan_Shou::new);
     public static final EntityType<AmmoEntity> ammo = registerAmmo("ammo",AmmoEntity::new);
+    public static final EntityType<IceCreamEntity> ice_cream = registerAmmo("ice_cream",IceCreamEntity::new);
 
     @SubscribeEvent
     public static void bind(EntityAttributeCreationEvent event){

@@ -12,6 +12,8 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.IEMCGod;
 import biggestxuan.emcworld.api.item.equipment.IEMCGodWeaponLevel;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.KnowledgeHelper;
@@ -19,6 +21,7 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.recipes.ItemStageLimit;
 import biggestxuan.emcworld.common.registry.EWRecipeTypes;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
@@ -49,6 +52,19 @@ public class PlayerPickUpItemEvent {
         int amt = item.getCount() * (64 / item.getMaxStackSize());
         if(item.getMaxStackSize() >= 65) amt *= (EMCWorld.HOMO << 18);
         double rate = 1d;
+        ItemStack stack = player.getMainHandItem();
+        for(ITrait trait : TraitUtils.getStackTraits(stack)){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                trait.onPickUpItem(player,stack, event.getItem());
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onPickUpItem(player,stack, event.getItem());
+                }
+            }
+        }
         IUtilCapability c = player.getCapability(EMCWorldCapability.UTIL).orElseThrow(EMCWorldCommonException::new);
         if(c.getPickMode() == 1 && item.getMaxStackSize() <= 64){
             if(!KnowledgeHelper.itemInAlchemyBag(item,player,DyeColor.WHITE,false)){

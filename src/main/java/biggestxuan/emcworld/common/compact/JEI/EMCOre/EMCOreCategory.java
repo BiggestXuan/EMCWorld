@@ -93,8 +93,9 @@ public class EMCOreCategory implements IRecipeCategory<EMCOreJEIRecipe> {
         }
 
         sg.set(0, Arrays.asList(EMCOreRecipe.getInput().getItems()));
+        List<EMCOreJEIRecipe.WeightItemStack> l = recipe.getOutputs();
+        l.sort((o1,o2) -> (int) (o1.chance - o2.chance));
         for (int i = 1; i <= 15; i++) {
-            List<EMCOreJEIRecipe.WeightItemStack> l = recipe.getOutputs();
             ItemStack stack;
             try{
                 stack = l.get(i-1).stack;

@@ -2,9 +2,12 @@ package biggestxuan.emcworld.common.traits;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.common.traits.traits.GoldTrait;
+import biggestxuan.emcworld.common.traits.traits.IronTrait;
+import biggestxuan.emcworld.common.traits.traits.StoneTrait;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * EMC WORLD MOD
@@ -15,16 +18,20 @@ import java.util.List;
 
 @EMCWorldSince("1.1.0")
 public class TraitManager {
-    public static List<ITrait> list;
+    public static ArrayList<ITrait> list = new ArrayList<>();
 
     public static void init(){
         list = new ArrayList<>();
         TraitColor.init();
     }
 
+    public static void register(){
+        register(new StoneTrait(),new IronTrait(),new GoldTrait());
+    }
+
     public static void register(ITrait trait){
         list.add(trait);
-        TraitColor.TraitColorMap.put(trait.getName().toString(), trait.getColor());
+        TraitColor.TraitColorMap.put(trait.getRL().toString(), trait.getColor());
     }
 
     public static void register(ITrait ... traits){
@@ -35,7 +42,7 @@ public class TraitManager {
 
     public static void disableTrait(ITrait trait){
         if(list.remove(trait)){
-            EMCWorld.LOGGER.info("Remove trait " + trait.getName().toString() + " successfully!");
+            EMCWorld.LOGGER.info("Remove trait " + trait.getRL().toString() + " successfully!");
             return;
         }
         EMCWorld.LOGGER.error("Can not remove trait!");

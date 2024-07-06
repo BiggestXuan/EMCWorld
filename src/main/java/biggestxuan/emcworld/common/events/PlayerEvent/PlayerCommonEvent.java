@@ -13,20 +13,23 @@ import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.event.LivingEatFoodEvent;
 import biggestxuan.emcworld.api.event.PlayerPrefixFreshEvent;
 import biggestxuan.emcworld.api.event.PlayerUpgradeItemEvent;
+import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import biggestxuan.emcworld.common.compact.BloodMagic.BloodMagicHelper;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
+import biggestxuan.emcworld.common.items.ModPack.RainFallStar;
 import biggestxuan.emcworld.common.items.SponsorsItem.ExceptionApple;
 import biggestxuan.emcworld.common.items.SponsorsItem.IceCream;
 import biggestxuan.emcworld.common.registry.EWItems;
-import biggestxuan.emcworld.common.traits.ITrait;
-import biggestxuan.emcworld.common.traits.TraitType;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.traits.TraitUtils;
+import biggestxuan.emcworld.common.utils.ASUtils;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -126,13 +129,13 @@ public class PlayerCommonEvent {
         //Message.sendMessage(event.getPlayer(),EMCWorld.tc("111"));
         TraitUtils.getStackTraits(s).forEach(e -> {
             if(e.getTraitType() == TraitType.TOOL){
-                e.beforeBreak(player,event.getState(),s);
+                e.afterBreak(player,event.getState(),s);
             }
         });
         for(ItemStack stack : player.inventory.armor){
             TraitUtils.getStackTraits(stack).forEach(e -> {
                 if(e.getTraitType() == TraitType.ARMOR){
-                    e.beforeBreak(player,event.getState(),stack);
+                    e.afterBreak(player,event.getState(),stack);
                 }
             });
         }
@@ -183,6 +186,33 @@ public class PlayerCommonEvent {
                 EMCHelper.modifyPlayerEMC(player,new EMCSource.FishEMCSource((long) (-count*diff*5),player,event.getDrops()));
             }
         }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onFishing(player,s,event.getDrops());
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void playerRespawnEvent(PlayerEvent.PlayerRespawnEvent event){
+        PlayerEntity player = event.getPlayer();
+        if(!player.level.isClientSide){
+            ItemStack stack = player.getMainHandItem();
+            for(ITrait trait : TraitUtils.getStackTraits(stack)){
+                if(trait.getTraitType() != TraitType.ARMOR){
+                    trait.onPlayerRespawn(player,stack, event.isEndConquered());
+                }
+            }
+            for(ItemStack s : player.inventory.armor){
+                for(ITrait trait : TraitUtils.getStackTraits(s)){
+                    if(trait.getTraitType() == TraitType.ARMOR){
+                        trait.onPlayerRespawn(player,s,event.isEndConquered());
+                    }
+                }
+            }
+        }
     }
 
     @SubscribeEvent
@@ -214,6 +244,43 @@ public class PlayerCommonEvent {
         }
     }
 
+    @EMCWorldSince("1.1.0")
+    @SubscribeEvent
+    public static void playerAfterUpgradeWeaponEvent(PlayerUpgradeItemEvent.After event){
+        PlayerEntity player = event.getPlayer();
+        if(event.isSucceed() && !player.level.isClientSide){
+            ItemStack stack = PlayerCuriosUtils.getStack(player,EWItems.FXT_XY);
+            EMCWorld.DevLogger(stack.toString());
+            if(stack.getItem() instanceof RainFallStar){
+                //ASUtils.getWorldConstellation(player.level).forEach(e -> EMCWorld.DevLogger(ASUtils.getConstellationName(e)));
+                stack.hurtAndBreak(1,player,(c) -> {});
+                double chance = EMCWorld.isDevMode ? 1 : 0.01;
+                if(MathUtils.isRandom(chance) && ASUtils.itemActiveConstellation(stack,player.level) && player.level.isNight() && !player.level.isRaining()){
+                    EMCWorld.DevLogger("up s");
+                    ItemStack weapon = event.getItem();
+                    if(weapon.getItem() instanceof IUpgradeableItem){
+                        IUpgradeableItem item = (IUpgradeableItem) weapon.getItem();
+                        item.addLevel(weapon,1);
+                    }
+                }
+            }
+        }
+    }
+    
+    @EMCWorldSince("1.1.0")
+    @SubscribeEvent
+    public static void playerEatEvent(LivingEatFoodEvent event){
+        LivingEntity livingEntity = event.getEntityLiving();
+        if(livingEntity instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) livingEntity;
+            int i = event.getLevel();
+            float f = event.getSaturation();
+            float t = i + f * 10;
+            long cost = (long) (MathUtils.getCommonBaseCost(player) * t);
+            EMCHelper.modifyPlayerEMC(player,new EMCSource.EatSource(-cost,player));
+        }
+    }
+
     @EMCWorldSince("1.0.0")
     @SubscribeEvent
     public static void prefix(PlayerPrefixFreshEvent event){
@@ -239,10 +306,10 @@ public class PlayerCommonEvent {
         if(event.player.level.isClientSide){
             return;
         }
-        long cost = BloodMagicHelper.getEMCDaggerEMCCost(stack);
+        long cost = -1000;
         if(BloodMagicHelper.isEMCModifyDagger(stack) && EMCHelper.getPlayerEMC(event.player) >= -cost){
             event.shouldDrainHealth = false;
-            event.lpAdded *= Math.pow(2,BloodMagicHelper.getEMCDaggerLevel(stack));
+            event.lpAdded = 1000;
             EMCHelper.modifyPlayerEMC(event.player, new EMCSource.EMCTransferBloodSource(cost,event.player));
         }
     }
@@ -254,7 +321,7 @@ public class PlayerCommonEvent {
             PlayerEntity player = (PlayerEntity) living;
             long base = MathUtils.getEatFoodBase(player,event.getFood())*10000;
             if(!player.level.isClientSide){
-                ItemStack stack = PlayerCurios.getPlayerExceptionApple(player);
+                ItemStack stack = PlayerCuriosUtils.getPlayerExceptionApple(player);
                 if(!stack.isEmpty()){
                     ((ExceptionApple) stack.getItem()).WhenPlayerEatOtherFood(player);
                 }

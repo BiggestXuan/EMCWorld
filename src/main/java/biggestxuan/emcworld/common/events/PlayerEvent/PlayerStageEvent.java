@@ -7,14 +7,18 @@ package biggestxuan.emcworld.common.events.PlayerEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.compact.FTBQuests.QuestReward;
 import biggestxuan.emcworld.common.compact.ScalingHealth.DifficultyHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.data.LotteryData;
+import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.DifficultySetting;
 import net.darkhax.gamestages.event.GameStageEvent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -41,6 +45,19 @@ public class PlayerStageEvent {
                     data.setStoredEMC(data.getStoredEMC()+emc);
                 }
                 break;
+            }
+        }
+        ItemStack stack = player.getMainHandItem();
+        for(ITrait trait : TraitUtils.getStackTraits(stack)){
+            if(trait.getTraitType() != TraitType.ARMOR){
+                trait.onGetStage(player,stack, stage);
+            }
+        }
+        for(ItemStack s : player.inventory.armor){
+            for(ITrait trait : TraitUtils.getStackTraits(s)){
+                if(trait.getTraitType() == TraitType.ARMOR){
+                    trait.onGetStage(player,stack,stage);
+                }
             }
         }
     }

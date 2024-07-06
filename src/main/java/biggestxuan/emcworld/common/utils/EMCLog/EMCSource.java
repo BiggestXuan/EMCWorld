@@ -465,4 +465,16 @@ public abstract class EMCSource<T> {
             return super.getInfo()+EMCWorld.tc("emcsource.tulye_shield",getTarget().toString(),getEMC()).getString();
         }//todo
     }
+
+    @EMCWorldSince("1.1.0")
+    public static class EatSource extends EMCSource<Object>{
+        public EatSource(long emc,PlayerEntity player){
+            super(emc,player,player,0);
+        }
+
+        @Override
+        public String getInfo(){
+            return super.getInfo()+EMCWorld.tc("emcsource.eat",getTarget().toString(),getEMC()).getString();
+        }
+    }
 }

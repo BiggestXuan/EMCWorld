@@ -19,7 +19,7 @@ public class BaseWeaponGemItem extends EWItem{
     private final int index;
     private final int color;
 
-    public BaseWeaponGemItem(gem gem){
+    public BaseWeaponGemItem(WeaponGem gem){
         this.index = gem.index;
         this.color = gem.color;
     }
@@ -40,17 +40,18 @@ public class BaseWeaponGemItem extends EWItem{
         return EMCWorld.tc("item.emcworld."+name).setStyle(Style.EMPTY.withColor(Color.fromRgb(color)));
     }
 
-    public enum gem{
+    public enum WeaponGem {
         BLOOD(10,0xbc3b29),
         NATURE(20,0x55c024),
         LAKE(30,0x2470c0),
-        ABYSS(40,0x8f24c0)
+        ABYSS(40,0x8f24c0),
+        END_LIGHT(50,0xcc0099)
         ;
 
         private final int index;
         private final int color;
 
-        gem(int index,int color){
+        WeaponGem(int index, int color){
             this.index = index;
             this.color = color;
         }

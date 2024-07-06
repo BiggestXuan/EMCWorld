@@ -18,7 +18,7 @@ public class Creation extends BaseEMCGodWarHammer {
 
     @Override
     protected long modifyEMCSecond(ItemStack stack) {
-        return Math.round(Math.pow(1.43,getLevel(stack)-5)*8.7);
+        return Math.round(Math.pow(1.4,getLevel(stack)-5)*8.7);
     }
 
     @Override

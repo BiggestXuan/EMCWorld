@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Voucher extends BaseModPackItem {
     public Voucher(){
-        super("\u6c22\u91cf\u7a7a\u5c9b (Hydrogen Skyblock)");
+        super("氢量空岛 (Hydrogen Skyblock)");
     }
 
     @Override

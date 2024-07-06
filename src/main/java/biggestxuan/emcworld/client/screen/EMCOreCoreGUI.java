@@ -43,7 +43,6 @@ public class EMCOreCoreGUI extends EMCWorldContainerHelperGUI<EMCOreCoreContaine
             EMCOreCoreTileEntity ore = (EMCOreCoreTileEntity) tile;
             this.star = ore.star;
             this.selectLevel = ore.selectLevel;
-            EMCWorld.LOGGER.info(star+","+selectLevel);
         }else{
             this.star = 0;
             this.selectLevel = 0;
@@ -108,7 +107,6 @@ public class EMCOreCoreGUI extends EMCWorldContainerHelperGUI<EMCOreCoreContaine
         int y = (height - imageHeight) / 2;
         this.minecraft.getTextureManager().bind(EMCWorld.rl("textures/gui/emc_ore.png"));
         blit(stack,x,y,0,0,imageWidth,imageHeight);
-        EMCWorld.LOGGER.info(star+","+selectLevel);
         EMCOreCoreTileEntity tile = (EMCOreCoreTileEntity) world.getBlockEntity(pos);
         assert tile != null;
         blit(stack,x+35,y+33,176,0,17,getRate(tile.progress,tile.maxProgress,17));

@@ -9,7 +9,7 @@ package biggestxuan.emcworld.common.compact.Projecte;
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
-import biggestxuan.emcworld.common.compact.Curios.PlayerCurios;
+import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.CommandUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
@@ -56,7 +56,7 @@ public class EMCHelper {
             setPlayerEMC(player, EMCWorld.MAX_EMC);
             return EMCWorld.MAX_EMC;
         }
-        return emc.longValue()+ PlayerCurios.getPlayerAdditionEMC(player);
+        return emc.longValue()+ PlayerCuriosUtils.getPlayerAdditionEMC(player);
     }
 
     public static long getPlayerActEMC(PlayerEntity player){
@@ -100,7 +100,7 @@ public class EMCHelper {
             modify = event.getSource().emc();
             if (modify < 0) {
                 triggerAdvancement(player, modify);
-                modify = Math.negateExact(PlayerCurios.costTotem(player, Math.negateExact(modify)));
+                modify = Math.negateExact(PlayerCuriosUtils.costTotem(player, Math.negateExact(modify)));
             }
             EMCWriter.WriteEMCLog(player, source);
             long afterEMC = getPlayerActEMC(player) + modify;

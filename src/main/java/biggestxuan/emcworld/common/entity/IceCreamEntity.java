@@ -1,5 +1,7 @@
 package biggestxuan.emcworld.common.entity;
 
+import biggestxuan.emcworld.common.registry.EWEntities;
+import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -13,6 +15,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import java.util.Set;
 
 /**
@@ -28,15 +31,21 @@ public class IceCreamEntity extends ProjectileItemEntity {
         super(p_i50155_1_, p_i50155_2_);
     }
 
+    public IceCreamEntity(LivingEntity p_i50157_2_, World p_i50157_3_) {
+        super(EWEntities.ice_cream,p_i50157_2_, p_i50157_3_);
+    }
+
     @Override
+    @Nonnull
     protected Item getDefaultItem() {
-        return null;
+        return EWItems.ICE_CREAM.get();
     }
 
     @Override
     protected void onHitBlock(BlockRayTraceResult p_230299_1_) {
         super.onHitBlock(p_230299_1_);
         SetSlow(level,p_230299_1_.getBlockPos());
+        super.remove();
     }
 
     @Override
@@ -44,6 +53,7 @@ public class IceCreamEntity extends ProjectileItemEntity {
         super.onHitEntity(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         SetSlow(entity.level,entity.blockPosition());
+        super.remove();
     }
 
     private static void SetSlow(World world, BlockPos pos){

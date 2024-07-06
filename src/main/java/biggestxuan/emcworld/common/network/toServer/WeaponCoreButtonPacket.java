@@ -7,10 +7,7 @@ package biggestxuan.emcworld.common.network.toServer;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.blocks.tile.EMCOreCoreTileEntity;
-import biggestxuan.emcworld.common.blocks.tile.PrefixTileEntity;
-import biggestxuan.emcworld.common.blocks.tile.SuperEMCTileEntity;
-import biggestxuan.emcworld.common.blocks.tile.WeaponUpgradeBlockTileEntity;
+import biggestxuan.emcworld.common.blocks.tile.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
@@ -66,6 +63,10 @@ public class WeaponCoreButtonPacket {
                 if(tile instanceof EMCOreCoreTileEntity){
                     EMCOreCoreTileEntity tileEntity = (EMCOreCoreTileEntity) tile;
                     tileEntity.setOreLevel(msg.mode);
+                }
+                if(tile instanceof EMCCoreTileEntity){
+                    EMCCoreTileEntity core = (EMCCoreTileEntity) tile;
+                    core.work();
                 }
             }
         });
