@@ -158,6 +158,7 @@ public function modifyMEKRecipe() as void{
     addGobberInfusionRecipe(<item:mekanism:block_steel>,sc,40);
     addGobberInfusionRecipe(<item:mekanism:ingot_osmium>,<item:mekanism:basic_control_circuit>,20);
     combiningRecipe(<item:mekanism:dust_refined_obsidian>,<item:mekanism:ingot_steel>,iro);
+    crystallizingGasRecipe(<gas:mekanism:fissile_fuel>*2500,<item:mekanism:reprocessed_fissile_fragment>);
     modifyShapedRecipe([
         [a,steel,a],
         [steel,ar2,steel],

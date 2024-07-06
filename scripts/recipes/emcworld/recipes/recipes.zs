@@ -17,6 +17,7 @@ public function emcworldRecipe() as void{
     var al = <item:mythicbotany:alfheim_rune>;
     var a = <item:minecraft:air>;
     var beg = <item:emcworld:big_emc_gem>;
+    var nss = <item:mysticalagradditions:nether_star_shard>;
     var sg = <item:emcworld:scroll_green>;
     var em = <item:minecraft:emerald>;
     var test = <item:emcworld:test_block>;
@@ -255,6 +256,9 @@ public function emcworldRecipe() as void{
     terraPlateRecipe([<item:atum:anput_godshard>],<item:good_nights_sleep:despair_mushroom>,125000);
     addNuggetAndIngotRecipe(<item:cataclysm:ignitium_ingot>,<item:cataclysm:ignitium_block>);
     gemTrade();
+    addEMCStage(<item:mysticalagriculture:antimatter_essence>,-1);
+    addEMCStage(<item:emcworld:drop_antimatter>,-1);
+    addNuggetAndBlockRecipe(<item:mysticalagriculture:antimatter_essence>,<item:emcworld:drop_antimatter>,<item:mekanism:pellet_antimatter>);
     modifyShapedRecipe([
         [<item:minecraft:lapis_lazuli>,<item:mekanism:alloy_reinforced>,<item:minecraft:lapis_lazuli>],
         [<item:minecraft:gold_ingot>,<item:minecraft:diamond>,<item:minecraft:gold_ingot>],
@@ -321,15 +325,18 @@ public function emcworldRecipe() as void{
         }
     }
     infuserRecipe([ub,aui,ali,ali,ali],<item:allthemodium:unobtainium_allthemodium_alloy_ingot>*4,30000,10000000,3);
+    infuserRecipe([<item:emcworld:epic_essence>,tun,tun,tun,tun],<item:emcworld:final_essence>,3000,1000000000,4);
     removeCraftRecipeIItemStack(armor);
     //multiFurnaceRecipe(<tag:items:mekanism:colorable/concrete>,<item:emcworld:steel_furnace_brick>);
     removeSmithingRecipe(mmas);
     smithingRecipe(<item:mekanism:atomic_disassembler>,new CrTSingularity("alfsteel",2).asIIngredient(),mmas);
     removeFurnaceRecipe([aq]);
     infuserRecipe([ub,aui,aui,alv,alv],<item:allthemodium:unobtainium_vibranium_alloy_ingot>*7,25000,6000000,3);
+    infuserRecipe([<item:mysticalagradditions:insanium_essence>,nss,nss,nss,nss],<item:emcworld:epic_essence>,2000,10000000,3);
     removeCraftRecipe([nei]);
     infuserRecipe([ub,aui,alv,alv,alv],<item:allthemodium:unobtainium_vibranium_alloy_ingot>*5,25000,7000000,3);
     removeCraftRecipeIItemStack(tung);
+    addCraftShapelessRecipe([<item:minecraft:nether_star>],<item:mysticalagradditions:nether_star_shard>*3);
     furnaceRecipeNoName(aq*3,<item:emcworld:aquamarine_ore>,1);
     infuserRecipe([ub,aui,aui,ali,ali],<item:allthemodium:unobtainium_allthemodium_alloy_ingot>*6,30000,9000000,3);
     bloodAltarRecipe(<item:mekanism:steel_casing>,<item:emcworld:control_update_core>,15000,3);
