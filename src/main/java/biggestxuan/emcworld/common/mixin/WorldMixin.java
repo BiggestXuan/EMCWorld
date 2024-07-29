@@ -21,39 +21,42 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 @Mixin(World.class)
 public abstract class WorldMixin {
     @Shadow
     @Final
-    protected final Set<TileEntity> blockEntitiesToUnload = java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<>());
+    protected Set<TileEntity> blockEntitiesToUnload;
 
-    private final Set<TileEntity> ban = new HashSet<>();
+    private final WeakHashMap<TileEntity, Object> ban = new WeakHashMap<>();
 
     @Inject(method = "tickBlockEntities",at = @At("HEAD"))
-    public void tickEntities(CallbackInfo ci){
-        if(!ConfigManager.RAID_BLOCK_SLEEP.get()){
+    public void tickEntities(CallbackInfo ci) {
+        if (!ConfigManager.RAID_BLOCK_SLEEP.get()) {
             return;
         }
-        World world = (World)(Object)this;
+        World world = (World) (Object) this;
         MinecraftServer server = world.getServer();
-        if(server == null) return;
+        if (server == null) return;
         ServerWorld serverWorld = server.overworld();
-        if(ban.size() != 0){
-            for(TileEntity entity:ban){
-                if(!world.tickableBlockEntities.contains(entity) && !serverWorld.isRaided(entity.getBlockPos())){
-                    world.tickableBlockEntities.add(entity);
+        if (!ban.isEmpty()) {
+            IdentityHashMap<TileEntity, Object> temp = new IdentityHashMap<>(ban);
+            world.tickableBlockEntities.forEach(temp::remove);
+            for (TileEntity te : temp.keySet()) {
+                if (!serverWorld.isRaided(te.getBlockPos())) {
+                    world.tickableBlockEntities.add(te);
                 }
             }
         }
-        for(TileEntity tileEntity : world.tickableBlockEntities){
+        for (TileEntity tileEntity : world.tickableBlockEntities) {
             Raid raid = serverWorld.getRaidAt(tileEntity.getBlockPos());
             blockEntitiesToUnload.remove(tileEntity);
-            if(raid != null && tileEntity instanceof ITickableTileEntity && !(tileEntity instanceof TileEntitySynchronized)){
+            if (raid != null && tileEntity instanceof ITickableTileEntity && !(tileEntity instanceof TileEntitySynchronized)) {
                 blockEntitiesToUnload.add(tileEntity);
-                ban.add(tileEntity);
+                ban.put(tileEntity, null);
             }
         }
     }
