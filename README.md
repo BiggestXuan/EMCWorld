@@ -1,5 +1,8 @@
 # EMCWorld
 
+git库已迁移，本库已经归档～
+[https://git.biggestxuan.top/EMCWorld/EMCWorld](https://git.biggestxuan.top/EMCWorld/EMCWorld)
+
 ## 整合包已发布正式版！  
 
 CurseForge：[https://www.curseforge.com/minecraft/modpacks/emcworld](https://www.curseforge.com/minecraft/modpacks/emcworld)  
