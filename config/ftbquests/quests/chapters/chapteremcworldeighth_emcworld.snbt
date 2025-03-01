@@ -80,7 +80,11 @@
 			tasks: [{
 				id: "06EC766F241EBF34"
 				type: "item"
-				item: "projecte:dm_helmet"
+				item: {
+					id: "projecte:dm_helmet"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "56E9E4D585FC7FF1"
@@ -99,7 +103,11 @@
 			tasks: [{
 				id: "0456D302704780A7"
 				type: "item"
-				item: "projecte:dm_chestplate"
+				item: {
+					id: "projecte:dm_chestplate"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "4C02764DE13D1F13"
@@ -118,7 +126,11 @@
 			tasks: [{
 				id: "5C9AF5B94E7DC07F"
 				type: "item"
-				item: "projecte:dm_leggings"
+				item: {
+					id: "projecte:dm_leggings"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "2262F91BECE06DBE"
@@ -137,7 +149,11 @@
 			tasks: [{
 				id: "3119E13830CD2CA7"
 				type: "item"
-				item: "projecte:dm_boots"
+				item: {
+					id: "projecte:dm_boots"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "5AF64989DF535583"
@@ -298,7 +314,11 @@
 			tasks: [{
 				id: "518B9081DA4BF4AA"
 				type: "item"
-				item: "projecte:rm_helmet"
+				item: {
+					id: "projecte:rm_helmet"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "0E957425C8C267E0"
@@ -320,7 +340,11 @@
 			tasks: [{
 				id: "38319A8D8C748A12"
 				type: "item"
-				item: "projecte:rm_chestplate"
+				item: {
+					id: "projecte:rm_chestplate"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "69F7D36E6CE84E34"
@@ -342,7 +366,11 @@
 			tasks: [{
 				id: "10D870638805EBE3"
 				type: "item"
-				item: "projecte:rm_leggings"
+				item: {
+					id: "projecte:rm_leggings"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "6457D0A9012FAE5F"
@@ -364,7 +392,11 @@
 			tasks: [{
 				id: "512C3B233B37467B"
 				type: "item"
-				item: "projecte:rm_boots"
+				item: {
+					id: "projecte:rm_boots"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "325789147B0F68E1"
@@ -623,7 +655,11 @@
 			tasks: [{
 				id: "4D1654087AB45C57"
 				type: "item"
-				item: "projecte:gem_helmet"
+				item: {
+					id: "projecte:gem_helmet"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "57F97C188334A107"
@@ -646,7 +682,11 @@
 			tasks: [{
 				id: "4485D6614FF67568"
 				type: "item"
-				item: "projecte:gem_chestplate"
+				item: {
+					id: "projecte:gem_chestplate"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "0DE077311C7936EE"
@@ -669,7 +709,11 @@
 			tasks: [{
 				id: "7E404F44418C5E6B"
 				type: "item"
-				item: "projecte:gem_leggings"
+				item: {
+					id: "projecte:gem_leggings"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "38BE4A2826F23494"
@@ -692,7 +736,11 @@
 			tasks: [{
 				id: "48CF44E255DB0AE7"
 				type: "item"
-				item: "projecte:gem_boots"
+				item: {
+					id: "projecte:gem_boots"
+					Count: 1b
+					tag: { }
+				}
 			}]
 			rewards: [{
 				id: "65735F1C9B3FBF0C"

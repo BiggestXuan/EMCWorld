@@ -25,6 +25,7 @@ public function modifyNatureAuraRecipe() as void{
     ]);
     removeOfferingRecipe([si]);
     natureAltarRecipe(<item:emcworld:chlorophyte_ingot>,ii,1,100000);
+    natureAltarRecipe(<item:emcworld:scroll_red>,<item:emcworld:scroll_enlightening_glimmer>,1,100000);
     natureAltarRecipe(fi,tg,1,100000);
     offeringRecipe(<item:astralsorcery:starmetal_ingot>,cs,si*2);
     astralInfusionRecipe(<item:hem:blueleaf_leaves>,gf*4);
@@ -66,8 +67,8 @@ public function modifyNatureAuraRecipe() as void{
         eye,<item:bloodmagic:seersigil>,<item:astralsorcery:glass_lens>
     ],<item:good_nights_sleep:dream_sapling>,ei);
     natureSpawnerRecipe([
-        <item:undergarden:regalium_block>,
-        <item:undergarden:cloggrum_block>,
+        <item:undergarden:regalium_ingot>,
+        <item:undergarden:cloggrum_ingot>,
         <item:hem:copparite>,
     ],50000,<entitytype:undergarden:forgotten_guardian>,"zs");
     Replacer.forTypes(craftingTable)
@@ -80,5 +81,5 @@ public function modifyNatureAuraRecipe() as void{
         ii,
         <item:naturesaura:tainted_gold>,
         <item:bloodmagic:defaultcrystal>
-    ],cs,20000,4);
+    ],cs,3000,4);
 }

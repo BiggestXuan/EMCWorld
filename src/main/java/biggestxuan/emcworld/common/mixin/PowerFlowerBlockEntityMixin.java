@@ -2,6 +2,7 @@ package biggestxuan.emcworld.common.mixin;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
+import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import dev.latvian.mods.projectex.block.PowerFlowerBlock;
@@ -83,8 +84,10 @@ public abstract class PowerFlowerBlockEntityMixin extends TileEntity implements 
                     long eff = ((PowerFlowerBlock)state.getBlock()).matter.getPowerFlowerOutput();
                     ServerPlayerEntity player = power.getLevel().getServer().getPlayerList().getPlayer(owner);
                     if(player != null){
-                        EMCSource.EMCPowerFlowerSource source = new EMCSource.EMCPowerFlowerSource(eff,player,power.getBlockPos());
-                        EMCHelper.modifyPlayerEMC(player,source,false);
+                        player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> {
+                            long cache = cap.getPowerFlowerCache();
+                            cap.setPowerFlowerCache(cache + eff);
+                        });
                     }
                 }
             }

@@ -71,10 +71,13 @@ public class EMCWorldHUD extends AbstractGui {
             int amount = util.getVillager();
             drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_damage",String.format("%.0f",(util.getRaidRate()-1)*100)+"%"),1,y,color);
             y += line;
+            drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_time",MathUtils.formatTime(util.getRaidTime())),1,y,color);
+            y += line;
             if(amount <= 5) color = 0xFF0000;
             drawString(matrixStack,mc.font, EMCWorld.tc("hud.emcworld.raid_villager",amount),1,y,color);
         }
     }
+
     private TranslationTextComponent getRaidStatue(int i){
         String s;
         switch (i){

@@ -106,7 +106,7 @@ public class PlayerPickUpItemEvent {
             event.setCanceled(true);
             Message.MessageDisplay(player, EMCWorld.tc("message.evt.pickupcancel", MathUtils.format(costEMC)));
         } else {
-            EMCHelper.modifyPlayerEMC(player, new EMCSource.PickItemEMCSource(Math.negateExact(costEMC),player,event.getItem(),0), true);
+            EMCHelper.modifyPlayerEMC(player, new EMCSource.PickItemEMCSource(Math.negateExact(costEMC),player,event.getItem().getItem(),0), true);
         }
     }
 

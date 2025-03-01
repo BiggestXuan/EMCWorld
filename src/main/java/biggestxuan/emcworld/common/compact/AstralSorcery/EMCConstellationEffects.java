@@ -19,6 +19,7 @@ import hellfirepvp.astralsorcery.common.util.block.ILocatable;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
 import mekanism.api.radiation.IRadiationManager;
+import mekanism.common.lib.radiation.RadiationManager;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -56,10 +57,14 @@ public class EMCConstellationEffects extends ConstellationEffect {
         if(world.isClientSide) return false;
         if(properties.isCorrupted()){
             BlockPos newPos = new BlockPos(blockPos.getX(),blockPos.getY()+2,blockPos.getZ());
-            IRadiationManager radiationManager = MekanismAPI.getRadiationManager();
+            IRadiationManager radiationManager = RadiationManager.INSTANCE;
             double radiation = radiationManager.getRadiationLevel(new Coord4D(blockPos,world));
             if(radiation < 1.0d) return false;
             int amount = Math.max((int) radiation/20,1);
+            double chance = Math.min(0.1,radiation/100000);
+            if(MathUtils.isRandom(chance)){
+                world.addFreshEntity(new ItemEntity(world,newPos.getX(),newPos.getY(),newPos.getZ(),new ItemStack(EWItems.SCROLL_ADVANCED_EMC.get(),amount)));
+            }
             world.addFreshEntity(new ItemEntity(world,newPos.getX(),newPos.getY(),newPos.getZ(),new ItemStack(EWItems.SMALL_EMC_GEM.get(),amount)));
         }
         else{
@@ -67,7 +72,7 @@ public class EMCConstellationEffects extends ConstellationEffect {
             for(LivingEntity entity:getEntity(blockPos,world)){
                 float damage = entity.getMaxHealth() /4f;
                 if(entity.getHealth() > damage){
-                    entity.hurt(EWDamageSource.REALLY,damage);
+                    entity.hurt(EWDamageSource.TRUE,damage);
                     allCost += damage;
                 }
                 else{

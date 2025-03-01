@@ -37,7 +37,7 @@ public abstract class ItemMekaToolMixin extends ItemEnergized implements IModule
 
     @Override
     public double costEMCWhenAttack(ItemStack stack) {
-        return a(stack) ? 0 : 1;
+        return isInfinity(stack) ? 0 : 1;
     }
 
     @Override
@@ -47,17 +47,26 @@ public abstract class ItemMekaToolMixin extends ItemEnergized implements IModule
 
     @Override
     public long EMCModifySecond(ItemStack stack) {
-        return a(stack) ? EMCWorld.MAX_EMC : 0;
+        return isInfinity(stack) ? EMCWorld.MAX_EMC : 0;
     }
 
     @Override
     public DamageUtils getAdditionsDamage(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(a(stack) ? EMCWorld.HOMO : 0);
+        int baseDamage = 8;
+        int level = getLevel(stack);
+        if(level >= 1){
+            baseDamage = (int) (baseDamage * (0.03 * level + 1));
+        }
+        baseDamage <<= Math.round(MekUtils.getAttackInitAmount(stack)*1.8);
+        int star = getStar(stack);
+        baseDamage *= star + 1;
+        baseDamage = Math.min(EMCWorld.HOMO, baseDamage);
+        return DamageUtils.of(isInfinity(stack) ? EMCWorld.HOMO : baseDamage);
     }
 
     @Override
     public DamageUtils getAttackRange(PlayerEntity player,ItemStack stack) {
-        return DamageUtils.of(a(stack) ? 64 : 0);
+        return DamageUtils.of(isInfinity(stack) ? 64 : 0);
     }
 
     @Override
@@ -65,7 +74,7 @@ public abstract class ItemMekaToolMixin extends ItemEnergized implements IModule
         return 30;
     }
 
-    private static boolean a(ItemStack stack){
+    private static boolean isInfinity(ItemStack stack){
         return MekUtils.isInfinityMekaTool(stack);
     }
 }

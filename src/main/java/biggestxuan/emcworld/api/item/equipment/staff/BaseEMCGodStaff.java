@@ -204,8 +204,4 @@ public abstract class BaseEMCGodStaff extends StaffItem implements ISecondEMCIte
         return Rarity.EPIC;
     }
 
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        return super.lv(stack);
-    }
 }

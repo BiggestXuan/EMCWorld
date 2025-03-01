@@ -8,6 +8,7 @@ package biggestxuan.emcworld.api.item;
 
 import biggestxuan.emcworld.api.item.IUpgradeableItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 
 public interface IUpgradeableMaterial {
     default int getWeight(ItemStack stack){
@@ -21,6 +22,10 @@ public interface IUpgradeableMaterial {
             return weight;
         }
         return 0;
+    }
+
+    default int getActWeight(ItemStack stack, ItemStack target, TileEntity tileEntity){
+        return getWeight(stack);
     }
 
     default double breakWeaponRate(){

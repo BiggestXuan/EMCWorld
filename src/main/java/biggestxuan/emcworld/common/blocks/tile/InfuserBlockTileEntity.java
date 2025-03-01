@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
+import mekanism.common.lib.radiation.RadiationManager;
 import moze_intel.projecte.api.ProjectEAPI;
 import moze_intel.projecte.api.capabilities.tile.IEmcStorage;
 import net.minecraft.block.BlockState;
@@ -238,7 +239,12 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
     @Override
     @Nullable
     public Inventory getInventory() {
-        return null;
+        int size = handler.getSlots();
+        ItemStack[] items = new ItemStack[size];
+        for (int i = 0; i < size; i++) {
+            items[i] = handler.getStackInSlot(i);
+        }
+        return new Inventory(items);
     }
 
     public BlockPos getPos() {
@@ -280,7 +286,7 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
                 }
             }
         }
-        if(isRecipe(this)){
+        if(isRecipe()){
             this.progress += getRadiationRate();
             if(this.progress >= this.maxProgress){
                 craftItem(this);
@@ -351,7 +357,8 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
         entity.progress = 0;
     }
 
-    private boolean isRecipe(InfuserBlockTileEntity entity){
+    private boolean isRecipe(){
+
         World world = this.level;
         assert world != null;
         Inventory inventory = new Inventory(7);
@@ -365,6 +372,10 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
             }
         }
         if(isNull) return false;*/
+        for (int i = 0; i < 5; i++) {
+            if(i == 2) continue;
+            if(inventory.getItem(i).isEmpty()) return false;
+        }
         Optional<InfuserRecipe> match = world.getRecipeManager().getRecipeFor(InfuserRecipe.Type.INSTANCE,inventory,world);
         boolean out = match.isPresent() && canOutPut(match.get().getResultItem()) && this.craftLevel >= match.get().getCraftLevel() && this.emc >= match.get().getCostEMCRate();
         if(out){
@@ -398,7 +409,7 @@ public class InfuserBlockTileEntity extends BaseContainerTileEntity implements I
         this.emc = Math.min(this.emc,this.maxEMC);
         this.data.set(2,this.emc);
         if(this.level == null) return;
-        this.data.set(3,Math.min(this.maxRadiation,(int) MekanismAPI.getRadiationManager().getRadiationLevel(new Coord4D(this.getBlockPos(),this.level))));
+        this.data.set(3,Math.min(this.maxRadiation,(int) RadiationManager.INSTANCE.getRadiationLevel(new Coord4D(this.getBlockPos(),this.level))));
     }
 
     private void firstSet(){

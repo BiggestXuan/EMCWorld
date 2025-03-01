@@ -10,11 +10,13 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.event.PlayerModifyEMCEvent;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.utils.CommandUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
 import biggestxuan.emcworld.common.utils.Message;
+import biggestxuan.emcworld.common.utils.Network.OfficialServerNetWork;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IItemStack;
@@ -27,7 +29,11 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.raid.Raid;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import org.openzen.zencode.java.ZenCodeType;
 
@@ -86,14 +92,6 @@ public class EMCHelper {
             int level = player.getEffect(EWEffects.EMC_BROKEN.get()).getAmplifier() + 1;
             modify *= level;
         }
-        if(showMessage){
-            if(modify < 0){
-                Message.LossEMCMessage(player,Math.negateExact(modify));
-            }
-            else {
-                Message.addEMCMessage(player,modify);
-            }
-        }
         source.setEmc(modify);
         PlayerModifyEMCEvent event = new PlayerModifyEMCEvent(player,source);
         if(!MinecraftForge.EVENT_BUS.post(event)) {
@@ -102,7 +100,28 @@ public class EMCHelper {
                 triggerAdvancement(player, modify);
                 modify = Math.negateExact(PlayerCuriosUtils.costTotem(player, Math.negateExact(modify)));
             }
-            EMCWriter.WriteEMCLog(player, source);
+            if(player instanceof ServerPlayerEntity){
+                ServerPlayerEntity playerEntity = (ServerPlayerEntity) player;
+                ServerWorld world = playerEntity.getLevel();
+                BlockPos pos = playerEntity.blockPosition();
+                if(world.isRaided(pos)){
+                    Raid raid = world.getRaidAt(pos);
+                    if(raid != null){
+                        modify = new RaidEffectExecutor(raid).onPlayerEMCCost(player,source).emc();
+                        source.setEmc(modify);
+                    }
+                }
+                //OfficialServerNetWork.writePlayerNetWorkLog(player, source);
+                EMCWriter.WriteEMCLog(playerEntity, source);
+            }
+            if(showMessage){
+                if(modify < 0){
+                    Message.LossEMCMessage(player,Math.negateExact(modify));
+                }
+                else {
+                    Message.addEMCMessage(player,modify);
+                }
+            }
             long afterEMC = getPlayerActEMC(player) + modify;
             getPlayerIKP(player).setEmc(BigInteger.valueOf(Math.max(0, afterEMC)));
             flushPlayer(player);
@@ -161,6 +180,16 @@ public class EMCHelper {
                 awardAdvancement(player,EMCWorld.rl("cost/6"));
             }
         }
+    }
+
+    public static boolean hasAdvancement(ServerPlayerEntity player,String s){
+        MinecraftServer server = player.getServer();
+        if(server == null) return false;
+        Advancement adv = server.getAdvancements().getAdvancement(EMCWorld.rl(s));
+        if(adv == null){
+            return false;
+        }
+        return player.getAdvancements().getOrStartProgress(adv).isDone();
     }
 
     public static void awardAdvancement(ServerPlayerEntity player,Advancement adv){

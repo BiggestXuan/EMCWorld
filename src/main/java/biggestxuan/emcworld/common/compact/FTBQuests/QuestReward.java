@@ -11,8 +11,8 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 public enum QuestReward {
     EASY("easy", 750.0),
     NORMAL("normal", 3750.0),
-    HARD("hard", 22500.0),
-    EPIC("epic", 150000.0);
+    HARD("hard", 25500.0),
+    EPIC("epic", 225000.0);
 
     private final String tag;
     private final double baseEMC;

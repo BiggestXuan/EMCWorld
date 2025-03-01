@@ -23,6 +23,7 @@ import biggestxuan.emcworld.common.compact.JEI.Update.UpdateCategory;
 import biggestxuan.emcworld.common.recipes.*;
 import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.FTBQJeiUtils;
+import dev.ftb.mods.ftbquests.client.ClientQuestFile;
 import dev.ftb.mods.ftbquests.item.FTBQuestsItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -139,8 +140,6 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         List<MatterFixRecipe> recipes1 = new ArrayList<>(Arrays.asList(MatterFixRecipe.values()));
         registry.addRecipes(recipes1,CollectorFixCategory.getRL());
 
-        registry.addRecipes(FTBQJeiUtils.getAllQuests(true),FTBQCategory.rl());
-
         List<EMCOreJEIRecipe> recipes2 = new ArrayList<>();
         for (int i = 0; i <= 8; i++) {
             recipes2.add(new EMCOreJEIRecipe(i));
@@ -150,6 +149,10 @@ public class EMCWorldJEIPlugin implements IModPlugin {
         RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
         registry.addRecipes(recipeManager.getAllRecipesFor(InfuserRecipe.Type.INSTANCE),InfuserCategory.getRL());
         registry.addRecipes(recipeManager.getAllRecipesFor(SteelFurnaceRecipe.Type.INSTANCE),SteelFurnaceCategory.rl());
+
+        if(ClientQuestFile.INSTANCE != null){
+            registry.addRecipes(FTBQJeiUtils.getAllQuests(true),FTBQCategory.rl());
+        }
     }
 
     private static ItemStack getIS(Item item){

@@ -8,6 +8,7 @@ package biggestxuan.emcworld.api.item.base;
 
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.items.EWItem;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -30,7 +31,7 @@ public class BaseGetStageItem extends EWItem {
         if(GameStageManager.hasStage(p_77659_2_,stage)){
             return ActionResult.fail(stack);
         }
-        stack.shrink(1);
+        //stack.shrink(1);
         GameStageManager.addStage(p_77659_2_,stage);
         return ActionResult.success(stack);
     }

@@ -114,7 +114,7 @@ public class PlayerQuestCompletedEvent {
         if(baseGet == 0) return;
         baseGet <<= 1;
         Team team = FTBTeamsAPI.getPlayerTeam(player);
-        int amt = team.getMembers().size();
+        int amt = 1;
         baseGet = baseGet / (amt <= 0 ? 1 : amt);
         ItemStack stack = player.getMainHandItem();
         for(ITrait trait : TraitUtils.getStackTraits(stack)){

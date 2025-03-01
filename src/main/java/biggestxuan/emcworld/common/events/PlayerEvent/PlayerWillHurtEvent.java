@@ -10,6 +10,7 @@ import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.event.PlayerEMCShiedCostEvent;
 import biggestxuan.emcworld.api.item.equipment.armor.IEMCShieldArmor;
 import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
@@ -18,6 +19,7 @@ import com.google.common.util.concurrent.AtomicDouble;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
 import mekanism.api.radiation.IRadiationManager;
+import mekanism.common.lib.radiation.RadiationManager;
 import mekanism.common.registries.MekanismDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,6 +27,7 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -84,22 +87,25 @@ public class PlayerWillHurtEvent {
                 if(costEMCShield(player,amount * 2,event.getSource())){
                     event.setCanceled(true);
                 }
-                IRadiationManager manager = MekanismAPI.getRadiationManager();
+                IRadiationManager manager = RadiationManager.INSTANCE;
                 if(util.getShield() * 100 >= manager.getRadiationLevel(new Coord4D(player)) && costEMCShield(player,amount * 10,event.getSource())){
-                    MekanismAPI.getRadiationManager().removeRadiationSource(new Coord4D(player));
+                    RadiationManager.INSTANCE.removeRadiationSource(new Coord4D(player));
                 }
             }
         }
     }
 
     private static boolean costEMCShield(PlayerEntity player, float amount, DamageSource source){
+        PlayerEMCShiedCostEvent event = new PlayerEMCShiedCostEvent(player,amount,source);
+        MinecraftForge.EVENT_BUS.post(event);
         if(source instanceof EWDamageSource || source.equals(DamageSource.OUT_OF_WORLD) || player.isCreative()){
             return false;
         }
         if(player.hurtTime > 0){
             return true;
         }
-        if(MathUtils.isMaxDifficulty()) amount *= 1.167f;
+        amount = event.getAmt();
+        if(MathUtils.isMaxDifficulty()) amount *= 1.05f;
         if(source.getDirectEntity() instanceof ProjectileEntity){
             amount = MathUtils.getAdditionDamage(source.getDirectEntity(),player,amount);
         }

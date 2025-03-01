@@ -13,5 +13,29 @@
       "stream": true
     }
     ]
+  },
+  "cxk_rich": {
+  "subtitle": "sound.emcworld.cxk_rich",
+  "sounds": [{
+    "name": "emcworld:cxk_rich",
+    "stream": true
+  }
+  ]
+},
+  "cxk_rabbit": {
+    "subtitle": "sound.emcworld.cxk_rabbit",
+    "sounds": [{
+      "name": "emcworld:cxk_rabbit",
+      "stream": true
+    }
+    ]
+  },
+  "none": {
+    "subtitle": "sound.emcworld.none",
+    "sounds": [{
+      "name": "emcworld:cxk_none",
+      "stream": true
+    }
+    ]
   }
 }

@@ -38,6 +38,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ThrowableEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTier;
 import net.minecraft.item.TieredItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
@@ -53,11 +54,13 @@ import vazkii.botania.common.entity.EntityManaBurst;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEffect, ICriticalWeapon, IPrefixItem {
     protected final IStaffTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
+    public static HashSet<StaffItem> staffs = new HashSet<>();
 
     @Override
     public double getEMCCostRate() {
@@ -70,6 +73,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", tier.getSpeed(), AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
+        staffs.add(this);
     }
 
     protected double getPrefixCommonRate(ItemStack stack){
@@ -82,11 +86,6 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
             b = 0.025 * (prefix.getLevel()-4) + 1;
         }
         return b;
-    }
-
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 5.5);
     }
 
     public double getCostRate(ItemStack stack,PlayerEntity player){
@@ -120,7 +119,7 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
     }
 
     public double costEMCWhenAttack(ItemStack stack) {
-        return 1.5 / getPrefixCommonRate(stack);
+        return 1.6 / getPrefixCommonRate(stack);
     }
 
     public float getBaseDamage(ItemStack stack){
@@ -188,12 +187,25 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         }
         this.setDamage(staff,getDamage(staff)+1);
         if(!(cap.getModify() == 1 && cap.getProfession() == 3 && cap.getSkills()[40] != 0 && cap.getSkills()[41] != 0)){
-            p_77659_2_.getCooldowns().addCooldown(this,(int) (20/(tier.getSpeed()+4)));
+            staffs.forEach(s -> p_77659_2_.getCooldowns().addCooldown(s,(int) (35/getSpeed(staff))));
         }
         if(staff.getDamageValue() > staff.getMaxDamage()){
             staff.shrink(1);
         }
         return ActionResult.success(staff);
+    }
+
+    protected float getSpeed(ItemStack stack){
+        int level = getLevel(stack);
+        if(level <= 2) return 1.0F;
+        if(level <= 5) return 1.2F;
+        if(level <= 9) return 1.4F;
+        if(level <= 13) return 1.6F;
+        if(level <= 17) return 2F;
+        if(level <= 22) return 2.3F;
+        if(level <= 24) return 2.5F;
+        if(level <= 28) return 2.7F;
+        return 3F;
     }
 
     protected double getManaBurstSpeed(ItemStack stack){
@@ -231,11 +243,14 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
         for (LivingEntity living : getCanAttackEntity(burst,stack)) {
             if (living.hurtTime == 0 && !living.isInvisible()) {
                 if (!burst.isFake() && !entity.level.isClientSide) {
-                    DamageSource source = thrower instanceof PlayerEntity ? new EWDamageSource((PlayerEntity) thrower).REALLY_PLAYER : EWDamageSource.REALLY;
+                    DamageSource source = thrower instanceof PlayerEntity ? new EWDamageSource((PlayerEntity) thrower).REALLY_PLAYER : EWDamageSource.TRUE;
                     float damage = getManaBurstDamage(stack,thrower);
+                    int time = burst.getTicksExisted();
+                    float r = Math.max(0.72F,1 - 0.007F * time);
+                    damage *= r;
                     if(thrower instanceof PlayerEntity){
                         PlayerEntity player = (PlayerEntity) thrower;
-                        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getCostRate(stack,player) * getManaBurstDamage(stack,player));
+                        long cost = (long) (MathUtils.getAttackBaseCost(player) * MathUtils.difficultyLoss() * getCostRate(stack,player) * damage);
                         if(living.getType().equals(Registry.TARGET_DUMMY.get())){
                             cost = 0;
                         }
@@ -246,12 +261,12 @@ public class StaffItem extends TieredItem implements IUpgradeableWeapon, ILensEf
                             Message.sendMessage(player, EMCWorld.tc("message.evt.attackcancel",MathUtils.format(cost)));
                         }
                     }
-                    /**living.hurtTime += 5;
-                    living.invulnerableTime += 5;*/
                     if(damage == 0){
                         continue;
                     }
                     living.hurt(source, damage);
+                    living.hurtTime += 5;
+                    living.invulnerableTime += 5;
                 }
             }
         }

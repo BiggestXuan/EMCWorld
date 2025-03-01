@@ -100,7 +100,7 @@ public class AdminPacket {
                             break;
                         case 7:
                             for (AbstractRaiderEntity entity : player.level.getLoadedEntitiesOfClass(AbstractRaiderEntity.class, new AxisAlignedBB(new BlockPos(x + 128, y + 128, z + 128), new BlockPos(x - 128, 0, z - 128)))) {
-                                entity.hurt(EWDamageSource.REALLY, entity.getMaxHealth()*1.5f);
+                                entity.hurt(EWDamageSource.TRUE, entity.getMaxHealth()*1.5f);
                             }
                             LOGGER.info(name+" clear all raid entity!");
                             break;

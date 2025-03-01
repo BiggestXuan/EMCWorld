@@ -17,7 +17,7 @@ public class FireSword extends BaseEMCGodSword {
 
     @Override
     public float getBaseDamage(ItemStack stack) {
-        float base = (float) ((Math.pow(1.171f,Math.min(22,getLevel(stack)))*baseDamage)-baseDamage);
+        float base = (float) ((Math.pow(1.156f,Math.min(22,getLevel(stack)))*baseDamage));
         return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack, base) : base;
     }
 
@@ -29,7 +29,7 @@ public class FireSword extends BaseEMCGodSword {
     @Override
     public double getBaseEMCWhenAttack(ItemStack stack) {
         int level = this.getLevel(stack);
-        return Math.pow(1.0625f,level);
+        return Math.pow(1.04f,level);
     }
 
     @Override
@@ -52,6 +52,6 @@ public class FireSword extends BaseEMCGodSword {
     @Override
     public double getBaseRange(ItemStack stack){
         int level = getLevel(stack);
-        return Math.pow(1.1,level);
+        return Math.pow(1.09,level);
     }
 }

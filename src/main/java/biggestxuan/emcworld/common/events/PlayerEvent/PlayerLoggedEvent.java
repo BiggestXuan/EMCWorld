@@ -82,6 +82,9 @@ public class PlayerLoggedEvent {
         if(c.getDisplayIndex() == 0 && c.getLevel()[0] != 0){
             c.setDisplayIndex(c.getLevel()[c.getLevel().length-1]);
         }
+        if(EMCWorld.isOfficialServer){
+            Message.sendMessage(player,EMCWorld.tc("欢迎来到EMCWorld官方服务器！在这里有什么问题请联系大轩！"));
+        }
         int log = c.getLogAmount();
         c.setLogAmount(log+1);
         if(!GameStageManager.hasStage(player,"start")){
@@ -144,13 +147,15 @@ public class PlayerLoggedEvent {
         if(instance.isChristmasDay()){
             Message.sendMessage(player,tc("message.festival.christmas"));
         }
-        String[] ver = Network.getInfo(0).split(",");
-        if(getInt(ver[0]) == 0){
-            Message.sendMessage(player,tc("message.update_fail"));
-        }else if(getInt(ver[0]) > EMCWorld.ModPackVersion){
-            Message.sendMessage(player, tc("message.update_need",ver[1]));
-        }else{
-            Message.sendMessage(player,tc("message.update_none"));
+        if(EMCWorld.canUseServer){
+            String[] ver = Network.getInfo(0).split(",");
+            if(getInt(ver[0]) == 0){
+                Message.sendMessage(player,tc("message.update_fail"));
+            }else if(getInt(ver[0]) > EMCWorld.ModPackVersion){
+                Message.sendMessage(player, tc("message.update_need",ver[1]));
+            }else{
+                Message.sendMessage(player,tc("message.update_none"));
+            }
         }
         server.setDifficulty(Difficulty.HARD,true);
         server.setDifficultyLocked(ConfigManager.SUNDRY_LOCK_DIFFICULTY.get());

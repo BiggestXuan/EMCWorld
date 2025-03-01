@@ -48,6 +48,7 @@ public class ClientPacketHandler {
                 cap.setLiveMode(pack.isLiveMode());
                 cap.setMV(pack.getMV());
                 cap.setLastAttackTime(pack.getLastAttackTime());
+                cap.setRaidTime(pack.getRaidTime());
             });
         }
     }

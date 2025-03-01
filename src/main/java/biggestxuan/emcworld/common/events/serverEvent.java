@@ -8,8 +8,11 @@ package biggestxuan.emcworld.common.events;
 
 import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.common.data.LotteryData;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCWriter;
+import net.minecraft.entity.monster.AbstractIllagerEntity;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -37,6 +40,16 @@ public class serverEvent {
             if(world.getDayTime() == 0){
                 data.setStoredEMC(2000000000L);
             }
+            world.getEntities().forEach(entity -> {
+                if(entity instanceof AbstractIllagerEntity){
+                    AbstractIllagerEntity illager = (AbstractIllagerEntity) entity;
+                    if(world.isRaided(illager.blockPosition())){
+                        Raid raid = world.getRaidAt(illager.blockPosition());
+                        assert raid != null;
+                        new RaidEffectExecutor(raid).onIllagerTick(illager);
+                    }
+                }
+            });
         }
     }
 }

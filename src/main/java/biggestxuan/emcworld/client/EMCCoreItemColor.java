@@ -6,6 +6,8 @@ import biggestxuan.emcworld.common.items.EMCWorldTraitCoreItem;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 /**
  * EMC WORLD MOD
@@ -15,6 +17,7 @@ import net.minecraft.item.ItemStack;
  */
 
 @EMCWorldSince("1.1.0")
+@OnlyIn(Dist.CLIENT)
 public class EMCCoreItemColor implements IItemColor {
     @Override
     public int getColor(ItemStack stack, int p_getColor_2_) {

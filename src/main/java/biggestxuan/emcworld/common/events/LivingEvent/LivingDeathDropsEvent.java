@@ -87,6 +87,13 @@ public class LivingDeathDropsEvent {
             }
             addDrops(entity,ModItems.BULWARK_OF_THE_FLAME.get());
         }
+        if(EWDamageSource.isReallyDamage(source)){
+            float max = entity.getMaxHealth();
+            double chance = max < 300 ? 0 : max < 500 ? 0.01 : max < 1200 ? 0.015 : 0.02;
+            if(MathUtils.isRandom(chance)){
+                addDrops(entity, EWItems.SCROLL_GOURMAND_FEAST.get());
+            }
+        }
         if(rl.equals(EMCWorld.rl("entities/tulye")) && MathUtils.isRandom(0.33)){
             addDrops(entity,EWItems.SCROLL_TULYE.get());
         }
@@ -105,49 +112,7 @@ public class LivingDeathDropsEvent {
             int EMCLootingLevel = EnchantmentHelper.getItemEnchantmentLevel(EWEnchantments.EMC_LOOTING.get(),mainHandItem);
             if(EMCLootingLevel != 0 && MathUtils.isRandom(0.03)){
                 if(canChampionDrop(entity,EMCLootingLevel)){
-                    switch (EMCLootingLevel){
-                        case 1:
-                            addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,32));
-                            break;
-                        case 2:
-                            addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,24));
-                            break;
-                        case 3:
-                            addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,64));
-                            addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,32));
-                            if(MathUtils.isMaxDifficulty()){
-                                addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,8));
-                            }
-                            break;
-                        case 4:
-                            addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,24));
-                            break;
-                        case 5:
-                            addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(20 * ConfigManager.DIFFICULTY.get())));
-                            break;
-                        case 6:
-                            addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(8 * ConfigManager.DIFFICULTY.get())));
-                            if(MathUtils.isMaxDifficulty()){
-                                addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,5));
-                            }
-                            break;
-                        case 7:
-                            addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,12));
-                            if(MathUtils.isMaxDifficulty()){
-                                addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,8));
-                                addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,3));
-                            }
-                            break;
-                        case 8:
-                            addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,16));
-                            if(MathUtils.isMaxDifficulty()){
-                                addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,4));
-                                if(MathUtils.isRandom(0.15)){
-                                    addDrops(entity,EWItems.INFINITY_EMC_GEM,MathUtils.getRangeRandom(1,4));
-                                }
-                            }
-                            break;
-                    }
+                    dropGems(entity,EMCLootingLevel);
                 }
             }
         }
@@ -158,19 +123,65 @@ public class LivingDeathDropsEvent {
         }
     }
 
-    private static void addDrops(LivingEntity entity,Item item){
+    public static void dropGems(LivingEntity entity,int level){
+        switch (level){
+            case 1:
+                addDrops(entity,EWItems.BIG_EMC_GEM,MathUtils.getRangeRandom(1,32));
+                break;
+            case 2:
+                addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,24));
+                break;
+            case 3:
+                addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,64));
+                addDrops(entity,EWItems.BIGGEST_EMC_GEM,MathUtils.getRangeRandom(1,32));
+                if(MathUtils.isMaxDifficulty()){
+                    addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                }
+                break;
+            case 4:
+                addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1,24));
+                break;
+            case 5:
+                addDrops(entity,EWItems.ADVANCED_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(20 * ConfigManager.DIFFICULTY.get())));
+                break;
+            case 6:
+                addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1, (int) Math.round(8 * ConfigManager.DIFFICULTY.get())));
+                if(MathUtils.isMaxDifficulty()){
+                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,5));
+                }
+                break;
+            case 7:
+                addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,12));
+                if(MathUtils.isMaxDifficulty()){
+                    addDrops(entity,EWItems.SUPER_EMC_GEM,MathUtils.getRangeRandom(1,8));
+                    addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(0,3));
+                }
+                break;
+            case 8:
+                addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,16));
+                if(MathUtils.isMaxDifficulty()){
+                    addDrops(entity,EWItems.EPIC_EMC_GEM,MathUtils.getRangeRandom(1,4));
+                    if(MathUtils.isRandom(0.15)){
+                        addDrops(entity,EWItems.INFINITY_EMC_GEM,MathUtils.getRangeRandom(1,4));
+                    }
+                }
+                break;
+        }
+    }
+
+    public static void addDrops(LivingEntity entity,Item item){
         addDrops(entity,item,1);
     }
 
-    private static void addDrops(LivingEntity entity, RegistryObject<Item> item, int count){
+    public static void addDrops(LivingEntity entity, RegistryObject<Item> item, int count){
         addDrops(entity,item.get(),count);
     }
 
-    private static void addDrops(LivingEntity entity,Item item,int count){
+    public static void addDrops(LivingEntity entity,Item item,int count){
         addDrops(entity,new ItemStack(item,count));
     }
 
-    private static void addDrops(LivingEntity entity,ItemStack stack){
+    public static void addDrops(LivingEntity entity,ItemStack stack){
         entity.level.addFreshEntity(new ItemEntity(entity.level,entity.getX(),entity.getY(),entity.getZ(),stack));
     }
 

@@ -48,7 +48,7 @@ public function lime(c as IItemStack,r as IItemStack) as void{
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:atm" as string}),
         <item:extendedcrafting:singularity>.withTag({Id: "extendedcrafting:vibranium" as string}),
         c
-    ],r,300000,4);
+    ],r,30000,4);
 }
 
 public function pul(a as IItemStack,b as IItemStack,c as IItemStack,d as IItemStack) as void{

@@ -7,19 +7,8 @@ package biggestxuan.emcworld.client;
  */
 
 import biggestxuan.emcworld.EMCWorld;
-import biggestxuan.emcworld.common.entity.IceCreamEntity;
 import biggestxuan.emcworld.common.registry.EWEntities;
 import com.teammetallurgy.atum.client.render.entity.mobs.AtumBipedRender;
-import moze_intel.projecte.rendering.entity.EntitySpriteRenderer;
-import moze_intel.projecte.rendering.entity.FireballRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.SpiderRenderer;
-import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -54,6 +43,7 @@ public class RegisterModel {
         //RenderingRegistry.registerEntityRenderingHandler(EWEntities.yuan_shou,AtumBipedRender::new);
     }
 
+    /*@OnlyIn(Dist.CLIENT)
     public static class IceCreamRender extends EntitySpriteRenderer<ProjectileEntity> {
         public IceCreamRender(EntityRendererManager manager) {
             super(manager);
@@ -63,5 +53,5 @@ public class RegisterModel {
         public ResourceLocation getTextureLocation(ProjectileEntity p_110775_1_) {
             return EMCWorld.rl("textures/item/ice_cream.png");
         }
-    }
+    }*/
 }

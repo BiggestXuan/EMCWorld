@@ -173,6 +173,9 @@ public function emcworldRecipe() as void{
     }
     smithingRecipe(gaia_item[4],<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_gun>);
     smithingRecipe(gaia_item[1],<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_staff>);
+    smithingRecipe(<item:emcworld:gaia_sword>,<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_sword>);
+    smithingRecipe(<item:emcworld:gaia_dagger>,<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_dagger>);
+    smithingRecipe(<item:emcworld:gaia_warhammer>,<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_warhammer>);
     staffRecipe(<item:emcworld:rainbow_ingot>,<item:emcworld:rainbow_staff>);
     craftingTable.removeByModid("projectex");
     //craftingTable.removeByModid("projecte");
@@ -181,6 +184,11 @@ public function emcworldRecipe() as void{
     smithingRecipe(staff_item[2][4],<item:cataclysm:ignitium_ingot>,<item:emcworld:netherite_warhammer>);
     blue(<item:projectex:violet_relay>,<item:projectex:blue_relay>);
     addEMCWorldColorfulBlockRecipes();
+    setEMCStage(<item:divinerpg:eden_fragments>,1659698/3,6);
+    setEMCStage(<item:divinerpg:wildwood_fragments>,2489548/3,6);
+    setEMCStage(<item:divinerpg:apalachia_fragments>,3734322/3,6);
+    setEMCStage(<item:divinerpg:skythern_fragments>,5601483/3,6);
+    setEMCStage(<item:divinerpg:mortum_fragments>,8402224/3,6);
     removeCraftRecipeIItemStack([mt,<item:quark:pickarang>,<item:gobber2:block_looter>,<item:gobber2:block_protector>,<item:gobber2:block_defender>]);
     crockPotRecipe(new CrTRequirement().addCategoryMin(new CrTFoodValue().put("meat",3.5)).addMustItem(<item:farmersdelight:ham>,1),<item:emcworld:ham_bat>,100);
     violet(<item:projectex:purple_collector>,<item:projectex:violet_collector>);
@@ -252,7 +260,19 @@ public function emcworldRecipe() as void{
         <item:minecraft:nether_star>,
         wss,wss,wss,wss
     ],<item:cataclysm:witherite_ingot>,600,1000000,2);
+    extendedCraftingShapelessRecipe([
+        bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,bge,ci,ci,ci,ci
+    ],<item:emcworld:advanced_emc_gem>,4);
+    setEMCStage(<item:divinerpg:mortum_heart>,34920,6);
+    setEMCStage(<item:stalwart_dungeons:void_crystal>,5248651,7);
+    setEMCStage(<item:divinerpg:eden_soul>,1659698,6);
+    setEMCStage(<item:divinerpg:wildwood_soul>,2489548,6);
+    setEMCStage(<item:mekanism:atomic_disassembler>,22654029,8);
+    setEMCStage(<item:divinerpg:apalachia_soul>,3734322,6);
+    setEMCStage(<item:divinerpg:skythern_soul>,5601483,6);
+    setEMCStage(<item:divinerpg:mortum_soul>,8402224,6);
     terraPlateRecipe([<item:atum:ptah_godshard>],<item:good_nights_sleep:hope_mushroom>,125000);
+    terraPlateRecipe([<item:minecraft:birch_sapling>],<item:naturesaura:ancient_sapling>,4000000);
     terraPlateRecipe([<item:atum:anput_godshard>],<item:good_nights_sleep:despair_mushroom>,125000);
     addNuggetAndIngotRecipe(<item:cataclysm:ignitium_ingot>,<item:cataclysm:ignitium_block>);
     gemTrade();
@@ -273,6 +293,7 @@ public function emcworldRecipe() as void{
         [sp,sp,sp]
     ],<item:emcworld:top_core>);
     addEMCWorldSmithingRecipe();
+    combiningRecipe(<tag:items:minecraft:leaves>,<item:mekanism:ingot_steel>,<item:twilightforest:steeleaf_ingot>);
     for i in 24 .. 28{
         removeCraftRecipeIItemStack([armor[i],pdm[i]]);
     }
@@ -324,6 +345,7 @@ public function emcworldRecipe() as void{
             smithingRecipe(armor[i-4],viqd,armor[i]);
         }
     }
+    
     infuserRecipe([ub,aui,ali,ali,ali],<item:allthemodium:unobtainium_allthemodium_alloy_ingot>*4,30000,10000000,3);
     infuserRecipe([<item:emcworld:epic_essence>,tun,tun,tun,tun],<item:emcworld:final_essence>,3000,1000000000,4);
     removeCraftRecipeIItemStack(armor);
@@ -333,7 +355,7 @@ public function emcworldRecipe() as void{
     removeFurnaceRecipe([aq]);
     infuserRecipe([ub,aui,aui,alv,alv],<item:allthemodium:unobtainium_vibranium_alloy_ingot>*7,25000,6000000,3);
     infuserRecipe([<item:mysticalagradditions:insanium_essence>,nss,nss,nss,nss],<item:emcworld:epic_essence>,2000,10000000,3);
-    removeCraftRecipe([nei]);
+    removeCraftRecipe([nei,<item:refinedstorage:external_storage>,<item:botania:ender_hand>]);
     infuserRecipe([ub,aui,alv,alv,alv],<item:allthemodium:unobtainium_vibranium_alloy_ingot>*5,25000,7000000,3);
     removeCraftRecipeIItemStack(tung);
     addCraftShapelessRecipe([<item:minecraft:nether_star>],<item:mysticalagradditions:nether_star_shard>*3);
@@ -435,6 +457,7 @@ public function emcworldRecipe() as void{
     reactionRecipe(<item:divinerpg:mortum_heart>,<fluid:mekanismgenerators:fusion_fuel>*10,<gas:emcworld:no_shape_void>*2000,<item:emcworld:super_emc_gem>,<gas:emcworld:condensation_void>*500);
     chemicalInfusingRecipe(<gas:emcworld:condensation_void>,<gas:emcworld:cosmic_flow>,<gas:emcworld:stable_void>);
     nucleosyRecipe(<item:endrem:end_crystal_block>,<gas:mekanism:antimatter>*100,ece,100);
+    nucleosyRecipe(<item:rats:oratchalcum_block>,<gas:mekanism:antimatter>*30,<item:rats:idol_of_ratlantis>,100);
     natureSpawnerRecipe([
         cei,
         <item:naturesaura:birth_spirit>,
@@ -493,6 +516,16 @@ public function emcworldRecipe() as void{
         torchRecipe1(15,25);
     }
     EMCHelper.setItemEMC(<item:emcworld:dust_aquamarine>,256);
+    EMCHelper.setItemEMC(<item:minecraft:stone>,1);
+    EMCHelper.setItemEMC(<item:minecraft:sand>,1);
+    EMCHelper.setItemEMC(<item:mekanism:upgrade_speed>,1042);
+    EMCHelper.setItemEMC(<item:mekanism:upgrade_energy>,2578);
+    EMCHelper.setItemEMC(<item:mekanism:upgrade_gas>,786);
+    EMCHelper.setItemEMC(<item:mekanism:thermal_evaporation_block>,9756);
+    EMCHelper.setItemEMC(<item:minecraft:gravel>,1);
+    EMCHelper.setItemEMC(<item:farmersdelight:ham>,128);
+    combiningRecipe(<item:atum:limestone>,<item:atum:nebu_ingot>,<item:atum:nebu_ore>);
+    combiningRecipe(<item:botania:manasteel_ingot>,<item:minecraft:ender_pearl>,<item:extendedcrafting:ender_ingot>);
     setEMCStage(<item:bloodmagic:ingot_hellforged>,1024,4);
     for i in [pp,pp2]{
         setEMCStage(i,(134560*getDifficultyLoss()) as int,6);
@@ -518,6 +551,7 @@ public function emcworldRecipe() as void{
     infuserRecipe([ali,ali,ali,alv,alv],vaai*2,10000,500000,1);
     infuserRecipe([ali,ali,alv,alv,alv],vaai*3,10000,500000,1);
     setEMCStage(<item:hem:copparite>,3170,5);
+    metallurgicInfusingRecipe(<item:minecraft:diamond>,<infuse_type:emcworld:gobber>*10,<item:projecte:aeternalis_fuel>);
     combiningRecipe(<tag:items:quark:candles>,<item:projecte:red_matter>,<item:emcworld:exorcism_candle>);
     infuserRecipe([ali,alv,a,a,a],vaai*32,10000,10000000,3);
     crushingRecipe(<item:mekanism:enriched_diamond>,<item:minecraft:coal>,64);
@@ -538,6 +572,7 @@ public function emcworldRecipe() as void{
     steelFurnaceRecipe([<item:emcworld:enriched_gobber>,<item:mekanism:block_steel>],<item:mekanism:steel_casing>,600);
     infuserRecipe([ss,rai,ki,zi,asi],hs,5000,15000000,2);
     addNuggetAndIngotRecipe(dm,<item:projecte:dark_matter_block>);
+
     addNuggetAndIngotRecipe(<item:projecte:red_matter>,<item:projecte:red_matter_block>);
     mythicInfuserRecipe([
         <item:atum:godforged_block>,<item:emcworld:god_steel_ingot>,<item:emcworld:orichalcos_ingot>

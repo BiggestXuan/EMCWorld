@@ -838,5 +838,31 @@
 				}
 			]
 		}
+		{
+			x: -12.0d
+			y: -6.0d
+			dependencies: ["131D06E6858EA93F"]
+			hide: true
+			size: 3.0d
+			id: "705007F419A08FF5"
+			tasks: [{
+				id: "6D94DBF950DC5B1E"
+				type: "item"
+				item: {
+					id: "emcworld:fxt_xy"
+					Count: 1b
+					tag: {
+						astralsorcery: { }
+					}
+				}
+			}]
+			rewards: [{
+				id: "7EF14D775B47998C"
+				type: "item"
+				team_reward: true
+				item: "emcworld:scroll_red"
+				count: 3
+			}]
+		}
 	]
 }

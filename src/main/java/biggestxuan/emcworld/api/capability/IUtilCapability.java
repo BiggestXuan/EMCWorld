@@ -175,4 +175,12 @@ public interface IUtilCapability extends INBTSerializable<CompoundNBT> {
     int getLastAttackTime();
 
     void setLastAttackTime(int time);
+
+    int getRaidTime();
+
+    void setRaidTime(int time);
+
+    long getPowerFlowerCache();
+
+    void setPowerFlowerCache(long value);
 }

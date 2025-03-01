@@ -58,7 +58,6 @@ import net.minecraft.item.ShieldItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -303,7 +302,7 @@ public class PlayerClickEvent {
                     if(cap.getModify() == 1){
                         for(LivingEntity living : MathUtils.getNearLiving(player,cap.getSkills()[32]/10000,false)){
                             float base = (float) SkillUtils.getPlayerAttackDamage(player,itemStack).total();
-                            living.hurt(EWDamageSource.REALLY,(float) (base * cap.getSkills()[33]/10000d));
+                            living.hurt(EWDamageSource.TRUE,(float) (base * cap.getSkills()[33]/10000d));
                         }
                     }else{
                         util.setTimer(cap.getSkills()[32]/500);

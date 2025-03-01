@@ -18,7 +18,7 @@ public class NatureStaff extends BaseEMCGodStaff {
 
     @Override
     protected double getBaseCostRate(ItemStack stack) {
-        return Math.pow(1.047,getLevel(stack)*0.98f);
+        return Math.pow(1.035,getLevel(stack)*0.98f);
     }
 
     @Override

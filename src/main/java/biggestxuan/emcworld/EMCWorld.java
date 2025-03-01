@@ -8,7 +8,6 @@ package biggestxuan.emcworld;
 
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.OnlyDev;
-import biggestxuan.emcworld.client.EMCCoreItemColor;
 import biggestxuan.emcworld.client.key.*;
 import biggestxuan.emcworld.client.render.ContainerDenyRender;
 import biggestxuan.emcworld.client.render.StarPedestalRender;
@@ -28,8 +27,6 @@ import biggestxuan.emcworld.common.utils.Sponsors.Sponsors;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -44,7 +41,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -69,8 +65,8 @@ import java.util.List;
 public class EMCWorld {
     public static final Logger LOGGER = LogManager.getLogger("EMCWorld");
     public static final String MODID = "emcworld";
-    public static final int ModPackVersion = 20;
-    public static final String PackVersion = "1.1.0";
+    public static final int ModPackVersion = 24;
+    public static final String PackVersion = "1.3.1";
     public static final String TITLE = "EMCWorld " + PackVersion;
     public static final String PREFIX = "[EMCWorld] ";
     public static final long MAX_EMC = 1_000_000_000_000_000L;
@@ -78,8 +74,10 @@ public class EMCWorld {
     public static boolean isBackingUp = false;
     public static final File RP = new File(FMLPaths.GAMEDIR.get().toFile(),"resources/EMCWorld Language.zip");
     public static boolean isOffline = false;
+    public static boolean canUseServer = false;
     @OnlyDev
-    public static boolean isDevMode = true;
+    public static boolean isDevMode = false;
+    public static boolean isOfficialServer = false;
 
     public EMCWorld(){
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -162,14 +160,13 @@ public class EMCWorld {
             ClientRegistry.registerKeyBinding(PickModeKey.pickMode);
             ClientRegistry.registerKeyBinding(LiveMode.LiveMode);
             //ClientRegistry.registerKeyBinding(Trait.Trait); (Only in 1.1.0)
-            RenderingRegistry.registerEntityRenderingHandler(EWEntities.ice_cream, manager -> new SpriteRenderer(manager, Minecraft.getInstance().getItemRenderer()));
+            //RenderingRegistry.registerEntityRenderingHandler(EWEntities.ice_cream, manager -> new SpriteRenderer(manager, Minecraft.getInstance().getItemRenderer()));
             ClientRegistry.bindTileEntityRenderer(EWTileEntityTypes.starPedestalTileEntity.get(), StarPedestalRender::new);
             //ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_CHEST, ContainerDenyRender::new);
             if(ConfigManager.SUNDRY_PILLAGER_CHEST_PREVENT.get()){
                 ClientRegistry.bindTileEntityRenderer(ModTiles.LOOT_BARREL, ContainerDenyRender::new);
             }
-            ItemColors colors = Minecraft.getInstance().getItemColors();
-            colors.register(new EMCCoreItemColor(),EWItems.EMC_TRAIT_CORE.get());
+
         });
     }
 

@@ -14,6 +14,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
@@ -23,7 +24,7 @@ public class Message {
     public static void MessageDisplay(PlayerEntity player,TranslationTextComponent key){
         player.displayClientMessage(key,true);
     }
-    public static void sendMessage(PlayerEntity player, IFormattableTextComponent key){
+    public static void sendMessage(PlayerEntity player, ITextComponent key){
         player.displayClientMessage(key,false);
     }
     public static void sendMessageToThisWorldPlayer(Entity entity,TranslationTextComponent key){

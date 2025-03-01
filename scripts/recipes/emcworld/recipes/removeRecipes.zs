@@ -13,8 +13,6 @@ public function removeEMCWorldModpackSomeRecipes() as void{
         <item:waystones:return_scroll>,
         <item:waystones:bound_scroll>,
         <item:waystones:warp_scroll>,
-        <item:waystones:attuned_shard>,
-        <item:waystones:warp_plate>,
-        <item:waystones:warp_dust>
+        <item:waystones:attuned_shard>
     ]);
 }

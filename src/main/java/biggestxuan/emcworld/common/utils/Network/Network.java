@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Network {
     public static String getInfo(Object param){
+        if(!EMCWorld.canUseServer) return "";
         try{
             if(!(param instanceof Integer) && !(param instanceof PlayerEntity)){
                 return "";

@@ -16,7 +16,6 @@ public function FinalF5() as void{
             <item:byg:aspen_log>,
             <item:byg:baobab_log>,
             <item:byg:blue_enchanted_log>,
-            <item:byg:bulbis_stem>,
             <item:byg:cherry_log>,
             <item:byg:cika_log>,
             <item:byg:cypress_log>,

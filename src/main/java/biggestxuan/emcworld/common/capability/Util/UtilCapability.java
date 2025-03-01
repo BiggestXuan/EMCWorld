@@ -11,6 +11,7 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import net.minecraft.nbt.CompoundNBT;
 
 public class UtilCapability implements IUtilCapability {
+    private long powerFlowerCache;
     private int[] SponsorLevel;
     private long CoolDown;
     private int timer;
@@ -51,6 +52,7 @@ public class UtilCapability implements IUtilCapability {
     private long mv;
     private int playTime;
     private int lastAttackTime;
+    private int raidTime;
 
     public UtilCapability(){
         this.SponsorLevel = new int[0];
@@ -91,6 +93,27 @@ public class UtilCapability implements IUtilCapability {
         this.mv = 0L;
         this.playTime = 0;
         this.lastAttackTime = 0;
+        this.raidTime = 0;
+    }
+
+    @Override
+    public int getRaidTime() {
+        return raidTime;
+    }
+
+    @Override
+    public void setRaidTime(int time) {
+        raidTime = time;
+    }
+
+    @Override
+    public long getPowerFlowerCache() {
+        return powerFlowerCache;
+    }
+
+    @Override
+    public void setPowerFlowerCache(long value) {
+        powerFlowerCache = value;
     }
 
     @Override
@@ -546,50 +569,54 @@ public class UtilCapability implements IUtilCapability {
         tag.putLong("mv",mv);
         tag.putInt("playTime",playTime);
         tag.putInt("lastAttackTime",lastAttackTime);
+        tag.putInt("raidTime",raidTime);
+        tag.putLong("powerFlowerCache",raidTime);
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundNBT nbt) {
-        this.SponsorLevel= nbt.getIntArray("sponsorLevel");
-        this.CoolDown = nbt.getLong("CoolDown");
-        this.timer = nbt.getInt("timer");
-        this.isRaid = nbt.getBoolean("isRaid");
-        this.state = nbt.getInt("raid_state");
-        this.pillagerAmount = nbt.getInt("pillager_amount");
-        this.villagerAmount = nbt.getInt("villager_amount");
-        this.wave = nbt.getInt("wave");
-        this.maxWave = nbt.getInt("maxWave");
-        this.F1 = nbt.getInt("f1");
-        this.F2 = nbt.getInt("f2");
-        this.F3 = nbt.getInt("f3");
-        this.F4 = nbt.getInt("f4");
-        this.raidDamage = nbt.getFloat("raid_damage");
-        this.displayDamage = nbt.getBoolean("display");
-        this.raidRate = nbt.getFloat("raid_rate");
-        this.difficulty = nbt.getDouble("difficulty");
-        this.modifyDifficulty = nbt.getBoolean("modi");
-        this.logAmount = nbt.getInt("log");
-        this.speed = nbt.getFloat("speed");
-        this.share = nbt.getBoolean("emc");
-        this.arcana = nbt.getFloat("arcana");
-        this.maxArcana = nbt.getFloat("maxArcana");
-        this.showArcana = nbt.getBoolean("showArcana");
-        this.SHDifficulty = nbt.getFloat("sh_difficulty");
-        this.shield = nbt.getFloat("shield");
-        this.maxShield = nbt.getFloat("maxShield");
-        this.lastShield = nbt.getBoolean("last_shield");
-        this.gaiaPlayer = nbt.getInt("gaia_player");
-        this.healPreTick = nbt.getFloat("healPreTick");
-        this.healTick = nbt.getInt("healTick");
-        this.pickMode = nbt.getInt("pickMode");
-        this.netherTick = nbt.getInt("netherTick");
-        this.displayIndex = nbt.getInt("displayIndex");
-        this.liveMode = nbt.getBoolean("liveMode");
-        this.online = nbt.getBoolean("online");
-        this.attackCD = nbt.getFloat("attackCD");
-        this.mv = nbt.getLong("mv");
-        this.playTime = nbt.getInt("playTime");
-        this.lastAttackTime = nbt.getInt("lastAttackTime");
+        SponsorLevel= nbt.getIntArray("sponsorLevel");
+        CoolDown = nbt.getLong("CoolDown");
+        timer = nbt.getInt("timer");
+        isRaid = nbt.getBoolean("isRaid");
+        state = nbt.getInt("raid_state");
+        pillagerAmount = nbt.getInt("pillager_amount");
+        villagerAmount = nbt.getInt("villager_amount");
+        wave = nbt.getInt("wave");
+        maxWave = nbt.getInt("maxWave");
+        F1 = nbt.getInt("f1");
+        F2 = nbt.getInt("f2");
+        F3 = nbt.getInt("f3");
+        F4 = nbt.getInt("f4");
+        raidDamage = nbt.getFloat("raid_damage");
+        displayDamage = nbt.getBoolean("display");
+        raidRate = nbt.getFloat("raid_rate");
+        difficulty = nbt.getDouble("difficulty");
+        modifyDifficulty = nbt.getBoolean("modi");
+        logAmount = nbt.getInt("log");
+        speed = nbt.getFloat("speed");
+        share = nbt.getBoolean("emc");
+        arcana = nbt.getFloat("arcana");
+        maxArcana = nbt.getFloat("maxArcana");
+        showArcana = nbt.getBoolean("showArcana");
+        SHDifficulty = nbt.getFloat("sh_difficulty");
+        shield = nbt.getFloat("shield");
+        maxShield = nbt.getFloat("maxShield");
+        lastShield = nbt.getBoolean("last_shield");
+        gaiaPlayer = nbt.getInt("gaia_player");
+        healPreTick = nbt.getFloat("healPreTick");
+        healTick = nbt.getInt("healTick");
+        pickMode = nbt.getInt("pickMode");
+        netherTick = nbt.getInt("netherTick");
+        displayIndex = nbt.getInt("displayIndex");
+        liveMode = nbt.getBoolean("liveMode");
+        online = nbt.getBoolean("online");
+        attackCD = nbt.getFloat("attackCD");
+        mv = nbt.getLong("mv");
+        playTime = nbt.getInt("playTime");
+        lastAttackTime = nbt.getInt("lastAttackTime");
+        raidTime = nbt.getInt("raidTime");
+        powerFlowerCache = nbt.getLong("powerFlowerCache");
     }
 }

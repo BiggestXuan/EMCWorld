@@ -55,7 +55,7 @@ public class PrefixScroll extends EWItem {
     public void inventoryTick(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
         if(p_77663_1_.getTag() == null || !p_77663_1_.getTag().contains("dirty")){
             init(p_77663_1_);
-            new UpdateClass(p_77663_1_,1).start();
+            run(p_77663_1_,1);
         }
     }
 
@@ -81,31 +81,23 @@ public class PrefixScroll extends EWItem {
         return stack.getOrCreateTag().getInt("weight");
     }
 
-    public static class UpdateClass extends Thread{
-        private final ItemStack stack;
-        private final int total;
-        public UpdateClass(ItemStack stack, int total){
-            this.stack = stack;
-            this.total = total;
+    public static void run(ItemStack stack,int total){
+        double diff = ConfigManager.DIFFICULTY.get();
+        CompoundNBT nbt = stack.getOrCreateTag();
+        int w = nbt.getInt("weight");
+        init(stack);
+        nbt.putInt("weight",Math.min(w+total,MAX));
+        int t = nbt.getInt("weight");
+        int m = getMaxReachPrefix(t);
+        m = Math.min(m,IPrefixItem.getHighestPrefix().getLevel());
+        for (int i = 0; i < t; i++) {
+            int p = Math.min(m,getMaxReachPrefix(i));
+            int c = MathUtils.getRangeRandom(Math.max(1,p-2),p+1);
+            IPrefixItem.Prefix prefix = IPrefixItem.getPrefix(c);
+            if(prefix == IPrefixItem.Prefix.NULL) continue;
+            nbt.putInt(prefix.toString(),nbt.getInt(prefix.toString())+c);
         }
-        @Override
-        public void run(){
-            double diff = ConfigManager.DIFFICULTY.get();
-            CompoundNBT nbt = stack.getOrCreateTag();
-            int w = nbt.getInt("weight");
-            init(stack);
-            nbt.putInt("weight",Math.min(w+total,MAX));
-            int t = nbt.getInt("weight");
-            int m = getMaxReachPrefix(t);
-            m = Math.min(m,IPrefixItem.getHighestPrefix().getLevel());
-            for (int i = 0; i < t; i++) {
-                int p = Math.min(m,getMaxReachPrefix(i));
-                int c = MathUtils.getRangeRandom(Math.max(1,p-2),p+1);
-                IPrefixItem.Prefix prefix = IPrefixItem.getPrefix(c);
-                nbt.putInt(prefix.toString(),nbt.getInt(prefix.toString())+c);
-            }
-            nbt.putInt("total",getTotal(stack));
-        }
+        nbt.putInt("total",getTotal(stack));
     }
 
     @Override
@@ -150,7 +142,7 @@ public class PrefixScroll extends EWItem {
         CompoundNBT nbt = stack.getOrCreateTag();
         int total = 0;
         for(IPrefixItem.Prefix prefix : IPrefixItem.Prefix.values()){
-            if(!nbt.contains(prefix.toString()) || nbt.getInt(prefix.toString()) == 0){
+            if(!nbt.contains(prefix.toString()) || nbt.getInt(prefix.toString()) == 0 || prefix == IPrefixItem.Prefix.NULL){
                 continue;
             }
             total += nbt.getInt(prefix.toString());

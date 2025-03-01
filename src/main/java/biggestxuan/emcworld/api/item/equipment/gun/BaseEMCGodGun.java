@@ -73,10 +73,6 @@ public abstract class BaseEMCGodGun extends GunItem implements IEMCGod {
         return Rarity.EPIC;
     }
 
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        return (int) (super.lv(stack) * 3.6f);
-    }
 
     @Override
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {

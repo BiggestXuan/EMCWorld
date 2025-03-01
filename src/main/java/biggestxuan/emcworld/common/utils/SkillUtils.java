@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.utils;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
+import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
 import biggestxuan.emcworld.common.items.ModPack.EndLight;
@@ -51,12 +52,16 @@ public class SkillUtils {
         if(stack.getItem() instanceof SwordItem){
             SwordItem sword = (SwordItem) stack.getItem();
             var d = sword.getDamage();
+            IPrefixItem i = (IPrefixItem) sword;
+            if(i.getPrefix(stack).getLevel() != 0){
+                d = 0;
+            }
             d += EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SHARPNESS,stack) * 0.75;
             EffectInstance instance = player.getEffect(Effects.DAMAGE_BOOST);
             if(instance != null) {
                 d += (instance.getAmplifier()+1) * 1.25;
             }
-            utils.set(d+1+utils.total());
+            utils.set(d+utils.total()+1);
             damage += sword.getDamage();
         } else{
             if(stack.getItem() instanceof TieredItem){

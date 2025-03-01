@@ -56,18 +56,30 @@ public class EMCVillagerProfession extends VillagerProfession {
             trades.get(2).add(new VillagerTradeBuilder(new ItemStack(EWItems.HARDCORE_STONE.get(),16),new ItemStack(Items.EMERALD,1),24).get());
             trades.get(3).add(new VillagerTradeBuilder(new ItemStack(PEItems.DARK_MATTER,7),new ItemStack(PEItems.RED_MATTER,1),4).get());
             trades.get(3).add(new VillagerTradeBuilder(new ItemStack(PEItems.RED_MATTER,1),new ItemStack(EWItems.BASE_EMC_STORED_TOTEM.get(),1),2).get());
-            trades.get(3).add(new VillagerTradeBuilder(new ItemStack(EWItems.ILLAGER_GEM.get(),1),new ItemStack(EWItems.SCROLL_GREEN.get(),1),3).get());
+            trades.get(3).add(new VillagerTradeBuilder(new ItemStack(EWItems.ILLAGER_GEM.get(),1),new ItemStack(EWItems.SCROLL_GREEN.get(),1),8).get());
             trades.get(3).add(new VillagerTradeBuilder(new ItemStack(PEItems.DARK_MATTER,1),new ItemStack(EWItems.SCROLL_GREEN.get(),1),5).get());
             trades.get(4).add(new VillagerTradeBuilder(new ItemStack(PEItems.RED_MATTER,6),new ItemStack(EWItems.MAGENTA_MATTER.get(),1),1).get());
-            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ILLAGER_GEM.get(),2),new ItemStack(EWItems.SCROLL_GREEN.get(),3),2).get());
-            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ILLAGER_GEM.get(),5),new ItemStack(EWItems.SCROLL_BLUE.get(),1),2).get());
             trades.get(4).add(new VillagerTradeBuilder(new ItemStack(PEItems.RED_MATTER,1),new ItemStack(EWItems.SCROLL_GREEN.get(),3),4).get());
-            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),12),new ItemStack(EWItems.FIRE_SWORD.get(),1),1).get());
-            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),12),new ItemStack(EWItems.ICE_SWORD.get(),1),1).get());
-            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),12),new ItemStack(EWItems.NATURE_SWORD.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.FIRE_SWORD.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.ICE_SWORD.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.NATURE_SWORD.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.NIGHT_LIGHT.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.RED_GREEN_DAGGER.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.CREATION.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.SUPER_STAR.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.PURPLE_STAFF.get(),1),1).get());
+            trades.get(4).add(new VillagerTradeBuilder(new ItemStack(EWItems.ADVANCED_EMC_GEM.get(),16),new ItemStack(EWItems.NATURE_STAFF.get(),1),1).get());
+
             trades.get(5).add(new VillagerTradeBuilder(new ItemStack(PEItems.RED_MATTER,1),new ItemStack(Items.EMERALD,64),12).get());
             trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.MAGENTA_MATTER.get(),1),new ItemStack(EWItems.PREFIX_SCROLL.get(),1),1).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.MAGENTA_MATTER.get(),1),new ItemStack(EWItems.SCROLL_BLUE.get(),2),4).get());
+            trades.get(5).add(new VillagerTradeBuilder(EMCWorld.getItem("botania:dice"),new ItemStack(EWItems.SCROLL_BLUE.get(),3),3).get());
             trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ILLAGER_GEM.get(),3),new ItemStack(EWItems.PREFIX_SCROLL.get(),1),1).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.PINK_MATTER.get(),1),new ItemStack(EWItems.SCROLL_BLUE.get(),8),3).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.PINK_MATTER.get(),1),new ItemStack(EWItems.SCROLL_PURPLE.get(),2),2).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.PURPLE_MATTER.get(),1),new ItemStack(EWItems.SCROLL_BASE_EMC.get(),2),2).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.PURPLE_MATTER.get(),1),new ItemStack(EWItems.SCROLL_RED.get(),1),1).get());
+            trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.VIOLET_MATTER.get(),1),new ItemStack(EWItems.SCROLL_RED.get(),4),1).get());
             if(ConfigManager.DIFFICULTY.get() == 3){
                 trades.get(5).add(new VillagerTradeBuilder(new ItemStack(EWItems.ILLAGER_SHARD.get(),1),new ItemStack(EWItems.SCROLL_GOLD.get(),10),1).get());
             }

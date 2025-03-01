@@ -182,10 +182,13 @@ public class RaidUtils {
         return MathUtils.isMaxDifficulty() ? (int) (2.5 * base) : base;
     }
 
-    public int getRaiderCount(){
+    public List<AbstractRaiderEntity> getRaids(){
         AxisAlignedBB aabb = MathUtils.expandAABB(center,96);
-        List<AbstractRaiderEntity> raiderEntities = world.getLoadedEntitiesOfClass(AbstractRaiderEntity.class,aabb);
-        return raiderEntities.size();
+        return world.getLoadedEntitiesOfClass(AbstractRaiderEntity.class,aabb);
+    }
+
+    public int getRaiderCount(){
+        return getRaids().size();
     }
 
     public static double getIllagerShardDropRate(AbstractRaiderEntity entity, PlayerEntity player){
@@ -196,8 +199,15 @@ public class RaidUtils {
         all += Math.pow(1.38,cap.getWave());
         all -= cap.getVillager() >= 5 ? 1.5f * cap.getVillager() : 0;
         World world1 = entity == null ? player.level : entity.level;
-        BlockPos pos = player.level instanceof ClientWorld ? player.blockPosition() : entity.blockPosition();
-        double diff = player.level instanceof ClientWorld ? cap.getSHDifficulty() : DifficultyHelper.getAreaDifficulty(world1,pos);
+        BlockPos pos;
+        double diff;
+        if(player.level.isClientSide){
+            pos = player.blockPosition();
+            diff = cap.getDifficulty();
+        }else{
+            pos = entity.blockPosition();
+            diff = DifficultyHelper.getAreaDifficulty(world1,pos);
+        }
         all += 0.1 * (diff - 1000);
         //all *= 1000; //Test
         return Math.max(all / 10000d,0f);

@@ -107,7 +107,7 @@ public class PrefixTileEntity extends BaseContainerTileEntity implements ITickab
                         break;
                     }
                     costLeft();
-                    new PrefixScroll.UpdateClass(right, (int) (left_scroll.getWeight(left)* ConfigManager.DIFFICULTY.get() * (1-left_scroll.breakWeaponRate()))).start();
+                    PrefixScroll.run(right, (int) (left_scroll.getActWeight(left,right,this)* ConfigManager.DIFFICULTY.get() * (1-left_scroll.breakWeaponRate())));
                     if(!allIn){
                         break;
                     }

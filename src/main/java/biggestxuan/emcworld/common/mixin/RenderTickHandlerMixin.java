@@ -6,6 +6,7 @@ import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
 import mekanism.api.radiation.IRadiationManager;
 import mekanism.client.render.RenderTickHandler;
+import mekanism.common.lib.radiation.RadiationManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.event.TickEvent;
@@ -29,7 +30,7 @@ public abstract class RenderTickHandlerMixin {
 
     @Inject(method = "tickEnd",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/player/PlayerEntity;getCapability(Lnet/minecraftforge/common/capabilities/Capability;)Lnet/minecraftforge/common/util/LazyOptional;"), cancellable = true)
     public void _inject(TickEvent.RenderTickEvent event, CallbackInfo ci){
-        IRadiationManager manager = MekanismAPI.getRadiationManager();
+        IRadiationManager manager = RadiationManager.INSTANCE;
         PlayerEntity player = minecraft.player;
         try{
             IUtilCapability cap = EMCWorldAPI.getInstance().getUtilCapability(player);

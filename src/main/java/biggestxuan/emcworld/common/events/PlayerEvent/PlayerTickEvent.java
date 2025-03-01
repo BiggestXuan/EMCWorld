@@ -30,6 +30,7 @@ import biggestxuan.emcworld.common.network.toClient.SkillPacket.DataPack;
 import biggestxuan.emcworld.common.network.toClient.SkillPacket.SkillNetworking;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilDataPack;
 import biggestxuan.emcworld.common.network.toClient.UtilPacket.UtilNetworking;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
 import biggestxuan.emcworld.common.registry.EWItems;
@@ -48,6 +49,7 @@ import hellfirepvp.astralsorcery.common.data.research.ResearchHelper;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import mekanism.api.Coord4D;
 import mekanism.api.MekanismAPI;
+import mekanism.common.lib.radiation.RadiationManager;
 import mekanism.common.registries.MekanismDamageSource;
 import mekanism.common.registries.MekanismItems;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -127,9 +129,18 @@ public class PlayerTickEvent {
                 cap.getLevel(),cap.getXP(), cap.getProfession(),cap.getMaxLevel(),cap.getModify(), cap.getSkills()
         )));
         player.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> UtilNetworking.INSTANCE.send(PacketDistributor.PLAYER.with(()->(ServerPlayerEntity) event.player),new UtilDataPack(
-                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(), cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),cap.getLiveMode(),cap.getMV(),cap.getLastAttackTime()
+                cap.isRaid(), cap.getState(), cap.getPillager(), cap.getVillager(),cap.getWave(), cap.getMaxWave(),
+                cap.getRaidRate(),cap.getCoolDown(),cap.getDifficulty(),cap.getLevel(),cap.getArcana(),cap.getMaxArcana(),
+                cap.showArcana(),cap.getSHDifficulty(),cap.getShield(), cap.getMaxShield(),cap.isLastShield(),cap.gaiaPlayer(),
+                cap.getLiveMode(),cap.getMV(),cap.getLastAttackTime(),cap.getRaidTime()
         )));
         ServerPlayerEntity SP = (ServerPlayerEntity) player;
+        ServerWorld serverWorld = SP.getLevel();
+        if(serverWorld.isRaided(SP.blockPosition())){
+            Raid raid = serverWorld.getRaidAt(SP.blockPosition());
+            assert raid != null;
+            new RaidEffectExecutor(raid).onPlayerTick(SP);
+        }
         LazyOptional<IUtilCapability> cap = player.getCapability(EMCWorldCapability.UTIL);
         cap.ifPresent((c)->{
                 long l = c.getCoolDown();
@@ -205,7 +216,7 @@ public class PlayerTickEvent {
             if(!player.isDeadOrDying()){
                 Message.sendMessage(player,EMCWorld.tc("message.dim.nether_kill"));
             }
-            player.hurt(EWDamageSource.REALLY,player.getMaxHealth());
+            player.hurt(EWDamageSource.TRUE,player.getMaxHealth());
         }
         PlayerProgress progress = ResearchHelper.getProgress(player, LogicalSide.SERVER);
         if(progress.isValid() && progress.isAttuned()){
@@ -359,6 +370,9 @@ public class PlayerTickEvent {
             Raid raid = world.getRaidAt(new BlockPos(player.position()));
             assert raid != null;
             util.setRaid(true);
+            if(world.dayTime() == 13000L || (world.dayTime() - 13000L) % 24000L == 0){
+                new RaidEffectExecutor(raid).announcementPlayer(player);
+            }
             if(raid.isLoss()){
                 util.setState(3);
             }else if(raid.isVictory()){
@@ -420,7 +434,7 @@ public class PlayerTickEvent {
         DifficultyData data = DifficultyData.getInstance(server.overworld());
         data.putDifficulty(Math.max(Math.min(data.getDifficulty(),ConfigManager.DIFFICULTY.get()),0.5));
         util.setDifficulty(Math.max(Math.min(util.getDifficulty(),ConfigManager.DIFFICULTY.get()),0.5));
-        double radiation = MekanismAPI.getRadiationManager().getRadiationLevel(new Coord4D(playerPos,player.level));
+        double radiation = RadiationManager.INSTANCE.getRadiationLevel(new Coord4D(playerPos,player.level));
         if(radiation > 50000 && !player.isCreative()){
             ItemStack stack = PlayerCuriosUtils.getPlayerNuclearBall(player);
             float hurt = player.getMaxHealth() / 20f;
@@ -446,6 +460,11 @@ public class PlayerTickEvent {
             if(PlayTimeUtils.shouldSendMessage(player)){
                 PlayTimeUtils.sendRestMessage(player);
             }
+            cap.ifPresent(p -> {
+                EMCSource.EMCPowerFlowerSource source = new EMCSource.EMCPowerFlowerSource(p.getPowerFlowerCache(),player,null);
+                EMCHelper.modifyPlayerEMC(player,source,false);
+                p.setPowerFlowerCache(0);
+            });
             for(ItemStack stack:getPlayerAllItem(player)){
                 if(stack.getItem() instanceof ISecondEMCItem){
                     ISecondEMCItem item = (ISecondEMCItem) stack.getItem();
@@ -471,6 +490,12 @@ public class PlayerTickEvent {
         }
         float max_total = 0f;
         float total = 0f;
+        if(EMCHelper.getPlayerEMC(player) == 0){
+            if(!EMCHelper.hasAdvancement(SP,"bankrupt")){
+                awardAdvancement(SP,EMCWorld.rl("bankrupt"));
+                player.addItem(new ItemStack(EWItems.CXK_RICH_RECORD.get()));
+            }
+        }
         for(ItemStack stack:getPlayerAllItem(player)){
             long EMCRepair = MathUtils.getEMCRepairCost(stack);
             if(EMCRepair >= 0){

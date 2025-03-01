@@ -14,8 +14,8 @@ import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.GodWeapon.CharaSword;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
-import biggestxuan.emcworld.common.utils.MathUtils;
 import mekanism.api.MekanismAPI;
+import mekanism.common.lib.radiation.RadiationManager;
 import mekanism.common.registries.MekanismDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
@@ -39,12 +39,6 @@ public class LivingDamageEvent {
         float damage = event.getAmount();
         DamageSource source = event.getSource();
         if(entity.level.isClientSide) return;
-        double diff = ConfigManager.DIFFICULTY.get();
-        if(!(event.getEntityLiving() instanceof PlayerEntity) && diff == 3D) {
-            damage *= 0.67f;
-        }else{
-            damage *= 1 + (3 - diff) / 3;
-        }
         if(entity instanceof AbstractRaiderEntity && ConfigManager.RAID_ILLAGER_TEAM_DAMAGE.get()){
             MinecraftServer server = entity.getServer();
             if(server == null) return;
@@ -63,7 +57,7 @@ public class LivingDamageEvent {
             }
         }
         if(source instanceof EWDamageSource){
-            PlayerEntity player = EWDamageSource.REALLY.getPlayer();
+            PlayerEntity player = EWDamageSource.TRUE.getPlayer();
             if(player != null){
                 addPlayerRaidDamage(player,damage,entity);
             }
@@ -76,7 +70,7 @@ public class LivingDamageEvent {
                 if(stack.getItem() instanceof CharaSword){
                     CharaSword sword = (CharaSword) stack.getItem();
                     double r = sword.getLevel(stack) * 11.4514 ;
-                    MekanismAPI.getRadiationManager().radiate(entity,r);
+                    RadiationManager.INSTANCE.radiate(entity,r);
                 }
             }
         }

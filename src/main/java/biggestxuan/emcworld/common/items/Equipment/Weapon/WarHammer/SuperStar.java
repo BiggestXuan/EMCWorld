@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 public class SuperStar extends BaseEMCGodWarHammer {
     @Override
     protected double getAttackCostRate(ItemStack stack) {
-        return Math.pow(1.04f,getLevel(stack)*0.97f);
+        return Math.pow(1.037f,getLevel(stack)*0.97f);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     protected float damage(ItemStack stack) {
-        float base = (float) (Math.pow(1.136,Math.min(22,getLevel(stack))) * 5);
+        float base = (float) (Math.pow(1.145,Math.min(22,getLevel(stack))) * 5);
         return getLevel(stack) >= 22 ? (float) MathUtils.getGodWeaponAddition(stack, base) : base;
     }
 
@@ -44,7 +44,7 @@ public class SuperStar extends BaseEMCGodWarHammer {
 
     @Override
     public double AttackSpeed(ItemStack stack) {
-        return Math.pow(0.965,getLevel(stack));
+        return Math.pow(0.975,getLevel(stack));
     }
 
 }

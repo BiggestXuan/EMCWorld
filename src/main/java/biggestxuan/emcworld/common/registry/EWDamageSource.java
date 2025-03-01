@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public class EWDamageSource extends DamageSource {
     private PlayerEntity player;
     public final EWDamageSource REALLY_PLAYER = this.bypassArmor().bypassMagic();
-    public static final EWDamageSource REALLY = new EWDamageSource("really").bypassArmor().bypassInvul().bypassMagic();
+    public static final EWDamageSource TRUE = new EWDamageSource("really").bypassArmor().bypassInvul().bypassMagic();
 
     public EWDamageSource(String p_i1566_1_){
         super(p_i1566_1_);
@@ -51,6 +51,6 @@ public class EWDamageSource extends DamageSource {
     }
 
     public static boolean isReallyDamage(DamageSource source){
-        return source.equals(REALLY) || source instanceof EWDamageSource;
+        return source.equals(TRUE) || source instanceof EWDamageSource;
     }
 }

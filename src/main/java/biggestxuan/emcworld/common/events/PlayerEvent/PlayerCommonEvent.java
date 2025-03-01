@@ -35,6 +35,7 @@ import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -43,6 +44,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.world.BlockEvent;
@@ -270,14 +272,23 @@ public class PlayerCommonEvent {
     @EMCWorldSince("1.1.0")
     @SubscribeEvent
     public static void playerEatEvent(LivingEatFoodEvent event){
+        Food food = event.getFood();
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity instanceof PlayerEntity){
+        World world = livingEntity.level;
+        if(world instanceof ServerWorld && livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
             int i = event.getLevel();
             float f = event.getSaturation();
             float t = i + f * 10;
             long cost = (long) (MathUtils.getCommonBaseCost(player) * t);
             EMCHelper.modifyPlayerEMC(player,new EMCSource.EatSource(-cost,player));
+            if(!food.canAlwaysEat()){
+                BlockPos pos = player.blockPosition();
+                double chance = i * 0.01 + (20 - player.getFoodData().getFoodLevel()) * 0.001;
+                if(MathUtils.isRandom(chance)){
+                    world.addFreshEntity(new ItemEntity(world,pos.getX(),pos.getY() + 1,pos.getZ(),new ItemStack(EWItems.SCROLL_FEAST.get())));
+                }
+            }
         }
     }
 

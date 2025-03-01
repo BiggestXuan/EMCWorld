@@ -9,6 +9,7 @@ package biggestxuan.emcworld.common.compact.Mekanism;
 import biggestxuan.emcworld.EMCWorld;
 import mekanism.common.content.gear.Module;
 import mekanism.common.item.gear.ItemMekaTool;
+import mekanism.common.registries.MekanismModules;
 import net.minecraft.item.ItemStack;
 
 import java.util.List;
@@ -25,5 +26,18 @@ public class MekUtils {
             }
         }
         return false;
+    }
+
+    public static int getAttackInitAmount(ItemStack stack){
+        if(stack.getItem() instanceof ItemMekaTool){
+            ItemMekaTool tool = (ItemMekaTool) stack.getItem();
+            List<Module<?>> ms = tool.getModules(stack);
+            for(Module<?> m : ms){
+                if(m.getData().equals(MekanismModules.ATTACK_AMPLIFICATION_UNIT.get())){
+                    return m.getInstalledCount();
+                }
+            }
+        }
+        return 0;
     }
 }

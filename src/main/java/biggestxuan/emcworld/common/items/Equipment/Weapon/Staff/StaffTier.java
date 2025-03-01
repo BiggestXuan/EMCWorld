@@ -22,7 +22,7 @@ public enum StaffTier implements IStaffTier {
     IRON(256,-2.4,8.5,0.12,1.3,0xc0c0c0,4,Items.IRON_INGOT,2),
     GOLDEN(64,-1.4,4,0.4,1.15,0xdbaf2d,8,Items.GOLD_INGOT,1),
     DIAMOND(2048,-2.1,11.25,0.15,1.45,0x74c2b2,5.5,Items.DIAMOND,3),
-    NETHERITE(4096,-1.8,23.5,0.2,1.6,0x71615b,7,Items.NETHERITE_INGOT,4),
+    NETHERITE(4096,-1.8,30.4,0.2,1.6,0x71615b,7,Items.NETHERITE_INGOT,4),
     GOD(10000,-2,8.5,0.15,1.3,0x0,6, EWItems.BIGGEST_EMC_GEM.get(),4),
     GAIA(4000,-2,16.5,0.17,1.5,0,6, ModItems.gaiaIngot,3)
     ;

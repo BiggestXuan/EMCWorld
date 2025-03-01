@@ -169,7 +169,7 @@ public class ConfigManager {
         BUILDER.push("Sundry");
         SUNDRY_CRAFT_CD = BUILDER.defineInRange("CraftCD",18000,0,Integer.MAX_VALUE);
         SUNDRY_RAID_LIGHT_CD = BUILDER.defineInRange("RaidLightCD",1200,0,Integer.MAX_VALUE);
-        SUNDRY_COLLECTOR_LIFESPAN = BUILDER.defineInRange("CollectorLifespan",720000,0,Integer.MAX_VALUE);
+        SUNDRY_COLLECTOR_LIFESPAN = BUILDER.defineInRange("CollectorLifespan",840000,0,Integer.MAX_VALUE);
         SUNDRY_DIFFICULTY_STAGE = BUILDER.defineInRange("DifficultyStageRate",1d,0,1500);
         SUNDRY_VIS_CORE = BUILDER.define("VisCore",true);
         SUNDRY_INFUSER_QUICK = BUILDER.define("InfuserQuickCraft",false);

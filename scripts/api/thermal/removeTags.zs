@@ -15,7 +15,7 @@ public function removeTETags() as void{
     <tag:items:forge:nuggets/tin>.remove(<item:thermal:tin_nugget>);
     <tag:items:forge:dusts/copper>.remove(<item:thermal:copper_dust>);
     <tag:items:forge:dusts/bronze>.remove(<item:thermal:bronze_dust>);
-    <tag:items:forge:dusts/silver>.remove(<item:thermal:silver_dust>);
+    <tag:items:forge:dusts/silver>.add(<item:emcworld:dust_silver>);
     <tag:items:forge:dusts/lead>.remove(<item:thermal:lead_dust>);
     <tag:items:forge:dusts/tin>.remove(<item:thermal:tin_dust>);
     

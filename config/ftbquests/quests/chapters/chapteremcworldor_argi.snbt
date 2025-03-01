@@ -1,0 +1,331 @@
+{
+	id: "474BC2D54587470E"
+	group: "082C00FA3A553D98"
+	order_index: 2
+	filename: "chapteremcworldor_argi"
+	title: "{chapter.emcworld.or_argi}"
+	icon: "emcworld:final_essence"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			x: 0.0d
+			y: 0.0d
+			id: "5AC72641653FC629"
+			tasks: [{
+				id: "54FC3AECCC849CA0"
+				type: "item"
+				item: "mysticalagriculture:inferium_essence"
+			}]
+			rewards: [{
+				id: "07666C1CE48E2395"
+				type: "item"
+				item: "mysticalagriculture:inferium_essence"
+				count: 8
+			}]
+		}
+		{
+			x: 2.5d
+			y: 0.0d
+			dependencies: ["5AC72641653FC629"]
+			id: "0A94D9786C683B7C"
+			tasks: [{
+				id: "49B29E29B711A60A"
+				type: "item"
+				item: "mysticalagriculture:prudentium_essence"
+			}]
+			rewards: [{
+				id: "0C96CD85B69D6C62"
+				type: "item"
+				item: "mysticalagriculture:prudentium_essence"
+				count: 8
+			}]
+		}
+		{
+			x: 5.0d
+			y: 0.0d
+			dependencies: ["0A94D9786C683B7C"]
+			id: "5C6387A6D9959D9F"
+			tasks: [{
+				id: "54040B2B9670C8C4"
+				type: "item"
+				item: "mysticalagriculture:tertium_essence"
+			}]
+			rewards: [{
+				id: "6C8AAE69C747C390"
+				type: "item"
+				item: "mysticalagriculture:tertium_essence"
+				count: 8
+			}]
+		}
+		{
+			x: 7.5d
+			y: 0.0d
+			dependencies: ["5C6387A6D9959D9F"]
+			id: "7414B59AF100360C"
+			tasks: [{
+				id: "78871FBC242AD412"
+				type: "item"
+				item: "mysticalagriculture:imperium_essence"
+			}]
+			rewards: [{
+				id: "1342320C0E58C9C9"
+				type: "item"
+				item: "mysticalagriculture:imperium_essence"
+				count: 8
+			}]
+		}
+		{
+			x: 10.0d
+			y: 0.0d
+			dependencies: ["7414B59AF100360C"]
+			id: "0075CE6CDE02CCCD"
+			tasks: [{
+				id: "214FCBF8D0C38F92"
+				type: "item"
+				item: "mysticalagriculture:supremium_essence"
+			}]
+			rewards: [{
+				id: "7B7FD9958DBC33E6"
+				type: "item"
+				item: "mysticalagriculture:supremium_essence"
+				count: 8
+			}]
+		}
+		{
+			x: 14.5d
+			y: 0.0d
+			shape: "gear"
+			dependencies: ["0075CE6CDE02CCCD"]
+			size: 3.0d
+			id: "1587845A889F06C1"
+			tasks: [{
+				id: "2D0E2BF01A83D7E2"
+				type: "item"
+				item: "mysticalagradditions:insanium_essence"
+			}]
+			rewards: [{
+				id: "5D6B7380E86AD554"
+				type: "item"
+				item: "mysticalagradditions:insanium_essence"
+				count: 8
+			}]
+		}
+		{
+			x: 20.0d
+			y: 0.0d
+			shape: "gear"
+			dependencies: ["1587845A889F06C1"]
+			size: 3.0d
+			id: "542364DF9CF93C67"
+			tasks: [{
+				id: "1BF9E87D62399E6A"
+				type: "item"
+				item: "emcworld:epic_essence"
+			}]
+			rewards: [{
+				id: "5B377C124AEC1124"
+				type: "item"
+				team_reward: true
+				item: "emcworld:epic_essence"
+				count: 4
+			}]
+		}
+		{
+			x: 26.0d
+			y: 0.0d
+			shape: "gear"
+			dependencies: ["542364DF9CF93C67"]
+			size: 3.0d
+			id: "09DD034AE122137D"
+			tasks: [{
+				id: "5CDE7220DB2AE660"
+				type: "item"
+				item: "emcworld:final_essence"
+			}]
+			rewards: [{
+				id: "074B87F40BD2A465"
+				type: "item"
+				team_reward: true
+				item: "emcworld:final_essence"
+				count: 2
+			}]
+		}
+		{
+			x: 0.0d
+			y: 2.5d
+			dependencies: ["5AC72641653FC629"]
+			id: "54BF7091EEACC5E1"
+			tasks: [{
+				id: "6C8C5A50845CF047"
+				type: "item"
+				item: "mysticalagriculture:inferium_growth_accelerator"
+			}]
+			rewards: [{
+				id: "4642516D6710A475"
+				type: "item"
+				item: "mysticalagriculture:inferium_essence"
+				count: 16
+			}]
+		}
+		{
+			x: 2.5d
+			y: 2.5d
+			dependencies: ["0A94D9786C683B7C"]
+			id: "46C73E31385364A7"
+			tasks: [{
+				id: "6EDC5E863A5C1E4C"
+				type: "item"
+				item: "mysticalagriculture:prudentium_growth_accelerator"
+			}]
+			rewards: [{
+				id: "72A744339E872F4E"
+				type: "item"
+				item: "mysticalagriculture:prudentium_essence"
+				count: 16
+			}]
+		}
+		{
+			x: 5.0d
+			y: 2.5d
+			dependencies: ["5C6387A6D9959D9F"]
+			id: "53C68A330AED5262"
+			tasks: [{
+				id: "2515817F7EE5A4CF"
+				type: "item"
+				item: "mysticalagriculture:tertium_growth_accelerator"
+			}]
+			rewards: [{
+				id: "66534DF4DC52F527"
+				type: "item"
+				item: "mysticalagriculture:tertium_essence"
+				count: 16
+			}]
+		}
+		{
+			x: 7.5d
+			y: 2.5d
+			dependencies: ["7414B59AF100360C"]
+			id: "56FE5BA3B98A5C2A"
+			tasks: [{
+				id: "62695C49B71E20C3"
+				type: "item"
+				item: "mysticalagriculture:imperium_growth_accelerator"
+			}]
+			rewards: [{
+				id: "4BCC4E4749CE0072"
+				type: "item"
+				item: "mysticalagriculture:imperium_essence"
+				count: 16
+			}]
+		}
+		{
+			x: 10.0d
+			y: 2.5d
+			dependencies: ["0075CE6CDE02CCCD"]
+			id: "0D35F7A284E10693"
+			tasks: [{
+				id: "0025FF145CADDC16"
+				type: "item"
+				item: "mysticalagriculture:supremium_growth_accelerator"
+			}]
+			rewards: [{
+				id: "37D76F5C66876D20"
+				type: "item"
+				item: "mysticalagriculture:supremium_essence"
+				count: 16
+			}]
+		}
+		{
+			x: 0.0d
+			y: -2.5d
+			id: "644B0957F95B0ADA"
+			tasks: [{
+				id: "316E4F0CE947CA8F"
+				type: "item"
+				item: "mysticalagriculture:prosperity_shard"
+			}]
+			rewards: [{
+				id: "2092F6A09F100434"
+				type: "item"
+				item: "mysticalagriculture:prosperity_shard"
+				count: 16
+			}]
+		}
+		{
+			x: 5.0d
+			y: -2.5d
+			dependencies: ["644B0957F95B0ADA"]
+			id: "2E62A0D0FABB828E"
+			tasks: [{
+				id: "49B8F35A7E3A1C6A"
+				type: "item"
+				item: {
+					id: "mysticalagriculture:infusion_crystal"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 10.0d
+			y: -2.5d
+			dependencies: [
+				"2E62A0D0FABB828E"
+				"0075CE6CDE02CCCD"
+			]
+			id: "488DC39CA9ECA1FB"
+			tasks: [{
+				id: "634887FBE871D7AF"
+				type: "item"
+				item: "mysticalagriculture:master_infusion_crystal"
+			}]
+		}
+		{
+			x: 14.5d
+			y: 4.0d
+			dependencies: ["1587845A889F06C1"]
+			id: "63CF14D5C198D2A5"
+			tasks: [{
+				id: "1689867FE4443064"
+				type: "item"
+				item: "mysticalagriculture:netherite_seeds"
+			}]
+		}
+		{
+			x: 20.0d
+			y: 4.0d
+			dependencies: ["542364DF9CF93C67"]
+			id: "1A978CDF721C94BC"
+			tasks: [{
+				id: "14A0E67C9DD80727"
+				type: "item"
+				item: "mysticalagriculture:nether_star_seeds"
+			}]
+		}
+		{
+			x: 25.0d
+			y: 4.0d
+			dependencies: ["09DD034AE122137D"]
+			id: "65ED7806F3109D51"
+			tasks: [{
+				id: "579BF77802D14CEF"
+				type: "item"
+				item: "mysticalagriculture:dragon_egg_seeds"
+			}]
+		}
+		{
+			x: 27.0d
+			y: 4.0d
+			dependencies: ["09DD034AE122137D"]
+			id: "0A6DEADA2DAB964A"
+			tasks: [{
+				id: "784481A7867BF0FB"
+				type: "item"
+				item: "mysticalagriculture:antimatter_seeds"
+			}]
+		}
+	]
+}

@@ -18,7 +18,7 @@ import javax.annotation.Nonnull;
 @EMCWorldSince("1.0.3")
 public class EMCLootingEnchantment extends BaseEnchantment{
     public EMCLootingEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentType.BREAKABLE,new EquipmentSlotType[]{EquipmentSlotType.MAINHAND});
+        super(Rarity.VERY_RARE, EnchantmentType.WEAPON,new EquipmentSlotType[]{EquipmentSlotType.MAINHAND});
     }
 
     @Override

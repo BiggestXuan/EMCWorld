@@ -11,18 +11,23 @@ import biggestxuan.emcworld.api.item.base.BaseDifficultyItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 
 public class ScrollItem extends BaseDifficultyItem implements IUpgradeableMaterial {
     protected final int weight;
 
     public ScrollItem(float difficulty,int weight) {
-        super(difficulty,false,EMCWorld.tc("tooltip.emcworld.scroll_weight",weight));
+        super(difficulty,false,weight == 0 ? EMCWorld.tc("") : EMCWorld.tc("tooltip.emcworld.scroll_weight",weight));
         this.weight = weight;
     }
 
+    public ScrollItem(float difficulty) {
+        this(difficulty,0);
+    }
+
     @Override
-    public int getWeight(ItemStack stack){
-        return this.weight;
+    public int getActWeight(ItemStack stack, ItemStack target, TileEntity tileEntity) {
+        return weight;
     }
 
     @Override

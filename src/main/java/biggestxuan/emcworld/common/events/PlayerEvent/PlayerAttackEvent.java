@@ -13,11 +13,14 @@ import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.capability.IUtilCapability;
 import biggestxuan.emcworld.api.item.ICostEMCItem;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
+import biggestxuan.emcworld.api.item.equipment.ISuckerItem;
 import biggestxuan.emcworld.api.item.equipment.bow.IUpgradeBow;
 import biggestxuan.emcworld.api.item.equipment.dagger.BaseEMCGodDagger;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IRangeAttackWeapon;
+import biggestxuan.emcworld.api.trait.ITrait;
+import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.common.compact.Projecte.EMCHelper;
 import biggestxuan.emcworld.common.config.ConfigManager;
@@ -25,10 +28,9 @@ import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.WarHammer.WarHammerItem;
 import biggestxuan.emcworld.common.items.ModPack.EndLight;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.registry.EWDamageSource;
 import biggestxuan.emcworld.common.registry.EWEffects;
-import biggestxuan.emcworld.api.trait.ITrait;
-import biggestxuan.emcworld.api.trait.TraitType;
 import biggestxuan.emcworld.common.registry.EWEnchantments;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.EMCLog.EMCSource;
@@ -36,7 +38,6 @@ import biggestxuan.emcworld.common.utils.MathUtils;
 import biggestxuan.emcworld.common.utils.Message;
 import biggestxuan.emcworld.common.utils.SkillUtils;
 import net.mehvahdjukaar.dummmmmmy.setup.Registry;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -53,6 +54,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.raid.Raid;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -70,10 +72,21 @@ public class PlayerAttackEvent {
         DamageSource source = event.getSource();
         LivingEntity livingEntity = event.getEntityLiving();
         float damage = event.getAmount();
-        if(source.getDirectEntity() instanceof PlayerEntity && !source.equals(EWDamageSource.REALLY)) {
+        if(source.getDirectEntity() instanceof PlayerEntity && !source.equals(EWDamageSource.TRUE)) {
             PlayerEntity player = (PlayerEntity) source.getDirectEntity();
             ItemStack stack = player.getItemInHand(Hand.MAIN_HAND);
             ServerWorld world = player.getServer().overworld();
+            if(stack.getItem() instanceof DaggerItem){
+                if(stack.getDamageValue() >= stack.getMaxDamage()){
+                    stack.shrink(1);
+                }
+                stack.setDamageValue(stack.getDamageValue()+1);
+            }
+            if(world.isRaided(player.blockPosition())){
+                Raid raid = world.getRaidAt(player.blockPosition());
+                assert raid != null;
+                damage = new RaidEffectExecutor(raid).onPlayerAttack(player,livingEntity,damage);
+            }
             if (stack.getItem() instanceof WarHammerItem) {
                 stack.setDamageValue(stack.getDamageValue() + 1);
                 if (stack.getDamageValue() >= stack.getMaxDamage()) {
@@ -126,11 +139,11 @@ public class PlayerAttackEvent {
                     if (modify == 1) {
                         if (skills[36] != 0 && skills[37] != 0) {
                             if (livingEntity.getHealth() / livingEntity.getMaxHealth() <= skills[36] / 10000f) {
-                                livingEntity.hurt(EWDamageSource.REALLY, livingEntity.getMaxHealth());
+                                livingEntity.hurt(EWDamageSource.TRUE, livingEntity.getMaxHealth());
                             }
                         }
                         if (skills[24] != 0) {
-                            livingEntity.hurt(EWDamageSource.REALLY, damage * skills[24] / 10000f);
+                            livingEntity.hurt(EWDamageSource.TRUE, damage * skills[24] / 10000f);
                         }
                     }
                     if (modify == 2) {
@@ -177,7 +190,7 @@ public class PlayerAttackEvent {
                 }
                 damage *= util.getAttackCD();
                 if(EndLight.weaponHasEndLight(stack)){
-                    livingEntity.hurt(EWDamageSource.REALLY,livingEntity.getMaxHealth()*0.01F);
+                    livingEntity.hurt(EWDamageSource.TRUE,livingEntity.getMaxHealth()*0.01F);
                 }
                 EndLight.triggerParasitism(player,damage);
                 util.setLastAttackTime(0);
@@ -186,9 +199,15 @@ public class PlayerAttackEvent {
                 if(giantKiller >= 1 && livingEntity.getHealth() >= player.getMaxHealth() * 8){
                     damage *= 1F + giantKiller * 0.1F;
                     if(giantKiller == EWEnchantments.EMC_GIANT_KILLER.get().getMaxLevel()){
-                        livingEntity.hurt(EWDamageSource.REALLY,damage * 0.1F);
+                        livingEntity.hurt(EWDamageSource.TRUE,damage * 0.1F);
                         player.heal(damage * 0.1F);
                     }
+                }
+                if(stack.getItem() instanceof ISuckerItem && !livingEntity.getType().equals(Registry.TARGET_DUMMY.get()) && !player.getCooldowns().isOnCooldown(stack.getItem())){
+                    ISuckerItem item = (ISuckerItem) stack.getItem();
+                    double r = item.getSuckerRate(stack);
+                    player.heal((float) (damage * r));
+                    player.getCooldowns().addCooldown(stack.getItem(),item.getCoolDown(stack));
                 }
                 if (stack.getItem() instanceof ICostEMCItem) {
                     ICostEMCItem item = (ICostEMCItem) stack.getItem();

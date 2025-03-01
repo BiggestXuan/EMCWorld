@@ -6,6 +6,7 @@ package biggestxuan.emcworld.common.recipes;
  *  2022/08/19
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.recipe.IUpdateRecipe;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWItems;
@@ -42,7 +43,7 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
     FILTH(RatsItemRegistry.FILTH.getItem(),RatsItemRegistry.FILTH_CORRUPTION.asItem(),2000000,3),
     WELL(BloodMagicBlocks.BLOOD_ALTAR.get().asItem(), BlocksAS.WELL.asItem(),2500000,3),
     PLAGUE_TOME(Items.BOOK,RatsItemRegistry.PLAGUE_TOME,3000000,4),
-    EMC_LEAF(ModItems.GOLD_LEAF.getItem(),EWItems.EMC_LEAF.get(),100000,4),
+    EMC_LEAF(EMCWorld.getItem("twilightforest:steeleaf_ingot"),EWItems.EMC_LEAF.get(),100000,4),
     STAR_ORE(Blocks.IRON_ORE.asItem(),BlocksAS.STARMETAL_ORE.asItem(),300000,4 ),
     //QIO_DRIVE(MekanismItems.BASE_QIO_DRIVE.getItem(),MekanismItems.HYPER_DENSE_QIO_DRIVE.getItem(),3500000,2),
     AS_INFUSER(EWItems.INFUSE_CORE.get(),BlocksAS.INFUSER.asItem(),3500000,4),
@@ -87,6 +88,10 @@ public enum AdvancedUpdateRecipe implements IUpdateRecipe {
         this.output = output;
         this.cost = cost;
         this.level = level;
+    }
+
+    AdvancedUpdateRecipe(ItemStack input, Item output, long cost,int level) {
+        this(input.getItem(),output,cost,level);
     }
 
     @Override

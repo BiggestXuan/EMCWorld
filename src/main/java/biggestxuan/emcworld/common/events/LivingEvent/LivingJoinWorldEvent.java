@@ -11,10 +11,12 @@ import biggestxuan.emcworld.common.compact.Curios.PlayerCuriosUtils;
 import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.entity.Player.Tulye;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.github.alexthe666.rats.server.entity.RatsEntityRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.AbstractIllagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
@@ -22,7 +24,10 @@ import net.minecraft.item.SkullItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.raid.Raid;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,7 +44,10 @@ import java.util.List;
 public class LivingJoinWorldEvent {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void livingJoinWorldEvent(EntityJoinWorldEvent event){
+        Entity entity =  event.getEntity();
+        World world = entity.level;
         if(event.getEntity().level.isClientSide || event.getEntity() == null) return;
+        ServerWorld world1 = (ServerWorld) world;
         if(event.getEntity() instanceof Tulye){
             Tulye e = (Tulye) event.getEntity();
             e.addEffect(new EffectInstance(Effects.INVISIBILITY,600,0));
@@ -49,7 +57,7 @@ public class LivingJoinWorldEvent {
             return;
         }
         if(event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof LichEntity)){
-            LivingEntity livingEntity = (LivingEntity) event.getEntity();
+            LivingEntity livingEntity = (LivingEntity) entity;
            /* ChampionCapability.getCapability(livingEntity).ifPresent(c -> {
                 var api = c.getServer();
                 if(api.getRank().isEmpty() || api.getRank().get().getTier() == 0){
@@ -75,6 +83,16 @@ public class LivingJoinWorldEvent {
                 });*/
             }catch (RuntimeException e){
                 EMCWorld.LOGGER.fatal("Oh...This is all Biggest_Xuan's fault");
+            }
+        }
+        if(entity instanceof AbstractIllagerEntity && !event.isCanceled()){
+            AbstractIllagerEntity abstractIllagerEntity = (AbstractIllagerEntity) entity;
+            BlockPos pos = abstractIllagerEntity.blockPosition();
+            if(world1.isRaided(pos)){
+                Raid raid = world1.getRaidAt(pos);
+                if(raid != null){
+                    new RaidEffectExecutor(raid).onIllagerSpawner(abstractIllagerEntity);
+                }
             }
         }
     }

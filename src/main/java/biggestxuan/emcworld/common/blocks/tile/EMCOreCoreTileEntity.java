@@ -7,6 +7,7 @@ import biggestxuan.emcworld.common.blocks.container.EMCOreCoreContainer;
 import biggestxuan.emcworld.common.compact.Projecte.EMCGemsMapping;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.EMCGemItem;
+import biggestxuan.emcworld.common.items.Equipment.Scroll.FeastScroll;
 import biggestxuan.emcworld.common.recipes.EMCOreRecipe;
 import biggestxuan.emcworld.common.registry.EWTileEntityTypes;
 import biggestxuan.emcworld.common.utils.MathUtils;
@@ -255,7 +256,11 @@ public class EMCOreCoreTileEntity extends BaseUpgradeTileEntity implements ITick
             }
         }
         if(recipe != null){
-            insertItem(recipe.getOutput());
+            ItemStack stack = recipe.getOutput();
+            if(stack.getItem() instanceof FeastScroll){
+                emc = 0;
+            }
+            insertItem(stack);
         }
     }
 

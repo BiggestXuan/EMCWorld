@@ -19,6 +19,7 @@ import biggestxuan.emcworld.common.compact.GameStage.GameStageManager;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.items.Curios.StoredTotem;
 import biggestxuan.emcworld.common.items.Equipment.BaseWeaponGemItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger.DaggerItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Gun.GunItem;
 import biggestxuan.emcworld.common.items.Equipment.Weapon.Staff.StaffItem;
 import biggestxuan.emcworld.common.recipes.EMCStageLimit;
@@ -201,6 +202,10 @@ public class ItemToolTipEvent {
             StaffItem i_s = (StaffItem) stack.getItem();
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.staff_damage",getDamaUtilsDesc(i_s.getManaBurstBaseDamage(stack,player))));
             event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.attack_range").append(EMCWorld.tc(StaffItem.getMode(stack).getName())));
+        }
+        if(stack.getItem() instanceof ISuckerItem){
+            ISuckerItem i_s = (ISuckerItem) stack.getItem();
+            event.getToolTip().add(EMCWorld.tc("tooltip.emcworld.sucker",String.format("%.2f",i_s.getSuckerRate(stack)*100)+"%"));
         }
         if(stack.getItem() instanceof IAdditionsDamageWeapon){
             DamageUtils utils = SkillUtils.getPlayerAttackDamage(player,stack);

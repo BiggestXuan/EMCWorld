@@ -64,11 +64,11 @@ public class fireRedArmor extends BaseEMCGodArmorItem {
 
     @Override
     public float shield(ItemStack stack) {
-        return (float) ((15.25f * getLevel(stack) * getPrefixCommonRate(stack) + 25) * getShieldRate());
+        return (float) ((20f * getLevel(stack) * getPrefixCommonRate(stack) + 25) * getShieldRate());
     }
 
     @Override
     public float shield_speed(ItemStack stack) {
-        return (float) (0.25f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
+        return (float) (1.6f * getLevel(stack) * getShieldRate() * getPrefixCommonRate(stack));
     }
 }

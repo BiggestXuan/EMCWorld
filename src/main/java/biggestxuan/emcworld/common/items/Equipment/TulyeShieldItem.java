@@ -23,7 +23,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
-import net.minecraft.potion.EffectUtils;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -219,7 +218,7 @@ public class TulyeShieldItem extends ShieldItem implements ISponsorItem, IEMCGod
             for(LivingEntity living : MathUtils.getNearLiving(player,5,false)){
                 cost += (long) (MathUtils.getAttackBaseCost(player) * 5 * GameStageManager.getPlayerGameStageByInt(player));
                 if(EMCHelper.getPlayerEMC(player) >= cost){
-                    living.hurt(EWDamageSource.REALLY,5 * GameStageManager.getPlayerGameStageByInt(player));
+                    living.hurt(EWDamageSource.TRUE,5 * GameStageManager.getPlayerGameStageByInt(player));
                 }else{
                     break;
                 }

@@ -9,8 +9,10 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Dagger;
 import biggestxuan.emcworld.api.EMCWorldSince;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.equipment.IAttackSpeedItem;
+import biggestxuan.emcworld.api.item.equipment.ISuckerItem;
 import biggestxuan.emcworld.api.item.equipment.dagger.IDaggerTier;
 import biggestxuan.emcworld.api.item.equipment.weapon.IAdditionsDamageWeapon;
+import biggestxuan.emcworld.api.item.equipment.weapon.ICriticalWeapon;
 import biggestxuan.emcworld.api.item.equipment.weapon.IUpgradeableWeapon;
 import biggestxuan.emcworld.common.config.ConfigManager;
 import biggestxuan.emcworld.common.registry.EWCreativeTabs;
@@ -24,13 +26,14 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTier;
 import net.minecraft.item.TieredItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttackSpeedItem, IPrefixItem, IAdditionsDamageWeapon {
+public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttackSpeedItem, IPrefixItem, IAdditionsDamageWeapon, ISuckerItem {
     protected final IDaggerTier tier;
     private final ImmutableMultimap<Attribute, AttributeModifier> defaultModifiers;
 
@@ -80,11 +83,6 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
     }
 
     @Override
-    public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 4.75);
-    }
-
-    @Override
     public int getMaxLevel() {
         return (int) ((tier.getLevel() + 1) * ConfigManager.DIFFICULTY.get() * 0.65d);
     }
@@ -108,5 +106,22 @@ public class DaggerItem extends TieredItem implements IUpgradeableWeapon,IAttack
             b *= 0.015 * (prefix.getLevel()-4) + 1;
         }
         return b;
+    }
+
+    @Override
+    public double getSuckerRate(ItemStack stack) {
+        int level = getLevel(stack);
+        double base = 0.1 + level * 0.005;
+        return getPrefixRate(stack, base);
+    }
+
+    protected double getPrefixRate(ItemStack stack, double base) {
+        int prefix = getPrefix(stack).getLevel();
+        if(prefix < 4){
+            base *= 1 - 0.2 * (4 - prefix);;
+        }else{
+            base *= 1 + 0.01 * prefix;
+        }
+        return base;
     }
 }

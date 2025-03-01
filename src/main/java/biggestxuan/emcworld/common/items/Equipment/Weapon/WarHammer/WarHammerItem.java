@@ -24,6 +24,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTier;
 import net.minecraft.item.TieredItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -76,10 +77,6 @@ public class WarHammerItem extends TieredItem implements IUpgradeableWeapon,IRan
         return 1 / getPrefixCommonRate(stack);
     }
 
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        return (int) (IUpgradeableWeapon.super.getWeightRequired(stack) * 5);
-    }
 
     @Override
     public long EMCModifySecond(ItemStack stack) {

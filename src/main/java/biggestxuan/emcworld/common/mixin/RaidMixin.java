@@ -6,18 +6,25 @@ package biggestxuan.emcworld.common.mixin;
  *  2022/12/23
  */
 
+import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.capability.IEntityUtilCapability;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.utils.RaidUtils;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.AbstractRaiderEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.World;
 import net.minecraft.world.raid.Raid;
+import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.server.ServerWorld;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,6 +32,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -50,14 +58,20 @@ public abstract class RaidMixin {
     @Final
     private final ServerWorld level;
 
+    @Mutable
+    @Shadow
+    @Final
+    private final ServerBossInfo raidEvent;
+
     @Shadow
     private long ticksActive;
 
     @Shadow @Nullable protected abstract BlockPos findRandomSpawnPos(int p_221298_1_, int p_221298_2_);
 
-    protected RaidMixin(int numGroups, ServerWorld level) {
+    protected RaidMixin(int numGroups, ServerWorld level, ServerBossInfo raidEvent) {
         this.numGroups = numGroups;
         this.level = level;
+        this.raidEvent = raidEvent;
     }
 
     @Inject(method = "hasBonusWave",at = @At("HEAD"),cancellable = true)
@@ -77,6 +91,21 @@ public abstract class RaidMixin {
         }
     }
 
+    @Redirect(method = "findRandomSpawnPos",at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;floor(F)I",ordinal = 0))
+    public int modifyRandomPos1(float p_76141_0_){
+        return Math.round(MathHelper.sin(p_76141_0_) * 48);
+    }
+
+    @Redirect(method = "findRandomSpawnPos",at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;floor(F)I",ordinal = 1))
+    public int modifyRandomPos2(float p_76141_0_){
+        return Math.round(MathHelper.cos(p_76141_0_) * 48);
+    }
+
+    @Redirect(method = "findRandomSpawnPos",at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I"))
+    public int modifyRandomPos3(Random instance, int i){
+        return 0;
+    }
+
     @Inject(method = "getTotalRaidersAlive",at = @At("HEAD"),cancellable = true)
     public void getTotalRaidersAlive(CallbackInfoReturnable<Integer> cir){
         Raid raid = (Raid) (Object) this;
@@ -87,6 +116,19 @@ public abstract class RaidMixin {
     public void getAddonSpawns(Raid.WaveMember p_221335_1_, Random p_221335_2_, int p_221335_3_, DifficultyInstance p_221335_4_, boolean p_221335_5_, CallbackInfoReturnable<Integer> cir){
         cir.setReturnValue(1);
         cir.cancel();
+    }
+
+    @Inject(method = "tick",at = @At("HEAD"))
+    public void _tick_as(CallbackInfo ci){
+        Raid raid = (Raid) (Object) this;
+        RaidEffectExecutor executor = new RaidEffectExecutor(raid);
+        executor.onTick();
+        World world = raid.level;
+        if(ticksActive == 0 && world.isNight()){
+            RaidUtils.getRaidAllPlayers(raid).forEach(inf -> {
+                executor.announcementPlayer(inf.getPlayer());
+            });
+        }
     }
 
     @Inject(method = "updateRaiders",at = @At("HEAD"))
@@ -106,6 +148,16 @@ public abstract class RaidMixin {
         ci.cancel();
     }
 
+    @Inject(method = "updatePlayers",at = @At(value = "HEAD"))
+    public void getRaidTime(CallbackInfo ci){
+        Set<ServerPlayerEntity> set = Sets.newHashSet(raidEvent.getPlayers());
+        set.forEach(e -> {
+            e.getCapability(EMCWorldCapability.UTIL).ifPresent(cap -> {
+                cap.setRaidTime((int) ticksActive);
+            });
+        });
+    }
+
     @Inject(method = "tick",at = @At("HEAD"))
     public void fail(CallbackInfo ci){
         Raid raid = (Raid) (Object) this;
@@ -116,7 +168,7 @@ public abstract class RaidMixin {
         }
     }
 
-    //@Inject(method = "joinRaid",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/monster/AbstractRaiderEntity;setPos(DDD)V"),cancellable = true)
+    @Inject(method = "joinRaid",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/monster/AbstractRaiderEntity;setPos(DDD)V"),cancellable = true)
     public void spawn(int p_221317_1_, AbstractRaiderEntity p_221317_2_, BlockPos p_221317_3_, boolean p_221317_4_, CallbackInfo ci){
         Raid raid = (Raid) (Object) this;
         BlockPos pos = findRandomSpawnPos(0,20);
@@ -130,7 +182,6 @@ public abstract class RaidMixin {
         p_221317_2_.applyRaidBuffs(p_221317_1_, false);
         p_221317_2_.setOnGround(true);
         this.level.addFreshEntity(p_221317_2_);
-        //EMCWorld.LOGGER.info("test1 successful!");
         p_221317_2_.getCapability(EMCWorldCapability.ENTITY_UTIL).ifPresent(IEntityUtilCapability::setRaidEntity);
         ci.cancel();
     }

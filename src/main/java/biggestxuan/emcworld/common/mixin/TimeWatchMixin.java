@@ -18,12 +18,4 @@ public abstract class TimeWatchMixin extends PEToggleItem {
     public TimeWatchMixin(Properties props) {
         super(props);
     }
-
-    private void speedUpTileEntities(World world, int bonusTicks, AxisAlignedBB bBox) {
-
-    }
-
-    private void speedUpRandomTicks(World world, int bonusTicks, AxisAlignedBB bBox) {
-
-    }
 }

@@ -224,10 +224,10 @@ public abstract class EMCSource<T> {
         }
     }
 
-    public static class PickItemEMCSource extends EMCSource<ItemEntity>{
-        private final ItemEntity entity;
+    public static class PickItemEMCSource extends EMCSource<ItemStack>{
+        private final ItemStack entity;
 
-        public PickItemEMCSource(long emc, PlayerEntity player, ItemEntity target, double amt) {
+        public PickItemEMCSource(long emc, PlayerEntity player, ItemStack target, double amt) {
             super(emc, player, target, amt);
             entity = target;
         }
@@ -235,7 +235,7 @@ public abstract class EMCSource<T> {
         @Override
         public String getInfo() {
             ResourceLocation rl = entity.getItem().getItem().getRegistryName();
-            return super.getInfo()+EMCWorld.tc("emcsource.pick",rl == null ? "null" : rl.toString()+"x"+getTarget().getItem().getCount(),getEMC()).getString();
+            return super.getInfo()+EMCWorld.tc("emcsource.pick",rl == null ? "null" : rl.toString()+"x"+getTarget().getCount(),getEMC()).getString();
         }
     }
 
@@ -430,15 +430,15 @@ public abstract class EMCSource<T> {
     }
 
     @EMCWorldSince("1.0.3")
-    public static class EMCPowerFlowerSource extends EMCSource<BlockPos>{
+    public static class EMCPowerFlowerSource extends EMCSource<Object>{
 
-        public EMCPowerFlowerSource(long emc, Entity entity, BlockPos target) {
+        public EMCPowerFlowerSource(long emc, Entity entity, Object target) {
             super(emc, entity, target, 0);
         }
 
         @Override
         public String getInfo(){
-            return super.getInfo()+EMCWorld.tc("emcsource.powerflower",getTarget().toString(),getEMC()).getString();
+            return super.getInfo()+EMCWorld.tc("emcsource.powerflower",getEMC()).getString();
         }
     }
 
@@ -467,14 +467,14 @@ public abstract class EMCSource<T> {
     }
 
     @EMCWorldSince("1.1.0")
-    public static class EatSource extends EMCSource<Object>{
+    public static class EatSource extends EMCSource<PlayerEntity>{
         public EatSource(long emc,PlayerEntity player){
             super(emc,player,player,0);
         }
 
         @Override
         public String getInfo(){
-            return super.getInfo()+EMCWorld.tc("emcsource.eat",getTarget().toString(),getEMC()).getString();
+            return super.getInfo()+EMCWorld.tc("emcsource.eat",getTarget().getScoreboardName(),getEMC()).getString();
         }
     }
 }

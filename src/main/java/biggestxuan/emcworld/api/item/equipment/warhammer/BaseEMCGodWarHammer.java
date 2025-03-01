@@ -211,10 +211,4 @@ public abstract class BaseEMCGodWarHammer extends WarHammerItem implements IEMCR
         if(level <= 20) return Rarity.RARE;
         return Rarity.EPIC;
     }
-
-
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        return super.lv(stack);
-    }
 }

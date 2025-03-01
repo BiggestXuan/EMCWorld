@@ -95,6 +95,11 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
     protected abstract float AddonDamage(ItemStack stack);
 
     @Override
+    public double getSuckerRate(ItemStack stack){
+        return super.getSuckerRate(stack) * getBuffer(stack);
+    }
+
+    @Override
     public double costEMCWhenAttack(ItemStack stack) {
         double b = EMCCost(stack);
         switch (getGemType(stack)){
@@ -156,10 +161,5 @@ public abstract class BaseEMCGodDagger extends DaggerItem implements ISecondEMCI
         if(level <= 14) return Rarity.UNCOMMON;
         if(level <= 20) return Rarity.RARE;
         return Rarity.EPIC;
-    }
-
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        return super.lv(stack);
     }
 }

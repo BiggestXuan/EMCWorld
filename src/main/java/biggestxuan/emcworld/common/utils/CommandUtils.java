@@ -8,6 +8,7 @@ package biggestxuan.emcworld.common.utils;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
@@ -36,7 +37,9 @@ public class CommandUtils {
             if(advancementprogress.isDone()){
                 return;
             }
-            server.ifPresent(s -> executeCommand(s,"advancement grant "+serverPlayer.getName().getString()+" only "+adv.getId().toString()));
+            PlayerAdvancements playeradvancements = serverPlayer.getAdvancements();
+            playeradvancements.getOrStartProgress(adv).getRemainingCriteria().forEach(e -> playeradvancements.award(adv,e));
+            //server.ifPresent(s -> executeCommand(s,"advancement grant "+serverPlayer.getName().getString()+" only "+adv.getId().toString()));
         }
     }
 
@@ -44,7 +47,7 @@ public class CommandUtils {
         server.ifPresent(minecraftServer -> executeCommand(minecraftServer, c));
     }
 
-    private static void executeCommand(MinecraftServer server,String command){
+    public static void executeCommand(MinecraftServer server,String command){
         server.getCommands().performCommand(server.createCommandSourceStack(),command);
     }
 }

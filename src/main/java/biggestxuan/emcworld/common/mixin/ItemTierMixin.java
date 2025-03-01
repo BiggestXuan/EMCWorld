@@ -33,7 +33,9 @@ public abstract class ItemTierMixin {
     public void damage(CallbackInfoReturnable<Float> cir){
         if(ConfigManager.FREE_MODE.get()) return;
         float base = level == 4 ? 2.25F : 1;
+        if(level == 4){
+            cir.setReturnValue(26 * 1.3F);
+        }
         cir.setReturnValue(damage + damage * level * base * enchantmentValue / 30);
-        cir.cancel();
     }
 }

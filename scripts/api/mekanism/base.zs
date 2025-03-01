@@ -40,6 +40,12 @@ public function nucleosyRecipe(input as IIngredient,gas as GasStack,output as II
     <recipetype:mekanism:nucleosynthesizing>.addRecipe(getRecipeName(output),ItemStackIngredient.from(input),gas,output,time);
 }
 
+public function removeNucleosyRecipe(s as string[]) as void{
+    for i in s{
+        <recipetype:mekanism:nucleosynthesizing>.removeByName(i);
+    }
+}
+
 public function iron(input as IItemStack,amt as int) as void{
     infusionConversionRecipe(input,<infuse_type:emcworld:iron>*amt);
 }

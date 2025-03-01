@@ -18,7 +18,7 @@ public class RedGreenDagger extends BaseEMCGodDagger {
 
     @Override
     protected double EMCCost(ItemStack stack) {
-        return Math.pow(1.058f,getLevel(stack));
+        return Math.pow(1.04f,getLevel(stack));
     }
 
     @Override

@@ -104,11 +104,32 @@ public final class MathUtils {
         return Long.parseLong(String.valueOf(Math.round(rate*baseEMC*rand)));
     }
 
+    public static String formatTime(int tick){
+        int temp = tick / 20;
+        int hh = temp / 3600;
+        int mm = (temp % 3600) / 60;
+        int ss = (temp % 3600) % 60;
+        return (hh > 0 ? hh+":" : "") +
+                (mm < 10 ? ("0" + mm) : mm) + ":" +
+                (ss < 10 ? ("0" + ss) : ss);
+    }
+
     @ZenCodeType.Method
     public static int getDifficultyMulti(int base){
         double diff = CrTConfig.getWorldDifficulty();
         double multi = -1.6 * diff + 5.8;
         return Integer.parseInt(String.valueOf(Math.round(multi*base)));
+    }
+
+    public static int getEMCGodRequireWeight(int level){
+        if(level >= 30){
+            return 0;
+        }
+        double base = 50000;
+        for (int i = 29; i > level; i--) {
+            base *= 1 - 0.015 * (30 - i);
+        }
+        return (int) base;
     }
 
     public static double getRangePlayerAverageIndex(Entity entity,int range){
@@ -475,7 +496,7 @@ public final class MathUtils {
     }
     public static int getNeedXPToLevel(int level){
         if(level >=100) return 0;
-        return (int) Math.round(Math.pow(1.15,level) * 100);
+        return (int) Math.round(Math.pow(1.13,level) * 100);
     }
 
     public static IPlayerSkillCapability getPlayerLevelCapability(PlayerEntity player){

@@ -23,6 +23,6 @@ public abstract class MatterMixin {
      */
     @Overwrite(remap = false)
     public long getPowerFlowerOutput() {
-        return (long) (this.collectorOutput / 3D);
+        return (long) (this.collectorOutput / 4D);
     }
 }

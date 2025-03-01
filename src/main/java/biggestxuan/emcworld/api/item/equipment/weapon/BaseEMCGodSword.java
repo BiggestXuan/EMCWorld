@@ -6,7 +6,6 @@ package biggestxuan.emcworld.api.item.equipment.weapon;
  *  2022/09/26
  */
 
-import biggestxuan.emcworld.EMCWorld;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.IPrefixItem;
 import biggestxuan.emcworld.api.item.IUpgradeableMaterial;
@@ -20,7 +19,6 @@ import biggestxuan.emcworld.common.registry.EWItems;
 import biggestxuan.emcworld.common.utils.DamageUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,10 +30,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.openzen.zencode.java.ZenCodeType;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
@@ -43,7 +38,6 @@ import vazkii.botania.api.mana.ILensEffect;
 import vazkii.botania.common.entity.EntityManaBurst;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 @ZenRegister
@@ -56,16 +50,6 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IRangeAt
     @Override
     public double getEMCCostRate() {
         return 0d;
-    }
-
-    @Override
-    public int getWeightRequired(ItemStack stack){
-        int l = getLevel(stack);
-        int weight = 10;
-        for (int i = 0; i < l; i++) {
-            weight = (int) (1.344f * weight);
-        }
-        return weight;
     }
 
     public BaseEMCGodSword(float baseDamage, int color){
@@ -302,7 +286,7 @@ public abstract class BaseEMCGodSword extends BaseWeaponItem implements IRangeAt
                     burst.setMana(mana - cost);
                     float damage = (float) (getManaBurstDamage(stack) * (mana - cost) / (mana * ConfigManager.DIFFICULTY.get() * 5));
                     if (!burst.isFake() && !entity.level.isClientSide) {
-                        DamageSource source = EWDamageSource.REALLY;
+                        DamageSource source = EWDamageSource.TRUE;
                         living.hurt(source, damage);
                         entity.remove();
                         break;

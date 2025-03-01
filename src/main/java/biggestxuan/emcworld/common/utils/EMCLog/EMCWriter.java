@@ -12,11 +12,12 @@ import biggestxuan.emcworld.common.exception.EMCWorldCommonException;
 import biggestxuan.emcworld.common.utils.CalendarUtils;
 import codechicken.lib.util.ServerUtils;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-// Only server side!
+
 public class EMCWriter {
     private static final File serverDiv = new File(ServerUtils.getSaveDirectory(),"EMCWorldLog");
 
@@ -26,7 +27,7 @@ public class EMCWriter {
         }
     }
 
-    public static void WriteEMCLog(PlayerEntity player,EMCSource<?> source) {
+    public static void WriteEMCLog(ServerPlayerEntity player, EMCSource<?> source) {
         try{
             if(player == null || source.emc == 0 || source.amt == -1 || !ConfigManager.EMC_LOG.get()){
                 return;

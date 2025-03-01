@@ -488,7 +488,13 @@
 					id: "1D1F5A3E82C61B11"
 					type: "custom"
 					title: "{quest.emcworld_stage_five}"
-					icon: "the_afterlight:workbench_of_ancients"
+					icon: {
+						id: "minecraft:netherite_sword"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
 					tags: ["stage_five"]
 					auto: "enabled"
 				}

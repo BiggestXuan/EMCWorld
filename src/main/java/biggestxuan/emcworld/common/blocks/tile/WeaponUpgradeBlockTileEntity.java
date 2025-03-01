@@ -123,7 +123,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
                 lastChance = (int) (event.getSuccessChance() * 10000);
                 double breakChance = event.getBreakChance();
                 if(isSuccess(lastChance)){
-                    success(this);
+                    success(this,lastChance);
                 }else{
                     isSucceed = false;
                     if(MathUtils.isRandom(breakChance)){
@@ -222,6 +222,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
     }
 
     private void fail(WeaponUpgradeBlockTileEntity tileEntity){
+        dropEMCScroll();
         giveLuckyGem(tileEntity);
         costMaterial(tileEntity);
         ItemStack weapon = tileEntity.getInventory().getItem(0);
@@ -247,7 +248,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         return false;
     }
 
-    private void success(WeaponUpgradeBlockTileEntity tileEntity){
+    private void success(WeaponUpgradeBlockTileEntity tileEntity,double chance){
         costMaterial(tileEntity);
         ItemStack weapon = tileEntity.getInventory().getItem(0);
         IUpgradeableItem weapon1 = (IUpgradeableItem) weapon.getItem();
@@ -255,7 +256,7 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
         if(hasBXScroll() && MathUtils.isRandom(BiggestXuanScroll.chance)){
             weapon.shrink(1);
         }
-        else if(isSendMessage(weapon)){
+        else if(isSendMessage(weapon) && chance <= 0.1){
             sendMessage();
         }
         //tileEntity.level.addParticle(ParticleTypes.HAPPY_VILLAGER,pos.getX(),pos.getY()+1,pos.getZ(),10,10,10);
@@ -330,7 +331,12 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
             Item item = inventory.getItem(i).getItem();
             if(item instanceof IUpgradeableMaterial){
                 IUpgradeableMaterial material = (IUpgradeableMaterial) item;
-                weight += material.getWeight(inventory.getItem(i));
+                ItemStack main = inventory.getItem(0);
+                if(!main.isEmpty()){
+                    weight += material.getActWeight(inventory.getItem(i),main,this);
+                }else{
+                    weight += material.getWeight(inventory.getItem(i));
+                }
             }
         }
         return weight;
@@ -338,6 +344,14 @@ public class WeaponUpgradeBlockTileEntity extends BaseContainerTileEntity implem
 
     public void setStates(States states){
         this.states = states;
+    }
+
+    private void dropEMCScroll(){
+        int weight = getWeight(inventory);
+        double chance = weight <= 2000 ? 0 : weight <= 5000 ? 0.2 : weight <= 15000 ? 0.4 : weight <= 30000 ? 0.6 : 0.8;
+        if(MathUtils.isRandom(chance)){
+            this.level.addFreshEntity(new ItemEntity(this.level,pos.getX(),pos.getY() + 2,pos.getZ(),new ItemStack(EWItems.SCROLL_BASE_EMC.get())));
+        }
     }
 
     @Nonnull

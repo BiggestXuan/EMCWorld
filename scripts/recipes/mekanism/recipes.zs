@@ -23,6 +23,9 @@ public function modifyMEKRecipe() as void{
     removeMetallurgicRecipe([
         "mekanism:processing/refined_obsidian/dust/from_obsidian_dust"
     ]);
+    removeNucleosyRecipe([
+        "mekanism:nucleosynthesizing/dragon_egg"
+    ]);
     addGobberInfusionRecipe(<item:minecraft:iron_ingot>,<item:mekanism:enriched_iron>,10);
     addGobberInfusionRecipe(<item:mekanism:enriched_iron>,<item:mekanism:dust_steel>,10);
     
@@ -56,10 +59,12 @@ public function modifyMEKRecipe() as void{
     var dl = <item:mekanism:dust_lithium>;
     var sc = <item:mekanism:steel_casing>;
     var si = <item:emcworld:emc_leaf>;
+    var aeg = <item:emcworld:advanced_emc_gem>;
     var hs = <item:mekanism:hdpe_sheet>;
     var rg = <item:mekanismgenerators:reactor_glass>;
     var ar2 = <item:mekanism:alloy_reinforced>;
     var dm = <item:mekanism:digital_miner>;
+    var le = <item:mysticalagriculture:lead_essence>;
     var a2 = <item:mekanism:alloy_reinforced>;
     var sia = <item:astralsorcery:starmetal_ingot>;
     var ro = <item:mekanism:ingot_refined_obsidian>;
@@ -155,6 +160,9 @@ public function modifyMEKRecipe() as void{
         pt,
         <item:mekanism:ultimate_tier_installer>
     ]);
+    addCraftShapelessRecipe([
+        le,le,le,le,le,le,le,le,le
+    ],<item:mekanism:ingot_lead>*6);
     addGobberInfusionRecipe(<item:mekanism:block_steel>,sc,40);
     addGobberInfusionRecipe(<item:mekanism:ingot_osmium>,<item:mekanism:basic_control_circuit>,20);
     combiningRecipe(<item:mekanism:dust_refined_obsidian>,<item:mekanism:ingot_steel>,iro);
@@ -181,6 +189,11 @@ public function modifyMEKRecipe() as void{
             [dl,aaa[i],dl],
         ],ip[i+1]);
     }
+    modifyShapedRecipe([
+        [aaa[2],c4,aaa[2]],
+        [aeg,sc,aeg],
+        [aaa[2],c4,aaa[2]]
+    ],<item:mekanism:antiprotonic_nucleosynthesizer>);
     metallurgicInfusingRecipe(<item:mekanism:dust_obsidian>,<infuse_type:emcworld:hellforged>*40,<item:mekanism:dust_refined_obsidian>);
     extendedCraftingShapedRecipe([
         [a,et,a],
@@ -217,13 +230,13 @@ public function modifyMEKRecipe() as void{
     ],<item:mekanism:flamethrower>);
     removeCraftRecipeIItemStack([ad,dm]);
     extendedCraftingShapedRecipe([
-	    [wa, cho, cho, cei, cei, cei, <item:gobber2:gobber2_paxel_end>.withTag({Damage: 0 as int})], 
-	    [a, a, a, a, uic , <item:mekanism:pellet_antimatter>, cei], 
-	    [a, a, a, a, vc, uic, cei], 
-	    [a, a, a, vc, a, a, cei], 
-	    [a, a, <item:cataclysm:gauntlet_of_guard>, a, a, a, cho], 
-	    [a, <item:mekanism:ultimate_control_circuit>, a, a, a, a, cho], 
-	    [<item:astralsorcery:celestial_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:evorsio" as string}}), a, a, a, a, a, wa]
+	    [gobber, gobber, gobber, gobber, gobber, gobber, <item:gobber2:gobber2_paxel_end>.withTag({Damage: 0 as int})], 
+	    [a, a, a, a, uic , lfm, gobber], 
+	    [a, a, a, a, lfm, uic, gobber], 
+	    [a, a, a, lfm, a, a, gobber], 
+	    [a, a, lfm, a, a, a, gobber], 
+	    [a, <item:mekanism:ultimate_control_circuit>, a, a, a, a, gobber], 
+	    [<item:astralsorcery:celestial_collector_crystal>.withTag({astralsorcery: {constellation: "astralsorcery:evorsio" as string}}), a, a, a, a, a, gobber]
     ],ad,3);
     treeRitualRecipe([
         <item:cataclysm:void_core>,

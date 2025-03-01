@@ -9,35 +9,26 @@ package biggestxuan.emcworld.common.items.Equipment.Weapon.Staff;
 import biggestxuan.emcworld.api.EMCWorldAPI;
 import biggestxuan.emcworld.api.item.IEMCInfuserItem;
 import biggestxuan.emcworld.api.item.INeedLevelItem;
+import biggestxuan.emcworld.common.items.Equipment.Weapon.IRainbowEquipment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class RainbowStaff extends StaffItem implements IEMCInfuserItem,INeedLevelItem {
+public class RainbowStaff extends StaffItem implements IRainbowEquipment {
     public RainbowStaff() {
         super(EMCWorldAPI.getInstance().getStaffTier("diamond"));
     }
 
     @Override
-    public int getUseLevel(ItemStack stack) {
-        return 20;
-    }
-
-    @Override
-    public long getMaxInfuser(ItemStack stack) {
-        return 3000000;
-    }
-
-    @Override
     public double getCriticalChance(ItemStack stack) {
-        return tier.getCriticalChance() * getPrefixCommonRate(stack) + (getInfuser(stack) >= Math.E ? Math.log(getInfuser(stack))/35d : 0);
+        return super.getCriticalChance(stack) + getRainbowCriticalChance(stack);
     }
 
     @Override
     public double getCriticalRate(ItemStack stack) {
-        return tier.getCriticalRate() * getPrefixCommonRate(stack) + (getInfuser(stack) >= Math.E ? Math.log(getInfuser(stack))/30d : 0);
+        return super.getCriticalRate(stack) + getRainbowCriticalRate(stack);
     }
 
     @Override
@@ -48,9 +39,8 @@ public class RainbowStaff extends StaffItem implements IEMCInfuserItem,INeedLeve
 
     @Override
     public float getBaseDamage(ItemStack stack){
-        float baseDamage = (float) (27.5F * getPrefixCommonRate(stack));
-        float damage =  getInfuser(stack) >= Math.E ? baseDamage + (float) (Math.log(getInfuser(stack)*0.65)) : baseDamage;
-        return damage + getLevel(stack) * 0.06f * damage;
+        float baseDamage = (float) (22.5F * getPrefixCommonRate(stack));
+        return getRainbowDamage(stack,baseDamage+ getLevel(stack) * 0.06f * baseDamage);
     }
 
     @Override

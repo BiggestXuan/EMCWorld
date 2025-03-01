@@ -12,7 +12,7 @@
 			title: "{quest.emcworld.glowstone}"
 			x: -1.5d
 			y: 0.0d
-			dependencies: ["0EBD670985A527E1"]
+			dependencies: ["1BF9E1763E01F176"]
 			hide: true
 			id: "40FB93DCCB8000EF"
 			tasks: [{
@@ -42,7 +42,7 @@
 			x: 1.5d
 			y: 0.0d
 			description: ["{quest.emcworld.honey_enderpearl_desc}"]
-			dependencies: ["0EBD670985A527E1"]
+			dependencies: ["1BF9E1763E01F176"]
 			hide: true
 			id: "687804F89068D55C"
 			tasks: [{

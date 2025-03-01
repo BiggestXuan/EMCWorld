@@ -19,7 +19,10 @@ public function tweakerBotania() as void{
         <item:mythicbotany:niflheim_rune>,
         <item:mythicbotany:nidavellir_rune>,
         <item:mythicbotany:helheim_rune>,
-        <item:emcworld:scroll_green>
+        <item:emcworld:abunana_loot>,
+        <item:emcworld:scroll_green>,
+        <item:emcworld:scroll_blue>,
+        <item:emcworld:scroll_gaia>
     ];
     for i in [ei,eei]{
         modifyLootTable(i*8,0.3f,getRL(name));
@@ -46,8 +49,6 @@ public function tweakerBotania() as void{
     modifyLootTable(iss*4,0.2f,getRL(bn));
     modifyLootTable(iss*5,0.15f,getRL(bn));
     modifyLootTable(iss*6,0.1f,getRL(bn));
-    modifyLootTable(iss*7,0.05f,getRL(bn));
-    modifyLootTable(iss*8,0.02f,getRL(bn));
     modifyLootTable(<item:emcworld:base_emc_stored_totem>.withDamage(math.getRangeRandom(0,50000)),0.35f,getRL(name));
 }
 

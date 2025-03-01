@@ -7,16 +7,22 @@ package biggestxuan.emcworld.common.events.LivingEvent;
  */
 
 import biggestxuan.emcworld.EMCWorld;
+import biggestxuan.emcworld.api.item.equipment.ISuckerItem;
 import biggestxuan.emcworld.api.item.equipment.armor.IHealBoostArmor;
 import biggestxuan.emcworld.common.capability.EMCWorldCapability;
 import biggestxuan.emcworld.api.capability.IPlayerSkillCapability;
 import biggestxuan.emcworld.api.trait.ITrait;
 import biggestxuan.emcworld.api.trait.TraitType;
+import biggestxuan.emcworld.common.raid.RaidEffectExecutor;
 import biggestxuan.emcworld.common.traits.TraitUtils;
 import biggestxuan.emcworld.common.utils.MathUtils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.raid.Raid;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -27,10 +33,25 @@ public class LivingHealEvent {
     @SubscribeEvent
     public static void livingHealEvent(net.minecraftforge.event.entity.living.LivingHealEvent event){
         LivingEntity livingEntity = event.getEntityLiving();
+        World world = livingEntity.level;
         float amount = event.getAmount();
         if(livingEntity.getCommandSenderWorld().isClientSide) return;
+        ServerWorld world1 = (ServerWorld) world;
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
+            ItemStack mainStack = player.getMainHandItem();
+            ItemStack offStack = player.getOffhandItem();
+            BlockPos pos = player.blockPosition();
+            if(mainStack.getItem() instanceof ISuckerItem || offStack.getItem() instanceof ISuckerItem){
+                event.setAmount(amount);
+                return;
+            }
+            if(world1.isRaided(pos)){
+                Raid raid = world1.getRaidAt(pos);
+                if(raid != null){
+                    amount = new RaidEffectExecutor(raid).onPlayerHeal(player,amount);
+                }
+            }
             IPlayerSkillCapability cap = player.getCapability(EMCWorldCapability.PLAYER_LEVEL).orElseThrow(NullPointerException::new);
             int[] skill = cap.getSkills();
             if(MathUtils.isMaxDifficulty()){
@@ -50,10 +71,10 @@ public class LivingHealEvent {
                 }
             }
             double rate = 1;
-            ItemStack stack = player.getMainHandItem();
-            for(ITrait t : TraitUtils.getStackTraits(stack)){
+
+            for(ITrait t : TraitUtils.getStackTraits(mainStack)){
                 if(t.getTraitType() == TraitType.TOOL){
-                    amount = t.onHeal(player,amount,stack);
+                    amount = t.onHeal(player,amount,mainStack);
                 }
             }
             for(ItemStack s : player.inventory.armor){
